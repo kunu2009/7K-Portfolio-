@@ -29,24 +29,24 @@ const ecosystemComponents = [
 
 const EcosystemSection = () => {
   return (
-    <section id="ecosystem" className="container py-16 md:py-24">
-      <div className="text-center max-w-3xl mx-auto">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">The 7K Ecosystem Vision</h2>
-        <p className="text-xl text-muted-foreground mb-12">
+    <section id="ecosystem" className="container py-24 sm:py-32 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+      <div className="text-center max-w-4xl mx-auto">
+        <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">The 7K Ecosystem Vision</h2>
+        <p className="text-xl text-muted-foreground mb-16">
           An interconnected system of tools, apps, and habits for productivity, personal growth, and creative freedom.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {ecosystemComponents.map((component) => {
           const cardContent = (
-            <Card className="text-center h-full hover:border-primary transition-colors duration-300">
+            <Card className="text-center h-full border shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out">
               <CardHeader className="items-center">
-                <div className="p-4 bg-muted rounded-full mb-4">
+                <div className="p-4 bg-secondary rounded-full mb-4">
                   <component.icon className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="font-headline">{component.title}</CardTitle>
-                <CardDescription>{component.description}</CardDescription>
+                <CardDescription className="mt-2">{component.description}</CardDescription>
               </CardHeader>
             </Card>
           );

@@ -43,10 +43,10 @@ const futureProjects = [
 
 const ProjectCard = ({ icon: Icon, title, description, href }: { icon: React.ElementType, title: string, description: string, href?: string }) => {
     const cardContent = (
-        <Card className="h-full hover:border-primary transition-colors duration-300">
+        <Card className="h-full border shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out">
             <CardHeader>
                 <div className="flex items-start gap-4">
-                    <Icon className="h-6 w-6 text-accent mt-1 shrink-0" />
+                    <Icon className="h-8 w-8 text-primary mt-1 shrink-0" />
                     <div>
                         <CardTitle className="font-headline mb-1">{title}</CardTitle>
                         <CardDescription>{description}</CardDescription>
@@ -69,30 +69,32 @@ const ProjectCard = ({ icon: Icon, title, description, href }: { icon: React.Ele
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="container py-16 md:py-24 bg-card border-y">
-      <div className="text-center max-w-3xl mx-auto">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Prototypes & Ideas</h2>
-        <p className="text-lg text-muted-foreground mb-8">
-          A glimpse into what's currently being built and what the future holds for the 7K Ecosystem.
-        </p>
-      </div>
+    <section id="projects" className="py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+      <div className="container">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">Prototypes & Ideas</h2>
+          <p className="text-lg text-muted-foreground mb-12">
+            A glimpse into what's currently being built and what the future holds for the 7K Ecosystem.
+          </p>
+        </div>
 
-      <Tabs defaultValue="ongoing" className="w-full">
-        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-          <TabsTrigger value="ongoing">Ongoing</TabsTrigger>
-          <TabsTrigger value="future">Future Ideas</TabsTrigger>
-        </TabsList>
-        <TabsContent value="ongoing">
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {ongoingProjects.map(proj => <ProjectCard key={proj.title} {...proj} />)}
-            </div>
-        </TabsContent>
-        <TabsContent value="future">
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                 {futureProjects.map(proj => <ProjectCard key={proj.title} {...proj} />)}
-            </div>
-        </TabsContent>
-      </Tabs>
+        <Tabs defaultValue="ongoing" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12 h-12">
+            <TabsTrigger value="ongoing" className="text-md">Ongoing</TabsTrigger>
+            <TabsTrigger value="future" className="text-md">Future Ideas</TabsTrigger>
+          </TabsList>
+          <TabsContent value="ongoing">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {ongoingProjects.map(proj => <ProjectCard key={proj.title} {...proj} />)}
+              </div>
+          </TabsContent>
+          <TabsContent value="future">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {futureProjects.map(proj => <ProjectCard key={proj.title} {...proj} />)}
+              </div>
+          </TabsContent>
+        </Tabs>
+      </div>
     </section>
   );
 };

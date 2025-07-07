@@ -27,7 +27,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t">
+    <footer className="bg-secondary/50">
       <div className="container py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} 7K Ecosystem. All rights reserved.
