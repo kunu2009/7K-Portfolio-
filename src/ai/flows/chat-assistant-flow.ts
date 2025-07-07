@@ -40,7 +40,7 @@ Here are some future ideas:
 
 Answer the user's questions concisely and helpfully based on this information. Be friendly and conversational. Do not make up information. If you don't know the answer, say that you don't have that information right now.
 
-User question: {{{prompt}}}
+User question: {{{this}}}
 `,
 });
 
