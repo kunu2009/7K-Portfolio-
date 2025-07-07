@@ -1,178 +1,108 @@
-"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge, type BadgeProps } from "@/components/ui/badge";
+import { Rocket, Code, Flag, Target, Bot, BookOpen } from "lucide-react";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useState } from "react";
-import { generatePersonalizedRecommendations } from "@/ai/flows/personalized-recommendations";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Loader2, Sparkles, Wand2 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui/card";
+const journeyData = [
+  {
+    icon: Flag,
+    date: "Q4 2023",
+    title: "The Spark",
+    description: "Conception of the 7K Ecosystem idea — a unified system for productivity and growth.",
+    status: "Done",
+  },
+  {
+    icon: Code,
+    date: "Q1 2024",
+    title: "First Prototypes",
+    description: "Initial development begins on the 7K Life App and CLAT Prep Tools.",
+    status: "Done",
+  },
+  {
+    icon: Rocket,
+    date: "Q2 2024",
+    title: "Portfolio Launch",
+    description: "This portfolio website goes live to showcase the vision and ongoing projects.",
+    status: "Ongoing",
+  },
+  {
+    icon: Bot,
+    date: "Q3 2024",
+    title: "Stan AI Integration",
+    description: "Begin integrating the Stan AI assistant across all ecosystem applications.",
+    status: "Upcoming",
+  },
+  {
+    icon: BookOpen,
+    date: "Q4 2024",
+    title: "Smart Journal App",
+    description: "Development of a new standalone intelligent journaling application.",
+    status: "Upcoming",
+  },
+  {
+    icon: Target,
+    date: "2025+",
+    title: "Full Ecosystem Realized",
+    description: "Achieving seamless interconnectedness between all 7K tools and apps.",
+    status: "Upcoming",
+  },
+];
 
-const formSchema = z.object({
-  interests: z.string().min(10, {
-    message: "Please tell us a bit more about your interests.",
-  }),
-  background: z.string().min(10, {
-    message: "Please tell us a bit more about your background.",
-  }),
-});
+const statusVariants: { [key: string]: BadgeProps['variant'] } = {
+    Done: "secondary",
+    Ongoing: "default",
+    Upcoming: "outline",
+}
 
-type RecommendationOutput = {
-  recommendations: string[];
-  reasoning: string;
-};
-
-export default function JourneySection() {
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<RecommendationOutput | null>(null);
-  const { toast } = useToast();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      interests: "",
-      background: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setLoading(true);
-    setResult(null);
-    try {
-        const response = await generatePersonalizedRecommendations(values);
-        const recommendationsList = response.recommendations.split(',').map(item => item.trim()).filter(Boolean);
-        setResult({
-            recommendations: recommendationsList,
-            reasoning: response.reasoning
-        });
-    } catch (error) {
-      console.error(error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to get recommendations. Please try again.",
-      });
-    } finally {
-      setLoading(false);
-    }
-  }
-
+const JourneySection = () => {
   return (
     <section id="journey" className="py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-      <div className="container">
+      <div className="container max-w-5xl">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">Find Your Place in the Journey</h2>
-          <p className="text-lg text-muted-foreground mb-12">
-            The 7K Ecosystem is built for growth. Tell me about yourself, and I'll suggest a personalized starting point for you.
+          <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">The Journey & Roadmap</h2>
+          <p className="text-lg text-muted-foreground mb-20">
+            A visual timeline of the 7K Ecosystem's evolution, from a simple idea to a suite of interconnected tools.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <Card className="border shadow-md">
-            <CardHeader>
-              <CardTitle>Get Personalized Recommendations</CardTitle>
-              <CardDescription>Fill out the form to get an AI-powered recommendation.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="interests"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Your Interests</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="e.g., AI, productivity, coding, self-improvement..."
-                            className="resize-none bg-background"
-                            rows={4}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="background"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Your Background</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="e.g., Student, developer, designer, lifelong learner..."
-                            className="resize-none bg-background"
-                            rows={4}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" disabled={loading} size="lg" className="w-full rounded-full">
-                    {loading ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <Wand2 className="mr-2 h-4 w-4" />
-                    )}
-                    Generate My Path
-                  </Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
-          <div className="flex items-center justify-center min-h-[400px] rounded-lg">
-              {loading && (
-                  <div className="text-center">
-                      <Loader2 className="mx-auto h-12 w-12 animate-spin text-primary" />
-                      <p className="mt-4 text-muted-foreground">Generating your personalized path...</p>
-                  </div>
-              )}
-              {result && (
-                  <Card className="w-full animate-fade-in bg-background shadow-xl border">
-                      <CardHeader>
-                          <CardTitle className="flex items-center gap-3 font-headline text-2xl">
-                              <Sparkles className="h-6 w-6 text-primary"/>
-                              Your Personalized Recommendations
-                          </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-6">
-                        <div>
-                              <h4 className="font-semibold mb-2 text-foreground">Recommended for you:</h4>
-                              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                                  {result.recommendations.map((rec, i) => <li key={i}>{rec}</li>)}
-                              </ul>
-                        </div>
-                        <div>
-                              <h4 className="font-semibold mb-2 text-foreground">The "Why"</h4>
-                              <p className="text-muted-foreground">{result.reasoning}</p>
-                        </div>
-                      </CardContent>
-                  </Card>
-              )}
-              {!loading && !result && (
-                <div className="text-center text-muted-foreground">
-                  <Wand2 className="mx-auto h-12 w-12 mb-4" />
-                  <p>Your results will appear here.</p>
+        <div className="relative">
+          {/* Vertical Line */}
+          <div className="absolute left-4 top-2 h-full w-0.5 bg-border -translate-x-1/2" aria-hidden="true" />
+
+          <div className="space-y-12">
+            {journeyData.map((item) => (
+              <div key={item.title} className="relative pl-12">
+                {/* Timeline Point */}
+                <div className="absolute left-4 top-1 -translate-x-1/2 w-8 h-8 rounded-full bg-secondary border-2 border-primary/50 flex items-center justify-center text-primary z-10">
+                    <item.icon className="h-5 w-5" />
                 </div>
-              )}
+                
+                {/* Content */}
+                <Card className="border shadow-md hover:shadow-xl transition-all duration-300 ease-in-out hover:ring-2 hover:ring-primary">
+                    <CardHeader>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                           <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
+                           <div className="flex items-center gap-4">
+                               <p className="text-sm text-muted-foreground whitespace-nowrap">{item.date}</p>
+                               <Badge variant={statusVariants[item.status]}>{item.status}</Badge>
+                           </div>
+                        </div>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                </Card>
+              </div>
+            ))}
           </div>
+        </div>
+        
+        <div className="mt-24 text-center">
+            <h3 className="font-headline text-3xl font-bold mb-4">What's Next?</h3>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">The AI recommendation feature is currently being upgraded into a more powerful, personalized experience. In the meantime, feel free to explore my projects or follow the journey on social media.</p>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default JourneySection;
