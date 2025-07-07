@@ -12,7 +12,8 @@ const writings: Writing[] = [
   {
     title: "Wolf and the Fox",
     quote: "In a world of shadows, even the brightest light can be deceiving.",
-    coverImage: "https://storage.googleapis.com/fantastic-images/ac229712-40a8-443b-821f-0a0e9118d53b.jpeg",
+    coverImage: "https://storage.googleapis.com/fantastic-images/4df3a39e-d71d-407b-832f-b883c79a296a.jpeg",
+    hint: "wolf moon",
   },
   {
     title: "Lavender Skies",
