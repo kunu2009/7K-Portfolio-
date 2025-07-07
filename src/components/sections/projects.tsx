@@ -1,17 +1,20 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppWindow, Bot, GraduationCap, Grid, Sparkles, BookMarked } from "lucide-react";
+import Link from "next/link";
 
 const ongoingProjects = [
   {
     icon: AppWindow,
     title: "7K Life App",
     description: "Core application for holistic life management and productivity.",
+    href: "https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/",
   },
   {
     icon: GraduationCap,
     title: "CLAT/MHCET Tools",
     description: "Web-based utilities and resources for law aspirants.",
+    href: "https://7-klawprep.vercel.app/",
   },
   {
     icon: Bot,
@@ -38,19 +41,31 @@ const futureProjects = [
     }
 ];
 
-const ProjectCard = ({ icon: Icon, title, description }: { icon: React.ElementType, title: string, description: string }) => (
-    <Card className="h-full">
-        <CardHeader>
-            <div className="flex items-start gap-4">
-                <Icon className="h-6 w-6 text-accent mt-1 shrink-0" />
-                <div>
-                    <CardTitle className="font-headline mb-1">{title}</CardTitle>
-                    <CardDescription>{description}</CardDescription>
+const ProjectCard = ({ icon: Icon, title, description, href }: { icon: React.ElementType, title: string, description: string, href?: string }) => {
+    const cardContent = (
+        <Card className="h-full hover:border-primary transition-colors duration-300">
+            <CardHeader>
+                <div className="flex items-start gap-4">
+                    <Icon className="h-6 w-6 text-accent mt-1 shrink-0" />
+                    <div>
+                        <CardTitle className="font-headline mb-1">{title}</CardTitle>
+                        <CardDescription>{description}</CardDescription>
+                    </div>
                 </div>
-            </div>
-        </CardHeader>
-    </Card>
-)
+            </CardHeader>
+        </Card>
+    );
+
+    if (href) {
+        return (
+            <Link href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                {cardContent}
+            </Link>
+        )
+    }
+
+    return cardContent;
+}
 
 const ProjectsSection = () => {
   return (
