@@ -1,7 +1,14 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
-const writings = [
+type Writing = {
+  title: string;
+  quote: string;
+  coverImage: string;
+  hint?: string;
+};
+
+const writings: Writing[] = [
   {
     title: "Wolf and the Fox",
     quote: "In a world of shadows, even the brightest light can be deceiving.",
@@ -10,8 +17,7 @@ const writings = [
   {
     title: "Lavender Skies",
     quote: "Their love story was written in the stars, under lavender skies.",
-    coverImage: "https://placehold.co/400x600",
-    hint: "lavender field"
+    coverImage: "https://storage.googleapis.com/fantastic-images/ac229712-40a8-443b-821f-0a0e9118d53b.jpeg",
   },
 ];
 
