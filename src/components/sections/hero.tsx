@@ -2,12 +2,38 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+const particles = Array.from({ length: 20 });
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="h-dvh min-h-[600px] w-full flex items-center justify-center">
-      <div className="container flex flex-col items-center justify-center text-center">
-        <Avatar className="h-36 w-36 mb-8 border-4 border-secondary">
+    <section id="hero" className="relative h-dvh min-h-[700px] w-full flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
+        <div className="absolute inset-0 z-0 h-full w-full">
+            {particles.map((_, i) => (
+                <div 
+                    key={i}
+                    className="absolute rounded-full bg-primary/50 animate-move-particles" 
+                    style={{
+                        // @ts-ignore
+                        "--duration": `${15 + i * 2}s`,
+                        "--delay": `${-i * 0.8}s`,
+                        "--size": `${1 + (i % 3)}px`,
+                        "--direction-x": i % 2 === 0 ? '-1' : '1',
+                        left: `${(i * 5)}%`,
+                        width: 'var(--size)',
+                        height: 'var(--size)',
+                    }}
+                />
+            ))}
+        </div>
+      </div>
+
+      <div className="container flex flex-col items-center justify-center text-center z-10">
+        <Avatar className="h-36 w-36 mb-8 border-4 border-primary">
           <AvatarImage src="https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png" alt="Kunal" data-ai-hint="portrait" />
           <AvatarFallback>K</AvatarFallback>
         </Avatar>

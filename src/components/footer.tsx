@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Send, Youtube, BookText } from "lucide-react";
 import Link from "next/link";
+import { ThoughtOfTheDay } from "./thought-of-the-day";
 
 const socialLinks = [
   {
@@ -28,18 +29,21 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-secondary/50">
-      <div className="container py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} 7K Ecosystem. All rights reserved.
-        </p>
-        <div className="flex items-center gap-2">
-          {socialLinks.map((link) => (
-            <Button key={link.label} variant="ghost" size="icon" asChild>
-              <Link href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-                <link.icon className="h-5 w-5" />
-              </Link>
-            </Button>
-          ))}
+      <div className="container py-8 flex flex-col items-center justify-between gap-8">
+        <ThoughtOfTheDay />
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} 7K Ecosystem. All rights reserved.
+            </p>
+            <div className="flex items-center gap-2">
+            {socialLinks.map((link) => (
+                <Button key={link.label} variant="ghost" size="icon" asChild>
+                <Link href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                    <link.icon className="h-5 w-5" />
+                </Link>
+                </Button>
+            ))}
+            </div>
         </div>
       </div>
     </footer>

@@ -99,12 +99,17 @@ export default {
             transform: 'translateY(0)',
           },
         },
+        'move-particles': {
+          '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-100vh) translateX(calc(20vw * (var(--direction-x, 1))))', opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 1s ease-in-out',
         'fade-in-up': 'fade-in-up 0.8s ease-out',
+        'move-particles': 'move-particles var(--duration, 20s) linear infinite var(--delay, 0s)',
       },
     },
   },
