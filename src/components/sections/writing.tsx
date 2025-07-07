@@ -34,7 +34,7 @@ const WritingSection = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         {writings.map((writing) => (
-          <Card key={writing.title} className="overflow-hidden group bg-secondary/50 hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out flex flex-col sm:flex-row">
+          <Card key={writing.title} className="overflow-hidden group bg-secondary/50 hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out flex flex-col sm:flex-row hover:ring-2 hover:ring-primary">
             <div className="sm:w-1/3">
               <Image
                 src={writing.coverImage}
