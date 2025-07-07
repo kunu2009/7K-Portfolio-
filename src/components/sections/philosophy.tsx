@@ -31,7 +31,7 @@ const PhilosophySection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {principles.map((principle) => (
-            <Card key={principle.title} className="text-center h-full border-0 bg-secondary/50 shadow-none">
+            <Card key={principle.title} className="text-center h-full border-0 bg-secondary/50 shadow-none transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:bg-secondary">
               <CardHeader className="items-center">
                 <div className="p-4 bg-background rounded-full mb-4">
                   <principle.icon className="h-8 w-8 text-primary" />
