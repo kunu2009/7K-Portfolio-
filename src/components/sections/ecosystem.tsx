@@ -40,7 +40,7 @@ const EcosystemSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {ecosystemComponents.map((component) => {
           const cardContent = (
-            <Card className="text-center h-full hover:border-primary transition-colors duration-300 transform hover:-translate-y-1">
+            <Card className="text-center h-full hover:border-primary transition-colors duration-300">
               <CardHeader className="items-center">
                 <div className="p-4 bg-muted rounded-full mb-4">
                   <component.icon className="h-8 w-8 text-primary" />

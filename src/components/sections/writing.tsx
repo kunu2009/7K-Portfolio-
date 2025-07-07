@@ -19,6 +19,7 @@ const writings: Writing[] = [
     title: "Lavender Skies",
     quote: "Their love story was written in the stars, under lavender skies.",
     coverImage: "https://storage.googleapis.com/fantastic-images/ac229712-40a8-443b-821f-0a0e9118d53b.jpeg",
+    hint: "lavender sky",
   },
 ];
 
