@@ -24,12 +24,12 @@ const AboutSection = () => {
             <h3 className="font-headline text-2xl font-semibold">My Interests</h3>
             <div className="flex flex-wrap gap-3">
             {interests.map((interest) => (
-                <Badge key={interest.text} variant="outline" className="text-md py-2 px-4 gap-2 border-primary/20 bg-primary/5 text-primary">
-                    <interest.icon className="h-4 w-4" />
+                <Badge key={interest.text} variant="secondary" className="text-md py-2 px-4 gap-2">
+                    <interest.icon className="h-4 w-4 text-primary" />
                     {interest.text}
                 </Badge>
             ))}
-            <Badge variant="outline" className="text-md py-2 px-4 border-primary/20 bg-primary/5 text-primary">Self-Improvement</Badge>
+            <Badge variant="secondary" className="text-md py-2 px-4">Self-Improvement</Badge>
             </div>
         </div>
       </div>
