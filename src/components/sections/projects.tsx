@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AppWindow, Bot, GraduationCap, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star } from "lucide-react";
+import { AppWindow, Bot, GraduationCap, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ const ongoingProjects = [
     icon: AppWindow,
     title: "7K Life App",
     description: "Core application for holistic life management and productivity.",
-    href: "https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/",
+    href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/",
     image: "https://placehold.co/1200x800.png",
     imageHint: "abstract dashboard ui",
     longDescription: "The 7K Life App is the cornerstone of the ecosystem. It's designed to be a central hub for your entire life, integrating task management, goal setting, habit tracking, and personal knowledge management into one seamless experience.",
@@ -21,13 +21,33 @@ const ongoingProjects = [
   },
   {
     icon: GraduationCap,
-    title: "CLAT/MHCET Tools",
+    title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
-    href: "https://7-klawprep.vercel.app/",
+    href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
     image: "https://placehold.co/1200x800.png",
     imageHint: "legal books justice scale",
     longDescription: "A specialized suite of tools designed to help law aspirants prepare for competitive entrance exams like CLAT and MHCET. Features include mock tests, legal knowledge quizzes, and performance analytics.",
     features: ["Mock Test Simulators", "Legal GK Quizzes", "Performance Analytics", "Resource Library"],
+  },
+  {
+    icon: Landmark,
+    title: "7K Itihaas",
+    description: "Explore the rich history of India through interactive timelines.",
+    href: "https://7-k-itihaas.vercel.app/",
+    image: "https://placehold.co/1200x800.png",
+    imageHint: "ancient manuscripts scroll",
+    longDescription: "7K Itihaas brings Indian history to life with detailed and interactive timelines. Discover the events, rulers, and cultures that have shaped the subcontinent over millennia.",
+    features: ["Interactive Timelines", "Detailed Event Descriptions", "Dynasty and Era Guides", "Visual Historical Maps"],
+  },
+  {
+    icon: Languages,
+    title: "7K Polyglot",
+    description: "A fun and engaging way to expand your vocabulary in new languages.",
+    href: "https://7-k-polyglot.vercel.app/",
+    image: "https://placehold.co/1200x800.png",
+    imageHint: "language learning flashcards",
+    longDescription: "7K Polyglot is a language-learning companion designed to make vocabulary acquisition easy and enjoyable. Use flashcards, quizzes, and spaced repetition to master new words.",
+    features: ["Flashcard Decks", "Spaced Repetition System", "Interactive Quizzes", "Multiple Language Support"],
   },
   {
     icon: Bot,

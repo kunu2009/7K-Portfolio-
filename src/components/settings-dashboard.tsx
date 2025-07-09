@@ -50,16 +50,30 @@ const initialProjects = [
   {
     title: "7K Life App",
     description: "Core application for holistic life management and productivity.",
-    href: "https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/",
+    href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/",
     longDescription: "The 7K Life App is the cornerstone of the ecosystem. It's designed to be a central hub for your entire life, integrating task management, goal setting, habit tracking, and personal knowledge management into one seamless experience.",
     features: [{ value: "Holistic Task Management"}, { value: "Integrated Goal & Habit Tracking" }, { value: "Personal Knowledge Base" }, { value: "Seamless Syncing" }],
   },
   {
-    title: "CLAT/MHCET Tools",
+    title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
-    href: "https://7-klawprep.vercel.app/",
+    href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
     longDescription: "A specialized suite of tools designed to help law aspirants prepare for competitive entrance exams like CLAT and MHCET. Features include mock tests, legal knowledge quizzes, and performance analytics.",
     features: [{ value: "Mock Test Simulators"}, { value: "Legal GK Quizzes" }, { value: "Performance Analytics" }, { value: "Resource Library" }],
+  },
+  {
+    title: "7K Itihaas",
+    description: "Explore the rich history of India through interactive timelines.",
+    href: "https://7-k-itihaas.vercel.app/",
+    longDescription: "7K Itihaas brings Indian history to life with detailed and interactive timelines. Discover the events, rulers, and cultures that have shaped the subcontinent over millennia.",
+    features: [{ value: "Interactive Timelines" }, { value: "Detailed Event Descriptions" }, { value: "Dynasty and Era Guides" }, { value: "Visual Historical Maps" }],
+  },
+  {
+    title: "7K Polyglot",
+    description: "A fun and engaging way to expand your vocabulary in new languages.",
+    href: "https://7-k-polyglot.vercel.app/",
+    longDescription: "7K Polyglot is a language-learning companion designed to make vocabulary acquisition easy and enjoyable. Use flashcards, quizzes, and spaced repetition to master new words.",
+    features: [{ value: "Flashcard Decks" }, { value: "Spaced Repetition System" }, { value: "Interactive Quizzes" }, { value: "Multiple Language Support" }],
   },
   {
     title: "Stan: AI Assistant",
