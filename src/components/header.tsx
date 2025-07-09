@@ -8,12 +8,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#philosophy", label: "Philosophy" },
-  { href: "#ecosystem", label: "Ecosystem" },
-  { href: "#projects", label: "Projects" },
-  { href: "#writing", label: "Writing" },
-  { href: "#journey", label: "Journey" },
+  { href: "/#about", label: "About" },
+  { href: "/#philosophy", label: "Philosophy" },
+  { href: "/#ecosystem", label: "Ecosystem" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#writing", label: "Writing" },
+  { href: "/#journey", label: "Journey" },
 ];
 
 const Header = () => {
@@ -38,7 +38,7 @@ const Header = () => {
       )}
     >
       <div className="container flex h-20 items-center justify-between">
-        <Link href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-bold font-headline text-primary">7K</span>
           <span className="text-xl font-bold font-headline text-foreground">Ecosystem</span>
         </Link>
@@ -57,7 +57,7 @@ const Header = () => {
             ))}
           </nav>
            <Button variant="ghost" size="icon" asChild>
-              <Link href="#">
+              <Link href="/settings">
                 <Settings className="h-5 w-5" />
                 <span className="sr-only">Settings</span>
               </Link>
@@ -75,7 +75,7 @@ const Header = () => {
             <SheetContent side="right" className="w-[240px] bg-background p-0">
               <div className="flex h-full flex-col">
                 <div className="flex items-center p-4 border-b">
-                   <Link href="#" className="flex items-center gap-2" onClick={closeMobileMenu}>
+                   <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                       <span className="text-lg font-bold font-headline text-primary">7K</span>
                       <span className="font-bold font-headline">Ecosystem</span>
                    </Link>
@@ -92,7 +92,7 @@ const Header = () => {
                     </Link>
                   ))}
                    <Link
-                      href="#"
+                      href="/settings"
                       onClick={closeMobileMenu}
                       className="flex items-center gap-2 text-lg font-medium text-foreground hover:text-primary"
                     >
