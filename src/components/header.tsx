@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -17,10 +17,10 @@ const navItems = [
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -43,17 +43,26 @@ const Header = () => {
           <span className="text-xl font-bold font-headline text-foreground">Ecosystem</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center gap-1">
+          <nav className="flex items-center gap-1">
+            {navItems.map((item) => (
+              <Button key={item.href} variant="link" asChild>
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary px-3"
+                >
+                  {item.label}
+                </Link>
+              </Button>
+            ))}
+          </nav>
+           <Button variant="ghost" size="icon" asChild>
+              <Link href="#">
+                <Settings className="h-5 w-5" />
+                <span className="sr-only">Settings</span>
+              </Link>
+            </Button>
+        </div>
 
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -82,6 +91,14 @@ const Header = () => {
                       {item.label}
                     </Link>
                   ))}
+                   <Link
+                      href="#"
+                      onClick={closeMobileMenu}
+                      className="flex items-center gap-2 text-lg font-medium text-foreground hover:text-primary"
+                    >
+                      <Settings className="h-5 w-5" />
+                      Settings
+                    </Link>
                 </nav>
               </div>
             </SheetContent>
