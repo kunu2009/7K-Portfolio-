@@ -4,7 +4,7 @@ import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const particles = Array.from({ length: 20 });
+const particles = Array.from({ length: 50 });
 
 const HeroSection = () => {
   return (
@@ -13,22 +13,29 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background" />
         <div className="absolute inset-0 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
         <div className="absolute inset-0 z-0 h-full w-full">
-            {particles.map((_, i) => (
-                <div 
-                    key={i}
-                    className="absolute rounded-full bg-primary/50 animate-move-particles" 
-                    style={{
-                        // @ts-ignore
-                        "--duration": `${15 + i * 2}s`,
-                        "--delay": `${-i * 0.8}s`,
-                        "--size": `${1 + (i % 3)}px`,
-                        "--direction-x": i % 2 === 0 ? '-1' : '1',
-                        left: `${(i * 5)}%`,
-                        width: 'var(--size)',
-                        height: 'var(--size)',
-                    }}
-                />
-            ))}
+            {particles.map((_, i) => {
+                const isLeft = Math.random() > 0.5;
+                const xDist = `${Math.random() * (isLeft ? -20 : 20)}vw`;
+                const delay = `${-(Math.random() * 20)}s`;
+                const duration = `${15 + Math.random() * 15}s`;
+
+                return (
+                    <div 
+                        key={i}
+                        className="absolute rounded-full bg-primary/30 animate-move-particles" 
+                        style={{
+                            // @ts-ignore
+                            '--x-dist': xDist,
+                            '--delay': delay,
+                            '--duration': duration,
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            width: `${1 + Math.random()}px`,
+                            height: `${1 + Math.random()}px`,
+                        }}
+                    />
+                )
+            })}
         </div>
       </div>
 
