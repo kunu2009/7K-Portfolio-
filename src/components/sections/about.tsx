@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Code, Crown, Languages, Scale, Sparkles, Target } from "lucide-react";
+import { Wrench, Gamepad2, Music, Crown, AppWindow, Target, Code, Languages, Scale, Sparkles } from "lucide-react";
 
 const interests = [
   { icon: Sparkles, text: "AI" },
@@ -27,12 +27,11 @@ const AboutSection = () => {
             <h3 className="font-headline text-2xl font-semibold">My Interests</h3>
             <div className="flex flex-wrap gap-3">
             {interests.map((interest) => (
-                <Badge key={interest.text} variant="secondary" className="text-md py-2 px-4 gap-2 transition-transform hover:scale-105 cursor-default">
+                <Badge key={interest.text} variant="secondary" className="text-md py-2 px-4 gap-2 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20 cursor-default">
                     <interest.icon className="h-4 w-4 text-primary" />
                     {interest.text}
                 </Badge>
             ))}
-            <Badge variant="secondary" className="text-md py-2 px-4 transition-transform hover:scale-105 cursor-default">Self-Improvement</Badge>
             </div>
         </div>
       </div>
