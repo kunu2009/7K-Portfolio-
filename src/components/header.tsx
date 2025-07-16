@@ -11,6 +11,7 @@ const navItems = [
   { href: "/#about", label: "About" },
   { href: "/#philosophy", label: "Philosophy" },
   { href: "/#ecosystem", label: "Ecosystem" },
+  { href: "/#recommendations", label: "For You"},
   { href: "/#projects", label: "Projects" },
   { href: "/#writing", label: "Writing" },
   { href: "/#journey", label: "Journey" },
