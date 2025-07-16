@@ -1,13 +1,13 @@
 import { Badge } from "@/components/ui/badge";
-import { Wrench, Gamepad2, Music, Crown, AppWindow, Target, Code, Languages, Scale, Sparkles } from "lucide-react";
+import { Wrench, Gamepad2, Music, Crown, AppWindow, Target } from "lucide-react";
 
 const interests = [
-  { icon: Sparkles, text: "AI" },
   { icon: Target, text: "Productivity" },
-  { icon: Scale, text: "Law" },
+  { icon: AppWindow, text: "App Design" },
+  { icon: Gamepad2, text: "Game Dev" },
+  { icon: Wrench, text: "Handyman Skills" },
+  { icon: Music, text: "Music" },
   { icon: Crown, text: "Chess" },
-  { icon: Languages, text: "Languages" },
-  { icon: Code, text: "Tech Building" },
 ];
 
 const AboutSection = () => {
