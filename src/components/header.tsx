@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-bold font-headline text-primary">7K</span>
-          <span className="text-xl font-bold font-headline text-foreground">Ecosystem</span>
+          <span className="text-xl font-bold font-headline">Ecosystem</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
