@@ -7,9 +7,11 @@ import { AppWindow, Bot, GraduationCap, Grid, Sparkles, BookMarked, ExternalLink
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { LawPrepQuiz } from '@/components/mini-demos/law-prep-quiz';
 
 const ongoingProjects = [
   {
+    id: "life-app",
     icon: AppWindow,
     title: "7K Life App",
     description: "Core application for holistic life management and productivity.",
@@ -20,6 +22,7 @@ const ongoingProjects = [
     features: ["Holistic Task Management", "Integrated Goal & Habit Tracking", "Personal Knowledge Base", "Seamless Syncing"],
   },
   {
+    id: "law-prep",
     icon: GraduationCap,
     title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
@@ -30,6 +33,7 @@ const ongoingProjects = [
     features: ["Mock Test Simulators", "Legal GK Quizzes", "Performance Analytics", "Resource Library"],
   },
   {
+    id: "itihaas",
     icon: Landmark,
     title: "7K Itihaas",
     description: "Explore the rich history of India through interactive timelines.",
@@ -40,6 +44,7 @@ const ongoingProjects = [
     features: ["Interactive Timelines", "Detailed Event Descriptions", "Dynasty and Era Guides", "Visual Historical Maps"],
   },
   {
+    id: "polyglot",
     icon: Languages,
     title: "7K Polyglot",
     description: "A fun and engaging way to expand your vocabulary in new languages.",
@@ -50,6 +55,7 @@ const ongoingProjects = [
     features: ["Flashcard Decks", "Spaced Repetition System", "Interactive Quizzes", "Multiple Language Support"],
   },
   {
+    id: "stan-ai",
     icon: Bot,
     title: "Stan: AI Assistant",
     description: "An AI running on Android to provide assistance on the go.",
@@ -62,6 +68,7 @@ const ongoingProjects = [
 
 const futureProjects = [
     {
+        id: "custom-launcher",
         icon: Grid,
         title: "Custom Launcher",
         description: "A minimal and productivity-focused Android launcher.",
@@ -71,6 +78,7 @@ const futureProjects = [
         features: ["Minimalist Interface", "Focus Mode", "Task & Goal Integration", "Customizable Widgets"],
     },
     {
+        id: "ai-tools",
         icon: Sparkles,
         title: "Standalone AI Tools",
         description: "A suite of small, powerful AI utilities for specific tasks.",
@@ -80,6 +88,7 @@ const futureProjects = [
         features: ["Task-Specific AI", "Lightweight & Fast", "API-First Design", "Interoperability"],
     },
     {
+        id: "smart-journal",
         icon: BookMarked,
         title: "Smart Journal App",
         description: "An intelligent journaling app with prompts and analysis.",
@@ -93,7 +102,17 @@ const futureProjects = [
 type Project = typeof ongoingProjects[0];
 
 const ProjectCard = ({ project }: { project: Project }) => {
-    const { icon: Icon, title, description, href, image, imageHint, longDescription, features } = project;
+    const { id, icon: Icon, title, description, href, image, imageHint, longDescription, features } = project;
+
+    const renderDemo = () => {
+        switch (id) {
+            case 'law-prep':
+                return <LawPrepQuiz />;
+            // Add cases for other demos here in the future
+            default:
+                return null;
+        }
+    }
 
     return (
         <Dialog>
@@ -132,9 +151,18 @@ const ProjectCard = ({ project }: { project: Project }) => {
                             ))}
                         </ul>
                     </div>
-                    <div className="flex flex-col justify-end">
+                    
+                    <div className="flex flex-col gap-4">
+                        {id === 'law-prep' && (
+                             <div>
+                                <h3 className="font-semibold text-xl mb-4 flex items-center gap-2">Mini-Demo</h3>
+                                <div className="p-4 border rounded-lg bg-background">
+                                    <LawPrepQuiz />
+                                </div>
+                            </div>
+                        )}
                        {href && (
-                           <Button asChild className="w-full">
+                           <Button asChild className="w-full mt-auto">
                                <a href={href} target="_blank" rel="noopener noreferrer">
                                    Visit Site <ExternalLink className="ml-2" />
                                </a>
