@@ -7,14 +7,14 @@ const styles = [
   {
     icon: BookOpen,
     title: "The Storyteller",
-    description: "A narrative journey through my work, philosophy, and ambitions. Best for a detailed, linear experience.",
+    description: "A guided, narrative journey through my work, philosophy, and ambitions. Best for a detailed, linear experience.",
     href: "/story",
     status: "live",
   },
   {
     icon: Telescope,
     title: "The Innovator",
-    description: "An experimental, non-linear exploration of projects and ideas. (Coming Soon)",
+    description: "An experimental, non-linear exploration of projects and ideas. Best for the curious mind. (Coming Soon)",
     href: "/innovator",
     status: "soon",
   },
@@ -31,7 +31,7 @@ export default function GatewayPage() {
           Choose Your Experience
         </h1>
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-16">
-          My portfolio has multiple styles. Select the one that best fits how you'd like to explore my work.
+          My digital universe has multiple entry points. Select the one that best fits how you'd like to explore my work and vision.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
