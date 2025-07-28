@@ -22,7 +22,7 @@ const styles = [
     icon: Gamepad2,
     title: "The Arcade",
     description: "A 2D game-based portfolio where you can play through my projects and skills. (Coming Soon)",
-    href: "#",
+    href: "/arcade",
     status: "soon",
   },
 ];
