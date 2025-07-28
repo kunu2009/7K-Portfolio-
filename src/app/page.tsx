@@ -23,7 +23,7 @@ const styles = [
     title: "The Arcade",
     description: "A 2D game-based portfolio where you can play through my projects and skills. (Coming Soon)",
     href: "/arcade",
-    status: "soon",
+    status: "live",
   },
 ];
 
