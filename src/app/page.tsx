@@ -16,7 +16,7 @@ const styles = [
     title: "The Terminal",
     description: "An interactive, command-line based portfolio for the true tech enthusiast. (Coming Soon)",
     href: "/terminal",
-    status: "soon",
+    status: "live",
   },
     {
     icon: Gamepad2,
