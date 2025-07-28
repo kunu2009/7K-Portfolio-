@@ -2,19 +2,19 @@
 
 import React from "react";
 import Link from "next/link";
-import { Menu, Settings } from "lucide-react";
+import { Menu, Settings, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/#about", label: "About" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/#ecosystem", label: "Ecosystem" },
-  { href: "/#recommendations", label: "For You"},
-  { href: "/#projects", label: "Projects" },
-  { href: "/#writing", label: "Writing" },
-  { href: "/#journey", label: "Journey" },
+  { href: "/story#about", label: "About" },
+  { href: "/story#philosophy", label: "Philosophy" },
+  { href: "/story#ecosystem", label: "Ecosystem" },
+  { href: "/story#recommendations", label: "For You"},
+  { href: "/story#projects", label: "Projects" },
+  { href: "/story#writing", label: "Writing" },
+  { href: "/story#journey", label: "Journey" },
 ];
 
 const Header = () => {
@@ -39,7 +39,7 @@ const Header = () => {
       )}
     >
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/story" className="flex items-center gap-2">
           <span className="text-xl font-bold font-headline text-primary">7K</span>
           <span className="text-xl font-bold font-headline">Ecosystem</span>
         </Link>
@@ -63,6 +63,12 @@ const Header = () => {
                 <span className="sr-only">Settings</span>
               </Link>
             </Button>
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/">
+                <Home className="h-5 w-5" />
+                <span className="sr-only">Home</span>
+              </Link>
+            </Button>
         </div>
 
         <div className="md:hidden">
@@ -75,8 +81,8 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[240px] bg-background p-0">
               <div className="flex h-full flex-col">
-                <div className="flex items-center p-4 border-b">
-                   <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
+                <div className="flex items-center p-4 border-b justify-between">
+                   <Link href="/story" className="flex items-center gap-2" onClick={closeMobileMenu}>
                       <span className="text-lg font-bold font-headline text-primary">7K</span>
                       <span className="font-bold font-headline">Ecosystem</span>
                    </Link>
@@ -99,6 +105,14 @@ const Header = () => {
                     >
                       <Settings className="h-5 w-5" />
                       Settings
+                    </Link>
+                    <Link
+                      href="/"
+                      onClick={closeMobileMenu}
+                      className="flex items-center gap-2 text-lg font-medium text-foreground hover:text-primary"
+                    >
+                      <Home className="h-5 w-5" />
+                      Home
                     </Link>
                 </nav>
               </div>

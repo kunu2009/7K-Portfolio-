@@ -51,7 +51,7 @@ const HeroSection = () => {
           I build the 7K Ecosystem — one idea at a time.
         </p>
         <Button asChild size="lg" className="rounded-full">
-          <Link href="#about">
+          <Link href="/story#about">
             See what I've made <ArrowDown className="ml-2 h-4 w-4" />
           </Link>
         </Button>
