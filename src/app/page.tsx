@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Telescope } from "lucide-react";
+import { ArrowRight, BookOpen, Terminal, Gamepad2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -7,15 +7,22 @@ const styles = [
   {
     icon: BookOpen,
     title: "The Storyteller",
-    description: "A guided, narrative journey through my work, philosophy, and ambitions. Best for a detailed, linear experience.",
+    description: "A classic, narrative-driven portfolio. The best way to learn my story and see my work in a polished, linear format.",
     href: "/story",
     status: "live",
   },
   {
-    icon: Telescope,
-    title: "The Innovator",
-    description: "An experimental, non-linear exploration of projects and ideas. Best for the curious mind. (Coming Soon)",
-    href: "/innovator",
+    icon: Terminal,
+    title: "The Terminal",
+    description: "An interactive, command-line based portfolio for the true tech enthusiast. (Coming Soon)",
+    href: "/terminal",
+    status: "soon",
+  },
+    {
+    icon: Gamepad2,
+    title: "The Arcade",
+    description: "A 2D game-based portfolio where you can play through my projects and skills. (Coming Soon)",
+    href: "#",
     status: "soon",
   },
 ];
@@ -34,7 +41,7 @@ export default function GatewayPage() {
           My digital universe has multiple entry points. Select the one that best fits how you'd like to explore my work and vision.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {styles.map((style) => (
             <Link key={style.title} href={style.href} className={style.status === 'soon' ? 'pointer-events-none' : ''}>
               <Card className="h-full text-left bg-secondary/50 hover:ring-2 hover:ring-primary hover:scale-[1.03] transition-all duration-300 ease-in-out">
