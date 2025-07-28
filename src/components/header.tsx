@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -39,7 +40,7 @@ const Header = () => {
       )}
     >
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/story" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-bold font-headline text-primary">7K</span>
           <span className="text-xl font-bold font-headline">Ecosystem</span>
         </Link>
@@ -82,7 +83,7 @@ const Header = () => {
             <SheetContent side="right" className="w-[240px] bg-background p-0">
               <div className="flex h-full flex-col">
                 <div className="flex items-center p-4 border-b justify-between">
-                   <Link href="/story" className="flex items-center gap-2" onClick={closeMobileMenu}>
+                   <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
                       <span className="text-lg font-bold font-headline text-primary">7K</span>
                       <span className="font-bold font-headline">Ecosystem</span>
                    </Link>
