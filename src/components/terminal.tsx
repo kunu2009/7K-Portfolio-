@@ -47,7 +47,6 @@ const ProjectsContent = () => (
     </div>
 )
 
-
 const HelpContent = () => (
   <div>
     <p>Available commands:</p>
@@ -55,44 +54,62 @@ const HelpContent = () => (
       <li><span className="text-green-400">help</span> - Shows this list of commands</li>
       <li><span className="text-green-400">about</span> - Displays information about me</li>
       <li><span className="text-green-400">projects</span> - Lists my key projects</li>
+      <li><span className="text-green-400">date</span> - Displays the current date and time</li>
+      <li><span className="text-green-400">echo [text]</span> - Prints back the provided text</li>
       <li><span className="text-green-400">clear</span> - Clears the terminal screen</li>
       <li><span className="text-green-400">home</span> - Navigates back to the portfolio hub</li>
     </ul>
   </div>
 );
 
-const commands: { [key: string]: React.ReactNode } = {
-  help: <HelpContent />,
-  about: <AboutContent />,
-  whoami: <AboutContent />,
-  projects: <ProjectsContent />,
-};
-
 
 export function Terminal() {
     const [history, setHistory] = useState<HistoryItem[]>([]);
+    const [commandHistory, setCommandHistory] = useState<string[]>([]);
+    const [historyIndex, setHistoryIndex] = useState(-1);
     const [input, setInput] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    const handleCommand = (command: string) => {
-        const lowerCaseCommand = command.toLowerCase().trim();
-        let output: React.ReactNode;
-
-        if (lowerCaseCommand === 'clear') {
-            setHistory([]);
-            return;
-        }
-
-        if (lowerCaseCommand === 'home') {
+    const commands: { [key: string]: (args: string[]) => React.ReactNode } = {
+        help: () => <HelpContent />,
+        about: () => <AboutContent />,
+        whoami: () => <AboutContent />,
+        projects: () => <ProjectsContent />,
+        date: () => new Date().toLocaleString(),
+        echo: (args) => args.join(' '),
+        home: () => {
             // This will trigger a page navigation
             window.location.href = '/';
-            return;
+            return 'Navigating home...';
+        },
+        clear: () => {
+            setHistory([]);
+            return null; // No output for clear command
         }
+    };
 
-        output = commands[lowerCaseCommand] ?? <p>Command not found: &apos;{command}&apos;. Type &apos;help&apos; for a list of commands.</p>;
+    const handleCommand = (fullCommand: string) => {
+        const lowerCaseCommand = fullCommand.toLowerCase().trim();
+        const [commandName, ...args] = lowerCaseCommand.split(/\s+/);
+
+        let output: React.ReactNode;
+        const commandFn = commands[commandName];
         
-        setHistory(prev => [...prev, { command, output }]);
+        if (commandFn) {
+            const commandOutput = commandFn(args);
+            if (commandOutput !== null) {
+                 output = commandOutput;
+            } else {
+                return; // Don't add to history if output is null (like for 'clear')
+            }
+        } else {
+             output = <p>Command not found: &apos;{commandName}&apos;. Type &apos;help&apos; for a list of commands.</p>;
+        }
+        
+        setHistory(prev => [...prev, { command: fullCommand, output }]);
+        setCommandHistory(prev => [fullCommand, ...prev]);
+        setHistoryIndex(-1); // Reset history index
     }
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -103,7 +120,26 @@ export function Terminal() {
     };
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        // Future: Implement command history with up/down arrows
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (commandHistory.length > 0) {
+                const newIndex = historyIndex + 1;
+                if (newIndex < commandHistory.length) {
+                    setHistoryIndex(newIndex);
+                    setInput(commandHistory[newIndex]);
+                }
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                const newIndex = historyIndex - 1;
+                setHistoryIndex(newIndex);
+                setInput(commandHistory[newIndex]);
+            } else {
+                setHistoryIndex(-1);
+                setInput("");
+            }
+        }
     }
     
     useEffect(() => {
