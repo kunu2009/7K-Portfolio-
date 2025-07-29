@@ -21,6 +21,15 @@ const asciiArt = `
                      
 `;
 
+const welcomeBanner = `
+██╗    ██╗███████╗██╗     ██████╗  ██████╗ ███╗   ███╗███████╗
+██║    ██║██╔════╝██║     ██╔══██╗██╔═══██╗████╗ ████║██╔════╝
+██║ █╗ ██║█████╗  ██║     ██████╔╝██║   ██║██╔████╔██║█████╗  
+██║███╗██║██╔══╝  ██║     ██╔═══╝ ██║   ██║██║╚██╔╝██║██╔══╝  
+╚███╔███╔╝███████╗███████╗██║     ╚██████╔╝██║ ╚═╝ ██║███████╗
+ ╚══╝╚══╝ ╚══════╝╚══════╝╚═╝      ╚═════╝ ╚═╝     ╚═╝╚══════╝
+`;
+
 const AboutContent = () => (
     <div>
         <p>I'm a 12th-standard Arts student with a vision to become a corporate lawyer.</p>
@@ -84,6 +93,10 @@ const manPages: { [key: string]: string } = {
     man: 'man [command]: Displays the manual page for a given command.',
     '7k': '7k: Shows a short pitch for the 7K ecosystem project.',
     motivate: 'motivate: Displays a motivational quote.',
+    ascii: 'ascii: Shows the 7K ASCII art logo.',
+    banner: 'banner: Displays the welcome banner.',
+    matrix: 'matrix: Are you the one?',
+    hack: 'hack [target]: Initiates a simulated hack sequence.',
 };
 
 const motivationalQuotes = [
@@ -104,6 +117,28 @@ const HelpContent = () => (
   </div>
 );
 
+const HackContent = ({target}: {target: string}) => {
+    const lines = [
+        `[+] Initiating connection to ${target}...`,
+        `[+] Connection established.`,
+        `[+] Bypassing firewall...`,
+        `[+] Firewall bypassed. Gaining access...`,
+        `[+] Access granted.`,
+        `[+] Reading /etc/passwd...`,
+        `root:x:0:0:root:/root:/bin/bash`,
+        `daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin`,
+        `kunal:x:1000:1000:Kunal,,,:/home/kunal:/bin/bash`,
+        `[+] Success. Just kidding, this is a simulation!`
+    ];
+
+    return (
+        <div>
+            {lines.map((line, i) => (
+                <div key={i}>{line}</div>
+            ))}
+        </div>
+    )
+}
 
 export function Terminal() {
     const [history, setHistory] = useState<HistoryItem[]>([]);
@@ -182,7 +217,12 @@ export function Terminal() {
             window.location.href = '/';
             return 'Navigating home...';
         },
-        sudo: () => "You’re not root, Kunal is 😎",
+        sudo: (args) => {
+            if (args[0] === 'godmode') {
+                return <span className="text-red-500 font-bold">[!] ACCESS GRANTED. Welcome, Administrator.</span>;
+            }
+            return "You’re not root, Kunal is 😎";
+        },
         man: (args) => {
             const command = args[0];
             if (!command) return "What manual page do you want?";
@@ -192,6 +232,13 @@ export function Terminal() {
         motivate: () => {
             const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
             return `"${motivationalQuotes[randomIndex]}"`;
+        },
+        ascii: () => <pre>{asciiArt}</pre>,
+        banner: () => <pre>{welcomeBanner}</pre>,
+        matrix: () => "Wake up, Neo... The Matrix has you. Follow the white rabbit.",
+        hack: (args) => {
+            const target = args[0] || 'the-mainframe';
+            return <HackContent target={target} />;
         },
         clear: () => {
             setHistory([]);
