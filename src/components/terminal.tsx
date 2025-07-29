@@ -37,24 +37,6 @@ const AboutContent = () => (
     </div>
 );
 
-const ProjectsContent = () => (
-    <div>
-        <p>Here are a few of my projects. Use `cd projects` then `ls` to see them, or `cat projects/[project-name]`.</p>
-        <ul className='list-disc list-inside'>
-            <li><a href="https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7K Life App</a> - Holistic life management.</li>
-            <li><a href="https://7-klawprep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7KLawPrep</a> - Tools for law aspirants.</li>
-            <li><a href="https://7-k-itihaas.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7K Itihaas</a> - Interactive Indian history timelines.</li>
-        </ul>
-    </div>
-);
-
-const ContactContent = () => (
-    <div>
-        <p>You can reach me at:</p>
-        <p>Email: <a href="mailto:example@email.com" className="text-green-400 underline">example@email.com</a></p>
-    </div>
-);
-
 const fileSystem = {
     '/': {
         type: 'dir',
@@ -66,7 +48,7 @@ const fileSystem = {
     },
     '/contact.md': {
         type: 'file',
-        content: <ContactContent />
+        content: <div>You can reach me at: <a href="mailto:example@email.com" className="text-green-400 underline">example@email.com</a></div>
     },
     '/projects': {
         type: 'dir',
@@ -86,23 +68,39 @@ const fileSystem = {
     }
 };
 
+const manPages: { [key: string]: string } = {
+    help: 'help: Shows a list of available commands.',
+    about: 'about: Displays a short bio and skill summary.',
+    whoami: 'whoami: An alias for the `about` command.',
+    date: 'date: Displays the current date and time.',
+    echo: 'echo [text]: Prints the provided text back to the terminal.',
+    clear: 'clear: Clears all previous output from the terminal screen.',
+    home: 'home: Navigates back to the main portfolio hub page.',
+    pwd: 'pwd: Prints the name of the current working directory.',
+    ls: 'ls [path]: Lists the contents of a directory. Defaults to the current directory.',
+    cd: 'cd [path]: Changes the current working directory.',
+    cat: 'cat [file]: Displays the content of a file.',
+    sudo: 'sudo [command]: Execute a command with superuser privileges.',
+    man: 'man [command]: Displays the manual page for a given command.',
+    '7k': '7k: Shows a short pitch for the 7K ecosystem project.',
+    motivate: 'motivate: Displays a motivational quote.',
+};
+
+const motivationalQuotes = [
+    "The only way to do great work is to love what you do.",
+    "The secret of getting ahead is getting started.",
+    "It’s not whether you get knocked down, it’s whether you get up.",
+    "The future belongs to those who believe in the beauty of their dreams."
+];
 
 const HelpContent = () => (
   <div>
     <p>Available commands:</p>
-    <ul className="list-disc list-inside grid grid-cols-2 gap-x-4">
-      <li><span className="text-green-400">help</span> - Shows this list</li>
-      <li><span className="text-green-400">about</span> - Displays info about me</li>
-      <li><span className="text-green-400">whoami</span> - Alias for 'about'</li>
-      <li><span className="text-green-400">date</span> - Current date and time</li>
-      <li><span className="text-green-400">echo [text]</span> - Prints back text</li>
-      <li><span className="text-green-400">clear</span> - Clears the screen</li>
-      <li><span className="text-green-400">home</span> - Back to portfolio hub</li>
-      <li><span className="text-green-400">pwd</span> - Print working directory</li>
-      <li><span className="text-green-400">ls [path]</span> - List directory contents</li>
-      <li><span className="text-green-400">cd [path]</span> - Change directory</li>
-      <li><span className="text-green-400">cat [file]</span> - Display file content</li>
+    <ul className="list-disc list-inside grid grid-cols-2 md:grid-cols-3 gap-x-4">
+      {Object.keys(manPages).map(cmd => <li key={cmd}><span className="text-green-400">{cmd}</span></li>)}
     </ul>
+     <br/>
+    <p>Use `man [command]` to get more information about a specific command.</p>
   </div>
 );
 
@@ -117,6 +115,7 @@ export function Terminal() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const resolvePath = (path: string) => {
+        if (!path || path === '~') path = '/';
         if (path.startsWith('/')) return path;
         const newPath = new URL(path, `file://${currentPath}`).pathname;
         return newPath.endsWith('/') && newPath.length > 1 ? newPath.slice(0, -1) : newPath;
@@ -131,8 +130,11 @@ export function Terminal() {
         pwd: () => currentPath,
         ls: (args) => {
             const pathArg = args[0] || ".";
-            const path = resolvePath(pathArg);
-            const node = fileSystem[path as keyof typeof fileSystem] || fileSystem[path.slice(0,-1) as keyof typeof fileSystem];
+            let path = resolvePath(pathArg);
+            if (path !== '/' && path.endsWith('/')) {
+                path = path.slice(0, -1);
+            }
+            const node = fileSystem[path as keyof typeof fileSystem];
             
             if (!node) {
                  return `ls: cannot access '${pathArg}': No such file or directory`;
@@ -151,7 +153,10 @@ export function Terminal() {
              if (newPath !== '/' && !newPath.endsWith('/')) {
                 newPath += '/';
             }
-            const node = fileSystem[newPath.slice(0,-1) as keyof typeof fileSystem];
+            
+            const nodeKey = newPath === '/' ? '/' : newPath.slice(0, -1);
+            const node = fileSystem[nodeKey as keyof typeof fileSystem];
+
             if (node && node.type === 'dir') {
                 setCurrentPath(newPath);
                 return null;
@@ -176,6 +181,17 @@ export function Terminal() {
         home: () => {
             window.location.href = '/';
             return 'Navigating home...';
+        },
+        sudo: () => "You’re not root, Kunal is 😎",
+        man: (args) => {
+            const command = args[0];
+            if (!command) return "What manual page do you want?";
+            return manPages[command] || `No manual entry for ${command}`;
+        },
+        '7k': () => "The 7K Ecosystem is an interconnected system of tools, apps, and habits for productivity, personal growth, and creative freedom.",
+        motivate: () => {
+            const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
+            return `"${motivationalQuotes[randomIndex]}"`;
         },
         clear: () => {
             setHistory([]);
