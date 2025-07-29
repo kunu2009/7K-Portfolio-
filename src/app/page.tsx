@@ -42,8 +42,8 @@ const portfolioStyles = [
     icon: LayoutTemplate,
     title: "The CSS Slider",
     description: "An animated, visually-driven showcase of my best work.",
-    href: "#",
-    status: "soon",
+    href: "/slider",
+    status: "live",
   },
   {
     icon: PieChart,
