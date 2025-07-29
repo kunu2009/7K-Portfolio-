@@ -13,13 +13,14 @@ type HistoryItem = {
 };
 
 const welcomeBanner = `
-██╗    ██╗███████╗██╗     ██████╗  ██████╗ ███╗   ███╗███████╗
-██║    ██║██╔════╝██║     ██╔══██╗██╔═══██╗████╗ ████║██╔════╝
-██║ █╗ ██║█████╗  ██║     ██████╔╝██║   ██║██╔████╔██║█████╗  
-██║███╗██║██╔══╝  ██║     ██╔═══╝ ██║   ██║██║╚██╔╝██║██╔══╝  
-╚███╔███╔╝███████╗███████╗██║     ╚██████╔╝██║ ╚═╝ ██║███████╗
- ╚══╝╚══╝ ╚══════╝╚══════╝╚═╝      ╚═════╝ ╚═╝     ╚═╝╚══════╝
+████████╗██╗  ██╗
+╚══██╔══╝██║ ██╔╝
+   ██║   █████╔╝ 
+   ██║   ██╔═██╗ 
+   ██║   ██║  ██╗
+   ╚═╝   ╚═╝  ╚═╝
 `;
+
 
 const AboutContent = () => (
     <div>
@@ -299,6 +300,7 @@ export function Terminal() {
                 command: '',
                 output: (
                     <div>
+                        <pre>{welcomeBanner}</pre>
                         <p>Welcome to the 7K Terminal Portfolio.</p>
                         <p>Type &apos;help&apos; to see available commands.</p>
                         <p>Start by typing `ls` to see available files, and `cat [filename]` to read them.</p>
