@@ -13,7 +13,7 @@ type HistoryItem = {
 };
 
 const asciiArt = `
-  ███████╗██╗  ██╗
+███████╗██╗  ██╗
   ╚════██║██║  ██║
      ██╔╝ ███████║
     ██╔╝  ██╔══██║
@@ -368,5 +368,3 @@ export function Terminal() {
         </div>
     );
 }
-
-    
