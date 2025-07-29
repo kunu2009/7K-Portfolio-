@@ -53,6 +53,7 @@ const HelpContent = () => (
     <ul className="list-disc list-inside">
       <li><span className="text-green-400">help</span> - Shows this list of commands</li>
       <li><span className="text-green-400">about</span> - Displays information about me</li>
+      <li><span className="text-green-400">whoami</span> - Displays information about me</li>
       <li><span className="text-green-400">projects</span> - Lists my key projects</li>
       <li><span className="text-green-400">date</span> - Displays the current date and time</li>
       <li><span className="text-green-400">echo [text]</span> - Prints back the provided text</li>
