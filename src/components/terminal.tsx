@@ -9,6 +9,7 @@ import { Button } from './ui/button';
 type HistoryItem = {
   command: string;
   output: React.ReactNode;
+  path: string;
 };
 
 const asciiArt = `
@@ -22,7 +23,7 @@ const asciiArt = `
 
 const AboutContent = () => (
     <div>
-        <p>I&apos;m a 12th-standard Arts student with a vision to become a corporate lawyer.</p>
+        <p>I&apos;s;m a 12th-standard Arts student with a vision to become a corporate lawyer.</p>
         <p>My journey is about a relentless pursuit of knowledge and a passion for building things.</p>
         <br/>
         <p>Skills:</p>
@@ -38,27 +39,71 @@ const AboutContent = () => (
 
 const ProjectsContent = () => (
     <div>
-        <p>Here are a few of my projects. For more, see the &apos;Storyteller&apos; portfolio.</p>
+        <p>Here are a few of my projects. Use `cd projects` then `ls` to see them, or `cat projects/[project-name]`.</p>
         <ul className='list-disc list-inside'>
             <li><a href="https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7K Life App</a> - Holistic life management.</li>
             <li><a href="https://7-klawprep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7KLawPrep</a> - Tools for law aspirants.</li>
             <li><a href="https://7-k-itihaas.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">7K Itihaas</a> - Interactive Indian history timelines.</li>
         </ul>
     </div>
-)
+);
+
+const ContactContent = () => (
+    <div>
+        <p>You can reach me at:</p>
+        <p>Email: <a href="mailto:example@email.com" className="text-green-400 underline">example@email.com</a></p>
+    </div>
+);
+
+const fileSystem = {
+    '/': {
+        type: 'dir',
+        children: ['about.md', 'contact.md', 'projects/']
+    },
+    '/about.md': {
+        type: 'file',
+        content: <AboutContent />
+    },
+    '/contact.md': {
+        type: 'file',
+        content: <ContactContent />
+    },
+    '/projects': {
+        type: 'dir',
+        children: ['7k-life-app.md', '7klawprep.md', '7k-itihaas.md']
+    },
+    '/projects/7k-life-app.md': {
+        type: 'file',
+        content: <div><strong>7K Life App:</strong> Holistic life management. <a href="https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">View Project</a></div>
+    },
+    '/projects/7klawprep.md': {
+        type: 'file',
+        content: <div><strong>7KLawPrep:</strong> Tools for law aspirants. <a href="https://7-klawprep.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">View Project</a></div>
+    },
+     '/projects/7k-itihaas.md': {
+        type: 'file',
+        content: <div><strong>7K Itihaas:</strong> Interactive Indian history timelines. <a href="https://7-k-itihaas.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-green-400 underline">View Project</a></div>
+    }
+};
+
 
 const HelpContent = () => (
   <div>
     <p>Available commands:</p>
-    <ul className="list-disc list-inside">
-      <li><span className="text-green-400">help</span> - Shows this list of commands</li>
-      <li><span className="text-green-400">about</span> - Displays information about me</li>
-      <li><span className="text-green-400">whoami</span> - Displays information about me</li>
-      <li><span className="text-green-400">projects</span> - Lists my key projects</li>
-      <li><span className="text-green-400">date</span> - Displays the current date and time</li>
-      <li><span className="text-green-400">echo [text]</span> - Prints back the provided text</li>
-      <li><span className="text-green-400">clear</span> - Clears the terminal screen</li>
-      <li><span className="text-green-400">home</span> - Navigates back to the portfolio hub</li>
+    <ul className="list-disc list-inside grid grid-cols-2 gap-x-4">
+      <li><span className="text-green-400">help</span> - Shows this list</li>
+      <li><span className="text-green-400">about</span> - Displays info about me</li>
+      <li><span className="text-green-400">whoami</span> - Alias for 'about'</li>
+      <li><span className="text-green-400">projects</span> - Lists key projects</li>
+      <li><span className="text-green-400">contact</span> - Shows contact info</li>
+      <li><span className="text-green-400">date</span> - Current date and time</li>
+      <li><span className="text-green-400">echo [text]</span> - Prints back text</li>
+      <li><span className="text-green-400">clear</span> - Clears the screen</li>
+      <li><span className="text-green-400">home</span> - Back to portfolio hub</li>
+      <li><span className="text-green-400">pwd</span> - Print working directory</li>
+      <li><span className="text-green-400">ls [path]</span> - List directory contents</li>
+      <li><span className="text-green-400">cd [path]</span> - Change directory</li>
+      <li><span className="text-green-400">cat [file]</span> - Display file content</li>
     </ul>
   </div>
 );
@@ -69,53 +114,87 @@ export function Terminal() {
     const [commandHistory, setCommandHistory] = useState<string[]>([]);
     const [historyIndex, setHistoryIndex] = useState(-1);
     const [input, setInput] = useState("");
+    const [currentPath, setCurrentPath] = useState("/");
     const inputRef = useRef<HTMLInputElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
 
+    const resolvePath = (path: string) => {
+        if (path.startsWith('/')) return path;
+        const newPath = new URL(path, `file://${currentPath}`).pathname;
+        return newPath.endsWith('/') && newPath.length > 1 ? newPath.slice(0, -1) : newPath;
+    }
+
     const commands: { [key: string]: (args: string[]) => React.ReactNode } = {
         help: () => <HelpContent />,
-        about: () => <AboutContent />,
-        whoami: () => <AboutContent />,
+        about: () => fileSystem['/about.md'].content,
+        whoami: () => fileSystem['/about.md'].content,
         projects: () => <ProjectsContent />,
+        contact: () => fileSystem['/contact.md'].content,
         date: () => new Date().toLocaleString(),
         echo: (args) => args.join(' '),
+        pwd: () => currentPath,
+        ls: (args) => {
+            const path = args[0] ? resolvePath(args[0]) : currentPath;
+            const node = fileSystem[path as keyof typeof fileSystem];
+            if (node && node.type === 'dir') {
+                return <div className="grid grid-cols-3 gap-x-4">{node.children.map(child => <span key={child}>{child}</span>)}</div>;
+            }
+            return `ls: cannot access '${args[0] || '.'}': No such file or directory`;
+        },
+        cd: (args) => {
+            const path = args[0] || '/';
+            const newPath = resolvePath(path);
+            const node = fileSystem[newPath as keyof typeof fileSystem];
+            if (node && node.type === 'dir') {
+                setCurrentPath(newPath === '/' ? '/' : newPath + '/');
+                return null;
+            }
+            return `cd: no such file or directory: ${path}`;
+        },
+        cat: (args) => {
+            if (!args[0]) return 'cat: missing operand';
+            const path = resolvePath(args[0]);
+            const node = fileSystem[path as keyof typeof fileSystem];
+            if (node && node.type === 'file') {
+                return node.content;
+            }
+            return `cat: ${args[0]}: No such file or directory`;
+        },
         home: () => {
-            // This will trigger a page navigation
             window.location.href = '/';
             return 'Navigating home...';
         },
         clear: () => {
             setHistory([]);
-            return null; // No output for clear command
+            return null;
         }
     };
 
     const handleCommand = (fullCommand: string) => {
-        const lowerCaseCommand = fullCommand.toLowerCase().trim();
+        const lowerCaseCommand = fullCommand.trim();
         const [commandName, ...args] = lowerCaseCommand.split(/\s+/);
 
         let output: React.ReactNode;
-        const commandFn = commands[commandName];
+        const commandFn = commands[commandName.toLowerCase()];
         
         if (commandFn) {
             const commandOutput = commandFn(args);
             if (commandOutput !== null) {
                  output = commandOutput;
             } else {
-                return; // Don't add to history if output is null (like for 'clear')
+                return;
             }
         } else {
              output = <p>Command not found: &apos;{commandName}&apos;. Type &apos;help&apos; for a list of commands.</p>;
         }
         
-        setHistory(prev => [...prev, { command: fullCommand, output }]);
-        setCommandHistory(prev => [fullCommand, ...prev]);
-        setHistoryIndex(-1); // Reset history index
+        setHistory(prev => [...prev, { command: fullCommand, output, path: currentPath }]);
+        if (fullCommand) setCommandHistory(prev => [fullCommand, ...prev]);
+        setHistoryIndex(-1);
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!input) return;
         handleCommand(input);
         setInput("");
     };
@@ -124,11 +203,9 @@ export function Terminal() {
         if (e.key === 'ArrowUp') {
             e.preventDefault();
             if (commandHistory.length > 0) {
-                const newIndex = historyIndex + 1;
-                if (newIndex < commandHistory.length) {
-                    setHistoryIndex(newIndex);
-                    setInput(commandHistory[newIndex]);
-                }
+                const newIndex = Math.min(historyIndex + 1, commandHistory.length - 1);
+                setHistoryIndex(newIndex);
+                setInput(commandHistory[newIndex]);
             }
         } else if (e.key === 'ArrowDown') {
             e.preventDefault();
@@ -150,14 +227,24 @@ export function Terminal() {
     useEffect(() => {
         scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [history]);
+    
+    useEffect(() => {
+        if (history.length === 0) {
+             const initialHistoryItem: HistoryItem = {
+                command: '',
+                output: (
+                    <div>
+                        <pre className='text-green-400'>{asciiArt}</pre>
+                        <p>Welcome to the 7K Terminal Portfolio.</p>
+                        <p>Type &apos;help&apos; to see the list of available commands.</p>
+                    </div>
+                ),
+                path: '~'
+            }
+            setHistory([initialHistoryItem]);
+        }
+    }, [history.length]);
 
-    const initialMessage = (
-        <div>
-            <pre className='text-green-400'>{asciiArt}</pre>
-            <p>Welcome to the 7K Terminal Portfolio.</p>
-            <p>Type &apos;help&apos; to see the list of available commands.</p>
-        </div>
-    );
 
     return (
         <div 
@@ -172,21 +259,21 @@ export function Terminal() {
                     </Link>
                 </Button>
             </div>
-            
-            {initialMessage}
 
             {history.map((item, index) => (
                 <div key={index}>
-                    <div className="flex items-center">
-                        <span className="text-yellow-400">kunal@7k:~$</span>
-                        <span className="ml-2">{item.command}</span>
-                    </div>
+                    {item.command && (
+                         <div className="flex items-center">
+                            <span className="text-yellow-400">kunal@7k:{item.path === '/' ? '~' : item.path.slice(0,-1)}$</span>
+                            <span className="ml-2">{item.command}</span>
+                        </div>
+                    )}
                     <div>{item.output}</div>
                 </div>
             ))}
             
             <form onSubmit={handleSubmit} className="flex items-center mt-2">
-                <span className="text-yellow-400">kunal@7k:~$</span>
+                <span className="text-yellow-400">kunal@7k:{currentPath === '/' ? '~' : currentPath.slice(0,-1)}$</span>
                 <input 
                     ref={inputRef}
                     type="text"
@@ -204,3 +291,5 @@ export function Terminal() {
         </div>
     );
 }
+
+    
