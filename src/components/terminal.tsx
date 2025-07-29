@@ -23,7 +23,7 @@ const asciiArt = `
 
 const AboutContent = () => (
     <div>
-        <p>I&apos;s;m a 12th-standard Arts student with a vision to become a corporate lawyer.</p>
+        <p>I'm a 12th-standard Arts student with a vision to become a corporate lawyer.</p>
         <p>My journey is about a relentless pursuit of knowledge and a passion for building things.</p>
         <br/>
         <p>Skills:</p>
@@ -94,8 +94,6 @@ const HelpContent = () => (
       <li><span className="text-green-400">help</span> - Shows this list</li>
       <li><span className="text-green-400">about</span> - Displays info about me</li>
       <li><span className="text-green-400">whoami</span> - Alias for 'about'</li>
-      <li><span className="text-green-400">projects</span> - Lists key projects</li>
-      <li><span className="text-green-400">contact</span> - Shows contact info</li>
       <li><span className="text-green-400">date</span> - Current date and time</li>
       <li><span className="text-green-400">echo [text]</span> - Prints back text</li>
       <li><span className="text-green-400">clear</span> - Clears the screen</li>
@@ -128,25 +126,34 @@ export function Terminal() {
         help: () => <HelpContent />,
         about: () => fileSystem['/about.md'].content,
         whoami: () => fileSystem['/about.md'].content,
-        projects: () => <ProjectsContent />,
-        contact: () => fileSystem['/contact.md'].content,
         date: () => new Date().toLocaleString(),
         echo: (args) => args.join(' '),
         pwd: () => currentPath,
         ls: (args) => {
-            const path = args[0] ? resolvePath(args[0]) : currentPath;
-            const node = fileSystem[path as keyof typeof fileSystem];
-            if (node && node.type === 'dir') {
+            const pathArg = args[0] || ".";
+            const path = resolvePath(pathArg);
+            const node = fileSystem[path as keyof typeof fileSystem] || fileSystem[path.slice(0,-1) as keyof typeof fileSystem];
+            
+            if (!node) {
+                 return `ls: cannot access '${pathArg}': No such file or directory`;
+            }
+            if (node.type === 'file') {
+                 return <div className="grid grid-cols-3 gap-x-4"><span>{pathArg}</span></div>;
+            }
+            if (node.type === 'dir') {
                 return <div className="grid grid-cols-3 gap-x-4">{node.children.map(child => <span key={child}>{child}</span>)}</div>;
             }
-            return `ls: cannot access '${args[0] || '.'}': No such file or directory`;
+            return `ls: cannot access '${pathArg}': No such file or directory`;
         },
         cd: (args) => {
             const path = args[0] || '/';
-            const newPath = resolvePath(path);
-            const node = fileSystem[newPath as keyof typeof fileSystem];
+            let newPath = resolvePath(path);
+             if (newPath !== '/' && !newPath.endsWith('/')) {
+                newPath += '/';
+            }
+            const node = fileSystem[newPath.slice(0,-1) as keyof typeof fileSystem];
             if (node && node.type === 'dir') {
-                setCurrentPath(newPath === '/' ? '/' : newPath + '/');
+                setCurrentPath(newPath);
                 return null;
             }
             return `cd: no such file or directory: ${path}`;
@@ -155,7 +162,13 @@ export function Terminal() {
             if (!args[0]) return 'cat: missing operand';
             const path = resolvePath(args[0]);
             const node = fileSystem[path as keyof typeof fileSystem];
-            if (node && node.type === 'file') {
+             if (!node) {
+                return `cat: ${args[0]}: No such file or directory`;
+            }
+            if (node.type === 'dir') {
+                return `cat: ${args[0]}: Is a directory`;
+            }
+            if (node.type === 'file') {
                 return node.content;
             }
             return `cat: ${args[0]}: No such file or directory`;
@@ -236,7 +249,8 @@ export function Terminal() {
                     <div>
                         <pre className='text-green-400'>{asciiArt}</pre>
                         <p>Welcome to the 7K Terminal Portfolio.</p>
-                        <p>Type &apos;help&apos; to see the list of available commands.</p>
+                        <p>Type &apos;help&apos; to see available commands.</p>
+                        <p>Start by typing `ls` to see available files, and `cat [filename]` to read them.</p>
                     </div>
                 ),
                 path: '~'
@@ -291,5 +305,3 @@ export function Terminal() {
         </div>
     );
 }
-
-    
