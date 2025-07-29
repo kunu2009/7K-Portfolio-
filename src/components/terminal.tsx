@@ -12,15 +12,6 @@ type HistoryItem = {
   path: string;
 };
 
-const asciiArt = `
-███████╗██╗  ██╗
-╚════██║██║  ██║
-   ██╔╝ ███████║
-  ██╔╝  ██╔══██║
- ███████╗██║  ██║
- ╚══════╝╚═╝  ╚═╝
-`;
-
 const welcomeBanner = `
 ██╗    ██╗███████╗██╗     ██████╗  ██████╗ ███╗   ███╗███████╗
 ██║    ██║██╔════╝██║     ██╔══██╗██╔═══██╗████╗ ████║██╔════╝
@@ -93,7 +84,6 @@ const manPages: { [key: string]: string } = {
     man: 'man [command]: Displays the manual page for a given command.',
     '7k': '7k: Shows a short pitch for the 7K ecosystem project.',
     motivate: 'motivate: Displays a motivational quote.',
-    ascii: 'ascii: Shows the 7K ASCII art logo.',
     banner: 'banner: Displays the welcome banner.',
     matrix: 'matrix: Are you the one?',
     hack: 'hack [target]: Initiates a simulated hack sequence.',
@@ -233,7 +223,6 @@ export function Terminal() {
             const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
             return `"${motivationalQuotes[randomIndex]}"`;
         },
-        ascii: () => <pre>{asciiArt}</pre>,
         banner: () => <pre>{welcomeBanner}</pre>,
         matrix: () => "Wake up, Neo... The Matrix has you. Follow the white rabbit.",
         hack: (args) => {
@@ -310,7 +299,6 @@ export function Terminal() {
                 command: '',
                 output: (
                     <div>
-                        <pre className='text-green-400'>{asciiArt}</pre>
                         <p>Welcome to the 7K Terminal Portfolio.</p>
                         <p>Type &apos;help&apos; to see available commands.</p>
                         <p>Start by typing `ls` to see available files, and `cat [filename]` to read them.</p>
