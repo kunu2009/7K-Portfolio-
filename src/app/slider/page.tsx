@@ -64,7 +64,7 @@ const Footer = ({ onNext }: { onNext: () => void }) => (
         <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-red-500 text-white hover:bg-red-600 transform hover:scale-110 transition-transform" onClick={onNext}>
             <MoveDown />
         </Button>
-    </footer>
+    </motion.footer>
 )
 
 const SlideCounter = ({ current, total }: { current: number; total: number }) => (
