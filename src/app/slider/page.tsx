@@ -128,7 +128,7 @@ const imageVariants = {
         opacity: 1,
         transition: {
             duration: 1.2,
-            ease: [0.6, 0.01, -0.05, 0.95]
+            ease: [0.6, 0.01, 0.05, 0.95]
         }
     },
     exit: { scale: 1.1, opacity: 0, transition: { duration: 0.4 } }
@@ -155,9 +155,8 @@ const Slide = ({ project, textAnim, imageAnim, nav }: { project: typeof projects
                     <Image 
                         src={project.image} 
                         alt={project.title} 
-                        layout="fill" 
-                        objectFit="cover" 
-                        objectPosition="center"
+                        fill={true}
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
                         data-ai-hint={project.imageHint}
                         className="transition-transform duration-500 group-hover:scale-105"
                         priority
