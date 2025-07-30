@@ -3,186 +3,162 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Menu, MoveDown, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const projects = [
-  {
-    id: "life-app",
-    title: "7K Life App",
-    description: "Core application for holistic life management and productivity. A central hub for tasks, goals, and personal knowledge.",
-    image: "https://storage.googleapis.com/pixystudio-images/ab7353b3-8c48-4363-8a9d-152e153f5686.png",
-    imageHint: "abstract dashboard ui",
-    color: "hsl(217.2 91.2% 59.8%)",
-  },
-  {
-    id: "law-prep",
-    title: "7KLawPrep",
-    description: "Web-based utilities and resources for law aspirants, featuring mock tests and performance analytics.",
-    image: "https://storage.googleapis.com/pixystudio-images/b07a8b43-5759-4796-9325-13b7a5a3a4c1.png",
-    imageHint: "legal books justice scale",
-    color: "hsl(25 95% 53%)",
-  },
-  {
-    id: "stan-ai",
-    title: "Stan: AI Assistant",
-    description: "An AI running on Android to provide assistance on the go, integrated across the 7K ecosystem.",
-    image: "https://storage.googleapis.com/pixystudio-images/e6f1a1ff-8b94-4a25-9d10-09a24446e544.png",
-    imageHint: "glowing circuit brain",
-    color: "hsl(142.1 76.2% 47.1%)",
-  },
-  {
-    id: "smart-journal",
-    title: "Smart Journal App",
-    description: "An intelligent journaling app with AI-powered prompts, sentiment analysis, and goal-oriented features.",
-    image: "https://storage.googleapis.com/pixystudio-images/651f9a2e-5039-444a-93a2-0925ddb19985.png",
-    imageHint: "elegant digital journal",
-    color: "hsl(324.7 93.9% 65.9%)",
-  },
+    {
+        id: "life-app",
+        title: "7K Life",
+        description: "A core application for holistic life management and productivity. A central hub for tasks, goals, and personal knowledge, designed to amplify focus and eliminate friction.",
+        image: "https://storage.googleapis.com/pixystudio-images/08f731a5-82c5-4424-a74e-5e3e3b3c378b.png",
+        imageHint: "futuristic person red jacket",
+    },
+    {
+        id: "law-prep",
+        title: "7KLawPrep",
+        description: "Web-based utilities and resources for law aspirants, featuring mock tests, performance analytics, and specialized tools for competitive entrance exam preparation.",
+        image: "https://storage.googleapis.com/pixystudio-images/830c279c-72e7-4e92-9571-5f2105156a59.png",
+        imageHint: "black glove pointing",
+    },
+    {
+        id: "stan-ai",
+        title: "Stan AI",
+        description: "An AI running on Android to provide assistance on the go, integrated across the 7K ecosystem to automate tasks and provide contextual information.",
+        image: "https://storage.googleapis.com/pixystudio-images/7f6b95d7-8d00-4740-9b37-25e22756d1b7.png",
+        imageHint: "abstract 3d render",
+    },
 ];
 
-const variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? '100%' : '-100%',
-    opacity: 0,
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? '100%' : '-100%',
-    opacity: 0,
-  }),
-};
+const Header = () => (
+    <header className="absolute top-0 left-0 right-0 z-20 p-4 md:p-8">
+        <div className="flex justify-between items-center">
+             <Link href="/" className="font-bold text-lg tracking-wider">+1</Link>
+             <div className="hidden md:flex gap-8 text-sm font-medium">
+                 <Link href="/story#projects" className="hover:text-red-500 transition-colors">PROJECTS</Link>
+                 <Link href="#" className="hover:text-red-500 transition-colors">SHOP</Link>
+                 <Link href="#" className="hover:text-red-500 transition-colors">NEW ARRIVALS ▾</Link>
+             </div>
+            <Button variant="ghost" size="icon">
+                <Menu />
+            </Button>
+        </div>
+    </header>
+)
 
-const textVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
-};
+const Footer = ({ onNext }: { onNext: () => void }) => (
+     <footer className="absolute bottom-0 right-0 z-20 p-4 md:p-8">
+        <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-red-500 text-white hover:bg-red-600" onClick={onNext}>
+            <MoveDown />
+        </Button>
+    </footer>
+)
 
-const imageVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.1 } },
-    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.3 } }
-};
+const SlideCounter = ({ current, total }: { current: number; total: number }) => (
+    <div className="absolute top-1/2 left-4 md:left-8 z-20 -translate-y-1/2 flex items-center gap-4 text-sm font-medium [writing-mode:vertical-lr]">
+        <span className="text-foreground">{`0${current + 1}`}</span>
+        <div className="w-px h-16 bg-muted-foreground/50"></div>
+        <span className="text-muted-foreground">{`0${total}`}</span>
+    </div>
+)
+
+const SideInfo = ({ title }: {title: string}) => (
+     <div className="hidden md:flex absolute top-1/2 right-8 z-20 -translate-y-1/2 items-center gap-4 text-xs font-medium [writing-mode:vertical-lr] text-muted-foreground tracking-widest">
+        <span>X-LAB MATERIALS OF CREATION</span>
+    </div>
+)
 
 export default function SliderPage() {
-  const [[page, direction], setPage] = useState([0, 0]);
-  const projectIndex = ((page % projects.length) + projects.length) % projects.length;
+    const [[page, direction], setPage] = useState([0, 0]);
+    const projectIndex = ((page % projects.length) + projects.length) % projects.length;
 
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
-  };
+    const paginate = (newDirection: number) => {
+        setPage([page + newDirection, newDirection]);
+    };
 
-  const currentProject = projects[projectIndex];
+    const currentProject = projects[projectIndex];
 
-  return (
-    <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-black">
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={page}
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(circle at 50% 50%, ${currentProject.color}40 0%, transparent 70%)`
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 1, delay: 0.2 } }}
-          exit={{ opacity: 0, transition: { duration: 1 } }}
-        />
-        </AnimatePresence>
+    const variants = {
+        enter: (direction: number) => ({
+            y: direction > 0 ? '100%' : '-100%',
+            opacity: 0,
+        }),
+        center: {
+            zIndex: 1,
+            y: 0,
+            opacity: 1,
+        },
+        exit: (direction: number) => ({
+            zIndex: 0,
+            y: direction < 0 ? '100%' : '-100%',
+            opacity: 0,
+        }),
+    };
 
-        <div className="absolute top-5 left-5 z-20">
-            <Button asChild variant="secondary" className="rounded-full">
-                <Link href="/">
-                    <ArrowLeft className="mr-2" /> Back to Selection
-                </Link>
-            </Button>
-      </div>
+    return (
+        <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-white text-black font-sans">
+            <Header />
 
-       <div className="absolute w-full h-full p-8 flex items-center justify-center">
-            <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                    key={page}
-                    custom={direction}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.2 },
-                    }}
-                    className="absolute flex flex-col md:flex-row items-center justify-center w-full h-full p-8 gap-8"
-                >
-                    <motion.div 
-                        className="md:w-1/2 flex justify-center p-4"
-                        variants={imageVariants}
-                        initial="initial"
-                        animate="animate"
+            <main className="relative w-full h-full flex items-center justify-center">
+                 <AnimatePresence initial={false} custom={direction}>
+                    <motion.div
+                        key={page}
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
                         exit="exit"
+                        transition={{
+                            y: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.3 },
+                        }}
+                        className="absolute w-full h-full"
                     >
-                        <div className="relative w-full max-w-lg aspect-video rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm bg-white/5 border border-white/10">
-                            <Image 
-                                src={currentProject.image}
-                                alt={currentProject.title}
-                                layout="fill"
-                                objectFit="cover"
-                                priority={true}
-                                data-ai-hint={currentProject.imageHint}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
-                        </div>
+                         <div className="w-full h-full grid grid-cols-1 md:grid-cols-2">
+                            <div className="flex flex-col justify-between p-8 md:p-16">
+                                <div className="max-w-sm">
+                                    <p className="text-sm font-medium text-muted-foreground mb-1">X/LABS</p>
+                                    <p className="text-xs text-muted-foreground">
+                                        For automation of slaves minds. Stress element, etc. letter and the attachment of some slaves.
+                                    </p>
+                                </div>
+                                <div className="relative">
+                                     <h1 className="text-8xl md:text-9xl font-bold tracking-tighter">
+                                        {currentProject.title}.
+                                    </h1>
+                                    <Menu className="absolute left-1 bottom-full mb-4 w-12 h-12" />
+                                </div>
+                            </div>
+                            <div className="relative bg-red-500">
+                                <Image 
+                                    src={currentProject.image} 
+                                    alt={currentProject.title} 
+                                    layout="fill" 
+                                    objectFit="contain" 
+                                    objectPosition="center"
+                                    data-ai-hint={currentProject.imageHint}
+                                    priority
+                                />
+                                <div className="absolute bottom-0 left-0 p-4 flex gap-2">
+                                     <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                        <ArrowLeft/>
+                                     </Button>
+                                     <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                        <ArrowRight/>
+                                    </Button>
+                                </div>
+                            </div>
+                         </div>
                     </motion.div>
-                    <motion.div 
-                        className="md:w-1/2 max-w-lg text-center md:text-left"
-                        variants={textVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                    >
-                        <h1 className="font-headline text-5xl md:text-7xl font-bold text-white mb-4" style={{ color: currentProject.color }}>
-                            {currentProject.title}
-                        </h1>
-                        <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
-                            {currentProject.description}
-                        </p>
-                    </motion.div>
-                </motion.div>
-            </AnimatePresence>
-       </div>
-
-      <div className="absolute top-1/2 -translate-y-1/2 left-5 z-20">
-        <Button size="icon" variant="secondary" className="rounded-full h-12 w-12" onClick={() => paginate(-1)}>
-          <ChevronLeft />
-        </Button>
-      </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-5 z-20">
-        <Button size="icon" variant="secondary" className="rounded-full h-12 w-12" onClick={() => paginate(1)}>
-          <ChevronRight />
-        </Button>
-      </div>
-       <div className="absolute bottom-8 flex justify-center gap-3 z-20">
-        {projects.map((_, i) => (
-          <div
-            key={i}
-            onClick={() => setPage([i, i > projectIndex ? 1 : -1])}
-            className={cn(
-                "h-2 w-2 rounded-full cursor-pointer transition-all duration-300",
-                i === projectIndex ? 'w-6' : 'bg-neutral-600 hover:bg-neutral-400'
-            )}
-            style={{
-                backgroundColor: i === projectIndex ? currentProject.color : undefined
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
+                </AnimatePresence>
+            </main>
+           
+            <SlideCounter current={projectIndex} total={projects.length} />
+            <SideInfo title={currentProject.title} />
+            <Footer onNext={() => paginate(1)} />
+        </div>
+    );
 }
