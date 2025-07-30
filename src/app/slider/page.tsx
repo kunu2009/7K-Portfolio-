@@ -41,13 +41,13 @@ const Header = () => (
         className="absolute top-0 left-0 right-0 z-20 p-4 md:p-8"
     >
         <div className="flex justify-between items-center">
-             <Link href="/" className="font-bold text-lg tracking-wider hover:text-red-500 transition-colors">+1</Link>
+             <Link href="/" className="font-bold text-lg tracking-wider hover:text-primary transition-colors">+1</Link>
              <div className="hidden md:flex gap-8 text-sm font-medium">
-                 <Link href="/story#projects" className="hover:text-red-500 transition-colors">PROJECTS</Link>
-                 <Link href="#" className="hover:text-red-500 transition-colors">SHOP</Link>
-                 <Link href="#" className="hover:text-red-500 transition-colors">NEW ARRIVALS ▾</Link>
+                 <Link href="/story#projects" className="hover:text-primary transition-colors">PROJECTS</Link>
+                 <Link href="/story#about" className="hover:text-primary transition-colors">ABOUT</Link>
+                 <Link href="/contact" className="hover:text-primary transition-colors">CONTACT</Link>
              </div>
-            <Button variant="ghost" size="icon" className="hover:text-red-500 transition-colors">
+            <Button variant="ghost" size="icon" className="hover:text-primary transition-colors">
                 <Menu />
             </Button>
         </div>
@@ -61,7 +61,7 @@ const Footer = ({ onNext }: { onNext: () => void }) => (
         transition={{ duration: 0.5, delay: 0.8 }}
         className="absolute bottom-0 right-0 z-20 p-4 md:p-8"
     >
-        <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-red-500 text-white hover:bg-red-600 transform hover:scale-110 transition-transform" onClick={onNext}>
+        <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transform hover:scale-110 transition-transform" onClick={onNext}>
             <MoveDown />
         </Button>
     </motion.footer>
@@ -87,7 +87,7 @@ const SideInfo = () => (
         transition={{ duration: 0.5, delay: 0.8 }}
         className="hidden md:flex absolute top-1/2 right-8 z-20 -translate-y-1/2 items-center gap-4 text-xs font-medium [writing-mode:vertical-lr] text-muted-foreground tracking-widest"
     >
-        <span>X-LAB MATERIALS OF CREATION</span>
+        <span>7K ECOSYSTEM PROJECT</span>
     </motion.div>
 )
 
@@ -147,7 +147,7 @@ export default function SliderPage() {
 
 
     return (
-        <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-white text-black font-sans">
+        <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-background text-foreground font-sans">
             <Header />
 
             <main className="relative w-full h-full flex items-center justify-center">
@@ -182,7 +182,7 @@ export default function SliderPage() {
                                     </motion.div>
                                 </motion.div>
                             </div>
-                            <div className="relative bg-red-500 overflow-hidden">
+                            <div className="relative bg-secondary overflow-hidden">
                                 <motion.div variants={imageVariants} initial="initial" animate="animate" exit="exit" className="w-full h-full">
                                     <Image 
                                         src={currentProject.image} 
@@ -197,12 +197,12 @@ export default function SliderPage() {
                                 </motion.div>
                                 <div className="absolute bottom-0 left-0 p-4 flex gap-2">
                                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                         <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                         <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
                                             <ArrowLeft/>
                                          </Button>
                                      </motion.div>
                                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                         <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                         <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
                                             <ArrowRight/>
                                         </Button>
                                      </motion.div>
