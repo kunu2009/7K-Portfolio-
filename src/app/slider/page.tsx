@@ -34,41 +34,61 @@ const projects = [
 ];
 
 const Header = () => (
-    <header className="absolute top-0 left-0 right-0 z-20 p-4 md:p-8">
+    <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="absolute top-0 left-0 right-0 z-20 p-4 md:p-8"
+    >
         <div className="flex justify-between items-center">
-             <Link href="/" className="font-bold text-lg tracking-wider">+1</Link>
+             <Link href="/" className="font-bold text-lg tracking-wider hover:text-red-500 transition-colors">+1</Link>
              <div className="hidden md:flex gap-8 text-sm font-medium">
                  <Link href="/story#projects" className="hover:text-red-500 transition-colors">PROJECTS</Link>
                  <Link href="#" className="hover:text-red-500 transition-colors">SHOP</Link>
                  <Link href="#" className="hover:text-red-500 transition-colors">NEW ARRIVALS ▾</Link>
              </div>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:text-red-500 transition-colors">
                 <Menu />
             </Button>
         </div>
-    </header>
+    </motion.header>
 )
 
 const Footer = ({ onNext }: { onNext: () => void }) => (
-     <footer className="absolute bottom-0 right-0 z-20 p-4 md:p-8">
-        <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-red-500 text-white hover:bg-red-600" onClick={onNext}>
+     <motion.footer 
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="absolute bottom-0 right-0 z-20 p-4 md:p-8"
+    >
+        <Button variant="ghost" size="icon" className="w-16 h-16 rounded-full bg-red-500 text-white hover:bg-red-600 transform hover:scale-110 transition-transform" onClick={onNext}>
             <MoveDown />
         </Button>
     </footer>
 )
 
 const SlideCounter = ({ current, total }: { current: number; total: number }) => (
-    <div className="absolute top-1/2 left-4 md:left-8 z-20 -translate-y-1/2 flex items-center gap-4 text-sm font-medium [writing-mode:vertical-lr]">
+    <motion.div 
+         initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="absolute top-1/2 left-4 md:left-8 z-20 -translate-y-1/2 flex items-center gap-4 text-sm font-medium [writing-mode:vertical-lr]"
+    >
         <span className="text-foreground">{`0${current + 1}`}</span>
         <div className="w-px h-16 bg-muted-foreground/50"></div>
         <span className="text-muted-foreground">{`0${total}`}</span>
-    </div>
+    </motion.div>
 )
 
-const SideInfo = ({ title }: {title: string}) => (
-     <div className="hidden md:flex absolute top-1/2 right-8 z-20 -translate-y-1/2 items-center gap-4 text-xs font-medium [writing-mode:vertical-lr] text-muted-foreground tracking-widest">
+const SideInfo = () => (
+     <motion.div 
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="hidden md:flex absolute top-1/2 right-8 z-20 -translate-y-1/2 items-center gap-4 text-xs font-medium [writing-mode:vertical-lr] text-muted-foreground tracking-widest"
+    >
         <span>X-LAB MATERIALS OF CREATION</span>
-    </div>
+    </motion.div>
 )
 
 export default function SliderPage() {
@@ -98,12 +118,40 @@ export default function SliderPage() {
         }),
     };
 
+    const textVariants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+                duration: 0.6,
+                delay: 0.5,
+                ease: 'easeOut'
+            }
+        },
+        exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
+    }
+    
+    const imageVariants = {
+        initial: { scale: 1.2, opacity: 0 },
+        animate: { 
+            scale: 1, 
+            opacity: 1,
+            transition: {
+                duration: 1,
+                ease: [0.6, 0.01, -0.05, 0.95]
+            }
+        },
+        exit: { scale: 1.1, opacity: 0, transition: { duration: 0.4 } }
+    }
+
+
     return (
         <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-white text-black font-sans">
             <Header />
 
             <main className="relative w-full h-full flex items-center justify-center">
-                 <AnimatePresence initial={false} custom={direction}>
+                 <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                         key={page}
                         custom={direction}
@@ -119,36 +167,45 @@ export default function SliderPage() {
                     >
                          <div className="w-full h-full grid grid-cols-1 md:grid-cols-2">
                             <div className="flex flex-col justify-between p-8 md:p-16">
-                                <div className="max-w-sm">
+                                <motion.div variants={textVariants} initial="initial" animate="animate" exit="exit" className="max-w-sm">
                                     <p className="text-sm font-medium text-muted-foreground mb-1">X/LABS</p>
                                     <p className="text-xs text-muted-foreground">
-                                        For automation of slaves minds. Stress element, etc. letter and the attachment of some slaves.
+                                       {currentProject.description}
                                     </p>
-                                </div>
-                                <div className="relative">
+                                </motion.div>
+                                <motion.div variants={textVariants} initial="initial" animate="animate" exit="exit" className="relative">
                                      <h1 className="text-8xl md:text-9xl font-bold tracking-tighter">
                                         {currentProject.title}.
                                     </h1>
-                                    <Menu className="absolute left-1 bottom-full mb-4 w-12 h-12" />
-                                </div>
+                                    <motion.div initial={{rotate: -90, opacity: 0}} animate={{rotate: 0, opacity: 1}} transition={{delay: 0.8, duration: 0.5}}>
+                                      <Menu className="absolute left-1 bottom-full mb-4 w-12 h-12" />
+                                    </motion.div>
+                                </motion.div>
                             </div>
-                            <div className="relative bg-red-500">
-                                <Image 
-                                    src={currentProject.image} 
-                                    alt={currentProject.title} 
-                                    layout="fill" 
-                                    objectFit="contain" 
-                                    objectPosition="center"
-                                    data-ai-hint={currentProject.imageHint}
-                                    priority
-                                />
+                            <div className="relative bg-red-500 overflow-hidden">
+                                <motion.div variants={imageVariants} initial="initial" animate="animate" exit="exit" className="w-full h-full">
+                                    <Image 
+                                        src={currentProject.image} 
+                                        alt={currentProject.title} 
+                                        layout="fill" 
+                                        objectFit="cover" 
+                                        objectPosition="center"
+                                        data-ai-hint={currentProject.imageHint}
+                                        className="transition-transform duration-500 group-hover:scale-105"
+                                        priority
+                                    />
+                                </motion.div>
                                 <div className="absolute bottom-0 left-0 p-4 flex gap-2">
-                                     <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
-                                        <ArrowLeft/>
-                                     </Button>
-                                     <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
-                                        <ArrowRight/>
-                                    </Button>
+                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                         <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                            <ArrowLeft/>
+                                         </Button>
+                                     </motion.div>
+                                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                         <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-black text-white rounded-none w-12 h-12 border-black hover:bg-gray-800">
+                                            <ArrowRight/>
+                                        </Button>
+                                     </motion.div>
                                 </div>
                             </div>
                          </div>
@@ -157,7 +214,7 @@ export default function SliderPage() {
             </main>
            
             <SlideCounter current={projectIndex} total={projects.length} />
-            <SideInfo title={currentProject.title} />
+            <SideInfo />
             <Footer onNext={() => paginate(1)} />
         </div>
     );
