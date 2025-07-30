@@ -3,11 +3,10 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Menu, MoveDown, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Menu, MoveDown } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
 const projects = [
     {
@@ -47,7 +46,7 @@ const Header = () => (
                  <Link href="/story#about" className="hover:text-primary transition-colors">ABOUT</Link>
                  <Link href="/contact" className="hover:text-primary transition-colors">CONTACT</Link>
              </div>
-            <Button variant="ghost" size="icon" className="hover:text-primary transition-colors">
+            <Button variant="ghost" size="icon" className="md:hidden hover:text-primary transition-colors">
                 <Menu />
             </Button>
         </div>
@@ -91,6 +90,96 @@ const SideInfo = () => (
     </motion.div>
 )
 
+const slideVariants = {
+    enter: (direction: number) => ({
+        y: direction > 0 ? '100%' : '-100%',
+        opacity: 0,
+    }),
+    center: {
+        zIndex: 1,
+        y: 0,
+        opacity: 1,
+    },
+    exit: (direction: number) => ({
+        zIndex: 0,
+        y: direction < 0 ? '100%' : '-100%',
+        opacity: 0,
+    }),
+};
+
+const textVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+        opacity: 1, 
+        y: 0,
+        transition: {
+            duration: 0.6,
+            delay: 0.5,
+            ease: 'easeOut'
+        }
+    },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
+}
+
+const imageVariants = {
+    initial: { scale: 1.2, opacity: 0 },
+    animate: { 
+        scale: 1, 
+        opacity: 1,
+        transition: {
+            duration: 1.2,
+            ease: [0.6, 0.01, -0.05, 0.95]
+        }
+    },
+    exit: { scale: 1.1, opacity: 0, transition: { duration: 0.4 } }
+}
+
+const Slide = ({ project, textAnim, imageAnim, nav }: { project: typeof projects[0], textAnim: any, imageAnim: any, nav: (dir: number) => void}) => {
+    return (
+        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2">
+            <div className="flex flex-col justify-between p-8 md:p-16">
+                <motion.div variants={textAnim} initial="initial" animate="animate" exit="exit" className="max-w-sm">
+                    <p className="text-sm font-medium text-muted-foreground mb-1">X/LABS</p>
+                    <p className="text-xs text-muted-foreground">
+                        {project.description}
+                    </p>
+                </motion.div>
+                <motion.div variants={textAnim} initial="initial" animate="animate" exit="exit" className="relative">
+                        <h1 className="text-8xl md:text-9xl font-bold tracking-tighter">
+                        {project.title}.
+                    </h1>
+                </motion.div>
+            </div>
+            <div className="relative bg-secondary overflow-hidden">
+                <motion.div variants={imageAnim} initial="initial" animate="animate" exit="exit" className="w-full h-full">
+                    <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        layout="fill" 
+                        objectFit="cover" 
+                        objectPosition="center"
+                        data-ai-hint={project.imageHint}
+                        className="transition-transform duration-500 group-hover:scale-105"
+                        priority
+                    />
+                </motion.div>
+                <div className="absolute bottom-0 left-0 p-4 flex gap-2">
+                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                            <Button variant="outline" size="icon" onClick={() => nav(-1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
+                            <ArrowLeft/>
+                            </Button>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                            <Button variant="outline" size="icon" onClick={() => nav(1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
+                            <ArrowRight/>
+                        </Button>
+                        </motion.div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function SliderPage() {
     const [[page, direction], setPage] = useState([0, 0]);
     const projectIndex = ((page % projects.length) + projects.length) % projects.length;
@@ -98,53 +187,6 @@ export default function SliderPage() {
     const paginate = (newDirection: number) => {
         setPage([page + newDirection, newDirection]);
     };
-
-    const currentProject = projects[projectIndex];
-
-    const variants = {
-        enter: (direction: number) => ({
-            y: direction > 0 ? '100%' : '-100%',
-            opacity: 0,
-        }),
-        center: {
-            zIndex: 1,
-            y: 0,
-            opacity: 1,
-        },
-        exit: (direction: number) => ({
-            zIndex: 0,
-            y: direction < 0 ? '100%' : '-100%',
-            opacity: 0,
-        }),
-    };
-
-    const textVariants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-                duration: 0.6,
-                delay: 0.5,
-                ease: 'easeOut'
-            }
-        },
-        exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
-    }
-    
-    const imageVariants = {
-        initial: { scale: 1.2, opacity: 0 },
-        animate: { 
-            scale: 1, 
-            opacity: 1,
-            transition: {
-                duration: 1,
-                ease: [0.6, 0.01, -0.05, 0.95]
-            }
-        },
-        exit: { scale: 1.1, opacity: 0, transition: { duration: 0.4 } }
-    }
-
 
     return (
         <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-background text-foreground font-sans">
@@ -155,7 +197,7 @@ export default function SliderPage() {
                     <motion.div
                         key={page}
                         custom={direction}
-                        variants={variants}
+                        variants={slideVariants}
                         initial="enter"
                         animate="center"
                         exit="exit"
@@ -165,50 +207,12 @@ export default function SliderPage() {
                         }}
                         className="absolute w-full h-full"
                     >
-                         <div className="w-full h-full grid grid-cols-1 md:grid-cols-2">
-                            <div className="flex flex-col justify-between p-8 md:p-16">
-                                <motion.div variants={textVariants} initial="initial" animate="animate" exit="exit" className="max-w-sm">
-                                    <p className="text-sm font-medium text-muted-foreground mb-1">X/LABS</p>
-                                    <p className="text-xs text-muted-foreground">
-                                       {currentProject.description}
-                                    </p>
-                                </motion.div>
-                                <motion.div variants={textVariants} initial="initial" animate="animate" exit="exit" className="relative">
-                                     <h1 className="text-8xl md:text-9xl font-bold tracking-tighter">
-                                        {currentProject.title}.
-                                    </h1>
-                                    <motion.div initial={{rotate: -90, opacity: 0}} animate={{rotate: 0, opacity: 1}} transition={{delay: 0.8, duration: 0.5}}>
-                                      <Menu className="absolute left-1 bottom-full mb-4 w-12 h-12" />
-                                    </motion.div>
-                                </motion.div>
-                            </div>
-                            <div className="relative bg-secondary overflow-hidden">
-                                <motion.div variants={imageVariants} initial="initial" animate="animate" exit="exit" className="w-full h-full">
-                                    <Image 
-                                        src={currentProject.image} 
-                                        alt={currentProject.title} 
-                                        layout="fill" 
-                                        objectFit="cover" 
-                                        objectPosition="center"
-                                        data-ai-hint={currentProject.imageHint}
-                                        className="transition-transform duration-500 group-hover:scale-105"
-                                        priority
-                                    />
-                                </motion.div>
-                                <div className="absolute bottom-0 left-0 p-4 flex gap-2">
-                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                         <Button variant="outline" size="icon" onClick={() => paginate(-1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
-                                            <ArrowLeft/>
-                                         </Button>
-                                     </motion.div>
-                                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                         <Button variant="outline" size="icon" onClick={() => paginate(1)} className="bg-background text-foreground rounded-none w-12 h-12 border-border hover:bg-accent">
-                                            <ArrowRight/>
-                                        </Button>
-                                     </motion.div>
-                                </div>
-                            </div>
-                         </div>
+                        <Slide
+                            project={projects[projectIndex]}
+                            textAnim={textVariants}
+                            imageAnim={imageVariants}
+                            nav={paginate}
+                        />
                     </motion.div>
                 </AnimatePresence>
             </main>
