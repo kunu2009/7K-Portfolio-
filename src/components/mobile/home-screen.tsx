@@ -24,7 +24,7 @@ const tutorialItems = [
 
 const ToDoListWidget = () => (
     <div className="px-4 text-white">
-        <div className="bg-black/30 p-6 rounded-lg backdrop-blur-sm">
+        <div className="p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-4">Hello, Welcome!</h2>
             <div className="space-y-3">
                 {tutorialItems.map((item) => (
