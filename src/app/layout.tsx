@@ -20,10 +20,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=PT+Sans:wght@400;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased bg-background">
         {children}
         <Toaster />
-        <ChatAssistant />
+        {/* Chat Assistant can be re-added later if needed, but removing from mobile view for now */}
+        {/* <ChatAssistant /> */}
       </body>
     </html>
   );
