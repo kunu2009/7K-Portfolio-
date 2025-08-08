@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { AppWindow, GraduationCap, Landmark, Languages, Bot, Gamepad2, Settings } from 'lucide-react';
+import { Landmark, Languages, Bot, Gamepad2, Settings, GraduationCap, AppWindow } from 'lucide-react';
 
 const apps = [
-  { name: "Life App", icon: AppWindow, href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/" },
-  { name: "LawPrep", icon: GraduationCap, href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/" },
+  { name: "Life App", icon: "7klife.webp", href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/" },
+  { name: "LawPrep", icon: "7klawprep.webp", href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/" },
   { name: "Itihaas", icon: Landmark, href: "https://7-k-itihaas.vercel.app/" },
   { name: "Polyglot", icon: Languages, href: "https://7-k-polyglot.vercel.app/" },
   { name: "Stan AI", icon: Bot, href: "/story#projects" },
@@ -21,7 +21,11 @@ export function AppDock() {
             {apps.map(app => (
                  <Link key={app.name} href={app.href} target={app.href.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-1 text-white text-[10px] font-medium">
                     <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors">
-                        <app.icon className="w-6 h-6" />
+                        {typeof app.icon === 'string' ? (
+                          <Image src={`/images/webp/${app.icon}`} alt={`${app.name} icon`} width={24} height={24} />
+                        ) : (
+                          <app.icon className="w-6 h-6" />
+                        )}
                     </div>
                     <span>{app.name}</span>
                 </Link>
