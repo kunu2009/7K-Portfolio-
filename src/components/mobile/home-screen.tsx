@@ -1,16 +1,6 @@
 
-import { Checkbox } from "@/components/ui/checkbox";
-import { Plus, MoreVertical } from "lucide-react";
 import { AppDock } from "./app-dock";
-
-const tasks = [
-    { label: "Learn 5 legal terms" },
-    { label: "Practice 5 legal maxims" },
-    { label: "Watch 1 GK news recap", date: "01-Jul-2026" },
-    { label: "Read GK PDF (1 page)", date: "Aug 6" },
-    { label: "Solve 10 direction sense questions" },
-    { label: "Solve 10 number series questions" },
-];
+import { ArrowRight } from "lucide-react";
 
 
 const ClockWidget = () => (
@@ -24,25 +14,20 @@ const ClockWidget = () => (
     </div>
 );
 
-const TodoWidget = () => (
+const WelcomeWidget = () => (
     <div className="px-4 text-white">
-        <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-medium text-black">what</h2>
-            <div className="flex items-center gap-2 text-black">
-                <Plus className="w-5 h-5"/>
-                <MoreVertical className="w-5 h-5"/>
+        <div className="bg-black/30 p-6 rounded-lg backdrop-blur-sm">
+            <h2 className="text-xl font-bold mb-2">Hello, Welcome!</h2>
+            <p className="text-white/80">
+                Swipe right to explore my different portfolios.
+            </p>
+            <div className="flex items-center text-xs mt-2 text-white/60 animate-pulse">
+                <span>Swipe</span>
+                <ArrowRight className="w-3 h-3 mx-1"/>
             </div>
-        </div>
-        <div className="space-y-3">
-            {tasks.map((task) => (
-                <div key={task.label} className="flex items-center gap-3">
-                    <Checkbox className="w-5 h-5 rounded-sm border-black/80 data-[state=checked]:bg-black data-[state=checked]:text-white" />
-                    <div className="flex-1 text-black">
-                        <p className="text-base">{task.label}</p>
-                        {task.date && <p className="text-xs text-orange-600">{task.date}</p>}
-                    </div>
-                </div>
-            ))}
+            <p className="text-white/80 mt-4">
+                Or check out some of my live apps in the dock below.
+            </p>
         </div>
     </div>
 );
@@ -61,8 +46,8 @@ export function HomeScreen() {
             />
             <div className="relative z-10 flex flex-col flex-grow">
                 <ClockWidget />
-                <div className="flex-grow overflow-y-auto mt-4">
-                    <TodoWidget />
+                <div className="flex-grow overflow-y-auto mt-4 px-4">
+                    <WelcomeWidget />
                 </div>
                 <AppDock />
             </div>
