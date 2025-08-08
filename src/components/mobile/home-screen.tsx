@@ -1,7 +1,9 @@
 
-import { AppDock } from "./app-dock";
-import { ArrowRight } from "lucide-react";
+"use client";
 
+import { AppDock } from "./app-dock";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ArrowRight } from "lucide-react";
 
 const ClockWidget = () => (
     <div className="text-right font-sans text-black my-4 pr-6">
@@ -14,20 +16,33 @@ const ClockWidget = () => (
     </div>
 );
 
-const WelcomeWidget = () => (
+const tutorialItems = [
+    { id: "swipe", label: "Swipe right to see my portfolios" },
+    { id: "dock", label: "Tap an app in the dock to visit" },
+    { id: "explore", label: "Explore and enjoy!" },
+];
+
+const ToDoListWidget = () => (
     <div className="px-4 text-white">
         <div className="bg-black/30 p-6 rounded-lg backdrop-blur-sm">
-            <h2 className="text-xl font-bold mb-2">Hello, Welcome!</h2>
-            <p className="text-white/80">
-                Swipe right to explore my different portfolios.
-            </p>
-            <div className="flex items-center text-xs mt-2 text-white/60 animate-pulse">
+            <h2 className="text-xl font-bold mb-4">Hello, Welcome!</h2>
+            <div className="space-y-3">
+                {tutorialItems.map((item) => (
+                    <div key={item.id} className="flex items-center">
+                        <Checkbox id={item.id} className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black" />
+                        <label
+                            htmlFor={item.id}
+                            className="ml-3 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                            {item.label}
+                        </label>
+                    </div>
+                ))}
+            </div>
+             <div className="flex items-center text-xs mt-4 text-white/60 animate-pulse">
                 <span>Swipe</span>
                 <ArrowRight className="w-3 h-3 mx-1"/>
             </div>
-            <p className="text-white/80 mt-4">
-                Or check out some of my live apps in the dock below.
-            </p>
         </div>
     </div>
 );
@@ -46,8 +61,8 @@ export function HomeScreen() {
             />
             <div className="relative z-10 flex flex-col flex-grow">
                 <ClockWidget />
-                <div className="flex-grow overflow-y-auto mt-4 px-4">
-                    <WelcomeWidget />
+                <div className="flex-grow overflow-y-auto mt-4">
+                    <ToDoListWidget />
                 </div>
                 <AppDock />
             </div>
