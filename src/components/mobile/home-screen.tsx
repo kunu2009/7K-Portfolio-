@@ -1,6 +1,7 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, MoreVertical } from "lucide-react";
+import { AppDock } from "./app-dock";
 
 const tasks = [
     { label: "Learn 5 legal terms" },
@@ -9,8 +10,6 @@ const tasks = [
     { label: "Read GK PDF (1 page)", date: "Aug 6" },
     { label: "Solve 10 direction sense questions" },
     { label: "Solve 10 number series questions" },
-    { label: "Revise 10 English vocabulary words" },
-    { label: "Solve 1 English reading comprehension" },
 ];
 
 
@@ -51,7 +50,7 @@ const TodoWidget = () => (
 
 export function HomeScreen() {
     return (
-        <div className="h-full w-full relative pt-4 flex flex-col">
+        <div className="h-full w-full relative pt-4 flex flex-col overflow-hidden">
             <div 
                 className="absolute top-10 left-4 w-40 h-20 bg-contain bg-no-repeat z-0"
                 style={{backgroundImage: "url('/images/capitol-silhouette.png')"}}
@@ -60,9 +59,12 @@ export function HomeScreen() {
                 className="absolute bottom-24 right-0 w-60 h-[300px] bg-contain bg-no-repeat z-0"
                  style={{backgroundImage: "url('/images/deer-silhouette.png')"}}
             />
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col flex-grow">
                 <ClockWidget />
-                <TodoWidget />
+                <div className="flex-grow overflow-y-auto">
+                    <TodoWidget />
+                </div>
+                <AppDock />
             </div>
         </div>
     )

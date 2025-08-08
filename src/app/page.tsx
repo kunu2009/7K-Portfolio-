@@ -10,7 +10,6 @@ import {
 import { HomeScreen } from '@/components/mobile/home-screen';
 import { PortfolioScreen } from '@/components/mobile/portfolio-screen';
 import { StatusBar } from '@/components/mobile/status-bar';
-import { AppDock } from '@/components/mobile/app-dock';
 
 export default function MobileShellPage() {
   return (
@@ -25,7 +24,7 @@ export default function MobileShellPage() {
         
         <div className="relative z-10 flex flex-col h-full">
           <StatusBar />
-          <div className="flex-grow">
+          <div className="flex-grow overflow-hidden">
             <Carousel className="w-full h-full">
               <CarouselContent className="-ml-0">
                 <CarouselItem className="pl-0">
@@ -37,7 +36,6 @@ export default function MobileShellPage() {
               </CarouselContent>
             </Carousel>
           </div>
-          <AppDock />
         </div>
       </div>
     </div>

@@ -1,24 +1,30 @@
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { AppWindow, GraduationCap, Landmark, Languages, Bot, Gamepad2, Settings } from 'lucide-react';
 
 const apps = [
-  { name: "Obsidian", icon: "/images/icon-obsidian.svg" },
-  { name: "Chess", icon: "/images/icon-chess.svg" },
-  { name: "ChatGPT", icon: "/images/icon-chatgpt.svg" },
-  { name: "Phone", icon: "/images/icon-phone.svg" },
-  { name: "7K-1", icon: "/images/icon-7k-1.svg" },
-  { name: "7K-2", icon: "/images/icon-7k-2.svg" },
+  { name: "Life App", icon: AppWindow, href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/" },
+  { name: "LawPrep", icon: GraduationCap, href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/" },
+  { name: "Itihaas", icon: Landmark, href: "https://7-k-itihaas.vercel.app/" },
+  { name: "Polyglot", icon: Languages, href: "https://7-k-polyglot.vercel.app/" },
+  { name: "Stan AI", icon: Bot, href: "/story#projects" },
+  { name: "Arcade", icon: Gamepad2, href: "/arcade" },
+  { name: "Settings", icon: Settings, href: "/settings" },
 ];
 
 export function AppDock() {
   return (
-    <div className="w-full h-24 flex justify-center items-center backdrop-blur-md bg-black/20">
-        <div className="grid grid-cols-6 gap-3 p-4">
+    <div className="w-full flex-shrink-0 h-24 flex justify-center items-center backdrop-blur-md bg-black/20 mt-4">
+        <div className="grid grid-cols-7 gap-1 p-2 w-full">
             {apps.map(app => (
-                 <Button key={app.name} variant="ghost" size="icon" className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 hover:bg-white p-1.5">
-                    <Image src={app.icon} alt={app.name} width={48} height={48} className="w-full h-auto" />
-                </Button>
+                 <Link key={app.name} href={app.href} target={app.href.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-1 text-white text-[10px] font-medium">
+                    <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors">
+                        <app.icon className="w-6 h-6" />
+                    </div>
+                    <span>{app.name}</span>
+                </Link>
             ))}
         </div>
     </div>
