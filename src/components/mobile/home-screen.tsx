@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowRight } from "lucide-react";
 
 const ClockWidget = () => (
-    <div className="text-right font-sans text-black my-4 pr-6">
+    <div className="text-right font-sans text-white my-4 pr-6">
         <p className="text-7xl font-light leading-none tracking-tighter">0216</p>
         <p className="text-xs tracking-widest">friday08august</p>
         <div className="flex items-center justify-end gap-1 text-xs opacity-80">
@@ -51,14 +51,6 @@ const ToDoListWidget = () => (
 export function HomeScreen() {
     return (
         <div className="h-full w-full relative pt-4 flex flex-col overflow-hidden">
-            <div 
-                className="absolute top-10 left-4 w-40 h-20 bg-contain bg-no-repeat z-0"
-                style={{backgroundImage: "url('/images/capitol-silhouette.png')"}}
-            />
-            <div 
-                className="absolute bottom-24 right-0 w-60 h-[300px] bg-contain bg-no-repeat z-0"
-                 style={{backgroundImage: "url('/images/deer-silhouette.png')"}}
-            />
             <div className="relative z-10 flex flex-col flex-grow">
                 <ClockWidget />
                 <div className="flex-grow overflow-y-auto mt-4">
