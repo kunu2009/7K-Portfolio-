@@ -22,7 +22,7 @@ export function AppDock() {
                  <Link key={app.name} href={app.href} target={app.href.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer" className="flex flex-col items-center justify-center gap-1 text-white text-[10px] font-medium">
                     <div className="w-11 h-11 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors">
                         {typeof app.icon === 'string' ? (
-                          <Image src={`/images/webp/${app.icon}`} alt={`${app.name} icon`} width={24} height={24} />
+                          <Image src={`/images/${app.icon}`} alt={`${app.name} icon`} width={24} height={24} />
                         ) : (
                           <app.icon className="w-6 h-6" />
                         )}
