@@ -6,7 +6,7 @@ import { Landmark, Languages, Bot, Gamepad2, Settings, GraduationCap, AppWindow 
 
 const apps = [
   { name: "7KLife", icon: "IMG_20250627_233555.webp", href: "https://life.7klawprep.me" },
-  { name: "LawPrep", icon: "file_00000000fcf861f88ee676b0b0264225.webp", href: "https://7klawprep.me/" },
+  { name: "LawPrep", icon: "lawprep-logo.svg", href: "https://7klawprep.me/" },
   { name: "Itihaas", icon: Landmark, href: "https://7-k-itihaas.vercel.app/" },
   { name: "Polyglot", icon: Languages, href: "https://7-k-polyglot.vercel.app/" },
   { name: "Stan AI", icon: Bot, href: "/story#projects" },

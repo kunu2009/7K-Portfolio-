@@ -20,7 +20,7 @@ const projects = [
         id: "law-prep",
         title: "7KLawPrep",
         description: "Web-based utilities and resources for law aspirants, featuring mock tests, performance analytics, and specialized tools for competitive entrance exam preparation.",
-        image: "https://storage.googleapis.com/pixystudio-images/830c279c-72e7-4e92-9571-5f2105156a59.png",
+        image: "/images/lawprep-logo.svg",
         imageHint: "black glove pointing",
     },
     {
@@ -150,13 +150,13 @@ const Slide = ({ project, textAnim, imageAnim, nav }: { project: typeof projects
                     </h1>
                 </motion.div>
             </div>
-            <div className="relative bg-secondary overflow-hidden">
-                <motion.div variants={imageAnim} initial="initial" animate="animate" exit="exit" className="w-full h-full">
+            <div className="relative bg-secondary overflow-hidden flex items-center justify-center">
+                <motion.div variants={imageAnim} initial="initial" animate="animate" exit="exit" className="relative w-2/3 h-2/3">
                     <Image 
                         src={project.image} 
                         alt={project.title} 
                         fill={true}
-                        style={{ objectFit: 'cover', objectPosition: 'center' }}
+                        style={{ objectFit: 'contain' }}
                         data-ai-hint={project.imageHint}
                         className="transition-transform duration-500 group-hover:scale-105"
                         priority

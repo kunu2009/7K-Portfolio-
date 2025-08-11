@@ -1,6 +1,10 @@
+
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { AppWindow, Bot, BookOpenCheck, Network } from "lucide-react";
+import { AppWindow, Bot, Network } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+const LawPrepIcon = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
 
 const ecosystemComponents = [
   {
@@ -15,7 +19,7 @@ const ecosystemComponents = [
     description: "An intelligent companion integrated across the ecosystem to automate and assist.",
   },
   {
-    icon: BookOpenCheck,
+    icon: LawPrepIcon,
     title: "CLAT Prep Tools",
     description: "Specialized resources and tools for law entrance exam preparation.",
     href: "https://7-klawprep.vercel.app/",

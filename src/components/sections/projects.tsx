@@ -1,14 +1,17 @@
+
 "use client";
 
 import React, { useState, useMemo } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { AppWindow, Bot, GraduationCap, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
+import { AppWindow, Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { LawPrepQuiz } from '@/components/mini-demos/law-prep-quiz';
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
+
+const GraduationCap = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
 
 const allProjects = [
   {
@@ -30,7 +33,7 @@ const allProjects = [
     title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
     href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
-    image: "https://placehold.co/1200x800.png",
+    image: "/images/lawprep-logo.svg",
     imageHint: "legal books justice scale",
     longDescription: "A specialized suite of tools designed to help law aspirants prepare for competitive entrance exams like CLAT and MHCET. Features include mock tests, legal knowledge quizzes, and performance analytics.",
     features: ["Mock Test Simulators", "Legal GK Quizzes", "Performance Analytics", "Resource Library"],
@@ -155,8 +158,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6">
-                        <Image src={image} alt={`${title} showcase`} layout="fill" objectFit="cover" data-ai-hint={imageHint} />
+                    <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6 bg-secondary flex items-center justify-center">
+                        <Image src={image} alt={`${title} showcase`} width={200} height={200} objectFit="contain" data-ai-hint={imageHint} />
                     </div>
                     <DialogTitle className="font-headline text-3xl">{title}</DialogTitle>
                     <DialogDescription className="text-lg">
