@@ -17,7 +17,7 @@ export default function MobileShellPage() {
       <div className="relative h-screen w-screen bg-black overflow-hidden">
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/Monochrome Phone Wallpaper 9_16.webp')"}}
+          style={{ backgroundImage: "url('/images/night-sky-bg-2.svg')"}}
         >
         </div>
         
