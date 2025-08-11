@@ -18,8 +18,8 @@ const writings: Writing[] = [
   {
     title: "Lavender Skies",
     quote: "Their love story was written in the stars, under lavender skies.",
-    coverImage: "https://placehold.co/800x1200.png",
-    hint: "glowing geometric pattern",
+    coverImage: "/images/pwa-logo.svg",
+    hint: "dark circular",
   },
 ];
 
