@@ -1,14 +1,15 @@
-
+import dynamic from 'next/dynamic';
 import Header from "@/components/header";
 import HeroSection from "@/components/sections/hero";
-import AboutSection from "@/components/sections/about";
-import PhilosophySection from "@/components/sections/philosophy";
-import EcosystemSection from "@/components/sections/ecosystem";
-import RecommendationsSection from "@/components/sections/recommendations";
-import ProjectsSection from "@/components/sections/projects";
-import WritingSection from "@/components/sections/writing";
-import JourneySection from "@/components/sections/journey";
 import Footer from "@/components/footer";
+
+const AboutSection = dynamic(() => import('@/components/sections/about'));
+const PhilosophySection = dynamic(() => import('@/components/sections/philosophy'));
+const EcosystemSection = dynamic(() => import('@/components/sections/ecosystem'));
+const RecommendationsSection = dynamic(() => import('@/components/sections/recommendations'));
+const ProjectsSection = dynamic(() => import('@/components/sections/projects'));
+const WritingSection = dynamic(() => import('@/components/sections/writing'));
+const JourneySection = dynamic(() => import('@/components/sections/journey'));
 
 export default function HomePage() {
   return (

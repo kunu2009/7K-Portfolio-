@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { ChatAssistant } from '@/components/chat-assistant';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
 
 export const metadata: Metadata = {
   title: '7K Ecosystem',
@@ -30,8 +30,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
-          {/* Chat Assistant can be re-added later if needed, but removing from mobile view for now */}
-          {/* <ChatAssistant /> */}
+          <ChatAssistantLoader />
         </ThemeProvider>
       </body>
     </html>

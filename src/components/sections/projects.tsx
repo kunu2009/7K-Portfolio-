@@ -2,14 +2,16 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { LawPrepQuiz } from '@/components/mini-demos/law-prep-quiz';
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
+
+const LawPrepQuiz = dynamic(() => import('@/components/mini-demos/law-prep-quiz').then(mod => mod.LawPrepQuiz));
 
 const SevenKLifeIcon = () => <Image src="/images/7klife-logo.svg" alt="7K Life Logo" width={32} height={32} />;
 const LawPrepIcon = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
@@ -124,15 +126,6 @@ type Project = typeof allProjects[0];
 const ProjectCard = ({ project }: { project: Project }) => {
     const { id, icon: Icon, title, description, href, image, imageHint, longDescription, features } = project;
 
-    const renderDemo = () => {
-        switch (id) {
-            case 'law-prep':
-                return <LawPrepQuiz />;
-            default:
-                return null;
-        }
-    }
-
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -185,7 +178,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
                              <div>
                                 <h3 className="font-semibold text-xl mb-4 flex items-center gap-2">Mini-Demo</h3>
                                 <div className="p-4 border rounded-lg bg-background">
-                                    <LawPrepQuiz />
+                                    <React.Suspense fallback={<div>Loading Demo...</div>}>
+                                        <LawPrepQuiz />
+                                    </React.Suspense>
                                 </div>
                             </div>
                         )}

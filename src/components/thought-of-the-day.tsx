@@ -5,18 +5,36 @@ import { generateThoughtOfTheDay, type ThoughtOfTheDayOutput } from "@/ai/flows/
 import { Skeleton } from "@/components/ui/skeleton";
 import { Lightbulb } from "lucide-react";
 
+const CACHE_KEY = 'thoughtOfTheDay';
+
 export function ThoughtOfTheDay() {
   const [data, setData] = useState<ThoughtOfTheDayOutput | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchThought() {
+      // Try to load from cache first
+      try {
+        const cachedThought = sessionStorage.getItem(CACHE_KEY);
+        if (cachedThought) {
+          setData(JSON.parse(cachedThought));
+          setLoading(false);
+          return;
+        }
+      } catch (error) {
+        // Ignore cache read errors
+        console.warn("Could not read thought from session storage", error);
+      }
+
+      // If not in cache, fetch from AI
       try {
         setLoading(true);
         const thought = await generateThoughtOfTheDay();
         setData(thought);
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify(thought));
       } catch (error) {
         console.error("Failed to fetch thought of the day", error);
+        // Set a fallback thought if the API fails
         setData({
             thought: "The greatest productivity hack is a good night's sleep.",
             author: "An Ancient Proverb"
