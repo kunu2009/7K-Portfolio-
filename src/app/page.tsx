@@ -13,28 +13,23 @@ import { StatusBar } from '@/components/mobile/status-bar';
 
 export default function MobileShellPage() {
   return (
-    <div className="bg-black flex items-center justify-center min-h-dvh">
-      <div className="relative h-screen w-screen bg-black overflow-hidden">
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/night-sky-bg-2.svg')"}}
-        >
-        </div>
-        
-        <div className="relative z-10 flex flex-col h-full">
-          <StatusBar />
-          <div className="flex-grow overflow-hidden">
-            <Carousel className="w-full h-full">
-              <CarouselContent className="-ml-0">
-                <CarouselItem className="pl-0">
-                  <HomeScreen />
-                </CarouselItem>
-                <CarouselItem className="pl-0">
-                  <PortfolioScreen />
-                </CarouselItem>
-              </CarouselContent>
-            </Carousel>
-          </div>
+    <div 
+      className="relative h-screen w-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/night-sky-bg-2.svg')"}}
+    >
+      <div className="relative z-10 flex flex-col h-full">
+        <StatusBar />
+        <div className="flex-grow overflow-hidden">
+          <Carousel className="w-full h-full">
+            <CarouselContent className="-ml-0">
+              <CarouselItem className="pl-0">
+                <HomeScreen />
+              </CarouselItem>
+              <CarouselItem className="pl-0">
+                <PortfolioScreen />
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
         </div>
       </div>
     </div>
