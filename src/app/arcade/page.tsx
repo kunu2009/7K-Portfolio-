@@ -200,7 +200,10 @@ const Game = () => {
 
 export default function ArcadePage() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center text-center p-4 bg-background overflow-hidden">
+    <div 
+      className="flex min-h-dvh flex-col items-center justify-center text-center p-4 bg-background overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/main-background.svg')"}}
+    >
       <Game />
     </div>
   );

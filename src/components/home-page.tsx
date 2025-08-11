@@ -13,7 +13,10 @@ const JourneySection = dynamic(() => import('@/components/sections/journey'));
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div 
+      className="flex min-h-dvh flex-col bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/main-background.svg')"}}
+    >
       <Header />
       <main className="flex-1">
         <HeroSection />
