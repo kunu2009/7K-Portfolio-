@@ -1,14 +1,15 @@
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { AppWindow, Bot, Network } from "lucide-react";
+import { Bot, Network } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const SevenKLifeIcon = () => <Image src="/images/7klife-logo.svg" alt="7K Life Logo" width={32} height={32} />;
 const LawPrepIcon = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
 
 const ecosystemComponents = [
   {
-    icon: AppWindow,
+    icon: SevenKLifeIcon,
     title: "7K Life App",
     description: "A central hub for managing tasks, goals, and personal knowledge.",
     href: "https://7-klife-newsss-msdh1vil9-kunu2009s-projects.vercel.app/",
@@ -47,7 +48,7 @@ const EcosystemSection = () => {
             <Card className="text-center h-full border shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out hover:ring-2 hover:ring-primary">
               <CardHeader className="items-center">
                 <div className="p-4 bg-secondary rounded-full mb-4">
-                  <component.icon className="h-8 w-8 text-primary" />
+                  <component.icon />
                 </div>
                 <CardTitle className="font-headline">{component.title}</CardTitle>
                 <CardDescription className="mt-2">{component.description}</CardDescription>

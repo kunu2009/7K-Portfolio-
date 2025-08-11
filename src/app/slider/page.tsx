@@ -13,7 +13,7 @@ const projects = [
         id: "life-app",
         title: "7K Life",
         description: "A core application for holistic life management and productivity. A central hub for tasks, goals, and personal knowledge, designed to amplify focus and eliminate friction.",
-        image: "https://storage.googleapis.com/pixystudio-images/08f731a5-82c5-4424-a74e-5e3e3b3c378b.png",
+        image: "/images/7klife-logo.svg",
         imageHint: "futuristic person red jacket",
     },
     {

@@ -3,7 +3,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { AppWindow, Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
+import { Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -11,16 +11,17 @@ import { LawPrepQuiz } from '@/components/mini-demos/law-prep-quiz';
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
 
-const GraduationCap = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
+const SevenKLifeIcon = () => <Image src="/images/7klife-logo.svg" alt="7K Life Logo" width={32} height={32} />;
+const LawPrepIcon = () => <Image src="/images/lawprep-logo.svg" alt="LawPrep Logo" width={32} height={32} />;
 
 const allProjects = [
   {
     id: "life-app",
-    icon: AppWindow,
+    icon: SevenKLifeIcon,
     title: "7K Life App",
     description: "Core application for holistic life management and productivity.",
     href: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/",
-    image: "https://placehold.co/1200x800.png",
+    image: "/images/7klife-logo.svg",
     imageHint: "abstract dashboard ui",
     longDescription: "The 7K Life App is the cornerstone of the ecosystem. It's designed to be a central hub for your entire life, integrating task management, goal setting, habit tracking, and personal knowledge management into one seamless experience.",
     features: ["Holistic Task Management", "Integrated Goal & Habit Tracking", "Personal Knowledge Base", "Seamless Syncing"],
@@ -29,7 +30,7 @@ const allProjects = [
   },
   {
     id: "law-prep",
-    icon: GraduationCap,
+    icon: LawPrepIcon,
     title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
     href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
