@@ -1,10 +1,13 @@
-import dynamic from 'next/dynamic';
-import Header from "@/components/header";
-import HeroSection from "@/components/sections/hero";
-import Footer from "@/components/footer";
+"use client";
 
-const AboutSection = dynamic(() => import('@/components/sections/about'));
+import dynamic from 'next/dynamic';
+import Header from "@/components/header-enhanced";
+import HeroSection from "@/components/sections/hero-enhanced";
+import Footer from "@/components/footer-enhanced";
+
+const AboutSection = dynamic(() => import('@/components/sections/about-enhanced'));
 const PhilosophySection = dynamic(() => import('@/components/sections/philosophy'));
+const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/portfolio-showcase'));
 const EcosystemSection = dynamic(() => import('@/components/sections/ecosystem'));
 const RecommendationsSection = dynamic(() => import('@/components/sections/recommendations'));
 const ProjectsSection = dynamic(() => import('@/components/sections/projects'));
@@ -22,6 +25,7 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         <PhilosophySection />
+        <PortfolioShowcaseSection />
         <EcosystemSection />
         <RecommendationsSection />
         <ProjectsSection />

@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/install-state.gz
 
 # Testing
 /coverage
@@ -19,17 +20,25 @@
 .DS_Store
 *.pem
 
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
 # Local Environment Variables
-.env.local
+.env
+.env*.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Vercel
+.vercel
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
 
 # Editor directories and files
 .vscode/
@@ -45,3 +54,9 @@ pnpm-debug.log*
 
 # Genkit
 .genkit/cache/
+
+# IDX
+.idx/
+
+# Modified flag
+.modified

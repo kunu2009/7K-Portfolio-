@@ -12,14 +12,14 @@ const writings: Writing[] = [
   {
     title: "Wolf and the Fox",
     quote: "In a world of shadows, even the brightest light can be deceiving.",
-    coverImage: "https://placehold.co/800x1200.png",
-    hint: "dark abstract shapes",
+    coverImage: "/images/wolf-fox-cover.jpg",
+    hint: "moonlit silhouettes couple watching wolf fox shadows",
   },
   {
     title: "Lavender Skies",
     quote: "Their love story was written in the stars, under lavender skies.",
-    coverImage: "/images/pwa-logo.svg",
-    hint: "dark circular",
+    coverImage: "/images/lavender-skies-cover.jpg",
+    hint: "romantic couple silhouettes lavender purple sunset birds",
   },
 ];
 
