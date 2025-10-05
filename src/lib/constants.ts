@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
     name: "Kunal Chheda",
     email: "kunalchheda13@gmail.com",
     github: "https://github.com/kunu2009",
-    linkedin: "https://linkedin.com/in/kunal-chheda",
+    linkedin: "https://www.linkedin.com/in/kunal-chheda-b36731388",
     twitter: "https://twitter.com/kunal7k",
   },
   keywords: [
@@ -271,7 +271,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/kunal-chheda",
+    url: "https://www.linkedin.com/in/kunal-chheda-b36731388",
     icon: "Linkedin",
     handle: "Kunal Chheda",
   },
