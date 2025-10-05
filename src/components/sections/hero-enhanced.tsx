@@ -65,7 +65,7 @@ const HeroSection = () => {
 
         <div className="opacity-0 animate-fade-in-up max-w-2xl" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-            Hi, I'm <span className="text-primary font-semibold">Kunal</span> — a 12th-grade student passionate about creating apps, learning languages, making music, and building a better future through technology.
+            I'm <span className="text-primary font-semibold">Kunal</span> — a 12th-grade Arts student with a passion for building apps, learning languages, and making music. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort.
           </p>
           <p className="text-sm sm:text-base text-muted-foreground/70 mb-8">
             <span className="inline-block">Developer</span>

@@ -35,7 +35,7 @@ export const PERSONAL_INFO = {
   name: "Kunal Chheda",
   role: "Student Developer & Polyglot",
   tagline: "Building the 7K Ecosystem — One Idea at a Time",
-  bio: "Hi, I'm Kunal — a 12th-grade student passionate about creating apps, learning languages, making music, and building a better future through technology.",
+  bio: "I'm Kunal — a 12th-grade Arts student with a passion for building apps, learning languages, and making music. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort. My apps aren't just utilities—they're quiet companions for people who need them most.",
   location: "India",
   education: "12th Grade Student",
   status: "Open for opportunities",
@@ -49,21 +49,14 @@ export const PERSONAL_INFO = {
       "HTML/CSS",
       "SQL",
     ],
-    spoken: [
-      "English",
-      "Hindi",
-      "Sanskrit",
-      "Tamil",
-      "Telugu",
-      "German",
-      "Spanish",
-      "French",
-      "Marathi",
-      "Punjabi",
-      "Gujarati",
-      "Kutchi",
-    ],
   },
+  
+  exploring: [
+    "Privacy-first app architecture",
+    "SVG animation workflows",
+    "Minimalist launcher UX",
+    "Legal tech tools for advocacy",
+  ],
   
   skills: {
     frontend: [
@@ -323,8 +316,8 @@ export const ACHIEVEMENTS = [
     label: "Projects in 7K Ecosystem",
   },
   {
-    metric: "12+",
-    label: "Languages Learning",
+    metric: "5+",
+    label: "Programming Languages",
   },
   {
     metric: "2+",

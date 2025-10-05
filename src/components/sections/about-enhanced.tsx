@@ -99,11 +99,6 @@ const AboutSection = () => {
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
                 {PERSONAL_INFO.bio}
               </p>
-              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                I'm a <span className="text-primary font-semibold">12th-standard Arts student</span> with 
-                a vision to become a corporate lawyer. My journey isn't just about law; it's about a relentless 
-                pursuit of knowledge and a passion for building things that matter.
-              </p>
             </div>
 
             {/* Quote */}
@@ -191,27 +186,24 @@ const AboutSection = () => {
               </CardContent>
             </Card>
 
-            {/* Spoken Languages */}
+            {/* What I'm Exploring Now */}
             <Card className="bg-gradient-to-br from-accent/10 to-primary/10 border-accent/20">
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Languages className="h-6 w-6 text-accent" />
-                  <h3 className="font-headline text-xl font-semibold">Spoken Languages</h3>
-                  <Badge variant="outline" className="ml-auto">
-                    {PERSONAL_INFO.languages.spoken.length}
-                  </Badge>
+                  <Target className="h-6 w-6 text-accent" />
+                  <h3 className="font-headline text-xl font-semibold">What I'm Exploring Now</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {PERSONAL_INFO.languages.spoken.map((lang) => (
-                    <Badge 
-                      key={lang} 
-                      variant="secondary" 
-                      className="text-sm py-1.5 px-3 bg-background/50 hover:bg-background transition-colors"
+                <ul className="space-y-3">
+                  {PERSONAL_INFO.exploring.map((item) => (
+                    <li 
+                      key={item}
+                      className="text-sm text-muted-foreground flex items-start space-x-3 group"
                     >
-                      {lang}
-                    </Badge>
+                      <CheckCircle2 className="h-4 w-4 text-accent mt-0.5 flex-shrink-0 group-hover:text-primary transition-colors" />
+                      <span className="group-hover:text-foreground transition-colors">{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
             </Card>
 
