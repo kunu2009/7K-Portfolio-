@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     canonical: SITE_CONFIG.url,
   },
   verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code here
+    google: '4i9I_ltIK4zIhbHtWu99Yz3fyikz_SBfGkFkAKU7zto',
   },
 };
 
@@ -109,7 +109,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Kunal Chheda",
-              "url": "https://7k-portfolio.com",
+              "url": "https://7kc.me",
               "image": "https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png",
               "sameAs": [
                 "https://github.com/kunu2009",
@@ -140,7 +140,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "7K Ecosystem - Kunal Chheda Portfolio",
-              "url": "https://7k-portfolio.com",
+              "url": "https://7kc.me",
               "description": "Student developer portfolio showcasing 20+ productivity applications",
               "author": {
                 "@type": "Person",
@@ -148,7 +148,7 @@ export default function RootLayout({
               },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://7k-portfolio.com/?s={search_term_string}",
+                "target": "https://7kc.me/?s={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

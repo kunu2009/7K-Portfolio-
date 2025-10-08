@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 
-Sitemap: https://7k-portfolio.com/sitemap.xml
+Sitemap: https://7kc.me/sitemap.xml
