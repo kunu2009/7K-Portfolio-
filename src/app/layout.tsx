@@ -12,7 +12,16 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: SITE_CONFIG.keywords,
+  keywords: [
+    ...SITE_CONFIG.keywords,
+    'student developer India',
+    '12th grade developer',
+    'chess player programmer',
+    'CLAT preparation app',
+    'teenage developer',
+    'polyglot developer',
+    'Mumbai student developer',
+  ],
   authors: [
     { 
       name: SITE_CONFIG.author.name, 
@@ -60,6 +69,12 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification code here
+  },
 };
 
 export default function RootLayout({
@@ -85,6 +100,60 @@ export default function RootLayout({
           <Toaster />
           <ChatAssistantLoader />
         </ThemeProvider>
+        
+        {/* Structured Data - Person Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Kunal Chheda",
+              "url": "https://7k-portfolio.com",
+              "image": "https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png",
+              "sameAs": [
+                "https://github.com/kunu2009",
+                "https://www.linkedin.com/in/kunal-chheda-b36731388",
+                "https://www.instagram.com/7kc_me/"
+              ],
+              "jobTitle": "Student Developer",
+              "email": "kunalchheda13@gmail.com",
+              "description": "12th-grade student developer from India, building 20+ productivity apps in the 7K Ecosystem",
+              "knowsAbout": ["Web Development", "React", "Next.js", "TypeScript", "App Development", "Chess"],
+              "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "12th Grade Student"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "India"
+              }
+            })
+          }}
+        />
+        
+        {/* Structured Data - Website Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "7K Ecosystem - Kunal Chheda Portfolio",
+              "url": "https://7k-portfolio.com",
+              "description": "Student developer portfolio showcasing 20+ productivity applications",
+              "author": {
+                "@type": "Person",
+                "name": "Kunal Chheda"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://7k-portfolio.com/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );

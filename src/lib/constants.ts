@@ -5,9 +5,9 @@
 
 export const SITE_CONFIG = {
   name: "7K Ecosystem",
-  title: "7K Ecosystem | Kunal Chheda - Developer & Polyglot",
+  title: "Kunal Chheda - Student Developer | 7K Ecosystem Portfolio",
   description:
-    "Discover the 7K ecosystem of apps built by Kunal, a 12th-grade student passionate about development, languages, chess, and lifelong learning.",
+    "20+ productivity apps built by Kunal Chheda, a 12th-grade student developer from India. Explore 7K Life, LawPrep, Polyglot & more Next.js applications.",
   url: "https://7k-portfolio.com",
   ogImage: "/og-image.png",
   author: {
