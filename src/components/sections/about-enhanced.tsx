@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { 
   Code2, 
   Languages, 
-  Music, 
   Target, 
   AppWindow, 
   Gamepad2, 
@@ -14,7 +13,8 @@ import {
   GraduationCap,
   MapPin,
   Briefcase,
-  CheckCircle2
+  CheckCircle2,
+  Brain
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/lib/constants";
 import { motion } from "framer-motion";
@@ -65,8 +65,8 @@ const interests = [
   { icon: AppWindow, text: "App Design", color: "text-purple-500" },
   { icon: Gamepad2, text: "Game Dev", color: "text-green-500" },
   { icon: Wrench, text: "Handyman Skills", color: "text-orange-500" },
-  { icon: Music, text: "Music", color: "text-pink-500" },
-  { icon: Crown, text: "Chess", color: "text-yellow-500" },
+  { icon: Crown, text: "Chess (1300)", color: "text-yellow-500" },
+  { icon: Brain, text: "Problem Solving", color: "text-pink-500" },
 ];
 
 const AboutSection = () => {
@@ -86,7 +86,7 @@ const AboutSection = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Developer, Polyglot, Musician, and Lifelong Learner
+            Developer, Polyglot, Chess Player, and Lifelong Learner
           </p>
         </motion.div>
 
@@ -210,7 +210,7 @@ const AboutSection = () => {
             {/* Interests */}
             <div>
               <h3 className="font-headline text-xl font-semibold mb-4 flex items-center space-x-2">
-                <Music className="h-5 w-5 text-primary" />
+                <Crown className="h-5 w-5 text-primary" />
                 <span>My Interests</span>
               </h3>
               <div className="flex flex-wrap gap-3">

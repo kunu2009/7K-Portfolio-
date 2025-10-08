@@ -23,7 +23,8 @@ import {
   Music,
   Layout,
   Film,
-  Newspaper
+  Newspaper,
+  Rocket
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -87,6 +88,18 @@ const portfolioVariations = [
     url: "/story",
     image: "📖",
     features: ["Story-based navigation", "Timeline view", "Rich narratives"],
+    status: "live"
+  },
+  {
+    id: "galaksi",
+    title: "Galaksi Explorer",
+    description: "Immersive portfolio experience with cosmic aesthetics. Explore my projects, skills, and journey in a beautifully animated interface.",
+    icon: Rocket,
+    color: "from-purple-600 via-violet-500 to-indigo-500",
+    tags: ["Creative", "Animated", "Unique"],
+    url: "/galaksi",
+    image: "🚀",
+    features: ["Cosmic animations", "Project showcase", "Interactive UI"],
     status: "live"
   },
   {

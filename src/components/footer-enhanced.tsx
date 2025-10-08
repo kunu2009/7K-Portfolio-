@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, Heart, ArrowUp, Instagram, Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { SITE_CONFIG, NAVIGATION, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -43,7 +43,10 @@ const Footer = () => {
                   >
                     {link.name === "GitHub" && <Github className="h-5 w-5" />}
                     {link.name === "LinkedIn" && <Linkedin className="h-5 w-5" />}
+                    {link.name === "Instagram" && <Instagram className="h-5 w-5" />}
                     {link.name === "Email" && <Mail className="h-5 w-5" />}
+                    {link.name === "Phone" && <Phone className="h-5 w-5" />}
+                    {link.name === "WhatsApp" && <MessageCircle className="h-5 w-5" />}
                   </a>
                 </Button>
               ))}

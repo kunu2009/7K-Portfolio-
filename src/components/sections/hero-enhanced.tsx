@@ -1,8 +1,9 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Instagram, Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 const particles = Array.from({ length: 50 });
 
@@ -65,14 +66,14 @@ const HeroSection = () => {
 
         <div className="opacity-0 animate-fade-in-up max-w-2xl" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-            I'm <span className="text-primary font-semibold">Kunal</span> — a 12th-grade Arts student with a passion for building apps, learning languages, and making music. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort.
+            I'm <span className="text-primary font-semibold">Kunal</span> — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort.
           </p>
           <p className="text-sm sm:text-base text-muted-foreground/70 mb-8">
             <span className="inline-block">Developer</span>
             <span className="mx-2">•</span>
             <span className="inline-block">Polyglot</span>
             <span className="mx-2">•</span>
-            <span className="inline-block">Musician</span>
+            <span className="inline-block">Chess Player</span>
             <span className="mx-2">•</span>
             <span className="inline-block">Lifelong Learner</span>
           </p>
@@ -94,21 +95,29 @@ const HeroSection = () => {
 
         {/* Social Links */}
         <div className="opacity-0 animate-fade-in-up flex gap-4" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-          <Button asChild size="icon" variant="ghost" className="rounded-full hover:bg-primary/10">
-            <a href="https://github.com/kunu2009" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button asChild size="icon" variant="ghost" className="rounded-full hover:bg-primary/10">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button asChild size="icon" variant="ghost" className="rounded-full hover:bg-primary/10">
-            <a href="mailto:kunalchheda13@gmail.com" aria-label="Email">
-              <Mail className="h-5 w-5" />
-            </a>
-          </Button>
+          {SOCIAL_LINKS.map((link) => (
+            <Button 
+              key={link.name}
+              asChild 
+              size="icon" 
+              variant="ghost" 
+              className="rounded-full hover:bg-primary/10"
+            >
+              <a 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={link.name}
+              >
+                {link.name === "GitHub" && <Github className="h-5 w-5" />}
+                {link.name === "LinkedIn" && <Linkedin className="h-5 w-5" />}
+                {link.name === "Instagram" && <Instagram className="h-5 w-5" />}
+                {link.name === "Email" && <Mail className="h-5 w-5" />}
+                {link.name === "Phone" && <Phone className="h-5 w-5" />}
+                {link.name === "WhatsApp" && <MessageCircle className="h-5 w-5" />}
+              </a>
+            </Button>
+          ))}
         </div>
 
         {/* Scroll Indicator */}
