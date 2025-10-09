@@ -24,16 +24,56 @@
   
   <!-- Main content -->
   <g transform="translate(100, 180)">
-    <!-- Robot icon simplified -->
-    <g transform="translate(50, 0) scale(0.8)">
-      <rect x="0" y="0" width="120" height="140" rx="15" fill="#2d5a7b" opacity="0.9"/>
-      <circle cx="40" cy="50" r="15" fill="#4a90b8"/>
-      <circle cx="80" cy="50" r="15" fill="#4a90b8"/>
-      <rect x="35" y="90" width="50" height="8" rx="4" fill="#4a90b8"/>
-      <!-- Cat in arms -->
-      <ellipse cx="60" cy="110" rx="25" ry="20" fill="#6eb5d9" opacity="0.8"/>
-      <!-- Triangle -->
-      <path d="M 50 125 L 60 135 L 70 125 Z" stroke="#B87333" stroke-width="2" fill="none"/>
+    <!-- Robot with Cat - Detailed Version -->
+    <g transform="translate(50, 0) scale(1.2)">
+      <!-- Large 7K background -->
+      <text x="60" y="100" font-family="Playfair Display, serif" font-size="160" font-weight="bold" fill="#B87333" opacity="0.08" text-anchor="middle">7K</text>
+      
+      <!-- Robot head -->
+      <rect x="25" y="10" width="70" height="60" rx="10" fill="#2d5a7b" opacity="0.95"/>
+      <rect x="20" y="15" width="10" height="8" fill="#1a3a4b"/>
+      <rect x="90" y="15" width="10" height="8" fill="#1a3a4b"/>
+      
+      <!-- Robot eyes -->
+      <circle cx="45" cy="35" r="8" fill="#4a90b8"/>
+      <circle cx="75" cy="35" r="8" fill="#4a90b8"/>
+      <circle cx="45" cy="35" r="4" fill="#6eb5d9"/>
+      <circle cx="75" cy="35" r="4" fill="#6eb5d9"/>
+      
+      <!-- Robot mouth -->
+      <rect x="45" y="55" width="30" height="6" rx="3" fill="#4a90b8"/>
+      
+      <!-- Robot body -->
+      <rect x="20" y="75" width="80" height="90" rx="8" fill="#2d5a7b" opacity="0.95"/>
+      <circle cx="35" cy="95" r="5" fill="#4a90b8"/>
+      <circle cx="85" cy="95" r="5" fill="#4a90b8"/>
+      
+      <!-- Cat in robot's arms -->
+      <g transform="translate(35, 110)">
+        <!-- Cat body -->
+        <ellipse cx="25" cy="25" rx="22" ry="18" fill="#6eb5d9"/>
+        
+        <!-- Cat head -->
+        <circle cx="25" cy="10" r="12" fill="#6eb5d9"/>
+        
+        <!-- Cat ears -->
+        <path d="M 18 5 L 15 0 L 20 8 Z" fill="#6eb5d9"/>
+        <path d="M 32 5 L 35 0 L 30 8 Z" fill="#6eb5d9"/>
+        
+        <!-- Cat eyes (closed/sleeping) -->
+        <path d="M 20 9 Q 22 11 24 9" stroke="#1a2332" stroke-width="1.5" fill="none"/>
+        <path d="M 26 9 Q 28 11 30 9" stroke="#1a2332" stroke-width="1.5" fill="none"/>
+        
+        <!-- Cat nose -->
+        <circle cx="25" cy="13" r="1.5" fill="#1a2332"/>
+        
+        <!-- Cat tail -->
+        <path d="M 45 30 Q 55 25 58 35" stroke="#6eb5d9" stroke-width="8" fill="none" stroke-linecap="round"/>
+      </g>
+      
+      <!-- Golden triangle (sacred geometry) -->
+      <path d="M 50 145 L 60 165 L 70 145 Z" stroke="#B87333" stroke-width="3" fill="none"/>
+      <circle cx="60" cy="155" r="2" fill="#B87333"/>
     </g>
     
     <!-- Text content -->
