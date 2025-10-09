@@ -64,25 +64,25 @@ const portfolio = [
     title: 'GiftsKraft Website',
     description: 'E-commerce platform for personalized gifts with custom product configurator and payment integration.',
     tags: ['E-commerce', 'React', 'Node.js'],
-    image: 'https://via.placeholder.com/400x250/366e8d/ffffff?text=GiftsKraft',
+    image: '/images/banner.png',
   },
   {
     title: 'TaskFlow App',
     description: 'Productivity app prototype with team collaboration features and real-time updates.',
     tags: ['Mobile App', 'Prototype', 'UI/UX'],
-    image: 'https://via.placeholder.com/400x250/17557b/ffffff?text=TaskFlow+App',
+    image: '/images/banner.png',
   },
   {
     title: 'Digital Agency Rebrand',
     description: 'Complete brand identity and website redesign for a growing digital marketing agency.',
     tags: ['Branding', 'Web Design', 'Marketing'],
-    image: 'https://via.placeholder.com/400x250/13262f/ffffff?text=Digital+Agency',
+    image: '/images/banner.png',
   },
   {
     title: 'SaaS Dashboard',
     description: 'Analytics dashboard with data visualization and user management for SaaS platform.',
     tags: ['Dashboard', 'Analytics', 'SaaS'],
-    image: 'https://via.placeholder.com/400x250/d3d0cb/13262f?text=SaaS+Dashboard',
+    image: '/images/banner.png',
   },
 ];
 
@@ -222,7 +222,9 @@ export default function ServicesPage() {
                   </div>
                   
                   <div className="mb-4 border-t pt-4">
-                    <div className="text-2xl font-bold text-primary">{service.price}</div>
+                    <div className="text-2xl font-bold text-primary">
+                      {service.price}
+                    </div>
                     <div className="text-sm text-muted-foreground">{service.period}</div>
                   </div>
                   
