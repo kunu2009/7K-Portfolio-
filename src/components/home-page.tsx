@@ -15,6 +15,7 @@ const RecommendationsSection = dynamic(() => import('@/components/sections/recom
 const ProjectsSection = dynamic(() => import('@/components/sections/projects'));
 const WritingSection = dynamic(() => import('@/components/sections/writing'));
 const JourneySection = dynamic(() => import('@/components/sections/journey'));
+const SupportSection = dynamic(() => import('@/components/sections/support-section').then(mod => ({ default: mod.SupportSection })));
 
 export default function HomePage() {
   return (
@@ -35,6 +36,7 @@ export default function HomePage() {
         <ProjectsSection />
         <WritingSection />
         <JourneySection />
+        <SupportSection />
       </main>
       <Footer />
     </div>
