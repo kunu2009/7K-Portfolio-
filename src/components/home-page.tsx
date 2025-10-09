@@ -7,6 +7,7 @@ import Footer from "@/components/footer-enhanced";
 
 const AboutSection = dynamic(() => import('@/components/sections/about-enhanced'));
 const PhilosophySection = dynamic(() => import('@/components/sections/philosophy'));
+const ServicesPromo = dynamic(() => import('@/components/sections/services-promo'));
 const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/portfolio-showcase'));
 const AppStoreSection = dynamic(() => import('@/components/sections/app-store'));
 const EcosystemSection = dynamic(() => import('@/components/sections/ecosystem'));
@@ -26,6 +27,7 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         <PhilosophySection />
+        <ServicesPromo />
         <PortfolioShowcaseSection />
         <AppStoreSection />
         <EcosystemSection />
