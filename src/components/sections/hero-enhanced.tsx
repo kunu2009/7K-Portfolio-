@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail, Instagram, Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
 const particles = Array.from({ length: 50 });
@@ -12,10 +13,22 @@ const HeroSection = () => {
     <section id="hero" className="relative h-dvh min-h-[700px] w-full flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background" />
+        {/* Banner Background Image */}
+        <div className="absolute inset-0">
+          <Image 
+            src="/images/banner.png" 
+            alt="7K Ecosystem Background Banner"
+            fill
+            priority
+            className="object-cover opacity-20"
+            quality={100}
+          />
+        </div>
+        
+        <div className="absolute inset-0 bg-background/80" />
         
         {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
         <div className="absolute inset-0 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
         
         {/* Particle Animation */}
