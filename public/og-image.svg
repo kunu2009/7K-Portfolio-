@@ -1,0 +1,49 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark blue gradient background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1419;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a2332;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f1419;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="accentGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#B87333;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#B87333;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Accent glow effects -->
+  <ellipse cx="200" cy="150" rx="300" ry="300" fill="url(#accentGlow)"/>
+  <ellipse cx="1000" cy="480" rx="250" ry="250" fill="url(#accentGlow)"/>
+  
+  <!-- Large 7K logo background -->
+  <text x="600" y="450" font-family="Playfair Display, serif" font-size="320" font-weight="bold" fill="#B87333" opacity="0.08" text-anchor="middle">7K</text>
+  
+  <!-- Main content -->
+  <g transform="translate(100, 180)">
+    <!-- Robot icon simplified -->
+    <g transform="translate(50, 0) scale(0.8)">
+      <rect x="0" y="0" width="120" height="140" rx="15" fill="#2d5a7b" opacity="0.9"/>
+      <circle cx="40" cy="50" r="15" fill="#4a90b8"/>
+      <circle cx="80" cy="50" r="15" fill="#4a90b8"/>
+      <rect x="35" y="90" width="50" height="8" rx="4" fill="#4a90b8"/>
+      <!-- Cat in arms -->
+      <ellipse cx="60" cy="110" rx="25" ry="20" fill="#6eb5d9" opacity="0.8"/>
+      <!-- Triangle -->
+      <path d="M 50 125 L 60 135 L 70 125 Z" stroke="#B87333" stroke-width="2" fill="none"/>
+    </g>
+    
+    <!-- Text content -->
+    <text x="220" y="50" font-family="Playfair Display, serif" font-size="56" font-weight="bold" fill="#B87333">Building the 7K Ecosystem</text>
+    <text x="220" y="110" font-family="PT Sans, sans-serif" font-size="32" fill="#e2d4c5" opacity="0.9">One Idea at a Time.</text>
+    
+    <text x="220" y="170" font-family="PT Sans, sans-serif" font-size="24" fill="#9ca3af">Kunal Chheda</text>
+    <text x="220" y="205" font-family="PT Sans, sans-serif" font-size="18" fill="#6b7280">12th Grade Student Developer • 20+ Apps Built</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="600" y="590" font-family="Inter, sans-serif" font-size="20" fill="#B87333" text-anchor="middle">7kc.me</text>
+</svg>

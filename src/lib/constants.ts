@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   description:
     "20+ productivity apps built by Kunal Chheda, a 12th-grade student developer from India. Explore 7K Life, LawPrep, Polyglot & more Next.js applications.",
   url: "https://7kc.me",
-  ogImage: "/og-image.png",
+  ogImage: "/og-image.svg",
   author: {
     name: "Kunal Chheda",
     email: "kunalchheda13@gmail.com",

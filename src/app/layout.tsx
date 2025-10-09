@@ -65,9 +65,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/pwa-logo.svg', sizes: 'any' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/images/pwa-logo.svg',
   },
   manifest: '/manifest.json',
   alternates: {
@@ -86,6 +89,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Favicons */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/images/pwa-logo.svg" />
+        <link rel="apple-touch-icon" href="/images/pwa-logo.svg" />
+        
+        {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
