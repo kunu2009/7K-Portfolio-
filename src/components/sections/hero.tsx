@@ -42,7 +42,12 @@ const HeroSection = () => {
 
       <div className="container flex flex-col items-center justify-center text-center z-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
         <Avatar className="h-36 w-36 mb-8 border-4 border-primary">
-          <AvatarImage src="https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png" alt="Kunal" data-ai-hint="portrait" />
+          <AvatarImage 
+            src="https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png" 
+            alt="Kunal Chheda - 12th grade student developer from India, creator of 7K Ecosystem productivity apps, polyglot learner, and chess player" 
+            data-ai-hint="portrait"
+            fetchPriority="high"
+          />
           <AvatarFallback>K</AvatarFallback>
         </Avatar>
         <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">

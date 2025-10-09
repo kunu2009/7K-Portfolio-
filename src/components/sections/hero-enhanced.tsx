@@ -50,7 +50,12 @@ const HeroSection = () => {
       <div className="container flex flex-col items-center justify-center text-center z-10 px-4">
         <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
           <Avatar className="h-36 w-36 mb-8 border-4 border-primary shadow-2xl shadow-primary/20">
-            <AvatarImage src="https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png" alt="Kunal Chheda" data-ai-hint="portrait" />
+            <AvatarImage 
+              src="https://storage.googleapis.com/fantastic-images/b1494953-e59e-4a6f-a63e-4cde8a3f6f96.png" 
+              alt="Kunal Chheda - 12th grade student developer from India, creator of 7K Ecosystem productivity apps, polyglot learner, and chess player" 
+              data-ai-hint="portrait"
+              fetchPriority="high"
+            />
             <AvatarFallback className="text-3xl font-bold">K</AvatarFallback>
           </Avatar>
         </div>

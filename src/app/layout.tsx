@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
 import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
 import { SITE_CONFIG } from '@/lib/constants';
+import { projectSchemas, organizationSchema, breadcrumbSchema } from '@/lib/schemas';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -87,6 +88,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://storage.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=PT+Sans:wght@400;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background">
@@ -154,6 +156,33 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Structured Data - Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
+        
+        {/* Structured Data - Breadcrumb Navigation */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema)
+          }}
+        />
+        
+        {/* Structured Data - Project Applications */}
+        {projectSchemas.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema)
+            }}
+          />
+        ))}
       </body>
     </html>
   );
