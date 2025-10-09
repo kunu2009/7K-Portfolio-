@@ -9,25 +9,29 @@ const services = [
     icon: Code,
     name: 'Web Development',
     desc: 'Modern websites & web apps',
-    price: '₹5k-₹15k',
+    priceMin: '5k',
+    priceMax: '15k',
   },
   {
     icon: Smartphone,
     name: 'App Development',
     desc: 'Prototypes & PWAs',
-    price: '₹2k-₹10k',
+    priceMin: '2k',
+    priceMax: '10k',
   },
   {
     icon: Search,
     name: 'SEO Optimization',
     desc: 'Boost your visibility',
-    price: '₹1k-₹3k',
+    priceMin: '1k',
+    priceMax: '3k',
   },
   {
     icon: Palette,
     name: 'UI/UX Design',
     desc: 'Beautiful interfaces',
-    price: '₹1k-₹5k',
+    priceMin: '1k',
+    priceMax: '5k',
   },
 ];
 
@@ -64,7 +68,9 @@ export default function ServicesPromo() {
                 </div>
                 <h3 className="font-semibold mb-1">{service.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{service.desc}</p>
-                <div className="text-lg font-bold text-primary">{service.price}</div>
+                <div className="text-lg font-bold text-primary">
+                  <span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMin}-<span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMax}
+                </div>
               </div>
             );
           })}

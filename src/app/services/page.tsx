@@ -15,7 +15,8 @@ const services = [
     title: 'Web Development',
     description: 'Custom websites and web applications built with modern technologies for optimal performance, SEO, and user experience.',
     features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Modern Stack'],
-    price: '₹5,000 - ₹15,000',
+    priceMin: '5,000',
+    priceMax: '15,000',
     period: 'per project',
     featured: true,
   },
@@ -24,7 +25,8 @@ const services = [
     title: 'App Prototyping / PWA',
     description: 'Interactive prototypes and Progressive Web App (PWA) setup to bring your app ideas to life quickly and efficiently.',
     features: ['Interactive Prototypes', 'PWA Development', 'User Testing', 'App Store Ready'],
-    price: '₹2,000 - ₹10,000',
+    priceMin: '2,000',
+    priceMax: '10,000',
     period: 'per project',
     featured: false,
   },
@@ -33,7 +35,8 @@ const services = [
     title: 'SEO Optimization',
     description: 'Boost your online visibility with comprehensive SEO strategies, keyword research, and technical optimization.',
     features: ['Keyword Research', 'Technical SEO', 'Content Strategy', 'Analytics Setup'],
-    price: '₹1,000 - ₹3,000',
+    priceMin: '1,000',
+    priceMax: '3,000',
     period: 'per site',
     featured: false,
   },
@@ -42,7 +45,8 @@ const services = [
     title: 'UI/UX Design',
     description: 'User-centered design solutions that create engaging, intuitive, and conversion-focused digital experiences.',
     features: ['User Research', 'Wireframing', 'Visual Design', 'Prototyping'],
-    price: '₹1,000 - ₹5,000',
+    priceMin: '1,000',
+    priceMax: '5,000',
     period: 'per project',
     featured: false,
   },
@@ -51,7 +55,8 @@ const services = [
     title: 'Basic Branding',
     description: 'Complete basic branding package including logo design, color palette, and brand guidelines.',
     features: ['Logo Design', 'Color Palette', 'Brand Guidelines', 'Landing Page'],
-    price: 'Contact for pricing',
+    priceMin: null,
+    priceMax: null,
     period: 'custom quote',
     featured: false,
   },
@@ -240,7 +245,13 @@ export default function ServicesPage() {
                   
                   <div className="mb-6 border-t border-border/50 pt-6">
                     <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                      {service.price}
+                      {service.priceMin && service.priceMax ? (
+                        <>
+                          <span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMin} - <span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMax}
+                        </>
+                      ) : (
+                        'Contact for pricing'
+                      )}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">{service.period}</div>
                   </div>
