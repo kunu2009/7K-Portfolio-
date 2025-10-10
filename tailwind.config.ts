@@ -113,6 +113,15 @@ export default {
         'move-particles': 'move-particles var(--duration, 20s) linear infinite var(--delay, 0s)',
         'blink': 'blink 1s step-end infinite',
       },
+      height: {
+        'screen-safe': '100dvh',
+      },
+      minHeight: {
+        'screen-safe': '100dvh',
+      },
+      maxHeight: {
+        'screen-safe': '100dvh',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

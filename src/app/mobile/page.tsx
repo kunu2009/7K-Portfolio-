@@ -13,7 +13,7 @@ import { StatusBar } from '@/components/mobile/status-bar';
 export default function MobileShellPage() {
   return (
     <div 
-      className="relative h-screen w-screen bg-cover bg-center bg-no-repeat"
+      className="relative mobile-screen mobile-container w-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/images/night-sky-bg-2.svg')"}}
     >
       <div className="relative z-10 flex flex-col h-full">
