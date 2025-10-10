@@ -62,13 +62,13 @@ const HeroSection = () => {
       {/* Hero Content */}
       <div className="container flex flex-col items-center justify-center text-center z-10 px-4">
         <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-          <Avatar className="h-36 w-36 mb-8 border-4 border-primary shadow-2xl shadow-primary/20 bg-background">
+          <Avatar className="h-36 w-36 mb-8 border-4 border-primary shadow-2xl shadow-primary/20">
             <AvatarImage 
               src="/favicon.ico" 
               alt="7K Brand Logo - Kunal Chheda's 7K Ecosystem" 
               data-ai-hint="7K brand logo"
               fetchPriority="high"
-              className="p-6 object-contain"
+              className="object-cover scale-150"
             />
             <AvatarFallback className="text-3xl font-bold">7K</AvatarFallback>
           </Avatar>
