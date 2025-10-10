@@ -7,28 +7,30 @@ import { ArrowLeft, BookOpen, Star, Clock, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+import { bookData } from '@/lib/book-content';
+
 const books = [
   {
     id: 'ethos',
-    title: 'Ethos and Thought',
-    author: 'Kunal Paresh Chheda',
+    title: bookData.ethos.title,
+    author: bookData.ethos.author,
     description: 'A comprehensive exploration of design philosophy, cultural values, and the intersection of Eastern and Western thought in technology and leadership.',
-    rating: 4.5,
-    pages: 193,
-    coverColor: 'from-indigo-500 to-purple-600',
+    rating: bookData.ethos.rating,
+    pages: bookData.ethos.pages,
+    coverImage: bookData.ethos.coverImage,
     category: 'Philosophy',
-    chapters: 12,
+    chapters: bookData.ethos.chapters.length,
   },
   {
     id: 'kupgames',
-    title: 'The Kup Games',
-    author: 'Kunal Paresh Chheda',
+    title: bookData.kupgames.title,
+    author: bookData.kupgames.author,
     description: 'A thrilling mystery unfolding in Kupam, where a seemingly ordinary student Rudra discovers dark secrets hidden beneath the surface of a quiet town.',
-    rating: 4.7,
-    pages: 160,
-    coverColor: 'from-slate-700 to-slate-900',
+    rating: bookData.kupgames.rating,
+    pages: bookData.kupgames.pages,
+    coverImage: bookData.kupgames.coverImage,
     category: 'Mystery',
-    chapters: 5,
+    chapters: bookData.kupgames.chapters.length,
   },
 ];
 
@@ -78,12 +80,14 @@ export default function BooksPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
             {filteredBooks.map((book) => (
               <Link key={book.id} href={`/books/${book.id}`} className="group">
-                <div className={`aspect-[2/3] rounded-xl bg-gradient-to-br ${book.coverColor} shadow-2xl transform transition-all group-hover:scale-105 group-hover:shadow-primary/20 relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white">
-                    <BookOpen className="h-12 w-12 mb-4 opacity-80" />
-                    <h3 className="text-lg font-bold text-center mb-2">{book.title}</h3>
-                    <p className="text-sm opacity-80 text-center">{book.author}</p>
-                  </div>
+                <div className="aspect-[2/3] rounded-xl shadow-2xl transform transition-all group-hover:scale-105 group-hover:shadow-primary/20 relative overflow-hidden bg-card">
+                  <Image
+                    src={book.coverImage}
+                    alt={`${book.title} cover`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  />
                 </div>
               </Link>
             ))}
@@ -93,12 +97,14 @@ export default function BooksPage() {
           {filteredBooks.length > 0 && (
             <div className="grid lg:grid-cols-2 gap-12 bg-card/30 backdrop-blur border border-border/50 rounded-3xl p-12">
               <div className="flex items-center justify-center">
-                <div className={`aspect-[2/3] w-full max-w-sm rounded-2xl bg-gradient-to-br ${filteredBooks[0].coverColor} shadow-2xl relative overflow-hidden`}>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
-                    <BookOpen className="h-16 w-16 mb-6 opacity-80" />
-                    <h3 className="text-2xl font-bold text-center mb-3">{filteredBooks[0].title}</h3>
-                    <p className="text-base opacity-80 text-center">{filteredBooks[0].author}</p>
-                  </div>
+                <div className="aspect-[2/3] w-full max-w-sm rounded-2xl shadow-2xl relative overflow-hidden">
+                  <Image
+                    src={filteredBooks[0].coverImage}
+                    alt={`${filteredBooks[0].title} cover`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -158,8 +164,14 @@ export default function BooksPage() {
               <Link key={book.id} href={`/books/${book.id}`}>
                 <div className="bg-card/50 backdrop-blur border border-border/50 rounded-2xl p-6 hover:border-primary/50 transition-all">
                   <div className="flex gap-4 mb-4">
-                    <div className={`w-24 aspect-[2/3] rounded-xl bg-gradient-to-br ${book.coverColor} shadow-lg flex-shrink-0 flex items-center justify-center`}>
-                      <BookOpen className="h-8 w-8 text-white opacity-80" />
+                    <div className="w-24 aspect-[2/3] rounded-xl shadow-lg flex-shrink-0 relative overflow-hidden">
+                      <Image
+                        src={book.coverImage}
+                        alt={`${book.title} cover`}
+                        fill
+                        className="object-cover"
+                        sizes="96px"
+                      />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-lg font-bold text-foreground mb-1 truncate">{book.title}</h3>
@@ -204,8 +216,14 @@ export default function BooksPage() {
             <div className="grid grid-cols-3 gap-4">
               {filteredBooks.map((book) => (
                 <Link key={`new-${book.id}`} href={`/books/${book.id}`}>
-                  <div className={`aspect-[2/3] rounded-lg bg-gradient-to-br ${book.coverColor} shadow-lg flex items-center justify-center`}>
-                    <BookOpen className="h-6 w-6 text-white opacity-80" />
+                  <div className="aspect-[2/3] rounded-lg shadow-lg relative overflow-hidden">
+                    <Image
+                      src={book.coverImage}
+                      alt={`${book.title} cover`}
+                      fill
+                      className="object-cover"
+                      sizes="33vw"
+                    />
                   </div>
                   <p className="text-xs font-medium text-foreground mt-2 truncate">{book.title}</p>
                   <p className="text-xs text-muted-foreground truncate">{book.author}</p>
