@@ -1,53 +1,15 @@
 'use client';
 
-import { use, useState, useEffect } from 'react';
+import { use, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, BookOpen, ChevronRight, Home, Bookmark, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const bookData: Record<string, any> = {
-  ethos: {
-    title: 'Ethos and Thought',
-    author: 'Kunal Paresh Chheda',
-    rating: 4.5,
-    pages: 193,
-    language: 'ENG',
-    coverColor: 'from-indigo-500 to-purple-600',
-    chapters: [
-      { id: 1, title: 'Chapter 1 - Ethos and Thought', pages: '1-18' },
-      { id: 2, title: 'Chapter 2 - Dharma, Karma, Moksha', pages: '19-35' },
-      { id: 3, title: 'Chapter 3 - Reason Humanism Individualism', pages: '36-52' },
-      { id: 4, title: 'Chapter 4 - Spirituality and Secularism', pages: '53-68' },
-      { id: 5, title: 'Chapter 5 - Community and Individualism', pages: '69-85' },
-      { id: 6, title: 'Chapter 6 - Symbolism in Art and Architecture', pages: '86-102' },
-      { id: 7, title: 'Chapter 7 - Education and Knowledge Systems', pages: '103-119' },
-      { id: 8, title: 'Chapter 8 - How Values Shape Tech Design', pages: '120-135' },
-      { id: 9, title: 'Chapter 9 - Globalization and Ethical Fusion', pages: '136-152' },
-      { id: 10, title: 'Chapter 10 - Rituals Habits and Inner Work', pages: '153-168' },
-      { id: 11, title: 'Chapter 11 - Organizational Design Structures', pages: '169-184' },
-      { id: 12, title: 'Chapter 12 - A Minimal Manifesto', pages: '185-193' },
-    ],
-  },
-  kupgames: {
-    title: 'The Kup Games',
-    author: 'Kunal Paresh Chheda',
-    rating: 4.7,
-    pages: 160,
-    language: 'ENG',
-    coverColor: 'from-slate-700 to-slate-900',
-    chapters: [
-      { id: 1, title: 'Chapter 1 - The Arrival at Kupam', pages: '1-32' },
-      { id: 2, title: 'Chapter 2 - The First Crack', pages: '33-64' },
-      { id: 3, title: 'Chapter 3 - The Disappearance', pages: '65-96' },
-      { id: 4, title: 'Chapter 4 - The Watcher', pages: '97-128' },
-      { id: 5, title: 'Chapter 5 - The Enemy or the Ally', pages: '129-160' },
-    ],
-  },
-};
+import { bookData } from '@/lib/book-content';
 
 export default function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
-  const book = bookData[resolvedParams.id];
+  const book = bookData[resolvedParams.id as keyof typeof bookData];
   const [activeTab, setActiveTab] = useState<'home' | 'bookmark' | 'chat'>('home');
 
   if (!book) {
@@ -83,10 +45,15 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Book Cover */}
             <div className="flex justify-center">
-              <div className={`w-64 aspect-[2/3] rounded-2xl bg-gradient-to-br ${book.coverColor} shadow-2xl flex flex-col items-center justify-center p-8 text-white`}>
-                <BookOpen className="h-20 w-20 mb-6 opacity-80" />
-                <h2 className="text-2xl font-bold text-center mb-3">{book.title}</h2>
-                <p className="text-base opacity-80 text-center">{book.author}</p>
+              <div className="w-64 aspect-[2/3] rounded-2xl shadow-2xl relative overflow-hidden">
+                <Image
+                  src={book.coverImage}
+                  alt={`${book.title} cover`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, 384px"
+                  priority
+                />
               </div>
             </div>
 
@@ -125,10 +92,7 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
         <div className="container max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-foreground mb-4">Synopsis</h2>
           <p className="text-muted-foreground leading-relaxed">
-            {resolvedParams.id === 'ethos' 
-              ? "This chapter names the two central instruments of this book and shows how they shape the world you design, lead, and live inside. I offer precise definitions, a few guiding metaphors, concrete stories from product work and community projects, and repeatable practices you can use today to surface assumptions and rewire defaults."
-              : "Jack and Jill is the story of a boy and a girl who went up a hill together. They went to fetch a pail of water, but unfortunately, their plan is disrupted when Jack came. Not only do the main characters face obstacles..."
-            }
+            {book.synopsis}
           </p>
         </div>
       </section>
@@ -137,11 +101,9 @@ export default function BookDetailPage({ params }: { params: Promise<{ id: strin
       <section className="py-12 px-4 bg-muted/30">
         <div className="container max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-foreground">
-              {book.title === 'The Kup Games' ? 'Chapters' : 'Chapter 2 - New Hope'}
-            </h2>
+            <h2 className="text-2xl font-bold text-foreground">Chapters</h2>
             <span className="text-sm text-muted-foreground">
-              Page {book.chapters[0].pages}
+              {book.chapters.length} chapters
             </span>
           </div>
 
