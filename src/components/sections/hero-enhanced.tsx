@@ -68,7 +68,7 @@ const HeroSection = () => {
               alt="7K Brand Logo - Kunal Chheda's 7K Ecosystem" 
               data-ai-hint="7K brand logo"
               fetchPriority="high"
-              className="p-4"
+              className="p-6 object-contain"
             />
             <AvatarFallback className="text-3xl font-bold">7K</AvatarFallback>
           </Avatar>
