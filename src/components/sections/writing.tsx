@@ -1,13 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Star } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 type Writing = {
   id: string;
   title: string;
   description: string;
-  coverColor: string;
+  coverImage: string;
   pages: number;
   chapters: number;
   rating: number;
@@ -19,7 +20,7 @@ const writings: Writing[] = [
     id: "ethos",
     title: "Ethos and Thought",
     description: "A comprehensive exploration of design philosophy, cultural values, and the frameworks that shape how we build products and lead organizations.",
-    coverColor: "from-indigo-500 to-purple-600",
+    coverImage: "/images/books/ethos-cover.png",
     pages: 193,
     chapters: 12,
     rating: 4.5,
@@ -29,7 +30,7 @@ const writings: Writing[] = [
     id: "kupgames",
     title: "The Kup Games",
     description: "A thrilling mystery unfolding in the halls of Kupam School, where a strategic student named Rudra must navigate dark secrets and dangerous games.",
-    coverColor: "from-slate-700 to-slate-900",
+    coverImage: "/images/books/kupgames-cover.png",
     pages: 160,
     chapters: 5,
     rating: 4.7,
@@ -66,10 +67,14 @@ const WritingSection = () => {
             <Card className="overflow-hidden group bg-secondary/50 hover:shadow-xl hover:scale-[1.03] transition-all duration-300 ease-in-out hover:ring-2 hover:ring-primary cursor-pointer h-full">
               <div className="flex flex-col sm:flex-row h-full">
                 {/* Book Cover */}
-                <div className="sm:w-1/3 min-h-[200px] sm:min-h-full">
-                  <div className={`w-full h-full bg-gradient-to-br ${writing.coverColor} flex items-center justify-center p-8`}>
-                    <BookOpen className="h-20 w-20 text-white/80" />
-                  </div>
+                <div className="sm:w-1/3 min-h-[200px] sm:min-h-full relative overflow-hidden">
+                  <Image
+                    src={writing.coverImage}
+                    alt={`${writing.title} cover`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
                 </div>
 
                 {/* Book Details */}
