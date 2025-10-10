@@ -140,3 +140,86 @@ export const breadcrumbSchema = {
     }
   ]
 };
+
+export const bookSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Ethos: Design Philosophy & Cultural Values",
+    "author": {
+      "@type": "Person",
+      "name": "Kunal Chheda",
+      "url": SITE_CONFIG.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7K Ecosystem"
+    },
+    "description": "A comprehensive exploration of design philosophy, cultural values, and the intersection of Eastern and Western thought in technology and leadership.",
+    "genre": ["Philosophy", "Design", "Technology"],
+    "inLanguage": "en",
+    "numberOfPages": 156,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "42",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "image": `${SITE_CONFIG.url}/images/lavender-skies-cover.jpg`,
+    "url": `${SITE_CONFIG.url}/books/ethos`,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "datePublished": "2024-06-15",
+    "bookFormat": "https://schema.org/EBook",
+    "copyrightYear": "2024",
+    "copyrightHolder": {
+      "@type": "Person",
+      "name": "Kunal Chheda"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "The Kup Games: Mystery in Kupam",
+    "author": {
+      "@type": "Person",
+      "name": "Kunal Chheda",
+      "url": SITE_CONFIG.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7K Ecosystem"
+    },
+    "description": "A thrilling mystery unfolding in Kupam, where a seemingly ordinary student Rudra discovers dark secrets hidden beneath the surface of a quiet town.",
+    "genre": ["Mystery", "Thriller", "Fiction"],
+    "inLanguage": "en",
+    "numberOfPages": 89,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "28",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "image": `${SITE_CONFIG.url}/images/wolf-fox-cover.jpg`,
+    "url": `${SITE_CONFIG.url}/books/kupgames`,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "datePublished": "2024-08-20",
+    "bookFormat": "https://schema.org/EBook",
+    "copyrightYear": "2024",
+    "copyrightHolder": {
+      "@type": "Person",
+      "name": "Kunal Chheda"
+    }
+  }
+];

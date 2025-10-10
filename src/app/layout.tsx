@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
 import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
 import { SITE_CONFIG } from '@/lib/constants';
-import { projectSchemas, organizationSchema, breadcrumbSchema } from '@/lib/schemas';
+import { projectSchemas, organizationSchema, breadcrumbSchema, bookSchemas } from '@/lib/schemas';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -194,6 +194,17 @@ export default function RootLayout({
         {projectSchemas.map((schema, index) => (
           <script
             key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema)
+            }}
+          />
+        ))}
+        
+        {/* Structured Data - Books */}
+        {bookSchemas.map((schema, index) => (
+          <script
+            key={`book-${index}`}
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(schema)
