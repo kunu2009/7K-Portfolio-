@@ -62,7 +62,19 @@ const chatAssistantFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      
+      // Check if output is null or undefined
+      if (!output) {
+        console.error('Gemini API returned null/undefined output');
+        return 'Sorry, I encountered an issue connecting to the AI service. Please check if the API key is set correctly in Vercel environment variables.';
+      }
+      
+      return output;
+    } catch (error) {
+      console.error('Error in chatAssistantFlow:', error);
+      return 'Sorry, I encountered an error. Please make sure GOOGLE_API_KEY is set correctly in Vercel.';
+    }
   }
 );
