@@ -23,7 +23,15 @@ const writings: Writing[] = [
   },
 ];
 
+// TOGGLE: Set to true to show, false to hide
+const SHOW_WRITING_SECTION = false;
+
 const WritingSection = () => {
+  // Hide section if toggle is false
+  if (!SHOW_WRITING_SECTION) {
+    return null;
+  }
+
   return (
     <section id="writing" className="container py-24 sm:py-32 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
        <div className="text-center max-w-3xl mx-auto">
