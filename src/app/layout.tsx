@@ -107,6 +107,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=PT+Sans:wght@400;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+        {/* Favicons / PWA icons - explicit links to ensure browsers pick them up */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="mask-icon" href="/favicon.svg" color="#B87333" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#B87333" />
       </head>
       <body className="font-body antialiased bg-background">
         <ThemeProvider
