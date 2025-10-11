@@ -1,0 +1,35 @@
+# Security Policy
+
+Contact: kunalchheda13@gmail.com
+Contact: https://github.com/kunu2009
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://7kc.me/.well-known/security.txt
+
+# Security Disclosure
+
+If you discover a security vulnerability in this portfolio or any of the 7K Ecosystem applications, please report it to us responsibly.
+
+We take security seriously and appreciate your efforts to disclose your findings responsibly.
+
+## Reporting Process
+
+1. Email: kunalchheda13@gmail.com with [SECURITY] in the subject line
+2. GitHub: Open a security advisory at https://github.com/kunu2009/7K-Portfolio-/security/advisories
+3. Provide detailed information about the vulnerability
+4. Allow reasonable time for us to respond before public disclosure
+
+## What to Include
+
+- Type of vulnerability
+- Steps to reproduce
+- Potential impact
+- Suggested fix (if you have one)
+
+## Our Commitment
+
+- We will acknowledge receipt within 48 hours
+- We will provide regular updates on our progress
+- We will credit you for the discovery (unless you prefer to remain anonymous)
+
+Thank you for helping keep 7K Ecosystem secure!
