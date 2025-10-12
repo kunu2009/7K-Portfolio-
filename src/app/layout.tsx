@@ -1,10 +1,37 @@
 import type { Metadata, Viewport } from 'next';
+import { Inter, Playfair_Display, PT_Sans } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
 import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
+import { ServiceWorkerRegistration } from '@/components/service-worker-registration';
 import { SITE_CONFIG } from '@/lib/constants';
 import { projectSchemas, organizationSchema, breadcrumbSchema, bookSchemas } from '@/lib/schemas';
+
+// Optimize font loading with Next.js Font optimization
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '700', '900'],
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true,
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-playfair',
+  display: 'swap',
+  preload: false,
+});
+
+const ptSans = PT_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-pt-sans',
+  display: 'swap',
+  preload: false,
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -101,12 +128,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable} ${ptSans.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preconnect to critical domains - removed Google Fonts as using Next.js font optimization */}
         <link rel="preconnect" href="https://storage.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=PT+Sans:wght@400;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+        <link rel="dns-prefetch" href="https://storage.googleapis.com" />
 
         {/* Favicons / PWA icons - explicit links to ensure browsers pick them up */}
         <link rel="icon" href="/favicon.ico" />
@@ -125,7 +151,8 @@ export default function RootLayout({
         {/* PWA Splash Screen - Android */}
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className="font-body antialiased bg-background">
+      <body className={`${inter.className} font-body antialiased bg-background`}>
+        <ServiceWorkerRegistration />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

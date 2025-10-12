@@ -23,11 +23,23 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    // Image optimization for mobile
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
-  // Optimize build performance
+  // Optimize build performance and bundle size
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion'],
+    webpackMemoryOptimizations: true,
   },
+  // Enable compression
+  compress: true,
+  // Generate standalone output for faster deployments
+  output: 'standalone',
+  // Optimize JavaScript
+  swcMinify: true,
   // Exclude AI files from build to speed up deployment
   webpack: (config, { isServer }) => {
     if (!isServer) {
