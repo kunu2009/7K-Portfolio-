@@ -4,7 +4,7 @@
   "description": "Student developer building 20+ productivity apps",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
+  "background_color": "#D4C4B0",
   "theme_color": "#B87333",
   "icons": [
     {
@@ -16,6 +16,13 @@
       "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/splash-screen.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
     }
-  ]
+  ],
+  "splash_pages": null
 }

@@ -116,6 +116,14 @@ export default function RootLayout({
         <link rel="mask-icon" href="/favicon.svg" color="#B87333" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#B87333" />
+        
+        {/* PWA Splash Screen - iOS */}
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        {/* PWA Splash Screen - Android */}
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className="font-body antialiased bg-background">
         <ThemeProvider
