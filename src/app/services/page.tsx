@@ -342,7 +342,7 @@ export default function ServicesPage() {
 
             <div className="grid gap-6 md:grid-cols-3">
               <a 
-                href="mailto:hello@7kstudios.com"
+                href="mailto:7kmindbeatss@gmail.com"
                 className="group flex flex-col items-center gap-4 rounded-2xl border border-border/50 bg-card/50 backdrop-blur p-8 hover:bg-card hover:border-primary/30 hover:-translate-y-1 transition-all"
               >
                 <div className="rounded-full bg-primary/10 p-4 ring-1 ring-primary/20 group-hover:bg-primary/20 transition-colors">
@@ -350,7 +350,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="text-center">
                   <div className="font-semibold text-foreground mb-1">Email Us</div>
-                  <div className="text-sm text-muted-foreground">hello@7kstudios.com</div>
+                  <div className="text-sm text-muted-foreground">7kmindbeatss@gmail.com</div>
                 </div>
               </a>
 
