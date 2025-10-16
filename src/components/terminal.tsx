@@ -49,7 +49,7 @@ const fileSystem = {
     },
     '/contact.md': {
         type: 'file',
-        content: <div>You can reach me at: <a href="mailto:example@email.com" className="text-green-400 underline">example@email.com</a></div>
+        content: <div>You can reach me at: <a href="mailto:7kmindbeatss@gmail.com" className="text-green-400 underline">7kmindbeatss@gmail.com</a></div>
     },
     '/projects': {
         type: 'dir',

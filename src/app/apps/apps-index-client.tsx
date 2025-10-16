@@ -244,7 +244,7 @@ export default function AppsIndexClient() {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" asChild>
-                <Link href="/settings">Get in Touch</Link>
+                <a href="mailto:7kmindbeatss@gmail.com">Get in Touch</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="https://github.com/kunu2009" target="_blank" rel="noopener noreferrer">

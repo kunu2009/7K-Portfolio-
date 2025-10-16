@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   ogImage: "/og-image.png",
   author: {
     name: "Kunal Chheda",
-    email: "kunalchheda13@gmail.com",
+    email: "7kmindbeatss@gmail.com",
     github: "https://github.com/kunu2009",
     linkedin: "https://www.linkedin.com/in/kunal-chheda-b36731388",
     twitter: "https://twitter.com/kunal7k",
@@ -510,9 +510,9 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "Email",
-    url: "mailto:kunalchheda13@gmail.com",
+    url: "mailto:7kmindbeatss@gmail.com",
     icon: "Mail",
-    handle: "kunalchheda13@gmail.com",
+    handle: "7kmindbeatss@gmail.com",
   },
   {
     name: "Phone",

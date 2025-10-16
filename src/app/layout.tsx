@@ -143,10 +143,16 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#B87333" />
         
-        {/* PWA Splash Screen - iOS */}
+        {/* PWA Splash Screen - iOS - Multiple sizes for different devices */}
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
+        <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
         <link rel="apple-touch-startup-image" href="/splash-screen.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="7K Portfolio" />
         
         {/* PWA Splash Screen - Android */}
         <meta name="mobile-web-app-capable" content="yes" />
@@ -180,7 +186,7 @@ export default function RootLayout({
                 "https://www.instagram.com/7kc_me/"
               ],
               "jobTitle": "Student Developer",
-              "email": "kunalchheda13@gmail.com",
+              "email": "7kmindbeatss@gmail.com",
               "description": "12th-grade student developer from India, building 20+ productivity apps in the 7K Ecosystem",
               "knowsAbout": ["Web Development", "React", "Next.js", "TypeScript", "App Development", "Chess"],
               "alumniOf": {
