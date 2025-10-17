@@ -103,6 +103,18 @@ const portfolioVariations = [
     status: "live"
   },
   {
+    id: "designer-card",
+    title: "Designer Card Portfolio",
+    description: "Modern card-based portfolio with elegant design, showcasing founder profile with professional presentation.",
+    icon: Camera,
+    color: "from-teal-600 via-emerald-500 to-green-500",
+    tags: ["Designer", "Modern", "Professional"],
+    url: "/portfolio-card",
+    image: "/images/porfolio desgin image.png",
+    features: ["Professional card design", "Founder profile", "Elegant layout"],
+    status: "live"
+  },
+  {
     id: "3d-experience",
     title: "3D Experience",
     description: "Immersive 3D world with interactive objects and spatial navigation.",
