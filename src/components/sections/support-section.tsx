@@ -5,8 +5,14 @@ import { Heart, Copy, Check, QrCode, Smartphone, ExternalLink } from 'lucide-rea
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { portfolioSections } from '@/lib/sections-data';
 
 export function SupportSection() {
+  const { support } = portfolioSections;
+  
+  // Don't render if disabled
+  if (!support.enabled) return null;
+  
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
   const upiId = '8591247148@fam';
@@ -50,14 +56,13 @@ export function SupportSection() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
             <Heart className="w-4 h-4" />
-            <span className="text-sm font-medium">Support My Work</span>
+            <span className="text-sm font-medium">{support.subtitle}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Buy Me a Coffee ☕
+            {support.title}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            If you appreciate my work and would like to support my journey, 
-            you can send a donation via UPI. Every contribution helps me create more!
+            {support.description}
           </p>
         </div>
 

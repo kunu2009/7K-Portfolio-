@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/lib/constants";
 import { motion } from "framer-motion";
+import { portfolioSections } from "@/lib/sections-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -70,6 +71,11 @@ const interests = [
 ];
 
 const AboutSection = () => {
+  const { about } = portfolioSections;
+  
+  // Don't render if disabled
+  if (!about.enabled) return null;
+  
   return (
     <section id="about" className="container py-16 md:py-24 lg:py-32">
       <motion.div
@@ -82,11 +88,11 @@ const AboutSection = () => {
         <motion.div className="text-center mb-12 md:mb-16" variants={fadeInUp}>
           <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              About Me
+              {about.title}
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Developer, Polyglot, Chess Player, and Lifelong Learner
+            {about.subtitle}
           </p>
         </motion.div>
 
@@ -97,7 +103,7 @@ const AboutSection = () => {
             {/* Bio Text */}
             <div className="space-y-4">
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                {PERSONAL_INFO.bio}
+                {about.description}
               </p>
             </div>
 

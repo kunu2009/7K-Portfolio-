@@ -5,10 +5,16 @@ import { ArrowDown, Github, Linkedin, Mail, Instagram, Phone, MessageCircle } fr
 import Link from "next/link";
 import Image from "next/image";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import { portfolioSections } from "@/lib/sections-data";
 
 const particles = Array.from({ length: 50 });
 
 const HeroSection = () => {
+  const { hero } = portfolioSections;
+  
+  // Don't render if disabled
+  if (!hero.enabled) return null;
+  
   return (
     <section id="hero" className="relative h-dvh min-h-[700px] w-full flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
@@ -76,40 +82,33 @@ const HeroSection = () => {
 
         <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
           <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent">
-            Building the 7K Ecosystem
+            {hero.title}
           </h1>
           <p className="font-headline text-2xl sm:text-3xl md:text-4xl text-muted-foreground/80 mb-2">
-            One Idea at a Time.
+            {hero.subtitle}
           </p>
         </div>
 
         <div className="opacity-0 animate-fade-in-up max-w-2xl" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-            I'm <span className="text-primary font-semibold">Kunal</span> — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort.
-          </p>
-          <p className="text-sm sm:text-base text-muted-foreground/70 mb-8">
-            <span className="inline-block">Developer</span>
-            <span className="mx-2">•</span>
-            <span className="inline-block">Polyglot</span>
-            <span className="mx-2">•</span>
-            <span className="inline-block">Chess Player</span>
-            <span className="mx-2">•</span>
-            <span className="inline-block">Lifelong Learner</span>
+            {hero.description}
           </p>
         </div>
 
         {/* CTA Buttons */}
         <div className="opacity-0 animate-fade-in-up flex flex-col sm:flex-row gap-4 mb-8" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           <Button asChild size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-all">
-            <Link href="#projects">
-              Explore My Work <ArrowDown className="ml-2 h-4 w-4" />
+            <Link href={hero.ctaLink}>
+              {hero.ctaText} <ArrowDown className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-full">
-            <Link href="#contact">
-              Get In Touch <Mail className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          {hero.secondaryCtaText && hero.secondaryCtaLink && (
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <Link href={hero.secondaryCtaLink}>
+                {hero.secondaryCtaText} <Mail className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          )}
         </div>
 
         {/* Social Links */}
