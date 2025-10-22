@@ -1,91 +1,47 @@
-"use client";"use client";
+"use client";
 
+import { ArrowLeft, Mail, Github, Linkedin, ExternalLink, Code2, Palette, Layers, Zap } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
-
-import { useState } from "react";import { ArrowLeft, Mail, Github, Linkedin, ExternalLink, Code2, Palette, Layers, Zap } from "lucide-react";
-
-import { Button } from "@/components/ui/button";import Link from "next/link";
-
-import { Layers } from "lucide-react";import Image from "next/image";
-
-import PortfolioCardStyle1 from "./style-1";import { Button } from "@/components/ui/button";
-
-import PortfolioCardStyle2 from "./style-2";import { Badge } from "@/components/ui/badge";
-
-import PortfolioCardStyle3 from "./style-3";import { Card, CardContent } from "@/components/ui/card";
-
-
-
-const styles = [export default function PortfolioCard() {
-
-  { id: 1, name: "Professional", component: PortfolioCardStyle1 },  const skills = [
-
-  { id: 2, name: "Creative", component: PortfolioCardStyle2 },    { name: "React & Next.js", level: "Expert", color: "from-blue-500 to-cyan-500" },
-
-  { id: 3, name: "Minimal", component: PortfolioCardStyle3 },    { name: "TypeScript", level: "Advanced", color: "from-blue-600 to-indigo-500" },
-
-];    { name: "UI/UX Design", level: "Advanced", color: "from-purple-500 to-pink-500" },
-
+export default function PortfolioCard() {
+  const skills = [
+    { name: "React & Next.js", level: "Expert", color: "from-blue-500 to-cyan-500" },
+    { name: "TypeScript", level: "Advanced", color: "from-blue-600 to-indigo-500" },
+    { name: "UI/UX Design", level: "Advanced", color: "from-purple-500 to-pink-500" },
     { name: "Tailwind CSS", level: "Expert", color: "from-teal-500 to-emerald-500" },
+    { name: "Firebase", level: "Advanced", color: "from-orange-500 to-red-500" },
+    { name: "Python", level: "Intermediate", color: "from-yellow-500 to-amber-500" },
+  ];
 
-export default function PortfolioCardPage() {    { name: "Firebase", level: "Advanced", color: "from-orange-500 to-red-500" },
+  const projects = [
+    {
+      title: "7K Life Ecosystem",
+      description: "Comprehensive productivity suite with 20+ integrated apps",
+      tags: ["Next.js", "Firebase", "TypeScript"],
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      title: "LawPrep CLAT",
+      description: "Interactive CLAT preparation platform for law aspirants",
+      tags: ["React", "AI", "Education"],
+      color: "from-purple-500 to-pink-600"
+    },
+    {
+      title: "Polyglot Learning",
+      description: "Multi-language learning platform with AI assistance",
+      tags: ["Next.js", "AI/ML", "Education"],
+      color: "from-emerald-500 to-teal-600"
+    },
+  ];
 
-  const [activeStyle, setActiveStyle] = useState(1);    { name: "Python", level: "Intermediate", color: "from-yellow-500 to-amber-500" },
-
-  const StyleComponent = styles.find(s => s.id === activeStyle)?.component || PortfolioCardStyle1;  ];
-
-
-
-  return (  const projects = [
-
-    <div className="relative">    {
-
-      {/* Style Switcher - Floating */}      title: "7K Life Ecosystem",
-
-      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 bg-background/80 backdrop-blur-lg border border-border rounded-lg p-3 shadow-xl">      description: "Comprehensive productivity suite with 20+ integrated apps",
-
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">      tags: ["Next.js", "Firebase", "TypeScript"],
-
-          <Layers className="h-3.5 w-3.5" />      color: "from-blue-500 to-indigo-600"
-
-          <span>Card Style</span>    },
-
-        </div>    {
-
-        {styles.map((style) => (      title: "LawPrep CLAT",
-
-          <Button      description: "Interactive CLAT preparation platform for law aspirants",
-
-            key={style.id}      tags: ["React", "AI", "Education"],
-
-            variant={activeStyle === style.id ? "default" : "outline"}      color: "from-purple-500 to-pink-600"
-
-            size="sm"    },
-
-            onClick={() => setActiveStyle(style.id)}    {
-
-            className="text-xs w-full"      title: "Polyglot Learning",
-
-          >      description: "Multi-language learning platform with AI assistance",
-
-            {style.name}      tags: ["Next.js", "AI/ML", "Education"],
-
-          </Button>      color: "from-emerald-500 to-teal-600"
-
-        ))}    },
-
-      </div>  ];
-
-
-
-      <StyleComponent />  return (
-
-    </div>    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-stone-100 dark:from-slate-950 dark:via-gray-950 dark:to-stone-950">
-
-  );      <div className="fixed inset-0 opacity-[0.03] dark:opacity-[0.02]">
-
-}        <div className="absolute inset-0" style={{
-
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-stone-100 dark:from-slate-950 dark:via-gray-950 dark:to-stone-950">
+      <div className="fixed inset-0 opacity-[0.03] dark:opacity-[0.02]">
+        <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
           backgroundSize: '40px 40px'
         }} />

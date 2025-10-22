@@ -1,91 +1,47 @@
-"use client";"use client";
+"use client";
 
-
-
-import { useState } from "react";import { useState, useEffect } from "react";
-
-import { Button } from "@/components/ui/button";import { motion, AnimatePresence } from "framer-motion";
-
-import { Layers } from "lucide-react";import { 
-
-import GalaksiStyle1 from "./style-1";  Rocket, 
-
-import GalaksiStyle2 from "./style-2";  Home, 
-
-import GalaksiStyle3 from "./style-3";  User, 
-
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Rocket, 
+  Home, 
+  User, 
   Briefcase, 
-
-const styles = [  Mail, 
-
-  { id: 1, name: "Solar System", component: GalaksiStyle1 },  ChevronDown,
-
-  { id: 2, name: "Planet Explorer", component: GalaksiStyle2 },  Star,
-
-  { id: 3, name: "Cosmic Journey", component: GalaksiStyle3 },  Code2,
-
-];  Languages,
-
+  Mail, 
+  ChevronDown,
+  Star,
+  Code2,
+  Languages,
   Sparkles,
-
-export default function GalaksiPage() {  ArrowRight,
-
-  const [activeStyle, setActiveStyle] = useState(1);  Grid3x3,
-
-  const StyleComponent = styles.find(s => s.id === activeStyle)?.component || GalaksiStyle1;  Settings,
-
+  ArrowRight,
+  Grid3x3,
+  Settings,
   Crown,
+  Target,
+  Brain
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { PERSONAL_INFO, PROJECTS } from "@/lib/constants";
 
-  return (  Target,
-
-    <div className="relative">  Brain
-
-      {/* Style Switcher - Floating */}} from "lucide-react";
-
-      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 bg-background/80 backdrop-blur-lg border border-border rounded-lg p-3 shadow-xl">import { Button } from "@/components/ui/button";
-
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">import { Card } from "@/components/ui/card";
-
-          <Layers className="h-3.5 w-3.5" />import { Badge } from "@/components/ui/badge";
-
-          <span>Galaxy Style</span>import Link from "next/link";
-
-        </div>import { PERSONAL_INFO, PROJECTS } from "@/lib/constants";
-
-        {styles.map((style) => (
-
-          <Buttonconst aboutCards = [
-
-            key={style.id}  {
-
-            variant={activeStyle === style.id ? "default" : "outline"}    title: "Who I Am",
-
-            size="sm"    content: PERSONAL_INFO.bio,
-
-            onClick={() => setActiveStyle(style.id)}    icon: "👨‍💻"
-
-            className="text-xs w-full"  },
-
-          >  {
-
-            {style.name}    title: "My Mission",
-
-          </Button>    content: "Building the 7K Ecosystem — a collection of apps designed to empower, educate, and comfort. Each tool is crafted with care to make life easier and more productive.",
-
-        ))}    icon: "�"
-
-      </div>  },
-
+const aboutCards = [
   {
-
-      <StyleComponent />    title: "My Journey",
-
-    </div>    content: "From a 12th-grade Arts student to a developer creating meaningful technology. I balance my dream of becoming a corporate lawyer with my passion for building tools that help people.",
-
-  );    icon: "✨"
-
-}  }
-
+    title: "Who I Am",
+    content: PERSONAL_INFO.bio,
+    icon: "👨‍💻"
+  },
+  {
+    title: "My Mission",
+    content: "Building the 7K Ecosystem — a collection of apps designed to empower, educate, and comfort. Each tool is crafted with care to make life easier and more productive.",
+    icon: "�"
+  },
+  {
+    title: "My Journey",
+    content: "From a 12th-grade Arts student to a developer creating meaningful technology. I balance my dream of becoming a corporate lawyer with my passion for building tools that help people.",
+    icon: "✨"
+  }
 ];
 
 const featuredProjects = [

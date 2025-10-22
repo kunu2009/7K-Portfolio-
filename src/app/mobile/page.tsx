@@ -1,36 +1,44 @@
 "use client";
 
-import React from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { HomeScreen } from '@/components/mobile/home-screen';
-import { PortfolioScreen } from '@/components/mobile/portfolio-screen';
-import { StatusBar } from '@/components/mobile/status-bar';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Layers } from "lucide-react";
+import MobileStyle1 from "./style-1";
+import MobileStyle2 from "./style-2";
+import MobileStyle3 from "./style-3";
+
+const styles = [
+  { id: 1, name: "iOS", component: MobileStyle1 },
+  { id: 2, name: "Android", component: MobileStyle2 },
+  { id: 3, name: "Minimal", component: MobileStyle3 },
+];
 
 export default function MobileShellPage() {
+  const [activeStyle, setActiveStyle] = useState(1);
+  const StyleComponent = styles.find(s => s.id === activeStyle)?.component || MobileStyle1;
+
   return (
-    <div 
-      className="relative mobile-screen mobile-container w-screen bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/night-sky-bg-2.svg')"}}
-    >
-      <div className="relative z-10 flex flex-col h-full">
-        <StatusBar />
-        <div className="flex-grow overflow-hidden">
-          <Carousel className="w-full h-full">
-            <CarouselContent className="-ml-0">
-              <CarouselItem className="pl-0">
-                <HomeScreen />
-              </CarouselItem>
-              <CarouselItem className="pl-0">
-                <PortfolioScreen />
-              </CarouselItem>
-            </CarouselContent>
-          </Carousel>
+    <div className="relative">
+      {/* Style Switcher - Floating */}
+      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 bg-background/80 backdrop-blur-lg border border-border rounded-lg p-3 shadow-xl">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+          <Layers className="h-3.5 w-3.5" />
+          <span>Mobile Style</span>
         </div>
+        {styles.map((style) => (
+          <Button
+            key={style.id}
+            variant={activeStyle === style.id ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveStyle(style.id)}
+            className="text-xs w-full"
+          >
+            {style.name}
+          </Button>
+        ))}
       </div>
+
+      <StyleComponent />
     </div>
   );
 }
