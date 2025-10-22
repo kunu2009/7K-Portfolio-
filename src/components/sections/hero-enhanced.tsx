@@ -1,3 +1,4 @@
+"use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -6,17 +7,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { portfolioSections } from "@/lib/sections-data";
+import { useEffect, useState } from "react";
 
-const particles = Array.from({ length: 50 });
+const particles = Array.from({ length: 30 }); // Reduced for performance
 
 const HeroSection = () => {
   const { hero } = portfolioSections;
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   
   // Don't render if disabled
   if (!hero.enabled) return null;
   
   return (
-    <section id="hero" className="relative h-dvh min-h-[700px] w-full flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-20 sm:py-0">
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         {/* Banner Background Image */}
@@ -26,19 +33,20 @@ const HeroSection = () => {
             alt="7K Ecosystem Background Banner"
             fill
             priority
-            className="object-cover opacity-20"
-            quality={100}
+            className="object-cover object-center opacity-20"
+            quality={85}
+            sizes="100vw"
           />
         </div>
         
-        <div className="absolute inset-0 bg-background/80" />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]" />
         
         {/* Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
         <div className="absolute inset-0 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
         
-        {/* Particle Animation */}
-        <div className="absolute inset-0 z-0 h-full w-full">
+        {/* Particle Animation - Hidden on mobile for performance */}
+        <div className="absolute inset-0 z-0 h-full w-full hidden md:block">
             {particles.map((_, i) => {
                 const isLeft = Math.random() > 0.5;
                 const xDist = `${Math.random() * (isLeft ? -20 : 20)}vw`;
@@ -66,64 +74,72 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="container flex flex-col items-center justify-center text-center z-10 px-4">
-        <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-          <Avatar className="h-36 w-36 mb-8 border-4 border-primary shadow-2xl shadow-primary/20">
+      <div className="container relative flex flex-col items-center justify-center text-center z-10 px-4 sm:px-6 max-w-5xl mx-auto">
+        <div 
+          className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '100ms' }}
+        >
+          <Avatar className="h-24 w-24 sm:h-32 sm:w-32 md:h-36 md:w-36 mb-6 sm:mb-8 border-4 border-primary shadow-2xl shadow-primary/20">
             <AvatarImage 
               src="/favicon.ico" 
-              alt="7K Brand Logo - Kunal Chheda's 7K Ecosystem" 
-              data-ai-hint="7K brand logo"
+              alt="7K Brand Logo" 
               fetchPriority="high"
               className="object-cover scale-150"
             />
-            <AvatarFallback className="text-3xl font-bold">7K</AvatarFallback>
+            <AvatarFallback className="text-2xl sm:text-3xl font-bold">7K</AvatarFallback>
           </Avatar>
         </div>
 
-        <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-          <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent">
+        <div 
+          className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '200ms' }}
+        >
+          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent px-2">
             {hero.title}
           </h1>
-          <p className="font-headline text-2xl sm:text-3xl md:text-4xl text-muted-foreground/80 mb-2">
+          <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground/80 mb-3 sm:mb-4 px-4">
             {hero.subtitle}
           </p>
         </div>
 
-        <div className="opacity-0 animate-fade-in-up max-w-2xl" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
+        <div 
+          className={`transition-all duration-700 max-w-2xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '300ms' }}
+        >
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-4">
             {hero.description}
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="opacity-0 animate-fade-in-up flex flex-col sm:flex-row gap-4 mb-8" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-          <Button asChild size="lg" className="rounded-full shadow-lg hover:shadow-xl transition-all">
-            <Link href={hero.ctaLink}>
-              {hero.ctaText} <ArrowDown className="ml-2 h-4 w-4" />
-            </Link>
+        <div 
+          className={`transition-all duration-700 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto px-4 sm:px-0 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '400ms' }}
+        >
+          <Button asChild size="lg" className="shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow w-full sm:w-auto">
+            <Link href="#projects">View My Work</Link>
           </Button>
-          {hero.secondaryCtaText && hero.secondaryCtaLink && (
-            <Button asChild size="lg" variant="outline" className="rounded-full">
-              <Link href={hero.secondaryCtaLink}>
-                {hero.secondaryCtaText} <Mail className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          )}
+          <Button asChild variant="outline" size="lg" className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto">
+            <Link href="#contact">Get In Touch</Link>
+          </Button>
         </div>
 
         {/* Social Links */}
-        <div className="opacity-0 animate-fade-in-up flex gap-4" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+        <div 
+          className={`transition-all duration-700 flex flex-wrap gap-2 sm:gap-3 mb-16 sm:mb-12 justify-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '500ms' }}
+        >
           {SOCIAL_LINKS.map((link) => (
             <Button 
               key={link.name}
-              asChild 
-              size="icon" 
               variant="ghost" 
-              className="rounded-full hover:bg-primary/10"
+              size="icon" 
+              className="rounded-full hover:bg-primary/10 transition-colors" 
+              asChild
             >
-              <a 
+              <Link 
                 href={link.url} 
-                target="_blank" 
+                target={link.name === 'Email' || link.name === 'Phone' ? '_self' : '_blank'}
                 rel="noopener noreferrer" 
                 aria-label={link.name}
               >
@@ -133,16 +149,20 @@ const HeroSection = () => {
                 {link.name === "Email" && <Mail className="h-5 w-5" />}
                 {link.name === "Phone" && <Phone className="h-5 w-5" />}
                 {link.name === "WhatsApp" && <MessageCircle className="h-5 w-5" />}
-              </a>
+              </Link>
             </Button>
           ))}
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-          <div className="animate-bounce">
-            <ArrowDown className="h-6 w-6 text-muted-foreground/50" />
-          </div>
+      </div>
+      
+      {/* Scroll Indicator - Moved outside content div to prevent cutoff */}
+      <div 
+        className={`transition-all duration-700 absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        style={{ transitionDelay: '600ms' }}
+      >
+        <div className="flex flex-col items-center gap-2 text-muted-foreground">
+          <span className="text-xs sm:text-sm">Scroll to explore</span>
+          <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce" />
         </div>
       </div>
     </section>
