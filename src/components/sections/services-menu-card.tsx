@@ -17,7 +17,8 @@ import {
   Users,
   Globe,
   Rocket,
-  Star
+  Star,
+  MessageCircle
 } from "lucide-react";
 
 const services = [
@@ -32,7 +33,8 @@ const services = [
     color: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
     borderColor: "border-blue-500/30",
     iconColor: "text-blue-500",
-    bgGlow: "bg-blue-500/5"
+    bgGlow: "bg-blue-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in Web Development services. I'd like to discuss building a modern website/web application. Can we talk about the requirements and pricing?"
   },
   {
     id: "app-development",
@@ -45,7 +47,8 @@ const services = [
     color: "from-purple-500/20 via-pink-500/20 to-rose-500/20",
     borderColor: "border-purple-500/30",
     iconColor: "text-purple-500",
-    bgGlow: "bg-purple-500/5"
+    bgGlow: "bg-purple-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in App Development services. I'd like to discuss creating a Progressive Web App or mobile application. Can we discuss the project details?"
   },
   {
     id: "seo-optimization",
@@ -58,7 +61,8 @@ const services = [
     color: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
     borderColor: "border-green-500/30",
     iconColor: "text-green-500",
-    bgGlow: "bg-green-500/5"
+    bgGlow: "bg-green-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in SEO & Marketing services. I'd like to improve my website's search rankings and online visibility. Can we discuss an SEO strategy?"
   },
   {
     id: "ui-ux-design",
@@ -71,7 +75,8 @@ const services = [
     color: "from-orange-500/20 via-amber-500/20 to-yellow-500/20",
     borderColor: "border-orange-500/30",
     iconColor: "text-orange-500",
-    bgGlow: "bg-orange-500/5"
+    bgGlow: "bg-orange-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in UI/UX Design services. I'd like to create a beautiful and user-friendly interface for my project. Can we discuss the design requirements?"
   },
   {
     id: "performance",
@@ -84,7 +89,8 @@ const services = [
     color: "from-yellow-500/20 via-orange-500/20 to-red-500/20",
     borderColor: "border-yellow-500/30",
     iconColor: "text-yellow-500",
-    bgGlow: "bg-yellow-500/5"
+    bgGlow: "bg-yellow-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in Performance Optimization services. I'd like to speed up my website and improve loading times. Can we discuss optimization strategies?"
   },
   {
     id: "consulting",
@@ -97,7 +103,8 @@ const services = [
     color: "from-indigo-500/20 via-violet-500/20 to-purple-500/20",
     borderColor: "border-indigo-500/30",
     iconColor: "text-indigo-500",
-    bgGlow: "bg-indigo-500/5"
+    bgGlow: "bg-indigo-500/5",
+    whatsappMessage: "Hi Kunal! I'm interested in Tech Consulting services. I'd like expert guidance on technology decisions and architecture for my project. Can we schedule a consultation?"
   }
 ];
 
@@ -217,15 +224,30 @@ export default function ServicesMenuCard() {
                       ))}
                     </div>
 
-                    {/* Price */}
-                    <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                      <div>
-                        <div className="text-xs text-muted-foreground mb-1">Starting from</div>
-                        <div className="text-lg font-bold text-foreground" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                          {service.price}
+                    {/* Price & WhatsApp Button */}
+                    <div className="space-y-3 pt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-xs text-muted-foreground mb-1">Starting from</div>
+                          <div className="text-lg font-bold text-foreground" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                            {service.price}
+                          </div>
                         </div>
                       </div>
-                      <ArrowRight className={`h-5 w-5 ${service.iconColor} group-hover:translate-x-1 transition-transform`} />
+                      <Button 
+                        asChild 
+                        className={`w-full ${service.iconColor} bg-gradient-to-r ${service.color.replace(/\/20/g, '/90')} hover:${service.color.replace(/\/20/g, '')} border ${service.borderColor}`}
+                        variant="outline"
+                      >
+                        <a 
+                          href={`https://wa.me/918591247148?text=${encodeURIComponent(service.whatsappMessage)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="h-4 w-4 mr-2" />
+                          Send Message
+                        </a>
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
