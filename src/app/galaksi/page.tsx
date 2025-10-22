@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switcher";
+import { BackToPortfolioButton } from "@/components/back-to-portfolio-button";
 import GalaksiStyle1 from "./style-1";
 import GalaksiStyle2 from "./style-2";
 import GalaksiStyle3 from "./style-3";
@@ -20,6 +21,7 @@ export default function GalaksiPage() {
 
   return (
     <div className="relative">
+      <BackToPortfolioButton position="top-left" />
       <CollapsibleStyleSwitcher
         currentStyle={activeStyle}
         onStyleChange={setActiveStyle}

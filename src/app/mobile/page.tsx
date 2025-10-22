@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switcher";
+import { BackToPortfolioButton } from "@/components/back-to-portfolio-button";
 import MobileStyle1 from "./style-1";
 import MobileStyle2 from "./style-2";
 import MobileStyle3 from "./style-3";
@@ -20,6 +21,7 @@ export default function MobileShellPage() {
 
   return (
     <div className="relative">
+      <BackToPortfolioButton position="top-left" />
       <CollapsibleStyleSwitcher
         currentStyle={activeStyle}
         onStyleChange={setActiveStyle}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switcher";
+import { BackToPortfolioButton } from "@/components/back-to-portfolio-button";
 import PortfolioCardStyle1 from "./style-1";
 import PortfolioCardStyle2 from "./style-2";
 import PortfolioCardStyle3 from "./style-3";
@@ -20,6 +21,7 @@ export default function PortfolioCardPage() {
 
   return (
     <div className="relative">
+      <BackToPortfolioButton position="top-left" />
       <CollapsibleStyleSwitcher
         currentStyle={activeStyle}
         onStyleChange={setActiveStyle}
