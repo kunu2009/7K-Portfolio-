@@ -11,7 +11,8 @@ import {
   Star, 
   ExternalLink,
   Filter,
-  Sparkles
+  Sparkles,
+  Settings
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -252,6 +253,16 @@ export default function AppsIndexClient() {
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
+            </div>
+            
+            {/* Settings Link */}
+            <div className="mt-8 pt-8 border-t border-border/50">
+              <Link href="/settings">
+                <button className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors opacity-50 hover:opacity-100">
+                  <Settings className="h-4 w-4" />
+                  <span>Manage Apps</span>
+                </button>
+              </Link>
             </div>
           </Card>
         </motion.section>
