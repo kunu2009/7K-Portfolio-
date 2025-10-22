@@ -821,7 +821,7 @@ export const appsData: App[] = [
     "tagline": "Party games for college students",
     "description": "Fun and engaging party games designed for college students to play together in groups and social gatherings.",
     "fullDescription": "7K Student Game Hub is the ultimate collection of party games for college students. Perfect for ice-breakers, dorm parties, study breaks, and group hangouts. Features multiplayer games, truth or dare, trivia challenges, word games, drawing games, and social challenges. All games are designed for group play and creating memorable moments with friends. No special equipment needed - just bring your friends and smartphones!",
-    "url": "https://student.7kc.me",
+    "url": "https://std.7kc.me",
     "category": "social",
     "features": [
       "Multiplayer party games",
@@ -963,36 +963,6 @@ export const appsData: App[] = [
       "photographers",
       "video creators",
       "designers"
-    ]
-  },
-  {
-    "id": "app-1761138702921",
-    "name": "New App",
-    "tagline": "App tagline",
-    "description": "Short description",
-    "fullDescription": "Full description goes here...",
-    "url": "https://app.7kc.me",
-    "category": "productivity",
-    "features": [
-      "Feature 1",
-      "Feature 2"
-    ],
-    "technologies": [
-      "React",
-      "TypeScript"
-    ],
-    "keywords": [
-      "keyword1",
-      "keyword2"
-    ],
-    "rating": 4,
-    "reviews": 0,
-    "launchDate": "2025-10-22",
-    "status": "coming-soon",
-    "pricing": "free",
-    "targetAudience": [
-      "students",
-      "professionals"
     ]
   },
   {

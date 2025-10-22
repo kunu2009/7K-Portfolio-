@@ -12,12 +12,15 @@ import {
   Palette,
   Zap,
   Users,
-  MessageCircle,
   ArrowLeft,
   Sparkles,
   Star,
-  CheckCircle
 } from "lucide-react";
+
+// Import the 3 different card styles
+import { MenuCardStyle1 } from "@/components/menu-cards/style-1-classic";
+import { MenuCardStyle2 } from "@/components/menu-cards/style-2-glass";
+import { MenuCardStyle3 } from "@/components/menu-cards/style-3-gradient";
 
 // SEO Metadata would go here if this was a server component
 // For now, we'll add it via the layout or convert to server component with client wrapper
@@ -98,6 +101,12 @@ const services = [
 ];
 
 export default function MenuPage() {
+  // CHANGE THIS TO SWITCH CARD STYLES: 1, 2, or 3
+  const ACTIVE_STYLE = 3;
+  
+  const CardComponent = ACTIVE_STYLE === 1 ? MenuCardStyle1 
+                      : ACTIVE_STYLE === 2 ? MenuCardStyle2 
+                      : MenuCardStyle3;
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
       {/* Header */}
@@ -147,72 +156,9 @@ export default function MenuPage() {
 
         {/* Services Grid - Mobile Optimized */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto pb-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.05 * index }}
-              >
-                <a
-                  href={`https://wa.me/918591247148?text=${encodeURIComponent(service.whatsappMessage)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Card 
-                    className={`group relative overflow-hidden border-2 ${service.borderColor} ${service.bgColor} hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer h-full`}
-                  >
-                    {/* Animated Gradient Background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    
-                    {/* Glow Effect */}
-                    <div className={`absolute -inset-[2px] bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
-                    
-                    <CardContent className="relative p-5">
-                      {/* Icon */}
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg`}>
-                        <Icon className="h-6 w-6 text-white" />
-                      </div>
-
-                      {/* Title & Tagline */}
-                      <h3 className="text-lg font-bold mb-1 text-foreground group-hover:text-primary transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs text-muted-foreground mb-3">
-                        {service.tagline}
-                      </p>
-
-                      {/* Features - Compact */}
-                      <div className="space-y-1.5 mb-4">
-                        {service.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-xs text-muted-foreground">
-                            <CheckCircle className="h-3 w-3 text-primary mr-1.5" />
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Price & Action */}
-                      <div className="flex items-center justify-between pt-3 border-t border-border/50">
-                        <div>
-                          <div className="text-[10px] text-muted-foreground uppercase mb-0.5">From</div>
-                          <div className="text-base font-bold text-foreground" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-                            {service.price}
-                          </div>
-                        </div>
-                        <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-md`}>
-                          <MessageCircle className="h-4 w-4 text-white" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </a>
-              </motion.div>
-            );
-          })}
+          {services.map((service, index) => (
+            <CardComponent key={service.id} service={service} index={index} />
+          ))}
         </div>
 
         {/* Bottom Info */}
@@ -225,7 +171,7 @@ export default function MenuPage() {
           <Card className="max-w-md mx-auto bg-primary/5 border-primary/20">
             <CardContent className="py-4 px-5">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <MessageCircle className="h-4 w-4 text-primary" />
+                <Sparkles className="h-4 w-4 text-primary" />
                 <span className="font-semibold text-sm">Quick Response Guarantee</span>
               </div>
               <p className="text-xs text-muted-foreground">
