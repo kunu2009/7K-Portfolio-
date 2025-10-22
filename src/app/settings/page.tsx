@@ -266,6 +266,24 @@ export default function SettingsPage() {
         }} />
       </div>
 
+      {/* New Admin Dashboard Notice */}
+      <div className="relative z-20 bg-blue-500/10 border-b border-blue-500/20 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 text-sm">
+              <Settings className="h-5 w-5" />
+              <span className="font-medium">New:</span>
+              <span>Universal Settings Dashboard with Books Management is now available!</span>
+            </div>
+            <Link href="/admin">
+              <Button size="sm" variant="outline" className="border-blue-500/50 hover:bg-blue-500/10">
+                Go to Admin Dashboard
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Production Warning */}
       {typeof window !== 'undefined' && window.location.hostname !== 'localhost' && (
         <div className="relative z-20 bg-amber-500/10 border-b border-amber-500/20 backdrop-blur-sm">
