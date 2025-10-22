@@ -59,6 +59,8 @@ export default function StoryStyle3() {
   ];
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -71,6 +73,7 @@ export default function StoryStyle3() {
   }, []);
 
   const scrollToSection = (index: number) => {
+    if (typeof window === 'undefined') return;
     const element = document.getElementById(sections[index].id);
     element?.scrollIntoView({ behavior: "smooth" });
   };

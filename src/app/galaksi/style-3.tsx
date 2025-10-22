@@ -9,6 +9,8 @@ export default function GalaksiStyle3() {
 
   // Animated galaxy background
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -111,6 +113,8 @@ export default function GalaksiStyle3() {
   ];
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -242,7 +246,7 @@ export default function GalaksiStyle3() {
         {sections.map((_, index) => (
           <button
             key={index}
-            onClick={() => window.scrollTo({ top: index * window.innerHeight, behavior: "smooth" })}
+            onClick={() => typeof window !== 'undefined' && window.scrollTo({ top: index * window.innerHeight, behavior: "smooth" })}
             className={`w-3 h-3 rounded-full transition-all ${
               activeSection === index
                 ? "bg-white scale-125"

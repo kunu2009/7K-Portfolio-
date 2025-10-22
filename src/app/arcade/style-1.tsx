@@ -32,7 +32,7 @@ export default function ArcadeStyle1() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.1)_2px,transparent_2px),linear-gradient(90deg,rgba(139,92,246,0.1)_2px,transparent_2px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
       
       {/* Floating pixels */}
-      {[...Array(20)].map((_, i) => (
+      {typeof window !== 'undefined' && [...Array(20)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-2 h-2 bg-cyan-400"
