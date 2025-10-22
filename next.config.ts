@@ -40,10 +40,6 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
-  // Generate standalone output for faster deployments
-  output: 'standalone',
-  // Optimize JavaScript
-  swcMinify: true,
   // Performance optimizations
   reactStrictMode: true,
   poweredByHeader: false,
