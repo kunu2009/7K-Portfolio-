@@ -22,8 +22,8 @@ async function hashPassword(password: string): Promise<string> {
 export async function verifyCredentials(username: string, password: string): Promise<boolean> {
   // Hashed credentials (never store plain text)
   // Username: 7k, Password: 7KC&meenter
-  const VALID_USERNAME_HASH = '8d5e957f297893487bd98fa830fa6413a720d728dcd8bc8c42c96f63c88e5c35'; // Hash of '7k'
-  const VALID_PASSWORD_HASH = 'b8a9f715dbb64fd5c56e7783c6820a61ce9c5f96b80f8b97e92a8b7c53c95a9c'; // Hash of '7KC&meenter'
+  const VALID_USERNAME_HASH = '516e61e3397f8f716db9238a81645e5a694bf25c5cb332dd705760365414daec'; // Hash of '7k'
+  const VALID_PASSWORD_HASH = '086261c28417828062ec09812c7e18265e53b5fe9e814cf3687a86a34ec426f3'; // Hash of '7KC&meenter'
   
   try {
     const usernameHash = await hashPassword(username.toLowerCase().trim());
