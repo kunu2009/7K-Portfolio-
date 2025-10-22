@@ -142,6 +142,11 @@ export default function RootLayout({
         <link rel="mask-icon" href="/favicon.svg" color="#B87333" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#B87333" />
+        <meta name="color-scheme" content="light dark" />
+        
+        {/* Performance optimization meta tags */}
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         
         {/* PWA Splash Screen - iOS - Multiple sizes for different devices */}
         <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" />
