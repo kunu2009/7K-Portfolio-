@@ -35,7 +35,7 @@ export default function PortfolioCardStyle2() {
       title: "Contact",
       emoji: "📧",
       gradient: "from-indigo-500 to-purple-500",
-      content: "chaitanyahedaoo7@gmail.com • 7kc.me • github.com/chaitanyahedaoo",
+      content: "7kmindbeatss@gmail.com • 7kc.me • github.com/kunu2009",
     },
     {
       title: "Passion",
@@ -55,7 +55,7 @@ export default function PortfolioCardStyle2() {
           className="text-center mb-12"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 mb-4">
-            Chaitanya Hedaoo
+            Kunal Chheda
           </h1>
           <p className="text-xl text-gray-400">Full Stack Developer • Creative Coder • Problem Solver</p>
         </motion.div>
@@ -124,7 +124,7 @@ export default function PortfolioCardStyle2() {
         >
           <div className="inline-flex gap-4">
             <a
-              href="mailto:chaitanyahedaoo7@gmail.com"
+              href="mailto:7kmindbeatss@gmail.com"
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-purple-500/50"
             >
               Get In Touch

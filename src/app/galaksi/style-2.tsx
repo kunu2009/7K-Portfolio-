@@ -48,7 +48,7 @@ export default function GalaksiStyle1() {
       color: "from-green-600 to-emerald-500",
       size: "w-24 h-24",
       position: "bottom-1/3 right-1/3",
-      content: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 github.com/chaitanyahedaoo",
+      content: "📧 7kmindbeatss@gmail.com • 🌐 7kc.me • 💻 github.com/kunu2009",
     },
   ];
 

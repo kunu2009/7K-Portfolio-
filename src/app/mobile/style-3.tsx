@@ -23,7 +23,7 @@ export default function MobileStyle2() {
             <div className="w-20 h-20 bg-white rounded-full mx-auto mb-3 flex items-center justify-center text-4xl">
               👨‍💻
             </div>
-            <h3 className="text-white text-xl font-bold text-center">Chaitanya Hedaoo</h3>
+            <h3 className="text-white text-xl font-bold text-center">Kunal Chheda</h3>
             <p className="text-blue-100 text-center text-sm">Full Stack Developer</p>
           </div>
           <div className="space-y-3">
@@ -145,9 +145,9 @@ export default function MobileStyle2() {
       content: (
         <div className="space-y-4">
           {[
-            { type: "Email", value: "chaitanyahedaoo7@gmail.com", icon: "📧", color: "bg-red-500" },
+            { type: "Email", value: "7kmindbeatss@gmail.com", icon: "📧", color: "bg-red-500" },
             { type: "Portfolio", value: "7kc.me", icon: "🌐", color: "bg-blue-500" },
-            { type: "GitHub", value: "chaitanyahedaoo", icon: "💻", color: "bg-gray-800" },
+            { type: "GitHub", value: "kunu2009", icon: "💻", color: "bg-gray-800" },
             { type: "WhatsApp", value: "Message me", icon: "💬", color: "bg-green-500" },
           ].map((contact) => (
             <div key={contact.type} className="bg-white rounded-lg shadow-sm p-4 flex items-center gap-4">
@@ -199,7 +199,7 @@ export default function MobileStyle2() {
                     {/* Header */}
                     <div className="text-white mb-8">
                       <h1 className="text-3xl font-bold mb-1">Portfolio</h1>
-                      <p className="text-blue-100">Chaitanya Hedaoo</p>
+                      <p className="text-blue-100">Kunal Chheda</p>
                     </div>
 
                     {/* Apps Grid */}

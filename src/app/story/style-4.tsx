@@ -189,7 +189,7 @@ export default function StoryStyle3() {
                 >
                   <div className="flex flex-wrap gap-4 justify-center">
                     <a
-                      href="mailto:chaitanyahedaoo7@gmail.com"
+                      href="mailto:7kmindbeatss@gmail.com"
                       className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-white transition-all"
                     >
                       📧 Email Me
@@ -203,7 +203,7 @@ export default function StoryStyle3() {
                       🌐 Visit Portfolio
                     </a>
                     <a
-                      href="https://github.com/chaitanyahedaoo"
+                      href="https://github.com/kunu2009"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-white transition-all"

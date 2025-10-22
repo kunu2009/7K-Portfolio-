@@ -13,7 +13,7 @@ export default function StoryStyle1() {
       bg: "from-purple-600 to-pink-600",
       emoji: "👋",
       title: "Hello!",
-      text: "I'm Chaitanya Hedaoo",
+      text: "I'm Kunal Chheda",
       subtitle: "Full Stack Developer",
     },
     {
@@ -41,7 +41,7 @@ export default function StoryStyle1() {
       bg: "from-indigo-600 to-purple-600",
       emoji: "📧",
       title: "Let's Connect!",
-      text: "chaitanyahedaoo7@gmail.com",
+      text: "7kmindbeatss@gmail.com",
       subtitle: "Available for opportunities",
     },
   ];

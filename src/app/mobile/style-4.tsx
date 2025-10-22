@@ -21,7 +21,7 @@ export default function MobileStyle3() {
           <div className="w-24 h-24 bg-white rounded-full mx-auto mb-4 flex items-center justify-center text-5xl shadow-lg">
             👨‍💻
           </div>
-          <h3 className="text-2xl font-bold text-gray-800">Chaitanya Hedaoo</h3>
+          <h3 className="text-2xl font-bold text-gray-800">Kunal Chheda</h3>
           <p className="text-gray-600">Full Stack Developer</p>
         </div>
 
@@ -121,9 +121,9 @@ export default function MobileStyle3() {
     contact: (
       <div className="space-y-3">
         {[
-          { label: "Email", value: "chaitanyahedaoo7@gmail.com", emoji: "📧", color: "bg-red-500" },
+          { label: "Email", value: "7kmindbeatss@gmail.com", emoji: "📧", color: "bg-red-500" },
           { label: "Website", value: "7kc.me", emoji: "🌐", color: "bg-blue-500" },
-          { label: "GitHub", value: "chaitanyahedaoo", emoji: "💻", color: "bg-gray-800" },
+          { label: "GitHub", value: "kunu2009", emoji: "💻", color: "bg-gray-800" },
           { label: "WhatsApp", value: "Let's connect!", emoji: "💬", color: "bg-green-500" },
         ].map((contact) => (
           <div key={contact.label} className="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">

@@ -79,7 +79,7 @@ export default function GalaksiStyle3() {
       title: "Welcome to the Cosmos",
       subtitle: "Developer's Universe",
       emoji: "🌌",
-      content: "I'm Chaitanya Hedaoo, navigating through the infinite possibilities of web development.",
+      content: "I'm Kunal Chheda, navigating through the infinite possibilities of web development.",
       color: "from-purple-500 to-pink-500",
     },
     {
@@ -107,7 +107,7 @@ export default function GalaksiStyle3() {
       title: "Connect Across Space",
       subtitle: "Let's Collaborate",
       emoji: "🚀",
-      content: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 GitHub",
+      content: "📧 7kmindbeatss@gmail.com • 🌐 7kc.me • 💻 GitHub",
       color: "from-indigo-500 to-purple-500",
     },
   ];
@@ -200,7 +200,7 @@ export default function GalaksiStyle3() {
               {index === sections.length - 1 && (
                 <div className="mt-8 flex flex-wrap gap-4 justify-center">
                   <a
-                    href="mailto:chaitanyahedaoo7@gmail.com"
+                    href="mailto:7kmindbeatss@gmail.com"
                     className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-purple-500/50"
                   >
                     Send Message

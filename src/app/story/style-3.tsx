@@ -11,7 +11,7 @@ export default function StoryStyle2() {
     {
       number: "Chapter 1",
       title: "The Beginning",
-      content: "Once upon a time, there was a curious mind fascinated by the world of technology. That's me - Chaitanya Hedaoo, a developer on a journey to create meaningful digital experiences.",
+      content: "Once upon a time, there was a curious mind fascinated by the world of technology. That's me - Kunal Chheda, a developer on a journey to create meaningful digital experiences.",
       image: "👨‍💻",
       color: "from-blue-600 to-purple-600",
     },
@@ -141,9 +141,9 @@ export default function StoryStyle2() {
                   >
                     <h3 className="font-bold text-xl mb-3 text-gray-800 dark:text-white">Let's Connect</h3>
                     <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                      <div>📧 chaitanyahedaoo7@gmail.com</div>
+                      <div>📧 7kmindbeatss@gmail.com</div>
                       <div>🌐 7kc.me</div>
-                      <div>💻 github.com/chaitanyahedaoo</div>
+                      <div>💻 github.com/kunu2009</div>
                     </div>
                   </motion.div>
                 )}

@@ -10,7 +10,7 @@ export default function TerminalStyle1() {
 
   const terminalLines = [
     { type: "command", text: "$ whoami" },
-    { type: "output", text: "> Chaitanya Hedaoo | Full Stack Developer" },
+    { type: "output", text: "> Kunal Chheda | Full Stack Developer" },
     { type: "blank", text: "" },
     { type: "command", text: "$ cat skills.txt" },
     { type: "output", text: "> Frontend: React, Next.js, TypeScript, Tailwind CSS" },
@@ -25,8 +25,8 @@ export default function TerminalStyle1() {
     { type: "output", text: "> 7K-Ecosystem/     - Unified app platform" },
     { type: "blank", text: "" },
     { type: "command", text: "$ cat contact.json" },
-    { type: "output", text: '> { "email": "chaitanyahedaoo7@gmail.com",' },
-    { type: "output", text: '>   "github": "chaitanyahedaoo",' },
+    { type: "output", text: '> { "email": "7kmindbeatss@gmail.com",' },
+    { type: "output", text: '>   "github": "kunu2009",' },
     { type: "output", text: '>   "portfolio": "7kc.me" }' },
     { type: "blank", text: "" },
     { type: "command", text: "$ echo $STATUS" },
@@ -62,7 +62,7 @@ export default function TerminalStyle1() {
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
               <span className="text-green-400 text-sm ml-4 font-mono">
-                chaitanya@portfolio:~
+                kunal@portfolio:~
               </span>
             </div>
             <div className="text-green-400 text-xs font-mono">

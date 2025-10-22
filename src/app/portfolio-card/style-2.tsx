@@ -32,7 +32,7 @@ export default function PortfolioCardStyle1() {
             <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl">
               👨‍💻
             </div>
-            <h1 className="text-2xl font-bold mb-2">Chaitanya Hedaoo</h1>
+            <h1 className="text-2xl font-bold mb-2">Kunal Chheda</h1>
             <p className="text-gray-600 dark:text-gray-400 mb-4">Full Stack Developer</p>
             
             <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -51,7 +51,7 @@ export default function PortfolioCardStyle1() {
 
           <div className="space-y-3">
             <a
-              href="mailto:chaitanyahedaoo7@gmail.com"
+              href="mailto:7kmindbeatss@gmail.com"
               className="flex items-center gap-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
             >
               <Mail className="h-5 w-5 text-blue-500" />
@@ -67,7 +67,7 @@ export default function PortfolioCardStyle1() {
               <span className="text-sm">Portfolio</span>
             </a>
             <a
-              href="https://github.com/chaitanyahedaoo"
+              href="https://github.com/kunu2009"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"

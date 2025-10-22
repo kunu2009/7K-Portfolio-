@@ -39,7 +39,7 @@ export default function TerminalStyle3() {
 
   const commands = [
     { cmd: "SYSTEM.WAKE()", output: "⚡ Neural interface activated..." },
-    { cmd: "IDENTITY.LOAD()", output: ">> Chaitanya Hedaoo | Full Stack Developer" },
+    { cmd: "IDENTITY.LOAD()", output: ">> Kunal Chheda | Full Stack Developer" },
     { cmd: "", output: "" },
     { cmd: "SKILLS.QUERY('frontend')", output: "→ React, Next.js, TypeScript, Tailwind CSS" },
     { cmd: "SKILLS.QUERY('backend')", output: "→ Node.js, Python, Firebase, PostgreSQL" },
@@ -51,9 +51,9 @@ export default function TerminalStyle3() {
     { cmd: "", output: "📁 7K Ecosystem - Unified Platform" },
     { cmd: "", output: "" },
     { cmd: "STATUS.CHECK()", output: "🟢 ONLINE | Available for projects" },
-    { cmd: "CONTACT.RETRIEVE()", output: "📧 chaitanyahedaoo7@gmail.com" },
+    { cmd: "CONTACT.RETRIEVE()", output: "📧 7kmindbeatss@gmail.com" },
     { cmd: "", output: "🌐 7kc.me" },
-    { cmd: "", output: "💻 github.com/chaitanyahedaoo" },
+    { cmd: "", output: "💻 github.com/kunu2009" },
     { cmd: "", output: "" },
     { cmd: "SYSTEM.READY()", output: "✓ All systems operational" },
   ];

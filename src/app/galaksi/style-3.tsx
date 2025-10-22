@@ -15,7 +15,7 @@ export default function GalaksiStyle2() {
       gradient: "from-blue-600 via-green-500 to-blue-400",
       content: {
         title: "About Me",
-        text: "Chaitanya Hedaoo - A Full Stack Developer navigating the cosmos of code. From web applications to mobile apps, exploring every corner of the digital universe.",
+        text: "Kunal Chheda - A Full Stack Developer navigating the cosmos of code. From web applications to mobile apps, exploring every corner of the digital universe.",
       },
     },
     {
@@ -65,7 +65,7 @@ export default function GalaksiStyle2() {
       gradient: "from-blue-800 via-blue-600 to-cyan-500",
       content: {
         title: "Let's Connect",
-        text: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 github.com/chaitanyahedaoo • Ready for new opportunities and collaborations!",
+        text: "📧 7kmindbeatss@gmail.com • 🌐 7kc.me • 💻 github.com/kunu2009 • Ready for new opportunities and collaborations!",
       },
     },
   ];

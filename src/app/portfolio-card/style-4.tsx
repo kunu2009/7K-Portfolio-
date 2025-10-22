@@ -22,7 +22,7 @@ export default function PortfolioCardStyle3() {
             >
               👨‍💻
             </motion.div>
-            <h1 className="text-4xl font-bold text-white mb-2">Chaitanya Hedaoo</h1>
+            <h1 className="text-4xl font-bold text-white mb-2">Kunal Chheda</h1>
             <p className="text-gray-300 text-lg">Full Stack Developer</p>
           </div>
 
@@ -89,7 +89,7 @@ export default function PortfolioCardStyle3() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
                   <span className="text-xl">📧</span>
-                  <span>chaitanyahedaoo7@gmail.com</span>
+                  <span>7kmindbeatss@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
                   <span className="text-xl">🌐</span>
@@ -97,7 +97,7 @@ export default function PortfolioCardStyle3() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
                   <span className="text-xl">💻</span>
-                  <span>github.com/chaitanyahedaoo</span>
+                  <span>github.com/kunu2009</span>
                 </div>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function PortfolioCardStyle3() {
             {/* CTA Button */}
             <div className="pt-4">
               <a
-                href="mailto:chaitanyahedaoo7@gmail.com"
+                href="mailto:7kmindbeatss@gmail.com"
                 className="block w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-center py-4 rounded-xl font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Send Message

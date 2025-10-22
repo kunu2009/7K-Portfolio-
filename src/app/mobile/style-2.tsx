@@ -25,7 +25,7 @@ export default function MobileStyle1() {
             <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">
               👨‍💻
             </div>
-            <h3 className="text-xl font-bold">Chaitanya Hedaoo</h3>
+            <h3 className="text-xl font-bold">Kunal Chheda</h3>
             <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
           </div>
           <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
@@ -116,7 +116,7 @@ export default function MobileStyle1() {
           <div className="bg-blue-500 text-white rounded-2xl p-6 text-center">
             <div className="text-5xl mb-3">📧</div>
             <h4 className="font-bold mb-2">Email</h4>
-            <p className="text-sm text-blue-100">chaitanyahedaoo7@gmail.com</p>
+            <p className="text-sm text-blue-100">7kmindbeatss@gmail.com</p>
           </div>
           <div className="bg-purple-500 text-white rounded-2xl p-6 text-center">
             <div className="text-5xl mb-3">🌐</div>
@@ -126,7 +126,7 @@ export default function MobileStyle1() {
           <div className="bg-gray-800 text-white rounded-2xl p-6 text-center">
             <div className="text-5xl mb-3">💻</div>
             <h4 className="font-bold mb-2">GitHub</h4>
-            <p className="text-sm text-gray-300">github.com/chaitanyahedaoo</p>
+            <p className="text-sm text-gray-300">github.com/kunu2009</p>
           </div>
           <div className="bg-green-500 text-white rounded-2xl p-6 text-center">
             <div className="text-5xl mb-3">💬</div>
