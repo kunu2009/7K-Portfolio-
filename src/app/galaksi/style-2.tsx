@@ -92,9 +92,9 @@ export default function GalaksiStyle1() {
         >
           <div className="w-48 h-48 rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 shadow-2xl shadow-orange-500/50 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-5xl mb-2">☀️</div>
-              <div className="text-white font-bold text-lg">Chaitanya</div>
-              <div className="text-white/80 text-sm">Developer</div>
+            <div className="text-5xl mb-2">☀️</div>
+            <div className="text-white font-bold text-lg">Kunal Chheda</div>
+            <div className="text-white/80 text-sm">Developer</div>
             </div>
           </div>
           {/* Sun Rays */}

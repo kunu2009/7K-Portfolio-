@@ -167,17 +167,17 @@ export default function MobileStyle1() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="h-full p-6"
-                  >
-                    {/* Home Screen */}
-                    <div className="text-center mb-8 mt-8">
-                      <h1 className="text-3xl font-bold mb-2">Chaitanya</h1>
-                      <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
-                    </div>
+                  className="h-full p-6"
+                >
+                  {/* Home Screen */}
+                  <div className="text-center mb-8 mt-8">
+                    <h1 className="text-3xl font-bold mb-2">Kunal Chheda</h1>
+                    <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+                  </div>
 
-                    {/* App Icons */}
-                    <div className="grid grid-cols-4 gap-6">
-                      {apps.map((app) => (
+                  {/* App Icons */}
+                  <div className="grid grid-cols-4 gap-6">
+                    {apps.map((app) => (
                         <motion.button
                           key={app.id}
                           whileTap={{ scale: 0.9 }}
