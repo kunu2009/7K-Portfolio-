@@ -2,195 +2,256 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Maximize2 } from "lucide-react";
+import { ArrowLeft, Menu, Search, MoreVertical } from "lucide-react";
 
-export default function MobileStyle3() {
-  const [activeTab, setActiveTab] = useState("about");
+export default function MobileStyle2() {
+  const [activeScreen, setActiveScreen] = useState("home");
 
-  const tabs = [
-    { id: "about", name: "About", emoji: "👤" },
-    { id: "skills", name: "Skills", emoji: "⚡" },
-    { id: "projects", name: "Projects", emoji: "🚀" },
-    { id: "contact", name: "Contact", emoji: "📧" },
+  const apps = [
+    { id: "profile", name: "Profile", icon: "👤", color: "bg-blue-600" },
+    { id: "skills", name: "Skills", icon: "⚡", color: "bg-green-600" },
+    { id: "work", name: "Work", icon: "💼", color: "bg-purple-600" },
+    { id: "contact", name: "Contact", icon: "📱", color: "bg-red-600" },
   ];
 
-  const content = {
-    about: (
-      <div className="space-y-4">
-        <div className="text-center">
-          <div className="w-24 h-24 bg-white rounded-full mx-auto mb-4 flex items-center justify-center text-5xl shadow-lg">
-            👨‍💻
-          </div>
-          <h3 className="text-2xl font-bold text-gray-800">Chaitanya Hedaoo</h3>
-          <p className="text-gray-600">Full Stack Developer</p>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h4 className="font-bold mb-2 text-gray-800">Bio</h4>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            Passionate developer with expertise in modern web technologies. 
-            Building scalable applications and beautiful user interfaces.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-            <div className="text-3xl mb-2">🇮🇳</div>
-            <div className="text-xs text-gray-500">Location</div>
-            <div className="font-medium text-sm">India</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-            <div className="text-3xl mb-2">🎓</div>
-            <div className="text-xs text-gray-500">Education</div>
-            <div className="font-medium text-sm">CS Student</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-            <div className="text-3xl mb-2">💼</div>
-            <div className="text-xs text-gray-500">Experience</div>
-            <div className="font-medium text-sm">3+ Years</div>
-          </div>
-          <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-            <div className="text-3xl mb-2">✅</div>
-            <div className="text-xs text-gray-500">Status</div>
-            <div className="font-medium text-sm">Available</div>
-          </div>
-        </div>
-      </div>
-    ),
-    skills: (
-      <div className="space-y-4">
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h4 className="font-bold mb-3 text-gray-800">Frontend</h4>
-          <div className="space-y-2">
-            {["React", "Next.js", "TypeScript", "Tailwind"].map((skill) => (
-              <div key={skill} className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-sm text-gray-700">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h4 className="font-bold mb-3 text-gray-800">Backend</h4>
-          <div className="space-y-2">
-            {["Node.js", "Python", "Firebase", "PostgreSQL"].map((skill) => (
-              <div key={skill} className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-gray-700">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h4 className="font-bold mb-3 text-gray-800">Tools</h4>
-          <div className="flex flex-wrap gap-2">
-            {["Git", "Docker", "VS Code", "Figma", "Vercel"].map((tool) => (
-              <div key={tool} className="bg-gray-100 px-3 py-1.5 rounded-full text-xs text-gray-700">
-                {tool}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    ),
-    projects: (
-      <div className="space-y-3">
-        {[
-          { name: "7K Life", emoji: "🌱", color: "from-green-400 to-emerald-500" },
-          { name: "7K Money", emoji: "💰", color: "from-yellow-400 to-orange-500" },
-          { name: "7K Game Hub", emoji: "🎮", color: "from-purple-400 to-pink-500" },
-          { name: "7K Ecosystem", emoji: "🚀", color: "from-blue-400 to-cyan-500" },
-        ].map((project) => (
-          <div
-            key={project.name}
-            className={`bg-gradient-to-br ${project.color} rounded-xl p-4 text-white shadow-lg`}
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="text-3xl">{project.emoji}</div>
-              <div className="font-bold text-lg">{project.name}</div>
+  const screenContent = {
+    profile: {
+      title: "Profile",
+      content: (
+        <div>
+          <div className="bg-blue-600 p-6 -m-4 mb-4">
+            <div className="w-20 h-20 bg-white rounded-full mx-auto mb-3 flex items-center justify-center text-4xl">
+              👨‍💻
             </div>
-            <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium transition-colors w-full">
-              View Details
-            </button>
+            <h3 className="text-white text-xl font-bold text-center">Chaitanya Hedaoo</h3>
+            <p className="text-blue-100 text-center text-sm">Full Stack Developer</p>
           </div>
-        ))}
-      </div>
-    ),
-    contact: (
-      <div className="space-y-3">
-        {[
-          { label: "Email", value: "chaitanyahedaoo7@gmail.com", emoji: "📧", color: "bg-red-500" },
-          { label: "Website", value: "7kc.me", emoji: "🌐", color: "bg-blue-500" },
-          { label: "GitHub", value: "chaitanyahedaoo", emoji: "💻", color: "bg-gray-800" },
-          { label: "WhatsApp", value: "Let's connect!", emoji: "💬", color: "bg-green-500" },
-        ].map((contact) => (
-          <div key={contact.label} className="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-            <div className={`${contact.color} w-12 h-12 rounded-xl flex items-center justify-center text-2xl`}>
-              {contact.emoji}
+          <div className="space-y-3">
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">LOCATION</div>
+              <div className="font-medium">India 🇮🇳</div>
             </div>
-            <div className="flex-1">
-              <div className="text-xs text-gray-500">{contact.label}</div>
-              <div className="font-medium text-gray-800 text-sm">{contact.value}</div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">EDUCATION</div>
+              <div className="font-medium">Computer Science</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">EXPERIENCE</div>
+              <div className="font-medium">3+ Years Development</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-xs text-gray-500 mb-1">ABOUT</div>
+              <div className="text-sm text-gray-700">
+                Passionate about creating innovative web solutions. 
+                Specialized in modern frameworks and full-stack development.
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-    ),
+        </div>
+      ),
+    },
+    skills: {
+      title: "Skills",
+      content: (
+        <div className="space-y-4">
+          <div className="bg-white rounded-lg shadow-sm">
+            <div className="p-4 border-b">
+              <h4 className="font-bold text-gray-700">Frontend Development</h4>
+            </div>
+            <div className="p-4 space-y-2">
+              {["React", "Next.js", "TypeScript", "Tailwind CSS"].map((skill) => (
+                <div key={skill} className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">{skill}</span>
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map((i) => (
+                      <div key={i} className={`w-2 h-2 rounded-full ${i <= 4 ? "bg-green-500" : "bg-gray-300"}`}></div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm">
+            <div className="p-4 border-b">
+              <h4 className="font-bold text-gray-700">Backend Development</h4>
+            </div>
+            <div className="p-4 space-y-2">
+              {["Node.js", "Python", "Firebase", "PostgreSQL"].map((skill) => (
+                <div key={skill} className="flex items-center justify-between text-sm">
+                  <span className="text-gray-700">{skill}</span>
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map((i) => (
+                      <div key={i} className={`w-2 h-2 rounded-full ${i <= 4 ? "bg-blue-500" : "bg-gray-300"}`}></div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm">
+            <div className="p-4 border-b">
+              <h4 className="font-bold text-gray-700">Tools & Technologies</h4>
+            </div>
+            <div className="p-4">
+              <div className="flex flex-wrap gap-2">
+                {["Git", "Docker", "VS Code", "Figma", "Vercel", "AWS"].map((tool) => (
+                  <div key={tool} className="bg-gray-100 px-3 py-1 rounded-full text-xs text-gray-700">
+                    {tool}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    work: {
+      title: "Projects",
+      content: (
+        <div className="space-y-4">
+          {[
+            { name: "7K Life", desc: "Complete life management ecosystem", status: "Live", color: "bg-green-600" },
+            { name: "7K Money", desc: "Finance tracking platform", status: "Beta", color: "bg-yellow-600" },
+            { name: "7K Game Hub", desc: "Student gaming community", status: "Live", color: "bg-purple-600" },
+            { name: "7K Ecosystem", desc: "Unified app platform", status: "Live", color: "bg-blue-600" },
+          ].map((project) => (
+            <div key={project.name} className="bg-white rounded-lg shadow-sm p-4">
+              <div className="flex items-start justify-between mb-2">
+                <div>
+                  <h4 className="font-bold text-gray-800">{project.name}</h4>
+                  <p className="text-sm text-gray-600">{project.desc}</p>
+                </div>
+                <span className={`${project.color} text-white text-xs px-2 py-1 rounded-full`}>
+                  {project.status}
+                </span>
+              </div>
+              <div className="flex gap-2 mt-3">
+                <button className="flex-1 bg-blue-600 text-white py-2 rounded-lg text-sm font-medium">
+                  View
+                </button>
+                <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm">
+                  <MoreVertical className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    contact: {
+      title: "Contact",
+      content: (
+        <div className="space-y-4">
+          {[
+            { type: "Email", value: "chaitanyahedaoo7@gmail.com", icon: "📧", color: "bg-red-500" },
+            { type: "Portfolio", value: "7kc.me", icon: "🌐", color: "bg-blue-500" },
+            { type: "GitHub", value: "chaitanyahedaoo", icon: "💻", color: "bg-gray-800" },
+            { type: "WhatsApp", value: "Message me", icon: "💬", color: "bg-green-500" },
+          ].map((contact) => (
+            <div key={contact.type} className="bg-white rounded-lg shadow-sm p-4 flex items-center gap-4">
+              <div className={`${contact.color} w-12 h-12 rounded-full flex items-center justify-center text-2xl`}>
+                {contact.icon}
+              </div>
+              <div className="flex-1">
+                <div className="text-xs text-gray-500">{contact.type}</div>
+                <div className="font-medium text-gray-800">{contact.value}</div>
+              </div>
+              <button className="text-blue-600 text-sm font-medium">Open</button>
+            </div>
+          ))}
+        </div>
+      ),
+    },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-200 to-gray-300 p-4 md:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex items-center justify-center">
       <div className="relative">
-        {/* Minimal Phone Frame */}
-        <div className="w-[375px] h-[667px] bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Title Bar */}
-          <div className="bg-gray-100 h-8 px-3 flex items-center justify-between border-b">
-            <div className="flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500 cursor-pointer"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400 hover:bg-yellow-500 cursor-pointer"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-500 cursor-pointer"></div>
+        {/* Android Phone Frame */}
+        <div className="w-[375px] h-[812px] bg-gray-900 rounded-[40px] shadow-2xl p-2">
+          {/* Screen */}
+          <div className="w-full h-full bg-gray-50 rounded-[32px] overflow-hidden relative">
+            {/* Status Bar */}
+            <div className="bg-white h-6 px-4 flex items-center justify-between text-[10px]">
+              <div className="flex items-center gap-2">
+                <span>9:41</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span>📶</span>
+                <span>📡</span>
+                <span>🔋</span>
               </div>
             </div>
-            <div className="text-xs font-medium text-gray-600">Portfolio</div>
-            <div className="w-20"></div>
-          </div>
 
-          {/* Tab Bar */}
-          <div className="bg-white border-b flex">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 py-3 text-sm font-medium transition-colors border-b-2 ${
-                  activeTab === tab.id
-                    ? "border-blue-500 text-blue-600"
-                    : "border-transparent text-gray-600 hover:text-gray-800"
-                }`}
-              >
-                <div className="flex items-center justify-center gap-1">
-                  <span>{tab.emoji}</span>
-                  <span className="hidden sm:inline">{tab.name}</span>
-                </div>
-              </button>
-            ))}
-          </div>
+            {/* Content */}
+            <div className="h-[calc(100%-24px)]">
+              <AnimatePresence mode="wait">
+                {activeScreen === "home" ? (
+                  <motion.div
+                    key="home"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-6 flex flex-col"
+                  >
+                    {/* Header */}
+                    <div className="text-white mb-8">
+                      <h1 className="text-3xl font-bold mb-1">Portfolio</h1>
+                      <p className="text-blue-100">Chaitanya Hedaoo</p>
+                    </div>
 
-          {/* Content Area */}
-          <div className="h-[calc(100%-8rem)] overflow-y-auto bg-gray-50 p-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}
-              >
-                {content[activeTab as keyof typeof content]}
-              </motion.div>
-            </AnimatePresence>
+                    {/* Apps Grid */}
+                    <div className="grid grid-cols-2 gap-4 flex-1">
+                      {apps.map((app, index) => (
+                        <motion.button
+                          key={app.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => setActiveScreen(app.id)}
+                          className="bg-white/20 backdrop-blur-lg rounded-2xl p-6 text-white flex flex-col items-center justify-center gap-3 hover:bg-white/30 transition-colors"
+                        >
+                          <div className="text-4xl">{app.icon}</div>
+                          <span className="font-medium">{app.name}</span>
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={activeScreen}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    className="h-full flex flex-col bg-gray-50"
+                  >
+                    {/* App Bar */}
+                    <div className="bg-white shadow-sm px-4 py-4 flex items-center gap-3">
+                      <button
+                        onClick={() => setActiveScreen("home")}
+                        className="text-gray-700"
+                      >
+                        <ArrowLeft className="h-5 w-5" />
+                      </button>
+                      <h2 className="text-lg font-bold text-gray-800 flex-1">
+                        {screenContent[activeScreen as keyof typeof screenContent].title}
+                      </h2>
+                      <button className="text-gray-700">
+                        <Search className="h-5 w-5" />
+                      </button>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+                      {screenContent[activeScreen as keyof typeof screenContent].content}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

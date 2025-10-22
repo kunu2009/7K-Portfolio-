@@ -5,11 +5,13 @@ import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switche
 import TerminalStyle1 from "./style-1";
 import TerminalStyle2 from "./style-2";
 import TerminalStyle3 from "./style-3";
+import TerminalStyle4 from "./style-4";
 
 const styles = [
-  { id: 1, name: "Classic", component: TerminalStyle1 },
-  { id: 2, name: "Cyberpunk", component: TerminalStyle2 },
-  { id: 3, name: "Matrix", component: TerminalStyle3 },
+  { id: 1, name: "Classic (Original)", component: TerminalStyle1 },
+  { id: 2, name: "Classic Alt", component: TerminalStyle2 },
+  { id: 3, name: "Cyberpunk", component: TerminalStyle3 },
+  { id: 4, name: "Matrix", component: TerminalStyle4 },
 ];
 
 export default function TerminalPage() {

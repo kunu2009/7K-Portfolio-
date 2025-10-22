@@ -1,236 +1,175 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Book } from "lucide-react";
 
-export default function StoryStyle3() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+export default function StoryStyle2() {
+  const [currentChapter, setCurrentChapter] = useState(0);
 
-  const sections = [
+  const chapters = [
     {
-      id: "intro",
-      title: "2020",
-      subtitle: "The Spark",
-      content: "It all started with a simple 'Hello World'. A fascination with code that would turn into a passion.",
-      emoji: "✨",
-      color: "from-blue-900 to-blue-700",
+      number: "Chapter 1",
+      title: "The Beginning",
+      content: "Once upon a time, there was a curious mind fascinated by the world of technology. That's me - Chaitanya Hedaoo, a developer on a journey to create meaningful digital experiences.",
+      image: "👨‍💻",
+      color: "from-blue-600 to-purple-600",
     },
     {
-      id: "learning",
-      title: "2021",
-      subtitle: "The Learning",
-      content: "Diving deep into web development. HTML, CSS, JavaScript - building blocks of the web became second nature.",
-      emoji: "📚",
-      color: "from-purple-900 to-purple-700",
+      number: "Chapter 2",
+      title: "The Skills",
+      content: "Through countless hours of learning and building, I mastered the art of modern web development. React, Next.js, TypeScript, and a whole arsenal of tools became my weapons of choice.",
+      image: "⚡",
+      color: "from-purple-600 to-pink-600",
     },
     {
-      id: "growth",
-      title: "2022",
-      subtitle: "The Growth",
-      content: "React, Next.js, TypeScript. The stack expanded, the projects got bigger, and the skills sharpened.",
-      emoji: "🚀",
-      color: "from-pink-900 to-pink-700",
+      number: "Chapter 3",
+      title: "The Projects",
+      content: "The 7K Ecosystem was born - a collection of applications designed to make life easier. From life management to finance tracking, from gaming communities to unified platforms.",
+      image: "🚀",
+      color: "from-pink-600 to-red-600",
     },
     {
-      id: "creation",
-      title: "2023",
-      subtitle: "The Creation",
-      content: "7K Ecosystem took shape. Multiple apps, thousands of users, real-world impact. Dreams becoming reality.",
-      emoji: "⚡",
-      color: "from-orange-900 to-orange-700",
+      number: "Chapter 4",
+      title: "The Journey Continues",
+      content: "But this story isn't over. Every day brings new challenges, new learnings, and new opportunities to create something amazing. The best chapters are yet to be written.",
+      image: "🌟",
+      color: "from-orange-600 to-yellow-600",
     },
     {
-      id: "present",
-      title: "2024",
-      subtitle: "The Present",
-      content: "Mastering full-stack development. Building scalable systems. Creating experiences that matter.",
-      emoji: "💎",
-      color: "from-green-900 to-green-700",
-    },
-    {
-      id: "future",
-      title: "2025+",
-      subtitle: "The Future",
-      content: "The journey continues. New technologies. Bigger challenges. Endless possibilities. Let's build something amazing together.",
-      emoji: "🌟",
-      color: "from-indigo-900 to-indigo-700",
+      number: "Chapter 5",
+      title: "Your Chapter",
+      content: "And this is where you come in. Let's write the next chapter together. Whether it's a project, collaboration, or just a conversation - I'm excited to see where our story leads.",
+      image: "🤝",
+      color: "from-green-600 to-emerald-600",
     },
   ];
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrolled / maxScroll) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (index: number) => {
-    if (typeof window === 'undefined') return;
-    const element = document.getElementById(sections[index].id);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="relative bg-black">
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-800 z-50">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4 md:p-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Book Header */}
         <motion.div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
-      {/* Timeline Indicator */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-4 z-40">
-        {sections.map((section, index) => (
-          <button
-            key={section.id}
-            onClick={() => scrollToSection(index)}
-            className="group relative flex items-center gap-3"
-          >
-            <div className={`w-3 h-3 rounded-full border-2 transition-all ${
-              scrollProgress >= (index * 100) / sections.length && scrollProgress < ((index + 1) * 100) / sections.length
-                ? "bg-white border-white scale-150"
-                : "bg-transparent border-gray-600 hover:border-white"
-            }`} />
-            <span className="absolute left-6 whitespace-nowrap text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-              {section.title}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      {/* Sections */}
-      {sections.map((section, index) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className={`min-h-screen flex items-center justify-center relative bg-gradient-to-br ${section.color}`}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
         >
-          {/* Animated Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                                 radial-gradient(circle at 80% 50%, white 1px, transparent 1px)`,
-                backgroundSize: "50px 50px",
-              }}
-            />
+          <div className="inline-flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg mb-4">
+            <Book className="h-6 w-6 text-amber-600" />
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+              The Developer's Tale
+            </h1>
           </div>
+          <p className="text-gray-600 dark:text-gray-400">A story of code, creativity, and continuous learning</p>
+        </motion.div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-8 py-20">
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+        {/* Chapter Selector */}
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+          {chapters.map((chapter, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentChapter(index)}
+              className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
+                currentChapter === index
+                  ? "bg-amber-600 text-white shadow-lg scale-105"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:shadow-md"
+              }`}
             >
-              {/* Emoji */}
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="text-9xl mb-8"
-              >
-                {section.emoji}
-              </motion.div>
+              {chapter.number}
+            </button>
+          ))}
+        </div>
 
-              {/* Year */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-white/60 text-6xl md:text-8xl font-bold mb-4"
-              >
-                {section.title}
-              </motion.div>
-
-              {/* Subtitle */}
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-4xl md:text-6xl font-bold text-white mb-8"
-              >
-                {section.subtitle}
-              </motion.h2>
-
-              {/* Content */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed"
-              >
-                {section.content}
-              </motion.p>
-
-              {/* Contact on last section */}
-              {index === sections.length - 1 && (
+        {/* Chapter Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentChapter}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="relative"
+          >
+            {/* Book Page */}
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
+              {/* Page Header with Gradient */}
+              <div className={`bg-gradient-to-r ${chapters[currentChapter].color} p-8 text-white`}>
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7 }}
-                  className="mt-12 flex flex-col gap-4"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring" }}
+                  className="text-7xl mb-4 text-center"
                 >
-                  <div className="flex flex-wrap gap-4 justify-center">
-                    <a
-                      href="mailto:chaitanyahedaoo7@gmail.com"
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-white transition-all"
-                    >
-                      📧 Email Me
-                    </a>
-                    <a
-                      href="https://7kc.me"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-white transition-all"
-                    >
-                      🌐 Visit Portfolio
-                    </a>
-                    <a
-                      href="https://github.com/chaitanyahedaoo"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-white transition-all"
-                    >
-                      💻 GitHub
-                    </a>
-                  </div>
+                  {chapters[currentChapter].image}
                 </motion.div>
-              )}
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-sm opacity-80 mb-2"
+                >
+                  {chapters[currentChapter].number}
+                </motion.div>
+                <motion.h2
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-4xl font-bold"
+                >
+                  {chapters[currentChapter].title}
+                </motion.h2>
+              </div>
 
-            {/* Scroll indicator */}
-            {index < sections.length - 1 && (
-              <motion.button
+              {/* Page Content */}
+              <motion.div
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-                onClick={() => scrollToSection(index + 1)}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="p-8"
               >
-                <ChevronDown className="h-8 w-8 animate-bounce" />
-              </motion.button>
-            )}
-          </div>
-        </section>
-      ))}
+                <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 font-serif">
+                  {chapters[currentChapter].content}
+                </p>
+
+                {/* Special content for last chapter */}
+                {currentChapter === chapters.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl"
+                  >
+                    <h3 className="font-bold text-xl mb-3 text-gray-800 dark:text-white">Let's Connect</h3>
+                    <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                      <div>📧 chaitanyahedaoo7@gmail.com</div>
+                      <div>🌐 7kc.me</div>
+                      <div>💻 github.com/chaitanyahedaoo</div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Navigation hint */}
+                <div className="mt-8 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                  <span>Page {currentChapter + 1} of {chapters.length}</span>
+                  {currentChapter < chapters.length - 1 && (
+                    <button
+                      onClick={() => setCurrentChapter(currentChapter + 1)}
+                      className="flex items-center gap-1 hover:text-amber-600 transition-colors"
+                    >
+                      Next Chapter <ChevronDown className="h-4 w-4 rotate-[-90deg]" />
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Page Number */}
+            <div className="text-center mt-4 text-gray-400 dark:text-gray-600 text-sm font-serif">
+              — {currentChapter + 1} —
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

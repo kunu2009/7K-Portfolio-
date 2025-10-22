@@ -5,11 +5,13 @@ import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switche
 import MobileStyle1 from "./style-1";
 import MobileStyle2 from "./style-2";
 import MobileStyle3 from "./style-3";
+import MobileStyle4 from "./style-4";
 
 const styles = [
-  { id: 1, name: "iOS", component: MobileStyle1 },
-  { id: 2, name: "Android", component: MobileStyle2 },
-  { id: 3, name: "Minimal", component: MobileStyle3 },
+  { id: 1, name: "Shell (Original)", component: MobileStyle1 },
+  { id: 2, name: "iOS", component: MobileStyle2 },
+  { id: 3, name: "Android", component: MobileStyle3 },
+  { id: 4, name: "Minimal", component: MobileStyle4 },
 ];
 
 export default function MobileShellPage() {

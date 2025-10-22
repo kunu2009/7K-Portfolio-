@@ -2,204 +2,159 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Circle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const slides = [
   {
-    title: "Kunal Chheda",
-    role: "Full Stack Developer",
-    description: "12th grade student building the 7K Ecosystem - a collection of 8+ innovative applications",
-    skills: ["React", "Next.js", "TypeScript", "Python", "Firebase"],
-    color: "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500"
+    title: "Full Stack Developer",
+    subtitle: "Building the 7K Ecosystem",
+    description: "Creating innovative web and mobile applications with modern technologies",
+    gradient: "from-blue-600 via-purple-600 to-pink-600",
+    emoji: "💻"
   },
   {
-    title: "Technical Skills",
-    role: "Polyglot Developer",
-    description: "Proficient in multiple programming languages and frameworks for web, mobile, and AI development",
-    skills: ["Frontend", "Backend", "Mobile", "AI/ML", "DevOps"],
-    color: "bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-500"
+    title: "7K Life",
+    subtitle: "Productivity & Life Management",
+    description: "All-in-one app for habits, tasks, goals, and personal growth tracking",
+    gradient: "from-green-600 via-emerald-600 to-teal-600",
+    emoji: "🌟"
   },
   {
-    title: "7K Ecosystem",
-    role: "Product Suite",
-    description: "Building interconnected apps for productivity, finance, gaming, learning, and lifestyle",
-    skills: ["7K Life", "7K Money", "7K Games", "7K English", "7K Law"],
-    color: "bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500"
+    title: "7K Money",
+    subtitle: "Finance Tracker",
+    description: "Smart expense tracking and budget management for personal finance",
+    gradient: "from-yellow-600 via-orange-600 to-red-600",
+    emoji: "💰"
   },
   {
-    title: "Let's Connect",
-    role: "Open for Opportunities",
-    description: "Available for freelance projects, collaborations, and exciting development opportunities",
-    skills: ["Freelance", "Collaboration", "Innovation", "Growth", "Impact"],
-    color: "bg-gradient-to-br from-orange-500 via-red-500 to-pink-500"
-  }
+    title: "7K Games",
+    subtitle: "Gaming & Entertainment",
+    description: "Collection of fun and engaging games for all ages",
+    gradient: "from-purple-600 via-pink-600 to-rose-600",
+    emoji: "🎮"
+  },
 ];
 
-export default function SliderStyle2() {
+export default function SliderStyle1() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
-  };
-
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setCurrent((current + newDirection + slides.length) % slides.length);
-  };
+  const next = () => setCurrent((current + 1) % slides.length);
+  const prev = () => setCurrent((current - 1 + slides.length) % slides.length);
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-black relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      </div>
-
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 }
-          }}
-          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.7 }}
+          className={`absolute inset-0 bg-gradient-to-br ${slides[current].gradient}`}
         >
-          <div className={`h-full w-full ${slides[current].color} flex items-center justify-center`}>
-            <div className="max-w-5xl mx-auto px-8 text-white">
-              {/* Slide Number */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-sm font-mono mb-4 text-white/70"
-              >
-                [{(current + 1).toString().padStart(2, '0')} / {slides.length.toString().padStart(2, '0')}]
-              </motion.div>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40" />
 
-              {/* Role */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-2xl md:text-3xl font-light mb-4 text-white/90"
-              >
-                {slides[current].role}
-              </motion.p>
+          {/* Content */}
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-white px-8">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-9xl mb-8"
+            >
+              {slides[current].emoji}
+            </motion.div>
 
-              {/* Title */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-6xl md:text-8xl font-black mb-8 leading-none"
-              >
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-center max-w-4xl"
+            >
+              <p className="text-xl md:text-2xl text-white/80 mb-4 font-light tracking-wide">
+                {slides[current].subtitle}
+              </p>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight">
                 {slides[current].title}
-              </motion.h1>
-
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="text-lg md:text-xl mb-8 max-w-2xl text-white/90 leading-relaxed"
-              >
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
                 {slides[current].description}
-              </motion.p>
+              </p>
+            </motion.div>
 
-              {/* Skills Tags */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="flex flex-wrap gap-3 mb-12"
-              >
-                {slides[current].skills.map((skill, i) => (
-                  <motion.div
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 + i * 0.1 }}
-                    className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* CTA Buttons */}
-              {current === slides.length - 1 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                  className="flex gap-4"
-                >
-                  <Link href="/#contact">
-                    <Button size="lg" className="bg-white text-black hover:bg-gray-200 font-bold px-8 py-6">
-                      Contact Me
-                    </Button>
-                  </Link>
-                  <Link href="/#projects">
-                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 px-8 py-6">
-                      View Projects
-                    </Button>
-                  </Link>
-                </motion.div>
-              )}
-            </div>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-12 flex gap-4"
+            >
+              <Link href="/#projects">
+                <Button size="lg" className="bg-white text-black hover:bg-gray-200 font-bold px-8 py-6 text-lg">
+                  Explore Projects
+                </Button>
+              </Link>
+              <Link href="/#contact">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 font-bold px-8 py-6 text-lg">
+                  Get in Touch
+                </Button>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => paginate(-1)}
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-10 w-16 h-16 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all"
-      >
-        <ArrowLeft className="h-8 w-8" />
-      </button>
+      {/* Navigation */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={prev}
+          className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
 
-      <button
-        onClick={() => paginate(1)}
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-10 w-16 h-16 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center text-white transition-all"
-      >
-        <ArrowRight className="h-8 w-8" />
-      </button>
+        <div className="flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className="group"
+            >
+              <Circle
+                className={`h-3 w-3 transition-all ${
+                  i === current
+                    ? "fill-white text-white scale-125"
+                    : "fill-white/30 text-white/30 hover:fill-white/50"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-10">
-        <motion.div
-          className="h-full bg-white"
-          initial={{ width: "0%" }}
-          animate={{ width: `${((current + 1) / slides.length) * 100}%` }}
-          transition={{ duration: 0.3 }}
-        />
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={next}
+          className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
       </div>
 
-      {/* Home Button */}
+      {/* Counter */}
+      <div className="absolute top-8 right-8 z-20 text-white font-mono text-xl">
+        <span className="text-4xl font-bold">{(current + 1).toString().padStart(2, '0')}</span>
+        <span className="text-white/50"> / {slides.length.toString().padStart(2, '0')}</span>
+      </div>
+
+      {/* Back Button */}
       <Link href="/" className="absolute top-8 left-8 z-20">
         <Button variant="ghost" className="text-white hover:bg-white/20">
-          ← Home
+          ← Back
         </Button>
       </Link>
     </div>

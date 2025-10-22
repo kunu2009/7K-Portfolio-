@@ -1,183 +1,179 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-export default function GalaksiStyle2() {
-  const [currentPlanet, setCurrentPlanet] = useState(0);
+export default function GalaksiStyle1() {
+  const [stars, setStars] = useState<Array<{ x: number; y: number; size: number; delay: number }>>([]);
+  const [selectedPlanet, setSelectedPlanet] = useState<number | null>(null);
+
+  useEffect(() => {
+    const newStars = Array.from({ length: 100 }, () => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      delay: Math.random() * 3,
+    }));
+    setStars(newStars);
+  }, []);
 
   const planets = [
     {
-      name: "Earth",
-      subtitle: "Home Base",
-      emoji: "🌍",
-      gradient: "from-blue-600 via-green-500 to-blue-400",
-      content: {
-        title: "About Me",
-        text: "Chaitanya Hedaoo - A Full Stack Developer navigating the cosmos of code. From web applications to mobile apps, exploring every corner of the digital universe.",
-      },
+      name: "About Me",
+      icon: "🌍",
+      color: "from-blue-600 to-cyan-500",
+      size: "w-32 h-32",
+      position: "top-1/4 left-1/4",
+      content: "Full Stack Developer exploring the digital universe. Passionate about creating stellar web experiences.",
     },
     {
-      name: "Mercury",
-      subtitle: "Speed & Agility",
-      emoji: "☿️",
-      gradient: "from-gray-600 via-gray-400 to-gray-500",
-      content: {
-        title: "Frontend Skills",
-        text: "React ⚛️ • Next.js ▲ • TypeScript 📘 • Tailwind CSS 🎨 • Framer Motion 🎭 • Building fast, responsive, and beautiful interfaces",
-      },
+      name: "Skills",
+      icon: "⚡",
+      color: "from-purple-600 to-pink-500",
+      size: "w-28 h-28",
+      position: "top-1/3 right-1/4",
+      content: "React • Next.js • TypeScript • Node.js • Python • Firebase • Tailwind CSS",
     },
     {
-      name: "Mars",
-      subtitle: "Backend Power",
-      emoji: "🔴",
-      gradient: "from-red-700 via-orange-600 to-red-500",
-      content: {
-        title: "Backend Skills",
-        text: "Node.js 🟢 • Python 🐍 • Firebase 🔥 • PostgreSQL 🐘 • RESTful APIs • Database Design • Server Architecture",
-      },
+      name: "Projects",
+      icon: "🚀",
+      color: "from-orange-600 to-red-500",
+      size: "w-36 h-36",
+      position: "bottom-1/4 left-1/3",
+      content: "7K Life • 7K Money • 7K Game Hub • 7K Ecosystem - A constellation of applications",
     },
     {
-      name: "Jupiter",
-      subtitle: "Giant Projects",
-      emoji: "🪐",
-      gradient: "from-orange-400 via-yellow-300 to-orange-500",
-      content: {
-        title: "7K Ecosystem",
-        text: "7K Life 🌱 • 7K Money 💰 • 7K Game Hub 🎮 • 7K Ecosystem 🚀 - A constellation of applications serving thousands of users",
-      },
-    },
-    {
-      name: "Saturn",
-      subtitle: "Rings of Skills",
-      emoji: "🪐",
-      gradient: "from-yellow-600 via-amber-400 to-yellow-500",
-      content: {
-        title: "Tools & Technologies",
-        text: "Git & GitHub • Docker • VS Code • Figma • Vercel • AWS • CI/CD • Agile Development • Version Control",
-      },
-    },
-    {
-      name: "Neptune",
-      subtitle: "Deep Connection",
-      emoji: "🔵",
-      gradient: "from-blue-800 via-blue-600 to-cyan-500",
-      content: {
-        title: "Let's Connect",
-        text: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 github.com/chaitanyahedaoo • Ready for new opportunities and collaborations!",
-      },
+      name: "Contact",
+      icon: "📡",
+      color: "from-green-600 to-emerald-500",
+      size: "w-24 h-24",
+      position: "bottom-1/3 right-1/3",
+      content: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 github.com/chaitanyahedaoo",
     },
   ];
 
-  const nextPlanet = () => setCurrentPlanet((prev) => (prev + 1) % planets.length);
-  const prevPlanet = () => setCurrentPlanet((prev) => (prev - 1 + planets.length) % planets.length);
-
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
-      {/* Starfield */}
-      <div className="absolute inset-0">
-        {[...Array(200)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-px h-px bg-white rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.7 + 0.3,
-            }}
-          />
-        ))}
+    <div className="relative min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-black overflow-hidden">
+      {/* Stars Background */}
+      {stars.map((star, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-white"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+          }}
+          animate={{
+            opacity: [0.2, 1, 0.2],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            delay: star.delay,
+          }}
+        />
+      ))}
+
+      {/* Center Sun (Portfolio Title) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+        <motion.div
+          className="relative"
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          <div className="w-48 h-48 rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 shadow-2xl shadow-orange-500/50 flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-5xl mb-2">☀️</div>
+              <div className="text-white font-bold text-lg">Chaitanya</div>
+              <div className="text-white/80 text-sm">Developer</div>
+            </div>
+          </div>
+          {/* Sun Rays */}
+          <div className="absolute inset-0 -z-10">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute top-1/2 left-1/2 w-1 h-32 bg-gradient-to-t from-transparent to-yellow-400/50"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
+                  transformOrigin: "center",
+                }}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl px-4">
-        <AnimatePresence mode="wait">
+      {/* Planets (Content Sections) */}
+      {planets.map((planet, index) => (
+        <motion.div
+          key={planet.name}
+          className={`absolute ${planet.position} cursor-pointer`}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: index * 0.2, type: "spring" }}
+          whileHover={{ scale: 1.1 }}
+          onClick={() => setSelectedPlanet(selectedPlanet === index ? null : index)}
+        >
+          <div className={`${planet.size} rounded-full bg-gradient-to-br ${planet.color} shadow-2xl flex items-center justify-center text-6xl relative`}>
+            {planet.icon}
+            {/* Orbit Ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-white/20 scale-110" />
+          </div>
+          <div className="text-center mt-2 text-white font-medium">{planet.name}</div>
+        </motion.div>
+      ))}
+
+      {/* Planet Info Modal */}
+      {selectedPlanet !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedPlanet(null)}
+        >
           <motion.div
-            key={currentPlanet}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            exit={{ scale: 0, rotate: 180 }}
+            className={`bg-gradient-to-br ${planets[selectedPlanet].color} rounded-3xl p-8 max-w-lg w-full shadow-2xl`}
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Planet */}
-            <motion.div
-              className={`w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br ${planets[currentPlanet].gradient} shadow-2xl mb-8 flex items-center justify-center text-9xl relative`}
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+            <div className="text-center mb-6">
+              <div className="text-8xl mb-4">{planets[selectedPlanet].icon}</div>
+              <h2 className="text-4xl font-bold text-white mb-4">{planets[selectedPlanet].name}</h2>
+            </div>
+            <p className="text-white/90 text-lg leading-relaxed text-center">
+              {planets[selectedPlanet].content}
+            </p>
+            <button
+              onClick={() => setSelectedPlanet(null)}
+              className="mt-6 w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white py-3 rounded-xl font-medium transition-colors"
             >
-              <motion.div
-                animate={{
-                  rotate: -360,
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                {planets[currentPlanet].emoji}
-              </motion.div>
-
-              {/* Glow effect */}
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${planets[currentPlanet].gradient} opacity-50 blur-3xl -z-10 scale-110`} />
-            </motion.div>
-
-            {/* Planet Name */}
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-2 text-center">
-              {planets[currentPlanet].name}
-            </h2>
-            <p className="text-xl text-white/60 mb-8">{planets[currentPlanet].subtitle}</p>
-
-            {/* Content Card */}
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-2xl w-full border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-4">{planets[currentPlanet].content.title}</h3>
-              <p className="text-white/80 text-lg leading-relaxed">{planets[currentPlanet].content.text}</p>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center gap-4 mt-8">
-              <button
-                onClick={prevPlanet}
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full text-white transition-all"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-
-              {/* Planet Indicators */}
-              <div className="flex gap-2">
-                {planets.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentPlanet(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      index === currentPlanet ? "bg-white scale-125" : "bg-white/30 hover:bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextPlanet}
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full text-white transition-all"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Planet Counter */}
-            <div className="mt-6 text-white/40 text-sm">
-              Planet {currentPlanet + 1} of {planets.length}
-            </div>
+              Close
+            </button>
           </motion.div>
-        </AnimatePresence>
+        </motion.div>
+      )}
+
+      {/* Instructions */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center">
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Click on planets to explore 🪐
+        </motion.div>
       </div>
     </div>
   );

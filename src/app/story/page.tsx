@@ -5,11 +5,13 @@ import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switche
 import StoryStyle1 from "./style-1";
 import StoryStyle2 from "./style-2";
 import StoryStyle3 from "./style-3";
+import StoryStyle4 from "./style-4";
 
 const styles = [
-  { id: 1, name: "Instagram", component: StoryStyle1 },
-  { id: 2, name: "Book", component: StoryStyle2 },
-  { id: 3, name: "Timeline", component: StoryStyle3 },
+  { id: 1, name: "Book (Original)", component: StoryStyle1 },
+  { id: 2, name: "Instagram", component: StoryStyle2 },
+  { id: 3, name: "Magazine", component: StoryStyle3 },
+  { id: 4, name: "Timeline", component: StoryStyle4 },
 ];
 
 export default function StoryPage() {

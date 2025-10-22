@@ -1,259 +1,183 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function GalaksiStyle3() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [activeSection, setActiveSection] = useState(0);
+export default function GalaksiStyle2() {
+  const [currentPlanet, setCurrentPlanet] = useState(0);
 
-  // Animated galaxy background
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      radius: number;
-      vx: number;
-      vy: number;
-      color: string;
-    }> = [];
-
-    const colors = ["#8B5CF6", "#EC4899", "#3B82F6", "#10B981", "#F59E0B"];
-
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      });
-    }
-
-    function animate() {
-      if (!ctx || !canvas) return;
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const sections = [
+  const planets = [
     {
-      title: "Welcome to the Cosmos",
-      subtitle: "Developer's Universe",
-      emoji: "🌌",
-      content: "I'm Chaitanya Hedaoo, navigating through the infinite possibilities of web development.",
-      color: "from-purple-500 to-pink-500",
+      name: "Earth",
+      subtitle: "Home Base",
+      emoji: "🌍",
+      gradient: "from-blue-600 via-green-500 to-blue-400",
+      content: {
+        title: "About Me",
+        text: "Chaitanya Hedaoo - A Full Stack Developer navigating the cosmos of code. From web applications to mobile apps, exploring every corner of the digital universe.",
+      },
     },
     {
-      title: "Frontend Galaxy",
-      subtitle: "User Interface Stars",
-      emoji: "⭐",
-      content: "React, Next.js, TypeScript, Tailwind CSS - Creating beautiful constellations of components",
-      color: "from-blue-500 to-cyan-500",
+      name: "Mercury",
+      subtitle: "Speed & Agility",
+      emoji: "☿️",
+      gradient: "from-gray-600 via-gray-400 to-gray-500",
+      content: {
+        title: "Frontend Skills",
+        text: "React ⚛️ • Next.js ▲ • TypeScript 📘 • Tailwind CSS 🎨 • Framer Motion 🎭 • Building fast, responsive, and beautiful interfaces",
+      },
     },
     {
-      title: "Backend Nebula",
-      subtitle: "Server-side Systems",
-      emoji: "🌠",
-      content: "Node.js, Python, Firebase, PostgreSQL - Building powerful backend architectures",
-      color: "from-green-500 to-emerald-500",
+      name: "Mars",
+      subtitle: "Backend Power",
+      emoji: "🔴",
+      gradient: "from-red-700 via-orange-600 to-red-500",
+      content: {
+        title: "Backend Skills",
+        text: "Node.js 🟢 • Python 🐍 • Firebase 🔥 • PostgreSQL 🐘 • RESTful APIs • Database Design • Server Architecture",
+      },
     },
     {
-      title: "Project Constellation",
-      subtitle: "7K Ecosystem",
-      emoji: "✨",
-      content: "A connected universe of applications - Life, Money, Games, and more",
-      color: "from-orange-500 to-red-500",
+      name: "Jupiter",
+      subtitle: "Giant Projects",
+      emoji: "🪐",
+      gradient: "from-orange-400 via-yellow-300 to-orange-500",
+      content: {
+        title: "7K Ecosystem",
+        text: "7K Life 🌱 • 7K Money 💰 • 7K Game Hub 🎮 • 7K Ecosystem 🚀 - A constellation of applications serving thousands of users",
+      },
     },
     {
-      title: "Connect Across Space",
-      subtitle: "Let's Collaborate",
-      emoji: "🚀",
-      content: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 GitHub",
-      color: "from-indigo-500 to-purple-500",
+      name: "Saturn",
+      subtitle: "Rings of Skills",
+      emoji: "🪐",
+      gradient: "from-yellow-600 via-amber-400 to-yellow-500",
+      content: {
+        title: "Tools & Technologies",
+        text: "Git & GitHub • Docker • VS Code • Figma • Vercel • AWS • CI/CD • Agile Development • Version Control",
+      },
+    },
+    {
+      name: "Neptune",
+      subtitle: "Deep Connection",
+      emoji: "🔵",
+      gradient: "from-blue-800 via-blue-600 to-cyan-500",
+      content: {
+        title: "Let's Connect",
+        text: "📧 chaitanyahedaoo7@gmail.com • 🌐 7kc.me • 💻 github.com/chaitanyahedaoo • Ready for new opportunities and collaborations!",
+      },
     },
   ];
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const section = Math.floor(scrolled / windowHeight);
-      setActiveSection(Math.min(section, sections.length - 1));
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const nextPlanet = () => setCurrentPlanet((prev) => (prev + 1) % planets.length);
+  const prevPlanet = () => setCurrentPlanet((prev) => (prev - 1 + planets.length) % planets.length);
 
   return (
-    <div className="relative bg-black">
-      {/* Animated Canvas Background */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 z-0"
-      />
-
-      {/* Sections */}
-      {sections.map((section, index) => (
-        <section
-          key={index}
-          className="relative min-h-screen flex items-center justify-center z-10"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto px-8 text-center"
-          >
-            {/* Emoji with Glow */}
-            <motion.div
-              className="relative inline-block mb-8"
-              animate={{
-                scale: activeSection === index ? [1, 1.1, 1] : 1,
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
-            >
-              <div className="text-9xl">{section.emoji}</div>
-              <div className={`absolute inset-0 bg-gradient-to-r ${section.color} opacity-50 blur-3xl -z-10 scale-150`} />
-            </motion.div>
-
-            {/* Title */}
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className={`text-6xl md:text-8xl font-bold bg-gradient-to-r ${section.color} bg-clip-text text-transparent mb-4`}
-            >
-              {section.title}
-            </motion.h2>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-2xl text-white/60 mb-8"
-            >
-              {section.subtitle}
-            </motion.p>
-
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-2xl mx-auto"
-            >
-              <p className="text-xl text-white/80 leading-relaxed">
-                {section.content}
-              </p>
-
-              {/* CTA for last section */}
-              {index === sections.length - 1 && (
-                <div className="mt-8 flex flex-wrap gap-4 justify-center">
-                  <a
-                    href="mailto:chaitanyahedaoo7@gmail.com"
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-purple-500/50"
-                  >
-                    Send Message
-                  </a>
-                  <a
-                    href="https://7kc.me"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full font-medium transition-all border border-white/20"
-                  >
-                    View Portfolio
-                  </a>
-                </div>
-              )}
-            </motion.div>
-
-            {/* Floating particles around card */}
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${section.color}`}
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${30 + (i % 2) * 40}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{
-                  duration: 2 + i,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                }}
-              />
-            ))}
-          </motion.div>
-        </section>
-      ))}
-
-      {/* Scroll Progress Indicator */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3">
-        {sections.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => typeof window !== 'undefined' && window.scrollTo({ top: index * window.innerHeight, behavior: "smooth" })}
-            className={`w-3 h-3 rounded-full transition-all ${
-              activeSection === index
-                ? "bg-white scale-125"
-                : "bg-white/30 hover:bg-white/50"
-            }`}
+    <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+      {/* Starfield */}
+      <div className="absolute inset-0">
+        {[...Array(200)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-px h-px bg-white rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.7 + 0.3,
+            }}
           />
         ))}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl px-4">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPlanet}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center"
+          >
+            {/* Planet */}
+            <motion.div
+              className={`w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br ${planets[currentPlanet].gradient} shadow-2xl mb-8 flex items-center justify-center text-9xl relative`}
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              <motion.div
+                animate={{
+                  rotate: -360,
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                {planets[currentPlanet].emoji}
+              </motion.div>
+
+              {/* Glow effect */}
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${planets[currentPlanet].gradient} opacity-50 blur-3xl -z-10 scale-110`} />
+            </motion.div>
+
+            {/* Planet Name */}
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-2 text-center">
+              {planets[currentPlanet].name}
+            </h2>
+            <p className="text-xl text-white/60 mb-8">{planets[currentPlanet].subtitle}</p>
+
+            {/* Content Card */}
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-2xl w-full border border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-4">{planets[currentPlanet].content.title}</h3>
+              <p className="text-white/80 text-lg leading-relaxed">{planets[currentPlanet].content.text}</p>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center gap-4 mt-8">
+              <button
+                onClick={prevPlanet}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full text-white transition-all"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+
+              {/* Planet Indicators */}
+              <div className="flex gap-2">
+                {planets.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPlanet(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      index === currentPlanet ? "bg-white scale-125" : "bg-white/30 hover:bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextPlanet}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-4 rounded-full text-white transition-all"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Planet Counter */}
+            <div className="mt-6 text-white/40 text-sm">
+              Planet {currentPlanet + 1} of {planets.length}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

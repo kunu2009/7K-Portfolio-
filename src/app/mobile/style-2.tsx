@@ -2,49 +2,50 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Menu, Search, MoreVertical } from "lucide-react";
+import { Home, ChevronLeft, Battery, Wifi, Signal } from "lucide-react";
+import Image from "next/image";
 
-export default function MobileStyle2() {
+export default function MobileStyle1() {
   const [activeScreen, setActiveScreen] = useState("home");
+  const [time] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
   const apps = [
-    { id: "profile", name: "Profile", icon: "👤", color: "bg-blue-600" },
-    { id: "skills", name: "Skills", icon: "⚡", color: "bg-green-600" },
-    { id: "work", name: "Work", icon: "💼", color: "bg-purple-600" },
-    { id: "contact", name: "Contact", icon: "📱", color: "bg-red-600" },
+    { id: "about", name: "About", icon: "👤", color: "bg-gradient-to-br from-blue-500 to-blue-600" },
+    { id: "skills", name: "Skills", icon: "⚡", color: "bg-gradient-to-br from-purple-500 to-purple-600" },
+    { id: "projects", name: "Projects", icon: "🚀", color: "bg-gradient-to-br from-green-500 to-green-600" },
+    { id: "contact", name: "Contact", icon: "📧", color: "bg-gradient-to-br from-red-500 to-red-600" },
   ];
 
   const screenContent = {
-    profile: {
-      title: "Profile",
+    about: {
+      title: "About Me",
       content: (
-        <div>
-          <div className="bg-blue-600 p-6 -m-4 mb-4">
-            <div className="w-20 h-20 bg-white rounded-full mx-auto mb-3 flex items-center justify-center text-4xl">
+        <div className="space-y-4">
+          <div className="text-center mb-6">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">
               👨‍💻
             </div>
-            <h3 className="text-white text-xl font-bold text-center">Chaitanya Hedaoo</h3>
-            <p className="text-blue-100 text-center text-sm">Full Stack Developer</p>
+            <h3 className="text-xl font-bold">Chaitanya Hedaoo</h3>
+            <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
           </div>
-          <div className="space-y-3">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-xs text-gray-500 mb-1">LOCATION</div>
-              <div className="font-medium">India 🇮🇳</div>
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              Passionate developer building modern web and mobile applications. 
+              Focused on creating seamless user experiences with cutting-edge technologies.
+            </p>
+          </div>
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
+            <div className="flex items-center gap-3 text-sm">
+              <span>📍</span>
+              <span>India</span>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-xs text-gray-500 mb-1">EDUCATION</div>
-              <div className="font-medium">Computer Science</div>
+            <div className="flex items-center gap-3 text-sm mt-2">
+              <span>🎓</span>
+              <span>Computer Science Student</span>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-xs text-gray-500 mb-1">EXPERIENCE</div>
-              <div className="font-medium">3+ Years Development</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-xs text-gray-500 mb-1">ABOUT</div>
-              <div className="text-sm text-gray-700">
-                Passionate about creating innovative web solutions. 
-                Specialized in modern frameworks and full-stack development.
-              </div>
+            <div className="flex items-center gap-3 text-sm mt-2">
+              <span>💼</span>
+              <span>Available for opportunities</span>
             </div>
           </div>
         </div>
@@ -53,88 +54,56 @@ export default function MobileStyle2() {
     skills: {
       title: "Skills",
       content: (
-        <div className="space-y-4">
-          <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-4 border-b">
-              <h4 className="font-bold text-gray-700">Frontend Development</h4>
-            </div>
-            <div className="p-4 space-y-2">
-              {["React", "Next.js", "TypeScript", "Tailwind CSS"].map((skill) => (
-                <div key={skill} className="flex items-center justify-between text-sm">
-                  <span className="text-gray-700">{skill}</span>
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map((i) => (
-                      <div key={i} className={`w-2 h-2 rounded-full ${i <= 4 ? "bg-green-500" : "bg-gray-300"}`}></div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-4 border-b">
-              <h4 className="font-bold text-gray-700">Backend Development</h4>
-            </div>
-            <div className="p-4 space-y-2">
-              {["Node.js", "Python", "Firebase", "PostgreSQL"].map((skill) => (
-                <div key={skill} className="flex items-center justify-between text-sm">
-                  <span className="text-gray-700">{skill}</span>
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map((i) => (
-                      <div key={i} className={`w-2 h-2 rounded-full ${i <= 4 ? "bg-blue-500" : "bg-gray-300"}`}></div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-4 border-b">
-              <h4 className="font-bold text-gray-700">Tools & Technologies</h4>
-            </div>
-            <div className="p-4">
-              <div className="flex flex-wrap gap-2">
-                {["Git", "Docker", "VS Code", "Figma", "Vercel", "AWS"].map((tool) => (
-                  <div key={tool} className="bg-gray-100 px-3 py-1 rounded-full text-xs text-gray-700">
-                    {tool}
-                  </div>
-                ))}
+        <div className="space-y-3">
+          {[
+            { name: "React & Next.js", level: 95, color: "bg-blue-500" },
+            { name: "TypeScript", level: 90, color: "bg-cyan-500" },
+            { name: "Node.js", level: 85, color: "bg-green-500" },
+            { name: "Python", level: 80, color: "bg-yellow-500" },
+            { name: "Firebase", level: 88, color: "bg-orange-500" },
+            { name: "Tailwind CSS", level: 95, color: "bg-purple-500" },
+          ].map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4"
+            >
+              <div className="flex justify-between mb-2">
+                <span className="text-sm font-medium">{skill.name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">{skill.level}%</span>
               </div>
-            </div>
-          </div>
+              <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2">
+                <motion.div
+                  className={`${skill.color} h-2 rounded-full`}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${skill.level}%` }}
+                  transition={{ duration: 1, delay: index * 0.1 }}
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       ),
     },
-    work: {
+    projects: {
       title: "Projects",
       content: (
         <div className="space-y-4">
           {[
-            { name: "7K Life", desc: "Complete life management ecosystem", status: "Live", color: "bg-green-600" },
-            { name: "7K Money", desc: "Finance tracking platform", status: "Beta", color: "bg-yellow-600" },
-            { name: "7K Game Hub", desc: "Student gaming community", status: "Live", color: "bg-purple-600" },
-            { name: "7K Ecosystem", desc: "Unified app platform", status: "Live", color: "bg-blue-600" },
+            { name: "7K Life", desc: "Life management ecosystem", color: "from-green-500 to-emerald-600", emoji: "🌱" },
+            { name: "7K Money", desc: "Finance tracking platform", color: "from-yellow-500 to-orange-600", emoji: "💰" },
+            { name: "7K Game Hub", desc: "Student gaming community", color: "from-purple-500 to-pink-600", emoji: "🎮" },
+            { name: "7K Ecosystem", desc: "Unified app platform", color: "from-blue-500 to-cyan-600", emoji: "🚀" },
           ].map((project) => (
-            <div key={project.name} className="bg-white rounded-lg shadow-sm p-4">
-              <div className="flex items-start justify-between mb-2">
-                <div>
-                  <h4 className="font-bold text-gray-800">{project.name}</h4>
-                  <p className="text-sm text-gray-600">{project.desc}</p>
-                </div>
-                <span className={`${project.color} text-white text-xs px-2 py-1 rounded-full`}>
-                  {project.status}
-                </span>
-              </div>
-              <div className="flex gap-2 mt-3">
-                <button className="flex-1 bg-blue-600 text-white py-2 rounded-lg text-sm font-medium">
-                  View
-                </button>
-                <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm">
-                  <MoreVertical className="h-4 w-4" />
-                </button>
-              </div>
+            <div key={project.name} className={`bg-gradient-to-br ${project.color} rounded-2xl p-4 text-white`}>
+              <div className="text-4xl mb-2">{project.emoji}</div>
+              <h4 className="font-bold text-lg">{project.name}</h4>
+              <p className="text-sm text-white/80">{project.desc}</p>
+              <button className="mt-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm transition-colors">
+                View Project
+              </button>
             </div>
           ))}
         </div>
@@ -144,78 +113,81 @@ export default function MobileStyle2() {
       title: "Contact",
       content: (
         <div className="space-y-4">
-          {[
-            { type: "Email", value: "chaitanyahedaoo7@gmail.com", icon: "📧", color: "bg-red-500" },
-            { type: "Portfolio", value: "7kc.me", icon: "🌐", color: "bg-blue-500" },
-            { type: "GitHub", value: "chaitanyahedaoo", icon: "💻", color: "bg-gray-800" },
-            { type: "WhatsApp", value: "Message me", icon: "💬", color: "bg-green-500" },
-          ].map((contact) => (
-            <div key={contact.type} className="bg-white rounded-lg shadow-sm p-4 flex items-center gap-4">
-              <div className={`${contact.color} w-12 h-12 rounded-full flex items-center justify-center text-2xl`}>
-                {contact.icon}
-              </div>
-              <div className="flex-1">
-                <div className="text-xs text-gray-500">{contact.type}</div>
-                <div className="font-medium text-gray-800">{contact.value}</div>
-              </div>
-              <button className="text-blue-600 text-sm font-medium">Open</button>
-            </div>
-          ))}
+          <div className="bg-blue-500 text-white rounded-2xl p-6 text-center">
+            <div className="text-5xl mb-3">📧</div>
+            <h4 className="font-bold mb-2">Email</h4>
+            <p className="text-sm text-blue-100">chaitanyahedaoo7@gmail.com</p>
+          </div>
+          <div className="bg-purple-500 text-white rounded-2xl p-6 text-center">
+            <div className="text-5xl mb-3">🌐</div>
+            <h4 className="font-bold mb-2">Portfolio</h4>
+            <p className="text-sm text-purple-100">7kc.me</p>
+          </div>
+          <div className="bg-gray-800 text-white rounded-2xl p-6 text-center">
+            <div className="text-5xl mb-3">💻</div>
+            <h4 className="font-bold mb-2">GitHub</h4>
+            <p className="text-sm text-gray-300">github.com/chaitanyahedaoo</p>
+          </div>
+          <div className="bg-green-500 text-white rounded-2xl p-6 text-center">
+            <div className="text-5xl mb-3">💬</div>
+            <h4 className="font-bold mb-2">WhatsApp</h4>
+            <p className="text-sm text-green-100">Let's connect!</p>
+          </div>
         </div>
       ),
     },
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-950 p-4 md:p-8 flex items-center justify-center">
       <div className="relative">
-        {/* Android Phone Frame */}
-        <div className="w-[375px] h-[812px] bg-gray-900 rounded-[40px] shadow-2xl p-2">
+        {/* iPhone Frame */}
+        <div className="w-[375px] h-[812px] bg-black rounded-[60px] shadow-2xl p-3 relative">
+          {/* Notch */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
+
           {/* Screen */}
-          <div className="w-full h-full bg-gray-50 rounded-[32px] overflow-hidden relative">
+          <div className="w-full h-full bg-white dark:bg-gray-900 rounded-[48px] overflow-hidden relative">
             {/* Status Bar */}
-            <div className="bg-white h-6 px-4 flex items-center justify-between text-[10px]">
-              <div className="flex items-center gap-2">
-                <span>9:41</span>
-              </div>
+            <div className="absolute top-0 left-0 right-0 h-12 px-8 flex items-center justify-between text-xs z-20">
+              <span className="font-semibold">{time}</span>
               <div className="flex items-center gap-1">
-                <span>📶</span>
-                <span>📡</span>
-                <span>🔋</span>
+                <Signal className="h-3 w-3" />
+                <Wifi className="h-3 w-3" />
+                <Battery className="h-3 w-3" />
               </div>
             </div>
 
             {/* Content */}
-            <div className="h-[calc(100%-24px)]">
+            <div className="h-full pt-12 pb-20">
               <AnimatePresence mode="wait">
                 {activeScreen === "home" ? (
                   <motion.div
                     key="home"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-6 flex flex-col"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="h-full p-6"
                   >
-                    {/* Header */}
-                    <div className="text-white mb-8">
-                      <h1 className="text-3xl font-bold mb-1">Portfolio</h1>
-                      <p className="text-blue-100">Chaitanya Hedaoo</p>
+                    {/* Home Screen */}
+                    <div className="text-center mb-8 mt-8">
+                      <h1 className="text-3xl font-bold mb-2">Chaitanya</h1>
+                      <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
                     </div>
 
-                    {/* Apps Grid */}
-                    <div className="grid grid-cols-2 gap-4 flex-1">
-                      {apps.map((app, index) => (
+                    {/* App Icons */}
+                    <div className="grid grid-cols-4 gap-6">
+                      {apps.map((app) => (
                         <motion.button
                           key={app.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          whileTap={{ scale: 0.95 }}
+                          whileTap={{ scale: 0.9 }}
                           onClick={() => setActiveScreen(app.id)}
-                          className="bg-white/20 backdrop-blur-lg rounded-2xl p-6 text-white flex flex-col items-center justify-center gap-3 hover:bg-white/30 transition-colors"
+                          className="flex flex-col items-center gap-2"
                         >
-                          <div className="text-4xl">{app.icon}</div>
-                          <span className="font-medium">{app.name}</span>
+                          <div className={`${app.color} w-16 h-16 rounded-2xl shadow-lg flex items-center justify-center text-3xl`}>
+                            {app.icon}
+                          </div>
+                          <span className="text-xs font-medium">{app.name}</span>
                         </motion.button>
                       ))}
                     </div>
@@ -226,32 +198,33 @@ export default function MobileStyle2() {
                     initial={{ opacity: 0, x: 100 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -100 }}
-                    className="h-full flex flex-col bg-gray-50"
+                    className="h-full flex flex-col"
                   >
-                    {/* App Bar */}
-                    <div className="bg-white shadow-sm px-4 py-4 flex items-center gap-3">
+                    {/* App Header */}
+                    <div className="bg-white dark:bg-gray-900 border-b dark:border-gray-800 px-4 py-3 flex items-center gap-3">
                       <button
                         onClick={() => setActiveScreen("home")}
-                        className="text-gray-700"
+                        className="text-blue-500 flex items-center gap-1"
                       >
-                        <ArrowLeft className="h-5 w-5" />
-                      </button>
-                      <h2 className="text-lg font-bold text-gray-800 flex-1">
-                        {screenContent[activeScreen as keyof typeof screenContent].title}
-                      </h2>
-                      <button className="text-gray-700">
-                        <Search className="h-5 w-5" />
+                        <ChevronLeft className="h-5 w-5" />
+                        <span>Back</span>
                       </button>
                     </div>
 
-                    {/* Content */}
-                    <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+                    {/* App Content */}
+                    <div className="flex-1 overflow-y-auto p-4">
+                      <h2 className="text-2xl font-bold mb-4">
+                        {screenContent[activeScreen as keyof typeof screenContent].title}
+                      </h2>
                       {screenContent[activeScreen as keyof typeof screenContent].content}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Home Indicator */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full"></div>
           </div>
         </div>
       </div>

@@ -5,11 +5,13 @@ import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switche
 import GalaksiStyle1 from "./style-1";
 import GalaksiStyle2 from "./style-2";
 import GalaksiStyle3 from "./style-3";
+import GalaksiStyle4 from "./style-4";
 
 const styles = [
-  { id: 1, name: "Solar System", component: GalaksiStyle1 },
-  { id: 2, name: "Planet Explorer", component: GalaksiStyle2 },
-  { id: 3, name: "Cosmic Journey", component: GalaksiStyle3 },
+  { id: 1, name: "Explorer (Original)", component: GalaksiStyle1 },
+  { id: 2, name: "Solar System", component: GalaksiStyle2 },
+  { id: 3, name: "Planet Explorer", component: GalaksiStyle3 },
+  { id: 4, name: "Cosmic Journey", component: GalaksiStyle4 },
 ];
 
 export default function GalaksiPage() {

@@ -5,11 +5,13 @@ import { CollapsibleStyleSwitcher } from "@/components/collapsible-style-switche
 import ArcadeStyle1 from "./style-1";
 import ArcadeStyle2 from "./style-2";
 import ArcadeStyle3 from "./style-3";
+import ArcadeStyle4 from "./style-4";
 
 const styles = [
-  { id: 1, name: "Retro Stats", component: ArcadeStyle1 },
-  { id: 2, name: "Cabinet", component: ArcadeStyle2 },
-  { id: 3, name: "Battle Select", component: ArcadeStyle3 },
+  { id: 1, name: "Bounce Game (Original)", component: ArcadeStyle1 },
+  { id: 2, name: "Retro Stats", component: ArcadeStyle2 },
+  { id: 3, name: "Cabinet", component: ArcadeStyle3 },
+  { id: 4, name: "Battle Select", component: ArcadeStyle4 },
 ];
 
 export default function ArcadePage() {
