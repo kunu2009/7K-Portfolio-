@@ -814,6 +814,60 @@ export default function UniversalSettingsPage() {
                         />
                       </div>
 
+                      {/* App Icon Upload */}
+                      <div className="space-y-2">
+                        <Label>App Icon/Logo</Label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">Upload Image</Label>
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  const reader = new FileReader();
+                                  reader.onloadend = () => {
+                                    setEditingApp({
+                                      ...editingApp,
+                                      icon: reader.result as string
+                                    });
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              }}
+                            />
+                            <p className="text-xs text-muted-foreground">
+                              Upload PNG, SVG, or WEBP (recommended: 256x256px)
+                            </p>
+                          </div>
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">Or Enter URL</Label>
+                            <Input
+                              value={editingApp.icon || ''}
+                              onChange={(e) => setEditingApp({...editingApp, icon: e.target.value})}
+                              placeholder="/icons/app-icon.png"
+                            />
+                          </div>
+                        </div>
+                        {/* Icon Preview */}
+                        {editingApp.icon && (
+                          <div className="mt-2">
+                            <Label className="text-xs text-muted-foreground mb-2 block">Preview</Label>
+                            <div className="relative w-16 h-16 border rounded-lg overflow-hidden bg-muted">
+                              <img
+                                src={editingApp.icon}
+                                alt="Icon preview"
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="64" height="64"%3E%3Crect fill="%23ddd" width="64" height="64"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%23999" font-size="12"%3ENo Icon%3C/text%3E%3C/svg%3E';
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label>Rating (0-5)</Label>

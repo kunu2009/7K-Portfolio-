@@ -43,15 +43,38 @@ export async function POST(request: NextRequest) {
     const filePath = path.join(process.cwd(), 'src', 'lib', 'apps-data.ts');
     const fileContent = await fs.readFile(filePath, 'utf-8');
     
-    // Find the appsData array and replace it
+    // Find the appsData array and replace it with proper formatting
     const appsDataString = JSON.stringify(apps, null, 2);
+    
+    // Use a more robust regex that handles the entire array including the closing bracket and semicolon
+    const regex = /export const appsData: App\[\] = \[\s*\{[\s\S]*?\}\s*\];/;
+    
+    if (!regex.test(fileContent)) {
+      console.error('Could not find appsData array in file');
+      return NextResponse.json({
+        success: false,
+        message: 'Could not locate appsData array in apps-data.ts'
+      }, { status: 500 });
+    }
+    
     const updatedContent = fileContent.replace(
-      /export const appsData: App\[\] = \[[\s\S]*?\];/,
+      regex,
       `export const appsData: App[] = ${appsDataString};`
     );
     
+    // Verify the replacement worked
+    if (updatedContent === fileContent) {
+      console.error('Content was not updated - regex replacement failed');
+      return NextResponse.json({
+        success: false,
+        message: 'Failed to update content - no changes were made'
+      }, { status: 500 });
+    }
+    
     // Write the updated content
     await fs.writeFile(filePath, updatedContent, 'utf-8');
+    
+    console.log('Successfully updated apps-data.ts file');
     
     // Commit changes to git
     const { execSync } = require('child_process');
