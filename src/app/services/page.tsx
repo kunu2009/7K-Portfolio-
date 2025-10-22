@@ -383,7 +383,7 @@ export default function ServicesPage() {
               <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 text-center">
                 <CardContent className="pt-6 pb-6">
                   <stat.icon className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
                     {stat.number}
                   </div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -430,7 +430,7 @@ export default function ServicesPage() {
                   
                   <div className="mb-6 space-y-2">
                     {service.tiers && service.tiers.map((tier: any, idx: number) => (
-                      <div key={idx} className="text-sm">
+                      <div key={idx} className="text-sm" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
                         <strong className="text-primary">{tier.name}:</strong> {tier.price}
                       </div>
                     ))}
