@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Bot, Send, Loader2, User } from "lucide-react";
-import { askChatAssistant } from "@/ai/flows/chat-assistant-flow";
+import { askChatAssistant, getGreeting } from "@/ai/stan-assistant";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
@@ -54,7 +54,7 @@ export function ChatAssistant() {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
-        { role: "assistant", content: "Hi! I'm the 7K AI Assistant. How can I help you explore the ecosystem today?" }
+        { role: "assistant", content: getGreeting() }
       ]);
     }
   }, [isOpen, messages.length]);
@@ -66,18 +66,23 @@ export function ChatAssistant() {
           <Button
             variant="default"
             size="icon"
-            className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50"
+            className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 hover:scale-110 transition-transform"
+            title="Chat with Stan"
           >
             <Bot className="h-7 w-7" />
-            <span className="sr-only">Open Chat</span>
+            <span className="sr-only">Chat with Stan AI</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="flex h-full w-full flex-col p-0 sm:max-w-md">
-          <SheetHeader className="p-4 border-b">
-            <SheetTitle>7K AI Assistant</SheetTitle>
+        <SheetContent side="right" className="flex h-full w-full flex-col p-0 sm:max-w-md md:max-w-lg">
+          <SheetHeader className="p-4 border-b shrink-0">
+            <SheetTitle className="flex items-center gap-2">
+              <Bot className="h-5 w-5" />
+              Stan AI Assistant
+            </SheetTitle>
+            <p className="text-sm text-muted-foreground">Ask me anything about Kunal!</p>
           </SheetHeader>
-          <div className="flex-1 overflow-y-auto">
-              <div className="p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto overscroll-contain">
+              <div className="p-4 space-y-4 pb-6">
               {messages.map((message, index) => (
                   <div
                   key={index}
@@ -93,7 +98,7 @@ export function ChatAssistant() {
                   )}
                   <div
                       className={cn(
-                      "max-w-xs rounded-lg px-4 py-2 text-sm whitespace-pre-wrap",
+                      "max-w-[85%] sm:max-w-xs rounded-lg px-4 py-2 text-sm whitespace-pre-wrap break-words",
                       message.role === "user"
                           ? "bg-primary text-primary-foreground"
                           : "bg-secondary"
@@ -122,14 +127,15 @@ export function ChatAssistant() {
               <div ref={messagesEndRef} />
               </div>
           </div>
-          <div className="p-4 border-t bg-background">
+          <div className="p-4 border-t bg-background shrink-0">
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask a question..."
+                placeholder="Ask about Kunal, his projects..."
                 autoComplete="off"
                 disabled={isLoading}
+                className="text-base"
               />
               <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                 <Send className="h-4 w-4" />
