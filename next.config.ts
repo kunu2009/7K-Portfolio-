@@ -51,12 +51,21 @@ const nextConfig: NextConfig = {
         ...config.resolve.alias,
         '@genkit-ai/googleai': false,
         '@genkit-ai/next': false,
+        '@genkit-ai/core': false,
         'genkit': false,
+        'dotprompt': false,
         '@opentelemetry/sdk-node': false,
         '@opentelemetry/exporter-jaeger': false,
         'handlebars': false,
       };
     }
+    // Ignore AI file warnings
+    config.ignoreWarnings = [
+      { module: /@opentelemetry/ },
+      { module: /handlebars/ },
+      { module: /genkit/ },
+      { module: /dotprompt/ },
+    ];
     return config;
   },
 };
