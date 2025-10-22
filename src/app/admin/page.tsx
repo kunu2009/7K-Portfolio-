@@ -67,6 +67,8 @@ export default function UniversalSettingsPage() {
           setIsAuthenticated(true);
           loadApps();
           loadBooks();
+          loadPortfolio();
+          loadSettings();
         }
       } catch (e) {
         console.error('Session error:', e);
@@ -97,6 +99,8 @@ export default function UniversalSettingsPage() {
         setPassword("");
         loadApps();
         loadBooks();
+        loadPortfolio();
+        loadSettings();
       } else {
         setLoginError(data.message || "Invalid credentials");
       }
@@ -128,6 +132,30 @@ export default function UniversalSettingsPage() {
       }
     } catch (error) {
       console.error('Failed to load books:', error);
+    }
+  };
+
+  const loadPortfolio = async () => {
+    try {
+      const response = await fetch('/api/portfolio');
+      const data = await response.json();
+      if (data.success) {
+        setPortfolioData(data.portfolio);
+      }
+    } catch (error) {
+      console.error('Failed to load portfolio:', error);
+    }
+  };
+
+  const loadSettings = async () => {
+    try {
+      const response = await fetch('/api/settings');
+      const data = await response.json();
+      if (data.success) {
+        setGeneralSettings(data.settings);
+      }
+    } catch (error) {
+      console.error('Failed to load settings:', error);
     }
   };
 
@@ -191,6 +219,66 @@ export default function UniversalSettingsPage() {
     }
   };
 
+  const handleSavePortfolio = async () => {
+    setLoading(true);
+    setSaveError("");
+    setSaveSuccess(false);
+
+    try {
+      const response = await fetch('/api/portfolio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          portfolio: portfolioData,
+          commitMessage: 'Update portfolio data from admin panel'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      } else {
+        setSaveError(data.message || "Failed to save portfolio");
+      }
+    } catch (error) {
+      setSaveError("Failed to save portfolio. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSaveSettings = async () => {
+    setLoading(true);
+    setSaveError("");
+    setSaveSuccess(false);
+
+    try {
+      const response = await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          settings: generalSettings,
+          commitMessage: 'Update site settings from admin panel'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      } else {
+        setSaveError(data.message || "Failed to save settings");
+      }
+    } catch (error) {
+      setSaveError("Failed to save settings. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -211,6 +299,35 @@ export default function UniversalSettingsPage() {
       }
     };
     reader.readAsText(file);
+  };
+
+  const handleCoverImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check if it's an image
+    if (!file.type.startsWith('image/')) {
+      setSaveError('Please upload an image file');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const imageUrl = event.target?.result as string;
+      
+      if (editingBook) {
+        // For now, we'll use the base64 data URL
+        // In production, you'd upload to a CDN/storage
+        setEditingBook({
+          ...editingBook,
+          coverImage: imageUrl
+        });
+        
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 2000);
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   const parseChaptersFromMD = (content: string) => {
@@ -839,6 +956,48 @@ export default function UniversalSettingsPage() {
                         />
                       </div>
 
+                      {/* Cover Image Upload */}
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Cover Image</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">Upload Image</Label>
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleCoverImageUpload}
+                            />
+                            <p className="text-xs text-muted-foreground">
+                              Upload JPG, PNG, or WEBP (recommended: 400x600px)
+                            </p>
+                          </div>
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">Or Enter URL</Label>
+                            <Input
+                              value={editingBook.coverImage}
+                              onChange={(e) => setEditingBook({...editingBook, coverImage: e.target.value})}
+                              placeholder="/images/books/cover.png"
+                            />
+                          </div>
+                        </div>
+                        {/* Cover Preview */}
+                        {editingBook.coverImage && (
+                          <div className="mt-2">
+                            <Label className="text-xs text-muted-foreground mb-2 block">Preview</Label>
+                            <div className="relative w-32 h-48 border rounded-lg overflow-hidden bg-muted">
+                              <img
+                                src={editingBook.coverImage}
+                                alt="Cover preview"
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="300"%3E%3Crect fill="%23ddd" width="200" height="300"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" fill="%23999" font-size="20"%3ENo Image%3C/text%3E%3C/svg%3E';
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
                       {/* MD File Upload */}
                       <div className="space-y-2">
                         <label className="text-sm font-medium">Upload MD File</label>
@@ -903,8 +1062,7 @@ export default function UniversalSettingsPage() {
                     <CardDescription>Manage your personal information and portfolio details</CardDescription>
                   </div>
                   <Button onClick={() => {
-                    setSaveSuccess(true);
-                    setTimeout(() => setSaveSuccess(false), 3000);
+                    handleSavePortfolio();
                   }} disabled={loading}>
                     <Save className="h-4 w-4 mr-2" />
                     Save Portfolio
@@ -1056,8 +1214,7 @@ export default function UniversalSettingsPage() {
                     <CardDescription>Configure general preferences and site settings</CardDescription>
                   </div>
                   <Button onClick={() => {
-                    setSaveSuccess(true);
-                    setTimeout(() => setSaveSuccess(false), 3000);
+                    handleSaveSettings();
                   }} disabled={loading}>
                     <Save className="h-4 w-4 mr-2" />
                     Save Settings
