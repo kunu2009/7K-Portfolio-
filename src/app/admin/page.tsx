@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Settings, Lock, Save, Plus, Trash2, Eye, EyeOff, Home, LogOut, Check, X, BookOpen, Smartphone, User, Upload, FileText, GripVertical, Link as LinkIcon, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Settings, Lock, Save, Plus, Trash2, Eye, EyeOff, Home, LogOut, Check, X, BookOpen, Smartphone, User, Upload, FileText, GripVertical, Link as LinkIcon, Mail, Github, Linkedin, Twitter, Layout, Type, Image as ImageIcon, ToggleLeft, Calendar, Star, Heart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import type { App } from "@/lib/apps-data";
 import type { Book } from "@/lib/books-data";
+import type { PortfolioSections } from "@/lib/sections-data";
 
 export default function UniversalSettingsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,6 +54,10 @@ export default function UniversalSettingsPage() {
     maintenanceMode: false,
   });
   
+  // Portfolio sections state
+  const [sections, setSections] = useState<PortfolioSections | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("hero");
+  
   // General state
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -69,6 +74,7 @@ export default function UniversalSettingsPage() {
           loadBooks();
           loadPortfolio();
           loadSettings();
+          loadSections();
         }
       } catch (e) {
         console.error('Session error:', e);
@@ -101,6 +107,7 @@ export default function UniversalSettingsPage() {
         loadBooks();
         loadPortfolio();
         loadSettings();
+        loadSections();
       } else {
         setLoginError(data.message || "Invalid credentials");
       }
@@ -156,6 +163,18 @@ export default function UniversalSettingsPage() {
       }
     } catch (error) {
       console.error('Failed to load settings:', error);
+    }
+  };
+
+  const loadSections = async () => {
+    try {
+      const response = await fetch('/api/sections');
+      const data = await response.json();
+      if (data.success) {
+        setSections(data.sections);
+      }
+    } catch (error) {
+      console.error('Failed to load sections:', error);
     }
   };
 
@@ -274,6 +293,36 @@ export default function UniversalSettingsPage() {
       }
     } catch (error) {
       setSaveError("Failed to save settings. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSaveSections = async () => {
+    setLoading(true);
+    setSaveError("");
+    setSaveSuccess(false);
+
+    try {
+      const response = await fetch('/api/sections', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sections: sections,
+          commitMessage: 'Update portfolio sections from admin panel'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
+      } else {
+        setSaveError(data.message || "Failed to save sections");
+      }
+    } catch (error) {
+      setSaveError("Failed to save sections. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -577,7 +626,7 @@ export default function UniversalSettingsPage() {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
+          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
             <TabsTrigger value="apps" className="flex items-center gap-2">
               <Smartphone className="h-4 w-4" />
               Apps
@@ -585,6 +634,10 @@ export default function UniversalSettingsPage() {
             <TabsTrigger value="books" className="flex items-center gap-2">
               <BookOpen className="h-4 w-4" />
               Books
+            </TabsTrigger>
+            <TabsTrigger value="content" className="flex items-center gap-2">
+              <Layout className="h-4 w-4" />
+              Content
             </TabsTrigger>
             <TabsTrigger value="portfolio" className="flex items-center gap-2">
               <User className="h-4 w-4" />
@@ -1045,6 +1098,1679 @@ export default function UniversalSettingsPage() {
                     <div className="text-center py-12 text-muted-foreground">
                       <BookOpen className="h-12 w-12 mx-auto mb-4 opacity-50" />
                       <p>Select a book from the list to start editing</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          {/* Content Tab */}
+          <TabsContent value="content">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              {/* Section Selector Sidebar */}
+              <Card className="lg:col-span-1">
+                <CardHeader>
+                  <CardTitle className="text-lg">Sections</CardTitle>
+                  <CardDescription>Select a section to edit</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    <Button
+                      variant={activeSection === 'hero' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('hero')}
+                    >
+                      <Layout className="h-4 w-4 mr-2" />
+                      Hero
+                    </Button>
+                    <Button
+                      variant={activeSection === 'about' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('about')}
+                    >
+                      <User className="h-4 w-4 mr-2" />
+                      About
+                    </Button>
+                    <Button
+                      variant={activeSection === 'philosophy' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('philosophy')}
+                    >
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      Philosophy
+                    </Button>
+                    <Button
+                      variant={activeSection === 'services' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('services')}
+                    >
+                      <Settings className="h-4 w-4 mr-2" />
+                      Services
+                    </Button>
+                    <Button
+                      variant={activeSection === 'showcase' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('showcase')}
+                    >
+                      <ImageIcon className="h-4 w-4 mr-2" />
+                      Portfolio Showcase
+                    </Button>
+                    <Button
+                      variant={activeSection === 'ecosystem' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('ecosystem')}
+                    >
+                      <Smartphone className="h-4 w-4 mr-2" />
+                      Ecosystem
+                    </Button>
+                    <Button
+                      variant={activeSection === 'projects' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('projects')}
+                    >
+                      <Type className="h-4 w-4 mr-2" />
+                      Projects
+                    </Button>
+                    <Button
+                      variant={activeSection === 'contact' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('contact')}
+                    >
+                      <Mail className="h-4 w-4 mr-2" />
+                      Contact
+                    </Button>
+                    <Button
+                      variant={activeSection === 'journey' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('journey')}
+                    >
+                      <Calendar className="h-4 w-4 mr-2" />
+                      Journey
+                    </Button>
+                    <Button
+                      variant={activeSection === 'recommendations' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('recommendations')}
+                    >
+                      <Star className="h-4 w-4 mr-2" />
+                      Recommendations
+                    </Button>
+                    <Button
+                      variant={activeSection === 'support' ? 'default' : 'ghost'}
+                      className="w-full justify-start"
+                      onClick={() => setActiveSection('support')}
+                    >
+                      <Heart className="h-4 w-4 mr-2" />
+                      Support
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Section Editor */}
+              <Card className="lg:col-span-3">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>
+                        {activeSection === 'hero' && 'Hero Section'}
+                        {activeSection === 'about' && 'About Section'}
+                        {activeSection === 'philosophy' && 'Philosophy Section'}
+                        {activeSection === 'services' && 'Services Section'}
+                        {activeSection === 'showcase' && 'Portfolio Showcase'}
+                        {activeSection === 'ecosystem' && 'Ecosystem Section'}
+                        {activeSection === 'projects' && 'Projects Section'}
+                        {activeSection === 'contact' && 'Contact Section'}
+                        {activeSection === 'journey' && 'Journey Section'}
+                        {activeSection === 'recommendations' && 'Recommendations Section'}
+                        {activeSection === 'support' && 'Support Section'}
+                      </CardTitle>
+                      <CardDescription>
+                        Edit the content for this section of your portfolio homepage
+                      </CardDescription>
+                    </div>
+                    <Button onClick={handleSaveSections} disabled={loading}>
+                      <Save className="h-4 w-4 mr-2" />
+                      Save Changes
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {!sections ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      Loading sections...
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      {/* Hero Section Editor */}
+                      {activeSection === 'hero' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label htmlFor="hero-enabled" className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.hero.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                hero: { ...sections.hero, enabled: !sections.hero.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.hero.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <Label htmlFor="hero-title">Title</Label>
+                            <Input
+                              id="hero-title"
+                              value={sections.hero.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                hero: { ...sections.hero, title: e.target.value }
+                              })}
+                              placeholder="Main headline"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="hero-subtitle">Subtitle</Label>
+                            <Input
+                              id="hero-subtitle"
+                              value={sections.hero.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                hero: { ...sections.hero, subtitle: e.target.value }
+                              })}
+                              placeholder="Supporting text"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="hero-description">Description</Label>
+                            <textarea
+                              id="hero-description"
+                              value={sections.hero.description}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                hero: { ...sections.hero, description: e.target.value }
+                              })}
+                              placeholder="Brief introduction"
+                              className="w-full min-h-[80px] px-3 py-2 rounded-md border border-input bg-background"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="hero-bg">Background Image URL</Label>
+                            <Input
+                              id="hero-bg"
+                              value={sections.hero.backgroundImage}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                hero: { ...sections.hero, backgroundImage: e.target.value }
+                              })}
+                              placeholder="https://example.com/image.jpg"
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">CTA Buttons</Label>
+                            
+                            <div className="space-y-2 p-4 border rounded-md">
+                              <Label className="text-sm font-medium">Primary Button</Label>
+                              <Input
+                                value={sections.hero.ctaText}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  hero: { ...sections.hero, ctaText: e.target.value }
+                                })}
+                                placeholder="Button text"
+                                className="mb-2"
+                              />
+                              <Input
+                                value={sections.hero.ctaLink}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  hero: { ...sections.hero, ctaLink: e.target.value }
+                                })}
+                                placeholder="Button link"
+                              />
+                            </div>
+
+                            <div className="space-y-2 p-4 border rounded-md">
+                              <Label className="text-sm font-medium">Secondary Button</Label>
+                              <Input
+                                value={sections.hero.secondaryCtaText || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  hero: { ...sections.hero, secondaryCtaText: e.target.value }
+                                })}
+                                placeholder="Button text"
+                                className="mb-2"
+                              />
+                              <Input
+                                value={sections.hero.secondaryCtaLink || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  hero: { ...sections.hero, secondaryCtaLink: e.target.value }
+                                })}
+                                placeholder="Button link"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* About Section Editor */}
+                      {activeSection === 'about' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.about.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                about: { ...sections.about, enabled: !sections.about.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.about.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.about.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                about: { ...sections.about, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.about.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                about: { ...sections.about, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Description</Label>
+                            <textarea
+                              value={sections.about.description}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                about: { ...sections.about, description: e.target.value }
+                              })}
+                              className="w-full min-h-[100px] px-3 py-2 rounded-md border border-input bg-background"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Profile Image URL</Label>
+                            <Input
+                              value={sections.about.image || ''}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                about: { ...sections.about, image: e.target.value }
+                              })}
+                              placeholder="https://example.com/profile.jpg"
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Highlights</Label>
+                            {sections.about.highlights.map((highlight, index) => (
+                              <div key={index} className="flex gap-2">
+                                <Input
+                                  value={highlight}
+                                  onChange={(e) => {
+                                    const newHighlights = [...sections.about.highlights];
+                                    newHighlights[index] = e.target.value;
+                                    setSections({
+                                      ...sections,
+                                      about: { ...sections.about, highlights: newHighlights }
+                                    });
+                                  }}
+                                  placeholder={`Highlight ${index + 1}`}
+                                />
+                                <Button
+                                  variant="destructive"
+                                  size="icon"
+                                  onClick={() => {
+                                    const newHighlights = sections.about.highlights.filter((_, i) => i !== index);
+                                    setSections({
+                                      ...sections,
+                                      about: { ...sections.about, highlights: newHighlights }
+                                    });
+                                  }}
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  about: {
+                                    ...sections.about,
+                                    highlights: [...sections.about.highlights, '']
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Highlight
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Philosophy Section Editor */}
+                      {activeSection === 'philosophy' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.philosophy.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                philosophy: { ...sections.philosophy, enabled: !sections.philosophy.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.philosophy.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.philosophy.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                philosophy: { ...sections.philosophy, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.philosophy.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                philosophy: { ...sections.philosophy, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Philosophies</Label>
+                            {sections.philosophy.philosophies.map((phil, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Philosophy {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newPhilosophies = sections.philosophy.philosophies.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        philosophy: { ...sections.philosophy, philosophies: newPhilosophies }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={phil.title}
+                                  onChange={(e) => {
+                                    const newPhilosophies = [...sections.philosophy.philosophies];
+                                    newPhilosophies[index] = { ...phil, title: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      philosophy: { ...sections.philosophy, philosophies: newPhilosophies }
+                                    });
+                                  }}
+                                  placeholder="Philosophy title"
+                                />
+                                <textarea
+                                  value={phil.description}
+                                  onChange={(e) => {
+                                    const newPhilosophies = [...sections.philosophy.philosophies];
+                                    newPhilosophies[index] = { ...phil, description: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      philosophy: { ...sections.philosophy, philosophies: newPhilosophies }
+                                    });
+                                  }}
+                                  placeholder="Philosophy description"
+                                  className="w-full min-h-[60px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                                <Input
+                                  value={phil.icon || ''}
+                                  onChange={(e) => {
+                                    const newPhilosophies = [...sections.philosophy.philosophies];
+                                    newPhilosophies[index] = { ...phil, icon: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      philosophy: { ...sections.philosophy, philosophies: newPhilosophies }
+                                    });
+                                  }}
+                                  placeholder="Icon name (optional)"
+                                />
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  philosophy: {
+                                    ...sections.philosophy,
+                                    philosophies: [
+                                      ...sections.philosophy.philosophies,
+                                      { title: '', description: '', icon: '' }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Philosophy
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Services Section Editor */}
+                      {activeSection === 'services' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.services.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                services: { ...sections.services, enabled: !sections.services.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.services.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.services.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                services: { ...sections.services, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.services.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                services: { ...sections.services, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Services</Label>
+                            {sections.services.services.map((service, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Service {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newServices = sections.services.services.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        services: { ...sections.services, services: newServices }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={service.id}
+                                  onChange={(e) => {
+                                    const newServices = [...sections.services.services];
+                                    newServices[index] = { ...service, id: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      services: { ...sections.services, services: newServices }
+                                    });
+                                  }}
+                                  placeholder="Service ID (e.g., web-dev)"
+                                />
+                                <Input
+                                  value={service.title}
+                                  onChange={(e) => {
+                                    const newServices = [...sections.services.services];
+                                    newServices[index] = { ...service, title: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      services: { ...sections.services, services: newServices }
+                                    });
+                                  }}
+                                  placeholder="Service title"
+                                />
+                                <textarea
+                                  value={service.description}
+                                  onChange={(e) => {
+                                    const newServices = [...sections.services.services];
+                                    newServices[index] = { ...service, description: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      services: { ...sections.services, services: newServices }
+                                    });
+                                  }}
+                                  placeholder="Service description"
+                                  className="w-full min-h-[60px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                                <Input
+                                  value={service.icon}
+                                  onChange={(e) => {
+                                    const newServices = [...sections.services.services];
+                                    newServices[index] = { ...service, icon: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      services: { ...sections.services, services: newServices }
+                                    });
+                                  }}
+                                  placeholder="Icon name"
+                                />
+                                <div className="space-y-2 pl-4 border-l-2">
+                                  <Label className="text-sm font-medium">Features</Label>
+                                  {service.features.map((feature, fIndex) => (
+                                    <div key={fIndex} className="flex gap-2">
+                                      <Input
+                                        value={feature}
+                                        onChange={(e) => {
+                                          const newServices = [...sections.services.services];
+                                          const newFeatures = [...service.features];
+                                          newFeatures[fIndex] = e.target.value;
+                                          newServices[index] = { ...service, features: newFeatures };
+                                          setSections({
+                                            ...sections,
+                                            services: { ...sections.services, services: newServices }
+                                          });
+                                        }}
+                                        placeholder={`Feature ${fIndex + 1}`}
+                                      />
+                                      <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        onClick={() => {
+                                          const newServices = [...sections.services.services];
+                                          const newFeatures = service.features.filter((_, i) => i !== fIndex);
+                                          newServices[index] = { ...service, features: newFeatures };
+                                          setSections({
+                                            ...sections,
+                                            services: { ...sections.services, services: newServices }
+                                          });
+                                        }}
+                                      >
+                                        <X className="h-4 w-4" />
+                                      </Button>
+                                    </div>
+                                  ))}
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newServices = [...sections.services.services];
+                                      newServices[index] = {
+                                        ...service,
+                                        features: [...service.features, '']
+                                      };
+                                      setSections({
+                                        ...sections,
+                                        services: { ...sections.services, services: newServices }
+                                      });
+                                    }}
+                                  >
+                                    <Plus className="h-4 w-4 mr-2" />
+                                    Add Feature
+                                  </Button>
+                                </div>
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  services: {
+                                    ...sections.services,
+                                    services: [
+                                      ...sections.services.services,
+                                      { id: '', title: '', description: '', icon: '', features: [] }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Service
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Portfolio Showcase Section Editor */}
+                      {activeSection === 'showcase' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.portfolioShowcase.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                portfolioShowcase: { ...sections.portfolioShowcase, enabled: !sections.portfolioShowcase.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.portfolioShowcase.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.portfolioShowcase.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                portfolioShowcase: { ...sections.portfolioShowcase, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.portfolioShowcase.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                portfolioShowcase: { ...sections.portfolioShowcase, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Showcase Items</Label>
+                            {sections.portfolioShowcase.showcaseItems.map((item, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Item {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newItems = sections.portfolioShowcase.showcaseItems.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={item.id}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, id: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Item ID"
+                                />
+                                <Input
+                                  value={item.title}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, title: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Item title"
+                                />
+                                <textarea
+                                  value={item.description}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, description: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Item description"
+                                  className="w-full min-h-[60px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                                <Input
+                                  value={item.image}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, image: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Image URL"
+                                />
+                                <Input
+                                  value={item.link}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, link: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Link URL"
+                                />
+                                <Input
+                                  value={item.category}
+                                  onChange={(e) => {
+                                    const newItems = [...sections.portfolioShowcase.showcaseItems];
+                                    newItems[index] = { ...item, category: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      portfolioShowcase: { ...sections.portfolioShowcase, showcaseItems: newItems }
+                                    });
+                                  }}
+                                  placeholder="Category"
+                                />
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  portfolioShowcase: {
+                                    ...sections.portfolioShowcase,
+                                    showcaseItems: [
+                                      ...sections.portfolioShowcase.showcaseItems,
+                                      { id: '', title: '', description: '', image: '', link: '', category: '' }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Showcase Item
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Ecosystem Section Editor */}
+                      {activeSection === 'ecosystem' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.ecosystem.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                ecosystem: { ...sections.ecosystem, enabled: !sections.ecosystem.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.ecosystem.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.ecosystem.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                ecosystem: { ...sections.ecosystem, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.ecosystem.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                ecosystem: { ...sections.ecosystem, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Description</Label>
+                            <textarea
+                              value={sections.ecosystem.description}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                ecosystem: { ...sections.ecosystem, description: e.target.value }
+                              })}
+                              className="w-full min-h-[100px] px-3 py-2 rounded-md border border-input bg-background"
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Features</Label>
+                            {sections.ecosystem.features.map((feature, index) => (
+                              <div key={index} className="flex gap-2">
+                                <Input
+                                  value={feature}
+                                  onChange={(e) => {
+                                    const newFeatures = [...sections.ecosystem.features];
+                                    newFeatures[index] = e.target.value;
+                                    setSections({
+                                      ...sections,
+                                      ecosystem: { ...sections.ecosystem, features: newFeatures }
+                                    });
+                                  }}
+                                  placeholder={`Feature ${index + 1}`}
+                                />
+                                <Button
+                                  variant="destructive"
+                                  size="icon"
+                                  onClick={() => {
+                                    const newFeatures = sections.ecosystem.features.filter((_, i) => i !== index);
+                                    setSections({
+                                      ...sections,
+                                      ecosystem: { ...sections.ecosystem, features: newFeatures }
+                                    });
+                                  }}
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  ecosystem: {
+                                    ...sections.ecosystem,
+                                    features: [...sections.ecosystem.features, '']
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Feature
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Projects Section Editor */}
+                      {activeSection === 'projects' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.projects.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                projects: { ...sections.projects, enabled: !sections.projects.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.projects.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.projects.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                projects: { ...sections.projects, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.projects.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                projects: { ...sections.projects, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Projects</Label>
+                            {sections.projects.projects.map((project, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Project {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newProjects = sections.projects.projects.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        projects: { ...sections.projects, projects: newProjects }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={project.id}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, id: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="Project ID"
+                                />
+                                <Input
+                                  value={project.title}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, title: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="Project title"
+                                />
+                                <textarea
+                                  value={project.description}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, description: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="Project description"
+                                  className="w-full min-h-[60px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                                <Input
+                                  value={project.link || ''}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, link: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="Project link (optional)"
+                                />
+                                <Input
+                                  value={project.github || ''}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, github: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="GitHub URL (optional)"
+                                />
+                                <Input
+                                  value={project.image || ''}
+                                  onChange={(e) => {
+                                    const newProjects = [...sections.projects.projects];
+                                    newProjects[index] = { ...project, image: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      projects: { ...sections.projects, projects: newProjects }
+                                    });
+                                  }}
+                                  placeholder="Image URL (optional)"
+                                />
+                                <div className="space-y-2 pl-4 border-l-2">
+                                  <Label className="text-sm font-medium">Tech Stack</Label>
+                                  {project.tech.map((tech, tIndex) => (
+                                    <div key={tIndex} className="flex gap-2">
+                                      <Input
+                                        value={tech}
+                                        onChange={(e) => {
+                                          const newProjects = [...sections.projects.projects];
+                                          const newTech = [...project.tech];
+                                          newTech[tIndex] = e.target.value;
+                                          newProjects[index] = { ...project, tech: newTech };
+                                          setSections({
+                                            ...sections,
+                                            projects: { ...sections.projects, projects: newProjects }
+                                          });
+                                        }}
+                                        placeholder={`Technology ${tIndex + 1}`}
+                                      />
+                                      <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        onClick={() => {
+                                          const newProjects = [...sections.projects.projects];
+                                          const newTech = project.tech.filter((_, i) => i !== tIndex);
+                                          newProjects[index] = { ...project, tech: newTech };
+                                          setSections({
+                                            ...sections,
+                                            projects: { ...sections.projects, projects: newProjects }
+                                          });
+                                        }}
+                                      >
+                                        <X className="h-4 w-4" />
+                                      </Button>
+                                    </div>
+                                  ))}
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newProjects = [...sections.projects.projects];
+                                      newProjects[index] = {
+                                        ...project,
+                                        tech: [...project.tech, '']
+                                      };
+                                      setSections({
+                                        ...sections,
+                                        projects: { ...sections.projects, projects: newProjects }
+                                      });
+                                    }}
+                                  >
+                                    <Plus className="h-4 w-4 mr-2" />
+                                    Add Tech
+                                  </Button>
+                                </div>
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  projects: {
+                                    ...sections.projects,
+                                    projects: [
+                                      ...sections.projects.projects,
+                                      { id: '', title: '', description: '', tech: [], link: '', github: '', image: '' }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Project
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Contact Section Editor */}
+                      {activeSection === 'contact' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.contact.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, enabled: !sections.contact.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.contact.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.contact.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.contact.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Email</Label>
+                            <Input
+                              type="email"
+                              value={sections.contact.email}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, email: e.target.value }
+                              })}
+                              placeholder="your@email.com"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Phone (Optional)</Label>
+                            <Input
+                              value={sections.contact.phone || ''}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, phone: e.target.value }
+                              })}
+                              placeholder="+1 234 567 8900"
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Availability</Label>
+                            <Input
+                              value={sections.contact.availability}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                contact: { ...sections.contact, availability: e.target.value }
+                              })}
+                              placeholder="Available for freelance work"
+                            />
+                          </div>
+
+                          <div className="space-y-3 p-4 border rounded-md">
+                            <Label className="text-base font-semibold">Social Links</Label>
+                            <div className="space-y-2">
+                              <Label className="text-sm">GitHub</Label>
+                              <Input
+                                value={sections.contact.socialLinks.github || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  contact: {
+                                    ...sections.contact,
+                                    socialLinks: { ...sections.contact.socialLinks, github: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://github.com/username"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label className="text-sm">LinkedIn</Label>
+                              <Input
+                                value={sections.contact.socialLinks.linkedin || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  contact: {
+                                    ...sections.contact,
+                                    socialLinks: { ...sections.contact.socialLinks, linkedin: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://linkedin.com/in/username"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label className="text-sm">Twitter</Label>
+                              <Input
+                                value={sections.contact.socialLinks.twitter || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  contact: {
+                                    ...sections.contact,
+                                    socialLinks: { ...sections.contact.socialLinks, twitter: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://twitter.com/username"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label className="text-sm">Instagram</Label>
+                              <Input
+                                value={sections.contact.socialLinks.instagram || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  contact: {
+                                    ...sections.contact,
+                                    socialLinks: { ...sections.contact.socialLinks, instagram: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://instagram.com/username"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Journey Section Editor */}
+                      {activeSection === 'journey' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.journey.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                journey: { ...sections.journey, enabled: !sections.journey.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.journey.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.journey.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                journey: { ...sections.journey, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.journey.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                journey: { ...sections.journey, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Milestones</Label>
+                            {sections.journey.milestones.map((milestone, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Milestone {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newMilestones = sections.journey.milestones.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        journey: { ...sections.journey, milestones: newMilestones }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={milestone.year}
+                                  onChange={(e) => {
+                                    const newMilestones = [...sections.journey.milestones];
+                                    newMilestones[index] = { ...milestone, year: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      journey: { ...sections.journey, milestones: newMilestones }
+                                    });
+                                  }}
+                                  placeholder="Year (e.g., 2024)"
+                                />
+                                <Input
+                                  value={milestone.title}
+                                  onChange={(e) => {
+                                    const newMilestones = [...sections.journey.milestones];
+                                    newMilestones[index] = { ...milestone, title: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      journey: { ...sections.journey, milestones: newMilestones }
+                                    });
+                                  }}
+                                  placeholder="Milestone title"
+                                />
+                                <textarea
+                                  value={milestone.description}
+                                  onChange={(e) => {
+                                    const newMilestones = [...sections.journey.milestones];
+                                    newMilestones[index] = { ...milestone, description: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      journey: { ...sections.journey, milestones: newMilestones }
+                                    });
+                                  }}
+                                  placeholder="Milestone description"
+                                  className="w-full min-h-[60px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  journey: {
+                                    ...sections.journey,
+                                    milestones: [
+                                      ...sections.journey.milestones,
+                                      { year: '', title: '', description: '' }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Milestone
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Recommendations Section Editor */}
+                      {activeSection === 'recommendations' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.recommendations.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                recommendations: { ...sections.recommendations, enabled: !sections.recommendations.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.recommendations.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.recommendations.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                recommendations: { ...sections.recommendations, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.recommendations.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                recommendations: { ...sections.recommendations, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-3">
+                            <Label className="text-base font-semibold">Testimonials</Label>
+                            {sections.recommendations.recommendations.map((rec, index) => (
+                              <div key={index} className="p-4 border rounded-md space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <Label className="font-medium">Testimonial {index + 1}</Label>
+                                  <Button
+                                    variant="destructive"
+                                    size="sm"
+                                    onClick={() => {
+                                      const newRecs = sections.recommendations.recommendations.filter((_, i) => i !== index);
+                                      setSections({
+                                        ...sections,
+                                        recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                      });
+                                    }}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                                <Input
+                                  value={rec.id}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, id: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Recommendation ID (e.g., rec-1)"
+                                />
+                                <Input
+                                  value={rec.name}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, name: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Person's name"
+                                />
+                                <Input
+                                  value={rec.role}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, role: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Their role/position"
+                                />
+                                <Input
+                                  value={rec.company}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, company: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Company name"
+                                />
+                                <textarea
+                                  value={rec.text}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, text: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Testimonial text"
+                                  className="w-full min-h-[80px] px-3 py-2 rounded-md border border-input bg-background"
+                                />
+                                <Input
+                                  value={rec.avatar}
+                                  onChange={(e) => {
+                                    const newRecs = [...sections.recommendations.recommendations];
+                                    newRecs[index] = { ...rec, avatar: e.target.value };
+                                    setSections({
+                                      ...sections,
+                                      recommendations: { ...sections.recommendations, recommendations: newRecs }
+                                    });
+                                  }}
+                                  placeholder="Avatar image URL"
+                                />
+                              </div>
+                            ))}
+                            <Button
+                              variant="outline"
+                              onClick={() => {
+                                setSections({
+                                  ...sections,
+                                  recommendations: {
+                                    ...sections.recommendations,
+                                    recommendations: [
+                                      ...sections.recommendations.recommendations,
+                                      { id: `rec-${Date.now()}`, name: '', role: '', company: '', text: '', avatar: '' }
+                                    ]
+                                  }
+                                });
+                              }}
+                            >
+                              <Plus className="h-4 w-4 mr-2" />
+                              Add Testimonial
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Support Section Editor */}
+                      {activeSection === 'support' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <Label className="text-base font-semibold">Section Enabled</Label>
+                            <Button
+                              variant={sections.support.enabled ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => setSections({
+                                ...sections,
+                                support: { ...sections.support, enabled: !sections.support.enabled }
+                              })}
+                            >
+                              <ToggleLeft className="h-4 w-4 mr-2" />
+                              {sections.support.enabled ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Title</Label>
+                            <Input
+                              value={sections.support.title}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                support: { ...sections.support, title: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Subtitle</Label>
+                            <Input
+                              value={sections.support.subtitle}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                support: { ...sections.support, subtitle: e.target.value }
+                              })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label>Description</Label>
+                            <textarea
+                              value={sections.support.description}
+                              onChange={(e) => setSections({
+                                ...sections,
+                                support: { ...sections.support, description: e.target.value }
+                              })}
+                              className="w-full min-h-[80px] px-3 py-2 rounded-md border border-input bg-background"
+                              placeholder="Explain why you need support"
+                            />
+                          </div>
+
+                          <div className="space-y-3 p-4 border rounded-md">
+                            <Label className="text-base font-semibold">Donation Links</Label>
+                            <div className="space-y-2">
+                              <Label className="text-sm">Buy Me a Coffee</Label>
+                              <Input
+                                value={sections.support.donationLinks.buyMeCoffee || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  support: {
+                                    ...sections.support,
+                                    donationLinks: { ...sections.support.donationLinks, buyMeCoffee: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://buymeacoffee.com/username"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label className="text-sm">Patreon</Label>
+                              <Input
+                                value={sections.support.donationLinks.patreon || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  support: {
+                                    ...sections.support,
+                                    donationLinks: { ...sections.support.donationLinks, patreon: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://patreon.com/username"
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label className="text-sm">PayPal</Label>
+                              <Input
+                                value={sections.support.donationLinks.paypal || ''}
+                                onChange={(e) => setSections({
+                                  ...sections,
+                                  support: {
+                                    ...sections.support,
+                                    donationLinks: { ...sections.support.donationLinks, paypal: e.target.value }
+                                  }
+                                })}
+                                placeholder="https://paypal.me/username"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </CardContent>
