@@ -21,13 +21,24 @@ async function hashPassword(password: string): Promise<string> {
 // Verify credentials against hashed values
 export async function verifyCredentials(username: string, password: string): Promise<boolean> {
   // Hashed credentials (never store plain text)
-  const VALID_USERNAME_HASH = '8d5e957f297893487bd98fa830fa6413a720d728dcd8bc8c42c96f63c88e5c35';
-  const VALID_PASSWORD_HASH = 'b8a9f715dbb64fd5c56e7783c6820a61ce9c5f96b80f8b97e92a8b7c53c95a9c';
+  // Username: 7k, Password: 7KC&meenter
+  const VALID_USERNAME_HASH = '8d5e957f297893487bd98fa830fa6413a720d728dcd8bc8c42c96f63c88e5c35'; // Hash of '7k'
+  const VALID_PASSWORD_HASH = 'b8a9f715dbb64fd5c56e7783c6820a61ce9c5f96b80f8b97e92a8b7c53c95a9c'; // Hash of '7KC&meenter'
   
-  const usernameHash = await hashPassword(username.toLowerCase().trim());
-  const passwordHash = await hashPassword(password);
-  
-  return usernameHash === VALID_USERNAME_HASH && passwordHash === VALID_PASSWORD_HASH;
+  try {
+    const usernameHash = await hashPassword(username.toLowerCase().trim());
+    const passwordHash = await hashPassword(password);
+    
+    console.log('Username hash:', usernameHash);
+    console.log('Password hash:', passwordHash);
+    console.log('Expected username hash:', VALID_USERNAME_HASH);
+    console.log('Expected password hash:', VALID_PASSWORD_HASH);
+    
+    return usernameHash === VALID_USERNAME_HASH && passwordHash === VALID_PASSWORD_HASH;
+  } catch (error) {
+    console.error('Hash error:', error);
+    return false;
+  }
 }
 
 // Session management
