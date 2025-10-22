@@ -4,28 +4,38 @@ A comprehensive admin dashboard for managing all aspects of your portfolio in on
 
 ## 🌟 Features
 
-### 📱 Apps Management
+### 📱 Apps Management ✅ IMPLEMENTED
 - View and edit all portfolio applications
-- Update app details (name, description, links, images)
+- **Reorder apps** with up/down arrows (changes display order)
+- Update app details (name, description, links, images, status)
 - Add/remove apps
+- See position numbers (#1, #2, etc.)
 - Auto-commit changes to GitHub
 
-### 📚 Books Management
+### 📚 Books Management ✅ IMPLEMENTED
 - Upload Markdown (.md) files
 - Auto-generate chapters from MD headings
 - Edit book metadata (title, author, synopsis, cover image)
+- **Reorder books** with drag controls
 - Manage chapters and page ranges
 - Preview book structure
+- See position numbers for display order
 
-### 👤 Portfolio Settings (Coming Soon)
-- Personal information
-- Social links
-- Bio and description
+### 👤 Portfolio Settings ✅ IMPLEMENTED
+- Edit personal information (name, title, location)
+- Update bio and description
+- Manage social links (GitHub, LinkedIn, Twitter)
+- Live preview of portfolio card
+- Email configuration
 
-### ⚙️ General Settings (Coming Soon)
-- Theme preferences
-- SEO settings
-- Analytics configuration
+### ⚙️ General Settings ✅ IMPLEMENTED
+- Site name and URL configuration
+- Meta description for SEO
+- SEO preview card
+- Analytics tracking toggle
+- Maintenance mode toggle
+- Live statistics dashboard (Apps, Books, Chapters, Live Apps count)
+- Cache management
 
 ## 🚀 Access
 
@@ -38,6 +48,37 @@ A comprehensive admin dashboard for managing all aspects of your portfolio in on
 - **Password**: `7KC&meenter`
 
 ## 📖 How to Use
+
+### Reordering Apps/Books
+
+**Apps and Books display order matters!** The order in the admin dashboard determines how they appear on your portfolio homepage.
+
+1. **View Current Order**
+   - Each item shows its position (#1, #2, #3, etc.)
+   - #1 appears first on the homepage
+   
+2. **Reorder Items**
+   - Click the up arrow (▲) to move item up
+   - Click the down arrow (▼) to move item down
+   - Changes take effect immediately in the list
+   
+3. **Save Order**
+   - Click "Save Changes" to commit the new order
+   - Order is preserved in the data file
+   - Vercel redeploys with new order
+
+**Example Order:**
+```
+Apps List:
+#1 7K Life        ← Shows first on homepage
+#2 7K LawPrep     ← Shows second
+#3 7K Itihaas     ← Shows third
+#4 7K Money       ← Shows fourth
+
+Books List:
+#1 Ethos          ← Featured book
+#2 Kup Games      ← Secondary book
+```
 
 ### Managing Books
 
@@ -89,20 +130,82 @@ A comprehensive admin dashboard for managing all aspects of your portfolio in on
    ```
    Sign in to /admin
    Click on the "Apps" tab
+   View all apps with their current position
    ```
 
 2. **Edit Existing App**
    ```
    Click on any app from the list
-   Update details in the editor
-   Click "Save Apps"
+   Update details in the editor:
+   - Name, tagline, description
+   - URL and category
+   - Status (live, beta, coming-soon)
+   - Rating and review count
+   Click "Save Changes"
    ```
 
 3. **Add New App**
    ```
-   Click "Add New App"
+   Click "+" button in Apps panel
    Fill in all fields
+   Position starts at the end (#last)
    Save changes
+   ```
+
+4. **Reorder Apps**
+   ```
+   Use up/down arrows on each app card
+   Move important apps to top positions
+   First app shows prominently on homepage
+   Save to commit new order
+   ```
+
+### Managing Portfolio
+
+1. **Personal Info**
+   ```
+   Go to Portfolio tab
+   Edit name, title, email, location
+   Update bio text
+   ```
+
+2. **Social Links**
+   ```
+   Enter usernames (not full URLs)
+   - GitHub: username only
+   - LinkedIn: username only  
+   - Twitter/X: username only
+   Links auto-generate on portfolio
+   ```
+
+3. **Preview**
+   ```
+   See live preview at bottom of Portfolio tab
+   Shows exactly how info appears
+   ```
+
+### Managing General Settings
+
+1. **Site Configuration**
+   ```
+   Go to Settings tab
+   Update site name and URL
+   Edit meta description for SEO
+   View SEO preview
+   ```
+
+2. **Features Toggle**
+   ```
+   Enable/disable Analytics tracking
+   Turn on Maintenance mode
+   ```
+
+3. **View Statistics**
+   ```
+   See total apps count
+   View total books
+   Check chapter count
+   Monitor live apps
    ```
 
 ## 🔧 Technical Details
@@ -226,14 +329,21 @@ git push --force
 
 ## 🚀 Future Enhancements
 
+- [x] Apps fetching and editing
+- [x] Apps reordering
+- [x] Books reordering  
+- [x] Portfolio information management
+- [x] Social links management
+- [x] General settings (SEO, analytics)
+- [x] Statistics dashboard
 - [ ] Cover image upload
 - [ ] Chapter content editor
 - [ ] Book preview/reader
 - [ ] Export books to PDF/EPUB
 - [ ] Multi-language support
-- [ ] Analytics dashboard
-- [ ] Theme customization
-- [ ] SEO optimization tools
+- [ ] Advanced analytics dashboard
+- [ ] Theme customization UI
+- [ ] Backup and restore functionality
 
 ## 📞 Support
 
