@@ -12,7 +12,8 @@ import {
   ExternalLink,
   Filter,
   Sparkles,
-  Settings
+  Settings,
+  ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -56,6 +57,21 @@ export default function AppsIndexClient() {
       {/* Hero Section */}
       <section className="relative border-b border-border bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4 py-24">
+          {/* Back to Portfolio Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mb-8"
+          >
+            <Link href="/">
+              <Button variant="ghost" className="gap-2 hover:gap-3 transition-all">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Portfolio
+              </Button>
+            </Link>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
