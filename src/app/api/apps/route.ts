@@ -29,7 +29,17 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Update the apps-data.ts file
+    const isProduction = process.env.VERCEL === '1';
+    
+    // On Vercel, the filesystem is read-only, so we can't save changes
+    if (isProduction) {
+      return NextResponse.json({
+        success: false,
+        message: 'Cannot update apps in production. Please update apps-data.ts directly in your GitHub repository and push the changes. Vercel will automatically redeploy.'
+      }, { status: 403 });
+    }
+    
+    // Local development: Update the apps-data.ts file
     const filePath = path.join(process.cwd(), 'src', 'lib', 'apps-data.ts');
     const fileContent = await fs.readFile(filePath, 'utf-8');
     
@@ -45,20 +55,25 @@ export async function POST(request: NextRequest) {
     
     // Commit changes to git
     const { execSync } = require('child_process');
+    let gitSuccess = false;
     try {
       execSync('git add src/lib/apps-data.ts', { cwd: process.cwd() });
       execSync(`git commit -m "${commitMessage || 'Update apps data from settings panel'}"`, { 
         cwd: process.cwd() 
       });
       execSync('git push origin main', { cwd: process.cwd() });
-    } catch (gitError) {
+      gitSuccess = true;
+    } catch (gitError: any) {
       console.error('Git error:', gitError);
-      // Continue even if git fails
+      return NextResponse.json({
+        success: false,
+        message: `File updated locally but git commit failed: ${gitError.message}`
+      }, { status: 500 });
     }
     
     return NextResponse.json({
       success: true,
-      message: 'Apps updated and changes committed'
+      message: 'Apps updated and changes committed to GitHub. Vercel will automatically redeploy.'
     });
   } catch (error) {
     console.error('Update apps error:', error);
