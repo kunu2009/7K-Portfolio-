@@ -964,36 +964,6 @@ export const appsData: App[] = [
       "video creators",
       "designers"
     ]
-  },
-  {
-    "id": "app-1761135973768",
-    "name": "New App",
-    "tagline": "App tagline",
-    "description": "Short description",
-    "fullDescription": "Full description goes here...",
-    "url": "https://app.7kc.me",
-    "category": "productivity",
-    "features": [
-      "Feature 1",
-      "Feature 2"
-    ],
-    "technologies": [
-      "React",
-      "TypeScript"
-    ],
-    "keywords": [
-      "keyword1",
-      "keyword2"
-    ],
-    "rating": 4,
-    "reviews": 0,
-    "launchDate": "2025-10-22",
-    "status": "coming-soon",
-    "pricing": "free",
-    "targetAudience": [
-      "students",
-      "professionals"
-    ]
   }
 ];
 
