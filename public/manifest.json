@@ -1,12 +1,25 @@
 {
   "name": "7K Ecosystem - Kunal Chheda Portfolio",
   "short_name": "7K Portfolio",
-  "description": "Student developer building 20+ productivity apps",
+  "description": "Student developer building 24+ productivity, learning, finance & lifestyle apps. Full-stack web development, app development, SEO, and UI/UX design services.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#D4C4B0",
   "theme_color": "#B87333",
+  "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/favicon.png",
       "sizes": "192x192",
@@ -18,12 +31,38 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
+    }
+  ],
+  "screenshots": [
     {
       "src": "/splash-screen.png",
-      "sizes": "1024x1024",
+      "sizes": "1200x1600",
       "type": "image/png",
-      "purpose": "any maskable"
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["productivity", "education", "developer tools"],
+  "shortcuts": [
+    {
+      "name": "Apps",
+      "short_name": "Apps",
+      "description": "View all 24+ apps",
+      "url": "/apps",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "Professional services",
+      "url": "/services",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View projects",
+      "url": "/portfolio",
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
     }
   ]
 }

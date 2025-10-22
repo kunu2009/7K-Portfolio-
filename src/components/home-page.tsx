@@ -15,6 +15,9 @@ const PhilosophySection = dynamic(() => import('@/components/sections/philosophy
 const ServicesPromo = dynamic(() => import('@/components/sections/services-promo'), {
   loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
 });
+const ServicesMenuCard = dynamic(() => import('@/components/sections/services-menu-card'), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-muted/20" />
+});
 const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/portfolio-showcase'), {
   loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
 });
@@ -52,6 +55,7 @@ export default function HomePage() {
         <AboutSection />
         <PhilosophySection />
         <ServicesPromo />
+        <ServicesMenuCard />
         <PortfolioShowcaseSection />
         <AppStoreSection />
         <EcosystemSection />
