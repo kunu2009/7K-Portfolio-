@@ -21,6 +21,8 @@ export default function AppsIndexClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
+  const totalAppsCount = appsData.length;
+
   // Filter apps based on search and category
   const filteredApps = appsData.filter((app) => {
     const matchesSearch =
@@ -62,7 +64,7 @@ export default function AppsIndexClient() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">19 Powerful Apps</span>
+              <span className="text-sm font-medium">{totalAppsCount} Powerful Apps</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
