@@ -20,6 +20,7 @@ export interface AboutSection {
   title: string;
   subtitle: string;
   description: string;
+  quote?: string;
   highlights: string[];
   image?: string;
 }
@@ -154,25 +155,28 @@ export interface PortfolioSections {
 export const portfolioSections: PortfolioSections = {
   hero: {
     enabled: true,
-    title: "Kunal Chheda",
-    subtitle: "Student Developer & Polyglot",
-    description: "Building the 7K Ecosystem — One Idea at a Time",
-    ctaText: "Explore Apps",
-    ctaLink: "/apps",
-    secondaryCtaText: "View Projects",
-    secondaryCtaLink: "#projects",
+    title: "Building the 7K Ecosystem",
+    subtitle: "One Idea at a Time.",
+    description: "I'm Kunal — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort. From productivity apps to language learning platforms, finance trackers to fitness companions — I build digital solutions that make life easier. Developer • Polyglot • Chess Player • Lifelong Learner",
+    ctaText: "Explore My Work",
+    ctaLink: "#projects",
+    secondaryCtaText: "Get In Touch",
+    secondaryCtaLink: "#contact",
     backgroundImage: "/images/main-background.svg"
   },
   about: {
     enabled: true,
     title: "About Me",
     subtitle: "Who I Am",
-    description: "I'm Kunal — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort.",
+    description: "I'm Kunal Chheda — a 12th-grade Arts student from India with an unconventional blend of ambitions. While I dream of becoming a corporate lawyer, my heart beats for technology and creation. I've built over 24 powerful applications spanning productivity, education, finance, health, and entertainment. As a polyglot learning multiple languages, a chess enthusiast pushing my rating, and a full-stack developer mastering modern web technologies, I believe in building tools that don't just solve problems—they provide comfort and companionship in our digital journey.",
+    quote: "I didn't build products to showcase my skills. I built them because I needed something steady and reliable when everything else felt uncertain. These apps aren't just code—they're my companions, my comfort zone, and proof that technology can be warm, empathetic, and deeply personal.",
     highlights: [
-      "12th Grade Student",
-      "20+ Apps Built",
-      "Chess Player (1300 Rating)",
-      "Polyglot in Progress"
+      "12th Grade Arts Student",
+      "24+ Production Apps Built",
+      "Chess Player (1300+ Rating)",
+      "Polyglot in Progress (6+ Languages)",
+      "Full-Stack Developer",
+      "Aspiring Corporate Lawyer"
     ],
     image: "/images/profile.jpg"
   },

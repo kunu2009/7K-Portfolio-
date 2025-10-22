@@ -111,8 +111,7 @@ const AboutSection = () => {
             <Card className="border-l-4 border-primary bg-primary/5">
               <CardContent className="pt-6">
                 <blockquote className="italic text-base md:text-lg text-foreground">
-                  "I didn't build a product. I built a place to not feel so alone and helpless while I'm 
-                  incompetent. These apps aren't just tools—they're steady, reliable, and never fail me."
+                  {about.quote || "I didn't build a product. I built a place to not feel so alone and helpless while I'm incompetent. These apps aren't just tools—they're steady, reliable, and never fail me."}
                 </blockquote>
               </CardContent>
             </Card>
