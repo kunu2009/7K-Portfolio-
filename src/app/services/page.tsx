@@ -1,97 +1,291 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { 
-  Code, Smartphone, Search, Palette, PaintBucket, 
+  Code, Smartphone, Search, Palette, ShoppingCart, Bot,
   ArrowRight, Check, Mail, Phone, MessageCircle,
-  Rocket, ChevronLeft, Sparkles, Target, Zap
+  Rocket, ChevronLeft, Sparkles, Target, Zap,
+  Image as ImageIcon, Settings, Globe, TrendingUp,
+  Package, IndianRupee
 } from 'lucide-react';
 
-const services = [
+const mainServices = [
   {
+    id: 'web-dev',
     icon: Code,
     title: 'Web Development',
-    description: 'Custom websites and web applications built with modern technologies for optimal performance, SEO, and user experience.',
-    features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Modern Stack'],
-    priceMin: '5,000',
-    priceMax: '15,000',
-    period: 'per project',
-    featured: true,
+    description: 'Modern, responsive websites built with cutting-edge technology for optimal performance and SEO.',
+    color: 'from-blue-500 to-cyan-500',
+    tiers: [
+      {
+        name: 'Static Website',
+        price: '₹3,000 - ₹5,000',
+        features: [
+          '5-7 pages',
+          'Responsive design',
+          'Basic SEO setup',
+          'Contact form',
+          '1 month support'
+        ]
+      },
+      {
+        name: 'Dynamic Website',
+        price: '₹8,000 - ₹12,000',
+        features: [
+          '10-15 pages',
+          'CMS integration',
+          'Admin panel',
+          'Advanced SEO',
+          'API integration',
+          '2 months support'
+        ]
+      },
+      {
+        name: 'Web Application',
+        price: '₹15,000 - ₹20,000',
+        features: [
+          'Custom features',
+          'User authentication',
+          'Database design',
+          'Real-time updates',
+          'Advanced animations',
+          '3 months support'
+        ]
+      }
+    ]
   },
   {
+    id: 'app-dev',
     icon: Smartphone,
-    title: 'App Prototyping / PWA',
-    description: 'Interactive prototypes and Progressive Web App (PWA) setup to bring your app ideas to life quickly and efficiently.',
-    features: ['Interactive Prototypes', 'PWA Development', 'User Testing', 'App Store Ready'],
-    priceMin: '2,000',
-    priceMax: '10,000',
-    period: 'per project',
-    featured: false,
+    title: 'App Development',
+    description: 'Interactive prototypes and Progressive Web Apps (PWA) that work seamlessly across all devices.',
+    color: 'from-purple-500 to-pink-500',
+    tiers: [
+      {
+        name: 'App Prototype',
+        price: '₹3,000 - ₹6,000',
+        features: [
+          'Interactive mockups',
+          'User flow design',
+          'Clickable prototype',
+          'Design handoff',
+          'Unlimited revisions'
+        ]
+      },
+      {
+        name: 'Full PWA',
+        price: '₹10,000 - ₹15,000',
+        features: [
+          'Offline functionality',
+          'Push notifications',
+          'App-like experience',
+          'Installable',
+          'Cross-platform',
+          '2 months support'
+        ]
+      }
+    ]
   },
   {
+    id: 'seo',
     icon: Search,
     title: 'SEO Optimization',
-    description: 'Boost your online visibility with comprehensive SEO strategies, keyword research, and technical optimization.',
-    features: ['Keyword Research', 'Technical SEO', 'Content Strategy', 'Analytics Setup'],
-    priceMin: '1,000',
-    priceMax: '3,000',
-    period: 'per site',
-    featured: false,
+    description: 'Comprehensive SEO strategies to boost your online visibility and drive organic traffic.',
+    color: 'from-green-500 to-emerald-500',
+    tiers: [
+      {
+        name: 'Basic SEO',
+        price: '₹1,000 - ₹2,000',
+        features: [
+          'Keyword research',
+          'On-page optimization',
+          'Meta tags setup',
+          'Sitemap creation',
+          'Performance report'
+        ]
+      },
+      {
+        name: 'Full SEO + Analytics',
+        price: '₹3,000 - ₹5,000',
+        features: [
+          'Everything in Basic',
+          'Google Analytics setup',
+          'Monthly reporting',
+          'Competitor analysis',
+          'Content strategy',
+          '3 months tracking'
+        ]
+      }
+    ]
   },
   {
+    id: 'ui-ux',
     icon: Palette,
     title: 'UI/UX Design',
-    description: 'User-centered design solutions that create engaging, intuitive, and conversion-focused digital experiences.',
-    features: ['User Research', 'Wireframing', 'Visual Design', 'Prototyping'],
-    priceMin: '1,000',
-    priceMax: '5,000',
-    period: 'per project',
-    featured: false,
+    description: 'User-centered design solutions that create engaging, intuitive experiences and drive conversions.',
+    color: 'from-orange-500 to-red-500',
+    tiers: [
+      {
+        name: 'App/Web UI Design',
+        price: '₹2,000 - ₹4,000',
+        features: [
+          'User research',
+          'Wireframing',
+          'Visual design',
+          'Responsive layouts',
+          '3 revision rounds'
+        ]
+      },
+      {
+        name: 'Logo + Brand Kit',
+        price: '₹5,000 - ₹7,000',
+        features: [
+          'Logo design (5 concepts)',
+          'Color palette',
+          'Typography guide',
+          'Brand guidelines',
+          'Social media kit',
+          'Source files included'
+        ]
+      }
+    ]
   },
   {
-    icon: PaintBucket,
-    title: 'Basic Branding',
-    description: 'Complete basic branding package including logo design, color palette, and brand guidelines.',
-    features: ['Logo Design', 'Color Palette', 'Brand Guidelines', 'Landing Page'],
-    priceMin: null,
-    priceMax: null,
-    period: 'custom quote',
-    featured: false,
+    id: 'ecommerce',
+    icon: ShoppingCart,
+    title: 'E-Commerce Solutions',
+    description: 'Complete online store setup with payment gateway integration and inventory management.',
+    color: 'from-indigo-500 to-violet-500',
+    tiers: [
+      {
+        name: 'E-Commerce Store',
+        price: '₹8,000 - ₹15,000',
+        features: [
+          'Product catalog',
+          'Shopping cart',
+          'Payment gateway',
+          'Order management',
+          'Customer accounts',
+          'Admin dashboard',
+          '3 months support'
+        ]
+      }
+    ]
   },
+  {
+    id: 'ai-automation',
+    icon: Bot,
+    title: 'AI & Automation',
+    description: 'Smart automation solutions and AI-powered features to streamline your business processes.',
+    color: 'from-teal-500 to-cyan-500',
+    tiers: [
+      {
+        name: 'Basic Automation',
+        price: '₹2,000 - ₹4,000',
+        features: [
+          'Chatbot integration',
+          'Form automation',
+          'Email sequences',
+          'API connections',
+          'Custom scripts'
+        ]
+      },
+      {
+        name: 'Advanced AI Features',
+        price: '₹5,000 - ₹8,000',
+        features: [
+          'AI content generation',
+          'Smart recommendations',
+          'Data analytics',
+          'Custom ML models',
+          'Voice/chat interfaces',
+          'Ongoing optimization'
+        ]
+      }
+    ]
+  }
+];
+
+const addOnServices = [
+  {
+    icon: ImageIcon,
+    title: 'Graphics & Assets',
+    price: '₹500 - ₹3,000',
+    description: 'Custom graphics, icons, illustrations, and visual assets for your project.'
+  },
+  {
+    icon: Settings,
+    title: 'Maintenance & Updates',
+    price: '₹1,000 - ₹3,000/month',
+    description: 'Regular updates, bug fixes, content changes, and technical support.'
+  },
+  {
+    icon: Globe,
+    title: 'Hosting & Domain',
+    price: '₹500 - ₹1,000/year',
+    description: 'Domain registration, hosting setup, SSL certificate, and email configuration.'
+  },
+  {
+    icon: Package,
+    title: 'Content Writing',
+    price: '₹500 - ₹2,000/page',
+    description: 'SEO-optimized content, copywriting, and professional page content creation.'
+  }
 ];
 
 const stats = [
-  { number: '50+', label: 'Projects Delivered' },
-  { number: '25+', label: 'Happy Clients' },
-  { number: '100%', label: 'Satisfaction Rate' },
+  { number: '50+', label: 'Projects Delivered', icon: Rocket },
+  { number: '25+', label: 'Happy Clients', icon: Target },
+  { number: '100%', label: 'Satisfaction Rate', icon: Sparkles },
+  { number: '₹3K', label: 'Starting Price', icon: IndianRupee }
 ];
 
 const whyChooseUs = [
   {
+    icon: IndianRupee,
+    title: 'Transparent Pricing',
+    description: 'Clear, competitive prices with no hidden costs. 50% advance, 50% on completion.'
+  },
+  {
     icon: Rocket,
-    title: 'Fast & Reliable Delivery',
-    description: 'We deliver quality work on time, every time.',
+    title: 'Fast Delivery',
+    description: 'Most projects delivered within 1-3 weeks depending on complexity.'
   },
   {
-    icon: Sparkles,
-    title: 'Creative Design Solutions',
-    description: 'Innovative designs that stand out and engage users.',
-  },
-  {
-    icon: Target,
-    title: 'Cutting-edge Technology',
-    description: 'Using the latest tech stack for modern solutions.',
+    icon: TrendingUp,
+    title: 'Portfolio-Driven',
+    description: 'Check our extensive portfolio to see the quality of work before hiring.'
   },
   {
     icon: Zap,
-    title: 'Dedicated Support Team',
-    description: 'Always here to help you succeed with ongoing support.',
-  },
+    title: 'Modern Tech Stack',
+    description: 'Built with Next.js, React, TypeScript, and other cutting-edge technologies.'
+  }
 ];
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 export default function ServicesPage() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header/Nav */}
@@ -101,94 +295,94 @@ export default function ServicesPage() {
             <ChevronLeft className="h-5 w-5" />
             <span className="font-semibold">Back to Portfolio</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <Image 
-              src="/images/services/logo.png" 
-              alt="7K Studios Logo" 
-              width={40} 
-              height={40}
-              className="rounded-lg"
-            />
-            <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">7K Studios</h2>
-          </div>
-          <Link href="#contact">
-            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
-              Get Started
+          <Link href="/#contact">
+            <Button className="rounded-full bg-gradient-to-r from-primary to-accent">
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Get Quote
             </Button>
           </Link>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        {/* Background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0">
-            <Image 
-              src="/images/banner.png" 
-              alt="Background"
-              fill
-              priority
-              className="object-cover opacity-10"
-              quality={100}
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.08) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }} />
-        </div>
+      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
         
-        <div className="container px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 backdrop-blur">
-              <Rocket className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-foreground">Building the Future</span>
-            </div>
+        <div className="container relative z-10">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-2 mb-6">
+              <Badge variant="outline" className="text-sm border-primary/20">
+                <IndianRupee className="mr-1 h-3 w-3" />
+                Affordable & Quality Services
+              </Badge>
+            </motion.div>
             
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              We Build Smart Tools &{' '}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                Digital Experiences
+            <motion.h1 
+              variants={fadeInUp}
+              className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            >
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+                Professional Development Services
               </span>
-            </h1>
+            </motion.h1>
             
-            <p className="mb-12 text-lg text-muted-foreground md:text-xl max-w-3xl mx-auto">
-              Transform your business with cutting-edge digital solutions. From stunning websites to innovative apps, 
-              we craft experiences that drive growth and engage users across India and globally.
-            </p>
-            
-            {/* Stats */}
-            <div className="mb-10 grid grid-cols-3 gap-4 md:gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="rounded-xl border border-border/50 bg-card/50 backdrop-blur p-6 hover:bg-card/80 transition-colors">
-                  <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent md:text-4xl">
+            <motion.p 
+              variants={fadeInUp}
+              className="text-lg md:text-xl text-muted-foreground mb-8"
+            >
+              Transform your ideas into reality with budget-friendly web & app development. 
+              <span className="text-primary font-semibold"> Starting from just ₹1,000</span> with 
+              50% advance payment. Quality work, competitive prices.
+            </motion.p>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="flex flex-wrap justify-center gap-4"
+            >
+              <Link href="/#contact">
+                <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-accent shadow-lg">
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Get Free Quote
+                </Button>
+              </Link>
+              <Link href="/portfolio">
+                <Button size="lg" variant="outline" className="rounded-full">
+                  <Rocket className="mr-2 h-5 w-5" />
+                  View Portfolio
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="container py-8 md:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 text-center">
+                <CardContent className="pt-6 pb-6">
+                  <stat.icon className="h-8 w-8 text-primary mx-auto mb-2" />
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-muted-foreground md:text-base mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link href="#contact">
-                <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="#services">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary/20 hover:bg-primary/5">
-                  View Services
-                </Button>
-              </Link>
-            </div>
-            
-            <p className="mt-8 text-sm text-muted-foreground">
-              Trusted by startups and established businesses
-            </p>
-          </div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -208,20 +402,14 @@ export default function ServicesPage() {
           </div>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => {
+            {mainServices.map((service: any, index: number) => {
               const Icon = service.icon;
+              const firstTier = service.tiers?.[0];
               return (
                 <div
-                  key={index}
-                  className={`group relative overflow-hidden rounded-2xl border bg-card/50 backdrop-blur p-8 transition-all hover:shadow-2xl hover:border-primary/30 hover:-translate-y-1 ${
-                    service.featured ? 'ring-2 ring-primary/50 border-primary/30 bg-gradient-to-br from-primary/5 to-transparent' : 'border-border/50'
-                  }`}
+                  key={service.id || index}
+                  className="group relative overflow-hidden rounded-2xl border bg-card/50 backdrop-blur p-8 transition-all hover:shadow-2xl hover:border-primary/30 hover:-translate-y-1 border-border/50"
                 >
-                  {service.featured && (
-                    <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-primary to-accent px-3 py-1 text-xs font-medium text-white shadow-lg">
-                      Most Popular
-                    </div>
-                  )}
                   
                   <div className="mb-6">
                     <div className="inline-flex rounded-xl bg-primary/10 p-3 ring-1 ring-primary/20">
@@ -232,35 +420,19 @@ export default function ServicesPage() {
                   <h3 className="mb-3 text-2xl font-bold text-foreground">{service.title}</h3>
                   <p className="mb-6 text-muted-foreground leading-relaxed">{service.description}</p>
                   
-                  <div className="mb-6 space-y-3">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-sm text-foreground">
-                        <div className="flex-shrink-0">
-                          <Check className="h-5 w-5 text-primary" />
-                        </div>
-                        <span>{feature}</span>
+                  <div className="mb-6 space-y-2">
+                    {service.tiers && service.tiers.map((tier: any, idx: number) => (
+                      <div key={idx} className="text-sm">
+                        <strong className="text-primary">{tier.name}:</strong> {tier.price}
                       </div>
                     ))}
                   </div>
                   
-                  <div className="mb-6 border-t border-border/50 pt-6">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                      {service.priceMin && service.priceMax ? (
-                        <>
-                          <span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMin} - <span style={{ fontFamily: 'Arial, sans-serif' }}>₹</span>{service.priceMax}
-                        </>
-                      ) : (
-                        'Contact for pricing'
-                      )}
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-1">{service.period}</div>
-                  </div>
-                  
-                  <Link href="#contact">
+                  <Link href="/#contact">
                     <Button 
-                      className={`w-full ${service.featured ? 'bg-gradient-to-r from-primary to-accent hover:opacity-90' : 'bg-primary/10 text-primary hover:bg-primary/20'} transition-all`}
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all"
                     >
-                      {service.featured ? 'Get Started' : 'Learn More'}
+                      Get Quote
                     </Button>
                   </Link>
                 </div>

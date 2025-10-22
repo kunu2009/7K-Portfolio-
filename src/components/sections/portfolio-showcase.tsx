@@ -262,9 +262,11 @@ const PortfolioShowcaseSection = () => {
           </p>
         </motion.div>
 
-        {/* Portfolio Grid */}
+        {/* Portfolio Grid - Featured 3 */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {portfolioVariations.map((portfolio, index) => (
+          {portfolioVariations
+            .filter(p => ['mobile-shell', 'terminal', 'galaksi'].includes(p.id))
+            .map((portfolio, index) => (
             <motion.div
               key={portfolio.id}
               initial={{ opacity: 0, y: 20 }}
@@ -360,6 +362,26 @@ const PortfolioShowcaseSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* See More Portfolios Button */}
+        <motion.div 
+          variants={fadeInUp}
+          className="mt-12 text-center"
+        >
+          <Link href="/portfolio">
+            <Button 
+              size="lg"
+              className="rounded-full bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg hover:shadow-primary/30 transition-all"
+            >
+              <Layers className="mr-2 h-5 w-5" />
+              See More Portfolios
+              <ExternalLink className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+          <p className="text-sm text-muted-foreground mt-4">
+            Explore all {portfolioVariations.length} unique portfolio experiences
+          </p>
+        </motion.div>
 
         {/* Info Box */}
         <motion.div 
