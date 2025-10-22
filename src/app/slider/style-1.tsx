@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import React, { useState } from 'react';
@@ -179,7 +179,7 @@ const Slide = ({ project, textAnim, imageAnim, nav }: { project: typeof projects
     )
 }
 
-export default function SliderStyle1() {
+export default function sliderStyle1() {
     const [[page, direction], setPage] = useState([0, 0]);
     const projectIndex = ((page % projects.length) + projects.length) % projects.length;
 

@@ -1,4 +1,4 @@
-"use client";
+Ôªø"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,17 +30,17 @@ const aboutCards = [
   {
     title: "Who I Am",
     content: PERSONAL_INFO.bio,
-    icon: "=ÉÊøG«Ï=É∆+"
+    icon: "‚â°∆í√¶¬øŒì√á√¨‚â°∆í√Ü‚ïó"
   },
   {
     title: "My Mission",
-    content: "Building the 7K Ecosystem G«ˆ a collection of apps designed to empower, educate, and comfort. Each tool is crafted with care to make life easier and more productive.",
-    icon: "n++"
+    content: "Building the 7K Ecosystem Œì√á√∂ a collection of apps designed to empower, educate, and comfort. Each tool is crafted with care to make life easier and more productive.",
+    icon: "‚à©‚îê‚ïú"
   },
   {
     title: "My Journey",
     content: "From a 12th-grade Arts student to a developer creating meaningful technology. I balance my dream of becoming a corporate lawyer with my passion for building tools that help people.",
-    icon: "G£ø"
+    icon: "Œì¬£¬ø"
   }
 ];
 
@@ -48,7 +48,7 @@ const featuredProjects = [
   { 
     id: 1, 
     title: "7K Life App", 
-    image: "n++", 
+    image: "‚à©‚îê‚ïú", 
     gradient: "from-amber-600 to-orange-700",
     description: "Core application for holistic life management and productivity. Your central hub for tasks, goals, habits, and personal knowledge.",
     tags: ["Productivity", "Ecosystem"],
@@ -57,7 +57,7 @@ const featuredProjects = [
   { 
     id: 2, 
     title: "7K LawPrep", 
-    image: "G‹˚n+≈", 
+    image: "Œì√ú√ª‚à©‚ïï√Ö", 
     gradient: "from-blue-600 to-cyan-600",
     description: "Web-based utilities for law aspirants. Mock tests, quizzes, and performance analytics for CLAT and MHCET preparation.",
     tags: ["Education", "Legal Tech"],
@@ -66,7 +66,7 @@ const featuredProjects = [
   { 
     id: 3, 
     title: "7K Polyglot", 
-    image: "=ÉÓÏ", 
+    image: "‚â°∆í√Æ√¨", 
     gradient: "from-teal-500 to-green-600",
     description: "Language-learning companion with flashcards, quizzes, and spaced repetition. Make vocabulary acquisition fun and effective.",
     tags: ["Education", "Languages"],
@@ -75,7 +75,7 @@ const featuredProjects = [
   { 
     id: 4, 
     title: "7K Itihaas", 
-    image: "=ÉÙ£", 
+    image: "‚â°∆í√¥¬£", 
     gradient: "from-purple-600 to-violet-700",
     description: "Explore India's rich history through interactive timelines. Discover events, rulers, and cultures that shaped the subcontinent.",
     tags: ["Education", "History"],
@@ -84,7 +84,7 @@ const featuredProjects = [
   { 
     id: 5, 
     title: "Stan AI", 
-    image: "=ÉÒ˚", 
+    image: "‚â°∆í√±√ª", 
     gradient: "from-pink-500 to-rose-600",
     description: "AI assistant running on Android. Context-aware automation and assistance integrated across the 7K ecosystem.",
     tags: ["AI", "Mobile"],
@@ -93,7 +93,7 @@ const featuredProjects = [
   { 
     id: 6, 
     title: "More Coming", 
-    image: "=É‹«", 
+    image: "‚â°∆í√ú√á", 
     gradient: "from-indigo-500 to-purple-600",
     description: "Custom launcher, AI tools, smart journal, and more. The 7K ecosystem is constantly growing with new ideas.",
     tags: ["Future", "Innovation"],
@@ -108,7 +108,7 @@ const navigationItems = [
   { id: "contact", icon: Mail, label: "Contact" }
 ];
 
-export default function GalaksiStyle1() {
+export default function galaksiStyle1() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number }>>([]);
@@ -165,7 +165,7 @@ export default function GalaksiStyle1() {
           ease: "easeInOut",
         }}
       >
-        =É∫ÊG«Ï=É‹«
+        ‚â°∆í¬∫√¶Œì√á√¨‚â°∆í√ú√á
       </motion.div>
 
       {/* Floating Planets */}
@@ -181,7 +181,7 @@ export default function GalaksiStyle1() {
           ease: "easeInOut",
         }}
       >
-        =É¨…
+        ‚â°∆í¬¨√â
       </motion.div>
 
       {/* Main Content Container */}
@@ -226,7 +226,7 @@ export default function GalaksiStyle1() {
                     <div className="flex-1 space-y-4">
                       <div className="inline-block">
                         <Badge className="bg-violet-500/30 text-white border-violet-400/50 px-4 py-1">
-                          DEVELOPER G«Û POLYGLOT G«Û CREATOR
+                          DEVELOPER Œì√á√≥ POLYGLOT Œì√á√≥ CREATOR
                         </Badge>
                       </div>
                       <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
@@ -354,7 +354,7 @@ export default function GalaksiStyle1() {
                             onClick={() => setSelectedProject(null)}
                             className="rounded-full hover:bg-white/10"
                           >
-                            G£Ú
+                            Œì¬£√≤
                           </Button>
                         </div>
                         <div className="text-8xl text-center my-8">

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
@@ -188,11 +188,17 @@ const Game = () => {
                 <Platform key={p.id} {...p} width={PLATFORM_WIDTH} onRemove={() => removePlatform(p.id)} />
             ))}
         </div>
+        <Button asChild variant="link" className="mt-4">
+            <Link href="/">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Selection
+            </Link>
+        </Button>
     </div>
   )
 }
 
-export default function ArcadeStyle1() {
+export default function arcadeStyle1() {
   return (
     <div 
       className="flex min-h-dvh flex-col items-center justify-center text-center p-4 bg-background overflow-hidden bg-cover bg-center bg-no-repeat"

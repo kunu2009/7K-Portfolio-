@@ -1,6 +1,6 @@
-
+﻿
 import HomePage from "@/components/home-page";
 
-export default function StoryStyle1() {
+export default function storyStyle1() {
   return <HomePage />;
 }

@@ -1,4 +1,4 @@
-"use client";
+Ôªø"use client";
 
 import { ArrowLeft, Mail, Github, Linkedin, ExternalLink, Code2, Palette, Layers, Zap } from "lucide-react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function PortfolioCardStyle1() {
+export default function portfolio-cardStyle1() {
   const skills = [
     { name: "React & Next.js", level: "Expert", color: "from-blue-500 to-cyan-500" },
     { name: "TypeScript", level: "Advanced", color: "from-blue-600 to-indigo-500" },
@@ -103,7 +103,7 @@ export default function PortfolioCardStyle1() {
                         Full-Stack Developer & Designer
                       </p>
                       <p className="text-sm text-muted-foreground mt-2">
-                        12th Grade Student G«Û Mumbai, India
+                        12th Grade Student Œì√á√≥ Mumbai, India
                       </p>
                     </div>
 
@@ -124,7 +124,7 @@ export default function PortfolioCardStyle1() {
                         <div className="text-sm text-muted-foreground">Years Coding</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-teal-600">GÍP</div>
+                        <div className="text-3xl font-bold text-teal-600">Œì√™‚Çß</div>
                         <div className="text-sm text-muted-foreground">Ideas</div>
                       </div>
                     </div>
@@ -239,7 +239,7 @@ export default function PortfolioCardStyle1() {
 
       <footer className="relative z-10 border-t border-border/50 py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>-¨ 2025 Kunal Chheda G«Û 7K Studios G«Û All rights reserved</p>
+          <p>‚î¨‚åê 2025 Kunal Chheda Œì√á√≥ 7K Studios Œì√á√≥ All rights reserved</p>
         </div>
       </footer>
     </div>
