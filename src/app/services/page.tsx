@@ -22,6 +22,7 @@ const mainServices = [
     title: 'Web Development',
     description: 'Modern, responsive websites built with cutting-edge technology for optimal performance and SEO.',
     color: 'from-blue-500 to-cyan-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in Web Development services. I\'d like to discuss building a modern website/web application. Can we talk about the requirements and pricing?',
     tiers: [
       {
         name: 'Static Website',
@@ -66,6 +67,7 @@ const mainServices = [
     title: 'App Development',
     description: 'Interactive prototypes and Progressive Web Apps (PWA) that work seamlessly across all devices.',
     color: 'from-purple-500 to-pink-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in App Development services. I\'d like to discuss creating a Progressive Web App or mobile application. Can we discuss the project details?',
     tiers: [
       {
         name: 'App Prototype',
@@ -98,6 +100,7 @@ const mainServices = [
     title: 'SEO Optimization',
     description: 'Comprehensive SEO strategies to boost your online visibility and drive organic traffic.',
     color: 'from-green-500 to-emerald-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in SEO & Marketing services. I\'d like to improve my website\'s search rankings and online visibility. Can we discuss an SEO strategy?',
     tiers: [
       {
         name: 'Basic SEO',
@@ -130,6 +133,7 @@ const mainServices = [
     title: 'UI/UX Design',
     description: 'User-centered design solutions that create engaging, intuitive experiences and drive conversions.',
     color: 'from-orange-500 to-red-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in UI/UX Design services. I\'d like to create a beautiful and user-friendly interface for my project. Can we discuss the design requirements?',
     tiers: [
       {
         name: 'App/Web UI Design',
@@ -162,6 +166,7 @@ const mainServices = [
     title: 'E-Commerce Solutions',
     description: 'Complete online store setup with payment gateway integration and inventory management.',
     color: 'from-indigo-500 to-violet-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in E-Commerce Solutions. I\'d like to set up an online store with payment integration. Can we discuss the requirements?',
     tiers: [
       {
         name: 'E-Commerce Store',
@@ -184,6 +189,7 @@ const mainServices = [
     title: 'AI & Automation',
     description: 'Smart automation solutions and AI-powered features to streamline your business processes.',
     color: 'from-teal-500 to-cyan-500',
+    whatsappMessage: 'Hi Kunal! I\'m interested in AI & Automation services. I\'d like to implement smart automation or AI features in my project. Can we discuss the possibilities?',
     tiers: [
       {
         name: 'Basic Automation',
@@ -303,12 +309,16 @@ export default function ServicesPage() {
               <span className="font-semibold text-lg hidden sm:inline">7K Studios</span>
             </div>
           </div>
-          <Link href="/#contact">
+          <a 
+            href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'm%20interested%20in%20your%20services.%20Can%20we%20discuss%20my%20project%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button className="rounded-full bg-gradient-to-r from-primary to-accent">
               <MessageCircle className="mr-2 h-4 w-4" />
-              Get Quote
+              Send Message
             </Button>
-          </Link>
+          </a>
         </div>
       </header>
 
@@ -436,13 +446,18 @@ export default function ServicesPage() {
                     ))}
                   </div>
                   
-                  <Link href="/#contact">
+                  <a
+                    href={`https://wa.me/918591247148?text=${encodeURIComponent(service.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Button 
                       className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all"
                     >
-                      Get Quote
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Send Message
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               );
             })}

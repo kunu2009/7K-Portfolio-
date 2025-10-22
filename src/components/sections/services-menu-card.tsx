@@ -234,20 +234,20 @@ export default function ServicesMenuCard() {
                           </div>
                         </div>
                       </div>
-                      <Button 
-                        asChild 
-                        className={`w-full ${service.iconColor} bg-gradient-to-r ${service.color.replace(/\/20/g, '/90')} hover:${service.color.replace(/\/20/g, '')} border ${service.borderColor}`}
-                        variant="outline"
+                      <a 
+                        href={`https://wa.me/918591247148?text=${encodeURIComponent(service.whatsappMessage)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
                       >
-                        <a 
-                          href={`https://wa.me/918591247148?text=${encodeURIComponent(service.whatsappMessage)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Button 
+                          className={`w-full ${service.iconColor} border-2 ${service.borderColor} hover:${service.bgGlow} hover:border-opacity-80 transition-all duration-300`}
+                          variant="outline"
                         >
                           <MessageCircle className="h-4 w-4 mr-2" />
                           Send Message
-                        </a>
-                      </Button>
+                        </Button>
+                      </a>
                     </div>
                   </CardContent>
                 </Card>
