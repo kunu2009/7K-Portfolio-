@@ -45,13 +45,17 @@ export default function SettingsPage() {
     setLoading(true);
 
     try {
+      console.log('[LOGIN] Attempting login with:', { username, passwordLength: password.length });
+      
       const response = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
       });
 
+      console.log('[LOGIN] Response status:', response.status);
       const data = await response.json();
+      console.log('[LOGIN] Response data:', data);
 
       if (data.success) {
         sessionStorage.setItem('portfolio_admin_session', JSON.stringify({
