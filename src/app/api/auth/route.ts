@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyCredentials } from '@/lib/auth';
 
+// Portfolio Settings Authentication API
 export async function POST(request: NextRequest) {
   try {
     const { username, password } = await request.json();
@@ -13,6 +14,8 @@ export async function POST(request: NextRequest) {
     }
     
     const isValid = await verifyCredentials(username, password);
+    
+    console.log('[AUTH API] Login attempt:', { username, isValid });
     
     if (isValid) {
       return NextResponse.json({
