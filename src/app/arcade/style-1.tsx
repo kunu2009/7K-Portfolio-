@@ -198,7 +198,7 @@ const Game = () => {
   )
 }
 
-export default function arcadeStyle1() {
+export default function ArcadeStyle1() {
   return (
     <div 
       className="flex min-h-dvh flex-col items-center justify-center text-center p-4 bg-background overflow-hidden bg-cover bg-center bg-no-repeat"

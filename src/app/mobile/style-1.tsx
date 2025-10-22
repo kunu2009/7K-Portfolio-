@@ -10,7 +10,7 @@ import { HomeScreen } from '@/components/mobile/home-screen';
 import { PortfolioScreen } from '@/components/mobile/portfolio-screen';
 import { StatusBar } from '@/components/mobile/status-bar';
 
-export default function mobileStyle1() {
+export default function MobileStyle1() {
   return (
     <div 
       className="relative mobile-screen mobile-container w-screen bg-cover bg-center bg-no-repeat"

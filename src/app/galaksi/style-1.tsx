@@ -108,7 +108,7 @@ const navigationItems = [
   { id: "contact", icon: Mail, label: "Contact" }
 ];
 
-export default function galaksiStyle1() {
+export default function GalaksiStyle1() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number }>>([]);

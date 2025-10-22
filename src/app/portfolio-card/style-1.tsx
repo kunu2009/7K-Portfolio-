@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function portfolio-cardStyle1() {
+export default function PortfolioCardStyle1() {
   const skills = [
     { name: "React & Next.js", level: "Expert", color: "from-blue-500 to-cyan-500" },
     { name: "TypeScript", level: "Advanced", color: "from-blue-600 to-indigo-500" },
