@@ -295,6 +295,14 @@ export default function ServicesPage() {
             <ChevronLeft className="h-5 w-5" />
             <span className="font-semibold">Back to Portfolio</span>
           </Link>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm">
+                7K
+              </div>
+              <span className="font-semibold text-lg hidden sm:inline">7K Studios</span>
+            </div>
+          </div>
           <Link href="/#contact">
             <Button className="rounded-full bg-gradient-to-r from-primary to-accent">
               <MessageCircle className="mr-2 h-4 w-4" />

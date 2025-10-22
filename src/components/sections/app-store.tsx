@@ -11,7 +11,7 @@ import {
   Grid3x3,
   ArrowRight
 } from "lucide-react";
-import { APP_STORE } from "@/lib/constants";
+import { appsData } from "@/lib/apps-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -28,9 +28,9 @@ const staggerContainer = {
 };
 
 const AppStoreSection = () => {
-  // Show only these 4 featured apps on the homepage
-  const featuredAppIds = ["7k-life", "7k-lawprep", "7k-itihaas", "7k-money"];
-  const featuredApps = APP_STORE.filter(app => featuredAppIds.includes(app.id));
+  // Show only first 8 apps on homepage - mix of featured and popular
+  const featuredApps = appsData.slice(0, 8);
+  const totalAppsCount = appsData.length;
 
   return (
     <section id="app-store" className="container py-16 md:py-24 lg:py-32 relative overflow-hidden">
@@ -49,7 +49,7 @@ const AppStoreSection = () => {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Grid3x3 className="h-6 w-6 text-primary animate-pulse" />
             <Badge variant="outline" className="text-sm border-primary/20">
-              {APP_STORE.length} Apps Available
+              {totalAppsCount} Apps Available
             </Badge>
             <Sparkles className="h-6 w-6 text-accent animate-pulse" />
           </div>
@@ -61,7 +61,7 @@ const AppStoreSection = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore the 7K Ecosystem — a collection of apps designed for productivity, 
+            Explore the 7K Ecosystem — a collection of {totalAppsCount} apps designed for productivity, 
             education, health, and more. All built with passion and purpose.
           </p>
         </motion.div>
@@ -81,12 +81,12 @@ const AppStoreSection = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="group h-full bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 border-primary/10 hover:border-primary/30">
-                  <div className="h-2 bg-gradient-to-r from-primary to-accent" style={{ background: `linear-gradient(to right, ${app.color}, ${app.color}dd)` }} />
+                  <div className="h-2 bg-gradient-to-r from-primary to-accent" />
                   
                   <CardHeader>
                     <div className="flex items-start justify-between mb-3">
                       <div className="text-5xl group-hover:scale-110 transition-transform">
-                        {app.icon}
+                        {app.icon || "📱"}
                       </div>
                       <Badge variant="secondary" className="text-xs">
                         {app.category}
@@ -119,7 +119,7 @@ const AppStoreSection = () => {
               size="lg" 
               className="rounded-full bg-gradient-to-r from-primary to-accent hover:opacity-90 shadow-lg hover:shadow-xl transition-all group"
             >
-              View All {APP_STORE.length} Apps
+              View All {totalAppsCount} Apps
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
