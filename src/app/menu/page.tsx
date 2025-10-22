@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,12 +16,15 @@ import {
   ArrowLeft,
   Sparkles,
   Star,
+  Layers,
 } from "lucide-react";
 
-// Import the 3 different card styles
+// Import all 5 different card styles
 import { MenuCardStyle1 } from "@/components/menu-cards/style-1-classic";
 import { MenuCardStyle2 } from "@/components/menu-cards/style-2-glass";
 import { MenuCardStyle3 } from "@/components/menu-cards/style-3-gradient";
+import { MenuCardStyle4 } from "@/components/menu-cards/style-4-minimal";
+import { MenuCardStyle5 } from "@/components/menu-cards/style-5-neon";
 
 // SEO Metadata would go here if this was a server component
 // For now, we'll add it via the layout or convert to server component with client wrapper
@@ -100,13 +104,18 @@ const services = [
   }
 ];
 
+const cardStyles = [
+  { id: 1, name: "Classic", component: MenuCardStyle1 },
+  { id: 2, name: "Glass", component: MenuCardStyle2 },
+  { id: 3, name: "Gradient", component: MenuCardStyle3 },
+  { id: 4, name: "Minimal", component: MenuCardStyle4 },
+  { id: 5, name: "Neon", component: MenuCardStyle5 },
+];
+
 export default function MenuPage() {
-  // CHANGE THIS TO SWITCH CARD STYLES: 1, 2, or 3
-  const ACTIVE_STYLE = 3;
+  const [activeStyle, setActiveStyle] = useState(3);
   
-  const CardComponent = ACTIVE_STYLE === 1 ? MenuCardStyle1 
-                      : ACTIVE_STYLE === 2 ? MenuCardStyle2 
-                      : MenuCardStyle3;
+  const CardComponent = cardStyles.find(s => s.id === activeStyle)?.component || MenuCardStyle3;
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
       {/* Header */}
@@ -128,6 +137,29 @@ export default function MenuPage() {
                 Home
               </Button>
             </Link>
+          </div>
+          
+          {/* Style Switcher */}
+          <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mr-2">
+              <Layers className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Card Style:</span>
+            </div>
+            {cardStyles.map((style) => (
+              <Button
+                key={style.id}
+                variant={activeStyle === style.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveStyle(style.id)}
+                className={`text-xs transition-all ${
+                  activeStyle === style.id 
+                    ? "shadow-lg shadow-primary/30" 
+                    : "hover:border-primary/50"
+                }`}
+              >
+                {style.name}
+              </Button>
+            ))}
           </div>
         </div>
       </header>

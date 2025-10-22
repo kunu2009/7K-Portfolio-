@@ -80,7 +80,7 @@ export function MenuCardStyle1({ service, index }: Props) {
             <div className="flex items-center justify-between pt-3 border-t border-border/50">
               <div>
                 <div className="text-[10px] text-muted-foreground uppercase mb-0.5">From</div>
-                <div className="text-base font-bold text-foreground">
+                <div className="text-base font-bold text-foreground font-sans">
                   {service.price}
                 </div>
               </div>

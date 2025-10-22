@@ -115,7 +115,7 @@ export function MenuCardStyle3({ service, index }: Props) {
                   <div className="text-xs text-white/70 uppercase tracking-wide mb-1">
                     Starting from
                   </div>
-                  <div className="text-2xl font-bold text-white">
+                  <div className="text-2xl font-bold text-white font-sans">
                     {service.price}
                   </div>
                 </div>

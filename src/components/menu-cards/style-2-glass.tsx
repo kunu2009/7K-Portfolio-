@@ -73,7 +73,7 @@ export function MenuCardStyle2({ service, index }: Props) {
             {/* Price Badge */}
             <Badge 
               variant="outline" 
-              className={`bg-gradient-to-r ${service.color} text-white border-0 px-4 py-1.5 font-semibold`}
+              className={`bg-gradient-to-r ${service.color} text-white border-0 px-4 py-1.5 font-semibold font-sans`}
             >
               {service.price}
             </Badge>
