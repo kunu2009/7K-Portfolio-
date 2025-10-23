@@ -143,7 +143,6 @@ const HeroSection = () => {
           <span className="text-xs sm:text-sm drop-shadow-lg">Scroll to explore</span>
           <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce" />
         </div>
-        </div>
       </div>
     </section>
   );
