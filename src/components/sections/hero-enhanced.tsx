@@ -4,12 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail, Instagram, Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { portfolioSections } from "@/lib/sections-data";
 import { useEffect, useState } from "react";
-
-const particles = Array.from({ length: 30 }); // Reduced for performance
 
 const HeroSection = () => {
   const { hero } = portfolioSections;
