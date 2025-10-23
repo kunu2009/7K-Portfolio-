@@ -70,7 +70,11 @@ export function SupportSection() {
     window.location.href = link;
     toast({
       title: 'Opening UPI App...',
-      description: amount ? `Amount: ₹${amount}` : 'Please enter amount in your UPI app',
+      description: amount ? (
+        <>Amount: <span className="font-mono">₹{amount}</span></>
+      ) : (
+        'Please enter amount in your UPI app'
+      ),
     });
   };
 
@@ -119,10 +123,10 @@ export function SupportSection() {
               <div className="flex gap-2 mb-2">
                 <Input
                   type="number"
-                  placeholder="Enter amount in ₹"
+                  placeholder="Enter amount (₹)"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 font-mono"
                 />
                 <Button
                   size="sm"
@@ -139,7 +143,7 @@ export function SupportSection() {
                   size="sm" 
                   variant="outline" 
                   onClick={() => quickAmount(50)}
-                  className="text-xs"
+                  className="text-xs font-mono"
                 >
                   +₹50
                 </Button>
@@ -147,7 +151,7 @@ export function SupportSection() {
                   size="sm" 
                   variant="outline" 
                   onClick={() => quickAmount(100)}
-                  className="text-xs"
+                  className="text-xs font-mono"
                 >
                   +₹100
                 </Button>
@@ -155,7 +159,7 @@ export function SupportSection() {
                   size="sm" 
                   variant="outline" 
                   onClick={() => quickAmount(500)}
-                  className="text-xs"
+                  className="text-xs font-mono"
                 >
                   +₹500
                 </Button>
@@ -163,7 +167,7 @@ export function SupportSection() {
                   size="sm" 
                   variant="outline" 
                   onClick={() => quickAmount(1000)}
-                  className="text-xs"
+                  className="text-xs font-mono"
                 >
                   +₹1000
                 </Button>
@@ -191,7 +195,13 @@ export function SupportSection() {
             </div>
             
             <p className="text-sm text-muted-foreground text-center mb-4">
-              {amount ? `Scan to pay ₹${amount}` : 'Open any UPI app and scan this QR code'}
+              {amount ? (
+                <>
+                  Scan to pay <span className="font-semibold font-mono">₹{amount}</span>
+                </>
+              ) : (
+                'Open any UPI app and scan this QR code'
+              )}
             </p>
 
             {/* Quick Pay Button */}
@@ -329,7 +339,7 @@ export function SupportSection() {
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-                    <span className="text-2xl font-bold text-primary">
+                    <span className="text-2xl font-bold text-primary font-mono">
                       ₹{contributor.amount}
                     </span>
                   </div>
@@ -347,7 +357,7 @@ export function SupportSection() {
                 <Users className="w-4 h-4" />
                 <span>
                   <strong className="text-primary">{contributors.length}</strong> supporter{contributors.length !== 1 ? 's' : ''} • 
-                  <strong className="text-primary ml-1">
+                  <strong className="text-primary ml-1 font-mono">
                     ₹{contributors.reduce((sum, c) => sum + c.amount, 0)}
                   </strong> raised
                 </span>
