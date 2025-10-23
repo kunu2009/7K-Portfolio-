@@ -1,9 +1,12 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export default function TerminalStyle3() {
+export default function TerminalStyle4() {
   const [matrixChars, setMatrixChars] = useState<
     Array<{ char: string; y: number; speed: number; column: number }>
   >([]);
@@ -13,7 +16,7 @@ export default function TerminalStyle3() {
   // Matrix rain effect
   useEffect(() => {
     const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01";
-    const columns = Math.floor(window.innerWidth / 20);
+    const columns = Math.floor((typeof window !== 'undefined' ? window.innerWidth : 1920) / 20);
     
     const initChars = Array.from({ length: 30 }, (_, i) => ({
       char: chars[Math.floor(Math.random() * chars.length)],
@@ -39,16 +42,17 @@ export default function TerminalStyle3() {
 
   const commands = [
     { cmd: "SYSTEM.WAKE()", output: "⚡ Neural interface activated..." },
-    { cmd: "IDENTITY.LOAD()", output: ">> Kunal Chheda | Full Stack Developer" },
+    { cmd: "IDENTITY.LOAD()", output: ">> Kunal Paresh Chheda | Full Stack Developer" },
     { cmd: "", output: "" },
     { cmd: "SKILLS.QUERY('frontend')", output: "→ React, Next.js, TypeScript, Tailwind CSS" },
-    { cmd: "SKILLS.QUERY('backend')", output: "→ Node.js, Python, Firebase, PostgreSQL" },
-    { cmd: "SKILLS.QUERY('mobile')", output: "→ React Native, Flutter" },
+    { cmd: "SKILLS.QUERY('backend')", output: "→ Node.js, Python, Firebase" },
+    { cmd: "SKILLS.QUERY('mobile')", output: "→ Flutter, React Native" },
     { cmd: "", output: "" },
     { cmd: "PROJECTS.LIST()", output: "📁 7K Life - Ecosystem Management" },
-    { cmd: "", output: "📁 7K Money - Financial Platform" },
-    { cmd: "", output: "📁 7K Game Hub - Gaming Community" },
-    { cmd: "", output: "📁 7K Ecosystem - Unified Platform" },
+    { cmd: "", output: "📁 7KLawPrep - Law Education Platform" },
+    { cmd: "", output: "📁 7K Itihaas - Interactive History" },
+    { cmd: "", output: "📁 Polyglot - Language Learning" },
+    { cmd: "", output: "📁 Stan AI - Personal Assistant" },
     { cmd: "", output: "" },
     { cmd: "STATUS.CHECK()", output: "🟢 ONLINE | Available for projects" },
     { cmd: "CONTACT.RETRIEVE()", output: "📧 7kmindbeatss@gmail.com" },
@@ -61,8 +65,8 @@ export default function TerminalStyle3() {
   // Auto-type commands
   useEffect(() => {
     if (commandIndex < commands.length) {
+      const current = commands[commandIndex];
       const timer = setTimeout(() => {
-        const current = commands[commandIndex];
         if (current.cmd) {
           setDisplayCommands((prev) => [...prev, `> ${current.cmd}`]);
         }
@@ -76,7 +80,7 @@ export default function TerminalStyle3() {
 
       return () => clearTimeout(timer);
     }
-  }, [commandIndex]);
+  }, [commandIndex, commands]);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center p-4">
@@ -101,6 +105,16 @@ export default function TerminalStyle3() {
 
       {/* Main Terminal */}
       <div className="relative z-10 w-full max-w-4xl">
+        {/* Back Button */}
+        <div className="flex justify-end mb-4">
+          <Button asChild variant="ghost" className="text-green-400 hover:bg-green-900/50">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Selection
+            </Link>
+          </Button>
+        </div>
+
         {/* Glowing Title */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

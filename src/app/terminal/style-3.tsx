@@ -1,9 +1,12 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export default function TerminalStyle2() {
+export default function TerminalStyle3() {
   const [activeTab, setActiveTab] = useState("about");
   const [glitchText, setGlitchText] = useState("INITIALIZING");
 
@@ -18,67 +21,72 @@ export default function TerminalStyle2() {
   }, []);
 
   const tabs = [
-    { id: "about", label: "ABOUT.exe", icon: "👤" },
-    { id: "skills", label: "SKILLS.dll", icon: "⚡" },
-    { id: "projects", label: "PROJECTS.bat", icon: "🚀" },
-    { id: "contact", label: "CONTACT.sys", icon: "📡" },
+    { id: "about", label: "ABOUT.exe", icon: "" },
+    { id: "skills", label: "SKILLS.dll", icon: "" },
+    { id: "projects", label: "PROJECTS.bat", icon: "" },
+    { id: "contact", label: "CONTACT.sys", icon: "" },
   ];
 
   const content = {
     about: {
       title: "// USER PROFILE //",
       lines: [
-        "> NAME: Kunal Chheda",
-        "> ROLE: Full Stack Developer",
+        "> NAME: Kunal Paresh Chheda",
+        "> ROLE: Full Stack Developer & Student",
         "> LOCATION: India",
-        "> EXPERIENCE: Building innovative web solutions",
-        "> STATUS: ███████████ 100% AVAILABLE",
+        "> EDUCATION: 12th Grade (Arts) - Future Corporate Lawyer",
+        "> STATUS:  100% AVAILABLE",
         "",
         "> SPECIALIZATION:",
-        "  → Modern Web Applications",
-        "  → API Development & Integration",
-        "  → Database Architecture",
-        "  → UI/UX Implementation",
+        "   Modern Web Applications",
+        "   API Development & Integration",
+        "   Database Architecture",
+        "   UI/UX Implementation",
+        "   AI Integration",
       ],
     },
     skills: {
       title: "// LOADED MODULES //",
       lines: [
         "> FRONTEND.dll",
-        "  ▓▓▓▓▓▓▓▓▓▓ React.js",
-        "  ▓▓▓▓▓▓▓▓▓▓ Next.js",
-        "  ▓▓▓▓▓▓▓▓▓░ TypeScript",
-        "  ▓▓▓▓▓▓▓▓▓▓ Tailwind CSS",
+        "   React.js",
+        "   Next.js",
+        "   TypeScript",
+        "   Tailwind CSS",
         "",
         "> BACKEND.dll",
-        "  ▓▓▓▓▓▓▓▓▓░ Node.js",
-        "  ▓▓▓▓▓▓▓▓░░ Python",
-        "  ▓▓▓▓▓▓▓▓▓░ Firebase",
-        "  ▓▓▓▓▓▓▓▓░░ PostgreSQL",
+        "   Node.js",
+        "   Python",
+        "   Firebase",
+        "",
+        "> MOBILE.dll",
+        "   Flutter",
+        "   React Native",
         "",
         "> TOOLS.exe",
-        "  ✓ Git & GitHub",
-        "  ✓ Docker",
-        "  ✓ VS Code",
-        "  ✓ Figma",
+        "   Git & GitHub",
+        "   Docker",
+        "   VS Code",
+        "   Figma",
       ],
     },
     projects: {
       title: "// RUNNING PROCESSES //",
       lines: [
-        "> PID: 7001  7K-Life        [███████░░░] 70% Complete",
-        "> PID: 7002  7K-Money       [█████████░] 90% Complete",
-        "> PID: 7003  7K-GameHub     [████████░░] 80% Complete",
-        "> PID: 7004  7K-Ecosystem   [██████████] 100% Complete",
+        "> PID: 7001  7K-Life        [] 70% Complete",
+        "> PID: 7002  7KLawPrep      [] 90% Complete",
+        "> PID: 7003  7K-Itihaas     [] 80% Complete",
+        "> PID: 7004  Polyglot       [] 60% Complete",
+        "> PID: 7005  Stan-AI        [] 100% Complete",
         "",
         "> FEATURES:",
-        "  • Real-time data synchronization",
-        "  • Responsive design across devices",
-        "  • Optimized performance metrics",
-        "  • Secure authentication systems",
+        "   Real-time data synchronization",
+        "   Responsive design across devices",
+        "   Optimized performance metrics",
+        "   Secure authentication systems",
         "",
         "> TECHNOLOGIES:",
-        "  Next.js | React | Firebase | Tailwind",
+        "  Next.js | React | Firebase | Tailwind | AI",
       ],
     },
     contact: {
@@ -87,45 +95,48 @@ export default function TerminalStyle2() {
         "> ESTABLISHING CONNECTIONS...",
         "",
         "> PORT 443  [SECURE] Email",
-        "  → 7kmindbeatss@gmail.com",
+        "   7kmindbeatss@gmail.com",
         "",
         "> PORT 80   [HTTP]   Portfolio",
-        "  → https://7kc.me",
+        "   https://7kc.me",
         "",
         "> PORT 22   [SSH]    GitHub",
-        "  → github.com/kunu2009",
+        "   github.com/kunu2009",
         "",
-        "> PORT 3000 [LOCAL]  WhatsApp",
-        "  → +91 XXXXXXXXXX",
+        "> PORT 3000 [UPI]    Support",
+        "   8591247148@fam",
         "",
-        "> STATUS: ████ ALL PORTS OPEN ████",
+        "> STATUS:  ALL PORTS OPEN ",
       ],
     },
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-black to-pink-950 p-4 md:p-8 flex items-center justify-center relative overflow-hidden">
-      {/* Cyberpunk Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,0,255,0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,0,255,0.3) 1px, transparent 1px)
-            `,
+            backgroundImage: `linear-gradient(rgba(255,0,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,255,0.3) 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
       </div>
 
-      {/* Scan Lines */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent animate-pulse" />
       </div>
 
       <div className="w-full max-w-5xl relative z-10">
-        {/* Glitch Header */}
+        <div className="flex justify-end mb-4">
+          <Button asChild variant="ghost" className="text-cyan-400 hover:bg-cyan-900/50">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Selection
+            </Link>
+          </Button>
+        </div>
+
         <motion.div
           className="text-center mb-8"
           animate={{
@@ -142,7 +153,6 @@ export default function TerminalStyle2() {
           </div>
         </motion.div>
 
-        {/* Terminal Tabs */}
         <div className="flex gap-2 mb-4 flex-wrap">
           {tabs.map((tab) => (
             <button
@@ -159,9 +169,7 @@ export default function TerminalStyle2() {
           ))}
         </div>
 
-        {/* Terminal Window */}
         <div className="bg-black/80 backdrop-blur-xl border-2 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 rounded-lg overflow-hidden">
-          {/* Terminal Header */}
           <div className="bg-gradient-to-r from-purple-900/50 to-cyan-900/50 border-b-2 border-cyan-500/50 px-6 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex gap-2">
@@ -174,11 +182,10 @@ export default function TerminalStyle2() {
               </span>
             </div>
             <div className="text-pink-400 text-xs font-mono animate-pulse">
-              ⚡ ONLINE
+               ONLINE
             </div>
           </div>
 
-          {/* Terminal Body */}
           <div className="p-6 md:p-8 font-mono text-sm md:text-base min-h-[500px]">
             <motion.div
               key={activeTab}
@@ -186,35 +193,30 @@ export default function TerminalStyle2() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Title */}
               <div className="text-cyan-400 text-xl md:text-2xl mb-6 font-bold border-b-2 border-cyan-500/30 pb-2">
-                {content[activeTab as keyof typeof content].title}
+                {content[activeTab].title}
               </div>
 
-              {/* Content Lines */}
-              {content[activeTab as keyof typeof content].lines.map(
-                (line, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`${
-                      line === ""
-                        ? "h-4"
-                        : line.startsWith(">")
-                        ? "text-pink-400 mb-2"
-                        : line.startsWith("  ")
-                        ? "text-purple-300 ml-4"
-                        : "text-cyan-300"
-                    }`}
-                  >
-                    {line}
-                  </motion.div>
-                )
-              )}
+              {content[activeTab].lines.map((line, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className={`${
+                    line === ""
+                      ? "h-4"
+                      : line.startsWith(">")
+                      ? "text-pink-400 mb-2"
+                      : line.startsWith("  ")
+                      ? "text-purple-300 ml-4"
+                      : "text-cyan-300"
+                  }`}
+                >
+                  {line}
+                </motion.div>
+              ))}
 
-              {/* Blinking Cursor */}
               <motion.div
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
@@ -223,7 +225,6 @@ export default function TerminalStyle2() {
             </motion.div>
           </div>
 
-          {/* Terminal Footer */}
           <div className="bg-gradient-to-r from-purple-900/50 to-cyan-900/50 border-t-2 border-cyan-500/50 px-6 py-2 flex items-center justify-between text-xs font-mono">
             <div className="text-cyan-400">NEURAL_LINK_ACTIVE</div>
             <div className="text-purple-400">
