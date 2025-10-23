@@ -42,10 +42,7 @@ const SupportSection = dynamic(() => import('@/components/sections/support-secti
 
 export default function HomePage() {
   return (
-    <div 
-      className="flex min-h-dvh flex-col bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/main-background.svg')"}}
-    >
+    <div className="flex min-h-dvh flex-col">
       <Header />
       <main className="flex-1">
         <HeroSection />
