@@ -24,54 +24,12 @@ const HeroSection = () => {
   
   return (
     <section id="hero" className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-20 sm:py-0">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
-        {/* Banner Background Image */}
-        <div className="absolute inset-0">
-          <Image 
-            src="/images/banner.png" 
-            alt="7K Ecosystem Background Banner"
-            fill
-            priority
-            className="object-cover object-center opacity-20"
-            quality={85}
-            sizes="100vw"
-          />
-        </div>
-        
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]" />
-        
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
-        <div className="absolute inset-0 z-10 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black)]" />
-        
-        {/* Particle Animation - Hidden on mobile for performance */}
-        <div className="absolute inset-0 z-0 h-full w-full hidden md:block">
-            {particles.map((_, i) => {
-                const isLeft = Math.random() > 0.5;
-                const xDist = `${Math.random() * (isLeft ? -20 : 20)}vw`;
-                const delay = `${-(Math.random() * 20)}s`;
-                const duration = `${15 + Math.random() * 15}s`;
-
-                return (
-                    <div 
-                        key={i}
-                        className="absolute rounded-full bg-primary/30 animate-move-particles" 
-                        style={{
-                            // @ts-ignore
-                            '--x-dist': xDist,
-                            '--delay': delay,
-                            '--duration': duration,
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            width: `${1 + Math.random()}px`,
-                            height: `${1 + Math.random()}px`,
-                        }}
-                    />
-                )
-            })}
-        </div>
-      </div>
+      {/* Background Image - No Overlays */}
+      <img
+        src="/bg.png"
+        alt="Hero Background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
 
       {/* Hero Content */}
       <div className="container relative flex flex-col items-center justify-center text-center z-10 px-4 sm:px-6 max-w-5xl mx-auto">
