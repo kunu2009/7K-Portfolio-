@@ -24,12 +24,24 @@ const HeroSection = () => {
   
   return (
     <section id="hero" className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-20 sm:py-0">
-      {/* Background Image - No Overlays */}
-      <img
-        src="/bg.png"
-        alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
+      {/* Background Image with Enhanced Quality */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/bg.png"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ 
+            imageRendering: 'crisp-edges',
+            filter: 'contrast(1.05) saturate(0.95) brightness(0.85)'
+          }}
+        />
+        {/* Subtle Vignette Effect */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40" 
+             style={{
+               background: 'radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.5) 100%)'
+             }}
+        />
+      </div>
 
       {/* Hero Content */}
       <div className="container relative flex flex-col items-center justify-center text-center z-10 px-4 sm:px-6 max-w-5xl mx-auto">
