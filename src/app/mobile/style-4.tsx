@@ -26,6 +26,8 @@ export default function MobileStyle4() {
   const [brightness, setBrightness] = useState(70);
   const [isCharging, setIsCharging] = useState(false);
   const [cameraApp, setCameraApp] = useState<"camera" | null>(null);
+  const [siriActive, setSiriActive] = useState(false);
+  const [airplaneMode, setAirplaneMode] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -719,6 +721,77 @@ export default function MobileStyle4() {
         </div>
       </div>
     ),
+    siri: (
+      <div className="h-full bg-gradient-to-br from-purple-900 via-pink-900 to-blue-900 relative overflow-hidden">
+        {/* Animated Siri Orb */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-64 h-64 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [1, 0.5, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute w-48 h-48 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-2xl"
+          />
+        </div>
+
+        {/* Siri Interface */}
+        <div className="relative h-full flex flex-col items-center justify-center p-8">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="text-center mb-8"
+          >
+            <div className="text-6xl mb-4">👋</div>
+            <h2 className="text-white text-3xl font-semibold mb-2">Hi, I'm Siri</h2>
+            <p className="text-white/80 text-lg">How can I help you?</p>
+          </motion.div>
+
+          <div className="space-y-4 w-full max-w-sm">
+            {[
+              { emoji: "📱", text: "Tell me about this portfolio" },
+              { emoji: "🚀", text: "Show me the projects" },
+              { emoji: "👨‍💻", text: "Who created this?" },
+              { emoji: "✉️", text: "How can I contact?" },
+            ].map((suggestion, i) => (
+              <motion.button
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="w-full bg-white/10 backdrop-blur-xl rounded-2xl p-4 text-white text-left hover:bg-white/20 transition-colors"
+              >
+                <span className="text-2xl mr-3">{suggestion.emoji}</span>
+                <span>{suggestion.text}</span>
+              </motion.button>
+            ))}
+          </div>
+
+          <button
+            onClick={goHome}
+            className="mt-8 px-8 py-3 bg-white/20 backdrop-blur-xl rounded-full text-white font-semibold hover:bg-white/30 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    ),
   };
 
   return (
@@ -777,20 +850,28 @@ export default function MobileStyle4() {
                     {/* Quick Settings */}
                     <div className="grid grid-cols-2 gap-3">
                       <button
+                        onClick={(e) => { e.stopPropagation(); setAirplaneMode(!airplaneMode); }}
+                        className={`${airplaneMode ? 'bg-orange-500' : 'bg-gray-700'} rounded-2xl p-4 text-white transition-colors`}
+                      >
+                        <div className="text-2xl mb-2">✈️</div>
+                        <div className="text-sm font-semibold">Airplane</div>
+                        <div className="text-xs opacity-70">{airplaneMode ? 'On' : 'Off'}</div>
+                      </button>
+                      <button
                         onClick={(e) => { e.stopPropagation(); setWifiEnabled(!wifiEnabled); }}
-                        className={`${wifiEnabled ? 'bg-blue-500' : 'bg-gray-700'} rounded-2xl p-4 text-white transition-colors`}
+                        className={`${wifiEnabled && !airplaneMode ? 'bg-blue-500' : 'bg-gray-700'} rounded-2xl p-4 text-white transition-colors`}
                       >
                         <Wifi className="h-6 w-6 mb-2" />
                         <div className="text-sm font-semibold">Wi-Fi</div>
-                        <div className="text-xs opacity-70">{wifiEnabled ? 'Home Network' : 'Off'}</div>
+                        <div className="text-xs opacity-70">{!airplaneMode && wifiEnabled ? 'Home' : 'Off'}</div>
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); setBluetoothEnabled(!bluetoothEnabled); }}
-                        className={`${bluetoothEnabled ? 'bg-blue-500' : 'bg-gray-700'} rounded-2xl p-4 text-white transition-colors`}
+                        className={`${bluetoothEnabled && !airplaneMode ? 'bg-blue-500' : 'bg-gray-700'} rounded-2xl p-4 text-white transition-colors`}
                       >
                         <Signal className="h-6 w-6 mb-2" />
                         <div className="text-sm font-semibold">Bluetooth</div>
-                        <div className="text-xs opacity-70">{bluetoothEnabled ? 'Connected' : 'Off'}</div>
+                        <div className="text-xs opacity-70">{!airplaneMode && bluetoothEnabled ? 'On' : 'Off'}</div>
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); setFlashlightOn(!flashlightOn); }}
@@ -826,6 +907,28 @@ export default function MobileStyle4() {
                         onChange={(e) => { e.stopPropagation(); setBrightness(parseInt(e.target.value)); }}
                         className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                         onClick={(e) => e.stopPropagation()}
+                        style={{
+                          background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${brightness}%, #374151 ${brightness}%, #374151 100%)`
+                        }}
+                      />
+                    </div>
+
+                    {/* Volume Control */}
+                    <div className="bg-gray-800/50 rounded-2xl p-4">
+                      <div className="flex items-center justify-between mb-2 text-white">
+                        <span className="text-sm">🔊 Volume</span>
+                        <span className="text-xs">70%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        defaultValue="70"
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 70%, #374151 70%, #374151 100%)`
+                        }}
                       />
                     </div>
 
@@ -864,7 +967,11 @@ export default function MobileStyle4() {
             </AnimatePresence>
 
             {/* Home Indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-50"></div>
+            <button
+              onClick={() => currentScreen === "home" ? setCurrentScreen("siri") : null}
+              className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-50 hover:bg-white/50 transition-colors cursor-pointer"
+              title="Tap for Siri"
+            ></button>
           </div>
         </div>
 

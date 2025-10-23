@@ -31,7 +31,7 @@ export default function MobileStyle2() {
   const stories = [
     {
       id: "about",
-      icon: "",
+      icon: "👨‍💻",
       gradient: "from-purple-500 to-pink-500",
       title: "About Me",
       content: (
@@ -39,9 +39,9 @@ export default function MobileStyle2() {
           <h2 className="text-3xl font-bold text-white mb-2">Kunal Paresh Chheda</h2>
           <p className="text-white/90 text-lg mb-4">Full Stack Developer & Student</p>
           <div className="space-y-2">
-            <div className="flex items-center gap-3 text-white"><span></span><span>India</span></div>
-            <div className="flex items-center gap-3 text-white"><span></span><span>12th Grade (Arts)</span></div>
-            <div className="flex items-center gap-3 text-white"><span></span><span>Future Corporate Lawyer</span></div>
+            <div className="flex items-center gap-3 text-white"><span>📍</span><span>India</span></div>
+            <div className="flex items-center gap-3 text-white"><span>🎓</span><span>12th Grade (Arts)</span></div>
+            <div className="flex items-center gap-3 text-white"><span>⚖️</span><span>Future Corporate Lawyer</span></div>
           </div>
         </div>
       ),
@@ -49,13 +49,13 @@ export default function MobileStyle2() {
     },
     {
       id: "skills",
-      icon: "",
+      icon: "💻",
       gradient: "from-orange-500 to-red-500",
       title: "Tech Stack",
       content: (
         <div className="h-full flex items-center justify-center p-6">
           <div className="grid grid-cols-2 gap-4 w-full">
-            {["React", "Next.js", "TypeScript", "Node.js", "Python", "Firebase", "Flutter", "Tailwind"].map((skill) => (
+            {["React ⚛️", "Next.js ▲", "TypeScript 📘", "Node.js 🟢", "Python 🐍", "Firebase 🔥", "Flutter 💙", "Tailwind 🎨"].map((skill) => (
               <div key={skill} className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 text-center">
                 <span className="text-white font-semibold text-lg">{skill}</span>
               </div>
@@ -67,15 +67,20 @@ export default function MobileStyle2() {
     },
     {
       id: "projects",
-      icon: "",
+      icon: "🚀",
       gradient: "from-green-500 to-teal-500",
       title: "Projects",
       content: (
         <div className="h-full flex flex-col justify-center p-6 space-y-4">
-          {["7K Life", "7KLawPrep", "7K Itihaas", "Stan AI"].map((proj) => (
-            <div key={proj} className="bg-white/20 backdrop-blur-xl rounded-3xl p-5">
-              <h3 className="text-white font-bold text-xl mb-1">{proj}</h3>
-              <p className="text-white/80 text-sm">Building innovative solutions</p>
+          {[
+            { name: "7K Life", icon: "🌱", desc: "Life Management Ecosystem" },
+            { name: "7KLawPrep", icon: "⚖️", desc: "Law Education Platform" },
+            { name: "7K Itihaas", icon: "📚", desc: "Interactive History Learning" },
+            { name: "Stan AI", icon: "🤖", desc: "Personal AI Assistant" }
+          ].map((proj) => (
+            <div key={proj.name} className="bg-white/20 backdrop-blur-xl rounded-3xl p-5">
+              <h3 className="text-white font-bold text-xl mb-1">{proj.icon} {proj.name}</h3>
+              <p className="text-white/80 text-sm">{proj.desc}</p>
             </div>
           ))}
         </div>
@@ -84,21 +89,21 @@ export default function MobileStyle2() {
     },
     {
       id: "contact",
-      icon: "",
+      icon: "📱",
       gradient: "from-blue-500 to-purple-500",
       title: "Get in Touch",
       content: (
         <div className="h-full flex flex-col justify-center p-6 space-y-5">
           <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
-            <div className="text-4xl mb-3"></div>
+            <div className="text-4xl mb-3">📧</div>
             <p className="text-white font-medium">7kmindbeatss@gmail.com</p>
           </div>
           <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
-            <div className="text-4xl mb-3"></div>
+            <div className="text-4xl mb-3">🌐</div>
             <p className="text-white font-medium">7kc.me</p>
           </div>
           <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
-            <div className="text-4xl mb-3"></div>
+            <div className="text-4xl mb-3">💻</div>
             <p className="text-white font-medium">github.com/kunu2009</p>
           </div>
         </div>
@@ -108,9 +113,9 @@ export default function MobileStyle2() {
   ];
 
   const posts = [
-    { id: "1", image: "bg-gradient-to-br from-blue-400 to-purple-600", emoji: "", caption: "Building amazing web apps with React & Next.js", likes: 245 },
-    { id: "2", image: "bg-gradient-to-br from-green-400 to-teal-600", emoji: "", caption: "7K Life ecosystem is growing!", likes: 189 },
-    { id: "3", image: "bg-gradient-to-br from-orange-400 to-red-600", emoji: "", caption: "Learning new technologies every day", likes: 312 },
+    { id: "1", image: "bg-gradient-to-br from-blue-400 to-purple-600", emoji: "💻", caption: "Building amazing web apps with React & Next.js! 🚀 #WebDev #React", likes: 245 },
+    { id: "2", image: "bg-gradient-to-br from-green-400 to-teal-600", emoji: "🌱", caption: "7K Life ecosystem is growing! Excited to launch new features. #7KLife #Innovation", likes: 189 },
+    { id: "3", image: "bg-gradient-to-br from-orange-400 to-red-600", emoji: "📚", caption: "Learning new technologies every day! Never stop growing 💪 #TechLife #Learning", likes: 312 },
   ];
 
   return (
@@ -167,7 +172,7 @@ export default function MobileStyle2() {
                         <div key={post.id} className="bg-white rounded-3xl shadow-lg overflow-hidden">
                           <div className="flex items-center justify-between p-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xl"></div>
+                              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xl">👨‍💻</div>
                               <div><p className="font-semibold text-sm">Kunal Chheda</p><p className="text-xs text-gray-500">Full Stack Developer</p></div>
                             </div>
                             <MoreHorizontal className="h-5 w-5 text-gray-600" />
@@ -184,6 +189,7 @@ export default function MobileStyle2() {
                             </div>
                             <p className="font-semibold text-sm mb-1">{post.likes + (liked[post.id] ? 1 : 0)} likes</p>
                             <p className="text-sm"><span className="font-semibold">kunalchheda</span> {post.caption}</p>
+                            <p className="text-xs text-gray-500 mt-2">View all comments</p>
                           </div>
                         </div>
                       ))}
@@ -196,7 +202,7 @@ export default function MobileStyle2() {
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-white border-t flex items-center justify-around px-4">
               <button className="flex flex-col items-center"><Home className="h-6 w-6 mb-1" /><span className="text-xs">Home</span></button>
               <button className="flex flex-col items-center"><Heart className="h-6 w-6 mb-1" /><span className="text-xs">Activity</span></button>
-              <Link href="/" className="flex flex-col items-center text-purple-600"><span className="text-2xl mb-1"></span><span className="text-xs font-semibold">Back</span></Link>
+              <Link href="/" className="flex flex-col items-center text-purple-600"><span className="text-2xl mb-1">🏠</span><span className="text-xs font-semibold">Back</span></Link>
             </div>
           </div>
         </div>
