@@ -20,28 +20,14 @@ export type Contributor = {
   transactionId?: string;
 };
 
-// Mock data - Replace with actual database calls
+// Contributors data - Update this list when someone donates
 export const MOCK_CONTRIBUTORS: Contributor[] = [
   {
     id: '1',
-    name: 'Anonymous',
-    amount: 100,
-    date: '2024-01-15',
-    message: 'Keep up the great work!'
-  },
-  {
-    id: '2',
-    name: 'Priya S.',
+    name: 'Razi S.',
     amount: 50,
-    date: '2024-01-10',
-    message: 'Love your projects!'
-  },
-  {
-    id: '3',
-    name: 'Rahul M.',
-    amount: 200,
-    date: '2024-01-05',
-    message: 'Amazing portfolio!'
+    date: '2025-01-23',
+    message: 'Keep building amazing projects!'
   },
 ];
 
