@@ -18,13 +18,14 @@ export default function MobileStyle4() {
   const [gameActive, setGameActive] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [notifications, setNotifications] = useState(3);
+  const [notifications, setNotifications] = useState(6);
   const [flashlightOn, setFlashlightOn] = useState(false);
   const [controlCenter, setControlCenter] = useState(false);
   const [wifiEnabled, setWifiEnabled] = useState(true);
   const [bluetoothEnabled, setBluetoothEnabled] = useState(false);
   const [brightness, setBrightness] = useState(70);
   const [isCharging, setIsCharging] = useState(false);
+  const [cameraApp, setCameraApp] = useState<"camera" | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -54,6 +55,7 @@ export default function MobileStyle4() {
     { id: "music", name: "Music", icon: Music, color: "bg-gradient-to-br from-red-500 to-pink-500", screen: "music" },
     { id: "appstore", name: "App Store", icon: AppWindow, color: "bg-gradient-to-br from-blue-500 to-cyan-400", screen: "appstore" },
     { id: "game", name: "Tap Game", icon: Camera, color: "bg-gradient-to-br from-purple-500 to-pink-500", screen: "game" },
+    { id: "camera", name: "Camera", icon: Camera, color: "bg-gray-900", screen: "camera" },
   ];
 
   const handleCalc = (value: string) => {
@@ -119,23 +121,25 @@ export default function MobileStyle4() {
   const screens = {
     home: (
       <motion.div 
-        className="h-full relative overflow-hidden"
+        className="h-full relative overflow-hidden flex"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         animate={{ x: homeScreen === "library" ? -393 : 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        {/* iOS Dynamic Wallpaper */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-32 right-10 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500 rounded-full blur-3xl"></div>
+        {/* Main Home Screen */}
+        <div className="w-full h-full flex-shrink-0 relative">
+          {/* iOS Dynamic Wallpaper */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+            <div className="absolute inset-0 opacity-30">
+              <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-32 right-10 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500 rounded-full blur-3xl"></div>
+            </div>
+            {/* Mesh Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
           </div>
-          {/* Mesh Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10"></div>
-        </div>
 
         <div className="relative h-full flex flex-col">
           {/* Main Home Screen */}
@@ -195,6 +199,11 @@ export default function MobileStyle4() {
                           {notifications}
                         </div>
                       )}
+                      {app.id === "mail" && (
+                        <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold z-20">
+                          2
+                        </div>
+                      )}
                     </div>
                     <span className="text-xs text-white font-medium text-center drop-shadow-lg">{app.name}</span>
                   </motion.button>
@@ -231,9 +240,10 @@ export default function MobileStyle4() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* App Library (Swipeable) */}
-        <div className="absolute left-full top-0 w-full h-full bg-gradient-to-br from-gray-900 to-black p-6 pt-16 overflow-y-auto">
+        <div className="w-full h-full flex-shrink-0 bg-gradient-to-br from-gray-900 to-black p-6 pt-16 overflow-y-auto">
           {/* Search Bar */}
           <div className="bg-gray-800/50 rounded-2xl px-4 py-3 flex items-center gap-3 mb-6 backdrop-blur-xl">
             <Search className="h-5 w-5 text-gray-400" />
@@ -456,17 +466,38 @@ export default function MobileStyle4() {
         </div>
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {[
-            { from: "Me", text: "Check out my portfolio!", time: "10:30 AM", isMe: true },
-            { from: "Recruiter", text: "Your work looks impressive!", time: "10:32 AM", isMe: false },
-            { from: "Me", text: "Thank you! I'd love to discuss opportunities.", time: "10:35 AM", isMe: true },
+            { from: "Stan AI", text: "Hey! I'm Stan AI, your personal AI assistant. Connect with me at 7kc.me to unlock powerful features!", time: "9:15 AM", isMe: false, emoji: "🤖" },
+            { from: "Me", text: "That sounds amazing! Can't wait to try it out.", time: "9:17 AM", isMe: true },
+            { from: "Recruiter", text: "Your portfolio showcases impressive full-stack skills! I'd love to discuss opportunities.", time: "10:32 AM", isMe: false, emoji: "💼" },
+            { from: "Me", text: "Thank you! I'm very interested. I'm passionate about corporate law and technology.", time: "10:35 AM", isMe: true },
+            { from: "7K Life Team", text: "Welcome to the 7K ecosystem! Check out our life management platform 🌱", time: "Yesterday", isMe: false, emoji: "🌟" },
+            { from: "Me", text: "Excited to be part of this! Love the concept.", time: "Yesterday", isMe: true },
           ].map((msg, i) => (
             <div key={i} className={`flex ${msg.isMe ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-[70%] rounded-3xl px-4 py-2 ${msg.isMe ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}>
-                <div>{msg.text}</div>
-                <div className={`text-xs mt-1 ${msg.isMe ? "text-blue-100" : "text-gray-500"}`}>{msg.time}</div>
+              <div className={`max-w-[75%] ${msg.isMe ? 'items-end' : 'items-start'} flex flex-col gap-1`}>
+                {!msg.isMe && (
+                  <div className="flex items-center gap-2 px-2">
+                    {msg.emoji && <span className="text-lg">{msg.emoji}</span>}
+                    <span className="text-xs font-semibold text-gray-600">{msg.from}</span>
+                  </div>
+                )}
+                <div className={`rounded-3xl px-4 py-2 ${msg.isMe ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}>
+                  <div>{msg.text}</div>
+                  <div className={`text-xs mt-1 ${msg.isMe ? "text-blue-100" : "text-gray-500"}`}>{msg.time}</div>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="p-4 border-t bg-white">
+          <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2">
+            <input 
+              placeholder="iMessage" 
+              className="flex-1 bg-transparent outline-none text-sm"
+              disabled
+            />
+            <span className="text-blue-500 text-xl">📷</span>
+          </div>
         </div>
       </div>
     ),
@@ -481,16 +512,24 @@ export default function MobileStyle4() {
         </div>
         <div className="flex-1 overflow-y-auto">
           {[
-            { from: "GitHub", subject: "New follower", preview: "Someone started following you", time: "9:30 AM" },
-            { from: "LinkedIn", subject: "Job Alert", preview: "New opportunities match your profile", time: "Yesterday" },
-            { from: "Portfolio", subject: "New visitor", preview: "Someone viewed your portfolio", time: "2 days ago" },
+            { from: "Stan AI 🤖", subject: "Your AI Assistant is Ready!", preview: "Connect with Stan AI at 7kc.me for personalized AI assistance and powerful features.", time: "9:00 AM", unread: true },
+            { from: "7K Life Team 🌱", subject: "Welcome to 7K Ecosystem", preview: "Explore our life management platform: 7K Life, 7KLawPrep, 7K Itihaas, and more!", time: "Yesterday", unread: true },
+            { from: "GitHub", subject: "New follower", preview: "Someone started following your repositories. Keep up the great work!", time: "Yesterday", unread: false },
+            { from: "LinkedIn", subject: "Job Alert: Full Stack Developer", preview: "New opportunities match your profile at top tech companies and law firms.", time: "2 days ago", unread: false },
+            { from: "Portfolio Analytics 📊", subject: "Weekly Report", preview: "Your portfolio received 247 visits this week. 15 recruiters viewed your projects.", time: "2 days ago", unread: false },
+            { from: "7KLawPrep", subject: "New Course Available", preview: "Corporate Law Fundamentals course is now live! Start your journey today.", time: "3 days ago", unread: false },
           ].map((email, i) => (
-            <div key={i} className="border-b p-4 hover:bg-gray-50">
+            <div key={i} className={`border-b p-4 hover:bg-gray-50 ${email.unread ? 'bg-blue-50' : ''}`}>
               <div className="flex justify-between items-start mb-1">
-                <div className="font-semibold text-blue-500">{email.from}</div>
-                <div className="text-xs text-gray-500">{email.time}</div>
+                <div className={`font-semibold ${email.unread ? 'text-blue-600' : 'text-blue-500'}`}>
+                  {email.from}
+                </div>
+                <div className="flex items-center gap-2">
+                  {email.unread && <div className="w-2 h-2 bg-blue-500 rounded-full"></div>}
+                  <div className="text-xs text-gray-500">{email.time}</div>
+                </div>
               </div>
-              <div className="font-medium mb-1">{email.subject}</div>
+              <div className={`font-medium mb-1 ${email.unread ? 'text-gray-900' : 'text-gray-700'}`}>{email.subject}</div>
               <div className="text-sm text-gray-600">{email.preview}</div>
             </div>
           ))}
@@ -616,9 +655,67 @@ export default function MobileStyle4() {
               onClick={() => setGameActive(false)}
               className="mt-8 px-6 py-3 bg-white/20 text-white rounded-full backdrop-blur-sm"
             >
-              Stop Game
+              End Game
             </button>
           )}
+        </div>
+      </div>
+    ),
+    camera: (
+      <div className="h-full bg-black flex flex-col relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between z-10">
+          <button onClick={goHome} className="text-white flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2">
+            <ArrowLeft className="h-6 w-6" />
+            <span>Home</span>
+          </button>
+          <div className="flex gap-3">
+            <button 
+              onClick={() => setFlashlightOn(!flashlightOn)}
+              className={`${flashlightOn ? 'bg-yellow-500' : 'bg-black/50'} backdrop-blur-sm rounded-full p-3`}
+            >
+              <Flashlight className="h-6 w-6 text-white" />
+            </button>
+          </div>
+        </div>
+        
+        {/* Camera Viewfinder */}
+        <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+          <div className="text-center">
+            <div className="text-8xl mb-4">📸</div>
+            <div className="text-white text-xl font-semibold mb-2">Camera</div>
+            <div className="text-gray-400 text-sm px-8">
+              Point and shoot to capture moments
+            </div>
+            {flashlightOn && (
+              <div className="mt-4 text-yellow-400 text-sm animate-pulse">
+                ⚡ Flash is ON
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Camera Controls */}
+        <div className="absolute bottom-0 left-0 right-0 p-8 pb-12">
+          <div className="flex items-center justify-center gap-12">
+            <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <ImageIcon className="h-6 w-6 text-white" />
+            </button>
+            <button className="w-20 h-20 bg-white rounded-full border-4 border-gray-300 shadow-2xl active:scale-95 transition-transform">
+              <div className="w-full h-full rounded-full bg-white"></div>
+            </button>
+            <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <span className="text-white text-lg">🔄</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Grid overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="h-full w-full grid grid-cols-3 grid-rows-3">
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="border border-white/10"></div>
+            ))}
+          </div>
         </div>
       </div>
     ),
@@ -673,7 +770,7 @@ export default function MobileStyle4() {
                   animate={{ y: 0 }}
                   exit={{ y: -400 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="absolute top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-2xl rounded-b-3xl p-6 shadow-2xl"
+                  className="absolute top-0 left-0 right-0 z-[60] bg-gray-900/95 backdrop-blur-2xl rounded-b-3xl p-6 shadow-2xl"
                   onClick={toggleControlCenter}
                 >
                   <div className="space-y-4">
@@ -702,7 +799,14 @@ export default function MobileStyle4() {
                         <Flashlight className="h-6 w-6 mb-2" />
                         <div className="text-sm font-semibold">Flashlight</div>
                       </button>
-                      <button className="bg-gray-700 rounded-2xl p-4 text-white">
+                      <button 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          setCurrentScreen("camera"); 
+                          setControlCenter(false); 
+                        }}
+                        className="bg-gray-700 rounded-2xl p-4 text-white hover:bg-gray-600 transition-colors"
+                      >
                         <Camera className="h-6 w-6 mb-2" />
                         <div className="text-sm font-semibold">Camera</div>
                       </button>
