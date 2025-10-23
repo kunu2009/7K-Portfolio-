@@ -1,5 +1,5 @@
-import { Terminal } from "@/components/terminal-original";
+import { FunctionalTerminal } from "@/components/functional-terminal";
 
 export default function TerminalStyle1() {
-  return <Terminal />;
+  return <FunctionalTerminal themeName="classic" />;
 }
