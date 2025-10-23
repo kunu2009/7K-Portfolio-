@@ -22,7 +22,7 @@ export default function MobileStyle3() {
       <div className="space-y-4">
         <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-lg">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl"></div>
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl">👨‍💻</div>
             <div><h2 className="text-2xl font-bold">Kunal Chheda</h2><p className="text-blue-100">Full Stack Developer</p></div>
           </div>
           <div className="grid grid-cols-3 gap-4 mt-4">
@@ -33,9 +33,9 @@ export default function MobileStyle3() {
         </div>
 
         <div className="bg-white rounded-2xl p-5 shadow-md">
-          <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2"><span className="text-2xl"></span>Quick Actions</h3>
+          <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2"><span className="text-2xl">⚡</span>Quick Actions</h3>
           <div className="grid grid-cols-2 gap-3">
-            {[{icon:"",label:"Email Me",color:"bg-blue-100 text-blue-600"},{icon:"",label:"Projects",color:"bg-green-100 text-green-600"},{icon:"",label:"Skills",color:"bg-orange-100 text-orange-600"},{icon:"",label:"Portfolio",color:"bg-purple-100 text-purple-600"}].map((action)=>(
+            {[{icon:"📧",label:"Email Me",color:"bg-blue-100 text-blue-600"},{icon:"💼",label:"Projects",color:"bg-green-100 text-green-600"},{icon:"🎯",label:"Skills",color:"bg-orange-100 text-orange-600"},{icon:"🌐",label:"Portfolio",color:"bg-purple-100 text-purple-600"}].map((action)=>(
               <button key={action.label} className={`${action.color} rounded-xl p-4 text-center font-medium transition-transform active:scale-95`}>
                 <div className="text-3xl mb-2">{action.icon}</div>
                 <div className="text-sm">{action.label}</div>
@@ -46,7 +46,7 @@ export default function MobileStyle3() {
 
         <div className="bg-white rounded-2xl p-5 shadow-md">
           <h3 className="font-bold text-gray-800 mb-3">Recent Activity</h3>
-          {[{icon:"",text:"Completed 7K Life v2.0",time:"2 hours ago"},{icon:"",text:"Deployed Stan AI",time:"1 day ago"},{icon:"",text:"Started new project",time:"3 days ago"}].map((activity,i)=>(
+          {[{icon:"✅",text:"Completed 7K Life v2.0",time:"2 hours ago"},{icon:"🚀",text:"Deployed Stan AI",time:"1 day ago"},{icon:"💡",text:"Started new project",time:"3 days ago"}].map((activity,i)=>(
             <div key={i} className="flex items-start gap-3 py-3 border-b last:border-0">
               <div className="text-2xl">{activity.icon}</div>
               <div className="flex-1"><p className="text-sm font-medium text-gray-800">{activity.text}</p><p className="text-xs text-gray-500">{activity.time}</p></div>
@@ -59,12 +59,12 @@ export default function MobileStyle3() {
       <div className="space-y-4">
         <div className="bg-white rounded-2xl p-5 shadow-md">
           <div className="text-center mb-4">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-3 flex items-center justify-center text-5xl"></div>
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-3 flex items-center justify-center text-5xl">👨‍💻</div>
             <h2 className="text-2xl font-bold text-gray-800">Kunal Paresh Chheda</h2>
             <p className="text-gray-600">Full Stack Developer & Student</p>
           </div>
           <div className="space-y-3 mt-4">
-            {[{icon:"",label:"Location",value:"India"},{icon:"",label:"Education",value:"12th Grade (Arts)"},{icon:"",label:"Career Goal",value:"Corporate Lawyer"},{icon:"",label:"Status",value:"Available for projects"}].map((info)=>(
+            {[{icon:"📍",label:"Location",value:"India"},{icon:"🎓",label:"Education",value:"12th Grade (Arts)"},{icon:"⚖️",label:"Career Goal",value:"Corporate Lawyer"},{icon:"💼",label:"Status",value:"Available for projects"}].map((info)=>(
               <div key={info.label} className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
                 <div className="text-3xl">{info.icon}</div>
                 <div className="flex-1"><div className="text-xs text-gray-500 uppercase tracking-wide">{info.label}</div><div className="font-medium text-gray-800">{info.value}</div></div>
@@ -74,7 +74,7 @@ export default function MobileStyle3() {
         </div>
 
         <div className="bg-white rounded-2xl p-5 shadow-md">
-          <h3 className="font-bold text-gray-800 mb-3">Tech Stack</h3>
+          <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2">💻 Tech Stack</h3>
           <div className="flex flex-wrap gap-2">
             {["React","Next.js","TypeScript","Node.js","Python","Firebase","Flutter","Tailwind","PostgreSQL","MongoDB"].map((tech)=>(
               <span key={tech} className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-sm">{tech}</span>
@@ -86,11 +86,11 @@ export default function MobileStyle3() {
     work: (
       <div className="space-y-4">
         {[
-          {title:"7K Life",desc:"Complete ecosystem for daily life management",tech:"React  Firebase  Tailwind",status:"Active",color:"from-green-500 to-emerald-600",emoji:""},
-          {title:"7KLawPrep",desc:"Law education platform for aspiring lawyers",tech:"Next.js  TypeScript  Supabase",status:"Active",color:"from-blue-500 to-cyan-600",emoji:""},
-          {title:"7K Itihaas",desc:"Interactive history learning experience",tech:"React  Three.js  Firebase",status:"Beta",color:"from-orange-500 to-amber-600",emoji:""},
-          {title:"Polyglot",desc:"Multi-language learning platform",tech:"Flutter  Node.js  MongoDB",status:"Planning",color:"from-purple-500 to-pink-600",emoji:""},
-          {title:"Stan AI",desc:"Personal AI assistant for students",tech:"Python  OpenAI  FastAPI",status:"Complete",color:"from-indigo-500 to-violet-600",emoji:""}
+          {title:"7K Life",desc:"Complete ecosystem for daily life management",tech:"React • Firebase • Tailwind",status:"Active",color:"from-green-500 to-emerald-600",emoji:"🌱"},
+          {title:"7KLawPrep",desc:"Law education platform for aspiring lawyers",tech:"Next.js • TypeScript • Supabase",status:"Active",color:"from-blue-500 to-cyan-600",emoji:"⚖️"},
+          {title:"7K Itihaas",desc:"Interactive history learning experience",tech:"React • Three.js • Firebase",status:"Beta",color:"from-orange-500 to-amber-600",emoji:"📚"},
+          {title:"Polyglot",desc:"Multi-language learning platform",tech:"Flutter • Node.js • MongoDB",status:"Planning",color:"from-purple-500 to-pink-600",emoji:"🌍"},
+          {title:"Stan AI",desc:"Personal AI assistant for students",tech:"Python • OpenAI • FastAPI",status:"Complete",color:"from-indigo-500 to-violet-600",emoji:"🤖"}
         ].map((project)=>(
           <div key={project.title} className="bg-white rounded-2xl shadow-md overflow-hidden">
             <div className={`bg-gradient-to-br ${project.color} p-6 text-white`}>
@@ -109,10 +109,10 @@ export default function MobileStyle3() {
     contact: (
       <div className="space-y-4">
         {[
-          {icon:"",title:"Email",value:"7kmindbeatss@gmail.com",color:"from-blue-500 to-cyan-600"},
-          {icon:"",title:"Portfolio",value:"7kc.me",color:"from-purple-500 to-pink-600"},
-          {icon:"",title:"GitHub",value:"github.com/kunu2009",color:"from-gray-700 to-gray-900"},
-          {icon:"",title:"Support Me",value:"8591247148@fam",color:"from-green-500 to-emerald-600"}
+          {icon:"📧",title:"Email",value:"7kmindbeatss@gmail.com",color:"from-blue-500 to-cyan-600"},
+          {icon:"🌐",title:"Portfolio",value:"7kc.me",color:"from-purple-500 to-pink-600"},
+          {icon:"💻",title:"GitHub",value:"github.com/kunu2009",color:"from-gray-700 to-gray-900"},
+          {icon:"💰",title:"Support Me",value:"8591247148@fam",color:"from-green-500 to-emerald-600"}
         ].map((contact)=>(
           <div key={contact.title} className={`bg-gradient-to-br ${contact.color} rounded-2xl p-6 text-white shadow-lg`}>
             <div className="text-5xl mb-4">{contact.icon}</div>
