@@ -40,53 +40,70 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Hero Content with Subtle Glass Background */}
+      {/* Hero Content with Individual Glass Cards */}
       <div className="container relative flex flex-col items-center justify-center text-center z-10 px-4 sm:px-6 max-w-5xl mx-auto">
-        {/* Subtle Glass Container - More Transparent */}
-        <div 
-          className="relative rounded-3xl p-8 sm:p-12 md:p-16"
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            backdropFilter: 'blur(12px) saturate(150%)',
-            WebkitBackdropFilter: 'blur(12px) saturate(150%)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: '0 4px 24px 0 rgba(0, 0, 0, 0.1)',
-          }}
-        >
+        
+        {/* Avatar with Individual Glass */}
         <div 
           className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '100ms' }}
         >
-          <Avatar className="h-24 w-24 sm:h-32 sm:w-32 md:h-36 md:w-36 mb-6 sm:mb-8 border-4 border-primary shadow-2xl shadow-primary/20">
-            <AvatarImage 
-              src="/favicon.ico" 
-              alt="7K Brand Logo" 
-              fetchPriority="high"
-              className="object-cover scale-150"
-            />
-            <AvatarFallback className="text-2xl sm:text-3xl font-bold">7K</AvatarFallback>
-          </Avatar>
+          <div className="inline-block rounded-full p-2 mb-6 sm:mb-8"
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(8px)',
+                 WebkitBackdropFilter: 'blur(8px)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)',
+               }}>
+            <Avatar className="h-24 w-24 sm:h-32 sm:w-32 md:h-36 md:w-36 border-4 border-primary shadow-2xl shadow-primary/20">
+              <AvatarImage 
+                src="/favicon.ico" 
+                alt="7K Brand Logo" 
+                fetchPriority="high"
+                className="object-cover scale-150"
+              />
+              <AvatarFallback className="text-2xl sm:text-3xl font-bold">7K</AvatarFallback>
+            </Avatar>
+          </div>
         </div>
 
+        {/* Title and Subtitle with Individual Glass */}
         <div 
           className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '200ms' }}
         >
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent px-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-            {hero.title}
-          </h1>
-          <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground/90 mb-3 sm:mb-4 px-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.2)]">
-            {hero.subtitle}
-          </p>
+          <div className="inline-block rounded-2xl px-6 sm:px-8 py-4 sm:py-6 mb-4"
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(8px)',
+                 WebkitBackdropFilter: 'blur(8px)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)',
+               }}>
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent px-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              {hero.title}
+            </h1>
+            <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground/90 px-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.2)]">
+              {hero.subtitle}
+            </p>
+          </div>
         </div>
 
+        {/* Description with Individual Glass */}
         <div 
           className={`transition-all duration-700 max-w-2xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '300ms' }}
         >
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed px-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
-            {hero.description}
-          </p>
+          <div className="inline-block rounded-xl px-6 py-4 mb-6 sm:mb-8"
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(8px)',
+                 WebkitBackdropFilter: 'blur(8px)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)',
+               }}>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
+              {hero.description}
+            </p>
+          </div>
         </div>
 
         {/* CTA Buttons */}
