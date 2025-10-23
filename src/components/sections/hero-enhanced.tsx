@@ -87,26 +87,9 @@ const HeroSection = () => {
             </p>
           </div>
         </div>
-
-        {/* Description with Individual Glass */}
-        <div 
-          className={`transition-all duration-700 max-w-2xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          style={{ transitionDelay: '300ms' }}
-        >
-          <div className="inline-block rounded-xl px-6 py-4 mb-6 sm:mb-8"
-               style={{
-                 background: 'rgba(255, 255, 255, 0.05)',
-                 backdropFilter: 'blur(8px)',
-                 WebkitBackdropFilter: 'blur(8px)',
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
-               }}>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
-              {hero.description}
-            </p>
-          </div>
         </div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons with Individual Glass */}
         <div 
           className={`transition-all duration-700 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto px-4 sm:px-0 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '400ms' }}
@@ -119,11 +102,18 @@ const HeroSection = () => {
           </Button>
         </div>
 
-        {/* Social Links */}
+        {/* Social Links with Individual Glass Container */}
         <div 
-          className={`transition-all duration-700 flex flex-wrap gap-2 sm:gap-3 mb-8 justify-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '500ms' }}
         >
+          <div className="inline-flex flex-wrap gap-2 sm:gap-3 justify-center rounded-full px-4 py-3"
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(8px)',
+                 WebkitBackdropFilter: 'blur(8px)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)',
+               }}>
           {SOCIAL_LINKS.map((link) => (
             <Button 
               key={link.name}
@@ -147,9 +137,8 @@ const HeroSection = () => {
               </Link>
             </Button>
           ))}
+          </div>
         </div>
-        </div>
-      </div>
       
       {/* Scroll Indicator */}
       <div 
