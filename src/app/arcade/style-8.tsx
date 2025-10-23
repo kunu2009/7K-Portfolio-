@@ -184,37 +184,62 @@ class StanAI {
     // Greetings
     if (/^(hi|hello|hey|sup|greetings|yo)\b/i.test(q)) {
       const greetings = [
-        "Hey there! 👋 I'm Stan AI, your personal guide to Kunal's portfolio. Ask me anything!",
-        "Hello! 🌟 Ready to explore Kunal's work? I know everything about his projects!",
-        "Hi! 😊 I'm Stan, and I'm here to help. Want to know about projects, skills, or just chat?",
+        "Hey! 👋 I'm Stan, here to help you explore Kunal's world of productivity, law, and tech! What can I tell you?",
+        "Hello! 😊 I'm Stan—think of me as your friendly tour guide through everything Kunal's built. Where should we start?",
+        "Hi there! I'm Stan, Kunal's AI buddy. Want to know about his projects, chat about tech, or just see what he's up to?",
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
     
     // About queries
     if (/who (is|are) you|what are you|your name/i.test(q)) {
-      return "I'm **Stan AI**, Kunal's intelligent assistant! 🤖 I know everything about his portfolio, projects, skills, and I can even do math! I'm built with advanced NLP and a comprehensive knowledge base. What would you like to know?";
+      const responses = [
+        "I'm Stan! Kunal's working on making me a full Android assistant, but right now I'm here helping people learn about his work. Pretty cool, right? 😊",
+        "Hey, I'm Stan AI! I'm like Kunal's digital spokesperson—I know all about his projects, can do math, and love chatting. What's on your mind?",
+        "Stan here! I'm an AI Kunal built to help people navigate his portfolio. I've got answers about projects, skills, and can even solve math problems. Try me!",
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
     }
     
     // Owner info
     if (/who (is|made|created|built)|about (kunal|owner|developer|creator)/i.test(q)) {
-      return `This portfolio belongs to **${this.knowledge.owner.name}** (@${this.knowledge.owner.username}), a passionate ${this.knowledge.owner.role} from ${this.knowledge.owner.location} with ${this.knowledge.owner.experience} of experience. He's currently ${this.knowledge.owner.status.toLowerCase()}! Want to know about his projects or skills?`;
+      const responses = [
+        "I'm talking about **Kunal Chheda**! He's a 12th-standard Arts student with big dreams of becoming a corporate lawyer. But he's not just about law—he's deeply passionate about AI, productivity tools, technology, chess, and languages. He's building the 7K Ecosystem to organize life and amplify creativity!",
+        "That's **Kunal**! Student by day, builder by... also day 😄 He's studying Arts (future corporate lawyer!) but can't stop coding. He's creating the whole 7K ecosystem—apps for productivity, learning, and life management. Want to know about a specific project?",
+        "Meet **Kunal Chheda**—he's juggling law school prep while building an entire ecosystem of apps! Based in India, he's all about making tools that actually help people be more productive and creative. Pretty ambitious for someone still in 12th grade, right?",
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
     }
     
     // Contact info
     if (/contact|email|reach|message|get in touch/i.test(q)) {
-      return `📧 You can reach Kunal at:\n• Email: **${this.knowledge.contact.email}**\n• Website: **${this.knowledge.contact.website}**\n• GitHub: **${this.knowledge.contact.github}**\n\nFeel free to reach out for collaborations or opportunities!`;
+      return `Sure! You can reach Kunal at **${this.knowledge.contact.email}** or check out his work at **${this.knowledge.contact.website}**. He's also on GitHub (**${this.knowledge.contact.github}**) if you want to see his code. Feel free to reach out—he's always up for interesting conversations!`;
     }
     
     // Skills queries
     if (/skills|technologies|tech stack|what (can|does) (he|kunal) (know|use)/i.test(q)) {
       const skills = this.knowledge.skills;
-      return `💻 **Kunal's Tech Stack:**\n\n**Frontend:** ${skills.frontend.join(', ')}\n\n**Backend:** ${skills.backend.join(', ')}\n\n**AI/ML:** ${skills.ai.join(', ')}\n\n**Design:** ${skills.design.join(', ')}\n\nHe's a versatile full-stack developer with strong AI capabilities!`;
+      return `Oh, Kunal's got quite the toolkit! 🛠️ He works with **${skills.frontend.slice(0, 3).join(', ')}** on the frontend, handles backend with **${skills.backend.slice(0, 2).join(' and ')}**, and is diving deep into **AI/ML** stuff like Gemini and Genkit. He's basically a full-stack developer who loves making things look good AND work well!`;
     }
     
     // Projects overview
     if (/projects|what (has|did) (he|kunal) (build|built|make|made|create)/i.test(q)) {
-      return `🚀 **Kunal's Projects:**\n\n**7K Life** - Life management platform (v2.0, Active)\n**Stan AI** - That's me! Your intelligent assistant\n**7KLawPrep** - Legal education platform (Beta)\n**7K Itihaas** - History learning platform (Planning)\n**Polyglot** - Language learning app (Planning)\n\nWant details about any specific project?`;
+      return `Kunal's building the **7K Ecosystem**—it's pretty ambitious! There's **7K Life** (life management), **7KLawPrep** (for law students), **7K Itihaas** (history learning), and **Polyglot** (language learning). Oh, and me—**Stan AI**! Each one is designed to solve real problems he's faced. Want to hear more about any of them?`;
+    }
+    
+    // Why so many portfolios
+    if (/why.*portfolio|many.*portfolio|different.*portfolio/i.test(q)) {
+      return `You're exploring Kunal's Portfolioverse! It's not just one portfolio—it's multiple creative ways to experience his work:\n\n• **/story**: Classic narrative portfolio\n• **/terminal**: Interactive command-line interface\n• **/arcade**: Fun 2D game-based showcase\n• **/slider**: Animated visual slider\n• **/mobile**: Mobile app-style experience\n• **/galaksi**: Space-themed explorer\n• **/portfolio-card**: Professional card layout\n\nEach has 4 different styles! How cool is that?`;
+    }
+    
+    // 7K Life / ecosystem
+    if (/7k life|ecosystem|7k ecosystem/i.test(q)) {
+      return `The **7K Ecosystem** is Kunal's interconnected system of apps, tools, and habits designed for radical productivity, continuous growth, and creative freedom. It's built on the philosophy that the right tools can eliminate friction, amplify focus, and free up mental space for what truly matters—creativity and growth!`;
+    }
+    
+    // Stan AI
+    if (/stan ai|stan|you|yourself/i.test(q) && !/who are you/.test(q)) {
+      return `Stan (that's me!) is an AI assistant that Kunal is developing to run on Android! The vision is to provide context-aware automation and assistance integrated across the entire 7K ecosystem. Right now, I'm here helping you learn about Kunal and his work!`;
     }
     
     // Specific project queries
@@ -227,22 +252,32 @@ class StanAI {
     
     // Games
     if (/games|arcade|play/i.test(q)) {
-      return `🎮 **Arcade Games Available:**\n\n🐍 **Snake** - Classic with scoring & smooth controls\n🎯 **Tetris** - Full implementation with 7 pieces\n🧠 **Memory Match** - Card game with 3 difficulties\n⚡ **Bounce** - Platform-based skill showcase\n\nAll games work on mobile & desktop! Try them out!`;
+      return `Want to play? We've got some fun stuff! 🎮 There's **Snake** (classic arcade vibes), **Tetris** (you know this one!), **Memory Match** (test your brain), and **Bounce** (Kunal's skill showcase game). All work on mobile and desktop. Go check out the Arcade section!`;
     }
     
     // Portfolio styles
     if (/portfolio|styles|designs|interfaces/i.test(q)) {
-      return `🎨 **Portfolio Experiences:**\n\n📱 **Mobile:** ${this.knowledge.portfolio.styles.mobile.join(', ')}\n🎮 **Arcade:** ${this.knowledge.portfolio.styles.arcade.length} different games\n📖 **Story:** Narrative-driven experience\n💻 **Terminal:** Interactive CLI\n🎞️ **Slider:** Animated showcase\n\nEach style offers a unique way to explore Kunal's work!`;
+      return `Kunal went all out with the portfolio designs! There's a mobile app version, arcade games, a story mode, a terminal CLI, animated sliders... basically, he wanted everyone to find a style they vibe with. My favorite? The arcade games are pretty fun! 😄`;
     }
     
     // Achievements
     if (/achievements|accomplishments|what (has|did) (he|kunal) (done|achieved)/i.test(q)) {
-      return `🏆 **Key Achievements:**\n\n${this.knowledge.achievements.map((a, i) => `${i + 1}. ${a}`).join('\n')}\n\nImpressive, right?`;
+      return `Let me brag about Kunal for a sec! He's built the entire 7K Life ecosystem, created 7KLawPrep (helping law students everywhere!), made 3 fully working arcade games, and designed like 4+ different portfolio styles. Oh, and he built me! Pretty impressive for someone still in 12th grade, right? 🚀`;
     }
     
     // How queries
     if (/how (to|can|do)|help me/i.test(q)) {
-      return "I'm here to help! 🤝 Try asking me:\n\n• About Kunal's projects or skills\n• Math calculations (e.g., '25 * 17')\n• Square roots, powers, percentages\n• Contact information\n• Portfolio features\n• Anything else you're curious about!\n\nJust ask naturally!";
+      return "I'm here to help! 🤝 You can ask me stuff like:\n\n• What projects has Kunal built?\n• Tell me about 7K Life\n• Do some math (try '156 * 89'!)\n• What are his skills?\n• How can I contact him?\n\nJust chat naturally—I'll understand! 😊";
+    }
+    
+    // Single word queries for context
+    if (q === 'life' || q === 'portfolio' || q === 'projects') {
+      const hints = [
+        "Want to know about **7K Life**? It's Kunal's life management platform! Or did you mean something else?",
+        "Hmm, can you be more specific? Are you asking about the **7K Life** project, his portfolio styles, or something else?",
+        "I've got lots to share! Want to know about **7K Life**, his projects, or maybe his portfolio designs?",
+      ];
+      return hints[Math.floor(Math.random() * hints.length)];
     }
     
     return null;
@@ -271,29 +306,34 @@ class StanAI {
     
     // React to positive feedback
     if (/thank|thanks|awesome|cool|great|nice|good|excellent/i.test(lowerQuery)) {
-      return "You're welcome! 😊 Happy to help! Anything else you'd like to know?";
+      const responses = [
+        "You're welcome! 😊 Anything else you want to know?",
+        "Happy to help! Got more questions? Fire away!",
+        "Glad I could help! What else are you curious about?",
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
     }
     
     // Experience
     if (/experience|years|work/i.test(lowerQuery)) {
-      return `Kunal has **${this.knowledge.owner.experience}** of professional development experience, building full-stack applications with modern technologies. He's constantly learning and growing!`;
+      return `Kunal's been coding for over **2 years** now, building real-world apps that people actually use. He started with personal projects and kept going—now he's got a whole ecosystem! Pretty cool growth trajectory, right?`;
     }
     
     // Location
     if (/where|location|from|based/i.test(lowerQuery)) {
-      return `Kunal is based in **${this.knowledge.owner.location}** 🇮🇳`;
+      return `Kunal's based in **India** 🇮🇳—building global solutions from home!`;
     }
     
     // Availability
     if (/available|hire|hiring|work|job|opportunity/i.test(lowerQuery)) {
-      return `Yes! Kunal is **${this.knowledge.owner.status}**. Feel free to reach out at **${this.knowledge.contact.email}** for collaborations or opportunities!`;
+      return `Yep! Kunal's **available for opportunities**. He's especially interested in projects involving AI, productivity tools, or legal tech. Want to reach out? His email is **${this.knowledge.contact.email}**. He's pretty responsive!`;
     }
     
     // Default intelligent response
     const suggestions = [
-      "Interesting question! While I might not have that specific info, I can tell you about Kunal's projects, skills, or calculate math for you!",
-      "Hmm, I'm not sure about that one. Try asking about:\n• Projects (7K Life, Stan AI, etc.)\n• Skills and technologies\n• Contact information\n• Math calculations\n\nWhat interests you?",
-      "I don't have that exact information, but I'm great at:\n🚀 Explaining projects\n💻 Listing skills\n🧮 Solving math\n📧 Sharing contacts\n\nWhat would you like to know?",
+      "Hmm, I don't have specific information about that. But did you know? The 7K Ecosystem started as personal tools Kunal needed himself—now they're helping others too!\n\nFeel free to ask me about Kunal, his projects, skills, or the 7K Ecosystem!",
+      "Not quite sure what you mean! 🤔 Try asking about:\n• Kunal's projects (7K Life, Stan AI, etc.)\n• His skills and tech stack\n• How to contact him\n• Or throw me a math problem!\n\nWhat interests you?",
+      "I might not have that exact info, but I can chat about Kunal's work, do some calculations, or share his contact details! What would you like to explore?",
     ];
     
     return suggestions[Math.floor(Math.random() * suggestions.length)];
@@ -301,15 +341,15 @@ class StanAI {
 }
 
 const SUGGESTED_QUESTIONS = [
-  "Who is Kunal Chheda?",
-  "What projects has he built?",
-  "What are his skills?",
-  "Tell me about 7K Life",
-  "How can I contact him?",
-  "Calculate 156 * 89",
-  "What is square root of 144?",
+  "Who is Kunal?",
+  "Why so many portfolios?",
+  "What's 7K Life?",
   "Tell me about Stan AI",
-  "What arcade games are available?",
+  "What are his skills?",
+  "Calculate 156 * 89",
+  "What projects has he built?",
+  "How can I contact him?",
+  "What games can I play?",
   "What is 25% of 200?",
 ];
 
@@ -317,7 +357,7 @@ export default function StanAIChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "👋 Hey! I'm **Stan AI**, your intelligent guide to Kunal's portfolio!\n\n🧠 I know everything about his projects, skills, achievements, and more. Plus, I can do math, calculate percentages, solve equations, and answer questions naturally!\n\nWhat would you like to know?",
+      text: "Hey there! 👋 I'm **Stan**—Kunal's AI buddy!\n\nI'm here to chat about his projects, answer questions about the 7K Ecosystem, share his skills, or even help with some math if you need it! I know pretty much everything about what he's built and why.\n\nWhat are you curious about? 😊",
       sender: 'ai',
       timestamp: new Date(),
     },
@@ -375,7 +415,7 @@ export default function StanAIChat() {
     setMessages([
       {
         id: 1,
-        text: "👋 Hey! I'm **Stan AI**, your intelligent guide to Kunal's portfolio!\n\n🧠 I know everything about his projects, skills, achievements, and more. Plus, I can do math, calculate percentages, solve equations, and answer questions naturally!\n\nWhat would you like to know?",
+        text: "Hey there! 👋 I'm **Stan**—Kunal's AI buddy!\n\nI'm here to chat about his projects, answer questions about the 7K Ecosystem, share his skills, or even help with some math if you need it! I know pretty much everything about what he's built and why.\n\nWhat are you curious about? 😊",
         sender: 'ai',
         timestamp: new Date(),
       },
