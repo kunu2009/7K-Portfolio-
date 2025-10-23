@@ -15,23 +15,21 @@ const HeroSection = () => {
           fill
           className="object-cover object-center"
           priority
-          quality={90}
+          quality={95}
           sizes="100vw"
         />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-        {/* Additional vignette effect */}
-        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_80%)]" />
+        {/* Light overlay for text readability - much lighter to show the image */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       <div className="container flex flex-col items-center justify-center text-center z-10 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
-        <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 text-white drop-shadow-2xl">
+        <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-4 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgb(0_0_0_/_80%)]">
           Hi, I'm Kunal.
         </h1>
-        <p className="max-w-2xl text-lg md:text-xl text-white/90 mb-8 drop-shadow-lg">
+        <p className="max-w-2xl text-lg md:text-xl text-white mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-medium">
           I build the 7K Ecosystem — one idea at a time.
         </p>
-        <Button asChild size="lg" className="rounded-full shadow-xl">
+        <Button asChild size="lg" className="rounded-full shadow-2xl bg-primary hover:bg-primary/90 backdrop-blur-sm">
           <Link href="#about">
             See what I've made <ArrowDown className="ml-2 h-4 w-4" />
           </Link>
