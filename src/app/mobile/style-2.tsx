@@ -1,230 +1,203 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, ChevronLeft, Battery, Wifi, Signal } from "lucide-react";
-import Image from "next/image";
+import { Home, Battery, Wifi, Signal, Heart, Send, Bookmark, MessageCircle, Share2, MoreHorizontal } from "lucide-react";
+import Link from "next/link";
 
-export default function MobileStyle1() {
+export default function MobileStyle2() {
   const [activeScreen, setActiveScreen] = useState("home");
   const [time] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  const [activeStory, setActiveStory] = useState<number | null>(null);
+  const [storyProgress, setStoryProgress] = useState(0);
+  const [liked, setLiked] = useState<Record<string, boolean>>({});
 
-  const apps = [
-    { id: "about", name: "About", icon: "👤", color: "bg-gradient-to-br from-blue-500 to-blue-600" },
-    { id: "skills", name: "Skills", icon: "⚡", color: "bg-gradient-to-br from-purple-500 to-purple-600" },
-    { id: "projects", name: "Projects", icon: "🚀", color: "bg-gradient-to-br from-green-500 to-green-600" },
-    { id: "contact", name: "Contact", icon: "📧", color: "bg-gradient-to-br from-red-500 to-red-600" },
-  ];
+  useEffect(() => {
+    if (activeStory !== null) {
+      setStoryProgress(0);
+      const interval = setInterval(() => {
+        setStoryProgress((prev) => {
+          if (prev >= 100) {
+            setActiveStory(null);
+            return 0;
+          }
+          return prev + 1;
+        });
+      }, 30);
+      return () => clearInterval(interval);
+    }
+  }, [activeStory]);
 
-  const screenContent = {
-    about: {
+  const stories = [
+    {
+      id: "about",
+      icon: "",
+      gradient: "from-purple-500 to-pink-500",
       title: "About Me",
       content: (
-        <div className="space-y-4">
-          <div className="text-center mb-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">
-              👨‍💻
-            </div>
-            <h3 className="text-xl font-bold">Kunal Chheda</h3>
-            <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
-          </div>
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              Passionate developer building modern web and mobile applications. 
-              Focused on creating seamless user experiences with cutting-edge technologies.
-            </p>
-          </div>
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
-            <div className="flex items-center gap-3 text-sm">
-              <span>📍</span>
-              <span>India</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm mt-2">
-              <span>🎓</span>
-              <span>Computer Science Student</span>
-            </div>
-            <div className="flex items-center gap-3 text-sm mt-2">
-              <span>💼</span>
-              <span>Available for opportunities</span>
-            </div>
+        <div className="h-full flex flex-col justify-end p-6 bg-gradient-to-b from-transparent to-black/70">
+          <h2 className="text-3xl font-bold text-white mb-2">Kunal Paresh Chheda</h2>
+          <p className="text-white/90 text-lg mb-4">Full Stack Developer & Student</p>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 text-white"><span></span><span>India</span></div>
+            <div className="flex items-center gap-3 text-white"><span></span><span>12th Grade (Arts)</span></div>
+            <div className="flex items-center gap-3 text-white"><span></span><span>Future Corporate Lawyer</span></div>
           </div>
         </div>
       ),
+      bg: "bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"
     },
-    skills: {
-      title: "Skills",
+    {
+      id: "skills",
+      icon: "",
+      gradient: "from-orange-500 to-red-500",
+      title: "Tech Stack",
       content: (
-        <div className="space-y-3">
-          {[
-            { name: "React & Next.js", level: 95, color: "bg-blue-500" },
-            { name: "TypeScript", level: 90, color: "bg-cyan-500" },
-            { name: "Node.js", level: 85, color: "bg-green-500" },
-            { name: "Python", level: 80, color: "bg-yellow-500" },
-            { name: "Firebase", level: 88, color: "bg-orange-500" },
-            { name: "Tailwind CSS", level: 95, color: "bg-purple-500" },
-          ].map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4"
-            >
-              <div className="flex justify-between mb-2">
-                <span className="text-sm font-medium">{skill.name}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{skill.level}%</span>
+        <div className="h-full flex items-center justify-center p-6">
+          <div className="grid grid-cols-2 gap-4 w-full">
+            {["React", "Next.js", "TypeScript", "Node.js", "Python", "Firebase", "Flutter", "Tailwind"].map((skill) => (
+              <div key={skill} className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 text-center">
+                <span className="text-white font-semibold text-lg">{skill}</span>
               </div>
-              <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2">
-                <motion.div
-                  className={`${skill.color} h-2 rounded-full`}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                />
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       ),
+      bg: "bg-gradient-to-br from-orange-600 to-red-700"
     },
-    projects: {
+    {
+      id: "projects",
+      icon: "",
+      gradient: "from-green-500 to-teal-500",
       title: "Projects",
       content: (
-        <div className="space-y-4">
-          {[
-            { name: "7K Life", desc: "Life management ecosystem", color: "from-green-500 to-emerald-600", emoji: "🌱" },
-            { name: "7K Money", desc: "Finance tracking platform", color: "from-yellow-500 to-orange-600", emoji: "💰" },
-            { name: "7K Game Hub", desc: "Student gaming community", color: "from-purple-500 to-pink-600", emoji: "🎮" },
-            { name: "7K Ecosystem", desc: "Unified app platform", color: "from-blue-500 to-cyan-600", emoji: "🚀" },
-          ].map((project) => (
-            <div key={project.name} className={`bg-gradient-to-br ${project.color} rounded-2xl p-4 text-white`}>
-              <div className="text-4xl mb-2">{project.emoji}</div>
-              <h4 className="font-bold text-lg">{project.name}</h4>
-              <p className="text-sm text-white/80">{project.desc}</p>
-              <button className="mt-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm transition-colors">
-                View Project
-              </button>
+        <div className="h-full flex flex-col justify-center p-6 space-y-4">
+          {["7K Life", "7KLawPrep", "7K Itihaas", "Stan AI"].map((proj) => (
+            <div key={proj} className="bg-white/20 backdrop-blur-xl rounded-3xl p-5">
+              <h3 className="text-white font-bold text-xl mb-1">{proj}</h3>
+              <p className="text-white/80 text-sm">Building innovative solutions</p>
             </div>
           ))}
         </div>
       ),
+      bg: "bg-gradient-to-br from-green-600 to-teal-700"
     },
-    contact: {
-      title: "Contact",
+    {
+      id: "contact",
+      icon: "",
+      gradient: "from-blue-500 to-purple-500",
+      title: "Get in Touch",
       content: (
-        <div className="space-y-4">
-          <div className="bg-blue-500 text-white rounded-2xl p-6 text-center">
-            <div className="text-5xl mb-3">📧</div>
-            <h4 className="font-bold mb-2">Email</h4>
-            <p className="text-sm text-blue-100">7kmindbeatss@gmail.com</p>
+        <div className="h-full flex flex-col justify-center p-6 space-y-5">
+          <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
+            <div className="text-4xl mb-3"></div>
+            <p className="text-white font-medium">7kmindbeatss@gmail.com</p>
           </div>
-          <div className="bg-purple-500 text-white rounded-2xl p-6 text-center">
-            <div className="text-5xl mb-3">🌐</div>
-            <h4 className="font-bold mb-2">Portfolio</h4>
-            <p className="text-sm text-purple-100">7kc.me</p>
+          <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
+            <div className="text-4xl mb-3"></div>
+            <p className="text-white font-medium">7kc.me</p>
           </div>
-          <div className="bg-gray-800 text-white rounded-2xl p-6 text-center">
-            <div className="text-5xl mb-3">💻</div>
-            <h4 className="font-bold mb-2">GitHub</h4>
-            <p className="text-sm text-gray-300">github.com/kunu2009</p>
-          </div>
-          <div className="bg-green-500 text-white rounded-2xl p-6 text-center">
-            <div className="text-5xl mb-3">💬</div>
-            <h4 className="font-bold mb-2">WhatsApp</h4>
-            <p className="text-sm text-green-100">Let's connect!</p>
+          <div className="bg-white/20 backdrop-blur-xl rounded-3xl p-6 text-center">
+            <div className="text-4xl mb-3"></div>
+            <p className="text-white font-medium">github.com/kunu2009</p>
           </div>
         </div>
       ),
+      bg: "bg-gradient-to-br from-blue-600 to-purple-700"
     },
-  };
+  ];
+
+  const posts = [
+    { id: "1", image: "bg-gradient-to-br from-blue-400 to-purple-600", emoji: "", caption: "Building amazing web apps with React & Next.js", likes: 245 },
+    { id: "2", image: "bg-gradient-to-br from-green-400 to-teal-600", emoji: "", caption: "7K Life ecosystem is growing!", likes: 189 },
+    { id: "3", image: "bg-gradient-to-br from-orange-400 to-red-600", emoji: "", caption: "Learning new technologies every day", likes: 312 },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-950 p-4 md:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-4 md:p-8 flex items-center justify-center">
       <div className="relative">
-        {/* iPhone Frame */}
         <div className="w-[375px] h-[812px] bg-black rounded-[60px] shadow-2xl p-3 relative">
-          {/* Notch */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
-
-          {/* Screen */}
-          <div className="w-full h-full bg-white dark:bg-gray-900 rounded-[48px] overflow-hidden relative">
-            {/* Status Bar */}
-            <div className="absolute top-0 left-0 right-0 h-12 px-8 flex items-center justify-between text-xs z-20">
+          <div className="w-full h-full bg-gradient-to-b from-purple-50 to-pink-50 rounded-[48px] overflow-hidden relative">
+            <div className="absolute top-0 left-0 right-0 h-12 px-8 flex items-center justify-between text-xs z-20 bg-white/80 backdrop-blur-sm">
               <span className="font-semibold">{time}</span>
-              <div className="flex items-center gap-1">
-                <Signal className="h-3 w-3" />
-                <Wifi className="h-3 w-3" />
-                <Battery className="h-3 w-3" />
-              </div>
+              <div className="flex items-center gap-1"><Signal className="h-3 w-3" /><Wifi className="h-3 w-3" /><Battery className="h-3 w-3" /></div>
             </div>
 
-            {/* Content */}
-            <div className="h-full pt-12 pb-20">
-              <AnimatePresence mode="wait">
-                {activeScreen === "home" ? (
-                  <motion.div
-                    key="home"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                  className="h-full p-6"
-                >
-                  {/* Home Screen */}
-                  <div className="text-center mb-8 mt-8">
-                    <h1 className="text-3xl font-bold mb-2">Kunal Chheda</h1>
-                    <p className="text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+            <AnimatePresence mode="wait">
+              {activeStory !== null ? (
+                <motion.div key="story" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-30">
+                  <div className={`h-full ${stories[activeStory].bg} relative`}>
+                    <div className="absolute top-0 left-0 right-0 p-4 z-10">
+                      <div className="w-full h-1 bg-white/30 rounded-full overflow-hidden">
+                        <motion.div className="h-full bg-white" style={{ width: `${storyProgress}%` }} />
+                      </div>
+                      <div className="flex items-center justify-between mt-4">
+                        <div className="flex items-center gap-2">
+                          <div className={`w-10 h-10 bg-gradient-to-br ${stories[activeStory].gradient} rounded-full flex items-center justify-center text-xl border-2 border-white`}>{stories[activeStory].icon}</div>
+                          <span className="text-white font-semibold">{stories[activeStory].title}</span>
+                        </div>
+                        <button onClick={() => setActiveStory(null)} className="text-white text-2xl">&times;</button>
+                      </div>
+                    </div>
+                    {stories[activeStory].content}
                   </div>
+                </motion.div>
+              ) : (
+                <div className="h-full pt-12 overflow-y-auto">
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-6">
+                      <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Portfolio</h1>
+                      <div className="flex gap-4"><Heart className="h-6 w-6" /><Send className="h-6 w-6" /></div>
+                    </div>
 
-                  {/* App Icons */}
-                  <div className="grid grid-cols-4 gap-6">
-                    {apps.map((app) => (
-                        <motion.button
-                          key={app.id}
-                          whileTap={{ scale: 0.9 }}
-                          onClick={() => setActiveScreen(app.id)}
-                          className="flex flex-col items-center gap-2"
-                        >
-                          <div className={`${app.color} w-16 h-16 rounded-2xl shadow-lg flex items-center justify-center text-3xl`}>
-                            {app.icon}
+                    <div className="flex gap-4 overflow-x-auto pb-4 mb-6">
+                      {stories.map((story, idx) => (
+                        <button key={story.id} onClick={() => setActiveStory(idx)} className="flex-shrink-0">
+                          <div className={`w-20 h-20 bg-gradient-to-br ${story.gradient} rounded-full p-1`}>
+                            <div className="w-full h-full bg-white rounded-full flex items-center justify-center text-3xl">{story.icon}</div>
                           </div>
-                          <span className="text-xs font-medium">{app.name}</span>
-                        </motion.button>
+                          <p className="text-xs mt-2 text-center font-medium">{story.title}</p>
+                        </button>
                       ))}
                     </div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key={activeScreen}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    className="h-full flex flex-col"
-                  >
-                    {/* App Header */}
-                    <div className="bg-white dark:bg-gray-900 border-b dark:border-gray-800 px-4 py-3 flex items-center gap-3">
-                      <button
-                        onClick={() => setActiveScreen("home")}
-                        className="text-blue-500 flex items-center gap-1"
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                        <span>Back</span>
-                      </button>
-                    </div>
 
-                    {/* App Content */}
-                    <div className="flex-1 overflow-y-auto p-4">
-                      <h2 className="text-2xl font-bold mb-4">
-                        {screenContent[activeScreen as keyof typeof screenContent].title}
-                      </h2>
-                      {screenContent[activeScreen as keyof typeof screenContent].content}
+                    <div className="space-y-6">
+                      {posts.map((post) => (
+                        <div key={post.id} className="bg-white rounded-3xl shadow-lg overflow-hidden">
+                          <div className="flex items-center justify-between p-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xl"></div>
+                              <div><p className="font-semibold text-sm">Kunal Chheda</p><p className="text-xs text-gray-500">Full Stack Developer</p></div>
+                            </div>
+                            <MoreHorizontal className="h-5 w-5 text-gray-600" />
+                          </div>
+                          <div className={`aspect-square ${post.image} flex items-center justify-center text-9xl`}>{post.emoji}</div>
+                          <div className="p-4">
+                            <div className="flex items-center justify-between mb-3">
+                              <div className="flex gap-4">
+                                <button onClick={() => setLiked({...liked, [post.id]: !liked[post.id]})}><Heart className={`h-7 w-7 ${liked[post.id] ? 'fill-red-500 text-red-500' : ''}`} /></button>
+                                <MessageCircle className="h-7 w-7" />
+                                <Share2 className="h-7 w-7" />
+                              </div>
+                              <Bookmark className="h-7 w-7" />
+                            </div>
+                            <p className="font-semibold text-sm mb-1">{post.likes + (liked[post.id] ? 1 : 0)} likes</p>
+                            <p className="text-sm"><span className="font-semibold">kunalchheda</span> {post.caption}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+                </div>
+              )}
+            </AnimatePresence>
+
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-white border-t flex items-center justify-around px-4">
+              <button className="flex flex-col items-center"><Home className="h-6 w-6 mb-1" /><span className="text-xs">Home</span></button>
+              <button className="flex flex-col items-center"><Heart className="h-6 w-6 mb-1" /><span className="text-xs">Activity</span></button>
+              <Link href="/" className="flex flex-col items-center text-purple-600"><span className="text-2xl mb-1"></span><span className="text-xs font-semibold">Back</span></Link>
             </div>
-
-            {/* Home Indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-800 dark:bg-gray-200 rounded-full"></div>
           </div>
         </div>
       </div>

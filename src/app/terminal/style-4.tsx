@@ -6,6 +6,29 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Define commands outside component to prevent recreation
+const COMMANDS = [
+  { cmd: "SYSTEM.WAKE()", output: "⚡ Neural interface activated..." },
+  { cmd: "IDENTITY.LOAD()", output: ">> Kunal Paresh Chheda | Full Stack Developer" },
+  { cmd: "", output: "" },
+  { cmd: "SKILLS.QUERY('frontend')", output: "→ React, Next.js, TypeScript, Tailwind CSS" },
+  { cmd: "SKILLS.QUERY('backend')", output: "→ Node.js, Python, Firebase" },
+  { cmd: "SKILLS.QUERY('mobile')", output: "→ Flutter, React Native" },
+  { cmd: "", output: "" },
+  { cmd: "PROJECTS.LIST()", output: "📁 7K Life - Ecosystem Management" },
+  { cmd: "", output: "📁 7KLawPrep - Law Education Platform" },
+  { cmd: "", output: "📁 7K Itihaas - Interactive History" },
+  { cmd: "", output: "📁 Polyglot - Language Learning" },
+  { cmd: "", output: "📁 Stan AI - Personal Assistant" },
+  { cmd: "", output: "" },
+  { cmd: "STATUS.CHECK()", output: "🟢 ONLINE | Available for projects" },
+  { cmd: "CONTACT.RETRIEVE()", output: "📧 7kmindbeatss@gmail.com" },
+  { cmd: "", output: "🌐 7kc.me" },
+  { cmd: "", output: "💻 github.com/kunu2009" },
+  { cmd: "", output: "" },
+  { cmd: "SYSTEM.READY()", output: "✓ All systems operational" },
+];
+
 export default function TerminalStyle4() {
   const [matrixChars, setMatrixChars] = useState<
     Array<{ char: string; y: number; speed: number; column: number }>
@@ -40,32 +63,10 @@ export default function TerminalStyle4() {
     return () => clearInterval(interval);
   }, []);
 
-  const commands = [
-    { cmd: "SYSTEM.WAKE()", output: "⚡ Neural interface activated..." },
-    { cmd: "IDENTITY.LOAD()", output: ">> Kunal Paresh Chheda | Full Stack Developer" },
-    { cmd: "", output: "" },
-    { cmd: "SKILLS.QUERY('frontend')", output: "→ React, Next.js, TypeScript, Tailwind CSS" },
-    { cmd: "SKILLS.QUERY('backend')", output: "→ Node.js, Python, Firebase" },
-    { cmd: "SKILLS.QUERY('mobile')", output: "→ Flutter, React Native" },
-    { cmd: "", output: "" },
-    { cmd: "PROJECTS.LIST()", output: "📁 7K Life - Ecosystem Management" },
-    { cmd: "", output: "📁 7KLawPrep - Law Education Platform" },
-    { cmd: "", output: "📁 7K Itihaas - Interactive History" },
-    { cmd: "", output: "📁 Polyglot - Language Learning" },
-    { cmd: "", output: "📁 Stan AI - Personal Assistant" },
-    { cmd: "", output: "" },
-    { cmd: "STATUS.CHECK()", output: "🟢 ONLINE | Available for projects" },
-    { cmd: "CONTACT.RETRIEVE()", output: "📧 7kmindbeatss@gmail.com" },
-    { cmd: "", output: "🌐 7kc.me" },
-    { cmd: "", output: "💻 github.com/kunu2009" },
-    { cmd: "", output: "" },
-    { cmd: "SYSTEM.READY()", output: "✓ All systems operational" },
-  ];
-
-  // Auto-type commands
+  // Auto-type commands - faster speed
   useEffect(() => {
-    if (commandIndex < commands.length) {
-      const current = commands[commandIndex];
+    if (commandIndex < COMMANDS.length) {
+      const current = COMMANDS[commandIndex];
       const timer = setTimeout(() => {
         if (current.cmd) {
           setDisplayCommands((prev) => [...prev, `> ${current.cmd}`]);
@@ -76,11 +77,11 @@ export default function TerminalStyle4() {
           setDisplayCommands((prev) => [...prev, ""]);
         }
         setCommandIndex((prev) => prev + 1);
-      }, current.cmd ? 400 : 200);
+      }, current.cmd ? 200 : 100); // Made faster: 200ms for commands, 100ms for output
 
       return () => clearTimeout(timer);
     }
-  }, [commandIndex, commands]);
+  }, [commandIndex]);
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center p-4">
@@ -179,7 +180,7 @@ export default function TerminalStyle4() {
             ))}
 
             {/* Cursor */}
-            {commandIndex >= commands.length && (
+            {commandIndex >= COMMANDS.length && (
               <motion.div
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
