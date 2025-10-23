@@ -2,22 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const HeroSection = () => {
   return (
     <section id="hero" className="relative h-dvh min-h-[700px] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/bg.png"
-          alt="Kunal Chheda - Background"
-          fill
-          className="object-cover object-center"
-          priority
-          quality={95}
-          sizes="100vw"
-        />
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/bg.png)' }}
+      >
         {/* Light overlay for text readability - much lighter to show the image */}
         <div className="absolute inset-0 bg-black/30" />
       </div>
