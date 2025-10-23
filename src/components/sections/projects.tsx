@@ -4,12 +4,13 @@
 import React, { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark } from "lucide-react";
+import { Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
+import { appsData } from '@/lib/apps-data';
 
 const LawPrepQuiz = dynamic(() => import('@/components/mini-demos/law-prep-quiz').then(mod => mod.LawPrepQuiz));
 
@@ -35,7 +36,7 @@ const allProjects = [
     icon: LawPrepIcon,
     title: "7KLawPrep",
     description: "Web-based utilities and resources for law aspirants.",
-    href: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
+    href: "https://7klawprep.me",
     image: "/images/lawprep-logo.svg",
     imageHint: "legal books justice scale",
     longDescription: "A specialized suite of tools designed to help law aspirants prepare for competitive entrance exams like CLAT and MHCET. Features include mock tests, legal knowledge quizzes, and performance analytics.",
@@ -201,6 +202,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 const ProjectsSection = () => {
   const [activeTab, setActiveTab] = useState('ongoing');
   const [activeTag, setActiveTag] = useState('All');
+  const [showAllApps, setShowAllApps] = useState(false);
 
   const filteredProjects = useMemo(() => {
     return allProjects.filter(project => {
@@ -264,6 +266,53 @@ const ProjectsSection = () => {
                 <p className="text-muted-foreground">No projects match the current filter.</p>
             </div>
         )}
+        
+        {/* All Apps Collapsible Section */}
+        <div className="mt-16">
+          <Button
+            variant="outline"
+            size="lg"
+            className="w-full flex items-center justify-center gap-2 text-lg"
+            onClick={() => setShowAllApps(!showAllApps)}
+          >
+            {showAllApps ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            View All {appsData.length} Apps from the 7K Ecosystem
+            {showAllApps ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+          </Button>
+          
+          <AnimatePresence>
+            {showAllApps && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+                  {appsData.map((app) => (
+                    <Card key={app.id} className="group hover:shadow-lg transition-all">
+                      <CardHeader className="pb-3">
+                        <div className="text-3xl mb-2">{app.icon || "📱"}</div>
+                        <CardTitle className="text-lg">{app.name}</CardTitle>
+                        <CardDescription className="line-clamp-2 text-sm">
+                          {app.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <a href={app.url} target="_blank" rel="noopener noreferrer">
+                          <Button variant="outline" size="sm" className="w-full">
+                            Visit <ExternalLink className="ml-2 h-3 w-3" />
+                          </Button>
+                        </a>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

@@ -21,12 +21,6 @@ const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/por
 const AppStoreSection = dynamic(() => import('@/components/sections/app-store'), {
   loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
 });
-const EcosystemSection = dynamic(() => import('@/components/sections/ecosystem'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
-});
-const RecommendationsSection = dynamic(() => import('@/components/sections/recommendations'), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
-});
 const ProjectsSection = dynamic(() => import('@/components/sections/projects'), {
   loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
 });
@@ -51,8 +45,6 @@ export default function HomePage() {
         <ServicesMenuCard />
         <PortfolioShowcaseSection />
         <AppStoreSection />
-        <EcosystemSection />
-        <RecommendationsSection />
         <ProjectsSection />
         <WritingSection />
         <JourneySection />

@@ -28,9 +28,18 @@ const staggerContainer = {
 };
 
 const AppStoreSection = () => {
-  // Show only first 8 apps on homepage - mix of featured and popular
-  const featuredApps = appsData.slice(0, 8);
+  // Show only 4 specific featured apps on homepage
+  const featuredAppIds = ['life', '7kmoney', 'music', 'upsc'];
+  const featuredApps = appsData.filter(app => featuredAppIds.includes(app.id));
   const totalAppsCount = appsData.length;
+
+  // Custom icons for featured apps
+  const appIcons: Record<string, string> = {
+    life: "🎯",
+    "7kmoney": "💰",
+    music: "🎵",
+    upsc: "📚"
+  };
 
   return (
     <section id="app-store" className="container py-16 md:py-24 lg:py-32 relative overflow-hidden">
@@ -86,7 +95,7 @@ const AppStoreSection = () => {
                   <CardHeader>
                     <div className="flex items-start justify-between mb-3">
                       <div className="text-5xl group-hover:scale-110 transition-transform">
-                        {app.icon || "📱"}
+                        {appIcons[app.id] || app.icon || "📱"}
                       </div>
                       <Badge variant="secondary" className="text-xs">
                         {app.category}
