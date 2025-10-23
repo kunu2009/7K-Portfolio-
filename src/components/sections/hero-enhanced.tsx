@@ -87,6 +87,23 @@ const HeroSection = () => {
             </p>
           </div>
         </div>
+
+        {/* Description with Individual Glass */}
+        <div 
+          className={`transition-all duration-700 max-w-2xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '300ms' }}
+        >
+          <div className="inline-block rounded-xl px-6 py-4 mb-6 sm:mb-8"
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(8px)',
+                 WebkitBackdropFilter: 'blur(8px)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)',
+               }}>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
+              {hero.description}
+            </p>
+          </div>
         </div>
 
         {/* CTA Buttons with Individual Glass */}
