@@ -229,7 +229,7 @@ const PortfolioShowcaseSection = () => {
   };
 
   return (
-    <section id="showcase" className="container py-16 md:py-24 lg:py-32 relative overflow-hidden">
+    <section id="showcase" className="container py-16 md:py-24 lg:py-32 relative overflow-hidden section-gradient-purple section-border-glow">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
       

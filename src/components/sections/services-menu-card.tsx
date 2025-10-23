@@ -117,7 +117,7 @@ const stats = [
 
 export default function ServicesMenuCard() {
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background section-dots section-border-glow">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />

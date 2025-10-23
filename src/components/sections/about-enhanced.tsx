@@ -77,7 +77,7 @@ const AboutSection = () => {
   if (!about.enabled) return null;
   
   return (
-    <section id="about" className="container py-16 md:py-24 lg:py-32">
+    <section id="about" className="container py-16 md:py-24 lg:py-32 section-noise section-border-glow">
       <motion.div
         initial="initial"
         whileInView="animate"

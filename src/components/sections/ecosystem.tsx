@@ -34,9 +34,9 @@ const ecosystemComponents = [
 
 const EcosystemSection = () => {
   return (
-    <section id="ecosystem" className="container py-24 sm:py-32 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+    <section id="ecosystem" className="container py-24 sm:py-32 opacity-0 animate-fade-in-up section-gradient-dark section-border-glow" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
       <div className="text-center max-w-4xl mx-auto">
-        <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">The 7K Ecosystem Vision</h2>
+        <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4 section-header-glow">The 7K Ecosystem Vision</h2>
         <p className="text-xl text-muted-foreground mb-16">
           An interconnected system of tools, apps, and habits for productivity, personal growth, and creative freedom.
         </p>

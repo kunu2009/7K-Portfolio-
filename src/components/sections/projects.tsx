@@ -211,10 +211,10 @@ const ProjectsSection = () => {
   }, [activeTab, activeTag]);
 
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+    <section id="projects" className="py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up section-grid section-border-glow" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">Explore the Ecosystem</h2>
+          <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4 section-header-glow">Explore the Ecosystem</h2>
           <p className="text-lg text-muted-foreground mb-12">
             A glimpse into what's currently being built and what the future holds. Filter by theme or click a card to learn more.
           </p>
