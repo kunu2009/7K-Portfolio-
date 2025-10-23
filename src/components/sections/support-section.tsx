@@ -363,14 +363,6 @@ export function SupportSection() {
                 </span>
               </p>
             </div>
-
-            {/* Production Setup Note */}
-            <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-border/50">
-              <p className="text-xs text-muted-foreground text-center">
-                💡 <strong>Note:</strong> This is currently showing demo data. 
-                See <code className="text-primary">PAYMENT_SETUP_GUIDE.md</code> for production setup with automatic tracking.
-              </p>
-            </div>
           </div>
         )}
       </div>
