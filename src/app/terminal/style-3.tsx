@@ -27,7 +27,7 @@ export default function TerminalStyle3() {
     { id: "contact", label: "CONTACT.sys", icon: "" },
   ];
 
-  const content = {
+  const content: Record<string, { title: string; lines: string[] }> = {
     about: {
       title: "// USER PROFILE //",
       lines: [

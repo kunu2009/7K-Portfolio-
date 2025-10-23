@@ -168,8 +168,8 @@ export function Terminal() {
             if (node.type === 'file') {
                  return <div className="grid grid-cols-3 gap-x-4"><span>{pathArg}</span></div>;
             }
-            if (node.type === 'dir') {
-                return <div className="grid grid-cols-3 gap-x-4">{node.children.map(child => <span key={child}>{child}</span>)}</div>;
+            if (node.type === 'dir' && 'children' in node) {
+                return <div className="grid grid-cols-3 gap-x-4">{node.children.map((child: string) => <span key={child}>{child}</span>)}</div>;
             }
             return `ls: cannot access '${pathArg}': No such file or directory`;
         },
@@ -199,7 +199,7 @@ export function Terminal() {
             if (node.type === 'dir') {
                 return `cat: ${args[0]}: Is a directory`;
             }
-            if (node.type === 'file') {
+            if (node.type === 'file' && 'content' in node) {
                 return node.content;
             }
             return `cat: ${args[0]}: No such file or directory`;
