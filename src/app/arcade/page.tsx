@@ -10,6 +10,7 @@ import ArcadeStyle4 from "./style-4";
 import ArcadeStyle5 from "./style-5";
 import ArcadeStyle6 from "./style-6";
 import ArcadeStyle7 from "./style-7";
+import ArcadeStyle8 from "./style-8";
 
 const styles = [
   { id: 1, name: "Bounce Game", component: ArcadeStyle1 },
@@ -19,6 +20,7 @@ const styles = [
   { id: 5, name: "🐍 Snake", component: ArcadeStyle5 },
   { id: 6, name: "🎮 Tetris", component: ArcadeStyle6 },
   { id: 7, name: "🧠 Memory Match", component: ArcadeStyle7 },
+  { id: 8, name: "🤖 Stan AI", component: ArcadeStyle8 },
 ];
 
 export default function ArcadePage() {
