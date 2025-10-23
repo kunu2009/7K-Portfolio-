@@ -100,7 +100,7 @@ const HeroSection = () => {
                  WebkitBackdropFilter: 'blur(8px)',
                  border: '1px solid rgba(255, 255, 255, 0.1)',
                }}>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
+            <p className="text-sm sm:text-base md:text-lg text-foreground font-medium leading-relaxed px-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
               {hero.description}
             </p>
           </div>
