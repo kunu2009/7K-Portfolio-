@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 type Message = {
   role: "user" | "assistant";
   content: string;
+  followUpQuestions?: string[];
 };
 
 export function ChatAssistant() {
@@ -26,6 +27,32 @@ export function ChatAssistant() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const handleFollowUp = (question: string) => {
+    setInput(question);
+    // Auto-submit the follow-up question
+    const userMessage: Message = { role: "user", content: question };
+    setMessages((prev) => [...prev, userMessage]);
+    setIsLoading(true);
+
+    askChatAssistant(question).then((response) => {
+      const assistantMessage: Message = { 
+        role: "assistant", 
+        content: response.answer,
+        followUpQuestions: response.followUpQuestions
+      };
+      setMessages((prev) => [...prev, assistantMessage]);
+    }).catch((error) => {
+      console.error("Failed to get response from AI", error);
+      const errorMessage: Message = {
+        role: "assistant",
+        content: "Sorry, I'm having a little trouble right now. Please try again later.",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    }).finally(() => {
+      setIsLoading(false);
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -37,7 +64,11 @@ export function ChatAssistant() {
 
     try {
       const response = await askChatAssistant(input);
-      const assistantMessage: Message = { role: "assistant", content: response };
+      const assistantMessage: Message = { 
+        role: "assistant", 
+        content: response.answer,
+        followUpQuestions: response.followUpQuestions
+      };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
       console.error("Failed to get response from AI", error);
@@ -98,15 +129,36 @@ export function ChatAssistant() {
                           <AvatarFallback><Bot className="h-4 w-4" /></AvatarFallback>
                       </Avatar>
                   )}
-                  <div
-                      className={cn(
-                      "max-w-[85%] sm:max-w-xs rounded-lg px-4 py-2 text-sm whitespace-pre-wrap break-words",
-                      message.role === "user"
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-secondary"
-                      )}
-                  >
-                      {message.content}
+                  <div className="flex flex-col gap-2 max-w-[85%] sm:max-w-xs">
+                    <div
+                        className={cn(
+                        "rounded-lg px-4 py-2 text-sm whitespace-pre-wrap break-words",
+                        message.role === "user"
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-secondary"
+                        )}
+                    >
+                        {message.content}
+                    </div>
+                    
+                    {/* Follow-up questions */}
+                    {message.role === "assistant" && message.followUpQuestions && message.followUpQuestions.length > 0 && (
+                      <div className="flex flex-col gap-1.5 mt-1">
+                        <p className="text-xs text-muted-foreground px-1">💡 You might also want to know:</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {message.followUpQuestions.map((question, i) => (
+                            <button
+                              key={i}
+                              onClick={() => handleFollowUp(question)}
+                              disabled={isLoading}
+                              className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              {question}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                    {message.role === 'user' && (
                       <Avatar className="h-8 w-8 border shrink-0">

@@ -9,10 +9,15 @@
 import { STAN_KNOWLEDGE, FUN_FACTS, KNOWLEDGE_STATS, type KnowledgeEntry } from '@/lib/stan-knowledge-base';
 
 export type ChatInput = string;
-export type ChatOutput = string;
+
+// Enhanced output type with follow-up questions
+export type ChatOutput = {
+  answer: string;
+  followUpQuestions?: string[];
+};
 
 /**
- * Main function to get Stan's response
+ * Main function to get Stan's response with follow-up suggestions
  */
 export async function askChatAssistant(input: ChatInput): Promise<ChatOutput> {
   const normalizedInput = input.toLowerCase().trim();
@@ -21,12 +26,25 @@ export async function askChatAssistant(input: ChatInput): Promise<ChatOutput> {
   const matches = findMatches(normalizedInput);
 
   if (matches.length > 0) {
-    // Return the best match (highest priority/score)
-    return matches[0].answer;
+    const bestMatch = matches[0];
+    
+    // Return answer with optional follow-up questions
+    return {
+      answer: bestMatch.answer,
+      followUpQuestions: bestMatch.followUpQuestions,
+    };
   }
 
-  // If no match found, return a friendly fallback with a fun fact
-  return getFallbackResponse();
+  // If no match found, return a friendly fallback with suggestions
+  return {
+    answer: getFallbackResponse(),
+    followUpQuestions: [
+      "Who is Kunal?",
+      "What is 7K Ecosystem?",
+      "Tell me about Kunal's apps",
+      "What services does Kunal offer?",
+    ],
+  };
 }
 
 /**
