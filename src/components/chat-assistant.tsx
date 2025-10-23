@@ -53,9 +53,11 @@ export function ChatAssistant() {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      setMessages([
-        { role: "assistant", content: getGreeting() }
-      ]);
+      getGreeting().then((greeting) => {
+        setMessages([
+          { role: "assistant", content: greeting }
+        ]);
+      });
     }
   }, [isOpen, messages.length]);
 

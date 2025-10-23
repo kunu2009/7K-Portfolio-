@@ -76,7 +76,7 @@ function getFallbackResponse(): string {
 /**
  * Get a random greeting
  */
-export function getGreeting(): string {
+export async function getGreeting(): Promise<string> {
   const greetings = [
     "Hi! I'm Stan, Kunal's AI assistant! Ask me anything about Kunal, his projects, or the 7K Ecosystem!",
     "Hey there! 👋 I'm Stan! I know all about Kunal and his work. What would you like to know?",

@@ -181,8 +181,10 @@ const Game = () => {
                     </Button>
                 </div>
             ) : (
+                <>
                  <p className="absolute top-2 right-2 text-mobile-xs text-muted-foreground font-mono z-20 flex items-center gap-1 mobile-hidden"><MousePointerClick className="w-3 h-3"/> Click to place platforms</p>
                  <p className="absolute top-2 left-2 right-2 text-center text-mobile-xs text-muted-foreground font-mono z-20 desktop-hidden">Tap to place platforms</p>
+                </>
             )}
             <Ball scope={scope} />
             {platforms.map(p => (
