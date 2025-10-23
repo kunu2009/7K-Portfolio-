@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { Heart, Copy, Check, QrCode, Smartphone, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Heart, Copy, Check, QrCode, Smartphone, ExternalLink, Users, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import Image from 'next/image';
 import { portfolioSections } from '@/lib/sections-data';
+import { MOCK_CONTRIBUTORS, type Contributor } from '@/lib/contributors-data';
 
 export function SupportSection() {
   const { support } = portfolioSections;
@@ -14,12 +15,29 @@ export function SupportSection() {
   if (!support.enabled) return null;
   
   const [copied, setCopied] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [qrCodeUrl, setQrCodeUrl] = useState('');
   const { toast } = useToast();
+  
   const upiId = '8591247148@fam';
   const yourName = 'Kunal Paresh Chheda';
   
+  // Generate QR code URL dynamically
+  useEffect(() => {
+    const amt = amount || '0';
+    // Using UPI deep link format that generates QR code
+    const upiString = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(yourName)}&am=${amt}&cu=INR`;
+    
+    // Generate QR code using API (free service)
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiString)}`;
+    setQrCodeUrl(qrUrl);
+  }, [amount]);
+
   // UPI Deep Link - automatically opens UPI apps
-  const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(yourName)}&cu=INR`;
+  const getUpiLink = (amt?: string) => {
+    const finalAmount = amt || amount || '';
+    return `upi://pay?pa=${upiId}&pn=${encodeURIComponent(yourName)}${finalAmount ? `&am=${finalAmount}` : ''}&cu=INR`;
+  };
 
   const copyUpiId = async () => {
     try {
@@ -40,11 +58,16 @@ export function SupportSection() {
   };
 
   const handleUpiPayment = () => {
-    window.location.href = upiLink;
+    const link = getUpiLink();
+    window.location.href = link;
     toast({
       title: 'Opening UPI App...',
-      description: 'Please complete the payment in your UPI app',
+      description: amount ? `Amount: ₹${amount}` : 'Please enter amount in your UPI app',
     });
+  };
+
+  const quickAmount = (amt: number) => {
+    setAmount(amt.toString());
   };
 
   return (
@@ -74,23 +97,78 @@ export function SupportSection() {
               <h3 className="text-xl font-semibold">Scan QR Code</h3>
             </div>
             
-            <div className="relative aspect-square bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-8 mb-4 shadow-inner border border-border/30">
-              {/* QR Code Placeholder - You need to add your actual QR code */}
-              <div className="w-full h-full bg-white rounded-lg flex items-center justify-center">
-                <div className="text-center p-4">
-                  <QrCode className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Save your QR code as:
-                  </p>
-                  <code className="text-xs bg-muted px-2 py-1 rounded">
-                    public/images/payment-qr.png
-                  </code>
-                </div>
+            {/* Amount Input */}
+            <div className="mb-4">
+              <label className="text-sm text-muted-foreground mb-2 block">
+                Enter Amount (Optional)
+              </label>
+              <div className="flex gap-2 mb-2">
+                <Input
+                  type="number"
+                  placeholder="Enter amount in ₹"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  className="flex-1"
+                />
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  onClick={() => quickAmount(50)}
+                  className="text-xs"
+                >
+                  ₹50
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  onClick={() => quickAmount(100)}
+                  className="text-xs"
+                >
+                  ₹100
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  onClick={() => quickAmount(500)}
+                  className="text-xs"
+                >
+                  ₹500
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  onClick={() => quickAmount(1000)}
+                  className="text-xs"
+                >
+                  ₹1000
+                </Button>
               </div>
             </div>
             
+            {/* Dynamic QR Code */}
+            <div className="relative aspect-square bg-white rounded-xl p-4 mb-4 shadow-inner border border-border/30">
+              {qrCodeUrl ? (
+                <img 
+                  src={qrCodeUrl} 
+                  alt="UPI QR Code" 
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center">
+                    <QrCode className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground">
+                      Enter amount to generate QR code
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+            
             <p className="text-sm text-muted-foreground text-center mb-4">
-              Open any UPI app and scan this QR code
+              {amount ? `Scan to pay ₹${amount}` : 'Open any UPI app and scan this QR code'}
             </p>
 
             {/* Quick Pay Button */}
@@ -188,6 +266,72 @@ export function SupportSection() {
             <span className="text-xs px-3 py-1 rounded-full bg-card border border-border">Amazon Pay</span>
           </div>
         </div>
+
+        {/* Contributors Section */}
+        {MOCK_CONTRIBUTORS.length > 0 && (
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary mb-4">
+                <Trophy className="w-4 h-4" />
+                <span className="text-sm font-medium">Amazing Supporters</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                Thank You to Our Contributors! 🙏
+              </h3>
+              <p className="text-muted-foreground">
+                These wonderful people have supported the journey
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {MOCK_CONTRIBUTORS.map((contributor, index) => (
+                <div 
+                  key={contributor.id || index}
+                  className="bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
+                      {contributor.name.charAt(0)}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-lg">{contributor.name}</h4>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(contributor.date).toLocaleDateString('en-IN', { 
+                          month: 'short', 
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+                    <span className="text-2xl font-bold text-primary">
+                      ₹{contributor.amount}
+                    </span>
+                  </div>
+                  {contributor.message && (
+                    <p className="text-sm text-muted-foreground italic">
+                      &quot;{contributor.message}&quot;
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+                <Users className="w-4 h-4" />
+                <span>
+                  <strong className="text-primary">{MOCK_CONTRIBUTORS.length}</strong> supporter{MOCK_CONTRIBUTORS.length !== 1 ? 's' : ''} • 
+                  <strong className="text-primary ml-1">
+                    ₹{MOCK_CONTRIBUTORS.reduce((sum, c) => sum + c.amount, 0)}
+                  </strong> raised
+                </span>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
