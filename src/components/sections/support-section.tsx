@@ -17,10 +17,18 @@ export function SupportSection() {
   const [copied, setCopied] = useState(false);
   const [amount, setAmount] = useState('');
   const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [contributors, setContributors] = useState<Contributor[]>(MOCK_CONTRIBUTORS);
   const { toast } = useToast();
   
   const upiId = '8591247148@fam';
   const yourName = 'Kunal Paresh Chheda';
+
+  // Load contributors (in production, this will fetch from database)
+  useEffect(() => {
+    // TODO: Replace with actual database call when ready
+    // getContributors().then(setContributors);
+    setContributors(MOCK_CONTRIBUTORS);
+  }, []);
   
   // Generate QR code URL dynamically
   useEffect(() => {
@@ -28,8 +36,8 @@ export function SupportSection() {
     // Using UPI deep link format that generates QR code
     const upiString = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(yourName)}&am=${amt}&cu=INR`;
     
-    // Generate QR code using API (free service)
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiString)}`;
+    // Generate QR code using API (free service) with better character encoding
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&charset-source=UTF-8&charset-target=UTF-8&data=${encodeURIComponent(upiString)}`;
     setQrCodeUrl(qrUrl);
   }, [amount]);
 
@@ -67,7 +75,13 @@ export function SupportSection() {
   };
 
   const quickAmount = (amt: number) => {
-    setAmount(amt.toString());
+    const currentAmount = amount ? parseInt(amount) : 0;
+    const newAmount = currentAmount + amt;
+    setAmount(newAmount.toString());
+  };
+
+  const resetAmount = () => {
+    setAmount('');
   };
 
   return (
@@ -100,7 +114,7 @@ export function SupportSection() {
             {/* Amount Input */}
             <div className="mb-4">
               <label className="text-sm text-muted-foreground mb-2 block">
-                Enter Amount (Optional)
+                Enter Amount (Click buttons to add up)
               </label>
               <div className="flex gap-2 mb-2">
                 <Input
@@ -110,6 +124,15 @@ export function SupportSection() {
                   onChange={(e) => setAmount(e.target.value)}
                   className="flex-1"
                 />
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={resetAmount}
+                  className="text-xs"
+                  disabled={!amount}
+                >
+                  Reset
+                </Button>
               </div>
               <div className="flex gap-2 flex-wrap">
                 <Button 
@@ -118,7 +141,7 @@ export function SupportSection() {
                   onClick={() => quickAmount(50)}
                   className="text-xs"
                 >
-                  ₹50
+                  +₹50
                 </Button>
                 <Button 
                   size="sm" 
@@ -126,7 +149,7 @@ export function SupportSection() {
                   onClick={() => quickAmount(100)}
                   className="text-xs"
                 >
-                  ₹100
+                  +₹100
                 </Button>
                 <Button 
                   size="sm" 
@@ -134,7 +157,7 @@ export function SupportSection() {
                   onClick={() => quickAmount(500)}
                   className="text-xs"
                 >
-                  ₹500
+                  +₹500
                 </Button>
                 <Button 
                   size="sm" 
@@ -142,7 +165,7 @@ export function SupportSection() {
                   onClick={() => quickAmount(1000)}
                   className="text-xs"
                 >
-                  ₹1000
+                  +₹1000
                 </Button>
               </div>
             </div>
@@ -268,7 +291,7 @@ export function SupportSection() {
         </div>
 
         {/* Contributors Section */}
-        {MOCK_CONTRIBUTORS.length > 0 && (
+        {contributors.length > 0 && (
           <div className="mt-16">
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary mb-4">
@@ -284,7 +307,7 @@ export function SupportSection() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {MOCK_CONTRIBUTORS.map((contributor, index) => (
+              {contributors.map((contributor, index) => (
                 <div 
                   key={contributor.id || index}
                   className="bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -323,11 +346,19 @@ export function SupportSection() {
               <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
                 <Users className="w-4 h-4" />
                 <span>
-                  <strong className="text-primary">{MOCK_CONTRIBUTORS.length}</strong> supporter{MOCK_CONTRIBUTORS.length !== 1 ? 's' : ''} • 
+                  <strong className="text-primary">{contributors.length}</strong> supporter{contributors.length !== 1 ? 's' : ''} • 
                   <strong className="text-primary ml-1">
-                    ₹{MOCK_CONTRIBUTORS.reduce((sum, c) => sum + c.amount, 0)}
+                    ₹{contributors.reduce((sum, c) => sum + c.amount, 0)}
                   </strong> raised
                 </span>
+              </p>
+            </div>
+
+            {/* Production Setup Note */}
+            <div className="mt-8 p-4 bg-muted/30 rounded-lg border border-border/50">
+              <p className="text-xs text-muted-foreground text-center">
+                💡 <strong>Note:</strong> This is currently showing demo data. 
+                See <code className="text-primary">PAYMENT_SETUP_GUIDE.md</code> for production setup with automatic tracking.
               </p>
             </div>
           </div>
