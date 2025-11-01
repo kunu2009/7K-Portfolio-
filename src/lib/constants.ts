@@ -5,9 +5,9 @@
 
 export const SITE_CONFIG = {
   name: "7K Ecosystem",
-  title: "Kunal Chheda - Student Developer | 7K Ecosystem Portfolio",
+  title: "Kunal Chheda - Student Developer | 20+ Apps Portfolio",
   description:
-    "20+ productivity apps built by Kunal Chheda, a 12th-grade student developer from India. Explore 7K Life, LawPrep, Polyglot & more Next.js applications.",
+    "Portfolio of Kunal Chheda, a 12th-grade student developer from Mumbai, India. Discover 20+ productivity apps including 7K Life, LawPrep, Polyglot, and more built with React, Next.js, and TypeScript.",
   url: "https://7kc.me",
   ogImage: "/og-image.png",
   author: {
@@ -20,14 +20,20 @@ export const SITE_CONFIG = {
   keywords: [
     "Kunal Chheda",
     "7K Ecosystem",
-    "Developer Portfolio",
-    "Student Developer",
-    "App Development",
-    "Language Learning",
-    "Personal Brand",
-    "Next.js Portfolio",
-    "React Developer",
-    "TypeScript",
+    "Student Developer Portfolio",
+    "React Developer India",
+    "Next.js Applications",
+    "TypeScript Developer",
+    "App Development Mumbai",
+    "Productivity Apps",
+    "Language Learning Apps",
+    "CLAT Preparation",
+    "12th Grade Developer",
+    "Teen Developer",
+    "Chess Player Programmer",
+    "Web Development Portfolio",
+    "Firebase Applications",
+    "AI Integration",
   ],
 } as const;
 
@@ -531,10 +537,8 @@ export const SOCIAL_LINKS = [
 export const NAVIGATION = [
   { name: "Home", href: "/#hero" },
   { name: "About", href: "/#about" },
+  { name: "Apps", href: "/#app-store" },
   { name: "Services", href: "/services" },
-  { name: "Portfolio Showcase", href: "/#showcase" },
-  { name: "App Store", href: "/#app-store" },
-  { name: "Ecosystem", href: "/#ecosystem" },
   { name: "Projects", href: "/#projects" },
   { name: "Writing", href: "/#writing" },
   { name: "Contact", href: "/#contact" },

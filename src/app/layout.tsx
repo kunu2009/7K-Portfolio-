@@ -52,16 +52,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: [
-    ...SITE_CONFIG.keywords,
-    'student developer India',
-    '12th grade developer',
-    'chess player programmer',
-    'CLAT preparation app',
-    'teenage developer',
-    'polyglot developer',
-    'Mumbai student developer',
-  ],
+  keywords: SITE_CONFIG.keywords,
   authors: [
     { 
       name: SITE_CONFIG.author.name, 
@@ -69,6 +60,12 @@ export const metadata: Metadata = {
     }
   ],
   creator: SITE_CONFIG.author.name,
+  publisher: SITE_CONFIG.author.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -81,7 +78,7 @@ export const metadata: Metadata = {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: SITE_CONFIG.name,
+        alt: `${SITE_CONFIG.name} - Portfolio of ${SITE_CONFIG.author.name}`,
       },
     ],
   },
@@ -95,6 +92,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -120,6 +118,7 @@ export const metadata: Metadata = {
   verification: {
     google: '4i9I_ltIK4zIhbHtWu99Yz3fyikz_SBfGkFkAKU7zto',
   },
+  category: 'technology',
 };
 
 export default function RootLayout({

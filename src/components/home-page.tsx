@@ -41,13 +41,13 @@ export default function HomePage() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
-        <PhilosophySection />
+        <AppStoreSection />
         <ServicesMenuCard />
         <PortfolioShowcaseSection />
-        <AppStoreSection />
         <ProjectsSection />
         <WritingSection />
         <JourneySection />
+        <PhilosophySection />
         <SupportSection />
       </main>
       <Footer />

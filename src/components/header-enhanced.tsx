@@ -31,10 +31,11 @@ const Header = () => {
           ? "bg-background/95 backdrop-blur-md border-b shadow-sm"
           : "bg-transparent"
       )}
+      role="banner"
     >
       <div className="container flex h-16 md:h-20 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group" aria-label="7K Ecosystem Home">
           <div className="relative">
             <span className="text-2xl md:text-3xl font-bold font-headline bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent transition-transform group-hover:scale-105">
               7K
@@ -46,7 +47,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1" role="navigation" aria-label="Main navigation">
           {NAVIGATION.map((item) => (
             <Button
               key={item.href}
@@ -68,6 +69,7 @@ const Header = () => {
             size="sm"
             asChild
             className="rounded-full"
+            aria-label="Download resume"
           >
             <a href="/resume.pdf" download>
               <Download className="h-4 w-4 mr-2" />
@@ -75,7 +77,7 @@ const Header = () => {
             </a>
           </Button>
           <Button size="sm" asChild className="rounded-full">
-            <Link href="/#contact">
+            <Link href="/#contact" aria-label="Contact for hire">
               <Mail className="h-4 w-4 mr-2" />
               Hire Me
             </Link>
@@ -87,12 +89,12 @@ const Header = () => {
           <ThemeToggle />
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open navigation menu">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
+            <SheetContent side="right" className="w-[280px] sm:w-[320px]" aria-label="Mobile navigation">
               <div className="flex flex-col h-full">
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between pb-4 border-b">
@@ -100,6 +102,7 @@ const Header = () => {
                     href="/"
                     className="flex items-center gap-2"
                     onClick={closeMobileMenu}
+                    aria-label="7K Ecosystem Home"
                   >
                     <span className="text-2xl font-bold font-headline bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
                       7K
@@ -109,7 +112,7 @@ const Header = () => {
                 </div>
 
                 {/* Mobile Navigation */}
-                <nav className="flex flex-col gap-2 py-6">
+                <nav className="flex flex-col gap-2 py-6" role="navigation" aria-label="Mobile navigation">
                   {NAVIGATION.map((item) => (
                     <Link
                       key={item.href}
@@ -130,7 +133,7 @@ const Header = () => {
                     asChild
                     className="w-full rounded-full"
                   >
-                    <a href="/resume.pdf" download onClick={closeMobileMenu}>
+                    <a href="/resume.pdf" download onClick={closeMobileMenu} aria-label="Download resume">
                       <Download className="h-4 w-4 mr-2" />
                       Download Resume
                     </a>
@@ -140,7 +143,7 @@ const Header = () => {
                     asChild
                     className="w-full rounded-full"
                   >
-                    <Link href="/#contact" onClick={closeMobileMenu}>
+                    <Link href="/#contact" onClick={closeMobileMenu} aria-label="Get in touch">
                       <Mail className="h-4 w-4 mr-2" />
                       Get In Touch
                     </Link>
