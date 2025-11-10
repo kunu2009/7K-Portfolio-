@@ -9,14 +9,16 @@ export const projectSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "7K Life",
+    "name": "7K Life - Best Free Productivity & Habit Tracker App",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Web, Android, iOS",
-    "description": "Core application for holistic life management and productivity. Integrates task management, goal setting, habit tracking, and personal knowledge management.",
+    "description": "Free all-in-one productivity app for life management. Track habits with streaks, manage tasks, set goals, take notes, and organize your life. Best habit tracker and task manager app for students and professionals in 2025.",
+    "keywords": "productivity app, habit tracker, task manager, goal tracker, life organizer, daily planner, free productivity tools, best habit tracker app",
     "offers": {
       "@type": "Offer",
       "price": "0",
-      "priceCurrency": "USD"
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
     },
     "creator": {
       "@type": "Person",
@@ -26,8 +28,103 @@ export const projectSchemas = [
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
-      "ratingCount": "150"
-    }
+      "ratingCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": "Habit tracking with streaks, Smart task management, Goal setting and progress tracking, Note-taking and journaling, Personal productivity dashboard, Daily reminders, Analytics and insights",
+    "screenshot": `${SITE_CONFIG.url}/images/7klife-screenshot.png`,
+    "url": "https://life.7kc.me"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "7K Fitness - Free Workout & Fitness Tracker App",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web, Android, iOS",
+    "description": "Best free fitness tracker app with 500+ exercise tutorials, calorie tracker, workout plans, and progress monitoring. Complete fitness companion for gym workouts, home exercises, weight loss, and health tracking.",
+    "keywords": "fitness app, fitness tracker, workout app, exercise app, gym app, calorie tracker, workout planner, health tracker app, free fitness app",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Kunal Chheda",
+      "url": SITE_CONFIG.url
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "267",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": "500+ exercise tutorials with videos, Calorie and nutrition tracker, Pre-built workout plans, Custom workout creator, Progress tracking with charts, Meal planning tools, Body measurement logging, Water intake reminders",
+    "screenshot": `${SITE_CONFIG.url}/images/7kfitness-screenshot.png`,
+    "url": "https://fitness.7kc.me"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "7K Money - Free Personal Finance & Budget Tracker",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web, Android, iOS",
+    "description": "Best free personal finance app for expense tracking, budgeting, and money management. Track spending, create budgets, monitor investments, and achieve financial goals. Complete money manager for individuals and families.",
+    "keywords": "finance app, expense tracker, budget app, money management app, personal finance, investment tracker, budgeting tool, money tracker",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Kunal Chheda",
+      "url": SITE_CONFIG.url
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "178",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": "Automatic expense tracking, Budget creation and monitoring, Investment portfolio tracking, Financial goal setting, Bill reminders, Spending analytics, Multi-currency support, Financial reports and charts",
+    "screenshot": `${SITE_CONFIG.url}/images/7kmoney-screenshot.png`,
+    "url": "https://money.7kc.me"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "7K Polyglot - Free Language Learning App",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web, Android",
+    "description": "Best free language learning app for learning multiple languages. Master vocabulary with flashcards, spaced repetition, pronunciation practice, and AI conversation. Learn Spanish, French, German, Japanese and more languages.",
+    "keywords": "language learning app, learn languages free, vocabulary builder, language practice app, polyglot app, learn multiple languages, flashcards app, free language app",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Kunal Chheda",
+      "url": SITE_CONFIG.url
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "234",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": "Multiple language support, Flashcard system, Spaced repetition learning, AI conversation practice, Pronunciation guides, Grammar lessons, Progress tracking, Daily practice routines",
+    "screenshot": `${SITE_CONFIG.url}/images/7kpolyglot-screenshot.png`,
+    "url": "https://polyglot.7kc.me"
   },
   {
     "@context": "https://schema.org",

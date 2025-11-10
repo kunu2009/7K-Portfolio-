@@ -62,12 +62,13 @@ const skillCategories = [
 ];
 
 const interests = [
-  { icon: Target, text: "Productivity", color: "text-blue-500" },
+  { icon: Target, text: "AI", color: "text-blue-500" },
   { icon: AppWindow, text: "App Design", color: "text-purple-500" },
   { icon: Gamepad2, text: "Game Dev", color: "text-green-500" },
   { icon: Wrench, text: "Handyman Skills", color: "text-orange-500" },
-  { icon: Crown, text: "Chess (1300)", color: "text-yellow-500" },
+  { icon: Crown, text: "Chess", color: "text-yellow-500" },
   { icon: Brain, text: "Problem Solving", color: "text-pink-500" },
+  { icon: Target, text: "Money", color: "text-emerald-500" },
 ];
 
 const AboutSection = () => {
@@ -177,16 +178,36 @@ const AboutSection = () => {
                   <Code2 className="h-6 w-6 text-primary" />
                   <h3 className="font-headline text-xl font-semibold">Programming Languages</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {PERSONAL_INFO.languages.programming.map((lang) => (
-                    <Badge 
-                      key={lang} 
-                      variant="secondary" 
-                      className="text-sm py-1.5 px-3 bg-background/50 hover:bg-background transition-colors"
-                    >
-                      {lang}
-                    </Badge>
-                  ))}
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                  {PERSONAL_INFO.languages.programming.map((lang) => {
+                    // Language icon mapping with colors
+                    const langConfig: Record<string, { icon: string; color: string; bg: string }> = {
+                      TypeScript: { icon: "TS", color: "text-blue-400", bg: "bg-blue-500/10" },
+                      JavaScript: { icon: "JS", color: "text-yellow-400", bg: "bg-yellow-500/10" },
+                      Python: { icon: "Py", color: "text-blue-500", bg: "bg-blue-600/10" },
+                      Java: { icon: "☕", color: "text-orange-500", bg: "bg-orange-500/10" },
+                      Kotlin: { icon: "Kt", color: "text-purple-500", bg: "bg-purple-500/10" },
+                      "HTML/CSS": { icon: "</>", color: "text-orange-400", bg: "bg-orange-400/10" },
+                      SQL: { icon: "SQL", color: "text-cyan-500", bg: "bg-cyan-500/10" },
+                    };
+                    
+                    const config = langConfig[lang] || { icon: lang.slice(0, 2), color: "text-primary", bg: "bg-primary/10" };
+                    
+                    return (
+                      <div 
+                        key={lang} 
+                        className={`flex flex-col items-center gap-2 p-3 rounded-lg ${config.bg} hover:scale-105 transition-transform cursor-default`}
+                        title={lang}
+                      >
+                        <div className={`text-2xl font-bold ${config.color}`}>
+                          {config.icon}
+                        </div>
+                        <span className="text-xs text-center text-muted-foreground">
+                          {lang}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>

@@ -62,14 +62,54 @@ export const appsData: App[] = [
       "Tailwind CSS"
     ],
     "keywords": [
+      // Generic productivity keywords
       "productivity app",
+      "productivity app free",
+      "best productivity app",
+      "productivity tools",
+      "productivity software",
+      
+      // Life management
       "life management",
-      "habit tracker",
-      "task manager",
-      "goal tracking",
+      "life organizer app",
       "personal organizer",
       "daily planner",
-      "productivity dashboard"
+      "daily planner app free",
+      "life planner app",
+      
+      // Habit tracking
+      "habit tracker",
+      "habit tracker free",
+      "habit tracking app",
+      "daily habit tracker",
+      "streak tracker app",
+      "good habits app",
+      
+      // Task management
+      "task manager",
+      "task manager app",
+      "to do list app",
+      "task organizer",
+      "task tracking app",
+      "project task manager",
+      
+      // Goal tracking
+      "goal tracking",
+      "goal tracker app",
+      "goal setting app",
+      "personal goals app",
+      "life goals tracker",
+      
+      // Dashboard & organization
+      "productivity dashboard",
+      "personal dashboard",
+      "life dashboard app",
+      "all in one organizer",
+      
+      // Target users
+      "productivity app for students",
+      "productivity tools India",
+      "free productivity apps 2025"
     ],
     "rating": 4.8,
     "reviews": 142,
@@ -596,14 +636,46 @@ export const appsData: App[] = [
       "Web Speech API"
     ],
     "keywords": [
+      // Generic language learning
+      "language learning app",
       "learn languages",
-      "polyglot",
-      "language learning",
-      "multiple languages",
-      "language lessons",
+      "language learning app free",
+      "best language learning app",
+      "learn languages free",
+      "language app",
+      
+      // Specific learning methods
+      "vocabulary builder",
+      "vocabulary app",
+      "language practice app",
       "foreign languages",
-      "language practice",
-      "multilingual"
+      "language lessons",
+      "language learning platform",
+      
+      // Polyglot specific
+      "polyglot",
+      "polyglot app",
+      "multiple languages",
+      "learn multiple languages",
+      "multilingual app",
+      "multilingual learning",
+      
+      // Features
+      "flashcards app",
+      "language flashcards",
+      "spaced repetition app",
+      "pronunciation practice",
+      
+      // Popular languages
+      "learn spanish app",
+      "learn french app",
+      "learn german app",
+      "learn japanese app",
+      
+      // Target audience
+      "language learning for students",
+      "language app India",
+      "free language learning 2025"
     ],
     "rating": 4.9,
     "reviews": 234,
@@ -647,14 +719,48 @@ export const appsData: App[] = [
       "Chart.js"
     ],
     "keywords": [
-      "personal finance",
-      "expense tracker",
+      // Generic finance keywords
+      "personal finance app",
+      "finance app",
+      "money app",
       "budget app",
-      "money management",
+      "budgeting app free",
+      "best budget app",
       "finance tracker",
+      "money tracker app",
+      
+      // Expense tracking
+      "expense tracker",
+      "expense tracker app",
+      "expense manager",
+      "spending tracker",
+      "daily expense tracker",
+      "expense tracking app free",
+      
+      // Budget management
+      "money management",
+      "money manager app",
+      "budget planner",
+      "budget calculator app",
+      "monthly budget app",
+      
+      // Investment
       "investment tracker",
-      "budgeting tool",
-      "financial planning"
+      "investment tracker app",
+      "portfolio tracker",
+      "stock tracker app",
+      
+      // Financial planning
+      "financial planning",
+      "financial planner app",
+      "personal finance manager",
+      "finance organizer",
+      
+      // Target audience
+      "budget app for students",
+      "finance app India",
+      "money management app India",
+      "expense tracker India"
     ],
     "rating": 4.8,
     "reviews": 178,
@@ -697,14 +803,48 @@ export const appsData: App[] = [
       "Video.js"
     ],
     "keywords": [
+      // Generic high-traffic fitness keywords
       "fitness app",
-      "exercise tutorial",
-      "calorie tracker",
-      "workout plans",
-      "fitness tracking",
-      "nutrition tracker",
+      "fitness tracker",
+      "workout app",
+      "exercise app",
       "gym app",
-      "personal trainer app"
+      "health and fitness app",
+      "fitness app free",
+      "best fitness app",
+      "fitness tracker free",
+      
+      // Specific features
+      "exercise tutorial",
+      "workout tutorial app",
+      "exercise videos free",
+      "calorie tracker",
+      "calorie counter app",
+      "nutrition tracker",
+      "meal tracker app",
+      "food diary app",
+      
+      // Workout related
+      "workout plans",
+      "workout planner app",
+      "gym workout app",
+      "home workout app",
+      "personal trainer app",
+      "fitness coach app",
+      "workout routine app",
+      
+      // Progress tracking
+      "fitness tracking",
+      "fitness progress tracker",
+      "weight loss tracker",
+      "body measurement app",
+      "fitness goals app",
+      
+      // Target audience
+      "fitness app for beginners",
+      "gym workout tracker",
+      "fitness app India",
+      "free workout app"
     ],
     "rating": 4.8,
     "reviews": 267,

@@ -29,9 +29,9 @@ export async function generateMetadata({
   const ogImageUrl = `https://7kc.me/og/${app.id}.png`;
 
   return {
-    title: `${app.name} - ${app.tagline} | 7K Ecosystem`,
-    description: app.description,
-    keywords: app.keywords.join(", "),
+    title: `${app.name} - Free ${app.category.charAt(0).toUpperCase() + app.category.slice(1)} App | ${app.tagline}`,
+    description: `${app.description} Download ${app.name} for free - ${app.tagline}. ${app.pricing === 'free' ? 'Completely free, no subscription required.' : 'Free with premium features available.'}`,
+    keywords: app.keywords,
     authors: [{ name: "Kunal Chheda", url: "https://7kc.me" }],
     creator: "Kunal Chheda",
     publisher: "7K Ecosystem",

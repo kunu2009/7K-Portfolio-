@@ -2,24 +2,55 @@ import AppsIndexClient from "./apps-index-client";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "7K App Store - All Applications",
-  description: "Browse 20+ productivity applications in the 7K Ecosystem. Including 7K Life, LawPrep, Polyglot, Itihaas, Political Science, Economics, and more educational and productivity tools.",
+  title: "Free Apps Directory - 20+ Productivity, Fitness & Learning Tools | 7K Apps",
+  description: "Browse 20+ best free apps: productivity tools (7K Life), fitness tracker (7K Fitness), finance manager (7K Money), language learning (7K Polyglot), educational apps, and more. All free, no subscriptions required.",
   openGraph: {
-    title: "7K App Store - 20+ Productivity & Educational Apps",
-    description: "Explore the complete collection of apps built by Kunal Chheda - from productivity tools to educational platforms.",
+    title: "20+ Best Free Apps - Productivity, Fitness, Learning & More",
+    description: "Explore complete collection of free apps: habit tracker, task manager, workout planner, expense tracker, language learning & education tools.",
     type: "website",
+    url: "https://7kc.me/apps",
   },
   keywords: [
-    "7K apps",
+    // Generic app directory keywords
+    "free apps",
+    "best apps",
+    "web apps free",
     "productivity apps",
-    "educational apps",
-    "student tools",
+    "fitness apps",
     "learning apps",
-    "7K Life",
+    "educational apps",
+    "finance apps",
+    
+    // Specific app types
+    "habit tracker app",
+    "task manager app",
+    "workout tracker app",
+    "expense tracker app",
+    "language learning app",
+    "study apps",
+    
+    // Popular app names
+    "7K Life app",
+    "7K Fitness app",
+    "7K Money app",
+    "7K Polyglot app",
     "7K LawPrep",
-    "7K Polyglot",
-    "app ecosystem",
+    
+    // Target audience
+    "student apps",
+    "productivity tools for students",
+    "apps for professionals",
+    "free apps India",
+    "best Indian apps",
+    
+    // Ecosystem
+    "7K apps",
+    "7K Ecosystem",
+    "Kunal Chheda apps",
   ],
+  alternates: {
+    canonical: "https://7kc.me/apps",
+  },
 };
 
 export default function AppsPage() {
