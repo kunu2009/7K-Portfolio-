@@ -48,12 +48,12 @@ const HeroSection = () => {
           className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '100ms' }}
         >
-          <div className="inline-block rounded-full p-2 mb-6 sm:mb-8"
+          <div className="inline-block rounded-full p-1.5 mb-6 sm:mb-8"
                style={{
-                 background: 'rgba(255, 255, 255, 0.05)',
-                 backdropFilter: 'blur(8px)',
-                 WebkitBackdropFilter: 'blur(8px)',
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                 background: 'rgba(255, 255, 255, 0.08)',
+                 backdropFilter: 'blur(6px)',
+                 WebkitBackdropFilter: 'blur(6px)',
+                 border: '1px solid rgba(255, 255, 255, 0.15)',
                }}>
             <Avatar className="h-24 w-24 sm:h-32 sm:w-32 md:h-36 md:w-36 border-4 border-primary shadow-2xl shadow-primary/20">
               <AvatarImage 
@@ -67,40 +67,50 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Title and Subtitle with Individual Glass */}
+        {/* Title and Subtitle with Inline Blur */}
         <div 
-          className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          className={`transition-all duration-700 mb-4 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '200ms' }}
         >
-          <div className="inline-block rounded-2xl px-6 sm:px-8 py-4 sm:py-6 mb-4"
-               style={{
-                 background: 'rgba(255, 255, 255, 0.05)',
-                 backdropFilter: 'blur(8px)',
-                 WebkitBackdropFilter: 'blur(8px)',
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
-               }}>
-            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-br from-foreground via-primary to-accent bg-clip-text text-transparent px-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-              {hero.title}
-            </h1>
-            <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground/90 px-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.2)]">
+          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4">
+            <span className="inline-block px-4 py-2 rounded-xl"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                  }}>
+              <span className="bg-gradient-to-br from-white via-primary to-accent bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,255,255,0.3)]">
+                {hero.title}
+              </span>
+            </span>
+          </h1>
+          <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium">
+            <span className="inline-block px-4 py-2 rounded-lg"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                  }}>
               {hero.subtitle}
-            </p>
-          </div>
+            </span>
+          </p>
         </div>
 
-        {/* Description with Individual Glass */}
+        {/* Description with Inline Blur */}
         <div 
-          className={`transition-all duration-700 max-w-2xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          className={`transition-all duration-700 max-w-3xl mb-6 sm:mb-8 px-4 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '300ms' }}
         >
-          <div className="inline-block rounded-xl px-6 py-4 mb-6 sm:mb-8"
+          <div className="inline-block px-5 py-3 rounded-xl"
                style={{
-                 background: 'rgba(255, 255, 255, 0.05)',
+                 background: 'rgba(255, 255, 255, 0.08)',
                  backdropFilter: 'blur(8px)',
                  WebkitBackdropFilter: 'blur(8px)',
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                 border: '1px solid rgba(255, 255, 255, 0.15)',
                }}>
-            <p className="text-sm sm:text-base md:text-lg text-foreground font-medium leading-relaxed px-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+            <p className="text-sm sm:text-base md:text-lg text-white font-medium leading-relaxed">
               {hero.description}
             </p>
           </div>
@@ -124,19 +134,20 @@ const HeroSection = () => {
           className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '500ms' }}
         >
-          <div className="inline-flex flex-wrap gap-2 sm:gap-3 justify-center rounded-full px-4 py-3"
+          <div className="inline-flex flex-wrap gap-2 sm:gap-3 justify-center rounded-full px-3 py-2"
                style={{
-                 background: 'rgba(255, 255, 255, 0.05)',
-                 backdropFilter: 'blur(8px)',
-                 WebkitBackdropFilter: 'blur(8px)',
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
+                 background: 'rgba(255, 255, 255, 0.15)',
+                 backdropFilter: 'blur(10px)',
+                 WebkitBackdropFilter: 'blur(10px)',
+                 border: '1px solid rgba(255, 255, 255, 0.25)',
+                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                }}>
           {SOCIAL_LINKS.map((link) => (
             <Button 
               key={link.name}
               variant="ghost" 
               size="icon" 
-              className="rounded-full hover:bg-primary/10 transition-colors" 
+              className="rounded-full hover:bg-primary/20 transition-colors text-foreground hover:text-primary" 
               asChild
             >
               <Link 
@@ -155,17 +166,6 @@ const HeroSection = () => {
             </Button>
           ))}
           </div>
-        </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div 
-        className={`transition-all duration-700 absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-        style={{ transitionDelay: '600ms' }}
-      >
-        <div className="flex flex-col items-center gap-2 text-muted-foreground">
-          <span className="text-xs sm:text-sm drop-shadow-lg">Scroll to explore</span>
-          <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 animate-bounce" />
         </div>
       </div>
     </section>

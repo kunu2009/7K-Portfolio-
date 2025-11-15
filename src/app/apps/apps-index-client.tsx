@@ -13,10 +13,74 @@ import {
   Filter,
   Sparkles,
   Settings,
-  ArrowLeft
+  ArrowLeft,
+  Activity,
+  BookOpen,
+  Briefcase,
+  Calendar,
+  Camera,
+  Code2,
+  DollarSign,
+  Dumbbell,
+  Gamepad2,
+  GraduationCap,
+  Heart,
+  History,
+  Image as ImageIcon,
+  Instagram,
+  Landmark,
+  Languages,
+  Lightbulb,
+  Music,
+  PenTool,
+  PieChart,
+  Pin,
+  Presentation,
+  Scale,
+  Target,
+  TrendingUp,
+  Users,
+  Wallet,
+  Wand2
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
+// Icon mapping for different apps - each with distinct, relevant icon
+const getAppIcon = (appId: string) => {
+  const iconMap: { [key: string]: any } = {
+    'life': Target,                    // 7K Life - Goals/productivity
+    '7kmoney': Wallet,                 // 7K Money - Finance tracking
+    'pol': Landmark,                   // Political Science - Government
+    'eco': TrendingUp,                 // Economics - Growth/trends
+    'his': History,                    // History - Historical
+    'kanban': Briefcase,               // Kanban - Project management
+    'pins': Pin,                       // Pins - Bookmarks
+    'prompt': Wand2,                   // Prompt Library - AI/Magic
+    'tools': Code2,                    // Dev Tools - Development
+    'english': BookOpen,               // English - Learning
+    'eng': Presentation,               // English Pro - Advanced learning
+    'polyglot': Languages,             // Polyglot - Multiple languages
+    'money': DollarSign,               // Money Manager - Finance
+    'fitness': Dumbbell,               // Fitness Pro - Exercise
+    'fit': Heart,                      // 7K Fit - Health
+    'game': Gamepad2,                  // Games - Gaming
+    'student': Users,                  // Student Game Hub - Groups
+    'group': Users,                    // Group Game - Party games
+    'editor': ImageIcon,               // Photo Editor - Images
+    'insta': Instagram,                // Insta Hub - Social
+    'relife': Activity,                // ReLife - Life management
+    'upsc': Scale,                     // UPSC - Law/exam prep
+    'music': Music,                    // Music - Streaming
+    'learn': GraduationCap,            // Learning platform
+    'creative': Camera,                // Creative tools
+    'write': PenTool,                  // Writing tools
+    'analytics': PieChart,             // Analytics
+    'calendar': Calendar,              // Calendar
+    'ai': Lightbulb,                   // AI tools
+  };
+  return iconMap[appId] || Sparkles;
+};
 
 export default function AppsIndexClient() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -161,7 +225,9 @@ export default function AppsIndexClient() {
 
         {/* Apps Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredApps.map((app, index) => (
+          {filteredApps.map((app, index) => {
+            const IconComponent = getAppIcon(app.id);
+            return (
             <motion.div
               key={app.id}
               initial={{ opacity: 0, y: 20 }}
@@ -171,8 +237,8 @@ export default function AppsIndexClient() {
               <Link href={`/apps/${app.id}`}>
                 <Card className="h-full p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
                   {/* App Icon */}
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                    {categoryIcons[app.category]}
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <IconComponent className="h-8 w-8 text-primary" />
                   </div>
 
                   {/* App Name */}
@@ -227,7 +293,8 @@ export default function AppsIndexClient() {
                 </Card>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* No Results */}

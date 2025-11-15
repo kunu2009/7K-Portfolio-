@@ -4,13 +4,87 @@
 import React, { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Bot, Grid, Sparkles, BookMarked, ExternalLink, ListChecks, Star, Languages, Landmark, ChevronDown, ChevronUp } from "lucide-react";
+import { 
+  Bot, 
+  Grid, 
+  Sparkles, 
+  BookMarked, 
+  ExternalLink, 
+  ListChecks, 
+  Star, 
+  Languages, 
+  Landmark, 
+  ChevronDown, 
+  ChevronUp,
+  Activity,
+  BookOpen,
+  Briefcase,
+  Calendar,
+  Camera,
+  Code2,
+  DollarSign,
+  Dumbbell,
+  Gamepad2,
+  GraduationCap,
+  Heart,
+  History,
+  Image as ImageIcon,
+  Instagram,
+  Lightbulb,
+  Music,
+  PenTool,
+  PieChart,
+  Pin,
+  Presentation,
+  Scale,
+  Target,
+  TrendingUp,
+  Users,
+  Wallet,
+  Wand2
+} from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
 import { appsData } from '@/lib/apps-data';
+
+// Icon mapping for different apps - each with distinct, relevant icon
+const getAppIcon = (appId: string) => {
+  const iconMap: { [key: string]: any } = {
+    'life': Target,
+    '7kmoney': Wallet,
+    'pol': Landmark,
+    'eco': TrendingUp,
+    'his': History,
+    'kanban': Briefcase,
+    'pins': Pin,
+    'prompt': Wand2,
+    'tools': Code2,
+    'english': BookOpen,
+    'eng': Presentation,
+    'polyglot': Languages,
+    'money': DollarSign,
+    'fitness': Dumbbell,
+    'fit': Heart,
+    'game': Gamepad2,
+    'student': Users,
+    'group': Users,
+    'editor': ImageIcon,
+    'insta': Instagram,
+    'relife': Activity,
+    'upsc': Scale,
+    'music': Music,
+    'learn': GraduationCap,
+    'creative': Camera,
+    'write': PenTool,
+    'analytics': PieChart,
+    'calendar': Calendar,
+    'ai': Lightbulb,
+  };
+  return iconMap[appId] || Sparkles;
+};
 
 const LawPrepQuiz = dynamic(() => import('@/components/mini-demos/law-prep-quiz').then(mod => mod.LawPrepQuiz));
 
@@ -290,10 +364,14 @@ const ProjectsSection = () => {
                 className="overflow-hidden"
               >
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-                  {appsData.map((app) => (
+                  {appsData.map((app) => {
+                    const IconComponent = getAppIcon(app.id);
+                    return (
                     <Card key={app.id} className="group hover:shadow-lg transition-all">
                       <CardHeader className="pb-3">
-                        <div className="text-3xl mb-2">{app.icon || "📱"}</div>
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          <IconComponent className="h-6 w-6 text-primary" />
+                        </div>
                         <CardTitle className="text-lg">{app.name}</CardTitle>
                         <CardDescription className="line-clamp-2 text-sm">
                           {app.description}
@@ -307,7 +385,8 @@ const ProjectsSection = () => {
                         </a>
                       </CardContent>
                     </Card>
-                  ))}
+                    );
+                  })}
                 </div>
               </motion.div>
             )}

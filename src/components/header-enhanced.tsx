@@ -29,7 +29,7 @@ const Header = () => {
         "fixed top-0 z-50 w-full transition-all duration-300",
         isScrolled
           ? "bg-background/95 backdrop-blur-md border-b shadow-sm"
-          : "bg-transparent"
+          : "bg-background/80 backdrop-blur-sm border-b border-border/50"
       )}
       role="banner"
     >

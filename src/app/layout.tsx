@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
 import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
 import { ServiceWorkerRegistration } from '@/components/service-worker-registration';
+import { MobileCTABar } from '@/components/mobile-cta-bar';
+import { SkipToContent, GlobalAnnouncer } from '@/lib/accessibility';
 import { SITE_CONFIG } from '@/lib/constants';
 import { projectSchemas, organizationSchema, breadcrumbSchema, bookSchemas } from '@/lib/schemas';
 
@@ -162,6 +164,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${inter.className} font-body antialiased bg-background`}>
+        <SkipToContent />
+        <GlobalAnnouncer />
         <ServiceWorkerRegistration />
         <ThemeProvider
           attribute="class"
@@ -169,9 +173,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
           <Toaster />
           <ChatAssistantLoader />
+          <MobileCTABar />
         </ThemeProvider>
         
         {/* Structured Data - Person Schema */}
