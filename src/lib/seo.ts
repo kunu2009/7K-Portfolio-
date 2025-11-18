@@ -27,7 +27,7 @@ export function generateSEO(config: SEOConfig): Metadata {
     ogType = 'website',
     canonical,
     noindex = false,
-    author = 'Kunal Vishwakarma',
+    author = 'Kunal Chheda',
     publishedTime,
     modifiedTime,
     section,
@@ -97,7 +97,7 @@ export function generateArticleSchema({
   image,
   datePublished,
   dateModified,
-  author = 'Kunal Vishwakarma',
+  author = 'Kunal Chheda',
   url,
 }: {
   title: string;
@@ -156,7 +156,7 @@ export function generateServiceSchema({
     description,
     provider: {
       '@type': 'Person',
-      name: 'Kunal Vishwakarma',
+      name: 'Kunal Chheda',
       url: SITE_URL,
     },
     offers: {
