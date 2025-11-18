@@ -33,6 +33,9 @@ const JourneySection = dynamic(() => import('@/components/sections/journey'), {
 const SupportSection = dynamic(() => import('@/components/sections/support-section').then(mod => ({ default: mod.SupportSection })), {
   loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
 });
+const BlogSection = dynamic(() => import('@/components/blog-section'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+});
 
 export default function HomePage() {
   return (
@@ -48,6 +51,7 @@ export default function HomePage() {
         <WritingSection />
         <JourneySection />
         <PhilosophySection />
+        <BlogSection variant="grid" limit={3} showCategories={false} />
         <SupportSection />
       </main>
       <Footer />
