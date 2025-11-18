@@ -126,23 +126,36 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Personal Touch Section (Carnegie: Show genuine appreciation) */}
+        <div className="mt-10 pt-6 border-t">
+          <div className="text-center space-y-3 max-w-2xl mx-auto">
+            <p className="text-base font-medium text-foreground">
+              Built with <Heart className="inline h-4 w-4 text-red-500 fill-red-500 animate-pulse" /> by {SITE_CONFIG.author.name}
+            </p>
+            <p className="text-sm text-muted-foreground italic">
+              A 12th-grade student who loves code, chess, and building things that help people.
+            </p>
+            <p className="text-sm font-medium text-primary">
+              Thanks for visiting. Really. 🙏
+            </p>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Built with{" "}
-            <Heart className="inline h-4 w-4 text-red-500 fill-red-500" /> by{" "}
-            {SITE_CONFIG.author.name}.
+        <div className="mt-8 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-xs text-muted-foreground hover:text-primary transition-colors"
             >
               Privacy
             </Link>
             <Link
               href="/terms"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-xs text-muted-foreground hover:text-primary transition-colors"
             >
               Terms
             </Link>

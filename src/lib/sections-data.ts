@@ -155,28 +155,28 @@ export interface PortfolioSections {
 export const portfolioSections: PortfolioSections = {
   hero: {
     enabled: true,
-    title: "Building the 7K Ecosystem",
-    subtitle: "One Idea at a Time.",
-    description: "I'm Kunal — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess. I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort. From productivity apps to language learning platforms, finance trackers to fitness companions — I build digital solutions that make life easier. Developer • Polyglot • Chess Player • Lifelong Learner",
-    ctaText: "Explore My Work",
+    title: "What if your next app could change someone's life?",
+    subtitle: "I help people turn ideas into apps that solve real problems — fast, clean, and built to last.",
+    description: "Need a productivity tool? A learning platform? An e-commerce solution? I've built 24+ apps that people actually use every day. From fitness trackers to law prep platforms, finance managers to language learning tools — I create digital solutions that make life easier. Let's build something meaningful together.",
+    ctaText: "View My Work",
     ctaLink: "#projects",
-    secondaryCtaText: "Get In Touch",
-    secondaryCtaLink: "#contact",
+    secondaryCtaText: "Let's Chat About Your Idea",
+    secondaryCtaLink: "https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20my%20project%20idea",
     backgroundImage: "/images/main-background.svg"
   },
   about: {
     enabled: true,
-    title: "About Me",
-    subtitle: "Who I Am",
-    description: "I'm Kunal Chheda — a 12th-grade Arts student from India with an unconventional blend of ambitions. While I dream of becoming a corporate lawyer, my heart beats for technology and creation. I've built over 24 powerful applications spanning productivity, education, finance, health, and entertainment. As a polyglot learning multiple languages, a chess enthusiast pushing my rating, and a full-stack developer mastering modern web technologies, I believe in building tools that don't just solve problems—they provide comfort and companionship in our digital journey.",
-    quote: "I didn't build products to showcase my skills. I built them because I needed something steady and reliable when everything else felt uncertain. These apps aren't just code—they're my companions, my comfort zone, and proof that technology can be warm, empathetic, and deeply personal.",
+    title: "Hi, I'm Kunal 👋",
+    subtitle: "Building Apps That Actually Help People",
+    description: "I started coding because I needed apps that didn't exist. I'm a 12th-grade student who builds solutions for real problems — not just to showcase skills, but because technology should make life easier. When I couldn't find a law prep app that worked for me, I built 7K LawPrep. When my friends struggled with productivity, I created 7K Life. Each of my 24 apps started as a personal need — and became something others rely on daily.",
+    quote: "I believe the best apps aren't flashy — they're friendly, reliable, and feel like a companion. That's what I build. These apps aren't just code—they're my companions, my comfort zone, and proof that technology can be warm, empathetic, and deeply personal.",
     highlights: [
-      "12th Grade Arts Student",
-      "24+ Production Apps Built",
-      "Chess Player (1300+ Rating)",
-      "Polyglot in Progress (6+ Languages)",
+      "24+ Apps People Actually Use",
       "Full-Stack Developer",
-      "Aspiring Corporate Lawyer"
+      "12th Grade Arts Student",
+      "Aspiring Corporate Lawyer",
+      "Chess Player (1300+ Rating)",
+      "Polyglot in Progress (6+ Languages)"
     ],
     image: "/images/profile.jpg"
   },

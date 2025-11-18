@@ -119,11 +119,11 @@ function getFallbackResponse(): string {
  */
 export async function getGreeting(): Promise<string> {
   const greetings = [
-    `Hi! I'm Stan, Kunal's AI assistant! I have ${KNOWLEDGE_STATS.totalQuestions}+ answers about Kunal, his projects, and the 7K Ecosystem. Ask me anything!`,
-    "Hey there! 👋 I'm Stan! I know all about Kunal and his work. What would you like to know?",
-    "Hello! I'm Stan, here to help you explore Kunal's world of productivity, law, and tech! What can I tell you?",
-    "Greetings! I'm Stan, Kunal's digital assistant. Ask me about his projects, skills, or journey!",
-    `Welcome! I'm Stan with ${KNOWLEDGE_STATS.totalQuestions} Q&A pairs ready. Fire away with your questions!`,
+    `Hi! I'm Stan, Kunal's AI assistant! I have ${KNOWLEDGE_STATS.totalQuestions}+ answers about Kunal, his projects, and the 7K Ecosystem. Ask me anything!\n\n💡 Quick tip: Try commands like "open blog", "show apps", or "go to projects" to navigate instantly!`,
+    "Hey there! 👋 I'm Stan! I know all about Kunal and his work. What would you like to know?\n\n✨ You can also use commands: 'open blog', 'show apps', 'contact kunal', or just ask naturally!",
+    "Hello! I'm Stan, here to help you explore Kunal's world of productivity, law, and tech! What can I tell you?\n\n🚀 Pro tip: Say 'help' to see all my navigation commands!",
+    "Greetings! I'm Stan, Kunal's digital assistant. Ask me about his projects, skills, or journey!\n\n⚡ I can also navigate for you! Try: 'open services', 'show projects', or 'whatsapp'",
+    `Welcome! I'm Stan with ${KNOWLEDGE_STATS.totalQuestions} Q&A pairs ready. Fire away with your questions!\n\n🎯 New: Use commands like 'open blog' or 'go to top' to navigate, or type 'help' for all commands!`,
   ];
 
   return greetings[Math.floor(Math.random() * greetings.length)];

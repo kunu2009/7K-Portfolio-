@@ -12,7 +12,8 @@ import {
   ArrowRight, Check, Mail, Phone, MessageCircle,
   Rocket, ChevronLeft, Sparkles, Target, Zap,
   Image as ImageIcon, Settings, Globe, TrendingUp,
-  Package, IndianRupee
+  Package, IndianRupee, ChevronDown, ChevronUp,
+  Clock, Users, FileText, Cpu, CheckCircle
 } from 'lucide-react';
 
 const mainServices = [
@@ -275,6 +276,112 @@ const whyChooseUs = [
   }
 ];
 
+const processTimeline = [
+  {
+    step: '01',
+    icon: Phone,
+    title: 'Discovery Call',
+    description: 'Free 15-30 minute consultation to understand your needs and goals',
+    duration: 'Free',
+    details: ['Discuss requirements', 'Share examples', 'Ask questions', 'Get expert advice']
+  },
+  {
+    step: '02',
+    icon: FileText,
+    title: 'Proposal & Quote',
+    description: 'Detailed project proposal with timeline, deliverables, and pricing',
+    duration: '24 hours',
+    details: ['Scope breakdown', 'Clear pricing', 'Timeline estimate', 'Feature list']
+  },
+  {
+    step: '03',
+    icon: Rocket,
+    title: 'Kickoff & Payment',
+    description: 'Project kickoff after 50% advance payment and agreement',
+    duration: 'Same day',
+    details: ['Sign agreement', '50% payment', 'Access credentials', 'Set milestones']
+  },
+  {
+    step: '04',
+    icon: Cpu,
+    title: 'Development',
+    description: 'Active development with regular updates and preview links',
+    duration: '1-3 weeks',
+    details: ['Build features', 'Daily updates', 'Preview links', 'Your feedback']
+  },
+  {
+    step: '05',
+    icon: CheckCircle,
+    title: 'Delivery & Support',
+    description: 'Final testing, launch, and 50% payment with free support period',
+    duration: '1-2 days',
+    details: ['Quality testing', 'Launch live', '50% payment', '1-3 month support']
+  }
+];
+
+const faqs = [
+  {
+    question: 'How long does a typical project take?',
+    answer: 'Most projects are completed within 1-3 weeks. Static websites take 3-7 days, dynamic sites 1-2 weeks, and web applications 2-4 weeks. Timeline depends on project complexity, features, and how quickly you provide feedback and content.'
+  },
+  {
+    question: 'What\'s included in the price?',
+    answer: 'All prices include design, development, responsive layouts for mobile/tablet/desktop, basic SEO setup, contact forms, and post-launch support (1-3 months depending on package). Domain, hosting, and premium plugins/services are separate.'
+  },
+  {
+    question: 'Do you offer payment plans?',
+    answer: 'Yes! Standard plan is 50% advance and 50% on completion. For larger projects (above Rs. 20,000), we can arrange milestone-based payments. All payments are secure and invoiced.'
+  },
+  {
+    question: 'Can I see examples of your work?',
+    answer: 'Absolutely! Check our portfolio section showcasing 28+ design variations, 24+ live apps, and case studies from past clients. We\'re proud to show our work upfront so you know exactly what quality to expect.'
+  },
+  {
+    question: 'What if I need changes after launch?',
+    answer: 'All packages include 1-3 months of free support for bug fixes and minor tweaks. After that, you can opt for our maintenance plan (Rs. 1,000-3,000/month) or pay per change. We never leave you stranded!'
+  },
+  {
+    question: 'How do I get started?',
+    answer: 'Simple! Click "Send Message" on any service above to WhatsApp us, or call +91 8591247148. We\'ll schedule a free 15-30 minute discovery call to discuss your needs and provide a custom quote within 24 hours.'
+  },
+  {
+    question: 'What\'s the payment process?',
+    answer: 'After agreeing on the project scope and price: (1) You pay 50% advance, (2) We start work and send regular updates, (3) You pay remaining 50% after final delivery and approval. All payments via UPI, bank transfer, or Razorpay.'
+  },
+  {
+    question: 'Do you offer support after launch?',
+    answer: 'Yes! Every project includes free support: Static sites get 1 month, dynamic sites get 2 months, and web apps get 3 months. Support covers bug fixes, content updates, and technical questions. Extended plans available.'
+  },
+  {
+    question: 'Can you help with content and images?',
+    answer: 'We can guide you on what content is needed and recommend royalty-free images. Professional content writing is available as an add-on (Rs. 500-2,000/page). Custom graphics and illustrations also available (Rs. 500-3,000).'
+  },
+  {
+    question: 'What about hosting and domain?',
+    answer: 'We offer hosting setup as an add-on (Rs. 500-1,000/year) which includes domain registration, hosting configuration, SSL certificate, and email setup. Or we can deploy to your existing hosting. Recommended: Vercel (free) or Hostinger (paid).'
+  },
+  {
+    question: 'Do you work with clients outside India?',
+    answer: 'Yes! We work with clients globally. Communication via WhatsApp, email, and video calls. Pricing for international clients in USD with similar terms. Time zone differences managed with async updates and scheduled calls.'
+  },
+  {
+    question: 'What technologies do you use?',
+    answer: 'We use modern, industry-standard tech: Next.js 15 + React for web apps, TypeScript for reliability, Tailwind CSS for design, Framer Motion for animations, and various APIs for functionality. All projects are SEO-optimized and performant.'
+  },
+  {
+    question: 'Can you redesign my existing website?',
+    answer: 'Absolutely! We can redesign your existing site with modern design, better performance, and new features. We\'ll analyze your current site, migrate content, improve SEO, and ensure zero downtime during the switch. Pricing similar to new builds.'
+  },
+  {
+    question: 'Do you provide training?',
+    answer: 'Yes! After delivery, we provide a walkthrough video showing how to update content, add blog posts, manage products, etc. We also offer paid 1-on-1 training sessions if you need hands-on help (Rs. 1,000/hour).'
+  },
+  {
+    question: 'What if I\'m not happy with the result?',
+    answer: 'We work iteratively with regular previews and feedback loops to ensure you\'re happy. Unlimited revisions during development. If somehow you\'re still not satisfied, we\'ll refund based on work completed. Your satisfaction is our priority.'
+  }
+];
+
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -291,6 +398,11 @@ const staggerContainer = {
 
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -401,6 +513,96 @@ export default function ServicesPage() {
               </Card>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Process Timeline Section */}
+      <section className="py-20">
+        <div className="container px-4">
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+              Simple Process
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
+              From Idea to Launch in 5 Steps
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our streamlined workflow ensures your project stays on track with clear milestones and transparent communication
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline connector line - hidden on mobile */}
+            <div className="hidden lg:block absolute top-1/3 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
+            
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 relative">
+              {processTimeline.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15 }}
+                    className="relative"
+                  >
+                    <Card className="h-full border-border/50 bg-card/50 backdrop-blur hover:bg-card hover:border-primary/30 transition-all group">
+                      <CardContent className="pt-6 pb-6">
+                        {/* Step number badge */}
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg ring-4 ring-background">
+                          {step.step}
+                        </div>
+
+                        {/* Icon */}
+                        <div className="mt-8 mb-4 inline-flex rounded-lg bg-primary/10 p-2.5 ring-1 ring-primary/20 group-hover:bg-primary/20 transition-colors">
+                          <Icon className="h-6 w-6 text-primary" />
+                        </div>
+
+                        {/* Title & Duration */}
+                        <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
+                        <div className="inline-flex items-center gap-1.5 text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full mb-3">
+                          <Clock className="h-3 w-3" />
+                          {step.duration}
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+
+                        {/* Details list */}
+                        <ul className="space-y-2">
+                          {step.details.map((detail, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
+                              <Check className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    {/* Mobile connector line */}
+                    {index < processTimeline.length - 1 && (
+                      <div className="lg:hidden flex justify-center py-4">
+                        <div className="w-0.5 h-8 bg-gradient-to-b from-primary/40 to-primary/20" />
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">Ready to get started?</p>
+            <a href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Start Free Consultation
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -518,6 +720,83 @@ export default function ServicesPage() {
               </div>
               <div className="text-muted-foreground">Years</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container px-4">
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+              Got Questions?
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Everything you need to know about working with us. Can't find your answer? 
+              <a href="https://wa.me/918591247148" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1">
+                Message us on WhatsApp
+              </a>
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <Card className="border-border/50 bg-card/50 backdrop-blur hover:border-primary/30 transition-colors overflow-hidden">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full text-left p-6 flex items-start justify-between gap-4 group"
+                    >
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {faq.question}
+                        </h3>
+                        {isOpen && (
+                          <motion.p
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-3 text-muted-foreground leading-relaxed"
+                          >
+                            {faq.answer}
+                          </motion.p>
+                        )}
+                      </div>
+                      <div className="flex-shrink-0 mt-1">
+                        {isOpen ? (
+                          <ChevronUp className="h-5 w-5 text-primary" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                        )}
+                      </div>
+                    </button>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* FAQ CTA */}
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">Still have questions?</p>
+            <a href="https://wa.me/918591247148?text=Hi%20Kunal!%20I%20have%20some%20questions%20about%20your%20services" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="gap-2">
+                <MessageCircle className="h-5 w-5" />
+                Chat with Us
+              </Button>
+            </a>
           </div>
         </div>
       </section>

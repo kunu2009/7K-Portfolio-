@@ -116,16 +116,34 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* Quick Action Chips (Carnegie: Let them talk - give them choices) */}
+        <div 
+          className={`transition-all duration-700 flex flex-wrap gap-2 sm:gap-3 justify-center mb-6 sm:mb-8 px-4 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '350ms' }}
+        >
+          <Button asChild variant="secondary" size="sm" className="rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105">
+            <Link href="/services">I need a web app</Link>
+          </Button>
+          <Button asChild variant="secondary" size="sm" className="rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105">
+            <Link href="#projects">Show me your work</Link>
+          </Button>
+          <Button asChild variant="secondary" size="sm" className="rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105">
+            <a href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20my%20project%20idea" target="_blank" rel="noopener noreferrer">
+              Let's chat about my idea
+            </a>
+          </Button>
+        </div>
+
         {/* CTA Buttons with Individual Glass */}
         <div 
           className={`transition-all duration-700 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto px-4 sm:px-0 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '400ms' }}
         >
           <Button asChild size="lg" className="shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow w-full sm:w-auto">
-            <Link href="#projects">View My Work</Link>
+            <Link href={hero.ctaLink}>{hero.ctaText}</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto">
-            <Link href="#contact">Get In Touch</Link>
+            <a href={hero.secondaryCtaLink} target="_blank" rel="noopener noreferrer">{hero.secondaryCtaText}</a>
           </Button>
         </div>
 

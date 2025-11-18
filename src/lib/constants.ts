@@ -120,6 +120,14 @@ export const PERSONAL_INFO = {
       "HTML/CSS",
       "SQL",
     ],
+    human: [
+      "English",
+      "Hindi",
+      "Marathi",
+      "Spanish",
+      "French",
+      "German",
+    ],
   },
   
   exploring: [
@@ -603,9 +611,18 @@ export const NAVIGATION = [
   { name: "Home", href: "/#hero" },
   { name: "About", href: "/#about" },
   { name: "Apps", href: "/#app-store" },
-  { name: "Services", href: "/services" },
+  { 
+    name: "Services", 
+    href: "/services",
+    dropdown: [
+      { name: "All Services", href: "/services" },
+      { name: "Quick Menu", href: "/menu" },
+      { name: "Cost Calculator", href: "/services/calculator" },
+      { name: "Packages", href: "/services/packages" },
+    ]
+  },
   { name: "Projects", href: "/#projects" },
-  { name: "Writing", href: "/#writing" },
+  { name: "Writing", href: "/blog" },
   { name: "Contact", href: "/#contact" },
 ] as const;
 
