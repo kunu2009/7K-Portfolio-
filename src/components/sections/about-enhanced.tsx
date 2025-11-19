@@ -31,6 +31,29 @@ import { askChatAssistant, getGreeting } from "@/ai/stan-assistant";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
+import { ALL_STYLES, getStyleIcon } from "./stan-ai-styles";
+import {
+  getCurrentTime,
+  getCurrentDate,
+  getDayOfWeek,
+  copyEmail,
+  copyPhone,
+  copyWhatsApp,
+  searchGoogle,
+  searchYouTube,
+  searchGitHub,
+  downloadCV,
+  getPortfolioStats,
+  getLatestProject,
+  getMostPopularApp,
+  getTechStack,
+  getAchievements,
+  getStanAIInfo,
+  getVersion,
+  explainCapabilities,
+  resetChatMessage,
+} from "@/lib/stan-utilities";
+import { getEntertainment } from "@/lib/stan-entertainment";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -95,8 +118,12 @@ const AboutSection = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [currentStyleIndex, setCurrentStyleIndex] = useState(6); // Default to Soft Bubble (index 6 = Style 7)
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Get current style
+  const currentStyle = ALL_STYLES[currentStyleIndex];
 
   // Don't render if disabled
   if (!about.enabled) return null;
@@ -114,57 +141,295 @@ const AboutSection = () => {
   const executeCommand = (command: string): string | null => {
     const cmd = command.toLowerCase().trim();
     
+    // Style change commands - NEW!
+    if (cmd.includes('change style') || cmd.includes('switch style') || cmd.includes('theme') || cmd.startsWith('style ')) {
+      // Check for number input first (style 1, style 2, etc.)
+      const numberMatch = cmd.match(/style\s+(\d+)/);
+      if (numberMatch) {
+        const styleNum = parseInt(numberMatch[1]);
+        if (styleNum >= 1 && styleNum <= 15) {
+          setCurrentStyleIndex(styleNum - 1);
+          const styleNames = ['Neon Glow ⚡', 'Glass Morphism ✨', 'Flat Minimal 📱', 'Retro Terminal 💻', 'Bold Gradient 🌈', 'Dark Neumorphic 🌙', 'Soft Bubble ⭕', 'Card Shadow 📦', 'Cyan Bubble 💠', 'Pink Bubble 💗', 'Orange Bubble 🔥', 'Violet Bubble 💜', 'Rainbow Bubble 🌈', 'Sunset Bubble 🌅', 'Ocean Rainbow 🌊'];
+          return `🎨 Style changed to **${styleNames[styleNum - 1]}**!`;
+        }
+      }
+      
+      // Check for specific style names
+      if (cmd.includes('neon')) {
+        setCurrentStyleIndex(0);
+        return "🎨 Style changed to **Neon Glow**! ⚡";
+      }
+      if (cmd.includes('glass')) {
+        setCurrentStyleIndex(1);
+        return "🎨 Style changed to **Glass Morphism**! ✨";
+      }
+      if (cmd.includes('flat') || cmd.includes('minimal')) {
+        setCurrentStyleIndex(2);
+        return "🎨 Style changed to **Flat Minimal**! 📱";
+      }
+      if (cmd.includes('terminal') || cmd.includes('retro')) {
+        setCurrentStyleIndex(3);
+        return "🎨 Style changed to **Retro Terminal**! 💻";
+      }
+      if (cmd.includes('bold gradient')) {
+        setCurrentStyleIndex(4);
+        return "🎨 Style changed to **Bold Gradient**! 🌈";
+      }
+      if (cmd.includes('dark') || cmd.includes('neumorphic')) {
+        setCurrentStyleIndex(5);
+        return "🎨 Style changed to **Dark Neumorphic**! 🌙";
+      }
+      if (cmd.includes('bubble') && !cmd.includes('cyan') && !cmd.includes('pink') && !cmd.includes('orange') && !cmd.includes('violet') && !cmd.includes('rainbow') && !cmd.includes('sunset') && !cmd.includes('ocean')) {
+        setCurrentStyleIndex(6);
+        return "🎨 Style changed to **Soft Bubble**! ⭕";
+      }
+      if (cmd.includes('card') || cmd.includes('shadow')) {
+        setCurrentStyleIndex(7);
+        return "🎨 Style changed to **Card Shadow**! 📦";
+      }
+      if (cmd.includes('cyan')) {
+        setCurrentStyleIndex(8);
+        return "🎨 Style changed to **Cyan Bubble**! 💠";
+      }
+      if (cmd.includes('pink')) {
+        setCurrentStyleIndex(9);
+        return "🎨 Style changed to **Pink Bubble**! 💗";
+      }
+      if (cmd.includes('orange')) {
+        setCurrentStyleIndex(10);
+        return "🎨 Style changed to **Orange Bubble**! 🔥";
+      }
+      if (cmd.includes('violet') || cmd.includes('purple')) {
+        setCurrentStyleIndex(11);
+        return "🎨 Style changed to **Violet Bubble**! 💜";
+      }
+      if (cmd.includes('rainbow')) {
+        setCurrentStyleIndex(12);
+        return "🎨 Style changed to **Rainbow Bubble**! 🌈";
+      }
+      if (cmd.includes('sunset')) {
+        setCurrentStyleIndex(13);
+        return "🎨 Style changed to **Sunset Bubble**! 🌅";
+      }
+      if (cmd.includes('ocean rainbow')) {
+        setCurrentStyleIndex(14);
+        return "🎨 Style changed to **Ocean Rainbow**! 🌊";
+      }
+      
+      // Generic style change
+      return `🎨 **Available Styles:**
+1️⃣ Neon Glow ⚡
+2️⃣ Glass Morphism ✨
+3️⃣ Flat Minimal 📱
+4️⃣ Retro Terminal 💻
+5️⃣ Bold Gradient 🌈
+6️⃣ Dark Neumorphic 🌙
+7️⃣ Soft Bubble ⭕ (default)
+8️⃣ Card Shadow 📦
+9️⃣ Cyan Bubble 💠
+🔟 Pink Bubble 💗
+1️⃣1️⃣ Orange Bubble 🔥
+1️⃣2️⃣ Violet Bubble 💜
+1️⃣3️⃣ Rainbow Bubble 🌈
+1️⃣4️⃣ Sunset Bubble 🌅
+1️⃣5️⃣ Ocean Rainbow 🌊
+
+Say "change style neon" or "style 1" to switch!`;
+    }
+    
     // Help command - list all available commands
     if (cmd === 'help' || cmd === 'commands' || cmd === 'what can you do') {
-      return `✨ **Stan AI Commands**
+      return `✨ **Stan AI Enhanced Commands**
 
-Here's what I can do for you:
+**🎨 Style Control:**
+🖌️ "change style" - See all 15 styles
+🎨 "style neon" - Switch to specific style
+🔢 "style 1" to "style 15" - Quick switch
 
-📝 **"open blog"** - View Kunal's blog posts
-🎯 **"show apps"** - See the 7K Ecosystem apps  
-💼 **"show projects"** - Browse the portfolio
-🛠️ **"open services"** - Check services & pricing
-📧 **"open contact"** - Get in touch
-🏠 **"go to top"** - Back to top of page
-💬 **"whatsapp"** - Message Kunal directly
+**Navigation:**
+📝 "open blog" - View blog posts
+🎯 "show apps" - 7K Ecosystem apps  
+💼 "show projects" - Portfolio
+🛠️ "open services" - Services & pricing
+📧 "open contact" - Get in touch
+🏠 "go to top" - Back to homepage
 
-💡 **Tip:** Just type naturally! I understand variations like "take me to blog" or "go to projects"
+**External Links:**
+💬 "whatsapp" - Message on WhatsApp
+👨‍💻 "github" - Visit GitHub profile
+💼 "linkedin" - Connect on LinkedIn
+📱 "instagram" - Follow on Instagram
 
-You can also ask me anything about Kunal's work, skills, or projects!`;
+**Service Pages:**
+📋 "menu" - View service menu
+💰 "calculator" - Pricing calculator
+📦 "packages" - Service packages
+
+💡 Type naturally! I understand variations and questions too!`;
+    }
+    
+    // External links commands
+    if (cmd.includes('github') || cmd.includes('git hub') || cmd.includes('open github')) {
+      window.open('https://github.com/kunu2009', '_blank');
+      return "✅ Opening Kunal's GitHub profile... Check out his open-source projects!";
+    }
+    if (cmd.includes('linkedin') || cmd.includes('linked in') || cmd.includes('open linkedin')) {
+      window.open('https://www.linkedin.com/in/kunal-chheda-b36731388', '_blank');
+      return "✅ Opening LinkedIn profile... Connect with Kunal professionally!";
+    }
+    if (cmd.includes('instagram') || cmd.includes('insta') || cmd.includes('open instagram')) {
+      window.open('https://www.instagram.com/7kc_me/', '_blank');
+      return "✅ Opening Instagram... Follow @7kc_me for updates!";
+    }
+    if (cmd.includes('twitter') || cmd.includes('x.com') || cmd.includes('open twitter')) {
+      window.open('https://twitter.com/kunal7k', '_blank');
+      return "✅ Opening Twitter/X... Follow @kunal7k for tech updates!";
+    }
+    
+    // Service-specific pages
+    if (cmd.includes('menu') || cmd.includes('service menu') || cmd.includes('show menu')) {
+      window.location.href = '/menu';
+      return "✅ Opening service menu... Browse all available services!";
+    }
+    if (cmd.includes('calculator') || cmd.includes('pricing calculator') || cmd.includes('price calculator')) {
+      window.location.href = '/calculator';
+      return "✅ Opening pricing calculator... Get instant quotes!";
+    }
+    if (cmd.includes('packages') || cmd.includes('service packages') || cmd.includes('show packages')) {
+      window.location.href = '/packages';
+      return "✅ Opening service packages... Find the perfect plan!";
     }
     
     // Navigation commands
-    if (cmd.includes('open blog') || cmd.includes('show blog') || cmd.includes('go to blog')) {
+    if (cmd.includes('open blog') || cmd.includes('show blog') || cmd.includes('go to blog') || cmd.includes('read blog')) {
       window.location.href = '/blog';
-      return "✅ Opening blog page...";
+      return "✅ Opening blog page... Explore tech articles & tutorials!";
     }
-    if (cmd.includes('open apps') || cmd.includes('show apps') || cmd.includes('go to apps')) {
+    if (cmd.includes('open apps') || cmd.includes('show apps') || cmd.includes('go to apps') || cmd.includes('7k apps')) {
       document.getElementById('app-store')?.scrollIntoView({ behavior: 'smooth' });
-      return "✅ Scrolling to Apps section...";
+      return "✅ Scrolling to Apps section... Discover 24+ productivity apps!";
     }
-    if (cmd.includes('open projects') || cmd.includes('show projects') || cmd.includes('go to projects')) {
+    if (cmd.includes('open projects') || cmd.includes('show projects') || cmd.includes('go to projects') || cmd.includes('portfolio')) {
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-      return "✅ Scrolling to Projects section...";
+      return "✅ Scrolling to Projects section... Explore Kunal's work!";
     }
-    if (cmd.includes('open services') || cmd.includes('show services') || cmd.includes('go to services')) {
+    if (cmd.includes('open services') || cmd.includes('show services') || cmd.includes('go to services') || cmd.includes('hire')) {
       window.location.href = '/services';
-      return "✅ Opening services page...";
+      return "✅ Opening services page... See pricing & packages!";
     }
-    if (cmd.includes('open contact') || cmd.includes('show contact') || cmd.includes('contact kunal')) {
+    if (cmd.includes('open contact') || cmd.includes('show contact') || cmd.includes('contact kunal') || cmd.includes('get in touch')) {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-      return "✅ Scrolling to Contact section...";
+      return "✅ Scrolling to Contact section... Let's connect!";
     }
-    if (cmd.includes('open portfolio') || cmd.includes('show portfolio')) {
-      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-      return "✅ Scrolling to Portfolio section...";
-    }
-    if (cmd.includes('go to top') || cmd.includes('scroll to top') || cmd.includes('go home')) {
+    if (cmd.includes('go to top') || cmd.includes('scroll to top') || cmd.includes('go home') || cmd.includes('back to top')) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      return "✅ Scrolling to top...";
+      return "✅ Scrolling to top... Back to the beginning!";
     }
-    if (cmd.includes('whatsapp') || cmd.includes('message kunal')) {
+    if (cmd.includes('whatsapp') || cmd.includes('message kunal') || cmd.includes('chat on whatsapp')) {
       window.open('https://wa.me/918591247148', '_blank');
-      return "✅ Opening WhatsApp...";
+      return "✅ Opening WhatsApp... Start a conversation with Kunal!";
+    }
+    
+    // Email command
+    if (cmd.includes('email') || cmd.includes('send email') || cmd.includes('mail kunal')) {
+      window.location.href = 'mailto:7kmindbeatss@gmail.com';
+      return "✅ Opening email client... Compose your message!";
+    }
+    
+    // Quick Actions - Time & Date
+    if (cmd.includes('time') || cmd.includes('what time')) {
+      return getCurrentTime();
+    }
+    if (cmd.includes('date') || cmd.includes('what\'s the date') || cmd.includes('whats the date')) {
+      return getCurrentDate();
+    }
+    if (cmd.includes('day') || cmd.includes('day of week')) {
+      return getDayOfWeek();
+    }
+    
+    // Quick Actions - Clipboard
+    if (cmd.includes('copy email')) {
+      copyEmail().then(msg => {
+        setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
+      });
+      return "Copying email to clipboard...";
+    }
+    if (cmd.includes('copy phone')) {
+      copyPhone().then(msg => {
+        setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
+      });
+      return "Copying phone number to clipboard...";
+    }
+    if (cmd.includes('copy whatsapp')) {
+      copyWhatsApp().then(msg => {
+        setMessages(prev => [...prev, { role: 'assistant', content: msg }]);
+      });
+      return "Copying WhatsApp link to clipboard...";
+    }
+    
+    // Quick Actions - Search
+    if (cmd.includes('search google') || cmd.includes('google search')) {
+      return searchGoogle(cmd);
+    }
+    if (cmd.includes('youtube') || cmd.includes('search youtube')) {
+      return searchYouTube(cmd);
+    }
+    if (cmd.includes('search github') || cmd.includes('github search')) {
+      return searchGitHub(cmd);
+    }
+    
+    // Quick Actions - Download
+    if (cmd.includes('download cv') || cmd.includes('download resume')) {
+      return downloadCV();
+    }
+    
+    // Portfolio Stats
+    if (cmd.includes('show stats') || cmd.includes('portfolio stats') || cmd.includes('statistics')) {
+      return getPortfolioStats();
+    }
+    if (cmd.includes('latest project') || cmd.includes('recent project')) {
+      return getLatestProject();
+    }
+    if (cmd.includes('popular app') || cmd.includes('most popular')) {
+      return getMostPopularApp();
+    }
+    if (cmd.includes('tech stack') || cmd.includes('technology stack') || cmd.includes('technologies')) {
+      return getTechStack();
+    }
+    if (cmd.includes('achievements') || cmd.includes('awards') || cmd.includes('milestones')) {
+      return getAchievements();
+    }
+    
+    // Meta Commands
+    if (cmd.includes('about stan') || cmd.includes('who are you')) {
+      return getStanAIInfo();
+    }
+    if (cmd.includes('version') || cmd.includes('what version')) {
+      return getVersion();
+    }
+    if (cmd.includes('capabilities') || cmd.includes('what can you do') || cmd.includes('your capabilities')) {
+      return explainCapabilities();
+    }
+    if (cmd.includes('reset') || cmd.includes('clear chat') || cmd.includes('reset chat')) {
+      setMessages([]);
+      return resetChatMessage();
+    }
+    
+    // Entertainment
+    if (cmd.includes('joke') || cmd.includes('tell joke')) {
+      return getEntertainment('joke');
+    }
+    if (cmd.includes('fun fact') || cmd.includes('fact')) {
+      return getEntertainment('fact');
+    }
+    if (cmd.includes('motivate') || cmd.includes('motivation') || cmd.includes('quote')) {
+      return getEntertainment('quote');
+    }
+    if (cmd.includes('ascii') || cmd.includes('ascii art')) {
+      return getEntertainment('art');
+    }
+    if (cmd.includes('surprise')) {
+      return getEntertainment('surprise');
     }
     
     return null; // No command found
@@ -500,19 +765,38 @@ You can also ask me anything about Kunal's work, skills, or projects!`;
               </CardContent>
             </Card>
 
-            {/* Stan AI Chatbox */}
-            <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
-              <CardContent className="pt-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Bot className="h-6 w-6 text-primary" />
-                  <h3 className="font-headline text-xl font-semibold">Ask Stan AI About Me</h3>
+            {/* Stan AI Chatbox - DYNAMIC STYLES */}
+            <Card className={currentStyle.cardWrapper}>
+              {/* Animated gradient background */}
+              <div className={currentStyle.animatedBg} />
+              
+              <CardContent className={currentStyle.contentPadding}>
+                {/* Header with glow effect */}
+                <div className={currentStyle.headerWrapper}>
+                  <div className={currentStyle.headerGlow} />
+                  <div className={currentStyle.headerFlex}>
+                    <div className={currentStyle.iconWrapper}>
+                      <Bot className={currentStyle.iconSize} />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className={currentStyle.title}>
+                        {currentStyle.titleText}
+                      </h3>
+                      <p className={currentStyle.subtitle}>{currentStyle.subtitleText}</p>
+                    </div>
+                  </div>
+                  <div className={currentStyle.badgesWrapper}>
+                    <span className={currentStyle.badge1}>{currentStyle.badge1Text}</span>
+                    <span className={currentStyle.badge2}>{currentStyle.badge2Text}</span>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Chat with my AI assistant to learn about my projects, skills, and experience!
+
+                <p className={currentStyle.hint}>
+                  {currentStyle.hintText}
                 </p>
 
-                {/* Chat Messages */}
-                <div className="bg-background/50 rounded-lg border border-border/50 mb-3 max-h-[400px] overflow-y-auto overscroll-contain p-3 space-y-3 scroll-smooth">
+                {/* Chat Messages - Dynamic styled */}
+                <div className={currentStyle.chatContainer}>
                   {messages.map((message, index) => (
                     <div
                       key={index}
@@ -531,10 +815,10 @@ You can also ask me anything about Kunal's work, skills, or projects!`;
                       <div className="flex flex-col gap-2 max-w-[85%]">
                         <div
                           className={cn(
-                            "rounded-lg px-3 py-2 text-sm whitespace-pre-wrap break-words",
+                            "px-3 py-2 text-sm whitespace-pre-wrap break-words",
                             message.role === "user"
-                              ? "bg-primary text-primary-foreground"
-                              : "bg-secondary/80"
+                              ? currentStyle.userMessage
+                              : currentStyle.assistantMessage
                           )}
                         >
                           {message.content}
@@ -577,30 +861,39 @@ You can also ask me anything about Kunal's work, skills, or projects!`;
                   <div ref={messagesEndRef} />
                 </div>
 
-                {/* Input Form */}
-                <form onSubmit={handleSubmit} className="flex gap-2">
-                  <Input
-                    ref={inputRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask me anything..."
-                    className="flex-1 bg-background/50"
-                    disabled={isLoading}
-                    autoComplete="off"
-                  />
+                {/* Input Form - Dynamic styled */}
+                <form onSubmit={handleSubmit} className={currentStyle.inputWrapper}>
+                  <div className="flex-1 relative">
+                    <Input
+                      ref={inputRef}
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      placeholder={currentStyle.inputPlaceholder}
+                      className={currentStyle.input}
+                      disabled={isLoading}
+                      autoComplete="off"
+                    />
+                  </div>
                   <Button 
                     type="submit" 
-                    size="icon" 
                     disabled={isLoading || !input.trim()}
-                    className="shrink-0"
+                    className={currentStyle.button}
                   >
                     {isLoading ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <Loader2 className="h-4 w-4 md:h-5 md:w-5 animate-spin" />
                     ) : (
-                      <Send className="h-4 w-4" />
+                      <>
+                        <Send className="h-4 w-4 md:h-5 md:w-5 md:mr-2" />
+                        <span className="hidden md:inline">Send</span>
+                      </>
                     )}
                   </Button>
                 </form>
+                
+                {/* Footer - Dynamic styled */}
+                <p className={currentStyle.footer}>
+                  {currentStyle.footerText}
+                </p>
               </CardContent>
             </Card>
 

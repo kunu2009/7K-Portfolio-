@@ -113,6 +113,8 @@ const GREETINGS: KnowledgeEntry[] = [
   }
 ];
 
+import { EXPANDED_KNOWLEDGE } from './stan-knowledge-expansion';
+
 export const STAN_KNOWLEDGE: KnowledgeEntry[] = [
   ...GREETINGS,
   // Q1: Who is Kunal Chheda?
@@ -5615,6 +5617,9 @@ export const STAN_KNOWLEDGE: KnowledgeEntry[] = [
     priority: 6
   },
 
+  // ==================== EXPANDED KNOWLEDGE (150+ NEW Q&A) ====================
+  ...EXPANDED_KNOWLEDGE,
+
 ];
 
 export const FUN_FACTS = [
@@ -5654,8 +5659,8 @@ export const KNOWLEDGE_CATEGORIES = [
 ];
 
 export const KNOWLEDGE_STATS = {
-  totalQuestions: 550,
-  categories: 10,
-  lastGenerated: "2025-10-23T11:45:36.409Z",
-  version: "2.0"
+  totalQuestions: 700,
+  categories: 15,
+  lastGenerated: "2025-11-19T10:00:00.000Z",
+  version: "3.0"
 };

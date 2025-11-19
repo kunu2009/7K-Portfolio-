@@ -22,7 +22,7 @@ export default function EmailCapturePopup() {
       return;
     }
 
-    // Exit intent detection
+    // Exit intent detection for desktop (mouse leaving viewport from top)
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0 && !hasShown && !isSubmitted) {
         setIsVisible(true);
@@ -31,20 +31,33 @@ export default function EmailCapturePopup() {
       }
     };
 
-    // Show after 30 seconds if not already shown
-    const timer = setTimeout(() => {
+    // Back button detection for mobile (page visibility change)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden' && !hasShown && !isSubmitted) {
+        // User is leaving the page (back button, closing tab, switching app)
+        setIsVisible(true);
+        setHasShown(true);
+        sessionStorage.setItem("emailPopupShown", "true");
+      }
+    };
+
+    // Beforeunload event (when user tries to close tab/window)
+    const handleBeforeUnload = () => {
       if (!hasShown && !isSubmitted) {
         setIsVisible(true);
         setHasShown(true);
         sessionStorage.setItem("emailPopupShown", "true");
       }
-    }, 30000);
+    };
 
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
-      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [hasShown, isSubmitted]);
 
