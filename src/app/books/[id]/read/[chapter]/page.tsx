@@ -148,7 +148,7 @@ export default function ReadingPage({
       </header>
 
       {/* Reading Content */}
-      <main className="container max-w-3xl mx-auto px-4 py-8 md:py-12 pb-32">
+      <main className="container max-w-3xl mx-auto px-4 py-8 md:py-12 pb-28 md:pb-32">
         {/* Chapter Title */}
         <div className="mb-8">
           <div className="text-sm text-muted-foreground mb-2">
@@ -214,12 +214,21 @@ export default function ReadingPage({
           </ReactMarkdown>
         </article>
 
-        {/* Chapter Navigation - Fixed at bottom with proper spacing */}
-        <div className="fixed bottom-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-border/40 py-4 px-4 z-40">
-          <div className="container max-w-3xl mx-auto flex items-center justify-between gap-4">
+        {/* Chapter Navigation - Fixed at bottom, properly positioned above mobile CTA bar */}
+        <div className="fixed bottom-0 md:bottom-4 left-0 right-0 bg-background border-t border-border shadow-2xl z-[60]">
+          {/* Progress Bar */}
+          <div className="h-1 bg-muted">
+            <div 
+              className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+              style={{ width: `${((chapterId) / book.chapters.length) * 100}%` }}
+            />
+          </div>
+          
+          {/* Navigation Buttons */}
+          <div className="container max-w-3xl mx-auto flex items-center justify-between gap-3 p-4">
             {prevChapter ? (
               <Link href={`/books/${bookId}/read/${prevChapter.id}`} className="flex-1">
-                <Button variant="outline" className="w-full group">
+                <Button variant="outline" className="w-full group h-11 font-medium">
                   <ChevronLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                   <span className="truncate hidden sm:inline">Previous</span>
                   <span className="truncate sm:hidden">Prev</span>
@@ -229,15 +238,17 @@ export default function ReadingPage({
               <div className="flex-1" />
             )}
 
-            <Link href={`/books/${bookId}`} className="px-4">
-              <Button variant="ghost" size="sm" className="text-muted-foreground">
-                {chapterId} / {book.chapters.length}
+            <Link href={`/books/${bookId}`}>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground px-4">
+                <span className="font-semibold">{chapterId}</span>
+                <span className="mx-1">/</span>
+                <span>{book.chapters.length}</span>
               </Button>
             </Link>
 
             {nextChapter ? (
               <Link href={`/books/${bookId}/read/${nextChapter.id}`} className="flex-1">
-                <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 group">
+                <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 group h-11 font-medium shadow-lg">
                   <span className="truncate hidden sm:inline">Next Chapter</span>
                   <span className="truncate sm:hidden">Next</span>
                   <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -245,22 +256,14 @@ export default function ReadingPage({
               </Link>
             ) : (
               <Link href={`/books/${bookId}`} className="flex-1">
-                <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                  Finish
+                <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 h-11 font-medium shadow-lg">
+                  Finish Reading
                 </Button>
               </Link>
             )}
           </div>
         </div>
       </main>
-
-      {/* Progress Bar - positioned above navigation */}
-      <div className="fixed bottom-[calc(4rem+56px)] left-0 right-0 h-1 bg-muted z-40">
-        <div 
-          className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
-          style={{ width: `${((chapterId) / book.chapters.length) * 100}%` }}
-        />
-      </div>
     </div>
   );
 }
