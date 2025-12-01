@@ -9793,101 +9793,367 @@ This is the long game, but it works.
         title: 'Library Survival Guide',
         content: `# Library Survival Guide
 
-## The Two Libraries
+## The Two-Library System: Know the Difference
 
-Somaiya typically has multiple libraries. Know the difference.
+Somaiya has multiple library spaces, each serving different needs. Understanding which one to use (and when) will save you hours of frustration.
 
-### Management/Main Library
-- Stricter entry
-- Quieter environment
-- Better for focused study
-- Book borrowing
+### Main Library (The Official One)
+
+**What It Is:**
+- The primary, formal library
+- Extensive book collection
 - Computer access
+- Silent zone enforcement
+- ID card required for entry
 
-### Department Libraries
-- Easier access
-- Subject-specific books
-- Less crowded
-- More relaxed rules
+**Best For:**
+- Borrowing textbooks
+- Serious, focused study
+- Exam preparation
+- Computer/internet access
+- Research papers and journals
 
-## Library Unwritten Rules
+**The Vibe:**
+- Quiet (enforced)
+- Serious studiers only
+- Librarians are strict
+- Prime seats fill up fast (especially during exams)
 
-1. **The Seating Hierarchy**
-   - First floor = Serious studiers
-   - Ground floor = Group study (quiet)
-   - Basement (if exists) = Nappers and question paper hunters
+**Entry Requirements:**
+- Valid ID card (always)
+- No large bags (bag check counter exists)
+- Silent phone (or they'll ask you to leave)
 
-2. **The Phone Rule**
-   - Officially: Silent/off
-   - Reality: Silent, low brightness, pretend you're checking notes
+### Aurobindo Building Open Library (The Hidden Gem)
 
-3. **The Food Rule**
-   - Officially: No food or drinks
-   - Reality: Water bottles exist. Just don't be obvious with snacks.
+**What It Is:**
+- Located inside Aurobindo Building
+- Open library section with incredible resources
+- Less crowded than main library
+- More relaxed atmosphere
+- Often overlooked by freshers (which is great for you)
 
-## How to Find What You Need
+**Why It's Special:**
+This is where the real treasure is. The open library section houses:
 
-### Books
-1. Check the digital catalog (if available)
-2. Know the call number system
-3. Ask the librarian (they know everything)
-4. Ask seniors (they know what's actually useful)
+**Professional Exam Preparation:**
+- **CA (Chartered Accountancy)** preparation books—complete series for all levels
+- **CS (Company Secretary)** advanced materials and reference books
+- **CMA (Cost & Management Accountancy)** resources
 
-### Study Spots
-1. Arrive early (before 9 AM for prime spots)
-2. Corner seats = Less distraction
-3. Near windows = Good for afternoon study
-4. Near AC = Good for summer survival
+**Technical & Computer Science:**
+- **Operating Systems** textbooks (multiple authors, different editions)
+- **AI/ML (Artificial Intelligence & Machine Learning)** books and resources
+- **Data Structures & Algorithms** reference materials
+- **Computer Networks, Database Management** books
 
-### The Perfect Study Spot Criteria
-- Power outlet nearby ✓
-- Not directly under AC (too cold) ✓
-- Not near the door (distractions) ✓
-- Not at a creaky table ✓
-- Cell signal still works ✓
+**Academic Journals & Research:**
+- Subject-specific academic journals
+- Research papers and publications
+- Reference materials for projects
 
-## Library Hacks
+**General Collection:**
+- Arts & Commerce subject books
+- Business Management resources
+- Economics, Sociology, Psychology references
+
+**Best For:**
+- Deep research on specific topics
+- Professional exam prep (CA/CS students love this place)
+- Technical project work
+- When main library is too crowded
+- Quiet study with specific books
+
+**The Vibe:**
+- Peaceful, less policed
+- Students actually studying (not just "studying")
+- Open shelves mean you can browse freely
+- Better for long hours without feeling suffocated
+
+**Pro Tips for Aurobindo Library:**
+- Few students know about the full collection—explore all sections
+- Great for CS/IT students doing project research
+- Perfect spot during exam season when main library is packed
+- Books here are reference copies (usually can't be borrowed, read there)
+- Tables and seating available, decent lighting
+
+## The Library Unwritten Rules (The Real Ones)
+
+### 1. The Seating Hierarchy (It's Real)
+
+**Main Library:**
+- **First Floor:** Serious studiers, seniors preparing for competitive exams, the "don't disturb" zone
+- **Ground Floor:** Moderate study, some group whispers (quiet), textbook reading
+- **Corners:** Solo studiers who want zero human interaction
+
+**Aurobindo Open Library:**
+- **Window Seats:** Prime real estate, morning people claim these
+- **Corner Tables:** For deep focus, minimal distraction
+- **Near Book Shelves:** For people who need to reference multiple books
+
+### 2. The Phone Rule
+
+**Official Policy:**
+- Silent or switched off
+- No calls inside
+- No music without earphones
+
+**Reality:**
+- Silent mode, low brightness
+- Pretend you're checking "important notes"
+- Quick replies are okay
+- Step outside for calls (respect)
+
+**Violation Consequences:**
+- Warning glare from librarian
+- Actual verbal warning
+- Repeat offense = asked to leave
+- Don't test it
+
+### 3. The Food Rule
+
+**Official Policy:**
+- No food or drinks (except water)
+
+**Reality:**
+- Water bottles are universal (keep them)
+- Small, silent snacks if you're desperate (biscuits, not chips)
+- Never bring food that smells
+- Dispose of wrappers properly (don't be that person)
+
+**Pro Tip:** Eat before coming to the library. Food breaks are for exiting, not sneaking.
+
+### 4. Seat Reservation Politics
+
+**The Problem:** Students leave bags/books to "reserve" seats, then disappear for hours.
+
+**How to Navigate:**
+- If stuff has been there for 30+ minutes with no owner, it's fair game (ask librarian first)
+- Don't leave your own seat for more than 15-20 minutes
+- If you need a break, take your valuables
+
+**The Ethical Rule:** Don't reserve seats during exam season. It's just cruel.
+
+## How to Actually Find What You Need
+
+### Books in Main Library
+
+**Step-by-Step:**
+1. **Check the Digital Catalog** (if available online)
+   - Search by title, author, or subject
+   - Note the **call number** (like a book's address)
+   
+2. **Use the Physical Catalog** (old-school card system)
+   - Organized alphabetically
+   - Find call number
+   
+3. **Navigate the Shelves**
+   - Sections are labeled (usually)
+   - Call numbers are sequential
+   - If lost, ask librarian (they know EVERYTHING)
+
+4. **Ask Seniors**
+   - They know which books are actually useful
+   - Which editions are better
+   - Which books are never available (high demand)
+
+**Borrowing Process:**
+- Present ID card
+- Check due date (usually 7-14 days)
+- Renew online if option exists
+- **Return on time** (fines add up, and librarians remember)
+
+### Books in Aurobindo Open Library
+
+**The Freedom:**
+- Open shelves = browse freely
+- Pick up books, flip through, compare
+- No need to ask for each book
+
+**The Limitation:**
+- Most books are **reference only** (can't borrow)
+- Read and take notes there
+- Some students take photos of pages (check if allowed)
+
+**Pro Tip:** Go with a specific goal. It's easy to get lost browsing for hours.
+
+## Study Spots: The Strategic Guide
+
+### How to Secure a Prime Spot
+
+**Timing is Everything:**
+- **Before 9 AM:** Your best bet for choice seats
+- **After 3 PM:** Afternoon crowd thins out
+- **Exam Week:** Arrive at 7 AM or don't bother
+
+**The Perfect Study Spot Checklist:**
+- ✓ Power outlet nearby (charge laptop/phone)
+- ✓ Not directly under AC (you'll freeze)
+- ✓ Not directly under fan (papers fly)
+- ✓ Not near the door (constant distraction)
+- ✓ Not at a creaky/wobbly table (annoying)
+- ✓ Decent natural light (if daytime)
+- ✓ Cell signal still works (emergencies)
+- ✓ Minimal foot traffic past your seat
+
+**Seat Types:**
+
+| Seat Type | Pros | Cons | Best For |
+|-----------|------|------|----------|
+| Window Seat | Natural light, fresh air, view | Can get hot in afternoon | Morning study |
+| Corner Seat | Privacy, less distraction | Feels isolated, far from outlets | Deep focus work |
+| Middle Row | Balanced, good lighting | More visible, less privacy | Regular study |
+| Near Entrance | Easy exit, less commitment | Constant distraction | Short study sessions |
+
+## Library Hacks & Pro Tips
 
 ### For Borrowing Books
-- Check due dates immediately
-- Renew online if possible
-- Return on time (fines add up)
-- Some books can't be borrowed—know which ones
+
+1. **Check Due Dates Immediately**
+   - Set phone reminder 2 days before due date
+   - Some books have shorter borrowing periods
+
+2. **Renew Online** (if system allows)
+   - Don't wait till last day
+   - Some popular books can't be renewed (waitlist exists)
+
+3. **Return on Time**
+   - Fines start small but add up
+   - Repeat offenses = borrowing privileges suspended
+   - Your academic record can be held for unpaid fines
+
+4. **Reserve in Advance** (if system allows)
+   - Popular textbooks have waiting lists
+   - Reserve early in the semester
 
 ### For Computer Access
-- Log in and out properly
-- Clear your browser history
-- Don't save passwords
-- Time limits exist—be aware
 
-### For Exams
-- Old question papers are gold—ask where to find them
-- Group study rooms may need booking
-- Library hours extend during exams (know the timing)
+1. **Log In/Out Properly**
+   - Don't leave session open
+   - Someone will mess with your stuff
 
-## The Library Ecosystem
+2. **Clear Browser History**
+   - Public computer = zero privacy
+   - Don't save passwords
 
-**The Regulars:**
-- The person who's always there (are they okay?)
-- The group that whispers too loudly
-- The one who takes calls outside (respect)
-- The sleeper (we've all been there)
+3. **Time Limits Exist**
+   - Usually 30-60 minutes
+   - Don't argue, just rebook if needed
 
-**Library Staff:**
-- The strict one (don't cross them)
-- The helpful one (cherish them)
-- The one who's always on lunch break
+4. **Printing/Scanning:**
+   - Know the process beforehand
+   - Have exact change or UPI ready
+   - Save files on USB, not desktop
+
+### For Exam Preparation
+
+1. **Old Question Papers Are Gold**
+   - Ask librarian where they're stored
+   - Some are digital, some physical
+   - Photocopy/download early (demand spikes before exams)
+
+2. **Group Study Rooms**
+   - Some libraries have them
+   - Booking required (do it early)
+   - Time limits apply
+
+3. **Extended Hours During Exams**
+   - Library hours usually extend
+   - Know the exact timings
+   - Arrive early, still crowded
+
+4. **Reference-Only Books**
+   - Can't borrow, must read there
+   - Take notes or photos (if allowed)
+
+## The Library Ecosystem: Know the Characters
+
+### The Regulars (You'll Recognize Them)
+
+**The Permanent Resident:**
+- Always there, morning to evening
+- Same seat, same routine
+- Either super dedicated or avoiding home
+- Don't disturb them, they've earned that spot
+
+**The Loud Whisperers:**
+- Group of 3-4 people
+- "Studying together" = gossiping quietly
+- Librarian gives them The Look regularly
+- Eventually they get the hint
+
+**The Phone Addict:**
+- Screen brightness at max
+- "Quick check" turns into 30 minutes
+- Everyone can see they're on Instagram
+- Not fooling anyone
+
+**The Power Napper:**
+- Book open as decoy
+- Head on book, actually sleeping
+- We've all been there
+- Some snore (those get caught)
+
+**The Call-Taker:**
+- Steps outside for calls
+- Respectful
+- We appreciate them
+
+### The Library Staff
+
+**The Strict Librarian:**
+- Enforces every rule
+- Sharp eyes, notices everything
+- Don't try to test them
+- Cross them, and your library experience will suffer
+
+**The Helpful Librarian:**
+- Actually enjoys helping students
+- Knows the collection inside-out
+- Will go out of their way to find books
+- Cherish them, they're rare
+
+**The Lunch Break Librarian:**
+- Always on break when you need them
+- "Come back in 10 minutes" (it's 30)
+- Not their fault, system issue
 
 ## When NOT to Go to the Library
 
-- During exam week (unless you arrive at 6 AM)
-- When there's an event in the building
-- Right after lunch (food coma + studying = sleeping)
-- If you need to take calls
+**Avoid These Times:**
+
+1. **Exam Week (Unless You're Early):**
+   - Every seat taken by 9 AM
+   - People camping out
+   - Stress levels high
+   - Go at 7 AM or find alternate spot
+
+2. **Right After Lunch (12:30-2:00 PM):**
+   - Post-lunch drowsiness
+   - Study + full stomach = nap
+   - Better to go before or after
+
+3. **During Campus Events:**
+   - If event is in same building, chaos
+   - Noise, crowd, distractions
+   - Library hours might even change
+
+4. **If You Need to Take Multiple Calls:**
+   - Just don't
+   - Find another spot
+   - Constant in-out is annoying for everyone
+
+## Emergency Study Spots (When Library is Full)
+
+1. **Aurobindo Open Library** (less crowded)
+2. **Empty classrooms after 4 PM**
+3. **Quiet corners near stairs** (less ideal but works)
+4. **Home** (if you have discipline)
 
 ---
 
-*The library is not just a building. It's a state of mind.*
+*"The library doesn't make you smart. But it gives you the space to try."*  
+— Anonymous third-year who practically lived there
 `
       },
       {
@@ -9895,101 +10161,384 @@ Somaiya typically has multiple libraries. Know the difference.
         title: 'The Food Bible',
         content: `# The Food Bible
 
-## Campus Canteen Breakdown
+## Welcome to the Campus Food Ecosystem
 
-### What to Expect
-- Long lines during breaks
-- Limited menu variety
-- Surprisingly decent chai
-- That one item everyone orders
+Food isn't just fuel at Somaiya—it's culture, social currency, and sometimes the only thing keeping you awake during that 3 PM lecture. This chapter is your complete guide to eating, surviving, and occasionally thriving on campus.
 
-### The Menu Decoded
+## The Main Players: Campus Canteens
 
-| Item | Quality | Value | Wait Time |
-|------|---------|-------|-----------|
-| Vada Pav | ⭐⭐⭐⭐ | ₹30ish | 2 min |
-| Samosa | ⭐⭐⭐ | ₹15ish | 3 min |
-| Chai | ⭐⭐⭐⭐ | ₹10ish | 5 min (lines) |
-| Cold Coffee | ⭐⭐⭐ | ₹50ish | 7 min |
-| Full Meal | ⭐⭐⭐ | ₹80ish | 10+ min |
+### 1. Dalchini Canteen (The Central Hub)
 
-### Pro Tips for Canteen
-1. Avoid 12:30-1:30 (peak chaos)
-2. Go at 11 AM or 2 PM for peace
-3. Know what you want before you queue
-4. UPI is faster than cash
-5. Find a regular counter person—builds rapport
+**Location:** Near Running Statue, central campus area  
+**Vibe:** Busy, loud, social  
+**Famous For:** Quick bites, chai, meeting point
 
-## Off-Campus Food Zones
+**The Menu Breakdown:**
 
-Every Somaiya campus has nearby areas with better food. Explore them.
+| Item | Quality | Price Range | Wait Time | Best Time to Order |
+|------|---------|-------------|-----------|-------------------|
+| Vada Pav | ⭐⭐⭐⭐ | ₹20-30 | 2-3 min | Anytime (always fresh) |
+| Samosa | ⭐⭐⭐⭐ | ₹15-20 | 2 min | Morning (freshest) |
+| Chai | ⭐⭐⭐⭐ | ₹10-15 | 5 min (line) | 10 AM, 3 PM breaks |
+| Sandwich | ⭐⭐⭐ | ₹40-60 | 5 min | Before lunch rush |
+| Cold Coffee | ⭐⭐⭐ | ₹50-70 | 7 min | Hot afternoons |
+| Full Meal/Thali | ⭐⭐⭐ | ₹80-120 | 10+ min | 11 AM or 2 PM |
+| Pav Bhaji | ⭐⭐⭐⭐ | ₹50-70 | 8 min | Lunch time |
 
-### What's Usually Available Nearby
-- Street food stalls (budget-friendly)
-- Local restaurants (for when you want real food)
-- Cafes (for the aesthetic Instagram people)
-- Fast food chains (for consistency)
+**Dalchini Pro Tips:**
+- Avoid 12:30-1:30 PM (absolute chaos, 20+ min waits)
+- Go at 11:00 AM or 2:00 PM for peace
+- Morning chai is better than afternoon chai
+- Build rapport with counter staff—they remember regulars
+- UPI is faster than cash (less fumbling)
+- Know your order before reaching the counter
+- Seating is limited—be ready to share tables
 
-### Budget Categories
+**Student Verdict:** Reliable, affordable, central location. Your default choice.
 
-**Under ₹50:**
-- Vada Pav, Samosa, Pav Bhaji stalls
-- Chai tapri
-- Bhel puri corners
+### 2. Management Canteen: The Redemption Arc
 
-**₹50-100:**
-- Canteen meals
-- Local thali places
-- Dosa corners
+**The Infamous Past:**
 
-**₹100-200:**
-- Decent restaurants
-- Combo meals
-- Pizza/burger joints
+Let's address the elephant in the room. Management Canteen once had a... reputation. We're talking about the **"hair-in-food era."** It wasn't one incident. It was multiple. Students complained. Social media posts circulated. It became a campus meme. Standards had dropped significantly.
 
-**₹200+:**
-- "Treating" friends
-- Cafes
-- When your parents send extra money
+**The Turnaround (The Facts):**
+
+Management took it seriously. They made drastic changes:
+- Reportedly **cut approximately 80% of the staff**
+- Some were relocated, some contracts not renewed (the details are fuzzy)
+- New hygiene protocols implemented
+- Stricter supervision and quality control
+- Kitchen upgrades and cleaning processes overhauled
+
+**Management Canteen Now (Post-Redemption):**
+
+**Current Status:**
+- ✅ Significantly more hygienic
+- ✅ Better food quality control
+- ✅ Clean plates and utensils
+- ✅ Students actually go there now
+- ⚠️ Still not perfect, but miles better
+
+**What's Good Now:**
+- Lunch thalis (decent portions, balanced)
+- Breakfast options (poha, upma, dosa)
+- Juice and beverages (fresh)
+- Snacks are reliable
+
+**What to Still Watch Out For:**
+- Peak hour chaos (still happens)
+- Occasionally food gets cold if cooked too early
+- Prices slightly higher than Dalchini
+
+**Student Verdict (Current):**
+- *"I was scared first year, but it's actually fine now."*
+- *"Had lunch there for a month straight, no issues."*
+- *"The redemption arc is real. Give it a chance."*
+
+**Our Recommendation:** Try it. The horror stories are (mostly) in the past. But check your food before eating—just good general practice anywhere.
+
+### 3. Chacha & The Vendor Culture
+
+**Who is Chacha?**
+
+"Chacha" is a term of endearment for campus vendors—usually independent, small-scale food sellers who set up outside or in designated areas. Every campus has them, every student loves them.
+
+**Types of Chachas:**
+
+**Chai Chacha:**
+- Morning salvation in a small plastic cup
+- ₹10-15 for cutting chai
+- Stronger, sweeter, better than canteen chai
+- Location: Usually near gates or parking area
+- Peak Time: 8-9 AM, 3-4 PM
+
+**Vada Pav Chacha:**
+- Fresh, hot, perfect vada pav
+- ₹15-25 depending on extras (chutney, fried chili)
+- Better than most canteen versions
+- Known for generous portions
+
+**Pani Puri/Bhel Chacha:**
+- Evening specialty
+- ₹20-40 for full plate
+- Perfect post-lecture snack
+- Hygiene varies—trust your instincts
+
+**Juice/Sugarcane Chacha:**
+- Fresh juice, sugarcane juice (ganne ka ras)
+- ₹20-50 depending on fruit
+- Summer survival essential
+- Ask for "no sugar" if you want (natural sweetness)
+
+**Why Chacha > Canteen (Sometimes):**
+1. **Faster service:** No long lines
+2. **Fresher food:** Made to order
+3. **Better prices:** Usually cheaper
+4. **Personal touch:** They remember regulars
+5. **Extra portions:** If they like you
+
+**Chacha Etiquette:**
+- Always be polite (they remember attitude)
+- Have exact change (₹500 notes are a nightmare for them)
+- Don't bargain (prices are already student-friendly)
+- Say thank you (builds goodwill)
+- Tip occasionally if you can (₹5-10 makes their day)
+
+**Chacha Pro Tip:** Become a regular. Order the same thing at the same time. They'll start preparing it when they see you coming.
+
+## Off-Campus Food Zones (Beyond the Gate)
+
+### Near Vidyavihar Station
+
+**Walking Distance (5-10 Minutes):**
+- Street food stalls (vada pav, samosa, pav bhaji)
+- Local Udupi restaurants (South Indian, quick meals)
+- Tea stalls (cutting chai ₹10)
+- Juice centers
+- Small bakeries (sandwich, patties)
+
+**Budget:** ₹30-80 per meal
+
+### The Surrounding Area
+
+**10-15 Minutes Walk/Auto Ride:**
+- Proper restaurants with seating
+- Dosa corners (₹50-100 per meal)
+- Thali places (₹80-150, unlimited)
+- Fast food outlets (if available nearby)
+- Cafes (₹150-300, for the aesthetic crowd)
+
+**Budget:** ₹80-250 per meal
+
+### The Food Delivery Option
+
+**Pros:**
+- Variety (everything available)
+- Comfort (delivered to campus/near gate)
+- Offers and discounts
+
+**Cons:**
+- Takes 30-45 minutes
+- Delivery at gate (have to collect)
+- Expensive with all fees
+- Sometimes arrives cold
+
+**When to Use:** Long breaks, project work days, group study sessions
+
+## The Complete Campus Food Strategy
+
+### Budget Categories & What You Get
+
+**Under ₹50 (Survival Mode):**
+- Vada pav from Chacha (₹20)
+- Samosa (₹15)
+- Chai (₹10)
+- Biscuit packet (₹20)
+- Bhel puri (₹30)
+
+**₹50-100 (Standard Student Budget):**
+- Canteen sandwich + chai (₹60)
+- Pav bhaji + cold drink (₹80)
+- Dosa + coffee off-campus (₹70)
+- Full vada pav meal with extras (₹50)
+- Small thali (₹80)
+
+**₹100-200 (Comfortable Day):**
+- Full canteen meal (₹120)
+- Decent restaurant meal nearby (₹150)
+- Pizza slice + drink (₹180)
+- Burger combo (₹150)
+- Treat yourself meal
+
+**₹200+ (Special Occasions):**
+- Treating friends
+- Birthday/celebration meals
+- Cafes with ambiance
+- Proper restaurant dinners
+- When parents send extra money
 
 ## Survival Eating Strategies
 
-### When You're Broke
-1. Canteen chai + biscuits = survival
-2. Home tiffin if possible
-3. Split meals with friends
-4. The ₹30 vada pav is your friend
+### When You're Broke (₹50/Day Budget)
 
-### When You're in a Hurry
-1. Biscuit packets
-2. Bananas (nature's fast food)
-3. Pre-ordered canteen items
-4. Energy bars
+**Strategy:**
+- **Morning:** Skip breakfast or home breakfast
+- **Mid-Morning:** Chacha chai (₹10) + homemade snack
+- **Lunch:** ₹30 vada pav or split a meal with friends
+- **Evening:** Water + biscuit packet from home
 
-### When You Need to Impress
-1. Know the "good" restaurant nearby
-2. Book in advance if it's popular
-3. Have 2-3 options ready for different budgets
-4. Always have UPI ready
+**Pro Tips:**
+- Bring food from home (tiffin, snacks)
+- Split meals with friends
+- Avoid beverages (expensive, not filling)
+- Stick to Chacha vendors (cheaper)
 
-## Food Hacks
+### When You're in a Hurry (5 Minutes Before Class)
 
-1. **Bring snacks from home**: Cheaper, healthier, always available
-2. **Learn which stalls have the freshest food**: Morning is usually better
-3. **Make friends with canteen staff**: Extra portion "sometimes" happens
-4. **Know the timings**: Some stalls close early
+**Options:**
+- Biscuit packets (keep in bag)
+- Bananas from vendor (₹5-10, nature's fast food)
+- Pre-ordered canteen item (call ahead if possible)
+- Energy bar from bag
+- Grab-and-go sandwich
 
-## The Emergency Food Kit
+**Pro Tip:** Always carry emergency snacks. Hunger during a 2-hour lecture is torture.
 
-Keep these in your bag:
-- Energy bar / granola bar
-- Biscuit packet
-- Small water bottle
-- ₹100 cash (for when UPI fails)
+### When You Need to Impress (Date/Friends/Seniors)
+
+**Strategy:**
+- **Research:** Know 2-3 good spots nearby
+- **Budget:** Have ₹200-400 ready per person
+- **Timing:** Book/reach early (avoid waits)
+- **Backup:** Have alternate options if first choice is full
+- **Payment:** UPI ready, or enough cash
+
+**Safe Choices:**
+- Decent restaurant with AC (comfort matters)
+- Clean, popular place (reviews matter)
+- Multi-cuisine (everyone finds something)
+
+### The Tiffin System (Underrated Hack)
+
+**What It Is:** Bring home-cooked food in a lunchbox (tiffin).
+
+**Pros:**
+- Cheapest option (₹0 on campus)
+- Healthier
+- Tastes like home
+- No waiting in lines
+- Can share with friends (builds bonds)
+
+**Cons:**
+- Need to plan ahead
+- Carrying it in commute
+- Can spill in bag
+- Reheating access (some canteens allow, some don't)
+
+**Best For:** Budget-conscious students, health-conscious students, people tired of canteen food.
+
+## Food Timing Strategy (When to Eat What)
+
+| Time | What's Smart | What's Crowded | Pro Tip |
+|------|-------------|----------------|---------|
+| 8:00-9:00 AM | Chai + Samosa from Chacha | Nothing (early) | Best time for fresh food |
+| 11:00-11:30 AM | Early lunch at canteen | Not yet | Beat the rush |
+| 12:00-12:30 PM | Avoid canteen if possible | Peak chaos everywhere | Wait or go off-campus |
+| 12:30-1:30 PM | Off-campus meal | All campus canteens | Use this time strategically |
+| 2:00-3:00 PM | Post-lunch canteen | Much better | Peaceful dining |
+| 3:30-4:30 PM | Chai + snack | Moderate crowds | Refresher before evening |
+| 5:00 PM+ | Whatever's left | Vendors closing | Plan accordingly |
+
+## Food Hacks (The Insider Knowledge)
+
+**1. Become a Regular at One Spot**
+- They'll remember you
+- Extra portions "accidentally" happen
+- Sometimes they'll save the fresh batch for you
+- You'll get better service
+
+**2. Share Everything**
+- One full meal + one snack = split between 2 friends
+- Everyone saves money
+- You get variety
+
+**3. Bring Your Own Bottle**
+- Fill water at campus coolers (free)
+- Saves ₹20/day on bottled water
+- ₹20 x 200 college days = ₹4,000 saved per year
+
+**4. Know the Fresh Food Timing**
+- Morning samosas are freshest
+- Chai is best mid-morning and evening
+- Lunch items made fresh around 11 AM
+- Avoid end-of-day leftovers
+
+**5. Make Friends with Canteen Staff**
+- Greet them by name (if they share)
+- Be polite always
+- Occasional "Thank you" goes long way
+- They can save you during rush hours
+
+**6. Emergency Cash Stash**
+- Keep ₹100-200 hidden in bag
+- For days when you forget wallet
+- For when UPI/card fails
+- For emergency hunger situations
+
+## The Emergency Food Kit (Keep in Bag)
+
+**Must-Haves:**
+- Energy bar / granola bar (hunger emergency)
+- Biscuit packet (Marie, Parle-G, anything)
+- Small pack of nuts (almonds, peanuts)
+- Candy/chocolate (quick glucose)
+- ₹100 cash (backup)
+
+**Optional But Smart:**
+- Small bottle hot sauce/chutney (makes boring food better)
+- Reusable spoon
+- Paper napkins
+- Mint/chewing gum
+
+## When to Eat Off-Campus
+
+**Good Reasons:**
+- Long break (2+ hours)
+- Tired of canteen food
+- Special occasion
+- Friend is treating
+- You have time to explore
+
+**Bad Reasons:**
+- To avoid one lecture (not worth it)
+- FOMO (everyone's going = expensive + time waste)
+- "Just because" with no plan (you'll waste time deciding)
+
+## Food Safety & Hygiene Tips
+
+**What to Check (Anywhere You Eat):**
+- Is the cooking area visible and clean?
+- Are utensils clean?
+- Is the water source clean?
+- How fresh does the food look?
+- How many other students eat there? (Popularity = trustworthy)
+
+**Red Flags:**
+- Strong weird smell
+- Food sitting out for hours
+- Dirty utensils/plates
+- Flies everywhere
+- Your gut feeling says no
+
+**Trust Your Instincts:** If it looks/smells off, skip it. ₹30 saved isn't worth food poisoning.
+
+## The Monthly Food Budget (Realistic Planning)
+
+**Minimum Budget (₹2,000-3,000/month):**
+- ₹100/day average
+- Home breakfast + tiffin lunch
+- Only campus chai + snacks
+- Very tight control
+
+**Comfortable Budget (₹4,000-6,000/month):**
+- ₹200-300/day average
+- Canteen meals
+- Occasional off-campus
+- Some treats
+- Reasonable flexibility
+
+**Relaxed Budget (₹7,000-10,000/month):**
+- ₹350-500/day average
+- Eat what you want
+- Regular off-campus meals
+- Cafes, treats, variety
+- Treat friends occasionally
 
 ---
 
-*A hungry student is a distracted student. Plan your meals.*
+*"College is where you learn that ₹30 can buy happiness in the form of vada pav."*  
+— Every Somaiya student ever
 `
       },
       {
