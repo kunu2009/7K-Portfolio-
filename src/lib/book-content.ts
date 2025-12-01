@@ -1060,61 +1060,8 @@ For the first time in years, he wasn't alone.
 
 And that terrified him almost as much as what they were about to uncover.`,
       },
-
-Slipped under his pillow in the middle of the night. Typed on old, yellowed paper. No signature.
-
-"You're not the only one with eyes."
-
-"Curiosity kills more than cats."
-
-"You were never invisible. Just unimportant. Until now."
-
-Rudra didn't flinch.
-
-But a part of him, buried under years of training and logic, felt something. Not fear. Not paranoia.
-
-Something worse—recognition.
-
-## The Discovery
-
-It was like facing a mirror in the dark: blurred, distorted, but undeniably familiar.
-
-He'd spent years learning to predict people. To read their patterns, manipulate outcomes, stay three steps ahead. But now, someone was doing it to him.
-
-At breakfast, he noticed the stares. Not obvious ones—calculated glances. People looking and quickly looking away. Was it guilt? Fear? Or was he imagining it?
-
-In the afternoon, Rudra skipped the lecture. Instead, he returned to the abandoned biology lab—this time with gloves, a flashlight, and a crowbar.
-
-The door gave way with a groan.
-
-Inside, the air was thick with dust and something else… a sharp, metallic stench. He scanned the room: broken furniture, scattered books, old jars of formaldehyde. Nothing obvious.
-
-Until he found the mirror.
-
-Large. Cracked. Leaning against the far wall.
-
-It hadn't been there before. He was sure.
-
-He approached slowly.
-
-Written in jagged letters on the surface—using what looked like dried red ink—were four words:
-
-"You are not alone."
-
-Behind the mirror, hidden in the wall cavity, he found a camera. Modern. Wireless. Streaming.
-
-Someone had been watching the lab.
-
-Rudra's breath didn't quicken. His hands didn't shake. But inside, the calm shattered slightly.
-
-This wasn't just about Varun anymore.
-
-This was a game.
-
-And Rudra was no longer the only player.`,
-      },
       {
-        id: 5,
+        id: 6,
         title: 'Karthik\'s Game',
         content: `The night before the infiltration, Rudra couldn't sleep.
 
