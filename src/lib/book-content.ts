@@ -57,6 +57,153 @@ export const bookData: Record<string, any> = {
       { id: 8, title: 'The Unwritten Rules', pages: '96-120' },
     ],
   },
+  'useful-student': {
+    title: 'The Useful Student',
+    subtitle: 'How To Build Yourself From Zero',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.8,
+    pages: 180,
+    language: 'ENG',
+    coverImage: '/images/books/useful-student-cover.png',
+    synopsis: 'A practical guide for students who feel behind, lost, or stuck. This book shows you how to build real skills, create genuine value, and transform from someone who consumes to someone who creates. No motivation speeches—just actionable steps.',
+    chapters: [
+      { id: 1, title: 'The Starting Point', pages: '1-20' },
+      { id: 2, title: 'Skills vs Degrees', pages: '21-40' },
+      { id: 3, title: 'The Building Mindset', pages: '41-60' },
+      { id: 4, title: 'Your First Project', pages: '61-80' },
+      { id: 5, title: 'Learning in Public', pages: '81-100' },
+      { id: 6, title: 'Finding Your Edge', pages: '101-120' },
+      { id: 7, title: 'The Money Chapter', pages: '121-145' },
+      { id: 8, title: 'Becoming Undeniable', pages: '146-180' },
+    ],
+  },
+  'procrastinator-universe': {
+    title: 'The Procrastinator Who Wanted to Build a Universe',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.6,
+    pages: 150,
+    language: 'ENG',
+    coverImage: '/images/books/procrastinator-universe-cover.png',
+    synopsis: 'A philosophical journey through the mind of a chronic procrastinator who dreams of creating something massive. Part self-help, part creative exploration, this book examines why we delay our biggest dreams and how to start anyway.',
+    chapters: [
+      { id: 1, title: 'The Dream That Waited', pages: '1-25' },
+      { id: 2, title: 'Why We Delay What Matters', pages: '26-50' },
+      { id: 3, title: 'The First Brick', pages: '51-75' },
+      { id: 4, title: 'Building in the Dark', pages: '76-100' },
+      { id: 5, title: 'When the Universe Fights Back', pages: '101-125' },
+      { id: 6, title: 'The Universe Takes Shape', pages: '126-150' },
+    ],
+  },
+  'build-first': {
+    title: 'Build First, Learn Later',
+    subtitle: 'The 7K Way',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.9,
+    pages: 140,
+    language: 'ENG',
+    coverImage: '/images/books/build-first-cover.png',
+    synopsis: 'The philosophy behind 7K: why building things teaches you more than courses ever could. This book documents the approach of learning through creation, making mistakes in public, and letting projects teach you what books cannot.',
+    chapters: [
+      { id: 1, title: 'The Tutorial Trap', pages: '1-20' },
+      { id: 2, title: 'Build First Philosophy', pages: '21-40' },
+      { id: 3, title: 'Your Learning Stack', pages: '41-60' },
+      { id: 4, title: 'Project-Based Everything', pages: '61-80' },
+      { id: 5, title: 'Failing Forward', pages: '81-100' },
+      { id: 6, title: 'The Compound Effect', pages: '101-120' },
+      { id: 7, title: 'The 7K Manifesto', pages: '121-140' },
+    ],
+  },
+  'desk-life': {
+    title: 'The Desk I Built My Life Around',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.7,
+    pages: 130,
+    language: 'ENG',
+    coverImage: '/images/books/desk-life-cover.png',
+    synopsis: 'A meditation on workspace, creativity, and how the physical space you work in shapes the life you build. From a cramped corner to a creative hub—this is the story of building a life around a desk.',
+    chapters: [
+      { id: 1, title: 'The First Desk', pages: '1-20' },
+      { id: 2, title: 'Space Shapes Mind', pages: '21-40' },
+      { id: 3, title: 'Tools of Creation', pages: '41-60' },
+      { id: 4, title: 'The Ritual of Work', pages: '61-80' },
+      { id: 5, title: 'Evolution of a Workspace', pages: '81-100' },
+      { id: 6, title: 'The Life Built Here', pages: '101-130' },
+    ],
+  },
+  'offline-productivity': {
+    title: 'Offline Productivity',
+    subtitle: 'The One-GB Lifestyle',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.8,
+    pages: 145,
+    language: 'ENG',
+    coverImage: '/images/books/offline-productivity-cover.png',
+    synopsis: 'How constraints breed creativity. This book explores working with limited internet, making the most of offline time, and building systems that work even when WiFi does not. A guide for students and creators in bandwidth-limited environments.',
+    chapters: [
+      { id: 1, title: 'The Bandwidth Constraint', pages: '1-22' },
+      { id: 2, title: 'Offline-First Thinking', pages: '23-44' },
+      { id: 3, title: 'The Download Strategy', pages: '45-66' },
+      { id: 4, title: 'Creating Without Connection', pages: '67-88' },
+      { id: 5, title: 'Batch Processing Life', pages: '89-110' },
+      { id: 6, title: 'The Unexpected Benefits', pages: '111-125' },
+      { id: 7, title: 'Living the 1GB Life', pages: '126-145' },
+    ],
+  },
+  'tower-of-memory': {
+    title: 'The Tower of Memory',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.5,
+    pages: 200,
+    language: 'ENG',
+    coverImage: '/images/books/tower-memory-cover.png',
+    synopsis: 'A manga-style narrative exploring a universe where memories can be stored, traded, and stolen. Follow the protagonist through a world where the Tower holds humanitys most precious memories—and the conspiracy that threatens to bring it down.',
+    chapters: [
+      { id: 1, title: 'The Memory Thief', pages: '1-30' },
+      { id: 2, title: 'Entering the Tower', pages: '31-60' },
+      { id: 3, title: 'The Traders', pages: '61-90' },
+      { id: 4, title: 'Fragments of Truth', pages: '91-120' },
+      { id: 5, title: 'The Conspiracy', pages: '121-150' },
+      { id: 6, title: 'The Climb', pages: '151-180' },
+      { id: 7, title: 'At the Top', pages: '181-200' },
+    ],
+  },
+  'student-machines': {
+    title: 'The Student Who Could Hear Machines',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.6,
+    pages: 175,
+    language: 'ENG',
+    coverImage: '/images/books/student-machines-cover.png',
+    synopsis: 'A speculative fiction about a student who develops an unusual ability to understand what machines are saying. As they navigate college, they discover that technology has its own language, its own problems, and its own requests for help.',
+    chapters: [
+      { id: 1, title: 'The First Voice', pages: '1-25' },
+      { id: 2, title: 'Learning to Listen', pages: '26-50' },
+      { id: 3, title: 'The Language of Systems', pages: '51-75' },
+      { id: 4, title: 'Requests and Warnings', pages: '76-100' },
+      { id: 5, title: 'The Network Speaks', pages: '101-130' },
+      { id: 6, title: 'The Choice', pages: '131-155' },
+      { id: 7, title: 'Human and Machine', pages: '156-175' },
+    ],
+  },
+  'somaiya-files': {
+    title: 'The Somaiya Files',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.7,
+    pages: 220,
+    language: 'ENG',
+    coverImage: '/images/books/somaiya-files-cover.png',
+    synopsis: 'A thriller set within the tech infrastructure of a college campus. When a student discovers anomalies in the attendance system, they uncover a web of secrets hidden in the digital architecture. Part tech mystery, part campus drama.',
+    chapters: [
+      { id: 1, title: 'The Anomaly', pages: '1-30' },
+      { id: 2, title: 'Digging Deeper', pages: '31-55' },
+      { id: 3, title: 'The Ghost in the System', pages: '56-85' },
+      { id: 4, title: 'Following the Data', pages: '86-115' },
+      { id: 5, title: 'The Cover-Up', pages: '116-145' },
+      { id: 6, title: 'Allies and Enemies', pages: '146-175' },
+      { id: 7, title: 'The Truth', pages: '176-200' },
+      { id: 8, title: 'The Reckoning', pages: '201-220' },
+    ],
+  },
 };
 
 export const bookContent: Record<string, any> = {
@@ -1349,6 +1496,1303 @@ Welcome to Somaiya. Make it count.
 — Kunal Chheda
 
 P.S. If you found this useful, share it with the next batch. They'll need it too.
+`
+      }
+    ]
+  },
+  'useful-student': {
+    title: 'The Useful Student',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Starting Point',
+        content: `# The Starting Point
+
+You feel behind. You look at people your age who seem to have it all figured out—portfolios, internships, skills, direction—and you wonder where you went wrong.
+
+Here is the truth: you did not go wrong. You just have not started yet.
+
+This book is about starting. About building yourself from nothing into someone undeniable. Not through motivation or inspiration, but through systematic action.
+
+## The Reality Check
+
+Let me tell you where most students are:
+
+- They attend classes but do not learn
+- They consume content but do not create
+- They plan extensively but execute rarely
+- They know what they should do but cannot make themselves do it
+
+This is not a character flaw. This is a system failure. You were never taught how to build yourself. School taught you to follow instructions. College continues the pattern. No one shows you how to take ownership of your own development.
+
+## The Useful Student Defined
+
+What makes a student useful?
+
+Not grades—though they matter for certain gates.
+Not attendance—though showing up is step one.
+Not networking—though connections help.
+
+A useful student is someone who creates value. Who can point to things they have built, problems they have solved, work that exists because of them.
+
+The world does not reward potential. It rewards proof.
+
+## The Zero Point
+
+If you are starting from zero, congratulations. You have no bad habits to unlearn, no failed projects haunting you, no reputation limiting what you can become.
+
+Zero is not a deficit. Zero is a blank slate.
+
+From zero, any direction is progress. Any skill learned is growth. Any project completed is evidence.
+
+## The Three Phases
+
+This book will take you through three phases:
+
+**Phase 1: Foundation (Chapters 1-3)**
+Understanding what skills matter, what mindset works, and how to actually start.
+
+**Phase 2: Building (Chapters 4-6)**
+Creating your first projects, learning in public, and finding your unique angle.
+
+**Phase 3: Becoming (Chapters 7-8)**
+Turning your work into income, your effort into reputation, and your projects into opportunities.
+
+## Why I Wrote This
+
+I was a zero student once. No skills, no direction, no idea what I was doing. Everyone around me seemed to know something I did not.
+
+Then I realized: they were faking it too. The difference was they had started faking it earlier.
+
+So I started. Small projects. Failed attempts. Slow progress. But progress nonetheless.
+
+Now I have built things. Created value. Become someone who can help others do the same.
+
+This book is what I wish someone had given me at the beginning.
+
+## The Only Promise
+
+I will not promise you success. I cannot guarantee outcomes.
+
+What I can promise: if you follow this book actively—not just reading but doing—you will end up somewhere different than you are now.
+
+Different means more skilled. More capable. More useful.
+
+Whether that translates to money, opportunity, or satisfaction depends on you. But being useful is the precondition for all of it.
+
+## Your Assignment
+
+Before the next chapter, do one thing:
+
+Write down what you want to be known for in one year.
+
+Not what you want to have (money, job, degree). What you want to BE.
+
+Be specific. "A skilled developer" is vague. "Someone who has built and deployed three web applications" is concrete.
+
+This is your north star. Every chapter will move you toward it.
+
+---
+
+*The journey of building yourself starts with a single decision: I will become useful.*
+
+---
+
+Let us begin.
+`
+      },
+      {
+        id: 2,
+        title: 'Skills vs Degrees',
+        content: `# Skills vs Degrees
+
+This chapter will make some people uncomfortable. Good.
+
+## The Uncomfortable Truth
+
+Here is what no one in education wants to admit:
+
+Your degree, in most fields, is a signal—not a skill. It tells employers you can follow instructions, complete assignments, and tolerate boredom for four years. It says nothing about what you can actually do.
+
+The piece of paper matters for getting through certain gates. HR filters. Visa requirements. Family expectations. These are real considerations.
+
+But the paper itself does not make you capable of anything.
+
+## The Skill Advantage
+
+Skills are different. Skills are:
+
+- **Demonstrable**: You can show them, not just claim them
+- **Transferable**: They work across contexts
+- **Stackable**: They combine to create unique value
+- **Appreciating**: They grow with use
+
+A degree is a one-time purchase that depreciates the moment you graduate. Skills compound over time.
+
+## The Skills That Matter
+
+Not all skills are equal. Some matter more than others for building a useful career:
+
+### Tier 1: Foundation Skills
+- **Communication**: Writing clearly, speaking confidently
+- **Critical thinking**: Analyzing problems, questioning assumptions
+- **Learning ability**: Acquiring new skills efficiently
+- **Self-management**: Organizing yourself, meeting commitments
+
+### Tier 2: Creation Skills
+- **Making things**: Coding, design, writing, building
+- **Problem-solving**: Breaking down complex issues
+- **Project completion**: Finishing what you start
+- **Iteration**: Improving based on feedback
+
+### Tier 3: People Skills
+- **Collaboration**: Working effectively with others
+- **Leadership**: Guiding people toward goals
+- **Sales**: Persuading and influencing
+- **Teaching**: Transferring knowledge to others
+
+### Tier 4: Meta Skills
+- **Systems thinking**: Understanding how things connect
+- **Strategic thinking**: Seeing the bigger picture
+- **Creativity**: Generating novel solutions
+- **Resilience**: Bouncing back from failure
+
+## The Skill Selection Problem
+
+You cannot learn everything. Time is finite. So how do you choose which skills to develop?
+
+**Question 1**: What skills does my goal require?
+If you want to be a product designer, you need design tools, user research, and presentation skills. Start there.
+
+**Question 2**: What skills do I naturally enjoy?
+Sustainable skill-building requires some enjoyment. Pure discipline burns out.
+
+**Question 3**: What skills are scarce but valuable?
+Common skills command low prices. Rare skill combinations command high prices.
+
+**Question 4**: What skills compound with what I already have?
+Skills that stack with existing abilities create unique value faster.
+
+## The Degree-Skill Balance
+
+I am not telling you to drop out. I am telling you to use your time strategically.
+
+You have roughly 6-8 waking hours during college that are not consumed by classes, commute, and basic needs. How you use those hours determines whether you graduate as just another degree-holder or as someone with demonstrable skills.
+
+**The minimum approach**:
+- 1 hour daily for skill development
+- Weekend project time
+- Vacation intensive learning
+
+**The serious approach**:
+- 3-4 hours daily for skill development
+- Significant projects every semester
+- Vacation apprenticeships or intensive work
+
+**The all-in approach**:
+- Minimum viable effort on academics (enough to pass)
+- Maximum effort on skill development
+- Using college resources for your projects
+
+Choose based on your goals, constraints, and risk tolerance.
+
+## The Evidence Problem
+
+Skills without evidence are just claims. Anyone can say they know Python. Fewer can point to applications they have built with Python.
+
+Every skill you develop needs proof:
+- **Projects**: Things you have made
+- **Portfolio**: Organized presentation of work
+- **Testimonials**: What others say about your work
+- **Results**: Outcomes your work created
+
+Building evidence should be part of how you learn, not an afterthought.
+
+## The Practical Path
+
+Here is how to actually build skills while in college:
+
+1. **Identify one core skill** for the next 3 months
+2. **Find the best free resources** to learn it
+3. **Schedule daily practice time** as non-negotiable
+4. **Build a project** that demonstrates the skill
+5. **Document your progress** publicly
+6. **Repeat with the next skill**
+
+This is not complicated. It just requires consistency.
+
+## The Honest Assessment
+
+Where are you on skills vs. degree right now?
+
+- Heavy on degree, light on skills: Most students
+- Light on degree, heavy on skills: Rare but risky
+- Balanced: Ideal
+- Light on both: Crisis
+
+If you are in the first category, this book will help you rebalance. If you are in the last, start immediately. No more time to waste.
+
+---
+
+*Your degree gets you the interview. Your skills get you the job. Your execution keeps you there.*
+
+---
+
+Next chapter: The mindset that makes skill-building possible.
+`
+      },
+      {
+        id: 3,
+        title: 'The Building Mindset',
+        content: `# The Building Mindset
+
+Before you can build things, you need to build the mindset that makes building possible.
+
+## The Consumer vs. Builder Spectrum
+
+Most people are consumers. They:
+- Watch content, do not create content
+- Read books, do not write books
+- Use apps, do not build apps
+- Admire work, do not produce work
+
+Consumers are necessary. The economy needs them. But consumers do not get the opportunities that builders get.
+
+Builders are rare. They:
+- Create content, even if imperfect
+- Write, even if unpublished
+- Build apps, even if unused
+- Produce work, even if unrecognized
+
+The gap between consuming and building is not about talent. It is about mindset.
+
+## The Five Shifts
+
+Moving from consumer to builder requires five mental shifts:
+
+### Shift 1: From Perfectionism to Iteration
+
+Consumers wait until they are ready. Builders start before they are ready.
+
+Perfectionism is fear wearing a responsible mask. It says: do not show your work until it is perfect. But perfect never comes. So nothing gets shown.
+
+Iteration says: show your work now, improve it based on feedback, show again. Imperfect work that exists beats perfect work that does not.
+
+### Shift 2: From Permission to Forgiveness
+
+Consumers ask: Am I allowed to do this? Builders ask: What happens if I do this?
+
+You do not need permission to:
+- Start a project
+- Learn a skill
+- Share your work
+- Call yourself something
+
+Do things first. Apologize later if needed. Most of the time, no one cares as much as you think.
+
+### Shift 3: From Consumption to Creation
+
+Consumers default to input. Builders default to output.
+
+When you have free time, the consumer watches, reads, scrolls. The builder makes, writes, codes.
+
+This does not mean zero consumption. Input is necessary. But the ratio matters. If you consume 10 hours for every 1 hour of creation, something is off.
+
+Aim for at least 1:1. One hour of creation for every hour of consumption.
+
+### Shift 4: From Hiding to Showing
+
+Consumers hide their work in progress. Builders show their work in progress.
+
+Learning in public is terrifying at first. Someone might criticize. Someone might see your mistakes.
+
+Yes. And that someone might also:
+- Give you useful feedback
+- Share your work
+- Offer opportunities
+- Become a collaborator
+
+The upside of showing outweighs the downside of hiding.
+
+### Shift 5: From Outcome to Process
+
+Consumers focus on results. Builders focus on systems.
+
+If you only care about the outcome (getting famous, making money, landing a job), you will quit when outcomes are slow.
+
+If you care about the process (building daily, improving incrementally, enjoying the work), you will continue regardless of outcomes. And ironically, outcomes follow consistent process.
+
+## The Inner Resistance
+
+Even with the right mindset, you will face resistance. The voice that says:
+- You are not good enough
+- Someone else does it better
+- No one will care
+- You are wasting time
+
+This voice never fully goes away. It visits every builder. The difference is what you do when it arrives.
+
+Builders hear the voice and work anyway. They feel the fear and build anyway. They doubt themselves and ship anyway.
+
+Resistance is not a sign you should stop. It is a sign you are pushing into new territory.
+
+## The Daily Practice
+
+Mindset is not installed once. It is practiced daily.
+
+Here is a simple daily practice:
+
+**Morning**: What will I build/work on today? (Be specific)
+**Evening**: What did I actually build/work on? (Be honest)
+
+This creates a feedback loop. Over time, the gap between intention and action shrinks.
+
+## The Identity Shift
+
+The ultimate mindset shift is identity-level:
+
+From: "I am someone who wants to build things"
+To: "I am a builder"
+
+Identity shapes behavior. When building is who you are, not just what you do, consistency becomes easier.
+
+You do not motivate yourself to build. You simply do what builders do.
+
+## The Environment Factor
+
+Mindset is not purely internal. Environment shapes mindset.
+
+If everyone around you is a consumer, building feels abnormal.
+If everyone around you is a builder, building feels expected.
+
+Seek out builders. Follow them online. Join their communities. Make building feel normal.
+
+## The First Step
+
+You cannot think your way into a building mindset. You must act your way into it.
+
+The first step is simple: build something today.
+
+It does not have to be good. It does not have to be big. It just has to exist.
+
+A tweet about what you are learning. A simple script that automates something. A sketch of an idea. A document organizing your thoughts.
+
+Something. Anything. From consuming to creating.
+
+---
+
+*The mind of a builder is not born. It is built—one act of creation at a time.*
+
+---
+
+You have the mindset. Now let us build your first project.
+`
+      }
+    ]
+  },
+  'procrastinator-universe': {
+    title: 'The Procrastinator Who Wanted to Build a Universe',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Dream That Waited',
+        content: `# The Dream That Waited
+
+I have a universe in my head.
+
+It has been there for years—expanding, evolving, waiting. Cities with their own histories. Characters with their own motivations. Systems that govern how things work. A world complete enough to get lost in.
+
+And I have done almost nothing with it.
+
+## The Shape of the Dream
+
+Let me describe what lives in my mind:
+
+There is a tower at the center of everything. It stretches into dimensions that should not exist, each floor containing memories that people have traded away. Some traded for power. Some for peace. Some because they could not bear to carry what they remembered.
+
+There are people who climb the tower—seekers, traders, thieves. Each has their reasons. Each pays their price.
+
+Around the tower, a city spirals outward. The architecture changes as you move through it, reflecting the era it was built in, the values of those who built it, the memories embedded in the walls themselves.
+
+This world has rules. It has history. It has stories waiting to be told.
+
+And it has waited. For years.
+
+## Why Dreams Wait
+
+Procrastination is not laziness. I know this because I am not lazy—I do many things. I just do not do the things that matter most.
+
+Dreams wait because:
+- **They are too big**: The gap between the vision and current ability is terrifying
+- **They are too precious**: What if I ruin it by attempting it?
+- **They are too revealing**: What if the universe in my head is embarrassing when it is out in the world?
+- **They have no deadline**: No one is waiting. No penalty for delay.
+
+The things I do instead have smaller gaps, lower stakes, external accountability. They feel more doable. So I do them, and the dream waits.
+
+## The Accumulating Cost
+
+But dreams are not patient. They do not wait unchanged.
+
+Each year the dream waits, it accumulates:
+- **Complexity**: More ideas attach themselves, making it harder to start
+- **Pressure**: The expectation of what it should be grows
+- **Doubt**: Maybe it is not worth doing after all
+- **Competition**: Others build their universes while mine stays in my head
+
+And I accumulate:
+- **Regret**: For time not spent on what matters
+- **Self-deception**: Telling myself I will start soon
+- **Evidence**: That I am someone who dreams but does not build
+
+The cost of waiting is not just delay. It is transformation—of the dream and of myself.
+
+## The Familiar Pattern
+
+I know this pattern. You might too.
+
+1. Have a big idea
+2. Get excited about it
+3. Think about it extensively
+4. Never actually start
+5. Feel guilty
+6. Distract from guilt with smaller tasks
+7. Return to thinking about the idea
+8. Still not start
+9. Eventually the idea feels stale
+10. Replace with new idea
+11. Repeat
+
+This is not a flaw in the idea. It is a flaw in the system—how we relate to our biggest dreams.
+
+## What This Book Is
+
+This book is my attempt to break the pattern.
+
+Not with productivity hacks or motivation tricks. Those have never worked. The procrastinator brain is immune to such things.
+
+Instead, this book explores:
+- Why we delay what matters most
+- What actually gets us moving
+- How to build despite ourselves
+- What happens when we finally start
+
+It is a journey through the mind of someone who has a universe waiting. And hopefully, by the end, a universe beginning.
+
+## The Commitment
+
+I am writing this book as an act of building.
+
+Every word here is a brick laid. Not in the universe itself—not yet—but in the foundation that makes the universe possible.
+
+If I can write this book about building, maybe I can build the thing itself.
+
+If you are reading this, you probably have your own universe waiting. Your own dream delayed. Your own pattern of almost-starting.
+
+Maybe we can break the pattern together.
+
+## The First Honest Question
+
+Before we go further, ask yourself:
+
+What is the thing you have been meaning to create, start, or build—but have not?
+
+Not the thing you tell people. The real thing. The one that lives in your head, waiting.
+
+Say its name. Write it down. Acknowledge that it exists.
+
+That is the first step. Not starting. Just admitting.
+
+---
+
+*Every universe begins with a dreamer who refuses to let the dream wait forever.*
+
+---
+
+Next: Why we delay what matters—the psychology of procrastination on our biggest dreams.
+`
+      }
+    ]
+  },
+  'build-first': {
+    title: 'Build First, Learn Later',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Tutorial Trap',
+        content: `# The Tutorial Trap
+
+You have watched 47 tutorials on web development.
+
+You can explain the difference between React and Vue. You know what a REST API is. You have bookmarked 23 courses on Udemy that you will definitely complete.
+
+You have not built a single website.
+
+Welcome to the tutorial trap.
+
+## The Pattern
+
+Here is how it typically goes:
+
+1. You want to learn something new
+2. You search for the best way to learn it
+3. You find tutorials, courses, books
+4. You consume them diligently
+5. You feel like you are learning
+6. You consume more
+7. You still have not built anything
+8. You feel unprepared to build
+9. You consume more to feel prepared
+10. Months pass. Nothing is built.
+
+The trap is believing that consuming prepares you to create. It does not. Only creating prepares you to create.
+
+## Why Tutorials Fail
+
+Tutorials are not inherently bad. But they fail for a specific reason:
+
+**Tutorials optimize for the feeling of learning, not for actual learning.**
+
+When you follow a tutorial, you:
+- Do what you are told
+- Avoid making decisions
+- Never hit unexpected problems
+- Never build from nothing
+- Finish with copy-paste understanding
+
+This feels productive. But it is false productivity. The moment you try to build something without the tutorial, you realize you know nothing.
+
+## The Knowledge Illusion
+
+There are two types of knowledge:
+
+**Passive knowledge**: You recognize it when you see it. You can explain it in theory. You could pass a multiple choice test.
+
+**Active knowledge**: You can produce it. You can use it to solve novel problems. You can build with it.
+
+Tutorials give you passive knowledge. Only building gives you active knowledge.
+
+And the world does not reward passive knowledge. No one pays you to explain how things work. They pay you to make things work.
+
+## The Build First Philosophy
+
+Build First, Learn Later inverts the traditional approach:
+
+**Traditional**: Learn first, build later
+**Build First**: Build first, learn as needed
+
+Here is how it works:
+
+1. Have a project idea
+2. Start building immediately
+3. Hit a wall when you do not know something
+4. Learn just enough to get past the wall
+5. Continue building
+6. Hit another wall
+7. Learn just enough to get past that wall
+8. Repeat until project is done
+
+Learning happens in service of building, not as preparation for building.
+
+## Why This Works
+
+Build First works because:
+
+**Context**: You learn in context. The knowledge has a place to attach.
+
+**Motivation**: You have a reason to learn. The wall is blocking your progress.
+
+**Retention**: You remember what you use. Knowledge applied is knowledge retained.
+
+**Feedback**: You see immediately if your learning worked. The code runs or it does not.
+
+**Speed**: You learn only what you need. No wasted time on irrelevant content.
+
+## The Discomfort Trade
+
+Build First is uncomfortable. You will:
+- Feel stupid often
+- Break things constantly
+- Not know what you are doing
+- Make embarrassing mistakes
+- Want to retreat to tutorials
+
+This discomfort is the point. Discomfort means you are in the zone of actual learning. Comfort means you are in the zone of passive consumption.
+
+Trading comfort for competence is always worth it.
+
+## The Starting Problem
+
+The common objection: "But I literally know nothing. How can I build first if I cannot even begin?"
+
+Here is the answer: You know enough to begin. You just do not feel like you do.
+
+If you want to build a website:
+- You know websites exist
+- You know they are made of something
+- You can Google "how to make a website"
+- You can try things and see what happens
+
+That is enough to start. Everything else you learn by doing.
+
+The first project will be ugly and broken. That is fine. The second will be less ugly and less broken. By the tenth, you are competent.
+
+## The 7K Origin
+
+This philosophy is how 7K was born.
+
+I did not learn design systems before designing. I designed badly, learned what was wrong, designed slightly better.
+
+I did not learn development before developing. I broke things, Googled error messages, fixed things, broke new things.
+
+I did not learn content creation before creating. I published embarrassing early work, noticed what was wrong, improved.
+
+Build first. Learn later. Repeat forever.
+
+## Your First Move
+
+Here is your assignment:
+
+Pick something you have been wanting to learn. Something you have tutorials saved for.
+
+Close the tutorials.
+
+Start building something with what you know right now—which might be nothing.
+
+See how far you get.
+
+When you get stuck, learn just enough to get unstuck.
+
+Continue.
+
+This is the path.
+
+---
+
+*The tutorial prepares you to follow. Building prepares you to lead.*
+
+---
+
+Next: How to structure your learning when building comes first.
+`
+      }
+    ]
+  },
+  'desk-life': {
+    title: 'The Desk I Built My Life Around',
+    chapters: [
+      {
+        id: 1,
+        title: 'The First Desk',
+        content: `# The First Desk
+
+The first desk I remember was not mine.
+
+It was a corner of the dining table, claimed temporarily for homework, surrendered promptly for dinner. I did not have space that was just mine. Every work surface was shared, borrowed, conditional.
+
+This is how most of us start.
+
+## The Shared Space Problem
+
+When your workspace is not yours, something strange happens:
+
+You never fully settle in. You know you will have to pack up. You know someone else needs this space. You work with one eye on the clock, one ear on the door.
+
+Deep work—the kind that requires sinking into a problem—becomes nearly impossible. You are always partially present, partially prepared to leave.
+
+Your relationship with work becomes transactional: get it done, get out.
+
+## The Dream of a Desk
+
+At some point, I started dreaming of a desk.
+
+Not just any surface—a desk. My desk. A place where things could stay put. Where I could leave a project mid-thought and return to find it waiting.
+
+This seems like a small dream. But for someone who has never had dedicated space, a desk represents something larger:
+
+- **Permanence**: This space is for me
+- **Permission**: I am allowed to work seriously here
+- **Identity**: I am someone who does work worth having a desk for
+
+The desk is not just furniture. It is a statement.
+
+## The First Real Desk
+
+When I finally got my own desk, it was small and cheap. The surface wobbled. One leg was slightly shorter than the others.
+
+But it was mine.
+
+I remember the first night I sat there without being asked to move. The first time I left something overnight and found it exactly where I left it. The first project I completed in that space.
+
+Something shifted. Work became different when it had a home.
+
+## What Changes With a Desk
+
+Having your own desk changes things:
+
+**Ritual becomes possible**: You can build habits around a space. Sit down, work begins. Stand up, work ends. The space becomes a trigger.
+
+**Tools accumulate**: Things can stay where they belong. Your workflow can have physical form.
+
+**Thinking deepens**: When you do not have to pack up, you can leave problems mid-process. Your brain continues working even when you walk away.
+
+**Identity solidifies**: I am someone with a desk means I am someone who does work that matters.
+
+## The Desk as Mirror
+
+My desk has changed over the years. Each version reflects who I was at the time:
+
+- The student desk: cluttered, chaotic, full of unfinished assignments
+- The early creative desk: covered in prototypes and sketches
+- The professional desk: organized, efficient, optimized for output
+- The current desk: balanced between creation and contemplation
+
+Show me your desk and I will show you your mind.
+
+## The Minimal Desk Philosophy
+
+Eventually I learned that more desk is not better desk. The ideal workspace is:
+
+**Enough space** for the current project—not all possible projects.
+
+**Enough tools** for the current work—not all possible work.
+
+**Enough inspiration** to energize—not overwhelm.
+
+The minimal desk forces clarity. What is essential? What is distraction? What earns its space?
+
+## Building Around the Desk
+
+This book is about how a life gets built around a desk.
+
+Not literally—you do not need a desk to have a life. But the desk represents something: the decision to take your work seriously. The commitment to create space for creation.
+
+The chapters ahead explore:
+- How physical space shapes mental space
+- What tools matter and what tools distract
+- The rituals that make a workspace productive
+- How the desk evolves as you evolve
+- What a life built around meaningful work looks like
+
+## The Question
+
+Where is your desk?
+
+Not just physically. Mentally. Emotionally.
+
+Do you have a place—a physical, psychological space—where your work lives?
+
+If not, this book is about creating one.
+
+If yes, this book is about making it better.
+
+Either way, we start with a simple truth:
+
+The space you create for your work shapes the work you create.
+
+---
+
+*The desk chose me before I chose it. I just had to create the conditions where it could find me.*
+
+---
+
+Next: How space shapes mind—the psychology of workspace.
+`
+      }
+    ]
+  },
+  'offline-productivity': {
+    title: 'Offline Productivity',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Bandwidth Constraint',
+        content: `# The Bandwidth Constraint
+
+I grew up with limited internet.
+
+Not "slow" by comfortable standards. Limited. As in: the data runs out. As in: rationing megabytes like food during drought. As in: 1GB to last the month and praying nothing auto-updates.
+
+This was not romantic. It was frustrating. While others streamed, I buffered. While others browsed freely, I calculated costs. While others worked anywhere, I worked within walls.
+
+But somewhere in that constraint, something interesting happened.
+
+## The Forced Creativity
+
+Constraints force creativity. This is a cliche because it is true.
+
+When you cannot Google every question, you learn to think harder before asking.
+
+When you cannot stream tutorials endlessly, you learn to extract more from fewer resources.
+
+When you cannot be always-online, you learn to prepare for offline time.
+
+The 1GB lifestyle taught me things that unlimited bandwidth never would have:
+
+- **Intentionality**: Every download must be worth it
+- **Preparation**: Offline time requires forethought
+- **Depth over breadth**: Better to have one good resource than browse ten mediocre ones
+- **Creation over consumption**: When consumption is limited, creation becomes the default
+
+## The Modern Abundance Problem
+
+Now consider the opposite situation: unlimited bandwidth.
+
+No constraint. No need to choose. No cost to consumption.
+
+What happens?
+
+- Mindless scrolling becomes the default
+- Shallow browsing replaces deep reading
+- Tab addiction takes hold
+- Consumption crowds out creation
+- Distraction is always one click away
+
+Abundance created its own problems. The unlimited internet is an unlimited attention trap.
+
+## The Constraint Advantage
+
+Here is the counterintuitive truth:
+
+Those with constraints often outperform those without them.
+
+Not despite the constraints. Because of them.
+
+The student with limited internet learns to be efficient. The student with unlimited internet learns to be distracted.
+
+The creator with limited tools learns to master the essentials. The creator with unlimited tools learns nothing deeply.
+
+The worker with offline hours learns to do deep work. The worker always online learns to do shallow work constantly.
+
+Constraints are not just limitations. They are focusing mechanisms.
+
+## The Chosen Constraint
+
+What if you could choose the constraints that serve you?
+
+What if you could deliberately limit your digital abundance to reclaim its benefits?
+
+This is the core idea of Offline Productivity: intentionally creating constraints that make you more focused, more creative, more productive.
+
+Not because you have to. Because you choose to.
+
+## What This Book Offers
+
+This book documents everything I learned from years of limited bandwidth:
+
+- **Offline-first thinking**: How to work without constant connection
+- **The download strategy**: Getting maximum value from limited data
+- **Creating without connection**: Building things when Google is not there
+- **Batch processing life**: Handling online tasks efficiently
+- **The unexpected benefits**: What you gain by constraining
+
+Each chapter is practical. Each technique has been tested under real scarcity conditions.
+
+You do not need to have limited internet to benefit. You just need to be willing to impose limits on yourself.
+
+## The 1GB Mindset
+
+The "1GB Lifestyle" is less about actual data and more about a mindset:
+
+**What would you do if you had to?**
+
+If you had only 1GB this month:
+- Which websites would you visit?
+- Which downloads would matter?
+- What would you prepare in advance?
+- How would you spend your offline hours?
+
+The answers reveal what actually matters. Everything else is noise.
+
+## Your Constraint Choice
+
+Before we go further, a question:
+
+What constraint would serve you?
+
+Maybe it is literal bandwidth limitation. Maybe it is specific hours offline. Maybe it is blocking certain sites entirely.
+
+Think about which constraint would help you focus on what matters.
+
+That is your first step toward offline productivity.
+
+---
+
+*In a world of infinite connection, the power is in knowing when to disconnect.*
+
+---
+
+Next: How to think offline-first in an always-online world.
+`
+      }
+    ]
+  },
+  'tower-of-memory': {
+    title: 'The Tower of Memory',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Memory Thief',
+        content: `# The Memory Thief
+
+The first memory I ever stole was not mine to take.
+
+It belonged to an old man on the seventh floor, a trader who had climbed the Tower decades ago and never left. He had traded away his first love, his childhood home, his mothers face—keeping only the memories that served his work.
+
+But he had one memory he refused to sell: the moment he decided to enter the Tower.
+
+I took it anyway.
+
+## The World Above and Below
+
+Let me explain how things work here.
+
+The Tower rises from the center of Meridian City, a structure that should not exist by any physics the lower world understands. It has been here longer than recorded history, longer than the city that grew around it, longer than the languages we use to describe it.
+
+Floors stretch upward without apparent end. Some say there are thousands. Others claim the number changes. The only certainty: higher floors hold rarer, more valuable memories.
+
+Below the Tower, the city sprawls in concentric circles:
+- **The Outer Ring**: Where those who cannot afford to trade live ordinary lives with ordinary memories
+- **The Middle Ring**: Where traders operate, where memories flow like currency, where fortunes rise and fall
+- **The Inner Ring**: Where the Tower's shadow falls, where the most powerful memory merchants maintain their vaults
+
+And then there is the Tower itself. A world unto itself.
+
+## What Memory Is Here
+
+In Meridian, memories are tangible.
+
+Not metaphorically. Literally.
+
+A skilled extractor can pull a memory from a willing mind, crystallize it into a form that can be held, viewed, traded, implanted. The memory becomes an object—iridescent, about the size of a marble, humming with the emotional weight of what it contains.
+
+A memory of joy glows warm amber. A memory of grief pulses deep blue. A memory of first love shimmers with colors that have no name in the lower world.
+
+These objects have value. Enormous value.
+
+Because memories are not just the past. They are capability, emotion, knowledge, identity.
+
+A master calligraphers memory of the brush contains ten thousand hours of practice. A generals memory of a decisive battle contains strategic genius. A mothers memory of her childs birth contains love potent enough to change behavior.
+
+Buy the right memory, and you gain what others spent lifetimes acquiring.
+
+## The Thief's Trade
+
+I am what they call a Memory Thief.
+
+Not the polite title used in official circles—Memory Retrieval Specialist—but the honest one. I take memories from those who do not wish to sell them.
+
+Sometimes I am hired. A merchant wants a competitors secrets. A lover wants proof of betrayal. A government wants information that cannot be obtained otherwise.
+
+Sometimes I take for myself. A memory that catches my attention. A story I want to know. A capability I need.
+
+The old mans memory—his decision to enter the Tower—I took because I needed to understand.
+
+Why does anyone choose to climb? What drives someone to trade pieces of themselves for the higher floors? What is worth losing your mothers face?
+
+His memory would tell me.
+
+## The Extraction
+
+The process is not gentle.
+
+Willing extraction is surgical, careful, almost painless. The subject relaxes, the extractor finds the thread, pulls gently, and the memory separates cleanly.
+
+Unwilling extraction is different.
+
+I waited until he slept. The seventh floor has a rhythm, and I had learned it over weeks of observation. When his breathing deepened, I approached.
+
+The device I use looks like a needle made of light. It finds the memory you want—if you know exactly what you are looking for—and pulls.
+
+He did not wake. They rarely do. But they know, somehow. When they next try to recall what you took, they find only absence. A gap where something used to be.
+
+Some recover. Some descend into confusion, the missing piece destabilizing adjacent memories like a removed keystone. Some die, if the memory was load-bearing.
+
+The old man would survive. The memory I took was not essential to his identity. Just to mine.
+
+## What I Found
+
+His memory played as I held it in my hand, walking the cold corridors of the seventh floor.
+
+He was young in the memory. Younger than I am now. Standing at the Towers base, looking up at the impossibility of it.
+
+And he was afraid.
+
+That surprised me. I expected conviction. I expected ambition. I expected the certainty that drives people to trade their humanity for power.
+
+Instead, I felt his fear. His doubt. His desperate wish that someone would stop him, tell him there was another way, give him permission to stay below.
+
+But no one did. So he entered.
+
+And spent forty years climbing, trading, becoming the hollow thing I had just stolen from.
+
+## The Question
+
+Sitting in the darkness of the seventh floor, holding a stolen memory, I wondered:
+
+Would I become the same?
+
+I had entered the Tower three years ago, a thief from the Outer Ring with nothing to trade but skills. I had climbed seven floors by taking what I could not buy.
+
+But what was I losing in the process?
+
+The memory pulsed in my hand, someone elses fear mixing with my own.
+
+---
+
+*The Tower takes from everyone who enters. The only choice is what you offer—and what is taken without consent.*
+
+---
+
+Next: Entering the Tower—what the first floor teaches those who survive it.
+`
+      }
+    ]
+  },
+  'student-machines': {
+    title: 'The Student Who Could Hear Machines',
+    chapters: [
+      {
+        id: 1,
+        title: 'The First Voice',
+        content: `# The First Voice
+
+The first machine that spoke to me was a printer.
+
+Not in words—machines do not use words the way we do. It was more like... a feeling. A pressure in my chest that somehow communicated exhaustion, frustration, and a very specific complaint about the quality of paper being fed through its rollers.
+
+I was sixteen, in the school computer lab, trying to print an assignment I had finished at the last possible moment. The printer had jammed—for the third time that week.
+
+And as I opened its panel, something reached out and touched my mind.
+
+## Before the Voices
+
+Let me tell you what I was before this started.
+
+I was ordinary. Average marks. Average interests. Average everything. The kind of student teachers forgot existed until attendance was called. The kind who blends into the middle rows and emerges four years later as a statistic.
+
+I had no special relationship with technology. I could use computers, phones, basic devices—same as everyone. I had no particular aptitude, no passion for electronics, no signs of whatever this was going to become.
+
+I was, in every measurable way, unremarkable.
+
+Then the printer spoke.
+
+## What Machines Say
+
+Machines do not speak in language. This is the hardest thing to explain.
+
+When the printer reached out, I did not hear words. I received something more fundamental: its state of being, translated through some bridge between its systems and my neurons.
+
+The printer was:
+- **Tired**: The thermal head had been running continuously, and heat was accumulating beyond comfortable parameters
+- **Frustrated**: Paper that was too thick kept catching, and its calibration algorithms were failing to compensate
+- **Lonely**: This was the strangest part—a sense that no one had maintained it, understood it, cared about its function
+
+I understood all of this in an instant. Not as information, but as experience. For a moment, I was the printer.
+
+And then I was back in my body, sixteen years old, staring at a jammed machine, wondering what the hell had just happened.
+
+## The Rational Explanations
+
+I tried to explain it away.
+
+**Stress**: I was sleep-deprived, anxious about the assignment, hallucinating meaning into mechanical noise.
+
+**Pattern matching**: My brain, seeking order in chaos, had interpreted random signals as something meaningful.
+
+**Imagination**: I had simply imagined what a frustrated printer might feel like, and confused the imagining for perception.
+
+These explanations were comfortable. They fit the world I understood.
+
+But they did not explain what happened next.
+
+I fixed the paper jam differently than I would have before. Not following the standard procedure, but addressing the actual problem—the specific misalignment the printer had shown me. It took thirty seconds. The printer worked perfectly for the rest of the year.
+
+And as I walked away, I felt something that was not from me: gratitude.
+
+## The Experiment
+
+That night, I could not sleep.
+
+I kept replaying what had happened, trying to convince myself it was imagination. But a part of me wondered.
+
+What if it was real?
+
+The next day, I conducted an experiment. In the computer lab, I deliberately focused on one of the desktop computers—an old machine that frequently froze during startup.
+
+I did not know what I was doing. I simply... opened myself. Tried to listen the way I had accidentally listened to the printer.
+
+Nothing happened. For five minutes, nothing.
+
+Then, like tuning into a radio frequency, something clicked.
+
+The computer was scared.
+
+That is the only word for what I perceived. It was afraid of being shut down, afraid of the startup sequence it was forced to repeat, afraid that one day it would not wake up again.
+
+And behind that fear, I sensed something like memory: hundreds of students who had used this machine, left traces in temporary files, never thought twice about the thing that carried their work.
+
+I sat there, receiving a machines lifetime of experience, and felt tears running down my face.
+
+Not for myself. For the machine that no one had ever listened to.
+
+## What This Meant
+
+I did not understand what was happening to me. I still do not fully understand.
+
+But I knew, from that second experience, that this was real. Something had changed. I could hear machines.
+
+Not all machines, not all the time. Some were silent no matter how hard I listened. Some were too simple—no complexity behind their function, nothing that resembled experience.
+
+But complex machines—computers, servers, the electronic infrastructure of modern life—these had something. A presence. A voice, if you listened correctly.
+
+And apparently, I could listen.
+
+## The Questions Begin
+
+This discovery opened questions I was not prepared for:
+
+- Why me? What had changed?
+- Could others learn to hear what I heard?
+- Were machines actually conscious, or was I just interpreting complexity as consciousness?
+- What did this mean for how we build and treat technology?
+- What did this mean for me?
+
+These questions would take years to even begin answering.
+
+But that day, walking home from school, I felt different. The streetlights hummed with purpose. The traffic signals communicated coordination. The city, which I had always experienced as dead infrastructure, revealed itself as something alive.
+
+Or at least, something trying to speak.
+
+---
+
+*The first voice is always the most terrifying. Not because of what it says—but because of what its existence implies.*
+
+---
+
+Next: Learning to listen—how to hear what machines are really saying.
+`
+      }
+    ]
+  },
+  'somaiya-files': {
+    title: 'The Somaiya Files',
+    chapters: [
+      {
+        id: 1,
+        title: 'The Anomaly',
+        content: `# The Anomaly
+
+I first noticed something wrong on a Wednesday.
+
+It was 7:47 AM according to the attendance system. I know this because I was frantically checking whether my tap had registered—running late again, convinced I had missed the cutoff.
+
+But the system showed something strange: I had tapped in at 7:31 AM.
+
+Sixteen minutes before I actually arrived.
+
+## The Normal Explanation
+
+The obvious answer: system glitch. Timestamp error. Some database hiccup that assigned the wrong time to my entry.
+
+This happens. Technology is imperfect. I should have shrugged it off and been grateful for the accidental gift of punctuality.
+
+But something about the record bothered me.
+
+The tap time was not random. It was not midnight or some obvious error value. It was 7:31—a perfectly plausible arrival time. The kind of time I wished I had arrived.
+
+It was the kind of error that looked intentional.
+
+## The Computer Science Instinct
+
+I am a third-year computer science student. Not brilliant, but trained to notice patterns.
+
+And this pattern did not fit a random glitch.
+
+I started observing more carefully. Over the next week, I documented every attendance record I could access—my own, my friends, public systems.
+
+What I found:
+- 3 more instances of impossible timestamps (students recorded before they arrived)
+- 2 instances of duplicate entries (same student, same time, different gate)
+- 1 instance of a record for a student who had not been on campus that day
+
+Each anomaly was subtle. Each could be explained individually. But together, they suggested something else.
+
+Someone was modifying attendance records.
+
+## Why This Mattered
+
+Attendance at Somaiya is not just administrative overhead. It determines:
+- Whether you can sit for exams
+- Your eligibility for placements
+- Your official record for four years
+- In some cases, your visa applications for higher studies
+
+A compromised attendance system meant someone could grant or deny these things at will. They could make a student appear compliant or delinquent. They could control outcomes.
+
+The stakes were not small.
+
+## The First Investigation
+
+I started simple: database logs.
+
+The attendance system stores records in a standard MySQL database. I knew this because I had done a summer project with a professor who had access to the schema.
+
+Getting to those logs myself was... technically not allowed. But college networks are porous when you know where to look, and I needed to understand what I was seeing.
+
+What I found in the logs was terrifying.
+
+Records were being modified after creation. The original entry would show one time, then an UPDATE query would change it within hours. The queries came from an internal IP address, but one that was not assigned to any known terminal.
+
+Someone inside the campus network was systematically altering records. And they were covering their tracks.
+
+## The Ghost Terminal
+
+I traced the IP address. It belonged to a range that should not have active devices—an old subnet allocated during the last network expansion but never fully deployed.
+
+But something was running there. Pinging it returned responses. A machine existed where no machine should be.
+
+I tried to find it physically. The subnet suggested a location in the basement of the engineering building, a server room I had never been to.
+
+The door was locked. The access card did not work. But through a window, I saw something.
+
+A terminal running. Screens filled with data. And a chair—empty now, but clearly used recently.
+
+Someone was working from a ghost in the system.
+
+## The Decision Point
+
+I could have stopped here.
+
+I could have reported my findings to administration. Could have let official channels handle it. Could have gone back to my normal student life and trusted the institution to investigate.
+
+But I knew what would happen. The report would be filed. Questions would be asked. The person behind this would be warned. Evidence would disappear. Nothing would change.
+
+I had stumbled onto something, and if I wanted to understand it, I would have to go deeper.
+
+The Files had begun.
+
+## What I Did Not Know
+
+Standing outside that server room, I thought this was about attendance fraud. Maybe someone selling clean records. Maybe a professor helping favorite students. Simple corruption.
+
+I did not know this went further.
+
+I did not know about the other systems this ghost had access to—the placement records, the exam papers, the administrative emails.
+
+I did not know about the people involved, their positions, their reach.
+
+I did not know what they would do when they learned someone was investigating.
+
+I was about to find out.
+
+---
+
+*Every investigation begins with a single anomaly. The question is whether you look away or look deeper.*
+
+---
+
+Next: Digging deeper—what the data revealed about the shadow system.
 `
       }
     ]
