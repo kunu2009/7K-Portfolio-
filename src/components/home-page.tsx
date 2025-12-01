@@ -36,6 +36,9 @@ const SupportSection = dynamic(() => import('@/components/sections/support-secti
 const BlogSection = dynamic(() => import('@/components/blog-section'), {
   loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
 });
+const TestimonialsSection = dynamic(() => import('@/components/sections/testimonials'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
+});
 
 export default function HomePage() {
   return (
@@ -46,6 +49,7 @@ export default function HomePage() {
         <AboutSection />
         <AppStoreSection />
         <ServicesMenuCard />
+        <TestimonialsSection limit={3} />
         <PortfolioShowcaseSection />
         <ProjectsSection />
         <WritingSection />
