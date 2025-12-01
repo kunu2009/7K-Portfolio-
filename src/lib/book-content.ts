@@ -1404,42 +1404,1211 @@ Rudra's expression was hard. Cold.
 
 "Now we burn them down."`,
       },
+      {
+        id: 6,
+        title: 'Shadows in the Dark',
+        content: `Rudra didn't go back to his dorm that night.
 
-"You've been watching too," he said softly, barely audible.
+Neither did Bhairav.
 
-Anvi didn't look up. But her hand paused for just a second.
+They sat in the forest clearing, backs against cold stone, staring at the phone screen as they scrolled through the photos. Evidence of something far worse than either had imagined.
 
-Then: "You're late. I've been waiting."
+"Project Rekha," Bhairav muttered, reading the documents again. "What the hell is that supposed to mean?"
 
-Rudra's jaw tightened.
+Rudra zoomed in on one of the files. A consent form. Legal jargon. Medical terminology. But one phrase kept appearing:
 
-"You knew?"
+"Psychological resilience assessment under controlled stress environments."
 
-"I suspected. They made their first mistake last month." She wiped her mouth and stood up. "Walk with me."
+"They're experimenting on students," Rudra said quietly.
 
-## The Truth
+Bhairav's face went pale. "That's... that's insane. Who would authorize this?"
 
-They moved to the edge of the campus, near the broken stone fence where no one ever came. Wind rustled dry leaves across the dirt.
+Rudra flipped to another photo. The signature at the bottom of every document.
 
-Anvi spoke quietly, clinically.
+Dr. Avinash Malhotra.
 
-"Two students have gone missing in the last three years. Both from other field groups. Both reported as runaways. One was found in a ditch, half a kilometer from town. Head trauma. No investigation."
+Director of the Kupam Research Institute. Respected academic. Published author. Someone who'd been running this place for fifteen years.
 
-Rudra stared at her. "And you knew this?"
+And apparently, someone who'd been using students as lab rats.
 
-"I didn't care… until now. Until they started watching me too."
+"We need to go to the police," Bhairav said. "Show them this. Shut this place down."
 
-"So this is a game."
+Rudra shook his head. "No."
 
-She met his gaze. Her eyes were steel.
+"What do you mean, no?"
 
-"No. This is a test."
+"Look at the dates on these files. This has been going on for years. Multiple field programs. Different schools. And no one's ever reported it. No investigations. No media coverage. Nothing."
 
-Rudra felt the pieces locking into place. The notes. The surveillance. The manipulation. The cracked mirror. The careful silence.
+Bhairav frowned. "So?"
 
-Someone was building something in Kupam.
-`
-      }
+"So that means someone's protecting him. Police. Local officials. Maybe higher." Rudra's jaw tightened. "We go to them with this, and we disappear. Just like the others."
+
+"Then what do we do?"
+
+Rudra was silent for a long moment. Then he stood, pocketing his phone.
+
+"We gather more evidence. We figure out how deep this goes. And we find someone we can actually trust."
+
+"Like who?"
+
+"I don't know yet."
+
+Bhairav stood too, frustrated. "Rudra, we can't just—"
+
+"We're not doing anything tonight," Rudra interrupted. "We're exhausted. We nearly got caught. We need to be smart about this."
+
+Bhairav exhaled slowly. "Fine. But we're running out of time. October's almost over. If this pattern holds, someone's going to disappear soon."
+
+Rudra knew he was right.
+
+They walked back to the compound in silence, slipping through the shadows like ghosts.
+
+## Morning After
+
+The next day felt wrong.
+
+Rudra went through the motions—breakfast, lectures, note-taking—but everything felt hollow. Like acting in a play where everyone knew their lines except him.
+
+He kept expecting someone to notice. To call him out. To drag him to the principal's office.
+
+But no one did.
+
+The day passed quietly. Too quietly.
+
+During lunch, Rudra sat alone, watching the crowd. Looking for patterns. Signs of surveillance. Anything out of place.
+
+That's when he noticed her.
+
+A girl. Sitting two tables away. Local student. He'd seen her before but never paid attention.
+
+She was staring at him.
+
+Not the way people usually stared—curious or judgmental. This was different. Intense. Calculating.
+
+When their eyes met, she didn't look away.
+
+She smiled.
+
+Then she stood, picked up her tray, and walked over.
+
+"Mind if I sit?"
+
+Rudra's instincts screamed. But he kept his face neutral. "Free country."
+
+She sat down, setting her tray across from him. Up close, she was striking—sharp features, dark eyes, hair pulled back in a tight braid. She moved with purpose. Confidence.
+
+"I'm Anvi," she said. "Anvi Rao."
+
+"Rudra."
+
+"I know."
+
+Rudra's expression didn't change. "Everyone seems to know me lately."
+
+Anvi smiled faintly. "That's because you're interesting. Most people here are predictable. You're not."
+
+"Is that supposed to be a compliment?"
+
+"It's an observation."
+
+They sat in silence for a moment. Rudra studied her, looking for tells. Nervousness. Hidden agendas. But she was calm. Too calm.
+
+"What do you want?" Rudra asked finally.
+
+Anvi leaned forward slightly. "I want to know what you found in the old wing last night."
+
+Rudra's blood went cold.
+
+He didn't react. Didn't blink. But inside, alarms were blaring.
+
+"I don't know what you're talking about."
+
+"Yes, you do." Anvi's voice was quiet but firm. "You and Bhairav. 2 AM. The basement archives. You took photos. Lots of them."
+
+Rudra's mind raced. How did she know? Was she working with them? Was she surveillance?
+
+"Who are you?" Rudra asked, voice low.
+
+Anvi sat back, expression unreadable. "Someone who's been watching this place longer than you have. Someone who wants the same thing you do."
+
+"Which is?"
+
+"The truth."
+
+Rudra didn't trust her. Not even a little. But he needed information.
+
+"Why should I believe you?"
+
+Anvi reached into her pocket and pulled out a small flash drive. She slid it across the table.
+
+"Because I have files you don't. Records. Audio recordings. Evidence that goes back ten years."
+
+Rudra stared at the drive. "Where did you get this?"
+
+"Does it matter?"
+
+"Yes."
+
+Anvi smiled sadly. "My sister was part of a field program here. Three years ago. She went missing. Police said she ran away. I never believed them."
+
+Her voice was steady, but there was pain underneath. Raw. Real.
+
+"So I came here. Enrolled in the local institute. Started digging. And I found... things."
+
+Rudra picked up the flash drive, turning it over in his hand. "What kind of things?"
+
+"The kind that get people killed."
+
+She stood, picking up her tray. "You've got twenty-four hours to decide if you want to work with me. After that, I'm doing this alone."
+
+"Doing what?"
+
+Anvi looked down at him, eyes hard. "Burning this place to the ground."
+
+Then she walked away, leaving Rudra alone with the flash drive and a hundred new questions.
+
+## The Flash Drive
+
+That night, Rudra sat in his dorm room, door locked, curtains drawn. He'd borrowed a laptop from the library—old, slow, but functional.
+
+He plugged in the flash drive.
+
+It was encrypted.
+
+Of course it was.
+
+But the password hint read: "What my sister called this place."
+
+Rudra thought for a moment. Then typed: **hell**.
+
+The drive opened.
+
+Inside were folders. Dozens of them. Each labeled with a year.
+
+2015. 2016. 2017. 2018. 2019. 2020. 2021. 2022. 2023.
+
+Rudra opened the most recent one.
+
+Audio files. Video clips. Scanned documents.
+
+He clicked on the first audio file.
+
+A recording. Poor quality. Background noise. But voices were clear.
+
+"—can't keep doing this. Someone's going to notice—"
+
+"No one's noticed for ten years. Why would they start now?"
+
+"Because we're pushing too hard. The last subject barely—"
+
+"The last subject was weak. This batch will be different. Malhotra's screening process is better now."
+
+"And if it's not?"
+
+"Then we adjust. Like we always do."
+
+The recording cut off.
+
+Rudra's hands were shaking.
+
+He opened another file. A video this time. Grainy. Night vision.
+
+A room. Concrete walls. A student—young, maybe sixteen—sitting in a chair, blindfolded, hands bound.
+
+A voice offscreen: "State your name."
+
+The student's voice trembled. "P-Priya. Priya Sharma."
+
+"Do you know why you're here, Priya?"
+
+"N-no. Please. I just want to go home."
+
+"You'll go home. After the assessment."
+
+"What assessment? I don't understand—"
+
+The video cut to black.
+
+Rudra felt sick.
+
+He spent the next two hours going through everything. File after file. Recording after recording.
+
+Students screaming. Begging. Pleading.
+
+Doctors taking notes. Measuring responses. Discussing "optimal stress thresholds."
+
+And always, at the center of it all, Dr. Malhotra's voice. Calm. Clinical. Detached.
+
+By the time Rudra finished, the sun was rising.
+
+He sat in the dim light of dawn, staring at the screen.
+
+Anvi was right.
+
+This wasn't just a conspiracy.
+
+This was systematic. Organized. Evil.
+
+And it had been happening for years.
+
+Rudra closed the laptop, his decision made.
+
+He pulled out his phone and sent a single text to Anvi:
+
+**I'm in.**
+
+Three seconds later, she replied:
+
+**Meet me at the quarry. Noon. Come alone.**
+
+Rudra deleted the messages, pocketed the flash drive, and began preparing.
+
+If they were going to take down Malhotra and everyone protecting him, they needed more than evidence.
+
+They needed a plan.
+
+And Rudra was very good at plans.`,
+      },
+      {
+        id: 7,
+        title: 'The Disappearance',
+        content: `The quarry was exactly as Rudra remembered it from the field trip—jagged limestone cliffs, deep pits filled with stagnant water, and an eerie silence that made every footstep echo.
+
+Anvi was already there when he arrived. Sitting on the same boulder where Bhairav had been sketching weeks ago.
+
+She didn't look up when Rudra approached.
+
+"You watched everything on the drive?" she asked.
+
+"Yeah."
+
+"And?"
+
+Rudra sat down beside her, keeping distance between them. "And you were right. This is bigger than I thought."
+
+Anvi finally looked at him. Her eyes were red. Like she'd been crying. But her voice was steady.
+
+"My sister's name was Meera. She was seventeen. Brilliant. Kind. She wanted to be a doctor."
+
+Rudra didn't interrupt.
+
+"She came here for a field program. Just like you. Two weeks in, she called me. Said something felt wrong. That students were acting strange. That teachers were asking weird questions during 'counseling sessions.'"
+
+Anvi's hands clenched into fists.
+
+"I told her she was being paranoid. Told her to relax. Enjoy the trip."
+
+Her voice cracked slightly.
+
+"Three days later, she was gone. Reported missing. Police searched for a week. Then they closed the case. Said she probably ran away. Had mental health issues. The school agreed. Even my parents started believing it."
+
+"But you didn't," Rudra said quietly.
+
+"No. Because I knew Meera. She wouldn't run. She wouldn't leave without telling me."
+
+Anvi stood, pacing. "So I spent a year researching. Hacking. Bribing. Digging through every record I could find. And I discovered the pattern. Students disappearing. Always during field programs. Always in October. Always ruled as runaways or accidents."
+
+"And Malhotra was connected to all of them," Rudra finished.
+
+"Not just connected. He *selected* them. Every student who disappeared had been flagged during intake assessments. Psychological profiles. Stress tests. He was choosing his subjects carefully."
+
+Rudra's jaw tightened. "So where are they now? The missing students?"
+
+Anvi's expression darkened. "That's what we need to find out."
+
+Before Rudra could respond, his phone buzzed.
+
+A message from Bhairav: **EMERGENCY. Get back to campus NOW.**
+
+Rudra stood immediately. "Something's wrong."
+
+Anvi read the message over his shoulder. "Go. I'll meet you there."
+
+They ran.
+
+## The Empty Bed
+
+By the time Rudra reached the dorms, a crowd had gathered. Teachers. Students. Everyone talking at once.
+
+Bhairav was waiting outside, face pale.
+
+"What happened?" Rudra demanded.
+
+"It's Sneha," Bhairav said, voice tight. "She's gone."
+
+Rudra's blood ran cold. Sneha—the quiet girl from their batch. One of the "good students." Always on time. Always polite.
+
+"Gone how?"
+
+"Her bed wasn't slept in. Her things are still here. Phone, wallet, everything. But she's just... gone."
+
+Rudra pushed through the crowd, Bhairav following.
+
+Inside the girls' dorm, teachers were searching. Calling Sneha's name. Checking bathrooms, closets, everywhere.
+
+But Rudra knew they wouldn't find her.
+
+Because this wasn't a random disappearance.
+
+This was the pattern.
+
+He approached Sneha's bunk. Everything was neat. Organized. Her laptop sat on the desk, closed. Her shoes lined up beneath the bed.
+
+Rudra knelt, examining the floor. No signs of struggle. No disturbed dust. Whoever took her, she went quietly.
+
+Or she was unconscious.
+
+Bhairav crouched beside him. "This is it, isn't it? The thing we were afraid of."
+
+Rudra nodded grimly.
+
+A teacher noticed them. "You two—out. This is a restricted area."
+
+They backed away, returning to the common area where students were gathered, whispering nervously.
+
+"Do you think she ran away?"
+
+"Maybe she got lost in the forest..."
+
+"What if something happened to her?"
+
+Rudra tuned them out, his mind working.
+
+Sneha had been at breakfast yesterday. She'd attended the morning lecture. She'd been fine.
+
+So when did she disappear?
+
+He pulled Bhairav aside. "Did anyone see her last night?"
+
+"Priya said she went to bed around 10 PM. Normal routine. But when they woke up this morning, she was gone."
+
+"Did Priya hear anything? See anything?"
+
+"No. She's a heavy sleeper."
+
+Convenient, Rudra thought.
+
+Too convenient.
+
+He scanned the crowd, looking for Anvi. She'd slipped in through the back, blending with the local students.
+
+Their eyes met. She gave a subtle nod.
+
+Then Rudra saw him.
+
+Dr. Malhotra.
+
+Standing near the entrance, talking to the principal. Calm. Composed. Concerned in all the right ways.
+
+He was wearing gloves.
+
+On a warm October morning.
+
+Rudra's instincts screamed.
+
+Malhotra's gaze swept the room—and landed on Rudra.
+
+For a moment, they stared at each other.
+
+Then Malhotra smiled. Faint. Almost imperceptible.
+
+And walked away.
+
+Rudra's hands clenched into fists.
+
+"He took her," Rudra muttered.
+
+"What?" Bhairav whispered.
+
+"Malhotra. He took Sneha. I'm sure of it."
+
+"Rudra, you can't just—"
+
+"I'm not guessing. I'm reading the signs. He's been watching us. All of us. And Sneha fit his profile."
+
+"What profile?"
+
+"Smart. Isolated. No close friends here. Her family's three states away. She's the perfect target."
+
+Bhairav looked sick. "So what do we do?"
+
+Rudra's expression hardened. "We find her. Before it's too late."
+
+## The Search
+
+The official search began within the hour. Teachers organized search parties. Students were divided into groups. The forest, the compound, the nearby roads—every area was covered.
+
+Rudra volunteered for the forest team.
+
+So did Bhairav and Anvi.
+
+They moved together, staying close but not too close. To anyone watching, they were just concerned students helping with the search.
+
+But once they were deep enough into the trees, away from the others, Rudra stopped.
+
+"She's not out here," he said.
+
+Anvi nodded. "They wouldn't risk leaving her somewhere she could be found easily."
+
+"So where is she?" Bhairav asked.
+
+Rudra thought for a moment. Then pulled out his phone, opening the photos from the archive room.
+
+He scrolled to the wall of missing students. The photos. The red X's.
+
+"Every student who disappeared was part of Project Rekha," Rudra said. "They weren't killed. They were taken. Used. Experimented on."
+
+"For what purpose?" Anvi asked.
+
+"Psychological resilience. Stress response. The files mentioned 'controlled environments.' They're testing how people react under extreme pressure."
+
+Bhairav looked horrified. "You mean they're torturing them?"
+
+"Not physically. Psychologically. Isolation. Fear. Manipulation. Breaking them down to see how they rebuild."
+
+Anvi's expression was ice. "And when the experiment's done?"
+
+Rudra met her eyes. "They either let them go—traumatized and discredited—or they make them disappear permanently."
+
+Silence.
+
+"So where do they run these tests?" Bhairav asked.
+
+Rudra zoomed in on one of the photos. In the background of the archive room, partially visible, was a map.
+
+A building layout.
+
+He enhanced the image as much as his phone would allow.
+
+There.
+
+A section labeled: "Sublevel Research Facility - Restricted Access."
+
+"There's a sublevel," Rudra said. "Under the old wing. That's where they're keeping her."
+
+Anvi's eyes narrowed. "How do we get down there?"
+
+Rudra pocketed his phone. "The same way we got into the archives. Carefully."
+
+"When?" Bhairav asked.
+
+"Tonight," Rudra said. "Before they move her. Before we lose our chance."
+
+Anvi stepped closer, voice hard. "And if we find her? What then? We can't just walk out with her."
+
+"No," Rudra agreed. "But we can document everything. Record it. Get proof so solid they can't bury it."
+
+"And then?"
+
+Rudra's expression was cold. Determined.
+
+"Then we make sure the whole world sees what Malhotra's been doing."
+
+They stood in the forest, three students against an institution that had been hiding its sins for a decade.
+
+But for the first time, Rudra didn't feel alone.
+
+He had allies.
+
+And together, they were going to tear this place apart.`,
+      },
+      {
+        id: 8,
+        title: 'Empty Beds',
+        content: `The search parties returned at sunset. Empty-handed. Exhausted.
+
+Sneha was still missing.
+
+The principal called an emergency assembly in the dining hall. Students packed in, nervous energy crackling through the air like static.
+
+"We're doing everything we can," the principal said, voice strained but authoritative. "The local police have been notified. A formal search will continue tomorrow with trained personnel."
+
+"What about tonight?" someone called out.
+
+"Tonight, everyone stays in their dorms. No exceptions. Teachers will be monitoring all exits. Your safety is our priority."
+
+Rudra watched from the back of the room. The principal looked tired. Genuine. But seated beside him, calm and collected, was Dr. Malhotra.
+
+Taking notes.
+
+Always taking notes.
+
+After the assembly, students were herded back to their dorms. The atmosphere was tense. Some girls were crying. Boys tried to act tough but couldn't hide their fear.
+
+Rudra returned to his room, but he didn't plan on staying there.
+
+He had work to do.
+
+## Preparation
+
+At 11 PM, Rudra's phone buzzed.
+
+A message from Anvi: **Are we really doing this?**
+
+Rudra replied: **Yes.**
+
+Bhairav: **I have the tools. Meet at the usual spot in 30.**
+
+Rudra: **Acknowledged.**
+
+He packed light. Dark clothes. Flashlight. His phone fully charged. A small first aid kit—just in case.
+
+He also brought something else. Something he'd kept hidden since arriving in Kupam.
+
+A knife.
+
+Small. Sharp. Illegal for students to carry. But Rudra had learned long ago that rules didn't matter when survival was on the line.
+
+He slipped it into his boot and left the room.
+
+The dorm was quiet. Most students were asleep—or pretending to be. The hallway lights were dimmed for night mode.
+
+Rudra moved silently, avoiding the creaky floorboards he'd mapped in his first week.
+
+At the end of the corridor, near the fire exit, a teacher sat in a chair. Supposed to be watching.
+
+But his head was tilted back. Eyes closed. Snoring softly.
+
+Rudra slipped past him like a ghost.
+
+## The Meeting
+
+The clearing in the forest was dark. No moon. Just stars and the faint glow of Bhairav's camping stove.
+
+Anvi was already there, dressed in black, hair tied back. She looked different. Harder. Ready.
+
+Bhairav arrived a minute later, carrying a backpack full of tools.
+
+"Everyone set?" Rudra asked.
+
+Nods all around.
+
+"Good. Here's the plan."
+
+Rudra pulled out his phone, showing them the enhanced map from the archive photos.
+
+"The sublevel is accessed through the old wing. There's a staircase—locked—at the far end of the basement. That's our entry point."
+
+"What about guards?" Anvi asked.
+
+"The night watchman does his rounds at midnight. After that, he doesn't come back until 4 AM. We have a four-hour window."
+
+"And if someone's down there?" Bhairav asked.
+
+"We adapt." Rudra's voice was firm. "But our priority is finding Sneha and documenting everything. We're not here to fight."
+
+"Unless we have to," Anvi said quietly.
+
+Rudra met her eyes. "Unless we have to."
+
+They moved out.
+
+## The Descent
+
+The old wing was darker than Rudra remembered. Shadows pooled in corners. The air smelled of decay and something chemical. Antiseptic.
+
+They descended the stairs to the basement. Past the archive room they'd broken into before.
+
+At the end of the corridor was a heavy metal door. New lock. Electronic keypad.
+
+Bhairav knelt, examining it. "This is going to take time."
+
+"How much time?" Rudra asked.
+
+"Ten minutes. Maybe fifteen."
+
+"Do it."
+
+While Bhairav worked, Rudra and Anvi kept watch. Every sound felt amplified. Every shadow seemed to move.
+
+Anvi stood close to Rudra, her breathing steady. Professional.
+
+"You've done this before," Rudra observed quietly.
+
+"Done what?"
+
+"Breaking and entering. This doesn't scare you."
+
+Anvi smiled faintly. "I've been preparing for this moment for three years. Fear is a luxury I can't afford."
+
+Rudra understood that better than anyone.
+
+"Got it," Bhairav whispered.
+
+The lock clicked. The door hissed open.
+
+Beyond it was darkness. And a staircase leading down.
+
+They descended.
+
+The sublevel was cold. Clinical. Fluorescent lights buzzed overhead, casting everything in harsh white light.
+
+The corridor was lined with doors. Each labeled with numbers. No names.
+
+"Start recording," Rudra said.
+
+Anvi pulled out her phone, activating the camera. Bhairav did the same.
+
+Rudra tried the first door. Locked.
+
+Second door. Locked.
+
+Third door. Unlocked.
+
+He pushed it open carefully.
+
+Inside was a small room. Concrete walls. A metal chair bolted to the floor. Restraints on the armrests.
+
+Cameras in the corners.
+
+A one-way mirror on the far wall.
+
+"Observation room," Anvi muttered, filming everything. "They watch from the other side."
+
+Rudra's jaw clenched. This wasn't just unethical. This was criminal.
+
+They moved to the next room. Same setup. Empty.
+
+Fourth room. Fifth room. All empty.
+
+Then they reached Room 7.
+
+The door was slightly ajar. Light spilling out.
+
+Rudra held up a hand. Stop.
+
+They listened.
+
+Breathing. Quiet. Ragged.
+
+Someone was inside.
+
+Rudra pushed the door open slowly.
+
+And there she was.
+
+Sneha.
+
+Sitting in the metal chair. Hands restrained. Head slumped forward. Unconscious.
+
+"Sneha!" Bhairav rushed forward.
+
+"Wait—" Rudra started.
+
+But Bhairav was already at her side, checking her pulse.
+
+"She's alive. But she's been drugged."
+
+Anvi was filming, documenting every angle. "We need to get her out of here."
+
+Rudra scanned the room. Cameras in the corners. The restraints looked electronic. And on the wall beside the door was a control panel.
+
+This wasn't just a holding cell.
+
+This was a test chamber.
+
+And they'd just walked into it.
+
+"Rudra," Anvi said slowly. "The door."
+
+Rudra turned.
+
+The door was closing.
+
+He lunged for it—too late.
+
+It sealed shut with a heavy click.
+
+And then the lights went out.
+
+Plunging them into complete darkness.
+
+Bhairav's voice was tight with panic. "What the hell—"
+
+The lights came back on. But different. Red. Emergency lighting.
+
+And then a voice echoed through hidden speakers. Calm. Clinical. Familiar.
+
+Dr. Malhotra.
+
+"Good evening, Rudra. Bhairav. And Ms. Rao. I've been expecting you."
+
+Rudra's fists clenched.
+
+They'd been set up.
+
+"You've been quite persistent," Malhotra continued. "Breaking into restricted areas. Stealing files. Gathering evidence. Very impressive."
+
+"Let us out," Rudra said, voice cold.
+
+"I'm afraid I can't do that. You see, you've stumbled into something you don't understand. Something important."
+
+"You're experimenting on students," Anvi said, voice hard. "Torturing them."
+
+"Torturing?" Malhotra sounded almost offended. "No, no. We're studying psychological resilience. Understanding how the human mind copes with stress. It's groundbreaking research."
+
+"It's illegal," Rudra shot back.
+
+"Legality is a matter of perspective. And funding. Both of which I have secured."
+
+The red lights pulsed.
+
+"But you three... you're different. Resourceful. Intelligent. You'd make excellent subjects."
+
+Rudra felt ice in his veins.
+
+"Welcome to Project Rekha," Malhotra said. "Let's see how resilient you really are."
+
+And then the room began to change.
+
+The walls shifted. Panels sliding back. Revealing new chambers. New obstacles.
+
+This wasn't just a test room.
+
+It was a maze.
+
+And they were trapped inside.`,
+      },
+      {
+        id: 9,
+        title: 'The Old Biology Lab',
+        content: `The first thing Rudra did was control his breathing.
+
+Panic was useless. Fear was useless. The only thing that mattered was thinking clearly.
+
+The room had transformed. What was once a simple observation cell was now something else entirely. The walls had reconfigured, revealing passages, hidden doors, and corridors that hadn't been visible before.
+
+"It's a modular space," Anvi said, voice tight but steady. "Reconfigurable architecture. Military-grade."
+
+"How do you know that?" Bhairav asked.
+
+"Because I've studied his research papers. Malhotra published work on adaptive environments for psychological testing. I thought it was theoretical. I was wrong."
+
+Rudra examined the nearest door. Solid. Electronic lock. No manual override.
+
+"Sneha's still unconscious," Bhairav said, checking her pulse again. "We need to get her out of here."
+
+"We need to get all of us out of here," Rudra corrected.
+
+The speakers crackled again. Malhotra's voice, calm and detached.
+
+"I'm going to make this simple. You have one hour to navigate the facility and reach the exit. There are cameras everywhere. I'll be watching. Evaluating. Taking notes."
+
+"And if we refuse to play?" Rudra called out.
+
+Malhotra laughed softly. "Then you stay here. Indefinitely. Until I decide what to do with you."
+
+"You can't keep us here forever," Anvi said. "People know we're missing."
+
+"Do they? Three students who've been caught breaking into restricted areas multiple times. Who've stolen confidential files. Who've shown signs of paranoia and conspiratorial thinking." Malhotra's tone was almost pitying. "If you disappear, people will assume you ran away. Just like the others."
+
+Rudra's jaw clenched. He was right. Malhotra had been building this narrative for weeks.
+
+"Your hour starts now," Malhotra said. "Good luck."
+
+The speakers went silent.
+
+For a moment, no one moved.
+
+Then Rudra turned to Bhairav. "Can you wake her?"
+
+"Not without medication. Whatever they gave her, it's strong."
+
+"Then we carry her."
+
+"Rudra, she's deadweight. It'll slow us down—"
+
+"We're not leaving her." Rudra's voice was final.
+
+Anvi nodded. "Agreed. We all get out or none of us do."
+
+Bhairav exhaled. "Fine. But we need to move fast."
+
+Rudra scanned the room. Three visible exits. Two were dark corridors. One had faint light at the end.
+
+"Light means cameras," Rudra said. "They want us to go that way."
+
+"So we don't," Anvi said.
+
+"Exactly."
+
+Rudra pointed to the darkest corridor. "That one. Stay close. Watch for traps."
+
+They moved Sneha carefully, Bhairav supporting most of her weight. Rudra took point. Anvi covered the rear.
+
+The corridor was narrow. Cold. The walls were bare concrete, slick with condensation.
+
+After twenty meters, they reached a junction. Three paths.
+
+"Left, right, or straight?" Bhairav asked.
+
+Rudra closed his eyes, listening. Air flow. Faint. From the right.
+
+"Right. There's ventilation that way."
+
+They turned right.
+
+The passage sloped downward. Deeper into the facility.
+
+"This doesn't feel like an exit," Anvi muttered.
+
+"It's not," Rudra agreed. "But exits are guarded. We need to find another way."
+
+"Like what?"
+
+"Maintenance access. Emergency systems. Every building has weak points."
+
+They continued until the corridor opened into a larger space.
+
+A laboratory.
+
+Old. Abandoned. Filled with dusty equipment, broken glass, and the unmistakable smell of formaldehyde.
+
+"This is the old biology lab," Anvi said, recognizing it from the building plans. "The one that was supposed to be condemned."
+
+"It was never condemned," Rudra said. "It was repurposed."
+
+The room was filled with old examination tables, specimen jars, and filing cabinets.
+
+And on the far wall, a large window. Reinforced glass. Looking into another room.
+
+Rudra approached slowly.
+
+On the other side of the glass was a control room. Banks of monitors. Keyboards. And sitting at the center console, watching them on screen, was Dr. Malhotra.
+
+He waved.
+
+Rudra didn't react.
+
+Malhotra pressed a button. His voice came through speakers in the lab.
+
+"Impressive. Most subjects take the lit path. You're already exceeding expectations."
+
+"We're not your subjects," Rudra said coldly.
+
+"Not yet. But you will be." Malhotra leaned forward. "You see, Rudra, I've been studying you since you arrived. Your patterns. Your methods. The way you think."
+
+"Why?"
+
+"Because you're different. Most students are predictable. Emotional. Easy to manipulate. But you... you're strategic. Detached. You don't trust anyone."
+
+Malhotra smiled. "That makes you perfect for what comes next."
+
+"Which is?"
+
+"Phase Five of Project Rekha. Advanced psychological conditioning. Breaking down autonomy. Rebuilding neural pathways. Creating individuals who can operate under extreme stress without emotional interference."
+
+Rudra's blood ran cold.
+
+"You're trying to make weapons out of people."
+
+"I'm trying to make better people," Malhotra corrected. "Stronger. More resilient. Capable of surviving what others can't."
+
+"By torturing them."
+
+"By training them."
+
+Anvi stepped forward, voice shaking with rage. "My sister. Where is she?"
+
+Malhotra's expression softened. "Ah. Meera. Yes. A promising subject. Unfortunately, she didn't complete the program."
+
+"What did you do to her?" Anvi's voice cracked.
+
+"I gave her a choice. Adapt or break. She chose to break." Malhotra's tone was clinical. "It was unfortunate. But necessary."
+
+Anvi lunged at the glass, slamming her fists against it. "YOU KILLED HER!"
+
+The glass didn't budge.
+
+Malhotra watched her calmly. "I gave her an opportunity to transcend her limitations. She refused. That was her failure, not mine."
+
+Rudra grabbed Anvi, pulling her back. "He's trying to provoke you. Don't give him what he wants."
+
+Anvi was shaking. Tears streaming down her face. But she nodded.
+
+Rudra turned back to Malhotra. "You're not going to get away with this."
+
+"I already have. For ten years."
+
+"Until now."
+
+Malhotra raised an eyebrow. "You think you're going to stop me? Three students against an entire institution?"
+
+"We have evidence. Files. Recordings. Photos."
+
+"Which you conveniently brought with you. Into my facility." Malhotra smiled. "All of which I now control."
+
+Rudra's heart sank.
+
+Malhotra was right. They'd walked into a trap. And now all their evidence was contained within a space he controlled.
+
+"Your hour is almost up," Malhotra said. "I suggest you keep moving. Unless you'd like to stay and chat."
+
+The door at the far end of the lab clicked open.
+
+Malhotra gestured to it. "Your next challenge awaits."
+
+Rudra stared at the control room. At Malhotra's calm, confident expression.
+
+He wanted to break through that glass. Wanted to make him pay for everything he'd done.
+
+But not yet.
+
+First, they had to survive.
+
+"Let's go," Rudra said quietly.
+
+They carried Sneha through the open door.
+
+Into whatever nightmare Malhotra had prepared next.`,
+      },
+      {
+        id: 10,
+        title: 'Hidden Symbols',
+        content: `The door led them into a corridor lined with doors. Dozens of them. Each identical. Each locked.
+
+Except for the symbols.
+
+Carved into the wood. Painted on the frames. Scratched into the metal.
+
+Strange markings. Geometric shapes. Some looked like letters. Others like numbers. None of it made sense.
+
+"What is this?" Bhairav whispered.
+
+Rudra studied the symbols carefully. "A puzzle. Or a test."
+
+"Everything's a test with him," Anvi muttered.
+
+They moved down the corridor slowly, examining each door. The symbols changed. Patterns emerged.
+
+"Look," Anvi said, pointing. "This one has a triangle. And this one has a circle. They're repeating."
+
+"Mathematical sequence?" Bhairav suggested.
+
+"Or symbolic logic," Rudra said. He pulled out his phone, taking photos of each symbol. "We need to find the pattern."
+
+They continued down the hallway. More doors. More symbols.
+
+Then Rudra stopped at one door. Different from the others.
+
+The symbol was a spiral. Hand-drawn. Fresh.
+
+Like someone had marked it recently.
+
+"This one," Rudra said.
+
+"How do you know?" Bhairav asked.
+
+"Because it doesn't fit the pattern. Which means someone wants us to notice it."
+
+"Or it's another trap," Anvi said.
+
+"Only one way to find out."
+
+Rudra tried the handle.
+
+It opened.
+
+Inside was a small room. Empty except for a table. And on that table was a notebook.
+
+Old. Weathered. Filled with handwriting.
+
+Rudra picked it up carefully, flipping through the pages.
+
+Dates. Names. Observations.
+
+"It's a journal," Rudra said. "Someone's been documenting the experiments."
+
+"Who?" Anvi asked.
+
+Rudra turned to the last entry.
+
+**October 23rd. Phase 4 complete. Subject M-17 (Meera Rao) terminated. Psychological collapse on day 12. Unsuitable for continuation. Disposal authorized.**
+
+**Note: Sister (Anvi Rao) enrolled in local institute. Monitor for potential complications.**
+
+Anvi's breath hitched. She grabbed the journal, reading it over and over.
+
+"She didn't run away," Anvi whispered. "She didn't break. They killed her."
+
+Rudra placed a hand on her shoulder. "I'm sorry."
+
+Anvi was shaking. Not with grief. With rage.
+
+"We're going to burn this place down," she said quietly. "And everyone in it."
+
+"First, we get out," Rudra said. "Then we burn it down."
+
+He turned the page. More entries. More students. More "terminations."
+
+And at the very end, a map.
+
+Hand-drawn. Crude. But detailed.
+
+A schematic of the facility. Including an exit route.
+
+"Someone left this for us," Rudra said.
+
+"Who?" Bhairav asked.
+
+"I don't know. But they knew we'd come looking."
+
+Rudra studied the map. The exit was three levels up. Through a maintenance shaft. Then through the old wing. Then out.
+
+But there was a note scrawled at the bottom:
+
+**"He's watching. Always watching. Trust no one. Not even each other."**
+
+Rudra felt a chill.
+
+"What does that mean?" Bhairav asked.
+
+Before Rudra could answer, the lights flickered.
+
+Once. Twice.
+
+Then went out completely.
+
+Emergency lighting kicked in. Red. Pulsing.
+
+And through the speakers, Malhotra's voice.
+
+"Time's up."
+
+The door slammed shut behind them.
+
+Locks engaged. Heavy. Mechanical.
+
+"You've done well," Malhotra continued. "Better than I expected. But now comes the real test."
+
+The walls began to shift again. Panels sliding. Revealing new passages.
+
+"I'm going to separate you," Malhotra said. "Isolate you. See how you perform individually. Without your team. Without support."
+
+"No—" Bhairav started.
+
+The floor beneath them gave way.
+
+Not all at once. Sections. Tiles dropping into darkness below.
+
+Rudra grabbed Sneha, pulling her to solid ground.
+
+Anvi jumped across a gap, landing hard.
+
+But Bhairav wasn't fast enough.
+
+He fell.
+
+"BHAIRAV!" Rudra shouted.
+
+But the hole sealed shut before Rudra could reach him.
+
+Leaving Rudra and Anvi on one side. Bhairav somewhere below.
+
+"Bhairav! Can you hear me?" Rudra yelled.
+
+No response.
+
+"He's alive," Malhotra said. "For now. But he's alone. And scared. Let's see how long he lasts."
+
+Rudra's fists clenched.
+
+"You want to test me?" Rudra called out. "Fine. Let them go. Keep me."
+
+"Tempting. But no. You're all part of the experiment now. Each of you will face your own challenge. Your own fear."
+
+The room around Rudra and Anvi began to change again.
+
+Walls closing in. Ceiling lowering.
+
+"For you, Rudra," Malhotra said, "I'm going to test your greatest weakness."
+
+"Which is?"
+
+"Your need for control."
+
+The room plunged into darkness.
+
+Complete. Absolute.
+
+Rudra couldn't see his hand in front of his face.
+
+And in the darkness, he heard sounds.
+
+Footsteps. Whispers. Breathing.
+
+But not his own.
+
+Someone else was in the room with them.
+
+"Anvi?" Rudra called out.
+
+No answer.
+
+"Anvi!"
+
+Still nothing.
+
+Rudra's heart pounded. He reached out, feeling the walls. The floor. Trying to orient himself.
+
+His hand touched something.
+
+Warm. Soft.
+
+An arm.
+
+He grabbed it.
+
+And a voice—Anvi's voice—screamed.
+
+"GET OFF ME!"
+
+She shoved him away. Hard.
+
+"Anvi, it's me—"
+
+"I SAID GET OFF!"
+
+Rudra backed away, confused. Disoriented.
+
+The lights came on.
+
+Blinding. Harsh.
+
+And Rudra saw Anvi. But she wasn't looking at him.
+
+She was looking at someone else.
+
+Standing in the corner of the room.
+
+A figure. Shadowed. Hooded.
+
+Rudra spun around.
+
+But the figure was gone.
+
+Anvi was panting. Eyes wide. Terrified.
+
+"What did you see?" Rudra asked.
+
+"Her," Anvi whispered. "I saw Meera."
+
+"That's impossible."
+
+"I KNOW!" Anvi's voice cracked. "But she was there. I saw her."
+
+Rudra realized what was happening.
+
+Hallucinations. Induced. Through drugs or technology or both.
+
+Malhotra wasn't just testing them.
+
+He was breaking them.
+
+And Rudra had to find a way to stop it.
+
+Before they all lost their minds.`,
+      },
     ]
   },
   'somaiya-survival': {
