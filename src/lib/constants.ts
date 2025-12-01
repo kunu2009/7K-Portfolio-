@@ -622,7 +622,14 @@ export const NAVIGATION = [
     ]
   },
   { name: "Projects", href: "/#projects" },
-  { name: "Writing", href: "/blog" },
+  { 
+    name: "Writing", 
+    href: "/blog",
+    dropdown: [
+      { name: "Blog & Articles", href: "/blog" },
+      { name: "My Books", href: "/books" },
+    ]
+  },
   { name: "Contact", href: "/#contact" },
 ] as const;
 

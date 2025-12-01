@@ -6,7 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { ChatAssistantLoader } from '@/components/layout/chat-assistant-loader';
 import { ServiceWorkerRegistration } from '@/components/service-worker-registration';
 import { MobileCTABar } from '@/components/mobile-cta-bar';
-import EmailCapturePopup from '@/components/email-capture-popup';
+// Newsletter popup removed - will implement later
+// import EmailCapturePopup from '@/components/email-capture-popup';
 import { SkipToContent, GlobalAnnouncer } from '@/lib/accessibility';
 import { SITE_CONFIG } from '@/lib/constants';
 import { projectSchemas, organizationSchema, breadcrumbSchema, bookSchemas } from '@/lib/schemas';
@@ -180,7 +181,7 @@ export default function RootLayout({
           <Toaster />
           <ChatAssistantLoader />
           <MobileCTABar />
-          <EmailCapturePopup />
+          {/* Newsletter popup removed - will implement later */}
         </ThemeProvider>
         
         {/* Structured Data - Person Schema */}

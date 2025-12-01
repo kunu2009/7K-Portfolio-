@@ -38,6 +38,25 @@ export const bookData: Record<string, any> = {
       { id: 5, title: 'The Enemy or the Ally', pages: '129-160' },
     ],
   },
+  'somaiya-survival': {
+    title: 'The Somaiya Survival Manual',
+    author: 'Kunal Paresh Chheda',
+    rating: 4.9,
+    pages: 120,
+    language: 'ENG',
+    coverImage: '/images/books/somaiya-survival-cover.png',
+    synopsis: 'Everything you need to know to survive and thrive at KJ Somaiya College. From navigating Gate 3 to acing your exams, from finding the best food spots to making lifelong friends—this is the unofficial guide every Somaiya student wishes they had on Day 1.',
+    chapters: [
+      { id: 1, title: 'Welcome to Somaiya', pages: '1-15' },
+      { id: 2, title: 'The Campus Map (The Real One)', pages: '16-28' },
+      { id: 3, title: 'Gate Politics 101', pages: '29-38' },
+      { id: 4, title: 'Library Survival Guide', pages: '39-50' },
+      { id: 5, title: 'The Food Bible', pages: '51-64' },
+      { id: 6, title: 'Professor Types & How to Handle Them', pages: '65-78' },
+      { id: 7, title: 'Exam Hacks That Actually Work', pages: '79-95' },
+      { id: 8, title: 'The Unwritten Rules', pages: '96-120' },
+    ],
+  },
 };
 
 export const bookContent: Record<string, any> = {
@@ -472,21 +491,866 @@ She met his gaze. Her eyes were steel.
 Rudra felt the pieces locking into place. The notes. The surveillance. The manipulation. The cracked mirror. The careful silence.
 
 Someone was building something in Kupam.
-
-And Anvi had been inside it longer than him.
-
-"Why help me?" he asked.
-
-Anvi smiled slightly. Not warmth. Not trust. Just calculation.
-
-"Because I want to win."
-
-Rudra nodded.
-
-Two players now.
-
-And the game had just changed.`,
-      },
-    ],
+`
+      }
+    ]
   },
+  'somaiya-survival': {
+    title: 'The Somaiya Survival Manual',
+    chapters: [
+      {
+        id: 1,
+        title: 'Welcome to Somaiya',
+        content: `# Welcome to Somaiya
+
+## Your First Day
+
+Congratulations! You've made it to KJ Somaiya College. Whether you're in Vidyavihar, Ghatkopar, or any of the sprawling campuses, you're about to embark on an adventure that will shape the next few years of your life.
+
+But let's be honest—no one gives you a real guide. They give you a prospectus full of achievements, a campus map that makes no sense, and a senior who's too busy to explain anything properly.
+
+That's why this book exists.
+
+## The First Week Survival Kit
+
+What you actually need:
+
+### Physical Items
+- **ID Card**: Guard it with your life. Seriously. Read Chapter 3.
+- **Water bottle**: Dehydration is real, and the lines at the canteen are longer.
+- **Power bank**: Because every classroom outlet is mysteriously broken.
+- **Earphones**: For the commute, the library, and tuning out that one loud group.
+- **Umbrella**: Mumbai weather doesn't care about your plans.
+
+### Mental Preparation
+- **Patience**: Lines are long. Always.
+- **Flexibility**: Your schedule will change. Accept it.
+- **Curiosity**: Explore every corner of campus in the first month.
+- **Humility**: You don't know everything. Neither does anyone else.
+
+## The Unspoken Rules (Preview)
+
+1. The first bench is a commitment, not a choice.
+2. The last bench is also a commitment, just a different kind.
+3. "5 more minutes" from a professor means 15-20 minutes.
+4. The WiFi works. Sometimes. In specific spots. That change randomly.
+5. Always, ALWAYS, keep your ID card somewhere accessible.
+
+## How to Use This Book
+
+This isn't a textbook. Don't read it in order unless you want to.
+
+- **Feeling lost on campus?** → Chapter 2
+- **Gate giving you trouble?** → Chapter 3
+- **Library stress?** → Chapter 4
+- **Hungry?** → Chapter 5
+- **Professor problems?** → Chapter 6
+- **Exam panic?** → Chapter 7
+- **General life advice?** → Chapter 8
+
+Welcome to the family. Let's survive this together.
+
+---
+
+*"The journey of a thousand assignments begins with a single attendance."*
+— Ancient Somaiya Proverb (just made up)
+`
+      },
+      {
+        id: 2,
+        title: 'The Campus Map (The Real One)',
+        content: `# The Campus Map (The Real One)
+
+## Why the Official Map Doesn't Help
+
+The official map shows you buildings. Great. But it doesn't tell you:
+- Which staircase is faster
+- Where the secret shortcuts are
+- Which bathrooms are actually clean
+- Where you can nap without being caught
+- The optimal route between buildings
+
+This chapter fixes that.
+
+## Key Locations You Need to Know
+
+### The Gates
+
+**Gate 1 (Main Gate)**
+- The "formal" entrance
+- Where parents drop you off
+- Where you pretend to look responsible
+
+**Gate 3 (The Daily Gate)**
+- Your actual daily entrance
+- Where the ID card drama happens
+- Has the strictest security
+- Pro tip: 8:00-8:30 AM is chaos. Plan accordingly.
+
+**Gate 5 (The Escape Route)**
+- Less crowded
+- Useful for late entries
+- Sometimes closed randomly
+
+### Buildings Decoded
+
+| Official Name | What Students Call It | What Actually Happens There |
+|---------------|----------------------|----------------------------|
+| Main Building | "Main" | Admin stuff, principal's office, avoid unless necessary |
+| IT Block | "IT Block" | Computer labs, AC, the good WiFi |
+| Library | "Lib" | Studying, "studying", sleeping, judging others |
+| Canteen | "Canteen" | Food, gossip, failed diet plans |
+| Seminar Hall | "Seminar" | Events, lectures no one wanted, AC naps |
+
+### The Secret Spots
+
+**Best Places to Study (That Aren't the Library)**
+1. The benches near the garden (morning only, gets hot)
+2. Empty classrooms after 4 PM
+3. The corner of the IT lab (if you have access)
+
+**Best Places to Chill**
+1. Canteen (obviously)
+2. The staircase no one uses (you'll find it)
+3. Behind the auditorium (if it's not event season)
+
+**Best Places to Nap**
+1. Library basement (if your college has one)
+2. Back benches of any empty classroom
+3. The infirmary (claim a headache, get 30 minutes of peace)
+
+## Navigation Tips
+
+### The Fastest Routes
+
+**From Gate 3 to IT Block:**
+Skip the main path. Take the left side, past the parking, through the small garden. Saves 3 minutes.
+
+**From Canteen to Library:**
+Don't go through the main corridor during break time. Take the side stairs.
+
+**From Any Building to Exit (When You're Late):**
+Know your staircase. Right staircase is always less crowded after 4 PM.
+
+### The WiFi Map
+
+Yes, WiFi strength varies by location. Here's the unofficial map:
+
+- **Strong Signal**: IT labs, library (ground floor), main admin building
+- **Medium Signal**: Canteen (spotty), classrooms (varies)
+- **Weak Signal**: Staircases, some corridors, your exact seat somehow
+- **No Signal**: That one corner in every building, parking lot
+
+---
+
+*Navigate smart, not hard.*
+`
+      },
+      {
+        id: 3,
+        title: 'Gate Politics 101',
+        content: `# Gate Politics 101
+
+## Understanding the System
+
+The gates of Somaiya aren't just entry points—they're the first line of defense, the gatekeepers of attendance, and the source of countless stories of triumph and tragedy.
+
+## The Players
+
+### Security Guards
+
+They've seen it all:
+- The "I forgot my ID" excuse (1000+ times daily)
+- The "I'm just going to the canteen" lie
+- The dramatic phone calls to parents
+- The tears (don't try this)
+
+**How to Get on Their Good Side:**
+1. Be consistently polite (it works over time)
+2. Actually have your ID ready
+3. Don't argue—negotiate calmly
+4. Morning greetings go a long way
+
+### The ID Card
+
+Your ID card is:
+- Your passport
+- Your identity
+- Your key to literally everything
+- Somehow always in the wrong pocket
+
+**ID Card Protection Tips:**
+- Keep it in the same spot ALWAYS
+- Take a photo of it (backup)
+- Consider a lanyard (uncool but effective)
+- Never lend it to anyone
+
+## Common Scenarios and Solutions
+
+### Scenario 1: Forgot Your ID
+
+**Reality Check**: You will forget it. Everyone does.
+
+**What to Do:**
+1. Check your bag thoroughly (all pockets)
+2. Check if you have a photo on your phone
+3. Call a friend inside to vouch for you
+4. As a last resort, call home
+
+**What NOT to Do:**
+- Argue aggressively
+- Try to sneak in (you will be caught)
+- Cry (won't help, just embarrassing)
+- Claim you're a VIP's relative
+
+### Scenario 2: Late Entry
+
+The gates get stricter after class starts.
+
+**How to Handle:**
+1. Be honest: "Traffic problem"
+2. Have a genuine-looking late excuse
+3. Some guards track repeat offenders, so vary your gates
+
+### Scenario 3: Re-entry (Leaving and Coming Back)
+
+Want to grab lunch outside and come back? Here's the drill:
+- Some colleges require you to sign out/in
+- Keep your ID visible
+- Don't take too long—guards remember faces
+
+## Gate Timing Strategy
+
+| Time | Crowd Level | Guard Mood | Pro Tip |
+|------|-------------|------------|---------|
+| 7:30-8:00 | Low | Fresh | Best entry time |
+| 8:00-8:30 | CHAOS | Stressed | Avoid if possible |
+| 8:30-9:00 | Medium | Strict | ID ready, be quick |
+| 12:00-1:30 | High | Lunch mood | Easier re-entry |
+| 4:00-5:00 | Rush | Tired | Exit is fine, entry strict |
+
+## The Ultimate Gate Hack
+
+**Build a relationship over time.**
+
+- Same greeting every day
+- Same gate if possible
+- Remember their names (if they share)
+- Be the student they don't have to worry about
+
+After a semester, they'll remember your face. This is when "forgot my ID" becomes a minor issue instead of a major drama.
+
+---
+
+*The gate sees all, knows all, judges all. Respect it.*
+`
+      },
+      {
+        id: 4,
+        title: 'Library Survival Guide',
+        content: `# Library Survival Guide
+
+## The Two Libraries
+
+Somaiya typically has multiple libraries. Know the difference.
+
+### Management/Main Library
+- Stricter entry
+- Quieter environment
+- Better for focused study
+- Book borrowing
+- Computer access
+
+### Department Libraries
+- Easier access
+- Subject-specific books
+- Less crowded
+- More relaxed rules
+
+## Library Unwritten Rules
+
+1. **The Seating Hierarchy**
+   - First floor = Serious studiers
+   - Ground floor = Group study (quiet)
+   - Basement (if exists) = Nappers and question paper hunters
+
+2. **The Phone Rule**
+   - Officially: Silent/off
+   - Reality: Silent, low brightness, pretend you're checking notes
+
+3. **The Food Rule**
+   - Officially: No food or drinks
+   - Reality: Water bottles exist. Just don't be obvious with snacks.
+
+## How to Find What You Need
+
+### Books
+1. Check the digital catalog (if available)
+2. Know the call number system
+3. Ask the librarian (they know everything)
+4. Ask seniors (they know what's actually useful)
+
+### Study Spots
+1. Arrive early (before 9 AM for prime spots)
+2. Corner seats = Less distraction
+3. Near windows = Good for afternoon study
+4. Near AC = Good for summer survival
+
+### The Perfect Study Spot Criteria
+- Power outlet nearby ✓
+- Not directly under AC (too cold) ✓
+- Not near the door (distractions) ✓
+- Not at a creaky table ✓
+- Cell signal still works ✓
+
+## Library Hacks
+
+### For Borrowing Books
+- Check due dates immediately
+- Renew online if possible
+- Return on time (fines add up)
+- Some books can't be borrowed—know which ones
+
+### For Computer Access
+- Log in and out properly
+- Clear your browser history
+- Don't save passwords
+- Time limits exist—be aware
+
+### For Exams
+- Old question papers are gold—ask where to find them
+- Group study rooms may need booking
+- Library hours extend during exams (know the timing)
+
+## The Library Ecosystem
+
+**The Regulars:**
+- The person who's always there (are they okay?)
+- The group that whispers too loudly
+- The one who takes calls outside (respect)
+- The sleeper (we've all been there)
+
+**Library Staff:**
+- The strict one (don't cross them)
+- The helpful one (cherish them)
+- The one who's always on lunch break
+
+## When NOT to Go to the Library
+
+- During exam week (unless you arrive at 6 AM)
+- When there's an event in the building
+- Right after lunch (food coma + studying = sleeping)
+- If you need to take calls
+
+---
+
+*The library is not just a building. It's a state of mind.*
+`
+      },
+      {
+        id: 5,
+        title: 'The Food Bible',
+        content: `# The Food Bible
+
+## Campus Canteen Breakdown
+
+### What to Expect
+- Long lines during breaks
+- Limited menu variety
+- Surprisingly decent chai
+- That one item everyone orders
+
+### The Menu Decoded
+
+| Item | Quality | Value | Wait Time |
+|------|---------|-------|-----------|
+| Vada Pav | ⭐⭐⭐⭐ | ₹30ish | 2 min |
+| Samosa | ⭐⭐⭐ | ₹15ish | 3 min |
+| Chai | ⭐⭐⭐⭐ | ₹10ish | 5 min (lines) |
+| Cold Coffee | ⭐⭐⭐ | ₹50ish | 7 min |
+| Full Meal | ⭐⭐⭐ | ₹80ish | 10+ min |
+
+### Pro Tips for Canteen
+1. Avoid 12:30-1:30 (peak chaos)
+2. Go at 11 AM or 2 PM for peace
+3. Know what you want before you queue
+4. UPI is faster than cash
+5. Find a regular counter person—builds rapport
+
+## Off-Campus Food Zones
+
+Every Somaiya campus has nearby areas with better food. Explore them.
+
+### What's Usually Available Nearby
+- Street food stalls (budget-friendly)
+- Local restaurants (for when you want real food)
+- Cafes (for the aesthetic Instagram people)
+- Fast food chains (for consistency)
+
+### Budget Categories
+
+**Under ₹50:**
+- Vada Pav, Samosa, Pav Bhaji stalls
+- Chai tapri
+- Bhel puri corners
+
+**₹50-100:**
+- Canteen meals
+- Local thali places
+- Dosa corners
+
+**₹100-200:**
+- Decent restaurants
+- Combo meals
+- Pizza/burger joints
+
+**₹200+:**
+- "Treating" friends
+- Cafes
+- When your parents send extra money
+
+## Survival Eating Strategies
+
+### When You're Broke
+1. Canteen chai + biscuits = survival
+2. Home tiffin if possible
+3. Split meals with friends
+4. The ₹30 vada pav is your friend
+
+### When You're in a Hurry
+1. Biscuit packets
+2. Bananas (nature's fast food)
+3. Pre-ordered canteen items
+4. Energy bars
+
+### When You Need to Impress
+1. Know the "good" restaurant nearby
+2. Book in advance if it's popular
+3. Have 2-3 options ready for different budgets
+4. Always have UPI ready
+
+## Food Hacks
+
+1. **Bring snacks from home**: Cheaper, healthier, always available
+2. **Learn which stalls have the freshest food**: Morning is usually better
+3. **Make friends with canteen staff**: Extra portion "sometimes" happens
+4. **Know the timings**: Some stalls close early
+
+## The Emergency Food Kit
+
+Keep these in your bag:
+- Energy bar / granola bar
+- Biscuit packet
+- Small water bottle
+- ₹100 cash (for when UPI fails)
+
+---
+
+*A hungry student is a distracted student. Plan your meals.*
+`
+      },
+      {
+        id: 6,
+        title: 'Professor Types & How to Handle Them',
+        content: `# Professor Types & How to Handle Them
+
+## Understanding the Species
+
+Professors are not a monolith. Each type requires a different approach.
+
+## The Classification
+
+### Type 1: The Strict One
+**Characteristics:**
+- Attendance is sacred
+- Late = locked out
+- Phones are confiscated
+- Assignments have zero tolerance
+
+**How to Handle:**
+- Be on time, always
+- Sit in the front (shows respect)
+- Actually prepare for their class
+- Never make excuses—just apologize and improve
+
+**The Silver Lining:**
+You'll actually learn the subject well.
+
+---
+
+### Type 2: The Chill One
+**Characteristics:**
+- Attendance is flexible
+- Late is "okay, come in"
+- Actually makes jokes
+- Treats students like adults
+
+**How to Handle:**
+- Don't abuse the flexibility
+- Participate in discussions
+- Submit work on time (they notice)
+- Build a genuine rapport
+
+**The Warning:**
+Easy ≠ Good grades. You still need to work.
+
+---
+
+### Type 3: The Ancient One
+**Characteristics:**
+- Same notes for 20 years
+- Stories from "their time"
+- Slow speaking pace
+- Surprisingly tough exams
+
+**How to Handle:**
+- Get previous year questions (they repeat)
+- Note the keywords they emphasize
+- Don't rush them with questions
+- Respect their experience
+
+---
+
+### Type 4: The Researcher
+**Characteristics:**
+- Focused on their research, not teaching
+- May go off-topic into their work
+- Brilliant but sometimes incomprehensible
+- Viva discussions can be gold
+
+**How to Handle:**
+- Show interest in their research
+- Ask intelligent questions
+- Learn from their methodology
+- They can be great mentors for projects
+
+---
+
+### Type 5: The New One
+**Characteristics:**
+- Still figuring things out
+- Might be nervous
+- Often stricter to prove themselves
+- Actually prepares well
+
+**How to Handle:**
+- Be kind (they're learning too)
+- Don't exploit their newness
+- Give genuine feedback if asked
+- They'll remember helpful students later
+
+---
+
+## Universal Professor Rules
+
+### What ALWAYS Works:
+1. **Punctuality**: Arrive on time, submit on time
+2. **Preparation**: Skim the topic before class
+3. **Participation**: Ask one good question per week
+4. **Politeness**: Basic manners go very far
+5. **Professionalism**: Email them properly (subject line, greetings, signature)
+
+### What NEVER Works:
+1. Arguing in front of the class
+2. Making excuses repeatedly
+3. Copying obviously
+4. Lying about attendance
+5. Being on your phone constantly
+
+## The Attendance Game
+
+Attendance rules vary by professor. Know yours.
+
+- Some take attendance at start (arrive early)
+- Some take at end (don't leave early)
+- Some take randomly (be present throughout)
+- Some never take it (but will notice absence in viva)
+
+## How to Email a Professor
+
+**Email Template:**
+
+**Subject:** [Course Name] - Query regarding [Topic]
+
+Dear Professor [Last Name],
+
+I am [Your Name] from [Year, Section].
+
+I have a question regarding [specific topic] from today's lecture. 
+[Ask your question clearly and concisely]
+
+Thank you for your time.
+
+Best regards,
+[Your Name]
+[Roll Number]
+
+---
+
+*Every professor was once a student. They get it more than you think.*
+`
+      },
+      {
+        id: 7,
+        title: 'Exam Hacks That Actually Work',
+        content: `# Exam Hacks That Actually Work
+
+## Pre-Exam Strategy
+
+### 2 Weeks Before
+- **Gather resources**: Notes, question papers, study guides
+- **Know the syllabus**: What's actually covered?
+- **Identify weak areas**: Be honest with yourself
+- **Form study groups**: But only with serious people
+
+### 1 Week Before
+- **Start revising**: Not reading—revising
+- **Solve previous papers**: At least 3-5 years
+- **Mock tests**: Time yourself
+- **Sleep properly**: Pulling all-nighters starts the damage early
+
+### Day Before
+- **Light revision only**: No new topics
+- **Pack your bag early**: ID, hall ticket, pens, water
+- **Set multiple alarms**: At least 3
+- **Sleep by 10 PM**: Your brain consolidates memory during sleep
+
+### Exam Day
+- **Wake early**: Time for breakfast and calm
+- **Reach early**: Rushing = panic
+- **Use the bathroom**: Before exam, not during
+- **Read entire paper first**: Know what you're dealing with
+
+## In-Exam Strategy
+
+### Time Management
+
+| Paper Length | Time Allocation |
+|--------------|-----------------|
+| 3 hours | 10 min reading + planning, 2.5 hours writing, 20 min review |
+| 2 hours | 5 min reading, 1.5 hours writing, 25 min review |
+
+### Question Selection
+1. Read all questions first
+2. Mark easy ones (do these first)
+3. Allocate time per question based on marks
+4. Don't get stuck on one question—move on
+
+### Writing Strategy
+- **Start with what you know**: Builds confidence
+- **Use headings and bullets**: Easy for examiner to read
+- **Draw diagrams**: Visual = extra marks
+- **Write the formula first**: Even if you mess up, you get partial marks
+- **Answer the question asked**: Not what you wish they asked
+
+## What Actually Gets You Marks
+
+### The Truth About Grading
+1. **First impression matters**: Clean handwriting, proper margins
+2. **Structure matters**: Introduction, body, conclusion
+3. **Specific > Vague**: "The GDP grew by 7% in 2024" > "The GDP grew"
+4. **Diagrams get marks**: Label them properly
+5. **Answer all parts**: If it says A, B, C—write A, B, C
+
+### Common Mistakes That Cost Marks
+- Not reading the question fully
+- Spending too much time on one question
+- Skipping "easy" questions
+- Illegible handwriting
+- No conclusion/summary
+
+## Subject-Specific Tips
+
+### For Theory Subjects
+- Memorize keywords
+- Use examples
+- Quote if relevant
+- Structure your answers
+
+### For Numerical Subjects
+- Show all steps
+- Write formulas
+- Check calculations
+- Box your final answer
+
+### For Practical Exams
+- Know your procedures
+- Label everything
+- Time your processes
+- Stay calm if something goes wrong
+
+## The Recovery Strategy
+
+### If You Blank Out
+1. Take 3 deep breaths
+2. Close your eyes for 10 seconds
+3. Write whatever keywords you remember
+4. The brain often fills in gaps
+
+### If You Run Out of Time
+1. Write in bullet points
+2. Skip introductions—go straight to points
+3. Prioritize questions with more marks
+4. Write "continued..." even if you can't continue (shows intent)
+
+### If You Made a Mistake
+1. Don't waste time feeling bad
+2. Neatly cross out and rewrite
+3. Move on—you have other questions
+4. It happens to everyone
+
+## Post-Exam Protocol
+
+- Don't discuss answers immediately (anxiety spreads)
+- Eat something
+- Prepare for the next exam
+- What's done is done
+
+---
+
+*Exams test preparation, not intelligence. Prepare smart.*
+`
+      },
+      {
+        id: 8,
+        title: 'The Unwritten Rules',
+        content: `# The Unwritten Rules
+
+## The Rules Nobody Tells You
+
+These aren't in any handbook. But break them at your own risk.
+
+## Academic Unwritten Rules
+
+### Attendance
+- **75% is the official requirement**
+- **85%+ is the safe zone** (for when life happens)
+- Bunking is an art—know when, know limits
+- The "one class won't matter" mindset is a trap
+
+### Assignments
+- Submitted ≠ Good
+- Last minute work shows
+- Plagiarism is checked—be smarter
+- One good assignment > 5 copy-paste ones
+
+### Group Projects
+- Choose your team wisely
+- One person always does more work—try not to be the one who does less
+- Communication is everything
+- Document contributions (CYA—Cover Your Achievements)
+
+### Exams
+- Previous papers are gold
+- Study groups work IF everyone contributes
+- All-nighters don't work for most people
+- Exam week diet is temporary—don't make it permanent
+
+## Social Unwritten Rules
+
+### Making Friends
+- First semester is for experimenting
+- Your real friend group forms by second year
+- Quality > Quantity
+- Don't gossip—it comes back
+
+### Seniors
+- Respect doesn't mean fear
+- Good seniors are mentors—find them
+- Bad seniors exist—avoid them
+- One day you'll be the senior—remember this
+
+### Juniors
+- Help them if you can
+- Don't rag (it's illegal AND stupid)
+- Share resources—your notes might save someone
+- They'll remember kindness
+
+### Relationships
+- College relationships happen
+- Breakups in the same class are awkward
+- Keep it professional in group settings
+- Your degree > Drama
+
+## Professional Unwritten Rules
+
+### Networking
+- Every event is a networking event
+- LinkedIn is mandatory by final year
+- Alumni connections are underrated
+- Help others get opportunities too
+
+### Internships
+- Start looking in second year
+- College placements aren't the only option
+- Skills > CGPA (after a threshold)
+- Referrals work better than applications
+
+### Career Building
+- Build something—portfolio, project, skill
+- Online presence matters
+- Your batchmates are your first network
+- College achievements expire—real skills don't
+
+## Life Unwritten Rules
+
+### Health
+- Mental health matters as much as physical
+- Sleep is not optional
+- Eating junk daily will catch up
+- Walk sometimes—between classes, to the station
+
+### Money
+- Track your spending
+- UPI makes spending easy—too easy
+- Emergency fund = 1 month expenses
+- Learn to say no to expensive outings
+
+### Time
+- Time at college goes fast
+- You'll miss it—eventually
+- Don't spend it all in the canteen
+- But don't spend it all studying either
+
+## The Final Rules
+
+1. **Show up**: Half of success is just being present
+2. **Be kind**: People remember how you made them feel
+3. **Ask for help**: No one succeeds alone
+4. **Document everything**: Photos, notes, experiences
+5. **Fail forward**: Mistakes are lessons
+6. **Stay curious**: The learning doesn't stop at syllabus
+7. **Have fun**: These years don't come back
+
+## The Survival Philosophy
+
+College is not just about passing exams. It's about:
+- Finding what you're interested in
+- Building relationships that last
+- Learning how to learn
+- Becoming an adult (gradually)
+- Making memories worth keeping
+
+The degree gets you the interview.
+Everything else gets you the life.
+
+---
+
+*Survive first. Thrive next. Remember always.*
+
+---
+
+**You've reached the end of the Survival Manual.**
+
+But your story is just beginning.
+
+Welcome to Somaiya. Make it count.
+
+— Kunal Chheda
+
+P.S. If you found this useful, share it with the next batch. They'll need it too.
+`
+      }
+    ]
+  }
 };

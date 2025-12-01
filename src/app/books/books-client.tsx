@@ -33,6 +33,17 @@ const books = [
     category: 'Mystery',
     chapters: bookData.kupgames.chapters.length,
   },
+  {
+    id: 'somaiya-survival',
+    title: bookData['somaiya-survival'].title,
+    author: bookData['somaiya-survival'].author,
+    description: 'The ultimate insider guide to surviving and thriving at K.J. Somaiya College. Campus culture, real stories, tips, hacks, and humour that every Somaiyite will relate to.',
+    rating: bookData['somaiya-survival'].rating,
+    pages: bookData['somaiya-survival'].pages,
+    coverImage: bookData['somaiya-survival'].coverImage,
+    category: 'Humor & Campus Life',
+    chapters: bookData['somaiya-survival'].chapters.length,
+  },
 ];
 
 export default function BooksPageClient() {
