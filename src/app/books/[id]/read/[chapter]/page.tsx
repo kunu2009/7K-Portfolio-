@@ -166,8 +166,8 @@ export default function ReadingPage({
 
         {/* Chapter Content with Markdown Rendering */}
         <article 
-          className="prose prose-slate dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-li:text-foreground/90 prose-h1:hidden prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3"
-          style={{ fontSize: `${fontSize}px`, lineHeight: '1.75' }}
+          className="prose prose-slate dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-li:text-foreground/90 prose-h1:hidden prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-table:border-collapse prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:bg-muted/50 prose-th:p-3 prose-th:text-left prose-td:border prose-td:border-border prose-td:p-3"
+          style={{ fontSize: `${fontSize}px`, lineHeight: '1.75', fontFeatureSettings: '"tnum" 1, "cv11" 1' }}
         >
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
@@ -208,6 +208,29 @@ export default function ReadingPage({
                   </li>
                 );
               },
+              // Custom renderer for tables
+              table: ({ children }) => (
+                <div className="overflow-x-auto my-6">
+                  <table className="min-w-full border-collapse border border-border rounded-lg overflow-hidden">
+                    {children}
+                  </table>
+                </div>
+              ),
+              thead: ({ children }) => (
+                <thead className="bg-muted/50">
+                  {children}
+                </thead>
+              ),
+              th: ({ children }) => (
+                <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">
+                  {children}
+                </th>
+              ),
+              td: ({ children }) => (
+                <td className="border border-border px-4 py-3 text-foreground/90" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {children}
+                </td>
+              ),
             }}
           >
             {chapter.content}

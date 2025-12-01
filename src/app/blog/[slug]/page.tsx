@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         )}
 
         {/* Content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none">
+        <div className="prose prose-lg dark:prose-invert max-w-none" style={{ fontFeatureSettings: '"tnum" 1, "cv11" 1' }}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -192,6 +192,39 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 >
                   {children}
                 </a>
+              ),
+              // Custom renderer for tables with proper styling
+              table: ({ children }) => (
+                <div className="overflow-x-auto my-8 rounded-lg border border-border">
+                  <table className="min-w-full border-collapse">
+                    {children}
+                  </table>
+                </div>
+              ),
+              thead: ({ children }) => (
+                <thead className="bg-muted/50">
+                  {children}
+                </thead>
+              ),
+              tbody: ({ children }) => (
+                <tbody className="bg-background">
+                  {children}
+                </tbody>
+              ),
+              th: ({ children }) => (
+                <th className="border-b border-border px-6 py-4 text-left font-semibold text-foreground">
+                  {children}
+                </th>
+              ),
+              td: ({ children }) => (
+                <td className="border-b border-border px-6 py-4 text-foreground/90" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {children}
+                </td>
+              ),
+              tr: ({ children }) => (
+                <tr className="hover:bg-muted/30 transition-colors">
+                  {children}
+                </tr>
               ),
             }}
           >
