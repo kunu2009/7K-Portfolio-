@@ -28,7 +28,7 @@ export const bookData: Record<string, any> = {
     rating: 4.7,
     pages: 160,
     language: 'ENG',
-    coverImage: '/images/books/kupgames-cover.png',
+    coverImage: '/images/books/the kupgames-cover.png',
     synopsis: 'Jack and Jill is the story of a boy and a girl who went up a hill together. They went to fetch a pail of water, but unfortunately, their plan is disrupted when Jack came. Not only do the main characters face obstacles in their quest for water, but they also encounter mysterious forces in Kupam that test their courage and wit.',
     chapters: [
       { id: 1, title: 'The Arrival at Kupam', pages: '1-32' },
@@ -44,7 +44,7 @@ export const bookData: Record<string, any> = {
     rating: 4.9,
     pages: 120,
     language: 'ENG',
-    coverImage: '/images/books/somaiya-survival-cover.png',
+    coverImage: '/images/books/The Somaiya Survival Manual-cover.png',
     synopsis: 'Everything you need to know to survive and thrive at KJ Somaiya College. From navigating Gate 3 to acing your exams, from finding the best food spots to making lifelong friends—this is the unofficial guide every Somaiya student wishes they had on Day 1.',
     chapters: [
       { id: 1, title: 'Welcome to Somaiya', pages: '1-15' },
@@ -64,7 +64,7 @@ export const bookData: Record<string, any> = {
     rating: 4.8,
     pages: 180,
     language: 'ENG',
-    coverImage: '/images/books/useful-student-cover.png',
+    coverImage: '/images/books/The Useful Student-cover.png',
     synopsis: 'A practical guide for students who feel behind, lost, or stuck. This book shows you how to build real skills, create genuine value, and transform from someone who consumes to someone who creates. No motivation speeches—just actionable steps.',
     chapters: [
       { id: 1, title: 'The Starting Point', pages: '1-20' },
@@ -83,7 +83,7 @@ export const bookData: Record<string, any> = {
     rating: 4.6,
     pages: 150,
     language: 'ENG',
-    coverImage: '/images/books/procrastinator-universe-cover.png',
+    coverImage: '/images/books/The Procrastinator Who Wanted to Build a Universe-cover.png',
     synopsis: 'A philosophical journey through the mind of a chronic procrastinator who dreams of creating something massive. Part self-help, part creative exploration, this book examines why we delay our biggest dreams and how to start anyway.',
     chapters: [
       { id: 1, title: 'The Dream That Waited', pages: '1-25' },
@@ -101,7 +101,7 @@ export const bookData: Record<string, any> = {
     rating: 4.9,
     pages: 140,
     language: 'ENG',
-    coverImage: '/images/books/build-first-cover.png',
+    coverImage: '/images/books/Build First, Learn Later-cover.png',
     synopsis: 'The philosophy behind 7K: why building things teaches you more than courses ever could. This book documents the approach of learning through creation, making mistakes in public, and letting projects teach you what books cannot.',
     chapters: [
       { id: 1, title: 'The Tutorial Trap', pages: '1-20' },
@@ -119,7 +119,7 @@ export const bookData: Record<string, any> = {
     rating: 4.7,
     pages: 130,
     language: 'ENG',
-    coverImage: '/images/books/desk-life-cover.png',
+    coverImage: '/images/books/The Desk I Built My Life Around-cover.png',
     synopsis: 'A meditation on workspace, creativity, and how the physical space you work in shapes the life you build. From a cramped corner to a creative hub—this is the story of building a life around a desk.',
     chapters: [
       { id: 1, title: 'The First Desk', pages: '1-20' },
@@ -137,7 +137,7 @@ export const bookData: Record<string, any> = {
     rating: 4.8,
     pages: 145,
     language: 'ENG',
-    coverImage: '/images/books/offline-productivity-cover.png',
+    coverImage: '/images/books/Offline Productivity-cover.png',
     synopsis: 'How constraints breed creativity. This book explores working with limited internet, making the most of offline time, and building systems that work even when WiFi does not. A guide for students and creators in bandwidth-limited environments.',
     chapters: [
       { id: 1, title: 'The Bandwidth Constraint', pages: '1-22' },
@@ -155,7 +155,7 @@ export const bookData: Record<string, any> = {
     rating: 4.5,
     pages: 200,
     language: 'ENG',
-    coverImage: '/images/books/tower-memory-cover.png',
+    coverImage: '/images/books/The Tower of Memory-cover.png',
     synopsis: 'A manga-style narrative exploring a universe where memories can be stored, traded, and stolen. Follow the protagonist through a world where the Tower holds humanitys most precious memories—and the conspiracy that threatens to bring it down.',
     chapters: [
       { id: 1, title: 'The Memory Thief', pages: '1-30' },
@@ -173,7 +173,7 @@ export const bookData: Record<string, any> = {
     rating: 4.6,
     pages: 175,
     language: 'ENG',
-    coverImage: '/images/books/student-machines-cover.png',
+    coverImage: '/images/books/The Student Who Could Hear Machines-cover.png',
     synopsis: 'A speculative fiction about a student who develops an unusual ability to understand what machines are saying. As they navigate college, they discover that technology has its own language, its own problems, and its own requests for help.',
     chapters: [
       { id: 1, title: 'The First Voice', pages: '1-25' },
@@ -191,7 +191,7 @@ export const bookData: Record<string, any> = {
     rating: 4.7,
     pages: 220,
     language: 'ENG',
-    coverImage: '/images/books/somaiya-files-cover.png',
+    coverImage: '/images/books/somaiya file-cover.png',
     synopsis: 'A thriller set within the tech infrastructure of a college campus. When a student discovers anomalies in the attendance system, they uncover a web of secrets hidden in the digital architecture. Part tech mystery, part campus drama.',
     chapters: [
       { id: 1, title: 'The Anomaly', pages: '1-30' },
