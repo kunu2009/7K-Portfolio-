@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, BookOpen, Star, Clock, Search } from 'lucide-react';
+import { ArrowLeft, BookOpen, Star, Clock, Search, FileText, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -80,6 +80,16 @@ export default function BooksPageClient() {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Exploring worlds and ideas through the written word
             </p>
+            
+            {/* Cross Navigation to Blog */}
+            <Link 
+              href="/blog"
+              className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full text-primary hover:from-primary/20 hover:to-accent/20 transition-all group"
+            >
+              <FileText className="h-5 w-5" />
+              <span className="font-medium">Read my Blog</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
           {/* Search */}
@@ -170,6 +180,18 @@ export default function BooksPageClient() {
       {/* Mobile View - Keep as is (user likes it) */}
       <section className="lg:hidden px-4 py-8">
         <div className="container max-w-md mx-auto">
+          {/* Mobile Header with Blog Link */}
+          <div className="text-center mb-6">
+            <Link 
+              href="/blog"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full text-primary hover:from-primary/20 hover:to-accent/20 transition-all group text-sm"
+            >
+              <FileText className="h-4 w-4" />
+              <span className="font-medium">Read my Blog</span>
+              <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          
           {/* Search */}
           <div className="relative mb-8">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />

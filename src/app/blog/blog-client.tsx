@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Calendar, User, Tag, Clock } from 'lucide-react';
+import { Search, Calendar, User, Tag, Clock, BookOpen, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { BlogPost } from '@/lib/blog';
@@ -53,6 +53,16 @@ export default function BlogClient({ posts, categories, tags }: BlogClientProps)
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Thoughts on web development, design, and building digital products
           </p>
+          
+          {/* Cross Navigation to Books */}
+          <Link 
+            href="/books"
+            className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-full text-primary hover:from-primary/20 hover:to-accent/20 transition-all group"
+          >
+            <BookOpen className="h-5 w-5" />
+            <span className="font-medium">Check out my Books</span>
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
         {/* Search & Filters */}
