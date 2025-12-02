@@ -72,20 +72,174 @@ export const bookData: Record<string, any> = {
     title: 'The Somaiya Survival Manual',
     author: 'Kunal Paresh Chheda',
     rating: 4.9,
-    pages: 120,
+    pages: 220,
     language: 'ENG',
     coverImage: '/images/books/The Somaiya Survival Manual-cover.png',
-    synopsis: 'Everything you need to know to survive and thrive at KJ Somaiya College. From navigating Gate 3 to acing your exams, from finding the best food spots to making lifelong friends—this is the unofficial guide every Somaiya student wishes they had on Day 1.',
+    synopsis: 'Everything you need to know to survive and thrive at KJ Somaiya College. From navigating Gate 3 to acing your exams, from finding the best food spots to making lifelong friends—this unofficial guide is written by students, for students.',
     chapters: [
-      { id: 1, title: 'Welcome to Somaiya', pages: '1-15' },
-      { id: 2, title: 'The Campus Map (The Real One)', pages: '16-28' },
-      { id: 3, title: 'Gate Politics 101', pages: '29-38' },
-      { id: 4, title: 'Library Survival Guide', pages: '39-50' },
-      { id: 5, title: 'The Food Bible', pages: '51-64' },
-      { id: 6, title: 'Professor Types & How to Handle Them', pages: '65-78' },
-      { id: 7, title: 'Exam Hacks That Actually Work', pages: '79-95' },
-      { id: 8, title: 'The Unwritten Rules', pages: '96-120' },
+      { id: 1, title: 'Welcome to Somaiya', pages: '1-18' },
+      { id: 2, title: 'The Campus Map (The Real One)', pages: '19-36' },
+      { id: 3, title: 'Gate Politics 101', pages: '37-50' },
+      { id: 4, title: 'Library Survival Guide', pages: '51-68' },
+      { id: 5, title: 'The Food Bible', pages: '69-90' },
+      { id: 6, title: 'Professor Types & How to Handle Them', pages: '91-104' },
+      { id: 7, title: 'Exam Hacks That Actually Work', pages: '105-122' },
+      { id: 8, title: 'The Unwritten Rules', pages: '123-140' },
+      { id: 9, title: 'The Placement Game', pages: '141-156' },
+      { id: 10, title: 'Events, Fests & How to Survive Them', pages: '157-168' },
+      { id: 11, title: 'Clubs, Committees & Campus Life', pages: '169-180' },
+      { id: 12, title: 'The Commute Life', pages: '181-188' },
+      { id: 13, title: 'Love, Friendship & Campus Relationships', pages: '189-198' },
+      { id: 14, title: 'Mental Health, Stress & Survival', pages: '199-210' },
+      { id: 15, title: 'Life After Somaiya', pages: '211-220' },
     ],
+    content: [
+      {
+        id: 1,
+        title: 'Welcome to Somaiya',
+        content: `# Welcome to Somaiya
+
+## Your First Week
+
+Congratulations — you made it. This chapter gives the real (and sometimes awkward) primer: Vidyavihar station etiquette, the rickshaw stand math, what "Chacha" means, where the Running Statue is and why everyone uses it as a meeting point. You'll learn the difference between Gate 1 (formal), Gate 3 (daily) and Gate 5 (backup), and why a lanyard will save your week more than any lecture.
+
+## Quick Survival Checklist
+- ID card (photo backup on phone)
+- Power bank and water bottle
+- Comfortable shoes (walking is real)
+- A small emergency snack (energy bar)
+
+## First Month Strategy
+1. Walk the campus clockwise for two days — you will remember where everything is.
+2. Find one quiet study spot and one social spot.
+3. Introduce yourself to one senior and one librarian — both are valuable.
+
+Welcome. You're not lost; you're learning the map.
+`,
+      },
+      {
+        id: 2,
+        title: 'The Campus Map (The Real One)',
+        content: `# The Campus Map (The Real One)
+
+This chapter decodes the official map: Aurobindo building (open library), Dalchini canteen, Management canteen, Chess Spot, Amphitheatre, Ganapati Baba, the Bridge behind the chess spot, and the Rashtriya Sanskrit Sansthan reference points. It includes walking routes from Vidyavihar station and the little shortcuts seniors cherish.
+`,
+      },
+      {
+        id: 3,
+        title: 'Gate Politics 101',
+        content: `# Gate Politics 101
+
+Practical routines for the gate: how to deal with guards, what to do when you forget your ID, and the sharing math for rickshaws. Includes the ultimate rapport strategy that transforms an angry guard into a helpful one over a semester.
+`,
+      },
+      {
+        id: 4,
+        title: 'Library Survival Guide',
+        content: `# Library Survival Guide
+
+Detailed walkthrough of the Main Library vs Aurobindo open library. Lists CA/CS/OS/AI-ML books to look for, seat-hunting tactics, borrowing rules, computer access tips, printing/scanning hacks, and how to use old question papers effectively.
+`,
+      },
+      {
+        id: 5,
+        title: 'The Food Bible',
+        content: `# The Food Bible
+
+Full canteen guide: Dalchini specialties, Management Canteen's redemption arc (hygiene improvements and staff changes), the Chacha vendor culture, off-campus cheap eats and the emergency food kit. Includes weekly budgets and how to survive the lunch rush.
+`,
+      },
+      {
+        id: 6,
+        title: 'Professor Types & How to Handle Them',
+        content: `# Professor Types & How to Handle Them
+
+Expanded classification of professors you will meet at Arts & Commerce — The Strict One, The Chill One, The Ancient One, The Researcher, The New One — plus department-specific notes (e.g., commerce tutors who guard attendance fiercely, arts professors who value essays). Practical scripts for emailing, asking for extensions, and making a good impression before viva.
+
+### Email template (copy-paste)
+Subject: [Course] - Question about [Topic]
+
+Dear Professor [LastName],
+
+I am [Name], from [Year/Section]. I had a quick question about [specific point]. Could I clarify whether [precise question]? Thank you for your time.
+
+Regards,
+[Name]
+`,
+      },
+      {
+        id: 7,
+        title: 'Exam Hacks That Actually Work',
+        content: `# Exam Hacks That Actually Work
+
+Comprehensive exam plan: two-week schedule, timed mock tests, subject-specific strategies for theory and numericals, what to write for partial credit, and a recovery protocol if you blank out. Also includes stress-reducing rituals and day-before checklists (ID, hall ticket, pens, water).
+`,
+      },
+      {
+        id: 8,
+        title: 'The Unwritten Rules',
+        content: `# The Unwritten Rules
+
+Social codes, bench politics, senior-junior etiquette, digital reputation, and how to handle gossip. Practical rules for group projects, attending events, and keeping your social life healthy without derailing academics.
+`,
+      },
+      {
+        id: 9,
+        title: 'The Placement Game',
+        content: `# The Placement Game
+
+How placements work at Somaiya: timelines, eligibility, commonly offered roles for Arts & Commerce, CV and LinkedIn checklists, building projects and case study prep, mock interviews, and how to approach the placement cell. Tips for internships, off-campus applications, and using alumni networks.
+`,
+      },
+      {
+        id: 10,
+        title: 'Events, Fests & How to Survive Them',
+        content: `# Events, Fests & How to Survive Them
+
+The festival calendar, getting onto organizing committees, what to expect during cultural and technical fests, how to make the most of stalls, networking tips during events, and safety reminders for large crowds.
+`,
+      },
+      {
+        id: 11,
+        title: 'Clubs, Committees & Campus Life',
+        content: `# Clubs, Committees & Campus Life
+
+How to join clubs (literary, drama, tech, entrepreneurship), the value of committee experience, balancing extra-curriculars and academics, and how to list these activities on your CV. Includes how to start a new club safely and find student partners.
+`,
+      },
+      {
+        id: 12,
+        title: 'The Commute Life',
+        content: `# The Commute Life
+
+Deep dive into Vidyavihar station routines, local train etiquette, sharing rickshaws, best walking routes, monsoon survival tips, and time-management strategies to reduce commute stress.
+`,
+      },
+      {
+        id: 13,
+        title: 'Love, Friendship & Campus Relationships',
+        content: `# Love, Friendship & Campus Relationships
+
+Advice on meeting people, respectful dating culture, handling breakups in the same college, maintaining professionalism in class, and healthy boundaries. Includes tips on events like couples at the amphitheatre and respecting private spaces.
+`,
+      },
+      {
+        id: 14,
+        title: 'Mental Health, Stress & Survival',
+        content: `# Mental Health, Stress & Survival
+
+Practical mental health toolkit: campus counseling resources, peer groups, daily routines that reduce anxiety, sleep hygiene, dealing with exam stress, and where to get help if things feel overwhelming. Includes crisis contacts and self-care habits.
+`,
+      },
+      {
+        id: 15,
+        title: 'Life After Somaiya',
+        content: `# Life After Somaiya
+
+Transition planning: final-year checklists, networking and alumni strategies, continuing education vs work debate, personal finance basics for graduates, and how to keep learning after college. Short action plan to start in the last semester.
+`,
+      }
+    ]
   },
   'useful-student': {
     title: 'The Useful Student',
