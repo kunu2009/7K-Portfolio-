@@ -44,6 +44,7 @@ export const appsData: App[] = [
     "fullDescription": "7K Life is a comprehensive productivity application designed to help you organize every aspect of your daily life. Track your habits with streak counting, manage tasks with smart to-do lists, set and monitor goals, take notes, and visualize your personal growth over time. With built-in analytics and customizable dashboards, 7K Life helps you stay focused and productive every day.",
     "url": "https://life.7kc.me",
     "category": "productivity",
+    "screenshots": ["/images/appstore/life.7kc.me-1761144306899.png"],
     "features": [
       "Habit tracking with streaks and analytics",
       "Smart task management with priorities",
@@ -178,6 +179,7 @@ export const appsData: App[] = [
     "fullDescription": "7K Political Science is a complete educational platform designed specifically for 12th grade HSC students. Covers the entire Political Science syllabus including Indian Constitution, Political Theory, Contemporary World Politics, and Politics in India. Features include chapter-wise notes, interactive quizzes, previous year questions, video explanations, and exam preparation tools. Everything you need to excel in your HSC Political Science exams.",
     "url": "https://pol.7kc.me",
     "category": "learning",
+    "screenshots": ["/images/appstore/pol.7kc.me-1761146102106.png"],
     "features": [
       "Complete 12th HSC syllabus coverage",
       "Chapter-wise detailed notes",
@@ -226,6 +228,7 @@ export const appsData: App[] = [
     "fullDescription": "7K Economics is specifically designed for 12th grade HSC Economics students. Covers the complete syllabus including Microeconomics, Macroeconomics, Indian Economic Development, and Statistical Tools. Features chapter-wise notes, economic graphs and diagrams, numerical problem solutions, previous year papers, video lectures, and mock tests. Master economics concepts and ace your HSC exams with confidence.",
     "url": "https://eco.7kc.me",
     "category": "learning",
+    "screenshots": ["/images/appstore/eco.7kc.me-1761146079181.png"],
     "features": [
       "Complete 12th HSC Economics syllabus",
       "Microeconomics and Macroeconomics",
@@ -274,6 +277,7 @@ export const appsData: App[] = [
     "fullDescription": "7K History is the ultimate study companion for 12th grade HSC History students. Covers complete syllabus including Indian History, World History, and Contemporary India. Features detailed chapter notes, interactive timelines, historical maps, important dates, previous year questions, and visual content. Everything organized to help you score maximum marks in your HSC History examination.",
     "url": "https://his.7kc.me",
     "category": "learning",
+    "screenshots": ["/images/appstore/his.7kc.me-1761146055113.png"],
     "features": [
       "Complete 12th HSC History syllabus",
       "Chapter-wise comprehensive notes",
@@ -1002,7 +1006,8 @@ export const appsData: App[] = [
       "university students",
       "party organizers",
       "friend groups"
-    ]
+    ],
+    "screenshots": ["/images/appstore/std.7kc.me-1761146742911.png"]
   },
   {
     "id": "group",
@@ -1159,7 +1164,8 @@ export const appsData: App[] = [
     status: "live",
     pricing: "freemium",
     targetAudience: ["content creators", "influencers", "social media managers", "businesses", "marketers"],
-    icon: "/icons/insta-icon.png"
+    icon: "/icons/insta-icon.png",
+    screenshots: ["/images/appstore/insta.7kc.me-1761146302895.png"]
   },
   {
     id: "relife",
@@ -1229,6 +1235,7 @@ export const appsData: App[] = [
     fullDescription: "7K Music is a clean, modern music streaming interface that brings you trending music videos through the official YouTube IFrame Player API. Discover the hottest tracks, search for your favorite artists, organize music by categories, and build your personal favorites collection. All content is streamed ethically from YouTube with proper attribution, ensuring you enjoy music while respecting copyright and creators.",
     url: "https://music.7kc.me",
     category: "entertainment",
+    screenshots: ["/images/appstore/music.7kc.me-1761146782033.png"],
     features: [
       "Trending music videos discovery",
       "Official YouTube API integration",

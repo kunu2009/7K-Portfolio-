@@ -15,6 +15,7 @@ import {
   ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface AppDetailClientProps {
@@ -116,17 +117,29 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
               </Button>
             </div>
 
-            {/* App Icon/Screenshot Placeholder */}
-            <div className="w-full md:w-64 h-64 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center border border-border">
-              <div className="text-6xl">
-                {app.category === "productivity" && "🚀"}
-                {app.category === "learning" && "📚"}
-                {app.category === "finance" && "💰"}
-                {app.category === "health" && "💪"}
-                {app.category === "entertainment" && "🎮"}
-                {app.category === "creative" && "🎨"}
-                {app.category === "social" && "💬"}
-              </div>
+            {/* App Screenshot/Icon */}
+            <div className="w-full md:w-80 h-auto rounded-2xl overflow-hidden border border-border shadow-lg">
+              {app.screenshots && app.screenshots.length > 0 ? (
+                <Image
+                  src={app.screenshots[0]}
+                  alt={`${app.name} screenshot`}
+                  width={320}
+                  height={640}
+                  className="w-full h-auto object-cover"
+                />
+              ) : (
+                <div className="w-full h-64 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                  <div className="text-6xl">
+                    {app.category === "productivity" && "🚀"}
+                    {app.category === "learning" && "📚"}
+                    {app.category === "finance" && "💰"}
+                    {app.category === "health" && "💪"}
+                    {app.category === "entertainment" && "🎮"}
+                    {app.category === "creative" && "🎨"}
+                    {app.category === "social" && "💬"}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
