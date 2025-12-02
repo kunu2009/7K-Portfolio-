@@ -14155,6 +14155,926 @@ This is the path.
 
 Next: How to structure your learning when building comes first.
 `
+      },
+      {
+        id: 2,
+        title: 'Build First Philosophy',
+        content: `# Build First Philosophy
+
+Build First is not just a method. It is a philosophy—a way of approaching learning, work, and life.
+
+## The Core Belief
+
+At the heart of Build First is one belief:
+
+**You learn by doing, not by preparing to do.**
+
+This seems obvious when stated plainly. But most educational systems, most self-improvement advice, and most personal habits are built around the opposite assumption: that you should prepare thoroughly before acting.
+
+Build First rejects this. Not because preparation is bad, but because infinite preparation is a trap that prevents action forever.
+
+## The Traditional Model
+
+The traditional model looks like this:
+
+1. Learn all the fundamentals
+2. Master the basics
+3. Study the theory
+4. Practice in controlled conditions
+5. Then, finally, do the real thing
+
+This model works for some things. You probably should not perform surgery without training.
+
+But for most skills—coding, design, writing, creating—the traditional model creates a gap between learning and doing that never closes. There is always more to learn. Always another fundamental to master.
+
+And so people learn forever and do never.
+
+## The Build First Inversion
+
+Build First inverts this:
+
+1. Start doing the real thing immediately
+2. Hit walls when you do not know something
+3. Learn just enough to get past the wall
+4. Continue doing
+5. Let the doing teach you the fundamentals
+
+The fundamentals are still learned. But they are learned in context, driven by need, and immediately applied.
+
+## Why Context Matters
+
+Learning without context is like collecting puzzle pieces without knowing the picture.
+
+When you learn HTML from a tutorial, you memorize syntax. When you learn HTML to fix a broken layout, you understand purpose.
+
+Context gives knowledge:
+- **Relevance**: You know why this matters
+- **Connection**: You know how this relates to other things
+- **Retention**: You remember it because you used it
+- **Depth**: You explored the edges when the tutorial answer did not work
+
+Build First ensures context is always present.
+
+## The Just-In-Time Principle
+
+Build First operates on just-in-time learning:
+
+Learn what you need, when you need it, and not before.
+
+This is efficient. No wasted effort on things you never use.
+
+But more importantly, it is motivating. When you hit a wall, you have immediate reason to learn. When you get past the wall, you have immediate reward. The feedback loop is tight.
+
+Contrast this with just-in-case learning: learning things because you might need them someday. This feels responsible. It is often a procrastination strategy disguised as preparation.
+
+## The Competence Question
+
+A common worry: Will Build First make me competent? Or will I have gaps?
+
+You will have gaps. But you would have gaps anyway. No one knows everything.
+
+The difference is the nature of the gaps:
+
+**Tutorial learner gaps**: Know theory, lack practical skills. Can explain but cannot do.
+
+**Build First gaps**: Have practical skills, may lack some theory. Can do but might not explain perfectly.
+
+Which gaps would you rather have? Most employers, clients, and collaborators prefer the second.
+
+## The Uncomfortable Truth
+
+Build First is uncomfortable. Here is what it feels like:
+
+- You start projects not knowing how you will finish them
+- You Google constantly in the middle of work
+- You break things and do not know why
+- You feel like a fraud sometimes
+- You ship imperfect things
+
+This discomfort is the price of active learning. Passive learning is comfortable—you sit, you watch, you feel productive.
+
+Active learning is uncomfortable—you try, you fail, you adjust.
+
+But comfortable learning produces comfortable mediocrity. Uncomfortable learning produces actual competence.
+
+## Build First Beyond Skills
+
+This philosophy extends beyond learning technical skills:
+
+**Starting a business**: Do not spend six months on the business plan. Start serving customers. Learn what they actually want.
+
+**Writing a book**: Do not outline for a year. Start writing. The book teaches you what it wants to be.
+
+**Building relationships**: Do not wait until you are interesting enough. Start connecting. Become interesting through the connection.
+
+**Living life**: Do not wait until conditions are perfect. Start living fully. Learn what you need as you go.
+
+The pattern is universal: act first, learn from the action.
+
+## The Permission Problem
+
+Many people do not need more tutorials. They need permission to stop preparing.
+
+Here is your permission:
+
+You know enough to start.
+You do not need to finish that course first.
+You do not need to read another book first.
+You do not need anyone's approval.
+
+Start building. Today.
+
+---
+
+*The Build First philosophy is not about learning less. It is about learning differently—through action rather than preparation, through doing rather than planning, through building rather than studying.*
+
+---
+
+Next: How to structure your learning stack for maximum effect.
+`
+      },
+      {
+        id: 3,
+        title: 'Your Learning Stack',
+        content: `# Your Learning Stack
+
+Even with Build First, you need resources. You need places to go when you hit walls. This is your learning stack.
+
+## What Is a Learning Stack?
+
+Your learning stack is the collection of resources you use when you need to learn something:
+
+- Where you search
+- Who you ask
+- What you reference
+- How you troubleshoot
+
+A good learning stack is curated, organized, and fast to access. A poor learning stack wastes time searching and questioning.
+
+## The Optimal Learning Stack
+
+Here is a learning stack optimized for Build First:
+
+### Layer 1: Quick Reference (seconds)
+For syntax and simple answers:
+- Documentation (official docs for your tools)
+- Cheat sheets you have created
+- Code snippets you have saved
+- AI assistants for quick questions
+
+When to use: You know what you need, just cannot remember the exact syntax.
+
+### Layer 2: Problem Solving (minutes)
+For when you are stuck:
+- Stack Overflow and similar Q&A sites
+- Blog posts from people who solved similar problems
+- YouTube for visual walkthroughs
+- AI for explaining concepts or debugging
+
+When to use: You have a specific problem and need a specific solution.
+
+### Layer 3: Deep Understanding (hours)
+For when you need to really get something:
+- Full tutorials on specific topics (not general courses)
+- Documentation deep dives
+- Source code of libraries you use
+- Technical books
+
+When to use: Surface solutions did not work. You need to understand fundamentals.
+
+### Layer 4: Human Help (variable)
+For when resources fail:
+- Online communities (Discord, Reddit, forums)
+- Mentors or experienced friends
+- Paid help (coaches, tutors, consultants)
+
+When to use: You have tried everything and are still stuck. Or the problem is too specific for general resources.
+
+## Curating Your Stack
+
+Not all resources are equal. You should actively curate:
+
+**Keep**: Resources that give clear, accurate, practical answers
+**Discard**: Resources that are outdated, vague, or overly theoretical
+
+Over time, you will develop preferences:
+- This documentation is great; that one is useless
+- This person's blog always helps; that tutorial channel wastes time
+- This community answers quickly; that forum is dead
+
+Build your stack around what works for you.
+
+## The Search Skill
+
+Within your learning stack, searching is a meta-skill:
+
+**Good searches**: Specific, include error messages, use correct terminology
+Example: "TypeError: Cannot read property 'map' of undefined React"
+
+**Bad searches**: Vague, use wrong terms, too broad
+Example: "my code doesn't work"
+
+You will get better at searching as you learn the vocabulary of your field. Early on, you might need to refine searches multiple times. This is normal.
+
+## The AI Layer
+
+AI assistants (ChatGPT, Claude, Copilot) have changed the learning stack:
+
+**Good for**:
+- Explaining concepts in plain language
+- Generating starter code to modify
+- Debugging by explaining error messages
+- Suggesting approaches to problems
+
+**Bad for**:
+- Always being correct (verify important things)
+- Understanding your specific context without explanation
+- Replacing deep understanding
+
+AI is now Layer 1.5 or 2 in most learning stacks—faster than searching but requiring verification.
+
+## The Note System
+
+As you learn through building, capture what you learn:
+
+- Solutions to problems you solved
+- Explanations that finally made sense
+- Patterns you noticed
+- Mistakes you made
+
+This becomes your personal knowledge base. Next time you hit a similar wall, you check your notes first.
+
+Formats that work:
+- Simple text files organized by topic
+- Personal wiki or Notion pages
+- Comments in your code
+- A "Today I Learned" log
+
+The format matters less than the habit.
+
+## Building Speed
+
+The goal of your learning stack is speed: getting from "I don't know" to "I can continue" as fast as possible.
+
+When you are fast:
+- Walls do not stop you for long
+- Momentum is maintained
+- Projects get finished
+- Building feels sustainable
+
+Optimize your stack for speed. Bookmark useful sites. Save common snippets. Know where to look first.
+
+## The Anti-Stack
+
+Some things should NOT be in your learning stack:
+
+- General courses (unless for deep understanding of specific topic)
+- Tutorial series you watch without building
+- Content you consume but never apply
+- Resources in formats you do not actually use
+
+If it does not help you get past walls, it is not part of your learning stack. It is entertainment.
+
+## Your Stack Today
+
+What is in your learning stack right now?
+
+If you cannot answer that, you do not have a stack. You are winging it every time.
+
+Take 30 minutes to:
+1. List resources you actually use when stuck
+2. Organize them by layer (quick reference, problem solving, deep understanding, human help)
+3. Identify gaps—are you missing something at a layer?
+4. Bookmark or save your key resources for fast access
+
+This small investment pays off every time you build.
+
+---
+
+*Your learning stack is the toolkit that makes Build First sustainable. Without it, every wall is a crisis. With it, every wall is routine.*
+
+---
+
+Next: How to learn by building projects, not by following courses.
+`
+      },
+      {
+        id: 4,
+        title: 'Project-Based Everything',
+        content: `# Project-Based Everything
+
+The atomic unit of Build First learning is the project.
+
+## What Is a Project?
+
+A project is something complete. It has:
+- A beginning (you start)
+- A middle (you work)
+- An end (you ship)
+
+Projects are not:
+- Exercises you do once
+- Tutorials you follow
+- Practice that has no output
+
+A project produces something that exists—something you can show, use, or share.
+
+## Why Projects Work
+
+Projects work for learning because they:
+
+**Create natural structure**: A project has phases. You move through them organically.
+
+**Force completion**: A project is not done until it is done. This pushes you past the point where most tutorials end.
+
+**Generate real problems**: Real problems teach more than practice problems. Projects have real problems.
+
+**Produce evidence**: When you are done, something exists. This proves what you can do.
+
+**Build motivation**: Completing something feels good. That feeling fuels the next project.
+
+## The Project Selection Framework
+
+Choosing the right project is crucial. Here is the framework:
+
+**Criteria 1: Slightly beyond current ability**
+Not too easy (boring, nothing learned). Not too hard (frustrating, never finished).
+You should know maybe 50-70% of what you need. The rest you learn by doing.
+
+**Criteria 2: Personally meaningful**
+You care about the outcome. Not just practice for practice sake—something you actually want to exist.
+
+**Criteria 3: Completable in 1-4 weeks**
+Long enough to be real. Short enough to finish. Later, projects can be longer. Early on, completion matters more than scope.
+
+**Criteria 4: Demonstrable**
+When done, you can show it. Put it in a portfolio. Share with others. If the result is only in your head, it is not a project.
+
+## The Project Ladder
+
+Your projects should form a ladder—each one slightly harder than the last:
+
+**Rung 1: Clone projects**
+Rebuild something that exists. A simplified Twitter. A basic calculator. A landing page you admire.
+Learning: Fundamentals, tools, workflow.
+
+**Rung 2: Modification projects**
+Take something that exists and change it. Add features. Solve different problems.
+Learning: Customization, problem-solving, adaptation.
+
+**Rung 3: Original projects**
+Build something that does not exist. Your idea. Your solution.
+Learning: Design thinking, full ownership, creative problem-solving.
+
+**Rung 4: Complex projects**
+Multiple systems. User accounts. Data persistence. Real deployment.
+Learning: Architecture, scaling, real-world concerns.
+
+**Rung 5: Professional projects**
+For clients, users, or employers. Real stakes. Real feedback.
+Learning: Quality, reliability, communication.
+
+You do not skip rungs. But you do not stay on rungs longer than needed either.
+
+## The Two-Project Rule
+
+Always have two projects:
+
+**Main project**: The current focus. What you are actively building.
+
+**Side project**: Lower stakes. For experimenting with new technologies or ideas without risking the main project.
+
+When the main project is frustrating, the side project provides relief.
+When the side project gets serious, it can become the next main project.
+
+This keeps you building even when one project stalls.
+
+## The Scope Trap
+
+The biggest project killer is scope creep.
+
+It starts small: "I'll just add this one feature."
+Then it grows: "Actually, let's also include..."
+Then it explodes: "To do this right, I need..."
+
+Suddenly, your two-week project is six months with no end in sight.
+
+**The rule**: Finish version one before adding features. Ship something before improving it. Complete before expanding.
+
+You can always make version two. But version one has to exist first.
+
+## The Documentation Practice
+
+As you build, document:
+
+**What you built**: Screenshots, descriptions, outcomes.
+**What you learned**: Problems solved, techniques discovered.
+**What you would change**: Reflections for next time.
+
+This documentation:
+- Creates portfolio content
+- Reinforces learning
+- Makes you a better communicator
+- Helps others learn from you
+
+Build the habit early. It compounds.
+
+## The Sharing Imperative
+
+Projects should be shared:
+
+**Minimum**: Put it online somewhere (GitHub, portfolio, even just social media).
+**Better**: Write about it or demo it.
+**Best**: Get feedback and iterate.
+
+Sharing:
+- Makes the project feel real
+- Gets you feedback you would miss alone
+- Builds your public track record
+- Overcomes the fear of shipping imperfect work
+
+If a project is not shared, did it really happen?
+
+## Your Project Now
+
+What project should you start now?
+
+Think:
+- What are you trying to learn?
+- What would be slightly beyond your current ability?
+- What do you actually care about?
+- What could you complete in 1-4 weeks?
+
+Write it down. Define it clearly.
+
+Then start building. Today.
+
+---
+
+*Projects are not just how you practice. Projects are how you learn, how you grow, and how you prove what you can do.*
+
+---
+
+Next: Why failure is not the enemy—it is the teacher.
+`
+      },
+      {
+        id: 5,
+        title: 'Failing Forward',
+        content: `# Failing Forward
+
+In Build First, you will fail constantly. This is not a bug. It is the feature.
+
+## The Failure Reality
+
+When you build first, before you fully understand, failure is guaranteed:
+
+- Code will not run
+- Designs will look wrong
+- Projects will stall
+- Deadlines will slip
+- Nothing will work on the first try
+
+This is normal. Expected. Even necessary.
+
+## Why We Fear Failure
+
+Most people avoid failure because:
+
+**It feels like evidence of inadequacy**: "I failed because I am not good enough."
+
+**It seems inefficient**: "I could have avoided this if I prepared more."
+
+**It is embarrassing**: "What will people think?"
+
+**It is uncomfortable**: "I do not like feeling like I do not know what I am doing."
+
+These feelings are real. They are also wrong.
+
+## The Truth About Failure
+
+Failure is not evidence of inadequacy. It is evidence of attempt.
+
+People who never fail are people who never try anything beyond their current abilities. They stay safe. They stay static.
+
+Failure means you pushed into new territory. You tried something hard. You grew.
+
+## Failing Forward vs. Failing Backward
+
+Not all failure is equal:
+
+**Failing Backward**:
+- Fail and quit
+- Fail and blame external factors
+- Fail and learn nothing
+- Fail the same way repeatedly
+
+**Failing Forward**:
+- Fail and analyze what went wrong
+- Fail and extract the lesson
+- Fail and adjust approach
+- Fail differently each time (making new mistakes, not old ones)
+
+The direction matters. Same failure, different outcome depending on what you do with it.
+
+## The Failure Process
+
+When something fails, follow this process:
+
+**1. Notice without judgment**
+Something did not work. That is a fact, not a verdict on your worth.
+
+**2. Analyze specifically**
+What exactly went wrong? Not "the whole thing" but the specific point of failure.
+
+**3. Ask why**
+Why did that specific thing go wrong? Get to root cause.
+
+**4. Identify the lesson**
+What do you know now that you did not know before?
+
+**5. Decide the adjustment**
+What will you do differently next time?
+
+**6. Continue**
+Apply the lesson. Keep building.
+
+This process transforms failure from setback to data.
+
+## Common Failure Types
+
+In building, failures fall into patterns:
+
+**Syntax/Technical failures**: Something broken in execution.
+Lesson: Learn the syntax, understand the tools better.
+
+**Design failures**: It works but it is wrong.
+Lesson: Understand requirements better, get feedback earlier.
+
+**Scope failures**: You tried to do too much.
+Lesson: Start smaller, add complexity later.
+
+**Motivation failures**: You stopped because it got hard.
+Lesson: Break into smaller pieces, find accountability.
+
+**Knowledge failures**: You hit a wall you could not get past.
+Lesson: Improve your learning stack, ask for help sooner.
+
+Knowing the type helps you target the response.
+
+## The Speed of Failure
+
+In Build First, you want to fail fast.
+
+Slow failure: Spend months on something before discovering it does not work.
+Fast failure: Discover in days or hours that something does not work.
+
+Fast failure is:
+- Cheaper (less time invested)
+- Less demoralizing (smaller psychological investment)
+- More informative (tighter feedback loop)
+
+How to fail fast:
+- Build minimum versions before complete versions
+- Test early with real users or real conditions
+- Ship before it is perfect and see what breaks
+- Cut scope ruthlessly
+
+## The Public Failure Question
+
+Should you fail publicly?
+
+Arguments for:
+- Builds authenticity and connection
+- Helps others learn from your mistakes
+- Creates accountability to continue
+
+Arguments against:
+- Some failures are private lessons
+- Not every struggle needs an audience
+- Performative failure can become its own trap
+
+My recommendation: Share failures selectively. Share the lessons. Do not overshare the drama.
+
+## The Identity Shift
+
+Build First requires an identity shift around failure:
+
+From: "I am someone who does not fail" (and therefore does not try hard things)
+To: "I am someone who fails forward" (and therefore grows constantly)
+
+When failure is integrated into your identity, it loses its power to stop you. It becomes just another part of the process.
+
+## The Failure Tolerance
+
+Your failure tolerance is how much failure you can absorb before giving up.
+
+Low failure tolerance: One setback and you quit.
+High failure tolerance: Multiple setbacks and you adjust and continue.
+
+Failure tolerance is trainable. Each failure survived expands your capacity.
+
+This is why starting with small projects matters—they have small failures. As tolerance grows, you can handle bigger projects with bigger failures.
+
+## Your Failure Reframe
+
+Think of a recent failure—something that did not go as planned.
+
+Ask:
+- What specifically went wrong?
+- What was the lesson?
+- What adjustment did you make (or could you make)?
+- How does this failure serve you?
+
+This reframe is the practice. Do it enough and failure becomes neutral—just information for the next attempt.
+
+---
+
+*Failure is not the opposite of success. It is the path to success. Fail forward, and failing becomes building.*
+
+---
+
+Next: How small improvements compound into massive results.
+`
+      },
+      {
+        id: 6,
+        title: 'The Compound Effect',
+        content: `# The Compound Effect
+
+Build First is powerful because of compounding. Small improvements stack. Tiny gains multiply. Consistent effort explodes over time.
+
+## The Math of Compounding
+
+If you improve 1% every day for a year, you do not end up 365% better.
+
+You end up 37 times better.
+
+That is compounding. Each improvement builds on the last. The curve is exponential, not linear.
+
+This works for skills, knowledge, reputation, opportunities—anything you consistently invest in.
+
+## Why Compounding Is Invisible
+
+Here is the problem: Compounding is invisible at first.
+
+Day 1: 1.01 (1% better)
+Day 30: 1.35 (barely noticeable)
+Day 100: 2.70 (starting to show)
+Day 365: 37.78 (dramatically different)
+
+People quit in the invisible phase. They look at their day-to-day progress and see nothing. They conclude the effort is not working.
+
+But the effort is working. It is just below the threshold of visibility.
+
+## The Build First Compound
+
+With Build First, compounding happens across multiple dimensions:
+
+**Skills compound**: Each project makes you slightly more capable. By project ten, you are dramatically more capable than project one.
+
+**Knowledge compounds**: Each problem solved is knowledge for the next problem. Your problem-solving database grows exponentially.
+
+**Reputation compounds**: Each public project adds to your track record. Opportunities compound on opportunities.
+
+**Speed compounds**: Each iteration makes you faster. What took weeks now takes days. What took days now takes hours.
+
+**Judgment compounds**: Each decision improves your instincts. You know what works without having to test everything.
+
+## The Two Curves
+
+There are two compound curves in learning:
+
+**The learning curve**: Sharp at first (lots of new knowledge), then flattening (diminishing returns per hour).
+
+**The capability curve**: Flat at first (not much output), then steepening (skills enable more output).
+
+Most people quit when the learning curve flattens. They feel like they are not learning anymore.
+
+But this is exactly when the capability curve takes off. The fundamentals are in place. Now execution compounds.
+
+## Protecting Your Compound
+
+The biggest threat to compounding is stopping.
+
+When you stop:
+- Skills atrophy
+- Momentum dies
+- Opportunities pass
+- The compound curve resets
+
+The rule: Never zero.
+
+Even on hard days, even when busy, even when demotivated—do something. One hour of building. One small piece of progress.
+
+Protecting the streak protects the compound.
+
+## The Consistency Advantage
+
+Consistency beats intensity.
+
+Intense work: 40 hours one week, 0 hours the next two weeks.
+Consistent work: 10 hours every week.
+
+Over time, consistent work wins. The compound never breaks. The momentum never dies.
+
+This does not mean you cannot have intense periods. It means the baseline never drops to zero.
+
+## Compounding Across Projects
+
+Each project does not exist in isolation. They compound too:
+
+**Project 1**: Learn basic HTML/CSS by building a simple page.
+**Project 2**: Add JavaScript to something, using HTML/CSS skills.
+**Project 3**: Build a dynamic app, using everything from before.
+**Project 4**: Add backend, building on frontend knowledge.
+**Project 5**: Full-stack application with all previous skills plus new ones.
+
+By project five, you are not just five projects better. You are the sum of all compound learning.
+
+## The Reputation Compound
+
+Public work compounds reputation:
+
+**Year 1**: A few projects. A few people notice.
+**Year 2**: More projects. People start recognizing your name.
+**Year 3**: Consistent portfolio. Opportunities come to you.
+**Year 5**: Established presence. You are the obvious choice.
+
+This is slow. It is also inevitable if you persist.
+
+## The Dark Side of Compounding
+
+Compounding works in negative directions too:
+
+**Not building compounds**: Each day without building makes starting harder.
+**Bad habits compound**: Each shortcut taken becomes easier to take again.
+**Reputation damage compounds**: Each missed commitment makes future trust harder.
+
+Watch the negative compounds as carefully as you nurture the positive ones.
+
+## Measuring Compound Progress
+
+How do you see progress when compounding is invisible?
+
+**Monthly reviews**: Compare today to one month ago. You will notice change.
+**Project comparisons**: Look at your first project versus your latest. The gap is visible.
+**External feedback**: Ask people who knew you before. They see what you cannot.
+**Metrics tracking**: Measure output (projects shipped, hours invested, skills learned). The numbers reveal the compound.
+
+## Your Compound Investment
+
+What are you compounding right now?
+
+Every hour spent building is a deposit into the compound account.
+Every project completed adds to the stack.
+Every skill developed multiplies future capabilities.
+
+The question is not whether you will succeed eventually. If you keep compounding, success is mathematically inevitable.
+
+The question is whether you will keep going long enough to see it.
+
+---
+
+*The compound effect turns small daily actions into life-changing outcomes. Build first, build consistently, and let time do the math.*
+
+---
+
+Next: Bringing it all together—The 7K Manifesto.
+`
+      },
+      {
+        id: 7,
+        title: 'The 7K Manifesto',
+        content: `# The 7K Manifesto
+
+This is the manifesto. The principles that 7K was built on. The beliefs that make Build First work.
+
+## Principle 1: Building Is Learning
+
+We believe that building teaches more than consuming ever can.
+
+Every project started is education begun. Every project completed is education earned. Every failure analyzed is wisdom gained.
+
+We do not study endlessly before acting. We act, and we learn from the action.
+
+## Principle 2: Imperfect Action Beats Perfect Planning
+
+We believe that a thing that exists imperfectly is worth more than a thing planned perfectly.
+
+Shipping something rough teaches you what polished truly needs to be. Planning forever teaches you nothing but the comfort of imagining.
+
+We ship ugly first versions. We improve in public. We let reality teach us what our plans cannot.
+
+## Principle 3: The Process Is The Path
+
+We believe that consistency compounds and intensity burns out.
+
+We show up daily, even when we do not want to. We do the minimum when the maximum is impossible. We protect the streak because the streak is how ordinary people achieve extraordinary things.
+
+The path is not a destination. The path is a practice.
+
+## Principle 4: Failure Is Fuel
+
+We believe that failure is information, not judgment.
+
+Every broken build, every rejected pitch, every project that did not work—these are data points on the path to something that does work.
+
+We fail fast. We fail forward. We fail publicly when it helps others. We do not fail the same way twice.
+
+## Principle 5: Your Work Is Your Resume
+
+We believe that portfolios beat credentials.
+
+What you have made speaks louder than where you studied. What you can do matters more than what you can cite. Evidence of work trumps promises of potential.
+
+We build things we can point to. We document what we make. We let our work speak first.
+
+## Principle 6: Context Creates Comprehension
+
+We believe that knowledge sticks when it is needed.
+
+Learning in the abstract floats away. Learning in the specific—when you need it to solve a problem—becomes permanent.
+
+We learn just in time, not just in case. We solve real problems with real solutions. We let necessity drive curriculum.
+
+## Principle 7: Community Multiplies
+
+We believe that building together beats building alone.
+
+Skills shared multiply. Connections compound. Generosity returns in unexpected ways.
+
+We help without expecting return. We share what we learn. We celebrate others' wins. We build in public so others can build with us.
+
+## Principle 8: Start Before Ready
+
+We believe that readiness is a mirage.
+
+There is never a perfect time. You will never feel completely prepared. The best day to start was years ago; the second best day is today.
+
+We start before we are ready. We figure it out as we go. We trust that the path will reveal itself through walking.
+
+## Principle 9: Own Your Stack
+
+We believe that your tools should serve you.
+
+We curate what we consume. We organize what we know. We build systems that make our work easier, not just more complicated.
+
+Your learning stack, your workspace, your processes—these are investments in future efficiency. Treat them with care.
+
+## Principle 10: The Long Game Wins
+
+We believe that compounding is the only reliable path to extraordinary outcomes.
+
+We do not chase shortcuts. We do not expect overnight success. We invest in ourselves daily, trusting that time will do its work.
+
+The people who build for years outperform the people who plan for years. Every single time.
+
+## Living The Manifesto
+
+These are not rules to follow perfectly. They are principles to return to when you are lost.
+
+When you are stuck in tutorial purgatory: Remember Principle 1—building is learning.
+
+When you are afraid to ship: Remember Principle 2—imperfect action beats perfect planning.
+
+When you want to skip a day: Remember Principle 3—the process is the path.
+
+When something fails: Remember Principle 4—failure is fuel.
+
+When credentials feel inadequate: Remember Principle 5—your work is your resume.
+
+When learning feels abstract: Remember Principle 6—context creates comprehension.
+
+When working alone feels hard: Remember Principle 7—community multiplies.
+
+When you do not feel ready: Remember Principle 8—start before ready.
+
+When tools are chaotic: Remember Principle 9—own your stack.
+
+When progress seems slow: Remember Principle 10—the long game wins.
+
+## The Invitation
+
+This manifesto is not law. It is invitation.
+
+An invitation to build things instead of just consuming them.
+An invitation to fail forward instead of playing it safe.
+An invitation to compound your efforts over years, not weeks.
+An invitation to join a community of builders who believe the same.
+
+If this resonates, you are one of us.
+
+Now go build something.
+
+---
+
+*Build First, Learn Later. This is the way.*
+
+---
+
+Welcome to 7K.
+`
       }
     ]
   },
