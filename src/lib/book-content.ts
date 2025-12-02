@@ -2087,7 +2087,7 @@ For the first time in years, he wasn't alone.
 And that terrified him almost as much as what they were about to uncover.`,
       },
       {
-        id: 6,
+        id: 5,
         title: 'Karthik\'s Game',
         content: `The night before the infiltration, Rudra couldn't sleep.
 
@@ -11958,15 +11958,1009 @@ Everything else gets you the life.
 
 ---
 
-**You've reached the end of the Survival Manual.**
+**You've reached the end of The Unwritten Rules.**
 
-But your story is just beginning.
+Take these lessons with you—they'll serve you well.
 
-Welcome to Somaiya. Make it count.
+— The Survival Manual
+`
+      },
+      {
+        id: 9,
+        title: 'The Placement Game',
+        content: `# The Placement Game
+
+## The Reality Check
+
+Let's address the elephant in the room: placements.
+
+Everyone talks about them. Parents ask about them. Seniors flex about them. And you're probably stressed about them already—even if you're in first year.
+
+Here's the truth: Placement season is not the lottery it appears to be. It's a game. And like any game, you can learn the rules, practice the moves, and significantly improve your odds.
+
+## The Timeline Nobody Tells You
+
+### Year 1: Foundation
+- Focus on academics (CGPA matters more than you think)
+- Explore different domains (tech, finance, marketing, HR)
+- Start building communication skills
+- Join one or two clubs actively
+
+### Year 2: Exploration
+- Start learning skills outside syllabus
+- Take up small projects or freelance work
+- Build an online presence (LinkedIn is mandatory)
+- Look for internships—even unpaid ones count
+
+### Year 3: Preparation
+- Serious internship hunting (this is crucial)
+- Resume building and polishing
+- Start practicing aptitude and reasoning
+- Mock interviews with friends and seniors
+
+### Final Year: Execution
+- Campus placements begin
+- Off-campus applications alongside
+- Interview preparation intensifies
+- Multiple rounds of stress (sorry, not sorry)
+
+## What Companies Actually Look For
+
+### Technical Roles
+- Coding skills (not just knowing syntax—problem solving)
+- Projects that show practical application
+- Internship experience
+- Communication skills (yes, even for developers)
+
+### Non-Technical Roles
+- Domain knowledge (marketing, HR, finance fundamentals)
+- Internship experience
+- Extracurriculars that show leadership
+- Strong communication and presentation skills
+
+### Common Ground
+- CGPA above 7 (for most companies)
+- No backlogs (active or cleared)
+- Confidence without arrogance
+- Genuine interest in the company/role
+
+## The Application Process
+
+### Resume Tips
+- One page maximum (no exceptions for freshers)
+- Quantify achievements ("Increased sales by 20%" not "Improved sales")
+- Tailor for each role
+- Get it reviewed by seniors and placement cell
+
+### Aptitude Tests
+- Practice daily for 30-60 minutes
+- Use apps: PrepInsta, IndiaBix, Placement Point
+- Time management is key—not just accuracy
+- Previous papers of companies help
+
+### Group Discussions
+- Read news daily (especially business news)
+- Practice speaking on random topics
+- Listen before speaking
+- Quality of points > Quantity of words
+
+### Technical Interviews
+- Be thorough with resume—anything written is fair game
+- Practice coding on paper (yes, paper)
+- Explain your thought process
+- Say "I don't know" rather than bluffing
+
+### HR Interviews
+- "Tell me about yourself" is coming—prepare it
+- Research the company thoroughly
+- Have questions ready for them
+- Genuine enthusiasm is visible—fake is too
+
+## The Unspoken Strategies
+
+### Before Placement Season
+- Build relationships with seniors who got placed well
+- Attend pre-placement talks (free intel)
+- Use LinkedIn to connect with company employees
+- Practice mock interviews with actual HR questions
+
+### During Placement Season
+- Don't put all eggs in one basket
+- Backup plans are not settling—they're smart
+- Manage stress—it shows in interviews
+- Help others prepare—teaching reinforces learning
+
+### The Off-Campus Route
+- Company websites and career pages
+- LinkedIn job applications
+- Referrals from seniors and alumni
+- Internshala, Naukri, LinkedIn Easy Apply
+
+## What They Don't Tell You
+
+1. **First offer isn't always the best**—but sometimes it is
+2. **Package isn't everything**—work culture matters
+3. **Some companies mass-hire, some are selective**—prepare differently
+4. **Rejection is redirection**—cliché but true
+5. **Your batchmates are competitors AND allies**—collaborate
+6. **Placement cell has biases**—research independently too
+7. **Off-campus is not a consolation prize**—many great jobs are off-campus
+
+## The Mental Game
+
+- Comparison is the thief of joy
+- Someone will always get more/better
+- Your path is unique—honor it
+- One rejection means nothing
+- Stay consistent—results follow effort
+
+## After Getting Placed
+
+- Don't stop learning
+- Help others who are still trying
+- Don't slack in final semester
+- Prepare for actual work (different from college)
+- Stay humble—job market is unpredictable
+
+---
+
+*The placement game is won long before the actual day. Start now, wherever you are.*`
+      },
+      {
+        id: 10,
+        title: 'Events, Fests & How to Survive Them',
+        content: `# Events, Fests & How to Survive Them
+
+## The Festival Calendar
+
+Somaiya's event calendar is packed. Here's what to expect:
+
+### Abhiyantriki (Technical Fest)
+- When: Usually January-February
+- What: Technical competitions, workshops, hackathons
+- Who: Engineering students primarily, but open events too
+- Pro tip: Participate in at least one event—resume gold
+
+### Symphony (Cultural Fest)
+- When: February-March
+- What: Music, dance, drama, fashion, art
+- Who: All colleges, external participants
+- Pro tip: Volunteer for organizing—networking heaven
+
+### Sportsweek
+- When: December-January
+- What: Inter-college, intra-college sports
+- Who: Athletes and spectators
+- Pro tip: Even watching is worth it for the atmosphere
+
+### Department Events
+- What: Smaller, focused technical/cultural events
+- When: Throughout the year
+- Pro tip: These are easier to win and still count on resume
+
+## How to Actually Participate
+
+### As a Participant
+- Register early (slots fill up)
+- Read rules thoroughly
+- Practice with team beforehand
+- Show up on time (sounds obvious, isn't)
+
+### As an Organizer
+- Join committees in Year 1 or 2
+- Start with smaller responsibilities
+- Document your work (photos, feedback, numbers)
+- Build relationships across departments
+
+### As a Spectator
+- Still worth your time
+- Network with organizers and sponsors
+- Take notes on what works
+- Apply insights to your own events
+
+## Survival Strategies
+
+### Physical Survival
+- Wear comfortable shoes (you'll walk A LOT)
+- Stay hydrated
+- Pack snacks (food lines are long)
+- Sunscreen for outdoor events
+- Portable charger is essential
+
+### Social Survival
+- Use events to meet people outside your class
+- Exchange numbers/Instagram
+- Follow up after the event
+- Don't be a wallflower—introduce yourself
+
+### Academic Survival
+- Professors know about fest dates
+- Some are lenient, some aren't—know the difference
+- Don't bunki important submissions for fests
+- Balance is key
+
+## Making the Most of Fests
+
+### For Your Resume
+- Every event you participate in = one line
+- Every organizing role = leadership experience
+- Winning isn't necessary—participating is
+- Collect certificates like Pokémon
+
+### For Your Network
+- Meet people from other colleges
+- Connect with sponsors (future job leads)
+- Build relationships with organizing committee
+- Exchange LinkedIn, not just Instagram
+
+### For Actual Fun
+- Yes, fests are supposed to be fun
+- Don't make everything transactional
+- Enjoy performances
+- Make memories worth keeping
+
+## The Dark Side of Fests
+
+### What to Watch Out For
+- Burnout from over-commitment
+- Drama in organizing committees
+- Political fights over positions
+- Spending too much money on merchandise
+
+### How to Avoid Problems
+- Set boundaries on time commitment
+- Stay out of committee politics
+- Budget for fest season
+- Know when to step back
+
+## Specific Fest Hacks
+
+### Food Fest Survival
+- Eat early (lines get insane)
+- Share with friends (more variety)
+- Bring water (too much salt)
+- Save room for the good stalls
+
+### Technical Event Survival
+- Practice your project demo
+- Have backup plans for tech failures
+- Dress appropriately (no formals for hackathons)
+- Sleep before all-nighters
+
+### Cultural Event Survival
+- Reserve front row early
+- Charge your phone for videos
+- Coordinate with friends for saving seats
+- Dress up—it's part of the experience
+
+---
+
+*Fests are the highlight reel of college. Show up, participate, make memories. You'll miss them when they're gone.*`
+      },
+      {
+        id: 11,
+        title: 'Clubs, Committees & Campus Life',
+        content: `# Clubs, Committees & Campus Life
+
+## Why Clubs Matter
+
+Clubs are where college actually happens. Beyond the classroom, beyond the canteen—in committees, you find:
+- Skills that classrooms don't teach
+- Friends who become lifelong
+- Experience that employers value
+- Stories worth telling
+
+## The Major Committees
+
+### Technical Committees
+- **CSI (Computer Society of India)**: Tech events, workshops, coding competitions
+- **IEEE**: Technical paper presentations, industrial visits
+- **ACM**: Competitive programming, tech talks
+- **GDSC (Google Developer Student Clubs)**: Google technologies, android, web
+
+### Cultural Committees
+- **Cultural Council**: Symphony, cultural events coordination
+- **Fine Arts Circle**: Art, design, creative expression
+- **Music Club**: Bands, solo performances, jams
+- **Dance Club**: Choreography, performances, competitions
+
+### Literary & Media
+- **Literary Council**: Debates, MUNs, quizzes, writing
+- **Photography Club**: Campus coverage, workshops
+- **Media Cell**: Social media, PR, content creation
+
+### Social & Service
+- **NSS (National Service Scheme)**: Social work, community service
+- **Rotaract**: Leadership, community projects
+- **Environment Club**: Sustainability, green initiatives
+
+## How to Join
+
+### The Timeline
+- Year 1, Sem 1: Explore, attend events
+- Year 1, Sem 2: Apply for core committee
+- Year 2: Take leadership roles
+- Year 3+: Mentor juniors, advisory roles
+
+### The Application Process
+1. Application form (online/offline)
+2. Group task or personal interview
+3. Selection based on skills + enthusiasm
+4. Trial period for many committees
+
+### What They Look For
+- Genuine interest (not just resume building)
+- Relevant skills (even basic)
+- Willingness to learn
+- Reliability and teamwork
+- Not being a difficult person
+
+## Making Your Time Count
+
+### Do's
+- Commit to what you join
+- Show up consistently
+- Take initiative on tasks
+- Build genuine relationships
+- Document your work
+
+### Don'ts
+- Don't join 10 committees
+- Don't just attend for certificates
+- Don't participate in committee politics
+- Don't neglect academics completely
+- Don't burn bridges
+
+## Leadership Positions
+
+### Secretary/Head Roles
+- When: Usually end of Year 2
+- What: Full responsibility for committee
+- Why: Ultimate leadership experience
+
+### Coordinator Roles
+- When: Year 2-3
+- What: Managing specific events or domains
+- Why: Good balance of responsibility and learning
+
+### Core Member Roles
+- When: Year 1-2
+- What: Active participation, task execution
+- Why: Foundation for future leadership
+
+## The Politics Reality
+
+Every committee has politics. Here's how to navigate:
+- Stay professional, not personal
+- Do good work—it speaks louder
+- Don't take sides in conflicts
+- Build relationships across factions
+- Focus on contribution, not credit
+
+## Beyond Committees
+
+### Informal Groups
+- Study groups for competitive exams
+- Sports teams (casual and competitive)
+- Project teams for competitions
+- Friend groups with shared interests
+
+### Online Communities
+- College subreddits and Discord servers
+- LinkedIn groups for alumni
+- WhatsApp groups for different purposes
+- Instagram pages for memes and updates
+
+## The Certificate Economy
+
+Let's be real:
+- Certificates matter for resume
+- But experience matters more
+- Quality > Quantity
+- One meaningful role > 10 participation certificates
+- Employers ask about experiences, not certificates
+
+---
+
+*Find your tribe in the committee that aligns with your interests. The friends and skills you gain there will outlast any classroom learning.*`
+      },
+      {
+        id: 12,
+        title: 'The Commute Life',
+        content: `# The Commute Life
+
+## The Mumbai Local Reality
+
+If you're a local train commuter, you already know. If you're not, prepare yourself.
+
+### The Route Options
+- **Harbour Line**: Convenient for Vidyavihar
+- **Central Line**: Change at Kurla
+- **Western Line**: Change at Dadar, then Kurla
+
+### Peak Hours
+- 7:30-9:30 AM: Maximum chaos
+- 5:30-8:00 PM: Return rush
+- Off-peak: Almost pleasant
+
+### Survival Essentials
+- M-Indicator app (train timings, never fail)
+- Earphones with good noise cancellation
+- Kindle/phone for reading
+- Small bag that doesn't poke people
+- Patience. Lots of patience.
+
+## The Bus Life
+
+### BEST Routes
+- Multiple buses to Vidyavihar
+- App for tracking: m-Indicator, Google Maps
+- AC buses exist—worth the extra cost sometimes
+
+### When Bus > Train
+- After 10 PM (less frequent trains)
+- Carrying heavy stuff
+- Want to sit and work
+- Tired of train chaos
+
+## The Rick/Auto Equation
+
+### From Vidyavihar Station
+- Rs. 15-20 per person (sharing)
+- Rs. 25-30 solo
+- Bargaining is expected
+- Meter? What meter?
+
+### Pro Tips
+- Share with classmates to save money
+- Morning rush = higher prices
+- Walking is free and only 10 minutes
+- Uber/Ola during rain when ricks vanish
+
+## Making Commute Productive
+
+### What You Can Do
+- Listen to podcasts
+- Read books (physical or digital)
+- Study notes (standing or sitting)
+- Listen to recorded lectures
+- Learn languages via apps
+- Catch up on news
+
+### What You Can't Do
+- Video calls (mostly)
+- Typing long documents
+- Deep focus work
+- Anything requiring silence
+
+## The Hosteler vs Localite Debate
+
+### Hosteler Advantages
+- Walk to class
+- No commute stress
+- Campus access 24/7
+- Built-in social life
+
+### Localite Advantages
+- Home food
+- Family support
+- No hostel fees
+- Freedom of home
+- Can skip class without notice
+
+### The Reality
+- Both have pros and cons
+- Grass is always greener
+- Make the best of your situation
+- Some localites wish they were hostelers and vice versa
+
+## Commute Hacks
+
+### Morning Rush
+- Leave 15 minutes earlier—stress reduces by 90%
+- Know which coach to board for Vidyavihar exit
+- Have a backup route
+- Check for rail blocks before leaving
+
+### Evening Rush
+- Stagger your departure if possible
+- Catch the fast local if your station allows
+- Standing in the right position = easier exit
+- Have entertainment ready
+
+### Rainy Season
+- Leave even earlier
+- Waterproof bag is mandatory
+- Extra clothes in bag
+- Know which trains get cancelled first
+
+### Exam Season
+- Plan your route to exam center
+- Buffer time for unexpected delays
+- Keep admit card accessible
+- Emergency contact saved
+
+## The Social Aspect
+
+Commuting with classmates:
+- Makes time pass faster
+- Shared suffering = bonding
+- Study groups on trains work
+- Backup for emergencies
+- But sometimes you want solo time—that's okay
+
+## The Cost Calculation
+
+Monthly commute budget:
+- Train pass: Rs. 300-500
+- Rick/auto: Rs. 500-1000
+- Emergency Uber: Rs. 300-500
+- Total: Rs. 1100-2000
+
+Money-saving tips:
+- Get a monthly pass
+- Walk when weather is good
+- Share autos religiously
+- Plan routes to minimize transfers
+
+---
+
+*The commute is part of the Mumbai experience. Embrace it, optimize it, use it well. Those hours add up—make them count.*`
+      },
+      {
+        id: 13,
+        title: 'Love, Friendship & Campus Relationships',
+        content: `# Love, Friendship & Campus Relationships
+
+## The Friendship Phases
+
+### First Semester
+- Everyone is your friend
+- Names blur together
+- Friendships form quickly
+- Most won't last—that's okay
+
+### First Year End
+- Your actual friend group forms
+- Quality over quantity
+- Inside jokes emerge
+- Study groups solidify
+
+### Second Year
+- Friends become family
+- You know each other's quirks
+- Group trips happen
+- Life beyond academics is shared
+
+### Final Year
+- Nostalgia hits early
+- Making memories intentionally
+- Future plans are discussed
+- Bonds tested by distance ahead
+
+## Finding Your People
+
+### Where to Meet Them
+- First bench enthusiasts: Library
+- Backbenchers: Canteen
+- Creative souls: Events and fests
+- Nerds: Study groups
+- Party people: Evening hangouts
+- Everyone: Committees and clubs
+
+### What to Look For
+- Similar values (not just interests)
+- People who show up when it matters
+- Those who push you to be better
+- Genuine over impressive
+
+### Red Flags
+- Only call when they need something
+- Gossip about everyone
+- Compete in toxic ways
+- Make you feel small
+- Disappear when you need them
+
+## The Relationship Reality
+
+### College Romance Stats
+- Many start one
+- Fewer finish one
+- Some become marriages
+- Most become memories
+
+### If You're Single
+- It's not a character flaw
+- Focus on self-development
+- Friendships are relationships too
+- Your person might be elsewhere
+
+### If You're In One
+- Maintain your individual identity
+- Don't neglect friends
+- Same class = convenient but risky
+- Keep some things private
+
+### If You're Heartbroken
+- It will pass (cliché but true)
+- Lean on friends
+- Don't stalk social media
+- Focus on academics as distraction
+- Avoid rebound relationships
+
+## The Group Dynamic
+
+### Study Groups
+- 3-4 people maximum
+- Similar work ethic needed
+- Rotate hosting
+- Phones away during study
+- Celebrate together after exams
+
+### Hangout Groups
+- Larger is fine
+- Flexible membership
+- Regular meeting spots
+- Shared interests help
+
+### Core Circle
+- 2-5 true friends
+- Quality conversations
+- Honest feedback
+- Long-term thinking
+
+## Managing Conflict
+
+### When Friends Fight
+- Don't pick sides unless necessary
+- Listen before advising
+- Give space when needed
+- Some fights need to happen
+
+### When You Fight with Friends
+- Cool down before responding
+- In-person resolution > Text fights
+- Apologize when wrong
+- Some relationships end—that's okay
+
+## The Batch Bond
+
+Your batch is special:
+- Shared experiences create unique bonds
+- WhatsApp group might be annoying but valuable
+- Class representatives are the glue
+- Reunions will happen—treasure them in advance
+
+## Long-Distance Friendships
+
+After graduation:
+- Quality over frequency
+- Video calls help
+- Group trips when possible
+- Some friendships are forever, most aren't—and that's okay
+
+## Advice from Those Who've Been There
+
+1. **Be the friend you want to have**
+2. **Show up for the small things**
+3. **Pictures fade, memories don't—make good ones**
+4. **Not everyone will like you—that's not a failure**
+5. **Your college friends might be your lifelong tribe**
+
+---
+
+*The people you meet here might be the people at your wedding, in your career, through your life. Choose wisely, invest deeply, remember always.*`
+      },
+      {
+        id: 14,
+        title: 'Mental Health, Stress & Survival',
+        content: `# Mental Health, Stress & Survival
+
+## Let's Talk Honestly
+
+College is sold as "the best years of your life." For some, it is. For many, it's also:
+- Stressful
+- Confusing
+- Lonely sometimes
+- Overwhelming often
+
+Both can be true. Acknowledging struggle doesn't mean you're failing.
+
+## Common Mental Health Challenges
+
+### Academic Stress
+- Exam anxiety
+- Assignment overload
+- Fear of failure
+- Comparison with toppers
+
+### Social Anxiety
+- Fear of judgment
+- Difficulty making friends
+- Imposter syndrome
+- FOMO (Fear of Missing Out)
+
+### Personal Issues
+- Family pressure
+- Financial concerns
+- Relationship problems
+- Identity questions
+
+### Serious Concerns
+- Depression
+- Anxiety disorders
+- Substance issues
+- Thoughts of self-harm
+
+## Warning Signs
+
+### In Yourself
+- Persistent sadness (weeks, not days)
+- Loss of interest in everything
+- Sleep issues (too much or too little)
+- Appetite changes
+- Isolation from everyone
+- Difficulty concentrating
+- Thoughts of harm
+
+### In Friends
+- Sudden personality changes
+- Withdrawal from activities
+- Drop in academic performance
+- Substance use increase
+- Talk of hopelessness
+- Giving away possessions
+- Goodbye-like statements
+
+## What You Can Do
+
+### Self-Care Basics
+- Sleep: 7-8 hours (non-negotiable)
+- Exercise: Even 20 minutes helps
+- Eating: Regular meals, less junk
+- Hydration: Water, not just tea/coffee
+- Sunlight: 15 minutes daily
+- Social: Talk to at least one person
+
+### Stress Management
+- Break tasks into smaller chunks
+- Pomodoro technique for studying
+- Physical activity as stress relief
+- Creative outlets (music, art, writing)
+- Limiting social media during stress
+- Saying no when overwhelmed
+
+### Building Resilience
+- Journaling (even 5 minutes)
+- Gratitude practice
+- Mindfulness apps (Headspace, Calm)
+- Talking about feelings
+- Accepting imperfection
+- Learning from setbacks
+
+## Getting Help
+
+### On-Campus Resources
+- College counselor (usually free)
+- Student wellness center
+- Professors you trust
+- NSS mental health initiatives
+- Peer support programs
+
+### External Resources
+- iCall: 9152987821
+- Vandrevala Foundation: 1860-2662-345
+- AASRA: 9820466726
+- Private therapists (affordable options exist)
+- Online therapy (BetterHelp, etc.)
+
+### When to Seek Help
+- If self-care isn't working
+- If daily life is affected
+- If symptoms persist over weeks
+- If you have thoughts of harm
+- If someone asks you to get help
+
+## Helping Friends
+
+### Do's
+- Listen without judgment
+- Ask directly about feelings
+- Offer to accompany them to help
+- Check in regularly
+- Take mentions of harm seriously
+
+### Don'ts
+- Don't dismiss their feelings
+- Don't try to "fix" them
+- Don't share their struggles without permission
+- Don't make it about yourself
+- Don't give up after one attempt
+
+## The Stigma Reality
+
+Mental health stigma exists in India. Here's how to navigate:
+- You don't have to announce your struggles
+- Find a trusted few to confide in
+- Getting help is strength, not weakness
+- Your struggles don't define you
+- Language matters—avoid using conditions as insults
+
+## Exam Season Survival
+
+The high-stress period:
+- Start early (really, it helps)
+- Sleep before exams (all-nighters rarely work)
+- Eat properly (brain needs fuel)
+- Take breaks (study-break ratio)
+- Limit caffeine (anxiety trigger)
+- No comparison during prep
+- After exams: disconnect, recover
+
+## Balance Is Everything
+
+You can be:
+- Ambitious AND kind to yourself
+- Hardworking AND resting
+- Struggling AND succeeding
+- Happy AND having bad days
+
+It's not either/or. It's and.
+
+---
+
+*Your mental health is not separate from your success—it's the foundation. Take care of yourself. You matter more than any grade.*`
+      },
+      {
+        id: 15,
+        title: 'Life After Somaiya',
+        content: `# Life After Somaiya
+
+## The Transition
+
+One day, you're stressing about internals. The next, you're an alumnus.
+
+It hits different:
+- The campus you complained about becomes nostalgic
+- The canteen food you mocked becomes missed
+- The friends you saw daily become texts and calls
+- The routine you hated becomes the freedom you're scared of
+
+## What Comes Next
+
+### For Those Getting Placed
+- First job is a learning curve
+- Work culture is different from college
+- Your skills matter more than your degree now
+- Build relationships with colleagues
+- Keep learning—learning stops, growth stops
+
+### For Those Going for Higher Studies
+- Application season is brutal
+- GRE/GMAT/CAT prep is intense
+- Abroad or India—both are valid
+- The master's is a means, not the end
+- Stay connected with undergraduate friends
+
+### For Those Starting Something
+- Entrepreneurship is glorified but hard
+- Fail fast, learn faster
+- Your network is your net worth
+- Keep a backup plan
+- The campus resources are gone—build new ones
+
+### For Those Still Figuring Out
+- It's okay to not have a plan
+- Take a gap year if needed
+- Explore before committing
+- Talk to alumni in different paths
+- Comparison will kill you—avoid it
+
+## The Alumni Network
+
+Your biggest post-graduation asset:
+- LinkedIn connections with batchmates
+- WhatsApp groups (yes, they become useful)
+- Alumni associations
+- Batch reunions (attend them)
+- Mentor-mentee relationships
+
+### How to Use It
+- Reach out for advice
+- Ask for referrals (politely)
+- Offer help to juniors
+- Give back when you can
+- Keep relationships warm
+
+## What You'll Miss
+
+### The Obvious
+- Friends nearby
+- Predictable routine
+- Academic structure
+- Campus events
+- Canteen hangouts
+
+### The Unexpected
+- Bunking without consequences
+- Spontaneous plans
+- Low responsibility
+- Free time (what's that?)
+- The feeling of possibility
+
+## What You'll Gain
+
+### The Obvious
+- Money (hopefully)
+- Independence
+- New experiences
+- Professional growth
+
+### The Unexpected
+- Appreciation for college
+- Understanding of parents
+- Self-reliance
+- Clearer values
+- Knowing who your real friends are
+
+## Staying Connected
+
+### With Batchmates
+- Batch trip before dispersing
+- Regular video call tradition
+- Milestone celebrations together
+- Marriage attendance (it's starting)
+
+### With College
+- Alumni events
+- Fest visits
+- Guest lectures
+- Mentoring juniors
+- Donations when possible
+
+### With Yourself
+- Remember who you were
+- Track how far you've come
+- Keep college memorabilia
+- Revisit photos and videos
+
+## Life Lessons from College
+
+What Somaiya actually taught you:
+1. **Adaptability**: You survived the system
+2. **Networking**: You built relationships
+3. **Time Management**: You juggled multiple commitments
+4. **Resilience**: You faced failures and continued
+5. **Self-awareness**: You discovered your strengths
+6. **Independence**: You made your own decisions
+
+## The Final Word
+
+College ends. Life begins.
+
+But the lessons stay:
+- The friends who showed up
+- The skills you built
+- The memories you made
+- The person you became
+
+Somaiya is a chapter, not the story. Write the rest well.
+
+---
+
+**Thank you for reading The Somaiya Survival Manual.**
+
+You've survived orientation. You've survived exams. You've survived placements. Now survive life.
+
+And maybe, someday, write your own survival guide for the next generation.
+
+Until then—
+
+*Keep Surviving. Keep Thriving. Keep Growing.*
 
 — Kunal Chheda
 
-P.S. If you found this useful, share it with the next batch. They'll need it too.
+P.S. The Survival Manual might end here, but your story is just getting started. Make it worth reading.
 `
       }
     ]
