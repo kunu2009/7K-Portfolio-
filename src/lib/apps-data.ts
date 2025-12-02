@@ -169,7 +169,8 @@ export const appsData: App[] = [
       "budget-conscious individuals",
       "finance trackers",
       "flutter app users"
-    ]
+    ],
+    "screenshots": ["/images/appstore/7kmoney.7kc.me-1764683332061.png"]
   },
   {
     "id": "pol",
@@ -366,7 +367,8 @@ export const appsData: App[] = [
       "agile teams",
       "content creators",
       "students"
-    ]
+    ],
+    "screenshots": ["/images/appstore/kanban.7kc.me-1764683384503.png"]
   },
   {
     "id": "pins",
@@ -415,7 +417,8 @@ export const appsData: App[] = [
       "content curators",
       "students",
       "creative professionals"
-    ]
+    ],
+    "screenshots": ["/images/appstore/https___pins.7kc.me_-1764683542684.png"]
   },
   {
     "id": "prompt",
@@ -464,7 +467,8 @@ export const appsData: App[] = [
       "marketers",
       "students",
       "professionals"
-    ]
+    ],
+    "screenshots": ["/images/appstore/https___promt.7kc.me_-1764683520120.png"]
   },
   {
     "id": "tools",
@@ -472,8 +476,9 @@ export const appsData: App[] = [
     "tagline": "Security, web dev & tech awareness hub",
     "description": "Comprehensive platform for web security, development tutorials, cybersecurity awareness, and developer education.",
     "fullDescription": "7K Dev Tools is an all-in-one platform for web development learning, security awareness, and cybersecurity education. Learn about web vulnerabilities, secure coding practices, penetration testing basics, and development best practices. Features include interactive tutorials, security checklists, code examples, vulnerability demonstrations, and awareness campaigns. Perfect for developers who want to build secure applications and understand modern security threats.",
-    "url": "https://tools.7kc.me",
+    "url": "https://tool.7kc.me",
     "category": "learning",
+    "screenshots": ["/images/appstore/tool.7kc.me-1764683605440.png"],
     "features": [
       "Web security tutorials",
       "Cybersecurity awareness content",
@@ -561,7 +566,8 @@ export const appsData: App[] = [
       "HSC students",
       "english learners",
       "board exam students"
-    ]
+    ],
+    "screenshots": ["/images/appstore/english.7kc.me-1764683672274.png"]
   },
   {
     "id": "eng",
@@ -609,7 +615,8 @@ export const appsData: App[] = [
       "HSC aspirants",
       "english enthusiasts",
       "high achievers"
-    ]
+    ],
+    "screenshots": ["/images/appstore/eng.7kc.me-1764683689071.png"]
   },
   {
     "id": "polyglot",
@@ -692,7 +699,8 @@ export const appsData: App[] = [
       "students",
       "travelers",
       "language enthusiasts"
-    ]
+    ],
+    "screenshots": ["/images/appstore/polyglot.7kc.me-1764683724096.png"]
   },
   {
     "id": "money",
@@ -777,7 +785,8 @@ export const appsData: App[] = [
       "freelancers",
       "investors",
       "budget-conscious users"
-    ]
+    ],
+    "screenshots": ["/images/appstore/money.7kc.me-1764683738430.png"]
   },
   {
     "id": "fitness",
@@ -861,7 +870,8 @@ export const appsData: App[] = [
       "health-conscious users",
       "beginners",
       "athletes"
-    ]
+    ],
+    "screenshots": ["/images/appstore/fitness.7kc.me-1764683756492.png"]
   },
   {
     "id": "fit",
@@ -909,7 +919,8 @@ export const appsData: App[] = [
       "busy professionals",
       "casual exercisers",
       "health-conscious users"
-    ]
+    ],
+    "screenshots": ["/images/appstore/fit.7kc.me-1764683772337.png"]
   },
   {
     "id": "game",
@@ -957,7 +968,8 @@ export const appsData: App[] = [
       "students",
       "game enthusiasts",
       "time-killers"
-    ]
+    ],
+    "screenshots": ["/images/appstore/game.7kc.me-1764683793343.png"]
   },
   {
     "id": "student",
@@ -1057,7 +1069,8 @@ export const appsData: App[] = [
       "party enthusiasts",
       "friend groups",
       "social event organizers"
-    ]
+    ],
+    "screenshots": ["/images/appstore/group.7kc.me-1764683831560.png"]
   },
   {
     "id": "editor",
@@ -1108,7 +1121,8 @@ export const appsData: App[] = [
       "photographers",
       "video creators",
       "designers"
-    ]
+    ],
+    "screenshots": ["/images/appstore/editor.7kc.me-1764683852946.png"]
   },
   {
     id: "play",
@@ -1195,7 +1209,8 @@ export const appsData: App[] = [
     status: "live",
     pricing: "free",
     targetAudience: ["productivity enthusiasts", "students", "professionals", "self-improvement seekers", "life hackers"],
-    icon: "/icons/relife-icon.png"
+    icon: "/icons/relife-icon.png",
+    screenshots: ["/images/appstore/relife.7kc.me-1764683887275.png"]
   },
   {
     id: "upsc",
@@ -1225,7 +1240,8 @@ export const appsData: App[] = [
     status: "live",
     pricing: "free",
     targetAudience: ["UPSC aspirants", "IAS aspirants", "civil services students", "competitive exam students"],
-    icon: "/icons/upsc-icon.png"
+    icon: "/icons/upsc-icon.png",
+    screenshots: ["/images/appstore/upsc.7kc.me-1764683870129.png"]
   },
   {
     id: "music",
