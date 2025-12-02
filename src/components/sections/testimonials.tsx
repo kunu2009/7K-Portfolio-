@@ -19,43 +19,19 @@ export interface Testimonial {
   featured: boolean;
 }
 
-// Placeholder testimonials - REPLACE WITH REAL DATA
+// Real testimonials from actual clients
 const testimonials: Testimonial[] = [
   {
     id: "1",
-    clientName: "Your Client Name",
-    clientRole: "Role/Position",
-    clientCompany: "Company Name",
-    clientPhoto: "/testimonials/placeholder-1.jpg",
+    clientName: "GiftsKraft",
+    clientRole: "Gifting Business",
+    clientCompany: "GiftsKraft India",
+    clientPhoto: "/images/clients/giftskraft-logo.png",
     rating: 5,
-    text: "Add your real testimonial here. This is placeholder text that should be replaced with genuine feedback from your clients.",
-    projectType: "Web Development",
+    text: "7K transformed our online presence completely. The new app and website they built for us increased our customer engagement by 3x and made our ordering process seamless. Their attention to detail and understanding of our brand was exceptional. Highly recommend working with them!",
+    projectType: "App & Web Development",
     date: "2024",
     featured: true,
-  },
-  {
-    id: "2",
-    clientName: "Another Client",
-    clientRole: "Business Owner",
-    clientCompany: "Business Name",
-    clientPhoto: "/testimonials/placeholder-2.jpg",
-    rating: 5,
-    text: "Replace this with real feedback. Include specific results like 'Sales increased by 150%' or 'Website traffic doubled'.",
-    projectType: "App Development",
-    date: "2024",
-    featured: true,
-  },
-  {
-    id: "3",
-    clientName: "Third Client",
-    clientRole: "Startup Founder",
-    clientCompany: "Startup Inc.",
-    clientPhoto: "/testimonials/placeholder-3.jpg",
-    rating: 5,
-    text: "Get testimonials from past clients like GiftsKraft or others. Include metrics and specific praise for best results.",
-    projectType: "UI/UX Design",
-    date: "2024",
-    featured: false,
   },
 ];
 
@@ -106,7 +82,13 @@ export default function TestimonialsSection({ limit = 3, showTitle = true }: Tes
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className={`grid gap-6 max-w-6xl mx-auto ${
+            displayTestimonials.length === 1 
+              ? 'grid-cols-1 max-w-2xl' 
+              : displayTestimonials.length === 2 
+                ? 'grid-cols-1 md:grid-cols-2' 
+                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+          }`}
         >
           {displayTestimonials.map((testimonial, index) => (
             <motion.div

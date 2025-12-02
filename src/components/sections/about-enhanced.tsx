@@ -74,25 +74,54 @@ const skillCategories = [
     title: "Frontend",
     icon: Code2,
     skills: PERSONAL_INFO.skills.frontend,
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-500 to-cyan-500",
+    logos: {
+      "React": "⚛️",
+      "Next.js": "▲",
+      "TypeScript": "🔷",
+      "Tailwind CSS": "💨",
+      "Framer Motion": "🎬",
+      "shadcn/ui": "🎨"
+    }
   },
   {
     title: "Backend",
     icon: AppWindow,
     skills: PERSONAL_INFO.skills.backend,
-    color: "from-green-500 to-emerald-500"
+    color: "from-green-500 to-emerald-500",
+    logos: {
+      "Node.js": "💚",
+      "Express": "🚂",
+      "Firebase": "🔥",
+      "Firestore": "📦",
+      "API Development": "🔗"
+    }
   },
   {
     title: "Tools",
     icon: Wrench,
     skills: PERSONAL_INFO.skills.tools,
-    color: "from-purple-500 to-pink-500"
+    color: "from-purple-500 to-pink-500",
+    logos: {
+      "Git": "🔀",
+      "GitHub": "🐙",
+      "VS Code": "💙",
+      "Figma": "🎨",
+      "Vercel": "▲",
+      "npm/pnpm": "📦"
+    }
   },
   {
     title: "AI/ML",
     icon: Target,
     skills: PERSONAL_INFO.skills.ai,
-    color: "from-orange-500 to-red-500"
+    color: "from-orange-500 to-red-500",
+    logos: {
+      "Google AI (Gemini)": "✨",
+      "Genkit": "🧬",
+      "AI Integration": "🤖",
+      "Chatbots": "💬"
+    }
   }
 ];
 
@@ -919,12 +948,12 @@ Say "change style neon" or "style 1" to switch!`;
           </motion.div>
         </div>
 
-        {/* Skills Grid */}
+        {/* Skills Grid - Compact on Mobile */}
         <motion.div variants={fadeInUp}>
           <h3 className="font-headline text-2xl md:text-3xl font-bold text-center mb-8">
             Technical Skills
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {skillCategories.map((category, index) => (
               <motion.div
                 key={category.title}
@@ -934,21 +963,21 @@ Say "change style neon" or "style 1" to switch!`;
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="h-full bg-background/50 backdrop-blur-sm hover:bg-background/80 transition-all hover:shadow-lg hover:shadow-primary/10 border-primary/10">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className={`p-2 rounded-lg bg-gradient-to-br ${category.color}`}>
-                        <category.icon className="h-5 w-5 text-white" />
+                  <CardContent className="pt-4 md:pt-6 px-3 md:px-6">
+                    <div className="flex items-center space-x-2 md:space-x-3 mb-3 md:mb-4">
+                      <div className={`p-1.5 md:p-2 rounded-lg bg-gradient-to-br ${category.color}`}>
+                        <category.icon className="h-4 w-4 md:h-5 md:w-5 text-white" />
                       </div>
-                      <h4 className="font-semibold text-lg">{category.title}</h4>
+                      <h4 className="font-semibold text-sm md:text-lg">{category.title}</h4>
                     </div>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 md:space-y-2">
                       {category.skills.map((skill) => (
                         <li 
                           key={skill} 
-                          className="text-sm text-muted-foreground flex items-start space-x-2"
+                          className="text-xs md:text-sm text-muted-foreground flex items-center space-x-1.5 md:space-x-2"
                         >
-                          <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          <span>{skill}</span>
+                          <span className="text-sm md:text-base flex-shrink-0">{category.logos?.[skill] || '•'}</span>
+                          <span className="truncate">{skill}</span>
                         </li>
                       ))}
                     </ul>

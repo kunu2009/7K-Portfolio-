@@ -10,15 +10,13 @@ interface BlogPost {
   title: string;
   description: string;
   date: string;
-  author: {
-    name: string;
-    avatar?: string;
-  };
+  author: string;
   category: string;
   tags: string[];
   image?: string;
-  readingTime: number;
+  readingTime?: number;
   published: boolean;
+  content: string;
 }
 
 interface BlogSectionProps {
@@ -26,13 +24,68 @@ interface BlogSectionProps {
   limit?: number;
   showCategories?: boolean;
   variant?: 'default' | 'grid' | 'minimal';
+  posts?: BlogPost[];
 }
+
+// Fallback posts with diverse categories and gradient placeholders
+const fallbackPosts: BlogPost[] = [
+  {
+    slug: 'getting-started-nextjs-15',
+    title: 'Getting Started with Next.js 15: Complete Guide',
+    description: 'Learn everything you need to know about Next.js 15, including the new features, breaking changes, and migration tips.',
+    date: '2025-01-15',
+    author: 'Kunal Chheda',
+    category: 'Web Development',
+    tags: ['Next.js', 'React', 'Tutorial'],
+    image: '/images/blog/nextjs-15.jpg',
+    readingTime: 8,
+    published: true,
+    content: ''
+  },
+  {
+    slug: 'how-students-earn-money-skills-no-investment',
+    title: 'How Students Can Earn Money with Skills (No Investment)',
+    description: 'Practical ways for college students to start earning money using skills they already have or can learn quickly.',
+    date: '2025-01-12',
+    author: 'Kunal Chheda',
+    category: 'Student Life',
+    tags: ['Money', 'Skills', 'Students'],
+    image: '/images/blog/student-money.jpg',
+    readingTime: 7,
+    published: true,
+    content: ''
+  },
+  {
+    slug: 'web-design-trends-2025',
+    title: 'Top Web Design Trends for 2025',
+    description: 'Explore the latest web design trends that are shaping the digital landscape in 2025.',
+    date: '2025-01-10',
+    author: 'Kunal Chheda',
+    category: 'Design',
+    tags: ['Design', 'Trends', 'UI/UX'],
+    image: '/images/blog/design-trends.jpg',
+    readingTime: 6,
+    published: true,
+    content: ''
+  }
+];
+
+// Category color mapping for gradient placeholders
+const categoryColors: Record<string, string> = {
+  'Web Development': 'from-blue-500/30 to-cyan-500/20',
+  'Design': 'from-purple-500/30 to-pink-500/20',
+  'Student Life': 'from-green-500/30 to-emerald-500/20',
+  'Technology': 'from-orange-500/30 to-red-500/20',
+  'College': 'from-yellow-500/30 to-amber-500/20',
+  'default': 'from-[#C5B8A5]/20 to-zinc-900'
+};
 
 export default function BlogSection({ 
   featured = false, 
   limit = 3,
   showCategories = true,
-  variant = 'default'
+  variant = 'default',
+  posts: propPosts
 }: BlogSectionProps) {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -40,70 +93,48 @@ export default function BlogSection({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulated API call - replace with actual API call
-    const fetchPosts = async () => {
-      try {
-        // This would be replaced with actual API call
-        const mockPosts: BlogPost[] = [
-          {
-            slug: 'getting-started-nextjs-15',
-            title: 'Getting Started with Next.js 15: Complete Guide',
-            description: 'Learn everything you need to know about Next.js 15, including the new features, breaking changes, and migration tips.',
-            date: '2025-01-15',
-            author: {
-              name: 'Kunal Chheda',
-              avatar: '/images/author.jpg'
-            },
-            category: 'Web Development',
-            tags: ['Next.js', 'React', 'Tutorial'],
-            image: '/images/blog/nextjs-15.jpg',
-            readingTime: 8,
-            published: true
-          },
-          {
-            slug: 'web-design-trends-2025',
-            title: 'Top Web Design Trends for 2025',
-            description: 'Explore the latest web design trends that are shaping the digital landscape in 2025.',
-            date: '2025-01-10',
-            author: {
-              name: 'Kunal Chheda',
-              avatar: '/images/author.jpg'
-            },
-            category: 'Design',
-            tags: ['Design', 'Trends', 'UI/UX'],
-            image: '/images/blog/design-trends.jpg',
-            readingTime: 6,
-            published: true
-          },
-          {
-            slug: 'typescript-best-practices',
-            title: 'TypeScript Best Practices for React Projects',
-            description: 'Improve your React TypeScript skills with these proven best practices and patterns.',
-            date: '2025-01-05',
-            author: {
-              name: 'Kunal Chheda',
-              avatar: '/images/author.jpg'
-            },
-            category: 'Web Development',
-            tags: ['TypeScript', 'React', 'Best Practices'],
-            image: '/images/blog/typescript.jpg',
-            readingTime: 10,
-            published: true
-          }
-        ];
-        
-        const allCategories = ['all', ...Array.from(new Set(mockPosts.map(p => p.category)))];
-        setCategories(allCategories);
-        setPosts(mockPosts.slice(0, limit));
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-        setLoading(false);
+    // Use posts from props if provided, otherwise use fallback
+    const postsToUse = propPosts || fallbackPosts;
+    
+    // Ensure diverse categories - pick one from each category if possible
+    const categorizedPosts: Record<string, BlogPost[]> = {};
+    postsToUse.forEach(post => {
+      if (!categorizedPosts[post.category]) {
+        categorizedPosts[post.category] = [];
       }
-    };
+      categorizedPosts[post.category].push(post);
+    });
 
-    fetchPosts();
-  }, [limit]);
+    // Pick posts from different categories for diversity
+    const diversePosts: BlogPost[] = [];
+    const categoryList = Object.keys(categorizedPosts);
+    let categoryIndex = 0;
+    
+    while (diversePosts.length < limit && categoryIndex < categoryList.length * limit) {
+      const category = categoryList[categoryIndex % categoryList.length];
+      const categoryPosts = categorizedPosts[category];
+      const postIndex = Math.floor(categoryIndex / categoryList.length);
+      
+      if (categoryPosts && categoryPosts[postIndex] && !diversePosts.includes(categoryPosts[postIndex])) {
+        diversePosts.push(categoryPosts[postIndex]);
+      }
+      categoryIndex++;
+    }
+
+    // If we don't have enough diverse posts, fill with remaining
+    if (diversePosts.length < limit) {
+      postsToUse.forEach(post => {
+        if (diversePosts.length < limit && !diversePosts.includes(post)) {
+          diversePosts.push(post);
+        }
+      });
+    }
+
+    const allCategories = ['all', ...Array.from(new Set(postsToUse.map(p => p.category)))];
+    setCategories(allCategories);
+    setPosts(diversePosts.slice(0, limit));
+    setLoading(false);
+  }, [limit, propPosts]);
 
   const filteredPosts = selectedCategory === 'all' 
     ? posts 
@@ -116,6 +147,16 @@ export default function BlogSection({
       day: 'numeric', 
       year: 'numeric' 
     });
+  };
+
+  const getReadingTime = (content: string) => {
+    const wordsPerMinute = 200;
+    const words = content?.trim().split(/\s+/).length || 0;
+    return Math.max(Math.ceil(words / wordsPerMinute), 3);
+  };
+
+  const getCategoryGradient = (category: string) => {
+    return categoryColors[category] || categoryColors['default'];
   };
 
   if (variant === 'minimal') {
@@ -162,7 +203,7 @@ export default function BlogSection({
                           <span className="text-zinc-600">•</span>
                           <span className="text-xs text-zinc-400">{formatDate(post.date)}</span>
                           <span className="text-zinc-600">•</span>
-                          <span className="text-xs text-zinc-400">{post.readingTime} min read</span>
+                          <span className="text-xs text-zinc-400">{post.readingTime || getReadingTime(post.content)} min read</span>
                         </div>
                         <h3 className="text-xl font-semibold text-white group-hover:text-[#C5B8A5] transition-colors mb-2">
                           {post.title}
@@ -238,19 +279,19 @@ export default function BlogSection({
                   className="group"
                 >
                   <article className="h-full bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-[#C5B8A5]/30 transition-all">
-                    {/* Image */}
-                    {post.image && (
-                      <div className="relative aspect-video overflow-hidden bg-zinc-800">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                        <div className="absolute top-4 left-4 z-20">
-                          <span className="px-3 py-1 bg-[#C5B8A5] text-black text-xs font-semibold rounded-full">
-                            {post.category}
-                          </span>
-                        </div>
-                        {/* Placeholder gradient since image might not exist */}
-                        <div className="w-full h-full bg-gradient-to-br from-[#C5B8A5]/20 to-zinc-900 group-hover:scale-105 transition-transform duration-500"></div>
+                    {/* Image or Gradient Placeholder */}
+                    <div className="relative aspect-video overflow-hidden bg-zinc-800">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                      <div className="absolute top-4 left-4 z-20">
+                        <span className="px-3 py-1 bg-[#C5B8A5] text-black text-xs font-semibold rounded-full">
+                          {post.category}
+                        </span>
                       </div>
-                    )}
+                      {/* Category-based gradient placeholder */}
+                      <div className={`w-full h-full bg-gradient-to-br ${getCategoryGradient(post.category)} group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
+                        <BookOpen className="w-12 h-12 text-white/20" />
+                      </div>
+                    </div>
 
                     {/* Content */}
                     <div className="p-6">

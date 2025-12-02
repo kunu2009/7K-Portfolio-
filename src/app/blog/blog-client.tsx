@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Search, Calendar, User, Tag, Clock, BookOpen, ArrowRight } from 'lucide-react';
+import { Search, Calendar, User, Tag, Clock, BookOpen, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { BlogPost } from '@/lib/blog';
@@ -16,6 +16,11 @@ export default function BlogClient({ posts, categories, tags }: BlogClientProps)
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [showAllTags, setShowAllTags] = useState(false);
+
+  // Show only 5 tags on mobile initially
+  const visibleTags = showAllTags ? tags : tags.slice(0, 5);
+  const hasMoreTags = tags.length > 5;
 
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
@@ -106,36 +111,59 @@ export default function BlogClient({ posts, categories, tags }: BlogClientProps)
             ))}
           </div>
 
-          {/* Tag Filter */}
+          {/* Tag Filter - Collapsible on Mobile */}
           {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 justify-center">
-              <span className="text-sm text-muted-foreground flex items-center gap-2">
-                <Tag className="h-4 w-4" />
-                Tags:
-              </span>
-              <button
-                onClick={() => setSelectedTag('all')}
-                className={`text-sm px-3 py-1 rounded-full transition-colors ${
-                  selectedTag === 'all'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-secondary hover:bg-secondary/80'
-                }`}
-              >
-                All
-              </button>
-              {tags.map((tag) => (
+            <div className="space-y-3">
+              <div className="flex flex-wrap gap-2 justify-center items-center">
+                <span className="text-sm text-muted-foreground flex items-center gap-2">
+                  <Tag className="h-4 w-4" />
+                  Tags:
+                </span>
                 <button
-                  key={tag}
-                  onClick={() => setSelectedTag(tag)}
+                  onClick={() => setSelectedTag('all')}
                   className={`text-sm px-3 py-1 rounded-full transition-colors ${
-                    selectedTag === tag
+                    selectedTag === 'all'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary hover:bg-secondary/80'
                   }`}
                 >
-                  {tag}
+                  All
                 </button>
-              ))}
+                {visibleTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={`text-sm px-3 py-1 rounded-full transition-colors ${
+                      selectedTag === tag
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-secondary hover:bg-secondary/80'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+              {/* Show More/Less Button for Tags */}
+              {hasMoreTags && (
+                <div className="flex justify-center md:hidden">
+                  <button
+                    onClick={() => setShowAllTags(!showAllTags)}
+                    className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 transition-colors"
+                  >
+                    {showAllTags ? (
+                      <>
+                        <ChevronUp className="h-4 w-4" />
+                        Show Less Tags
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="h-4 w-4" />
+                        Show All {tags.length} Tags
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

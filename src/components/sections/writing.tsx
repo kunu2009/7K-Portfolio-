@@ -96,15 +96,17 @@ const WritingSection = () => {
           <Link key={writing.id} href={`/books/${writing.id}`}>
             <Card className="overflow-hidden group bg-secondary/50 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ease-in-out hover:ring-2 hover:ring-primary cursor-pointer h-full">
               <div className="flex flex-col h-full">
-                {/* Book Cover */}
-                <div className="h-[200px] relative overflow-hidden">
-                  <Image
-                    src={writing.coverImage}
-                    alt={`${writing.title} cover`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                {/* Book Cover - Better sizing to show full cover */}
+                <div className="h-[240px] md:h-[220px] relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/10 flex items-center justify-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={writing.coverImage}
+                      alt={`${writing.title} cover`}
+                      fill
+                      className="object-contain drop-shadow-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
                 </div>
 
                 {/* Book Details */}
