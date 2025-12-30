@@ -102,6 +102,78 @@
       transition: none !important;
     }
   }
+  
+  /* CSS Containment for performance */
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-strict {
+    contain: strict;
+  }
+  
+  .contain-content {
+    contain: content;
+  }
+  
+  /* Content visibility for below-fold content */
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+  
+  .content-hidden {
+    content-visibility: hidden;
+  }
+  
+  /* Optimized will-change */
+  .will-transform {
+    will-change: transform;
+  }
+  
+  .will-opacity {
+    will-change: opacity;
+  }
+  
+  .will-scroll {
+    will-change: scroll-position;
+  }
+  
+  /* Remove will-change after animation */
+  .will-auto {
+    will-change: auto;
+  }
+}
+
+/* Reduced motion - disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .motion-reduce-hidden {
+    display: none !important;
+  }
+}
+
+/* Data saver mode - reduce images and animations */
+@media (prefers-reduced-data: reduce) {
+  img, video {
+    filter: grayscale(100%);
+  }
+  
+  .data-heavy {
+    display: none !important;
+  }
 }
 
 /* Optimize scrolling performance */

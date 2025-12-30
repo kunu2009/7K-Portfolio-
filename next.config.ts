@@ -40,7 +40,18 @@ const nextConfig: NextConfig = {
   },
   // Optimize build performance and bundle size
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion'],
+    optimizePackageImports: [
+      'lucide-react', 
+      '@radix-ui/react-icons', 
+      'framer-motion',
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-tabs',
+      '@radix-ui/react-tooltip',
+      'date-fns',
+      'recharts',
+    ],
     webpackMemoryOptimizations: true,
   },
   // Enable compression
@@ -48,6 +59,61 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   reactStrictMode: true,
   poweredByHeader: false,
+  // Optimize bundle splitting
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+    },
+  },
+  // Headers for caching and performance
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|jpeg|png|gif|ico|webp|avif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:all*(js|css)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:all*(woff|woff2|ttf|eot)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      },
+    ];
+  },
   // Exclude AI files from build to speed up deployment
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -62,6 +128,31 @@ const nextConfig: NextConfig = {
         '@opentelemetry/sdk-node': false,
         '@opentelemetry/exporter-jaeger': false,
         'handlebars': false,
+      };
+      
+      // Optimize chunks for faster loading
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization?.splitChunks,
+          cacheGroups: {
+            ...config.optimization?.splitChunks?.cacheGroups,
+            // Separate framer-motion into its own chunk
+            framerMotion: {
+              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+              name: 'framer-motion',
+              chunks: 'all',
+              priority: 30,
+            },
+            // Separate radix-ui into its own chunk
+            radix: {
+              test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+              name: 'radix-ui',
+              chunks: 'all',
+              priority: 20,
+            },
+          },
+        },
       };
     }
     // Ignore AI file warnings

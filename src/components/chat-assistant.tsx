@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, type FormEvent, useCallback } from "react";
+import { useState, useRef, useEffect, type FormEvent, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -12,6 +12,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { MascotStore, MascotSelector, getSavedMascot, type MascotType, getMascotConfig } from "./mascot-store";
 import { MascotBody } from "./mascot-bodies";
+import { getDeviceCapabilities, getAnimationConfig, throttle } from "@/lib/performance";
 
 type Message = {
   role: "user" | "assistant";
@@ -439,11 +440,16 @@ export function ChatAssistant() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   
+  // Performance optimization - detect device capabilities once
+  const deviceCaps = useMemo(() => getDeviceCapabilities(), []);
+  const animConfig = useMemo(() => getAnimationConfig(), []);
+  const isLowEndDevice = deviceCaps.isLowEnd || deviceCaps.prefersReducedMotion;
+  
   // Mascot state
   const [currentMascot, setCurrentMascot] = useState<MascotType>("robot");
   const [isMascotStoreOpen, setIsMascotStoreOpen] = useState(false);
   
-  // Robot state
+  // Robot state - simplified on low-end devices
   const [robotMood, setRobotMood] = useState<RobotMood>("idle");
   const [robotMessage, setRobotMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
@@ -492,18 +498,25 @@ export function ChatAssistant() {
     setRobotMessage(`${getMascotConfig(mascot).emoji} New look!`);
     setShowMessage(true);
     
-    robotControls.start({
-      rotate: [0, 360],
-      scale: [1, 1.3, 1],
-      transition: { duration: 0.6 }
-    });
+    // Skip animation on low-end devices
+    if (!isLowEndDevice) {
+      robotControls.start({
+        rotate: [0, 360],
+        scale: [1, 1.3, 1],
+        transition: { duration: 0.6 }
+      });
+    }
     
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (!isLowEndDevice) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      messagesEndRef.current?.scrollIntoView({ behavior: "auto" });
+    }
+  }, [messages, isLowEndDevice]);
 
   // Check first visit on mount
   useEffect(() => {
@@ -879,8 +892,13 @@ export function ChatAssistant() {
   }, [hasGreeted, isOpen, isDragging, isHovered, isInteracting, robotControls]);
 
   // Mouse tracking for robot to look at cursor - eyes follow mouse
+  // Disabled on low-end devices for performance
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    // Skip mouse tracking on low-end devices
+    if (isLowEndDevice) return;
+    
+    // Throttled mouse handler for performance
+    const handleMouseMove = throttle((e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
       // Calculate eye offset based on mouse position relative to robot
@@ -899,11 +917,11 @@ export function ChatAssistant() {
           y: Math.max(-maxOffset, Math.min(maxOffset, deltaY)),
         });
       }
-    };
+    }, 50); // Throttle to 20fps max for eye tracking
     
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isLowEndDevice]);
   
   // Random blinking
   useEffect(() => {
