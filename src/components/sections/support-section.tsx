@@ -89,7 +89,7 @@ export function SupportSection() {
   };
 
   return (
-    <section className="relative py-20 px-4 overflow-hidden">
+    <section id="support" className="relative py-20 px-4 overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
       

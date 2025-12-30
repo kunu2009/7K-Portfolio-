@@ -161,7 +161,7 @@ export default function BlogSection({
 
   if (variant === 'minimal') {
     return (
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section id="blog" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-12">
@@ -224,7 +224,7 @@ export default function BlogSection({
 
   if (variant === 'grid') {
     return (
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section id="blog" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
@@ -355,7 +355,7 @@ export default function BlogSection({
 
   // Default variant - Featured layout
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-zinc-950">
+    <section id="blog" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-zinc-950">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
