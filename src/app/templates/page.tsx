@@ -155,6 +155,28 @@ const templates: Template[] = [
     preview: '⚡',
   },
   {
+    id: 'mutmiz-saas',
+    title: '7K Mutmiz - Task Manager',
+    description: 'Productivity SaaS platform with purple theme, task management, team collaboration, and comprehensive features.',
+    category: 'SaaS & Software',
+    price: 12000,
+    variants: 2,
+    icon: <Zap className="w-6 h-6" />,
+    features: [
+      'Purple gradient theme',
+      'Task management UI',
+      'Team collaboration',
+      'Data sync & backup',
+      'Mobile app mockup',
+      'Testimonials',
+      'Blog section',
+      'Premium design'
+    ],
+    previewUrl: '/templates/saas/preview-2',
+    preview: '💜',
+    bestseller: true
+  },
+  {
     id: 'portfolio-site',
     title: 'Professional Portfolio',
     description: 'Stunning portfolio website for freelancers and creative professionals to showcase work.',
