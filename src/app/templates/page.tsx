@@ -242,6 +242,28 @@ const templates: Template[] = [
     bestseller: false
   },
   {
+    id: 'resume-portfolio',
+    title: '7K Resume Portfolio',
+    description: 'Resume-style portfolio inspired layout with timeline, skills, languages, and contact card—pre-filled for Kunal & 7K.',
+    category: 'Portfolio & Creative',
+    price: 9000,
+    variants: 1,
+    icon: <Briefcase className="w-6 h-6" />,
+    features: [
+      'Bold resume hero',
+      'Education & experience timeline',
+      'Technical & coding skills',
+      'Language and hobbies',
+      'Contact card + social',
+      '7K branding',
+      'Responsive design',
+      'Fast performance'
+    ],
+    previewUrl: '/templates/portfolio/preview-4',
+    preview: '📄',
+    bestseller: false
+  },
+  {
     id: 'etech-education',
     title: '7K Etech - Education Platform',
     description: 'Premium e-learning platform with course marketplace, instructor profiles, student testimonials, and comprehensive features.',

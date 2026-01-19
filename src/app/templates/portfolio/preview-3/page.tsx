@@ -92,22 +92,22 @@ export default function IllustrationPortfolio() {
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
+      name: 'Aditya Patel',
       role: 'Publishing Director',
-      text: 'Amazing illustrations that brought our book to life. Highly professional and creative!',
-      avatar: '👩‍💼'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Creative Director',
-      text: 'Outstanding character designs. Exceeded all our expectations with attention to detail.',
+      text: 'Kunal\'s illustrations brought our book to life. Highly professional and creative—delivered right on time!',
       avatar: '👨‍💼'
     },
     {
-      name: 'Emma Davis',
+      name: 'Neha Gupta',
+      role: 'Creative Director',
+      text: 'Outstanding character designs with attention to detail. The brand mascot system was perfect for our campaign.',
+      avatar: '👩‍💼'
+    },
+    {
+      name: 'Vipul Singh',
       role: 'Brand Manager',
-      text: 'The mascot design perfectly captured our brand essence. Would definitely work again!',
-      avatar: '👩‍🎨'
+      text: 'The mascot design captured our brand essence. Seamless collaboration and exceptional quality—highly recommended!',
+      avatar: '👨‍🎨'
     }
   ];
 
