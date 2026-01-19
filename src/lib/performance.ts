@@ -3,6 +3,157 @@
  * Improves loading speed and runtime performance
  */
 
+// ============================================
+// DEVICE CAPABILITY DETECTION
+// ============================================
+
+export interface DeviceCapabilities {
+  isLowEnd: boolean;
+  isSlowNetwork: boolean;
+  prefersReducedMotion: boolean;
+  hasLowMemory: boolean;
+  connectionType: string;
+  deviceMemory: number;
+  hardwareConcurrency: number;
+  saveData: boolean;
+}
+
+let cachedCapabilities: DeviceCapabilities | null = null;
+
+export const getDeviceCapabilities = (): DeviceCapabilities => {
+  if (cachedCapabilities) return cachedCapabilities;
+  
+  if (typeof window === 'undefined') {
+    return {
+      isLowEnd: false,
+      isSlowNetwork: false,
+      prefersReducedMotion: false,
+      hasLowMemory: false,
+      connectionType: '4g',
+      deviceMemory: 8,
+      hardwareConcurrency: 4,
+      saveData: false,
+    };
+  }
+
+  const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+  const deviceMemory = (navigator as any).deviceMemory || 4;
+  const hardwareConcurrency = navigator.hardwareConcurrency || 4;
+  const connectionType = connection?.effectiveType || '4g';
+  const saveData = connection?.saveData || false;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  const isLowEnd = deviceMemory <= 2 || hardwareConcurrency <= 2 || prefersReducedMotion || saveData;
+  const isSlowNetwork = ['slow-2g', '2g', '3g'].includes(connectionType) || saveData;
+  const hasLowMemory = deviceMemory <= 2;
+
+  cachedCapabilities = {
+    isLowEnd,
+    isSlowNetwork,
+    prefersReducedMotion,
+    hasLowMemory,
+    connectionType,
+    deviceMemory,
+    hardwareConcurrency,
+    saveData,
+  };
+
+  return cachedCapabilities;
+};
+
+// Reset cache when connection changes
+if (typeof window !== 'undefined') {
+  const connection = (navigator as any).connection;
+  if (connection) {
+    connection.addEventListener('change', () => {
+      cachedCapabilities = null;
+    });
+  }
+}
+
+// ============================================
+// ANIMATION OPTIMIZATION
+// ============================================
+
+export interface AnimationConfig {
+  duration: number;
+  stiffness: number;
+  damping: number;
+  bounce: number;
+  enabled: boolean;
+}
+
+export const getAnimationConfig = (): AnimationConfig => {
+  const caps = getDeviceCapabilities();
+  
+  if (caps.prefersReducedMotion) {
+    return { duration: 0, stiffness: 1000, damping: 1000, bounce: 0, enabled: false };
+  }
+  
+  if (caps.isLowEnd) {
+    return { duration: 0.1, stiffness: 400, damping: 40, bounce: 0, enabled: true };
+  }
+  
+  return { duration: 0.3, stiffness: 200, damping: 20, bounce: 0.2, enabled: true };
+};
+
+// Optimize animations for low-end devices
+export const shouldReduceAnimations = (): boolean => {
+  const caps = getDeviceCapabilities();
+  return caps.prefersReducedMotion || caps.isLowEnd;
+};
+
+// Check if device prefers reduced motion
+export const prefersReducedMotion = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+// ============================================
+// IMAGE OPTIMIZATION
+// ============================================
+
+export const getOptimalImageQuality = (): number => {
+  const caps = getDeviceCapabilities();
+  if (caps.isSlowNetwork || caps.saveData) return 50;
+  if (caps.isLowEnd) return 65;
+  return 85;
+};
+
+export const getImageSizes = (isHero: boolean = false): string => {
+  if (isHero) {
+    return '(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px';
+  }
+  return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+};
+
+// ============================================
+// NETWORK & CONNECTION
+// ============================================
+
+export const isSlowConnection = (): boolean => {
+  const caps = getDeviceCapabilities();
+  return caps.isSlowNetwork;
+};
+
+// Preconnect to external domains
+export const preconnectDomains = (domains: string[]) => {
+  if (typeof document === 'undefined') return;
+  
+  domains.forEach(domain => {
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = domain;
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+    
+    const dnsLink = document.createElement('link');
+    dnsLink.rel = 'dns-prefetch';
+    dnsLink.href = domain;
+    document.head.appendChild(dnsLink);
+  });
+};
+
 // Preload critical resources
 export const preloadCriticalResources = () => {
   if (typeof window === 'undefined') return;
