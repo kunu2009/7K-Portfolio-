@@ -45,6 +45,28 @@ const templates: Template[] = [
     discount: 15
   },
   {
+    id: 'luxury-hotel',
+    title: '7K Hoteler - Luxury Hotel',
+    description: 'Elegant luxury hotel website with gold accents, special offers showcase, and premium booking experience.',
+    category: 'Hotel & Travel',
+    price: 10000,
+    variants: 2,
+    icon: <Hotel className="w-6 h-6" />,
+    features: [
+      'Luxury gold theme',
+      'Special offers section',
+      'Activities showcase',
+      'Expert team profiles',
+      'Room gallery',
+      'Booking form',
+      'Newsletter subscription',
+      'Premium design'
+    ],
+    previewUrl: '/templates/hotel-booking/preview-2',
+    preview: '👑',
+    bestseller: true
+  },
+  {
     id: 'ecommerce-store',
     title: 'E-Commerce Store',
     description: 'Full-featured online store with product catalog, cart, checkout, and inventory management.',
