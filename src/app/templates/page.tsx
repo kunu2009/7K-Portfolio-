@@ -197,9 +197,31 @@ const templates: Template[] = [
     previewUrl: '/templates/portfolio/preview-1',
     preview: '💼',
   },
+  {
+    id: 'etech-education',
+    title: '7K Etech - Education Platform',
+    description: 'Premium e-learning platform with course marketplace, instructor profiles, student testimonials, and comprehensive features.',
+    category: 'Education & Learning',
+    price: 15000,
+    variants: 2,
+    icon: <BookOpen className="w-6 h-6" />,
+    features: [
+      'Course marketplace',
+      'Search & filters',
+      'Student dashboard',
+      'Instructor profiles',
+      'Video lessons',
+      'Progress tracking',
+      'Testimonials',
+      'Certificate system'
+    ],
+    previewUrl: '/templates/education/preview-1',
+    preview: '🎓',
+    bestseller: true
+  },
 ];
 
-const categories = ['All', 'Hotel & Travel', 'Retail & Shopping', 'SaaS & Software', 'Portfolio & Creative', 'Agency & Business'];
+const categories = ['All', 'Hotel & Travel', 'Retail & Shopping', 'SaaS & Software', 'Portfolio & Creative', 'Agency & Business', 'Education & Learning'];
 
 export default function TemplatesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
