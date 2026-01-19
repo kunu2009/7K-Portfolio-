@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, Hotel, Zap, Briefcase, Download, Eye, Sparkles } from 'lucide-react';
+import { ShoppingCart, Hotel, Zap, Briefcase, Download, Eye, Sparkles, Palette, BookOpen } from 'lucide-react';
 
 interface Template {
   id: string;
