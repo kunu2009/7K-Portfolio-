@@ -37,7 +37,9 @@ import {
   Camera,
   Music,
   Laptop,
-  Sparkles
+  Sparkles,
+  Phone,
+  Mail
 } from 'lucide-react';
 
 export default function EducationPlatform() {
