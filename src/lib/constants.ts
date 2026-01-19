@@ -621,6 +621,17 @@ export const NAVIGATION = [
       { name: "Packages", href: "/services/packages" },
     ]
   },
+  { 
+    name: "Templates", 
+    href: "/templates",
+    dropdown: [
+      { name: "All Templates", href: "/templates" },
+      { name: "Hotel Booking", href: "/templates/hotel-booking/preview-1" },
+      { name: "E-Commerce", href: "/templates/ecommerce/preview-1" },
+      { name: "SaaS Landing", href: "/templates/saas/preview-1" },
+      { name: "Portfolio Site", href: "/templates/portfolio/preview-1" },
+    ]
+  },
   { name: "Projects", href: "/#projects" },
   { 
     name: "Writing", 
