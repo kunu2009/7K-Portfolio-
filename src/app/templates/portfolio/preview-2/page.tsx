@@ -292,7 +292,7 @@ export default function CreativePortfolio() {
             </div>
 
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6">
-              Hi, my name is <span className="text-orange-400 font-semibold">Pewen</span> a multimedia student.
+              Hi, my name is <span className="text-orange-400 font-semibold">Kunal</span> a full-stack designer & developer.
             </p>
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6">
               I love everything of design and this is how
@@ -501,7 +501,7 @@ export default function CreativePortfolio() {
               <div className="flex flex-wrap justify-center gap-6 text-gray-400">
                 <div className="flex items-center gap-2">
                   <Mail className="w-5 h-5 text-orange-400" />
-                  <span>pewen@7k.design</span>
+                  <span>kunal@7k.design</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="w-5 h-5 text-orange-400" />

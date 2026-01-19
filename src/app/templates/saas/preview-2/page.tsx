@@ -79,22 +79,22 @@ export default function SaaSProductivityApp() {
 
   const testimonials = [
     {
-      name: 'Alan Walker',
-      role: 'Senior Executive, The Ford',
-      rating: 4.8,
-      text: 'We had an excellent experience working with XYZ Web Design Agency. Their team delivered a visually stunning and user-friendly website that exceeded our expectations.'
+      name: 'Kunal',
+      role: 'Founder, 7K Solutions',
+      rating: 5.0,
+      text: '7K Mutmiz revolutionizes how teams work together. Built with years of experience managing complex projects, this platform captures everything we learned about productivity and collaboration.'
     },
     {
-      name: 'Sarah Johnson',
+      name: 'Aditya Patel',
       role: 'Product Manager, TechCorp',
       rating: 5.0,
-      text: 'The best task management solution we\'ve used. It has transformed how our team collaborates and manages projects.'
+      text: 'Kunal\'s 7K Mutmiz has transformed our team collaboration. The intuitive interface and powerful features have increased our productivity by 60% in just three months.'
     },
     {
-      name: 'Michael Chen',
-      role: 'CTO, StartupHub',
+      name: 'Neha Gupta',
+      role: 'CEO, StartupHub',
       rating: 4.9,
-      text: 'Outstanding platform with excellent customer support. Our productivity has increased by 40% since we started using it.'
+      text: 'Outstanding platform with exceptional customer support from Kunal\'s team. 7K Mutmiz is now essential to our daily operations and our team loves using it.'
     }
   ];
 
@@ -148,7 +148,7 @@ export default function SaaSProductivityApp() {
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">Mutmiz</div>
-                <div className="text-xs text-[#7C5CFF] font-semibold">by 7K Solutions</div>
+                <div className="text-xs text-[#7C5CFF] font-semibold">by Kunal 7K</div>
               </div>
             </div>
 

@@ -313,11 +313,11 @@ export default function IllustrationPortfolio() {
             {/* Content */}
             <div>
               <h3 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-                LETICIA
+                KUNAL
                 <br />
-                VALDEZ
+                7K SOLUTIONS
               </h3>
-              <p className="text-sm text-gray-500 font-semibold mb-6">A.K.A Letty</p>
+              <p className="text-sm text-gray-500 font-semibold mb-6">Full-Stack Designer & Developer</p>
 
               <div className="space-y-4 mb-8">
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -333,11 +333,11 @@ export default function IllustrationPortfolio() {
                 <div className="space-y-4">
                   <a href="https://instagram.com" className="flex items-center gap-3 text-gray-700 hover:text-cyan-600 transition">
                     <Instagram className="w-5 h-5 text-pink-500" />
-                    <span className="font-semibold">Letty.art</span>
+                    <span className="font-semibold">kunal.designs</span>
                   </a>
                   <a href="mailto:email@example.com" className="flex items-center gap-3 text-gray-700 hover:text-cyan-600 transition">
                     <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold">Lettyartcontact@gmail.com</span>
+                    <span className="font-semibold">kunal@7k.design</span>
                   </a>
                 </div>
               </div>

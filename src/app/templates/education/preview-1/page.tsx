@@ -100,7 +100,7 @@ export default function EducationPlatform() {
       id: 1,
       title: 'Web Design & Development Pro',
       category: 'development',
-      instructor: 'Sarah Johnson',
+      instructor: 'Kunal',
       rating: 4.9,
       students: 1247,
       lessons: 42,
@@ -115,7 +115,7 @@ export default function EducationPlatform() {
       id: 2,
       title: 'Wireframing & Prototyping',
       category: 'design',
-      instructor: 'Michael Chen',
+      instructor: 'Aditya Patel',
       rating: 4.8,
       students: 892,
       lessons: 28,
@@ -145,7 +145,7 @@ export default function EducationPlatform() {
       id: 4,
       title: 'Digital Marketing Mastery',
       category: 'business',
-      instructor: 'Alex Rodriguez',
+      instructor: 'Vipul Singh',
       rating: 4.7,
       students: 1543,
       lessons: 38,
@@ -160,7 +160,7 @@ export default function EducationPlatform() {
       id: 5,
       title: 'UI/UX Design Complete',
       category: 'design',
-      instructor: 'Emma Watson',
+      instructor: 'Priya Sharma',
       rating: 4.9,
       students: 1876,
       lessons: 45,
@@ -175,7 +175,7 @@ export default function EducationPlatform() {
       id: 6,
       title: 'Photography Fundamentals',
       category: 'photography',
-      instructor: 'David Kim',
+      instructor: 'Rahul Singh',
       rating: 4.8,
       students: 967,
       lessons: 32,
@@ -190,32 +190,32 @@ export default function EducationPlatform() {
 
   const instructors = [
     {
-      name: 'Dr. Sarah Martinez',
-      title: 'AI & Machine Learning Expert',
+      name: 'Kunal',
+      title: 'Founder & Full Stack Developer',
       students: '50K+',
       courses: 24,
       rating: 4.9,
-      image: '👩‍🏫'
-    },
-    {
-      name: 'Prof. James Anderson',
-      title: 'Full Stack Developer',
-      students: '45K+',
-      courses: 18,
-      rating: 4.8,
       image: '👨‍💼'
     },
     {
-      name: 'Emily Chen',
-      title: 'UX/UI Design Lead',
+      name: 'Aditya Patel',
+      title: 'UI/UX Design Lead',
+      students: '45K+',
+      courses: 18,
+      rating: 4.8,
+      image: '👨‍🎨'
+    },
+    {
+      name: 'Neha Gupta',
+      title: 'Data Science Expert',
       students: '38K+',
       courses: 15,
       rating: 5.0,
-      image: '👩‍🎨'
+      image: '👩‍🔬'
     },
     {
-      name: 'Michael Roberts',
-      title: 'Digital Marketing Guru',
+      name: 'Vipul Singh',
+      title: 'Digital Marketing Specialist',
       students: '42K+',
       courses: 21,
       rating: 4.9,
@@ -225,23 +225,23 @@ export default function EducationPlatform() {
 
   const testimonials = [
     {
-      name: 'Ananya Patel',
-      role: 'Software Engineer at Google',
-      text: 'The quality of courses on 7K Etech is outstanding. I landed my dream job at Google thanks to the comprehensive web development course. The instructors are world-class!',
+      name: 'Kunal',
+      role: 'Founder, 7K Solutions',
+      text: '7K Etech has transformed thousands of careers worldwide. Our mission is to provide world-class education that empowers learners to achieve their dreams and reach their full potential.',
       rating: 5,
-      image: '👩‍💼'
+      image: '👨‍💼'
     },
     {
-      name: 'Rahul Sharma',
-      role: 'Freelance Designer',
-      text: 'Best investment I\'ve made in my career! The UI/UX design course transformed my portfolio and tripled my client base. Highly recommend to anyone serious about design.',
+      name: 'Aditya Patel',
+      role: 'Senior Developer at TechCorp',
+      text: 'The comprehensive courses and expert instruction from Kunal\'s 7K Etech completely transformed my career. I went from struggling to landing a dream job at a top tech company!',
       rating: 5,
-      image: '👨‍🎨'
+      image: '👨‍💻'
     },
     {
-      name: 'Priya Desai',
-      role: 'Data Scientist at Microsoft',
-      text: 'The Python for Data Science course was incredibly thorough. Real-world projects, expert guidance, and a supportive community made learning enjoyable and effective.',
+      name: 'Neha Gupta',
+      role: 'Data Science Lead at StartupHub',
+      text: 'The platform combines theory with real-world projects perfectly. The community support and expert guidance from 7K Etech made all the difference in my learning journey and career growth.',
       rating: 5,
       image: '👩‍🔬'
     }
@@ -291,7 +291,7 @@ export default function EducationPlatform() {
                 <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                   Etech
                 </div>
-                <div className="text-xs text-purple-600 font-semibold">by 7K Education</div>
+                <div className="text-xs text-purple-600 font-semibold">by Kunal 7K</div>
               </div>
             </div>
 
@@ -389,7 +389,7 @@ export default function EducationPlatform() {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Explore a transformative approach to skill development and self-paced learning platform. Discover a wealth of learning experiences with a diverse range of courses.
+                Join Kunal's 7K Etech platform and explore a transformative approach to skill development. Discover a wealth of high-quality learning experiences curated by industry experts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition flex items-center justify-center gap-2 group">
@@ -906,7 +906,7 @@ export default function EducationPlatform() {
                 </div>
                 <div>
                   <div className="text-xl font-bold">Etech</div>
-                  <div className="text-xs text-purple-400">by 7K Education</div>
+                  <div className="text-xs text-purple-400">by Kunal 7K</div>
                 </div>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -954,7 +954,7 @@ export default function EducationPlatform() {
                 </li>
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-purple-400" />
-                  support@7ketech.com
+                  kunal@7ketech.com
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-purple-400" />
@@ -966,7 +966,7 @@ export default function EducationPlatform() {
 
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-gray-400">
-              © 2026 7K Education Solutions. All rights reserved.
+              © 2026 Kunal's 7K Solutions. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm text-gray-400">
               <Link href="#" className="hover:text-purple-400 transition">Privacy</Link>

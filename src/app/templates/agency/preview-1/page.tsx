@@ -23,12 +23,12 @@ export default function CreativeAgencyTemplate() {
   ];
 
   const team = [
-    { name: "Sarah Johnson", role: "Creative Director", specialty: "Brand Strategy & Visual Identity" },
-    { name: "Michael Chen", role: "Lead Developer", specialty: "Full-Stack Development & Cloud" },
-    { name: "Emily Rodriguez", role: "UX Designer", specialty: "User Research & Interaction Design" },
-    { name: "David Kim", role: "3D Artist", specialty: "Motion Graphics & 3D Modeling" },
-    { name: "Lisa Anderson", role: "Content Strategist", specialty: "SEO & Content Marketing" },
-    { name: "James Wilson", role: "Project Manager", specialty: "Agile Methodology & Client Relations" }
+    { name: "Kunal", role: "Founder & Creative Director", specialty: "Brand Strategy & Visual Identity" },
+    { name: "Aditya Patel", role: "Lead Developer", specialty: "Full-Stack Development & Cloud" },
+    { name: "Priya Sharma", role: "UX/UI Designer", specialty: "User Research & Interaction Design" },
+    { name: "Vipul Singh", role: "3D Artist", specialty: "Motion Graphics & 3D Modeling" },
+    { name: "Neha Gupta", role: "Content Strategist", specialty: "SEO & Content Marketing" },
+    { name: "Rahul Sharma", role: "Project Manager", specialty: "Agile Methodology & Client Relations" }
   ];
 
   return (

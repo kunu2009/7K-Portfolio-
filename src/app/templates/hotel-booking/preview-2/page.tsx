@@ -66,10 +66,10 @@ export default function LuxuryHotelTemplate() {
   ];
 
   const team = [
-    { name: "Rajesh Kumar", role: "General Manager", image: "👨‍💼" },
-    { name: "Priya Sharma", role: "Guest Relations", image: "👩‍💼" },
-    { name: "Amit Patel", role: "Head Chef", image: "👨‍🍳" },
-    { name: "Neha Singh", role: "Spa Director", image: "👩‍⚕️" }
+    { name: "Kunal", role: "Founder & CEO", image: "👨‍💼" },
+    { name: "Aditya Patel", role: "Guest Relations Manager", image: "👨‍💼" },
+    { name: "Priya Sharma", role: "Executive Chef", image: "👩‍🍳" },
+    { name: "Rahul Singh", role: "Operations Manager", image: "👨‍💼" }
   ];
 
   return (
@@ -84,7 +84,7 @@ export default function LuxuryHotelTemplate() {
               </div>
               <div>
                 <div className="text-xl font-bold">7K HOTELER</div>
-                <div className="text-xs text-[#D4AF37]">Luxury Redefined</div>
+                <div className="text-xs text-[#D4AF37]">by Kunal</div>
               </div>
             </div>
 
@@ -109,7 +109,7 @@ export default function LuxuryHotelTemplate() {
           <div className="flex items-center space-x-4 text-sm pb-3 border-t border-[#D4AF37]/20 pt-3">
             <div className="flex items-center space-x-2">
               <Mail className="w-4 h-4 text-[#D4AF37]" />
-              <span className="text-gray-400">mail@7khoteler.com</span>
+              <span className="text-gray-400">kunal@7khoteler.com</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-[#D4AF37]" />
@@ -430,7 +430,7 @@ export default function LuxuryHotelTemplate() {
                 </li>
                 <li className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>mail@7khoteler.com</span>
+                  <span>kunal@7khoteler.com</span>
                 </li>
               </ul>
             </div>
