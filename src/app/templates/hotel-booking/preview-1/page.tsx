@@ -48,6 +48,7 @@ export default function HotelBookingPreview1() {
       <div className="relative h-96 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-20 text-6xl flex items-center justify-center">🏨</div>
         <div className="relative z-10 text-center px-4">
+          <p className="text-sm font-semibold mb-2">7K HOSPITALITY</p>
           <h1 className="text-5xl font-bold mb-4">Find Your Perfect Hotel</h1>
           <p className="text-xl text-blue-100">Discover amazing accommodations at unbeatable prices</p>
         </div>

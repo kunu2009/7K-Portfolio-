@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, Hotel, Zap, Briefcase, Download, Eye } from 'lucide-react';
+import { ShoppingCart, Hotel, Zap, Briefcase, Download, Eye, Sparkles } from 'lucide-react';
 
 interface Template {
   id: string;
@@ -90,6 +90,28 @@ const templates: Template[] = [
     bestseller: false
   },
   {
+    id: 'creative-agency',
+    title: '7K Creatix - Creative Agency',
+    description: 'Modern creative agency website with bold design, neon accents, and professional service showcase.',
+    category: 'Agency & Business',
+    price: 10000,
+    variants: 2,
+    icon: <Sparkles className="w-6 h-6" />,
+    features: [
+      'Bold modern design',
+      'Service showcase',
+      'Team profiles',
+      'Project portfolio',
+      'Contact forms',
+      'Neon green theme',
+      'Animated sections',
+      'Fully responsive'
+    ],
+    previewUrl: '/templates/agency/preview-1',
+    preview: '✨',
+    bestseller: true
+  },
+  {
     id: 'saas-landing',
     title: 'SaaS Landing Page',
     description: 'Modern landing page for software-as-a-service products with pricing, features, and sign-up forms.',
@@ -133,7 +155,7 @@ const templates: Template[] = [
   },
 ];
 
-const categories = ['All', 'Hotel & Travel', 'Retail & Shopping', 'SaaS & Software', 'Portfolio & Creative'];
+const categories = ['All', 'Hotel & Travel', 'Retail & Shopping', 'SaaS & Software', 'Portfolio & Creative', 'Agency & Business'];
 
 export default function TemplatesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
