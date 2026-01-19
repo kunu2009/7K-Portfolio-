@@ -220,6 +220,28 @@ const templates: Template[] = [
     bestseller: true
   },
   {
+    id: 'illustration-portfolio',
+    title: '7K Illustration Portfolio',
+    description: 'Vibrant illustration-focused portfolio with light blue theme, character design, software showcase, and project gallery.',
+    category: 'Portfolio & Creative',
+    price: 9000,
+    variants: 2,
+    icon: <Palette className="w-6 h-6" />,
+    features: [
+      'Light blue & cyan theme',
+      'Character illustration',
+      'Software showcase grid',
+      'Skill proficiency bars',
+      'Project portfolio',
+      'Testimonials section',
+      'Education display',
+      'Social integration'
+    ],
+    previewUrl: '/templates/portfolio/preview-3',
+    preview: '🎨',
+    bestseller: false
+  },
+  {
     id: 'etech-education',
     title: '7K Etech - Education Platform',
     description: 'Premium e-learning platform with course marketplace, instructor profiles, student testimonials, and comprehensive features.',
