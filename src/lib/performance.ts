@@ -175,6 +175,10 @@ export const preloadCriticalResources = () => {
   });
 };
 
+// ============================================
+// EVENT THROTTLING & DEBOUNCING
+// ============================================
+
 // Debounce function for scroll and resize events
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
@@ -202,6 +206,10 @@ export const throttle = <T extends (...args: any[]) => any>(
   };
 };
 
+// ============================================
+// LAZY LOADING & OBSERVERS
+// ============================================
+
 // Intersection Observer for lazy loading
 export const createIntersectionObserver = (
   callback: IntersectionObserverCallback,
@@ -218,69 +226,25 @@ export const createIntersectionObserver = (
   });
 };
 
-// Check if device prefers reduced motion
-export const prefersReducedMotion = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-};
-
-// Get optimal image quality based on connection
-export const getOptimalImageQuality = (): number => {
-  if (typeof navigator === 'undefined') return 85;
+// Request idle callback wrapper
+export const requestIdleCallback = (callback: () => void, timeout = 2000) => {
+  if (typeof window === 'undefined') return;
   
-  const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
-  
-  if (!connection) return 85;
-  
-  const effectiveType = connection.effectiveType;
-  
-  switch (effectiveType) {
-    case 'slow-2g':
-    case '2g':
-      return 50;
-    case '3g':
-      return 70;
-    case '4g':
-      return 85;
-    default:
-      return 90;
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(callback, { timeout });
+  } else {
+    setTimeout(callback, 1);
   }
 };
 
-// Check if user is on slow connection
-export const isSlowConnection = (): boolean => {
-  if (typeof navigator === 'undefined') return false;
-  
-  const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
-  
-  if (!connection) return false;
-  
-  return connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.saveData === true;
-};
-
-// Preconnect to external domains
-export const preconnectDomains = (domains: string[]) => {
-  if (typeof document === 'undefined') return;
-  
-  domains.forEach(domain => {
-    const link = document.createElement('link');
-    link.rel = 'preconnect';
-    link.href = domain;
-    link.crossOrigin = 'anonymous';
-    document.head.appendChild(link);
-    
-    // Also add dns-prefetch as fallback
-    const dnsLink = document.createElement('link');
-    dnsLink.rel = 'dns-prefetch';
-    dnsLink.href = domain;
-    document.head.appendChild(dnsLink);
-  });
-};
+// ============================================
+// WEB VITALS & METRICS
+// ============================================
 
 // Measure and report Web Vitals
 export const reportWebVitals = (metric: any) => {
   if (process.env.NODE_ENV === 'development') {
-    console.log(metric);
+    console.log(`[Web Vital] ${metric.name}: ${metric.value}`);
   }
   
   // Send to analytics service
@@ -290,31 +254,5 @@ export const reportWebVitals = (metric: any) => {
       event_label: metric.id,
       non_interaction: true,
     });
-  }
-};
-
-// Optimize animations for low-end devices
-export const shouldReduceAnimations = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  
-  // Check for reduced motion preference
-  if (prefersReducedMotion()) return true;
-  
-  // Check for low-end device indicators
-  const isLowEndDevice = 
-    (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4 ||
-    (navigator as any).hardwareConcurrency && (navigator as any).hardwareConcurrency < 4;
-  
-  return isLowEndDevice;
-};
-
-// Request idle callback wrapper
-export const requestIdleCallback = (callback: () => void) => {
-  if (typeof window === 'undefined') return;
-  
-  if ('requestIdleCallback' in window) {
-    (window as any).requestIdleCallback(callback);
-  } else {
-    setTimeout(callback, 1);
   }
 };
