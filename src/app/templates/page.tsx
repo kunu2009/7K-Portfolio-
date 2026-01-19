@@ -68,6 +68,28 @@ const templates: Template[] = [
     discount: 20
   },
   {
+    id: 'plant-store',
+    title: 'Plant Store - Plantz Avenue',
+    description: 'Beautiful e-commerce website for plant shops with nature-inspired design, product catalog, and care guides.',
+    category: 'Retail & Shopping',
+    price: 8000,
+    variants: 2,
+    icon: <ShoppingCart className="w-6 h-6" />,
+    features: [
+      'Nature-inspired design',
+      'Product catalog',
+      'Category filters',
+      'Plant care guides',
+      'Shopping cart',
+      'Newsletter signup',
+      'Instagram integration',
+      'Mobile responsive'
+    ],
+    previewUrl: '/templates/ecommerce/preview-2',
+    preview: '🌿',
+    bestseller: false
+  },
+  {
     id: 'saas-landing',
     title: 'SaaS Landing Page',
     description: 'Modern landing page for software-as-a-service products with pricing, features, and sign-up forms.',
