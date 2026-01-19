@@ -198,6 +198,28 @@ const templates: Template[] = [
     preview: '💼',
   },
   {
+    id: 'creative-portfolio',
+    title: '7K Creative Portfolio',
+    description: 'Minimalist portfolio with cute character design, dark theme, animated skills bars, and creative sections.',
+    category: 'Portfolio & Creative',
+    price: 8000,
+    variants: 2,
+    icon: <Palette className="w-6 h-6" />,
+    features: [
+      'Cute character design',
+      'Dark navy theme',
+      'Animated skills bars',
+      'Tool proficiency display',
+      'Project showcase',
+      'Contact form',
+      'Social integration',
+      'Minimalist design'
+    ],
+    previewUrl: '/templates/portfolio/preview-2',
+    preview: '🎨',
+    bestseller: true
+  },
+  {
     id: 'etech-education',
     title: '7K Etech - Education Platform',
     description: 'Premium e-learning platform with course marketplace, instructor profiles, student testimonials, and comprehensive features.',
