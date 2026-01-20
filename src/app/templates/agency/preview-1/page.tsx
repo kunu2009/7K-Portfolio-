@@ -41,6 +41,7 @@ export default function CreativeAgencyTemplate() {
         whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creatix%20agency%20template%20(%E2%82%B910,000)"
         color="green"
       />
+      <header className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
