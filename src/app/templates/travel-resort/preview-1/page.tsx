@@ -427,11 +427,11 @@ export default function TravelResortTemplate() {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center gap-2">
                   <Phone size={16} className="text-cyan-400" />
-                  <a href="tel:+918810331859" className="hover:text-cyan-400 transition">+91 8810331859</a>
+                  <a href="tel:+918591247148" className="hover:text-cyan-400 transition">+91 8591 247 148</a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail size={16} className="text-cyan-400" />
-                  <a href="mailto:kunal@7ktravel.com" className="hover:text-cyan-400 transition">kunal@7ktravel.com</a>
+                  <a href="mailto:kunalchheda13@gmail.com" className="hover:text-cyan-400 transition">kunalchheda13@gmail.com</a>
                 </div>
               </div>
             </div>
@@ -454,7 +454,7 @@ export default function TravelResortTemplate() {
       <DraggableCTA 
         price="₹10,000" 
         title="7K Travel Premium" 
-        whatsappLink="https://wa.me/918810331859?text=Hi%20Kunal,%20I%20want%20to%20book%20a%20travel%20package%20with%207K%20Travel!"
+        whatsappLink="https://wa.me/918591247148?text=Hi%20Kunal,%20I%20want%20to%20book%20a%20travel%20package%20with%207K%20Travel!"
         color="cyan"
       />
     </div>

@@ -58,7 +58,7 @@ export default function ResumePortfolio() {
       <DraggableCTA
         price="₹9,000"
         title="7K Resume Portfolio"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Resume%20Portfolio%20template%20(₹9,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Resume%20Portfolio%20template%20(₹9,000)"
         color="yellow"
       />
 
@@ -132,8 +132,8 @@ export default function ResumePortfolio() {
             <div className="space-y-2">
               <div className="font-extrabold text-2xl">Contact</div>
               <div className="flex items-center gap-2"><MapPin className="w-4 h-4"/> Pune, India</div>
-              <div className="flex items-center gap-2"><Mail className="w-4 h-4"/> kunal@7k.design</div>
-              <div className="flex items-center gap-2"><Phone className="w-4 h-4"/> +91 98765 43210</div>
+              <div className="flex items-center gap-2"><Mail className="w-4 h-4"/> kunalchheda13@gmail.com</div>
+              <div className="flex items-center gap-2"><Phone className="w-4 h-4"/> +91 8591 247 148</div>
             </div>
             <div>
               <div className="font-bold mb-2">Social</div>
@@ -143,7 +143,7 @@ export default function ResumePortfolio() {
               </div>
             </div>
             <div className="flex items-center">
-              <a href="https://wa.me/919876543210?text=Hi!%20I'd%20like%20to%20hire%20Kunal" className="inline-flex items-center gap-2 bg-[#F2C17B] text-[#2F4A3A] px-5 py-3 rounded-full font-semibold hover:bg-[#E9B461] transition">
+              <a href="https://wa.me/918591247148?text=Hi!%20I'd%20like%20to%20hire%20Kunal" className="inline-flex items-center gap-2 bg-[#F2C17B] text-[#2F4A3A] px-5 py-3 rounded-full font-semibold hover:bg-[#E9B461] transition">
                 Hire Me <ArrowRight className="w-4 h-4"/>
               </a>
             </div>

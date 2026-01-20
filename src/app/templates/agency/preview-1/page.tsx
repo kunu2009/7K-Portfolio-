@@ -38,7 +38,7 @@ export default function CreativeAgencyTemplate() {
       <DraggableCTA
         price="₹10,000"
         title="7K Creatix Agency"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creatix%20agency%20template%20(%E2%82%B910,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Creatix%20agency%20template%20(%E2%82%B910,000)"
         color="green"
       />
       <header className="border-b border-white/10">
@@ -365,7 +365,7 @@ export default function CreativeAgencyTemplate() {
               <ul className="space-y-2 text-black/70">
                 <li className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>hello@7kcreatix.com</span>
+                  <span>kunalchheda13@gmail.com</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
@@ -391,7 +391,7 @@ export default function CreativeAgencyTemplate() {
           Modern agency website with stunning design. Perfect for creative studios and digital agencies!
         </p>
         <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Creative%20Agency%20template%20(₹10,000).%20Can%20you%20provide%20more%20details?"
+          href="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%20Creative%20Agency%20template%20(₹10,000).%20Can%20you%20provide%20more%20details?"
           target="_blank"
           rel="noopener noreferrer"
           className="block text-center bg-[#BFFF00] text-black px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#A8E600] transition"

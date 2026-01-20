@@ -126,7 +126,7 @@ export default function SaaSProductivityApp() {
       <DraggableCTA
         price="₹12,000"
         title="7K SaaS Template"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Mutmiz%20SaaS%20template%20(₹12,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Mutmiz%20SaaS%20template%20(₹12,000)"
         color="purple"
       />
 
@@ -612,7 +612,7 @@ export default function SaaSProductivityApp() {
               <ul className="space-y-3 text-gray-400 text-sm">
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#7C5CFF]" />
-                  hello@7kmutmiz.com
+                  kunalchheda13@gmail.com
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#7C5CFF]" />

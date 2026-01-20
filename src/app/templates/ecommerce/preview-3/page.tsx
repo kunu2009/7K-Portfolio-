@@ -124,7 +124,7 @@ export default function CandleShop() {
       <DraggableCTA
         price="₹8,000"
         title="7K Candles Shop"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Candles%20Shop%20template%20(₹8,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Candles%20Shop%20template%20(₹8,000)"
         color="blue"
       />
 
@@ -318,12 +318,12 @@ export default function CandleShop() {
             <div className="text-center">
               <Mail className="w-8 h-8 mx-auto mb-2" />
               <div className="font-semibold mb-1">Email</div>
-              <a href="mailto:kunal@7kcandles.com" className="hover:underline">kunal@7kcandles.com</a>
+              <a href="mailto:kunalchheda13@gmail.com" className="hover:underline">kunalchheda13@gmail.com</a>
             </div>
             <div className="text-center">
               <Phone className="w-8 h-8 mx-auto mb-2" />
               <div className="font-semibold mb-1">Phone</div>
-              <a href="tel:+919876543210" className="hover:underline">+91 98765 43210</a>
+              <a href="tel:+918591247148" className="hover:underline">+91 8591 247 148</a>
             </div>
             <div className="text-center">
               <MapPin className="w-8 h-8 mx-auto mb-2" />
@@ -334,7 +334,7 @@ export default function CandleShop() {
 
           <div className="text-center">
             <a
-              href="https://wa.me/919876543210?text=Hi!%20I'd%20like%20to%20inquire%20about%20your%20candles"
+              href="https://wa.me/918591247148?text=Hi!%20I'd%20like%20to%20inquire%20about%20your%20candles"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition"

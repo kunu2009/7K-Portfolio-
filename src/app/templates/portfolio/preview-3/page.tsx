@@ -116,7 +116,7 @@ export default function IllustrationPortfolio() {
       <DraggableCTA
         price="₹9,000"
         title="7K Illustration Portfolio"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Illustration%20Portfolio%20template%20(₹9,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Illustration%20Portfolio%20template%20(₹9,000)"
         color="cyan"
       />
 
@@ -327,7 +327,7 @@ export default function IllustrationPortfolio() {
                   </a>
                   <a href="mailto:email@example.com" className="flex items-center gap-3 text-gray-700 hover:text-cyan-600 transition">
                     <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold">kunal@7k.design</span>
+                    <span className="font-semibold">kunalchheda13@gmail.com</span>
                   </a>
                 </div>
               </div>

@@ -393,7 +393,7 @@ export default function PlantStoreTemplate() {
           Beautiful e-commerce design for plant shops. Fully customizable and ready to use!
         </p>
         <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Plant%20Store%20template%20(₹8,000).%20Can%20you%20provide%20more%20details?"
+          href="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%20Plant%20Store%20template%20(₹8,000).%20Can%20you%20provide%20more%20details?"
           target="_blank"
           rel="noopener noreferrer"
           className="block text-center bg-[#1A4D2E] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#0F3A1F] transition"

@@ -79,7 +79,7 @@ export default function LuxuryHotelTemplate() {
       <DraggableCTA
         price="₹10,000"
         title="7K Hoteler Luxury"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Hoteler%20template%20(%E2%82%B910,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Hoteler%20template%20(%E2%82%B910,000)"
         color="orange"
       />
       <header className="border-b border-white/10">
@@ -116,7 +116,7 @@ export default function LuxuryHotelTemplate() {
           <div className="flex items-center space-x-4 text-sm pb-3 border-t border-[#D4AF37]/20 pt-3">
             <div className="flex items-center space-x-2">
               <Mail className="w-4 h-4 text-[#D4AF37]" />
-              <span className="text-gray-400">kunal@7khoteler.com</span>
+              <span className="text-gray-400">kunalchheda13@gmail.com</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-[#D4AF37]" />
@@ -437,7 +437,7 @@ export default function LuxuryHotelTemplate() {
                 </li>
                 <li className="flex items-center space-x-2">
                   <Mail className="w-4 h-4" />
-                  <span>kunal@7khoteler.com</span>
+                  <span>kunalchheda13@gmail.com</span>
                 </li>
               </ul>
             </div>
@@ -455,7 +455,7 @@ export default function LuxuryHotelTemplate() {
           Premium hotel website with elegant gold theme. Perfect for luxury hotels and resorts!
         </p>
         <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Luxury%20Hotel%20template%20(₹10,000).%20Can%20you%20provide%20more%20details?"
+          href="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%20Luxury%20Hotel%20template%20(₹10,000).%20Can%20you%20provide%20more%20details?"
           target="_blank"
           rel="noopener noreferrer"
           className="block text-center bg-[#D4AF37] text-[#1A1410] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#B8942C] transition"

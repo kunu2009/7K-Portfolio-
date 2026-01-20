@@ -267,7 +267,7 @@ export default function EducationPlatform() {
       <DraggableCTA
         price="₹15,000"
         title="7K Education Platform"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Etech%20education%20template%20(₹15,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Etech%20education%20template%20(₹15,000)"
         color="purple"
       />
 
@@ -946,11 +946,11 @@ export default function EducationPlatform() {
                 </li>
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-purple-400" />
-                  kunal@7ketech.com
+                  kunalchheda13@gmail.com
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-purple-400" />
-                  +91 98765 43210
+                  +91 8591 247 148
                 </li>
               </ul>
             </div>

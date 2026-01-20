@@ -93,7 +93,7 @@ export default function CreativePortfolio() {
       <DraggableCTA
         price="₹8,000"
         title="7K Creative Portfolio"
-        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creative%20Portfolio%20template%20(₹8,000)"
+        whatsappLink="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20the%207K%20Creative%20Portfolio%20template%20(₹8,000)"
         color="orange"
       />
 
@@ -493,7 +493,7 @@ export default function CreativePortfolio() {
               <div className="flex flex-wrap justify-center gap-6 text-gray-400">
                 <div className="flex items-center gap-2">
                   <Mail className="w-5 h-5 text-orange-400" />
-                  <span>kunal@7k.design</span>
+                  <span>kunalchheda13@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="w-5 h-5 text-orange-400" />
