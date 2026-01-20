@@ -90,6 +90,28 @@ const templates: Template[] = [
     discount: 20
   },
   {
+    id: 'candle-shop',
+    title: '7K Candles Shop',
+    description: 'Beautiful candle e-commerce store with product showcase, categories, team profiles, and premium design.',
+    category: 'Retail & Shopping',
+    price: 8000,
+    variants: 1,
+    icon: <ShoppingCart className="w-6 h-6" />,
+    features: [
+      'Blue & orange theme',
+      'Product catalog',
+      'Category filters',
+      'Rating system',
+      'Shopping cart UI',
+      'Team section',
+      'Contact integration',
+      'Mobile responsive'
+    ],
+    previewUrl: '/templates/ecommerce/preview-3',
+    preview: '🕯️',
+    bestseller: false
+  },
+  {
     id: 'plant-store',
     title: 'Plant Store - Plantz Avenue',
     description: 'Beautiful e-commerce website for plant shops with nature-inspired design, product catalog, and care guides.',
