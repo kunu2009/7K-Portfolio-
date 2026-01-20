@@ -307,6 +307,29 @@ const templates: Template[] = [
     preview: '🎓',
     bestseller: true
   },
+  {
+    id: 'travel-resort',
+    title: '7K Travel Resort',
+    description: 'Premium travel and resort booking platform inspired by Berlian Resorts with destination search, bookings, and comprehensive travel services.',
+    category: 'Hotel & Travel',
+    price: 18000,
+    variants: 1,
+    icon: <Hotel className="w-6 h-6" />,
+    features: [
+      'Interactive booking widget',
+      'International destinations',
+      'Resort partners showcase',
+      'Activity modules',
+      'Membership benefits',
+      'Photo gallery',
+      'Testimonials',
+      'Premium design'
+    ],
+    previewUrl: '/templates/travel-resort/preview-1',
+    preview: '✈️',
+    bestseller: true,
+    discount: 10
+  },
 ];
 
 const categories = ['All', 'Hotel & Travel', 'Retail & Shopping', 'SaaS & Software', 'Portfolio & Creative', 'Agency & Business', 'Education & Learning'];
