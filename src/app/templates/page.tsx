@@ -4,6 +4,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Hotel, Zap, Briefcase, Download, Eye, Sparkles, Palette, BookOpen } from 'lucide-react';
+import { 
+  HotelIllustration, 
+  TravelIllustration, 
+  SaaSIllustration,
+  EcommerceIllustration,
+  AgencyIllustration,
+  PortfolioIllustration,
+  EducationIllustration,
+  CandleIllustration
+} from '@/components/svg-illustrations';
 
 interface Template {
   id: string;
@@ -15,7 +25,7 @@ interface Template {
   icon: React.ReactNode;
   features: string[];
   previewUrl: string;
-  preview: string;
+  preview: React.ReactNode;
   bestseller?: boolean;
   discount?: number;
 }
@@ -40,7 +50,7 @@ const templates: Template[] = [
       'SEO optimized'
     ],
     previewUrl: '/templates/hotel-booking/preview-1',
-    preview: '🏨',
+    preview: <HotelIllustration />,
     bestseller: true,
     discount: 15
   },
@@ -63,7 +73,7 @@ const templates: Template[] = [
       'Premium design'
     ],
     previewUrl: '/templates/hotel-booking/preview-2',
-    preview: '👑',
+    preview: <HotelIllustration />,
     bestseller: true
   },
   {
@@ -85,7 +95,7 @@ const templates: Template[] = [
       'Analytics dashboard'
     ],
     previewUrl: '/templates/ecommerce/preview-1',
-    preview: '🛒',
+    preview: <EcommerceIllustration />,
     bestseller: true,
     discount: 20
   },
@@ -108,7 +118,7 @@ const templates: Template[] = [
       'Mobile responsive'
     ],
     previewUrl: '/templates/ecommerce/preview-3',
-    preview: '🕯️',
+    preview: <CandleIllustration />,
     bestseller: false
   },
   {
@@ -130,7 +140,7 @@ const templates: Template[] = [
       'Mobile responsive'
     ],
     previewUrl: '/templates/ecommerce/preview-2',
-    preview: '🌿',
+    preview: <EcommerceIllustration />,
     bestseller: false
   },
   {
@@ -152,7 +162,7 @@ const templates: Template[] = [
       'Fully responsive'
     ],
     previewUrl: '/templates/agency/preview-1',
-    preview: '✨',
+    preview: <AgencyIllustration />,
     bestseller: true
   },
   {
@@ -174,7 +184,7 @@ const templates: Template[] = [
       'Fast loading'
     ],
     previewUrl: '/templates/saas/preview-1',
-    preview: '⚡',
+    preview: <SaaSIllustration />,
   },
   {
     id: 'mutmiz-saas',
@@ -195,7 +205,7 @@ const templates: Template[] = [
       'Premium design'
     ],
     previewUrl: '/templates/saas/preview-2',
-    preview: '💜',
+    preview: <SaaSIllustration />,
     bestseller: true
   },
   {
@@ -217,7 +227,7 @@ const templates: Template[] = [
       'Social links'
     ],
     previewUrl: '/templates/portfolio/preview-1',
-    preview: '💼',
+    preview: <PortfolioIllustration />,
   },
   {
     id: 'creative-portfolio',
@@ -238,7 +248,7 @@ const templates: Template[] = [
       'Minimalist design'
     ],
     previewUrl: '/templates/portfolio/preview-2',
-    preview: '🎨',
+    preview: <PortfolioIllustration />,
     bestseller: true
   },
   {
@@ -260,7 +270,7 @@ const templates: Template[] = [
       'Social integration'
     ],
     previewUrl: '/templates/portfolio/preview-3',
-    preview: '🎨',
+    preview: <PortfolioIllustration />,
     bestseller: false
   },
   {
@@ -282,7 +292,7 @@ const templates: Template[] = [
       'Fast performance'
     ],
     previewUrl: '/templates/portfolio/preview-4',
-    preview: '📄',
+    preview: <PortfolioIllustration />,
     bestseller: false
   },
   {
@@ -304,7 +314,7 @@ const templates: Template[] = [
       'Certificate system'
     ],
     previewUrl: '/templates/education/preview-1',
-    preview: '🎓',
+    preview: <EducationIllustration />,
     bestseller: true
   },
   {
@@ -326,7 +336,7 @@ const templates: Template[] = [
       'Premium design'
     ],
     previewUrl: '/templates/travel-resort/preview-1',
-    preview: '✈️',
+    preview: <TravelIllustration />,
     bestseller: true,
     discount: 10
   },
@@ -402,8 +412,8 @@ export default function TemplatesPage() {
               )}
 
               {/* Preview Image Area */}
-              <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center overflow-hidden">
-                <div className="text-6xl opacity-20 group-hover:opacity-30 transition-opacity">
+              <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center overflow-hidden p-8">
+                <div className="w-full h-full opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-300">
                   {template.preview}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
