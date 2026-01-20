@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DraggableCTA } from "@/components/draggable-cta";
 import { Calendar, MapPin, Users, Star, Phone, Mail, Clock, Wifi, Coffee, Dumbbell, Utensils, Car, Search, ChevronRight, Award, Sparkles } from "lucide-react";
 import Link from "next/link";
 
@@ -74,8 +75,13 @@ export default function LuxuryHotelTemplate() {
 
   return (
     <div className="min-h-screen bg-[#1A1410] text-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#1A1410]/95 backdrop-blur-md border-b border-[#D4AF37]/20">
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹10,000"
+        title="7K Hoteler Luxury"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Hoteler%20template%20(%E2%82%B910,000)"
+        color="orange"
+      />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">

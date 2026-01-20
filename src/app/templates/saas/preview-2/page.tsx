@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { DraggableCTA } from '@/components/draggable-cta';
 import Link from 'next/link';
 import { 
   CheckCircle2, 
@@ -121,22 +122,13 @@ export default function SaaSProductivityApp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-[#F5F3FF] to-white">
-      {/* Demo Badge */}
-      <div className="fixed top-4 right-4 z-50 bg-gradient-to-r from-[#7C5CFF] to-[#9D7CFF] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20">
-        <Award className="w-5 h-5" />
-        <div>
-          <div className="text-xs font-semibold">7K SaaS Template</div>
-          <div className="text-xs opacity-90">₹12,000 Only</div>
-        </div>
-        <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Mutmiz%20SaaS%20template%20(₹12,000)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 bg-white text-[#7C5CFF] px-4 py-1.5 rounded-full text-xs font-bold hover:bg-opacity-90 transition"
-        >
-          Buy Now
-        </a>
-      </div>
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹12,000"
+        title="7K SaaS Template"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Mutmiz%20SaaS%20template%20(₹12,000)"
+        color="purple"
+      />
 
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-40">

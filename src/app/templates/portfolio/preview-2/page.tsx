@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { DraggableCTA } from '@/components/draggable-cta';
 import { 
   Home,
   User,
@@ -88,22 +89,13 @@ export default function CreativePortfolio() {
 
   return (
     <div className="min-h-screen bg-[#1a2332] text-white relative overflow-x-hidden">
-      {/* Demo Badge */}
-      <div className="fixed top-4 right-4 z-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20">
-        <Sparkles className="w-5 h-5" />
-        <div>
-          <div className="text-xs font-semibold">7K Portfolio Template</div>
-          <div className="text-xs opacity-90">₹8,000 Only</div>
-        </div>
-        <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creative%20Portfolio%20template%20(₹8,000)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 bg-white text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-opacity-90 transition"
-        >
-          Buy Now
-        </a>
-      </div>
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹8,000"
+        title="7K Creative Portfolio"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creative%20Portfolio%20template%20(₹8,000)"
+        color="orange"
+      />
 
       {/* Decorative Characters - Left */}
       <div className="fixed left-0 bottom-0 w-80 h-96 pointer-events-none z-10 hidden lg:block">

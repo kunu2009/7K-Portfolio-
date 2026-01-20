@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { DraggableCTA } from "@/components/draggable-cta";
 import {
   Mail,
   Phone,
@@ -53,22 +54,13 @@ export default function ResumePortfolio() {
 
   return (
     <div className="min-h-screen bg-[#2F4A3A] text-[#161513]">
-      {/* Demo Badge */}
-      <div className="fixed top-4 right-4 z-50 bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20">
-        <Sparkles className="w-5 h-5" />
-        <div>
-          <div className="text-xs font-semibold">7K Resume Portfolio</div>
-          <div className="text-xs opacity-90">₹9,000 Only</div>
-        </div>
-        <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Resume%20Portfolio%20template%20(₹9,000)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 bg-white text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-opacity-90 transition"
-        >
-          Buy Now
-        </a>
-      </div>
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹9,000"
+        title="7K Resume Portfolio"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Resume%20Portfolio%20template%20(₹9,000)"
+        color="yellow"
+      />
 
       {/* Header */}
       <header className="bg-[#2F4A3A]/90 backdrop-blur-md border-b border-black/20 sticky top-0 z-40">

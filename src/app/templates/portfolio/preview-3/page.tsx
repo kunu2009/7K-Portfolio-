@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Link from 'next/link';
-import { 
+import Link from 'next/link';import { DraggableCTA } from '@/components/draggable-cta';import { 
   Mail,
   Instagram,
   Github,
@@ -113,22 +112,13 @@ export default function IllustrationPortfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-50">
-      {/* Demo Badge */}
-      <div className="fixed top-4 right-4 z-50 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20">
-        <Sparkles className="w-5 h-5" />
-        <div>
-          <div className="text-xs font-semibold">7K Illustration Portfolio</div>
-          <div className="text-xs opacity-90">₹9,000 Only</div>
-        </div>
-        <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Illustration%20Portfolio%20template%20(₹9,000)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 bg-white text-blue-600 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-opacity-90 transition"
-        >
-          Buy Now
-        </a>
-      </div>
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹9,000"
+        title="7K Illustration Portfolio"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Illustration%20Portfolio%20template%20(₹9,000)"
+        color="cyan"
+      />
 
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-lg border-b border-blue-100 sticky top-0 z-40 shadow-sm">

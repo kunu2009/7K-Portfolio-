@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DraggableCTA } from "@/components/draggable-cta";
 import { ArrowRight, Menu, X, Sparkles, Users, Award, TrendingUp, Code, Palette, Layers, Video, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 
@@ -33,8 +34,13 @@ export default function CreativeAgencyTemplate() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹10,000"
+        title="7K Creatix Agency"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Creatix%20agency%20template%20(%E2%82%B910,000)"
+        color="green"
+      />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">

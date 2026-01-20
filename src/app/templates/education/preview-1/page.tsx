@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { DraggableCTA } from '@/components/draggable-cta';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -262,22 +263,13 @@ export default function EducationPlatform() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
-      {/* Demo Badge */}
-      <div className="fixed top-4 right-4 z-50 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border-2 border-white/20">
-        <Sparkles className="w-5 h-5" />
-        <div>
-          <div className="text-xs font-semibold">7K Etech Pro Template</div>
-          <div className="text-xs opacity-90">₹15,000 Only</div>
-        </div>
-        <a
-          href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Etech%20Education%20Platform%20template%20(₹15,000)"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 bg-white text-purple-600 px-4 py-1.5 rounded-full text-xs font-bold hover:bg-opacity-90 transition"
-        >
-          Buy Now
-        </a>
-      </div>
+      {/* Demo Badge - Draggable */}
+      <DraggableCTA
+        price="₹15,000"
+        title="7K Education Platform"
+        whatsappLink="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%207K%20Etech%20education%20template%20(₹15,000)"
+        color="purple"
+      />
 
       {/* Header */}
       <header className="bg-white/90 backdrop-blur-lg border-b border-purple-100 sticky top-0 z-40 shadow-sm">

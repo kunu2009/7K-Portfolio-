@@ -1,43 +1,49 @@
 "use client";
 
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import Header from "@/components/header-enhanced";
 import HeroSection from "@/components/sections/hero-enhanced";
 import Footer from "@/components/footer-enhanced";
 
-// Lazy load all sections below the fold with loading states
+// Skeleton loaders for better UX
+const SkeletonLoader = ({ height = 400 }: { height?: number }) => (
+  <div className={`min-h-[${height}px] animate-pulse bg-gradient-to-br from-muted/20 to-muted/5`} />
+);
+
+// Lazy load all sections below the fold with optimized loading states
 const AboutSection = dynamic(() => import('@/components/sections/about-enhanced'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const PhilosophySection = dynamic(() => import('@/components/sections/philosophy'), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={300} />
 });
 const ServicesMenuCard = dynamic(() => import('@/components/sections/services-menu-card'), {
-  loading: () => <div className="min-h-[600px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={600} />
 });
 const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/portfolio-showcase'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const AppStoreSection = dynamic(() => import('@/components/sections/app-store'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const ProjectsSection = dynamic(() => import('@/components/sections/projects'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const WritingSection = dynamic(() => import('@/components/sections/writing'), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={300} />
 });
 const JourneySection = dynamic(() => import('@/components/sections/journey'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const SupportSection = dynamic(() => import('@/components/sections/support-section').then(mod => ({ default: mod.SupportSection })), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={300} />
 });
 const BlogSection = dynamic(() => import('@/components/blog-section'), {
-  loading: () => <div className="min-h-[400px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={400} />
 });
 const TestimonialsSection = dynamic(() => import('@/components/sections/testimonials'), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-muted/20" />
+  loading: () => <SkeletonLoader height={300} />
 });
 
 export default function HomePage() {
