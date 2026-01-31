@@ -612,6 +612,17 @@ export const NAVIGATION = [
   { name: "About", href: "/#about" },
   { name: "Apps", href: "/#app-store" },
   { 
+    name: "Store", 
+    href: "/store",
+    dropdown: [
+      { name: "Browse Store", href: "/store" },
+      { name: "Templates", href: "/templates" },
+      { name: "eBooks", href: "/books" },
+      { name: "Free Apps", href: "/apps" },
+      { name: "Services", href: "/services" },
+    ]
+  },
+  { 
     name: "Services", 
     href: "/services",
     dropdown: [
