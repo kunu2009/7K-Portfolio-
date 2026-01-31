@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, ArrowRight, Zap } from 'lucide-react';
+import {
+  Check,
+  ArrowRight,
+  LayoutGrid,
+  Users,
+  BarChart3,
+  Bell,
+  Link2,
+  ShieldCheck,
+} from 'lucide-react';
+import { SaaSIllustration } from '@/components/svg-illustrations';
 
 export default function SaasPreview1() {
   const [email, setEmail] = useState('');
@@ -34,51 +44,88 @@ export default function SaasPreview1() {
 
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl opacity-20" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-24 text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-300">
-            🎉 New: AI-Powered Task Assistant
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-300">
+              AI-powered task assistant is live
+            </div>
+
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Manage your team's
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                work effortlessly
+              </span>
+            </h1>
+
+            <p className="text-xl text-slate-300 max-w-2xl mb-8">
+              TaskFlow helps teams collaborate, organize projects, and deliver results faster. Join thousands of teams already using TaskFlow.
+            </p>
+
+            {/* CTA Form */}
+            <form onSubmit={handleSubmit} className="max-w-md mb-6 flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 bg-slate-800 text-white px-6 py-4 rounded-lg border border-slate-700 focus:border-blue-500 outline-none"
+              />
+              <button
+                type="submit"
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all flex items-center gap-2"
+              >
+                Start Free <ArrowRight className="w-5 h-5" />
+              </button>
+            </form>
+
+            {submitted && (
+              <p className="text-green-400 text-sm mb-3">✓ Check your email for setup instructions!</p>
+            )}
+
+            <p className="text-sm text-slate-400">
+              No credit card required • 14-day free trial • Cancel anytime
+            </p>
           </div>
 
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            Manage your team's
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              work effortlessly
-            </span>
-          </h1>
-
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-            TaskFlow helps teams collaborate, organize projects, and deliver results faster. Join thousands of teams already using TaskFlow.
-          </p>
-
-          {/* CTA Form */}
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-12 flex gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1 bg-slate-800 text-white px-6 py-4 rounded-lg border border-slate-700 focus:border-blue-500 outline-none"
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all flex items-center gap-2"
-            >
-              Start Free <ArrowRight className="w-5 h-5" />
-            </button>
-          </form>
-
-          {submitted && (
-            <p className="text-green-400 text-sm mb-8">✓ Check your email for setup instructions!</p>
-          )}
-
-          <p className="text-sm text-slate-400">
-            No credit card required • 14-day free trial • Cancel anytime
-          </p>
+          <div className="relative bg-slate-800/60 border border-slate-700 rounded-2xl p-6 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl" />
+            <div className="relative aspect-[4/3]">
+              <SaaSIllustration />
+            </div>
+            <div className="grid grid-cols-2 gap-3 mt-6 text-sm text-slate-300">
+              {[{
+                label: 'Live dashboards',
+                icon: LayoutGrid,
+              }, {
+                label: 'Team visibility',
+                icon: Users,
+              }, {
+                label: 'Revenue analytics',
+                icon: BarChart3,
+              }, {
+                label: 'Smart alerts',
+                icon: Bell,
+              }, {
+                label: '500+ integrations',
+                icon: Link2,
+              }, {
+                label: 'SOC 2 security',
+                icon: ShieldCheck,
+              }].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="flex items-center gap-2 bg-slate-900/60 border border-slate-700 rounded-lg px-3 py-2">
+                    <Icon className="w-4 h-4 text-blue-300" />
+                    <span>{item.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -103,38 +150,40 @@ export default function SaasPreview1() {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              icon: '📋',
+              icon: LayoutGrid,
               title: 'Task Management',
               desc: 'Organize tasks with boards, lists, and timelines. Drag-and-drop interface for easy workflow.'
             },
             {
-              icon: '👥',
+              icon: Users,
               title: 'Team Collaboration',
               desc: 'Real-time comments, mentions, and file sharing. Keep everyone on the same page.'
             },
             {
-              icon: '📊',
+              icon: BarChart3,
               title: 'Analytics & Reports',
               desc: 'Track progress with visual reports. Get insights on team productivity and project health.'
             },
             {
-              icon: '🔔',
+              icon: Bell,
               title: 'Smart Notifications',
               desc: 'Never miss important updates. Customizable alerts for tasks, deadlines, and mentions.'
             },
             {
-              icon: '🔗',
+              icon: Link2,
               title: 'Integrations',
               desc: 'Connect with 500+ apps. Slack, GitHub, Jira, Google Workspace, and more.'
             },
             {
-              icon: '🔒',
+              icon: ShieldCheck,
               title: 'Enterprise Security',
               desc: 'SOC 2 compliant. Encryption, SSO, audit logs, and advanced permissions.'
             }
           ].map((feature, idx) => (
             <div key={idx} className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-all">
-              <div className="text-4xl mb-4">{feature.icon}</div>
+              <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-lg bg-blue-500/10 border border-blue-500/40 text-blue-300">
+                <feature.icon className="w-6 h-6" />
+              </div>
               <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
               <p className="text-slate-400">{feature.desc}</p>
             </div>

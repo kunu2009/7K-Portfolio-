@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { DraggableCTA } from "@/components/draggable-cta";
+import { PortfolioIllustration } from "@/components/svg-illustrations";
 import {
   Mail,
   Phone,
@@ -19,7 +21,11 @@ import {
   Cpu,
   Languages,
   Heart,
-  Sparkles
+  Sparkles,
+  Music,
+  Scissors,
+  Monitor,
+  Cat
 } from "lucide-react";
 
 export default function ResumePortfolio() {
@@ -46,10 +52,10 @@ export default function ResumePortfolio() {
     { name: "Hindi", level: "Native" }
   ];
   const hobbies = [
-    { icon: "🎻", name: "Classical Music" },
-    { icon: "🧶", name: "Crochet" },
-    { icon: "🖥️", name: "Digital Art" },
-    { icon: "🐈", name: "Cats" }
+    { icon: "music", name: "Classical Music" },
+    { icon: "scissors", name: "Crochet" },
+    { icon: "monitor", name: "Digital Art" },
+    { icon: "heart", name: "Cats" }
   ];
 
   return (
@@ -115,8 +121,8 @@ export default function ResumePortfolio() {
             </div>
 
             <div className="relative">
-              <div className="w-full h-96 bg-[#E6974A] rounded-2xl shadow-xl flex items-center justify-center">
-                <div className="w-64 h-64 rounded-full bg-[#2F4A3A] opacity-20"></div>
+              <div className="w-full h-96 bg-[#E6974A] rounded-2xl shadow-xl flex items-center justify-center overflow-hidden">
+                <PortfolioIllustration className="w-72 h-72 opacity-90" />
               </div>
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#F2C17B] text-[#2F4A3A] px-5 py-2 rounded-full font-semibold shadow">2nd August 1999</div>
               <div className="absolute bottom-6 right-6 bg-[#2F4A3A] text-[#F7E9D6] px-4 py-2 rounded-full">Indian</div>
@@ -234,7 +240,12 @@ export default function ResumePortfolio() {
               <div className="grid grid-cols-4 gap-4">
                 {hobbies.map((h) => (
                   <div key={h.name} className="bg-[#233A2E] rounded-xl p-4 text-center">
-                    <div className="text-2xl mb-2">{h.icon}</div>
+                    <div className="flex justify-center mb-2">
+                      {h.icon === 'music' && <Music className="w-6 h-6 text-[#F2C17B]" />}
+                      {h.icon === 'scissors' && <Scissors className="w-6 h-6 text-[#F2C17B]" />}
+                      {h.icon === 'monitor' && <Monitor className="w-6 h-6 text-[#F2C17B]" />}
+                      {h.icon === 'heart' && <Cat className="w-6 h-6 text-[#F2C17B]" />}
+                    </div>
                     <div className="text-sm">{h.name}</div>
                   </div>
                 ))}

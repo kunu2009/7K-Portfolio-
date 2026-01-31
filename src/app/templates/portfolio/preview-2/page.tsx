@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { DraggableCTA } from '@/components/draggable-cta';
+import { PortfolioIllustration } from '@/components/svg-illustrations';
 import { 
   Home,
   User,
@@ -62,28 +64,28 @@ export default function CreativePortfolio() {
       category: 'Web Design',
       description: 'Modern shopping experience with seamless checkout',
       color: 'from-orange-500 to-red-500',
-      icon: '🛍️'
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop'
     },
     {
       title: 'Mobile Banking App',
       category: 'UI/UX Design',
       description: 'Intuitive financial management interface',
       color: 'from-yellow-500 to-orange-500',
-      icon: '💳'
+      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop'
     },
     {
       title: 'Brand Identity',
       category: 'Graphic Design',
       description: 'Complete visual identity for tech startup',
       color: 'from-orange-600 to-yellow-500',
-      icon: '🎨'
+      image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop'
     },
     {
       title: 'Dashboard Analytics',
       category: 'UI Design',
       description: 'Data visualization and reporting tool',
       color: 'from-amber-500 to-orange-600',
-      icon: '📊'
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
     }
   ];
 
@@ -412,8 +414,14 @@ export default function CreativePortfolio() {
                 key={index}
                 className="bg-[#2d3748]/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-orange-400/20 hover:border-orange-400/50 transition group hover:scale-105 transition-transform"
               >
-                <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center text-7xl`}>
-                  {project.icon}
+                <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="text-sm text-orange-400 font-semibold mb-2">{project.category}</div>

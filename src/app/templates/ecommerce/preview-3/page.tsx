@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import { DraggableCTA } from '@/components/draggable-cta';
@@ -14,6 +15,7 @@ import {
   Sparkles,
   Award,
   Cloud,
+  Flame,
   Mail,
   Phone,
   MapPin,
@@ -21,6 +23,7 @@ import {
   Facebook,
   Download
 } from 'lucide-react';
+import { CandleIllustration } from '@/components/svg-illustrations';
 
 export default function CandleShop() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,7 +38,7 @@ export default function CandleShop() {
       name: 'Lavender Dreams',
       category: 'scented',
       price: 599,
-      image: '🕯️',
+      image: 'https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=900&q=80',
       tag: 'bestseller',
       rating: 4.9
     },
@@ -44,7 +47,7 @@ export default function CandleShop() {
       name: 'Vanilla Bliss',
       category: 'scented',
       price: 549,
-      image: '🕯️',
+      image: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=900&q=80',
       tag: 'popular',
       rating: 4.8
     },
@@ -53,7 +56,7 @@ export default function CandleShop() {
       name: 'Ocean Breeze',
       category: 'scented',
       price: 649,
-      image: '🕯️',
+      image: 'https://images.unsplash.com/photo-1504198266285-165a06f9b283?auto=format&fit=crop&w=900&q=80',
       rating: 4.7
     },
     {
@@ -61,7 +64,7 @@ export default function CandleShop() {
       name: 'Handmade Luxury',
       category: 'handmade',
       price: 999,
-      image: '🕯️',
+      image: 'https://images.unsplash.com/photo-1473186505569-9c61870c11f9?auto=format&fit=crop&w=900&q=80',
       tag: 'premium',
       rating: 5.0
     },
@@ -70,7 +73,7 @@ export default function CandleShop() {
       name: 'Gift Box Set',
       category: 'gift-sets',
       price: 1899,
-      image: '🎁',
+      image: 'https://images.unsplash.com/photo-1473181488821-2d23949a045a?auto=format&fit=crop&w=900&q=80',
       tag: 'gift',
       rating: 4.9
     },
@@ -79,29 +82,29 @@ export default function CandleShop() {
       name: 'Candle Trio',
       category: 'gift-sets',
       price: 1499,
-      image: '🎁',
+      image: 'https://images.unsplash.com/photo-1473181488821-2d23949a045a?auto=format&fit=crop&w=900&q=80',
       rating: 4.8
     }
   ];
 
   const features = [
     {
-      icon: '✨',
+      icon: Sparkles,
       title: 'Sweet Candle',
-      desc: 'Hand-poured with premium wax'
+      desc: 'Hand-poured with premium soy wax'
     },
     {
-      icon: '🌿',
+      icon: Award,
       title: 'Natural Blend',
-      desc: 'Eco-friendly & sustainable'
+      desc: 'Eco-friendly & sustainable scents'
     },
     {
-      icon: '💝',
+      icon: Heart,
       title: 'Unique Gifts',
       desc: 'Perfect for any occasion'
     },
     {
-      icon: '🔥',
+      icon: Flame,
       title: 'Long Lasting',
       desc: '40+ hours burn time'
     }
@@ -192,10 +195,12 @@ export default function CandleShop() {
             
             <div className="relative h-80 flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-orange-100 rounded-3xl"></div>
-              <div className="relative text-center z-10">
-                <div className="text-8xl mb-4">🕯️</div>
-                <div className="text-2xl font-bold text-gray-900">Hello Candles</div>
-                <div className="text-sm text-gray-600">Premium Scented Collection</div>
+              <div className="relative z-10 w-full max-w-xl p-6">
+                <div className="bg-white/70 rounded-2xl p-4 shadow-xl">
+                  <div className="aspect-[4/3]">
+                    <CandleIllustration />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -244,8 +249,14 @@ export default function CandleShop() {
           <div className="grid md:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <div key={product.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden">
-                <div className="bg-gradient-to-br from-blue-100 to-orange-100 h-48 flex items-center justify-center text-6xl relative">
-                  {product.image}
+                <div className="bg-gradient-to-br from-blue-100 to-orange-100 h-48 relative overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
                   {product.tag && (
                     <div className="absolute top-3 right-3 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
                       {product.tag}

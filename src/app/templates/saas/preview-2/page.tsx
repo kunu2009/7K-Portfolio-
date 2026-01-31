@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { DraggableCTA } from '@/components/draggable-cta';
 import Link from 'next/link';
+import Image from 'next/image';
+import { SaaSIllustration } from '@/components/svg-illustrations';
 import { 
   CheckCircle2, 
   ArrowRight, 
@@ -104,19 +106,19 @@ export default function SaaSProductivityApp() {
       title: 'Latest Released Interesting Features in 2026!',
       category: 'Product Update',
       date: 'Jan 15, 2026',
-      image: '📱'
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
     },
     {
       title: 'Improve Your Project Management Interface',
       category: 'Best Practices',
       date: 'Jan 10, 2026',
-      image: '🎯'
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'
     },
     {
       title: 'Quick News & Updates Subscribe Now',
       category: 'Newsletter',
       date: 'Jan 5, 2026',
-      image: '📰'
+      image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&fit=crop'
     }
   ];
 
@@ -508,8 +510,14 @@ export default function SaaSProductivityApp() {
                 key={index}
                 className="bg-gradient-to-br from-[#F5F3FF] to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition group cursor-pointer"
               >
-                <div className="h-48 bg-gradient-to-br from-[#7C5CFF] to-[#9D7CFF] flex items-center justify-center text-6xl">
-                  {post.image}
+                <div className="h-48 bg-gradient-to-br from-[#7C5CFF] to-[#9D7CFF] relative overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">

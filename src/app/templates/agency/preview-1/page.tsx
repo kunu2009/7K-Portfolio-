@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { DraggableCTA } from "@/components/draggable-cta";
 import { ArrowRight, Menu, X, Sparkles, Users, Award, TrendingUp, Code, Palette, Layers, Video, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
+import { AgencyIllustration } from "@/components/svg-illustrations";
 
 export default function CreativeAgencyTemplate() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -112,8 +114,8 @@ export default function CreativeAgencyTemplate() {
             <div className="relative">
               <div className="absolute top-0 right-0 w-20 h-20 bg-[#BFFF00]/20 rounded-full blur-3xl"></div>
               <div className="relative bg-white/5 backdrop-blur rounded-3xl p-8 border border-white/10">
-                <div className="flex items-center justify-center h-96 text-9xl">
-                  👩‍💼
+                <div className="aspect-[4/3]">
+                  <AgencyIllustration />
                 </div>
                 <div className="absolute -top-4 -right-4 bg-[#BFFF00] text-black px-6 py-3 rounded-2xl font-bold shadow-2xl">
                   <div className="text-3xl">10 Years</div>
@@ -147,7 +149,7 @@ export default function CreativeAgencyTemplate() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-[#BFFF00]/10 px-4 py-2 rounded-full mb-6">
-                <span className="text-[#BFFF00] font-semibold">🌱 ABOUT US</span>
+                <span className="text-[#BFFF00] font-semibold">ABOUT US</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Turning Ideas Into<br />Masterpieces
@@ -159,7 +161,7 @@ export default function CreativeAgencyTemplate() {
                 <div className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-[#BFFF00]/50 transition">
                   <div className="flex items-start space-x-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-[#BFFF00] to-green-400 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">
-                      🎨
+                      ✨
                     </div>
                     <div>
                       <h3 className="font-bold text-lg mb-2">A CREATIVE DESIGN AGENCY</h3>
@@ -170,12 +172,11 @@ export default function CreativeAgencyTemplate() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-square flex items-center justify-center text-7xl">
-                👥
-              </div>
-              <div className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-square flex items-center justify-center text-7xl">
-                👩‍💻
-              </div>
+              {["https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80","https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80"].map((src, idx) => (
+                <div key={idx} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-square relative">
+                  <Image src={src} alt="Agency team" fill sizes="(max-width:768px) 50vw, 25vw" className="object-cover" />
+                </div>
+              ))}
             </div>
           </div>
         </div>

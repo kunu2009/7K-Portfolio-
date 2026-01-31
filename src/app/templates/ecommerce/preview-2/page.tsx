@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ShoppingCart, Heart, Search, Menu, X, Truck, Shield, Headphones, Leaf, Droplet, Sun, Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { EcommerceIllustration } from "@/components/svg-illustrations";
 
 export default function PlantStoreTemplate() {
   const [cartCount, setCartCount] = useState(0);
@@ -12,12 +13,12 @@ export default function PlantStoreTemplate() {
   const [email, setEmail] = useState("");
 
   const products = [
-    { id: 1, name: "Monstera Deliciosa", price: "$24.99", category: "Indoor Plants", image: "🌿" },
-    { id: 2, name: "Fiddle Leaf Fig", price: "$34.99", category: "Indoor Plants", image: "🌱" },
-    { id: 3, name: "Snake Plant", price: "$18.99", category: "Best Sellers", image: "🪴" },
-    { id: 4, name: "Pothos Golden", price: "$16.99", category: "Best Sellers", image: "🌿" },
-    { id: 5, name: "Peace Lily", price: "$22.99", category: "Customer Favorites", image: "🌱" },
-    { id: 6, name: "Rubber Plant", price: "$28.99", category: "Customer Favorites", image: "🪴" },
+    { id: 1, name: "Monstera Deliciosa", price: "$24.99", category: "Indoor Plants", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
+    { id: 2, name: "Fiddle Leaf Fig", price: "$34.99", category: "Indoor Plants", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
+    { id: 3, name: "Snake Plant", price: "$18.99", category: "Best Sellers", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
+    { id: 4, name: "Pothos Golden", price: "$16.99", category: "Best Sellers", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
+    { id: 5, name: "Peace Lily", price: "$22.99", category: "Customer Favorites", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
+    { id: 6, name: "Rubber Plant", price: "$28.99", category: "Customer Favorites", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" },
   ];
 
   const filteredProducts = selectedCategory === "All"
@@ -98,9 +99,9 @@ export default function PlantStoreTemplate() {
                 Shop Now →
               </button>
             </div>
-            <div className="relative">
-              <div className="bg-[#F5F1E8] rounded-t-full w-80 h-96 mx-auto flex items-end justify-center overflow-hidden shadow-2xl">
-                <div className="text-8xl mb-8">🌿</div>
+            <div className="relative bg-white/10 rounded-3xl p-6 border border-white/20 shadow-2xl">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-[#F5F1E8]">
+                <EcommerceIllustration />
               </div>
               <div className="absolute top-4 right-4 bg-white text-[#1A4D2E] rounded-full w-16 h-16 flex items-center justify-center font-bold shadow-lg">
                 80+
@@ -145,7 +146,9 @@ export default function PlantStoreTemplate() {
               <a href="#shop" className="text-[#FF6B35] font-semibold hover:underline">
                 Shop Now →
               </a>
-              <div className="mt-6 text-6xl">🪴</div>
+              <div className="mt-6 relative h-40 rounded-xl overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Indoor plants" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
+              </div>
             </div>
             <div className="bg-[#F5F1E8] rounded-lg p-8 hover:shadow-xl transition">
               <p className="text-[#1A4D2E] text-sm font-semibold mb-2">Our Products</p>
@@ -153,7 +156,9 @@ export default function PlantStoreTemplate() {
               <a href="#shop" className="text-[#FF6B35] font-semibold hover:underline">
                 Shop Now →
               </a>
-              <div className="mt-6 text-6xl">🌱</div>
+              <div className="mt-6 relative h-40 rounded-xl overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Outdoor plants" fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" />
+              </div>
             </div>
           </div>
         </div>
@@ -185,8 +190,14 @@ export default function PlantStoreTemplate() {
           <div className="grid md:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
               <div key={product.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition group">
-                <div className="relative bg-[#E8F5E9] h-64 flex items-center justify-center">
-                  <span className="text-8xl">{product.image}</span>
+                <div className="relative bg-[#E8F5E9] h-64">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                   <button className="absolute top-4 right-4 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
                     <Heart className="h-5 w-5 text-[#1A4D2E]" />
                   </button>
@@ -215,11 +226,11 @@ export default function PlantStoreTemplate() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="bg-[#F5F1E8] rounded-full w-64 h-64 flex items-center justify-center mx-auto shadow-2xl">
-                <span className="text-8xl">🌿</span>
+              <div className="bg-[#F5F1E8] rounded-full w-64 h-64 flex items-center justify-center mx-auto shadow-2xl overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Plant care" fill className="object-cover" sizes="(max-width:768px) 100vw, 40vw" />
               </div>
-              <div className="absolute top-8 -right-8 bg-white rounded-lg p-4 shadow-xl">
-                <span className="text-6xl">🪴</span>
+              <div className="absolute top-8 -right-8 bg-white rounded-lg p-4 shadow-xl overflow-hidden w-24 h-24">
+                <Image src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Plant detail" fill className="object-cover" sizes="120px" />
               </div>
             </div>
             <div>
@@ -282,8 +293,8 @@ export default function PlantStoreTemplate() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-[#1A4D2E] rounded-lg p-2">
-              <div className="bg-[#E8F5E9] rounded-lg h-96 flex items-center justify-center">
-                <span className="text-9xl">🌿</span>
+              <div className="bg-[#E8F5E9] rounded-lg h-96 flex items-center justify-center overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Plant guide" fill className="object-cover" sizes="(max-width:768px) 100vw, 40vw" />
               </div>
             </div>
             <div>

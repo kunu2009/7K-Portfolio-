@@ -42,6 +42,7 @@ import {
   Phone,
   Mail
 } from 'lucide-react';
+import { EducationIllustration } from '@/components/svg-illustrations';
 
 export default function EducationPlatform() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -108,7 +109,7 @@ export default function EducationPlatform() {
       duration: '8 weeks',
       price: 3499,
       originalPrice: 5999,
-      image: '💻',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
       level: 'Advanced',
       bestseller: true
     },
@@ -123,7 +124,7 @@ export default function EducationPlatform() {
       duration: '5 weeks',
       price: 2499,
       originalPrice: 4499,
-      image: '🎨',
+      image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80',
       level: 'Intermediate',
       bestseller: false
     },
@@ -138,7 +139,7 @@ export default function EducationPlatform() {
       duration: '12 weeks',
       price: 4999,
       originalPrice: 8999,
-      image: '🐍',
+      image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80',
       level: 'Advanced',
       bestseller: true
     },
@@ -153,7 +154,7 @@ export default function EducationPlatform() {
       duration: '6 weeks',
       price: 2999,
       originalPrice: 5499,
-      image: '📱',
+      image: 'https://images.unsplash.com/photo-1522199992905-29661a13f16b?auto=format&fit=crop&w=900&q=80',
       level: 'Beginner',
       bestseller: false
     },
@@ -168,7 +169,7 @@ export default function EducationPlatform() {
       duration: '10 weeks',
       price: 3999,
       originalPrice: 6999,
-      image: '✨',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80',
       level: 'Intermediate',
       bestseller: true
     },
@@ -183,7 +184,7 @@ export default function EducationPlatform() {
       duration: '7 weeks',
       price: 2799,
       originalPrice: 4999,
-      image: '📸',
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80',
       level: 'Beginner',
       bestseller: false
     }
@@ -196,7 +197,7 @@ export default function EducationPlatform() {
       students: '50K+',
       courses: 24,
       rating: 4.9,
-      image: '👨‍💼'
+      image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
     },
     {
       name: 'Aditya Patel',
@@ -204,7 +205,7 @@ export default function EducationPlatform() {
       students: '45K+',
       courses: 18,
       rating: 4.8,
-      image: '👨‍🎨'
+      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80'
     },
     {
       name: 'Neha Gupta',
@@ -212,7 +213,7 @@ export default function EducationPlatform() {
       students: '38K+',
       courses: 15,
       rating: 5.0,
-      image: '👩‍🔬'
+      image: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=400&q=80'
     },
     {
       name: 'Vipul Singh',
@@ -220,7 +221,7 @@ export default function EducationPlatform() {
       students: '42K+',
       courses: 21,
       rating: 4.9,
-      image: '👨‍💻'
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80'
     }
   ];
 
@@ -230,21 +231,21 @@ export default function EducationPlatform() {
       role: 'Founder, 7K Solutions',
       text: '7K Etech has transformed thousands of careers worldwide. Our mission is to provide world-class education that empowers learners to achieve their dreams and reach their full potential.',
       rating: 5,
-      image: '👨‍💼'
+      image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80'
     },
     {
       name: 'Aditya Patel',
       role: 'Senior Developer at TechCorp',
       text: 'The comprehensive courses and expert instruction from Kunal\'s 7K Etech completely transformed my career. I went from struggling to landing a dream job at a top tech company!',
       rating: 5,
-      image: '👨‍💻'
+      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80'
     },
     {
       name: 'Neha Gupta',
       role: 'Data Science Lead at StartupHub',
       text: 'The platform combines theory with real-world projects perfectly. The community support and expert guidance from 7K Etech made all the difference in my learning journey and career growth.',
       rating: 5,
-      image: '👩‍🔬'
+      image: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=400&q=80'
     }
   ];
 
@@ -411,88 +412,15 @@ export default function EducationPlatform() {
               </div>
             </div>
 
-            {/* Hero Image/Mockup */}
-            <div className="relative">
-              <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <div className="bg-white rounded-2xl p-6 shadow-xl">
-                  <div className="flex items-center justify-between mb-6">
-                    <div>
-                      <div className="text-sm text-gray-500">Welcome back,</div>
-                      <div className="text-xl font-bold text-gray-900">Online Courses! 👋</div>
-                    </div>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-xl p-5 mb-4">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <div className="text-sm opacity-90 mb-1">Your Progress</div>
-                        <div className="text-2xl font-bold">Python Course</div>
-                      </div>
-                      <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
-                        75% Complete
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm opacity-90 mb-3">
-                      <Clock className="w-4 h-4" />
-                      <span>5 weeks • 42 lessons</span>
-                    </div>
-                    <div className="w-full bg-white/20 rounded-full h-2 mb-3">
-                      <div className="bg-white rounded-full h-2" style={{ width: '75%' }}></div>
-                    </div>
-                    <button className="w-full bg-white text-purple-600 py-2 rounded-lg font-semibold hover:shadow-lg transition">
-                      Continue Learning
-                    </button>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white">
-                        <BookOpen className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-gray-900">Web Development</div>
-                        <div className="text-xs text-gray-500">12 lessons remaining</div>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-gray-400" />
-                    </div>
-                    <div className="flex items-center gap-3 p-3 bg-pink-50 rounded-lg">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-white">
-                        <Palette className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-sm font-semibold text-gray-900">UI/UX Design</div>
-                        <div className="text-xs text-gray-500">8 lessons remaining</div>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-gray-400" />
-                    </div>
-                  </div>
+            {/* Hero Illustration */}
+            <div className="relative bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl">
+              <div className="bg-white/10 rounded-2xl p-4">
+                <div className="aspect-[4/3]">
+                  <EducationIllustration />
                 </div>
               </div>
-
-              {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-2xl p-4 w-56 hidden md:block">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500"></div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">New Achievement!</div>
-                    <div className="text-xs text-gray-500">Course Completed</div>
-                  </div>
-                </div>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-              </div>
-
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-4 w-48 hidden md:block">
-                <div className="flex items-center gap-2 mb-2">
-                  <Users className="w-5 h-5 text-purple-600" />
-                  <span className="text-sm font-semibold text-gray-900">Live Students</span>
-                </div>
-                <div className="text-2xl font-bold text-purple-600">12,847</div>
-                <div className="text-xs text-gray-500">Learning right now</div>
+              <div className="absolute -top-4 -right-4 bg-white text-purple-600 px-4 py-2 rounded-full font-semibold shadow-lg">
+                Live: 12,847 students
               </div>
             </div>
           </div>

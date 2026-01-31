@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Link from 'next/link';import { DraggableCTA } from '@/components/draggable-cta';import { 
+import Link from 'next/link';
+import Image from 'next/image';
+import { DraggableCTA } from '@/components/draggable-cta';
+import { PortfolioIllustration } from '@/components/svg-illustrations';import { 
   Mail,
   Instagram,
   Github,
@@ -27,12 +30,12 @@ export default function IllustrationPortfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const softwares = [
-    { name: 'Procreate', color: 'from-orange-400 to-pink-500', icon: '🎨' },
-    { name: 'Adobe InDesign', color: 'from-pink-600 to-red-600', icon: '🖼️' },
-    { name: 'Photoshop', color: 'from-blue-600 to-cyan-400', icon: '📸' },
-    { name: 'Premiere Pro', color: 'from-purple-600 to-indigo-600', icon: '🎬' },
-    { name: 'Illustrator', color: 'from-yellow-500 to-orange-500', icon: '✏️' },
-    { name: 'Figma', color: 'from-purple-400 to-pink-400', icon: '⚙️' }
+    { name: 'Procreate', color: 'from-orange-400 to-pink-500', icon: 'procreate' },
+    { name: 'Adobe InDesign', color: 'from-pink-600 to-red-600', icon: 'indesign' },
+    { name: 'Photoshop', color: 'from-blue-600 to-cyan-400', icon: 'photoshop' },
+    { name: 'Premiere Pro', color: 'from-purple-600 to-indigo-600', icon: 'premiere' },
+    { name: 'Illustrator', color: 'from-yellow-500 to-orange-500', icon: 'illustrator' },
+    { name: 'Figma', color: 'from-purple-400 to-pink-400', icon: 'figma' }
   ];
 
   const skills = [
@@ -50,42 +53,42 @@ export default function IllustrationPortfolio() {
       category: 'Illustration',
       description: 'Complete character and scene illustrations for a bestselling children\'s series',
       color: 'from-pink-400 to-purple-500',
-      icon: '📚'
+      image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=400&fit=crop'
     },
     {
       title: 'Character Design Pack',
       category: 'Character Design',
       description: 'Full character design collection with multiple expressions and poses',
       color: 'from-blue-400 to-cyan-500',
-      icon: '👥'
+      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop'
     },
     {
       title: 'Magazine Editorial',
       category: 'Layout & Design',
       description: 'Monthly magazine layout with custom illustrations and typography',
       color: 'from-orange-400 to-pink-500',
-      icon: '📖'
+      image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=600&h=400&fit=crop'
     },
     {
       title: 'Comic Series',
       category: 'Comic Art',
       description: 'Original comic series with unique visual storytelling',
       color: 'from-purple-400 to-indigo-500',
-      icon: '💭'
+      image: 'https://images.unsplash.com/photo-1601645191163-3fc0d5d64e35?w=600&h=400&fit=crop'
     },
     {
       title: 'Sticker Collection',
       category: 'Digital Art',
       description: 'Licensed sticker pack with playful character designs',
       color: 'from-yellow-400 to-orange-500',
-      icon: '🎯'
+      image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&h=400&fit=crop'
     },
     {
       title: 'Brand Mascot',
       category: 'Character Design',
       description: 'Complete mascot design system with brand guidelines',
       color: 'from-green-400 to-blue-500',
-      icon: '🦸'
+      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=400&fit=crop'
     }
   ];
 
@@ -94,19 +97,19 @@ export default function IllustrationPortfolio() {
       name: 'Aditya Patel',
       role: 'Publishing Director',
       text: 'Kunal\'s illustrations brought our book to life. Highly professional and creative—delivered right on time!',
-      avatar: '👨‍💼'
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop'
     },
     {
       name: 'Neha Gupta',
       role: 'Creative Director',
       text: 'Outstanding character designs with attention to detail. The brand mascot system was perfect for our campaign.',
-      avatar: '👩‍💼'
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop'
     },
     {
       name: 'Vipul Singh',
       role: 'Brand Manager',
       text: 'The mascot design captured our brand essence. Seamless collaboration and exceptional quality—highly recommended!',
-      avatar: '👨‍🎨'
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
     }
   ];
 
@@ -260,17 +263,27 @@ export default function IllustrationPortfolio() {
                     <div className="absolute bottom-0 left-0 right-0 h-16 bg-yellow-600 rounded-b-full opacity-90"></div>
                     {/* Sail */}
                     <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-32 h-40 bg-yellow-400 clip-polygon shadow-lg"></div>
-                    {/* Character */}
-                    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-6xl">
-                      🧒
-                    </div>
+                    {/* Character - stylized circle */}
+                    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-orange-300 to-orange-400 rounded-full border-4 border-white shadow-lg"></div>
                   </div>
                 </div>
 
-                {/* Clouds */}
-                <div className="absolute top-8 left-8 text-5xl opacity-70">☁️</div>
-                <div className="absolute top-20 right-12 text-6xl opacity-60">☁️</div>
-                <div className="absolute top-12 left-1/3 text-4xl opacity-50">☁️</div>
+                {/* Clouds - SVG */}
+                <svg className="absolute top-8 left-8 w-16 h-10 opacity-70" viewBox="0 0 64 40" fill="white">
+                  <ellipse cx="20" cy="25" rx="18" ry="12" />
+                  <ellipse cx="40" cy="20" rx="20" ry="15" />
+                  <ellipse cx="32" cy="28" rx="15" ry="10" />
+                </svg>
+                <svg className="absolute top-20 right-12 w-20 h-12 opacity-60" viewBox="0 0 80 48" fill="white">
+                  <ellipse cx="25" cy="30" rx="22" ry="14" />
+                  <ellipse cx="50" cy="24" rx="25" ry="18" />
+                  <ellipse cx="40" cy="34" rx="18" ry="12" />
+                </svg>
+                <svg className="absolute top-12 left-1/3 w-12 h-8 opacity-50" viewBox="0 0 48 32" fill="white">
+                  <ellipse cx="15" cy="20" rx="14" ry="10" />
+                  <ellipse cx="30" cy="16" rx="16" ry="12" />
+                  <ellipse cx="24" cy="22" rx="12" ry="8" />
+                </svg>
               </div>
 
               {/* Year Badge */}
@@ -293,10 +306,8 @@ export default function IllustrationPortfolio() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Avatar */}
             <div className="relative flex justify-center">
-              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-cyan-500 shadow-2xl bg-gradient-to-br from-orange-300 via-red-300 to-brown-400">
-                <div className="w-full h-full flex items-center justify-center text-9xl">
-                  🧑‍🎨
-                </div>
+              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-cyan-500 shadow-2xl bg-gradient-to-br from-cyan-50 to-blue-100 flex items-center justify-center">
+                <PortfolioIllustration className="w-48 h-48" />
               </div>
             </div>
 
@@ -390,7 +401,7 @@ export default function IllustrationPortfolio() {
                 className="group cursor-pointer"
               >
                 <div className={`bg-gradient-to-br ${software.color} rounded-2xl p-6 h-32 flex items-center justify-center shadow-lg hover:shadow-2xl transition-transform group-hover:scale-110`}>
-                  <span className="text-5xl">{software.icon}</span>
+                  <span className="text-white font-bold text-xl">{software.name.split(' ')[0].slice(0, 2).toUpperCase()}</span>
                 </div>
                 <p className="text-center font-semibold text-gray-700 mt-3 text-sm group-hover:text-cyan-600 transition">
                   {software.name}
@@ -442,8 +453,14 @@ export default function IllustrationPortfolio() {
                 key={index}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group"
               >
-                <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center text-6xl`}>
-                  {project.icon}
+                <div className={`h-40 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="text-sm text-cyan-600 font-semibold mb-2">{project.category}</div>
@@ -477,7 +494,15 @@ export default function IllustrationPortfolio() {
                 className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-cyan-200 shadow-lg hover:shadow-xl transition"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="text-5xl">{testimonial.avatar}</div>
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div>
                     <div className="font-bold text-gray-900">{testimonial.name}</div>
                     <div className="text-sm text-gray-600">{testimonial.role}</div>

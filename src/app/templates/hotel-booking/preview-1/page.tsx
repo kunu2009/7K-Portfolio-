@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Star, MapPin, Users, Calendar, Search } from 'lucide-react';
+import { Star, MapPin, Users, Calendar, Search, ShieldCheck, Headphones, BadgePercent, Sparkles } from 'lucide-react';
+import { HotelIllustration } from '@/components/svg-illustrations';
 
 export default function HotelBookingPreview1() {
   const [checkIn, setCheckIn] = useState('');
@@ -17,7 +18,7 @@ export default function HotelBookingPreview1() {
       rating: 4.8,
       reviews: 324,
       price: 8500,
-      image: '🏨',
+      image: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=900&q=80',
       amenities: ['Free WiFi', 'Pool', 'Spa', 'Restaurant']
     },
     {
@@ -27,7 +28,7 @@ export default function HotelBookingPreview1() {
       rating: 4.6,
       reviews: 287,
       price: 6200,
-      image: '🌴',
+      image: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=900&q=80',
       amenities: ['Beach Access', 'Water Sports', 'Bar', 'Gym']
     },
     {
@@ -37,7 +38,7 @@ export default function HotelBookingPreview1() {
       rating: 4.9,
       reviews: 412,
       price: 4800,
-      image: '⛰️',
+      image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80',
       amenities: ['Hiking', 'Bonfire', 'Hot Springs', 'Cafe']
     }
   ];
@@ -45,9 +46,12 @@ export default function HotelBookingPreview1() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 text-6xl flex items-center justify-center">🏨</div>
-        <div className="relative z-10 text-center px-4">
+      <div className="relative h-96 bg-gradient-to-r from-blue-600 to-purple-600 overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <HotelIllustration />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-transparent to-slate-900/50" />
+        <div className="relative z-10 text-center px-4 flex flex-col items-center justify-center h-full">
           <p className="text-sm font-semibold mb-2">7K HOSPITALITY</p>
           <h1 className="text-5xl font-bold mb-4">Find Your Perfect Hotel</h1>
           <p className="text-xl text-blue-100">Discover amazing accommodations at unbeatable prices</p>
@@ -127,8 +131,14 @@ export default function HotelBookingPreview1() {
               className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-blue-500 transition-all hover:shadow-lg hover:shadow-blue-500/20"
             >
               {/* Image */}
-              <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-6xl">
-                {hotel.image}
+              <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900 overflow-hidden">
+                <Image
+                  src={hotel.image}
+                  alt={hotel.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
 
               {/* Content */}
@@ -188,17 +198,22 @@ export default function HotelBookingPreview1() {
         
         <div className="grid md:grid-cols-4 gap-6">
           {[
-            { icon: '💰', title: 'Best Price Guarantee', desc: 'Lowest rates on the web' },
-            { icon: '⭐', title: 'Verified Reviews', desc: 'Real guest reviews only' },
-            { icon: '🔒', title: 'Secure Booking', desc: 'Safe payment processing' },
-            { icon: '📞', title: '24/7 Support', desc: 'Always here to help' }
-          ].map((item, idx) => (
-            <div key={idx} className="text-center">
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="font-bold mb-2">{item.title}</h3>
-              <p className="text-sm text-slate-400">{item.desc}</p>
-            </div>
-          ))}
+            { icon: BadgePercent, title: 'Best Price Guarantee', desc: 'Lowest rates on the web' },
+            { icon: ShieldCheck, title: 'Verified Reviews', desc: 'Real guest reviews only' },
+            { icon: Sparkles, title: 'Curated Stays', desc: 'Handpicked luxury experiences' },
+            { icon: Headphones, title: '24/7 Support', desc: 'Always here to help' }
+          ].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className="text-center bg-slate-800/60 border border-slate-700 rounded-xl p-6">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-blue-300">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-400">{item.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
 

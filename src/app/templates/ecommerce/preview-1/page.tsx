@@ -1,7 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { ShoppingCart, Search, Heart, Star } from 'lucide-react';
+import { EcommerceIllustration } from '@/components/svg-illustrations';
 
 export default function EcommercePreview1() {
   const [cart, setCart] = useState<number[]>([]);
@@ -15,7 +17,7 @@ export default function EcommercePreview1() {
       originalPrice: 7999,
       rating: 4.8,
       reviews: 324,
-      image: '🎧',
+      image: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=800&q=80',
       category: 'Electronics',
       inStock: true
     },
@@ -26,7 +28,7 @@ export default function EcommercePreview1() {
       originalPrice: 4999,
       rating: 4.6,
       reviews: 187,
-      image: '🎒',
+      image: 'https://images.unsplash.com/photo-1509099836639-18ba02e2e1ba?auto=format&fit=crop&w=800&q=80',
       category: 'Bags',
       inStock: true
     },
@@ -37,7 +39,7 @@ export default function EcommercePreview1() {
       originalPrice: 6999,
       rating: 4.9,
       reviews: 412,
-      image: '⌚',
+      image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
       category: 'Electronics',
       inStock: true
     },
@@ -48,7 +50,7 @@ export default function EcommercePreview1() {
       originalPrice: 5999,
       rating: 4.7,
       reviews: 256,
-      image: '👟',
+      image: 'https://images.unsplash.com/photo-1528701800489-20be9a2d37b1?auto=format&fit=crop&w=800&q=80',
       category: 'Footwear',
       inStock: false
     },
@@ -59,7 +61,7 @@ export default function EcommercePreview1() {
       originalPrice: 2499,
       rating: 4.5,
       reviews: 145,
-      image: '💻',
+      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
       category: 'Accessories',
       inStock: true
     },
@@ -70,7 +72,7 @@ export default function EcommercePreview1() {
       originalPrice: 9999,
       rating: 4.9,
       reviews: 567,
-      image: '⌨️',
+      image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80',
       category: 'Electronics',
       inStock: true
     }
@@ -128,12 +130,26 @@ export default function EcommercePreview1() {
       </header>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-4">Flash Sale - Up to 50% Off!</h2>
-        <p className="text-blue-100 text-lg mb-8">Limited time offers on premium products</p>
-        <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors">
-          Shop Sale →
-        </button>
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 px-4">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <h2 className="text-4xl font-bold mb-4">Flash Sale - Up to 50% Off!</h2>
+            <p className="text-blue-100 text-lg mb-6">Limited time offers on premium products</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors">
+                Shop Sale →
+              </button>
+              <button className="px-8 py-3 border border-white/40 text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                New arrivals
+              </button>
+            </div>
+          </div>
+          <div className="bg-white/10 border border-white/20 rounded-2xl p-6 shadow-2xl">
+            <div className="aspect-[4/3]">
+              <EcommerceIllustration />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Products Grid */}
@@ -152,8 +168,14 @@ export default function EcommercePreview1() {
                 className="bg-slate-800 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition-all group"
               >
                 {/* Image */}
-                <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-5xl group-hover:scale-110 transition-transform overflow-hidden">
-                  {product.image}
+                <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                   {!product.inStock && (
                     <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                       <span className="text-white font-bold">Out of Stock</span>

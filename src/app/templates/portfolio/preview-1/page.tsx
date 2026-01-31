@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { ExternalLink, Github } from 'lucide-react';
+import { PortfolioIllustration } from '@/components/svg-illustrations';
 
 export default function PortfolioPreview1() {
   const projects = [
@@ -10,7 +12,8 @@ export default function PortfolioPreview1() {
       desc: 'Full-stack e-commerce platform with payment integration',
       tech: ['Next.js', 'TypeScript', 'Stripe'],
       link: '#',
-      github: '#'
+      github: '#',
+      image: 'https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=900&q=80'
     },
     {
       id: 2,
@@ -18,7 +21,8 @@ export default function PortfolioPreview1() {
       desc: 'Real-time collaborative task management solution',
       tech: ['React', 'Firebase', 'Tailwind'],
       link: '#',
-      github: '#'
+      github: '#',
+      image: 'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80'
     },
     {
       id: 3,
@@ -26,7 +30,8 @@ export default function PortfolioPreview1() {
       desc: 'Beautiful data visualization and analytics platform',
       tech: ['Next.js', 'D3.js', 'PostgreSQL'],
       link: '#',
-      github: '#'
+      github: '#',
+      image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80'
     },
   ];
 
@@ -48,26 +53,39 @@ export default function PortfolioPreview1() {
 
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 py-24 text-center">
-          <div className="text-6xl mb-6">👨‍💻</div>
-          <h2 className="text-6xl font-bold mb-4 leading-tight">
-            Creative Developer &
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Problem Solver
-            </span>
-          </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-            I build beautiful, functional web applications that solve real problems. Specializing in Next.js, React, and modern web technologies.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all">
-              View My Work
-            </button>
-            <button className="px-8 py-3 border border-slate-600 rounded-lg font-bold hover:border-blue-500 transition-colors">
-              Download CV
-            </button>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
+              Creative Developer &
+              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Problem Solver
+              </span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-2xl mb-8">
+              I build beautiful, functional web applications that solve real problems. Specializing in Next.js, React, and modern web technologies.
+            </p>
+            <div className="flex gap-4 justify-center lg:justify-start">
+              <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all">
+                View My Work
+              </button>
+              <button className="px-8 py-3 border border-slate-600 rounded-lg font-bold hover:border-blue-500 transition-colors">
+                Download CV
+              </button>
+            </div>
+          </div>
+          <div className="order-1 lg:order-2 bg-slate-800/60 border border-slate-700 rounded-2xl p-6 shadow-2xl">
+            <div className="aspect-[4/3]">
+              <PortfolioIllustration />
+            </div>
+            <div className="grid grid-cols-2 gap-3 mt-6 text-sm text-slate-300">
+              {['UI systems', 'Design systems', 'API integrations', 'Data visualizations'].map((item) => (
+                <div key={item} className="bg-slate-900/70 border border-slate-700 rounded-lg px-3 py-2 text-center">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -83,10 +101,14 @@ export default function PortfolioPreview1() {
               className="group relative bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 hover:border-blue-500 transition-all"
             >
               {/* Project Image Area */}
-              <div className="relative h-64 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center overflow-hidden">
-                <div className="text-6xl opacity-30 group-hover:opacity-50 transition-opacity">
-                  {idx === 0 ? '🛒' : idx === 1 ? '✅' : '📊'}
-                </div>
+              <div className="relative h-64 bg-gradient-to-br from-slate-700 to-slate-900 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
 
               {/* Content */}

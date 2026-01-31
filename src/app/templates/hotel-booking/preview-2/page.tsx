@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { DraggableCTA } from "@/components/draggable-cta";
 import { Calendar, MapPin, Users, Star, Phone, Mail, Clock, Wifi, Coffee, Dumbbell, Utensils, Car, Search, ChevronRight, Award, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { HotelIllustration } from "@/components/svg-illustrations";
 
 export default function LuxuryHotelTemplate() {
   const [checkIn, setCheckIn] = useState("");
@@ -15,19 +17,19 @@ export default function LuxuryHotelTemplate() {
     {
       title: "Family Discount",
       description: "Book 2 rooms and get 20% off on your total stay",
-      image: "👨‍👩‍👧‍👦",
+      image: "https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=900&q=80",
       discount: "20% OFF"
     },
     {
       title: "Couples Offer",
       description: "Romantic getaway package with complimentary spa",
-      image: "💑",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
       discount: "25% OFF"
     },
     {
       title: "Buy One Get One Free",
       description: "Stay 3 nights and get the 4th night absolutely free",
-      image: "🎁",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
       discount: "FREE NIGHT"
     }
   ];
@@ -47,19 +49,19 @@ export default function LuxuryHotelTemplate() {
 
   const rooms = [
     {
-      image: "🏛️",
+      image: "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=900&q=80",
       title: "Presidential Suite",
       location: "Top Floor",
       price: "₹25,000"
     },
     {
-      image: "🛏️",
+      image: "https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=900&q=80",
       title: "Deluxe Ocean View",
       location: "5th Floor",
       price: "₹15,000"
     },
     {
-      image: "⛰️",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
       title: "Mountain Vista Room",
       location: "3rd Floor",
       price: "₹12,000"
@@ -67,10 +69,10 @@ export default function LuxuryHotelTemplate() {
   ];
 
   const team = [
-    { name: "Kunal", role: "Founder & CEO", image: "👨‍💼" },
-    { name: "Aditya Patel", role: "Guest Relations Manager", image: "👨‍💼" },
-    { name: "Priya Sharma", role: "Executive Chef", image: "👩‍🍳" },
-    { name: "Rahul Singh", role: "Operations Manager", image: "👨‍💼" }
+    { name: "Kunal", role: "Founder & CEO", image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" },
+    { name: "Aditya Patel", role: "Guest Relations Manager", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" },
+    { name: "Priya Sharma", role: "Executive Chef", image: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=400&q=80" },
+    { name: "Rahul Singh", role: "Operations Manager", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" }
   ];
 
   return (
@@ -157,10 +159,8 @@ export default function LuxuryHotelTemplate() {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden border-4 border-[#D4AF37]/30 shadow-2xl">
-                <div className="w-full h-full bg-gradient-to-br from-[#2A1F1A] to-[#1A1410] flex items-center justify-center text-9xl">
-                  🛏️
-                </div>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden border-4 border-[#D4AF37]/30 shadow-2xl bg-[#0f0a08]">
+                <HotelIllustration />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#D4AF37]/20 rounded-full blur-3xl"></div>
             </div>
@@ -229,8 +229,14 @@ export default function LuxuryHotelTemplate() {
                 key={index}
                 className="group relative overflow-hidden rounded-2xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#2A1F1A] to-[#1A1410] flex items-center justify-center text-8xl">
-                  {offer.image}
+                <div className="relative aspect-[4/3] bg-gradient-to-br from-[#2A1F1A] to-[#1A1410] overflow-hidden">
+                  <Image
+                    src={offer.image}
+                    alt={offer.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="absolute top-4 right-4 bg-[#D4AF37] text-[#1A1410] px-4 py-2 rounded-full font-bold text-sm">
                   {offer.discount}
