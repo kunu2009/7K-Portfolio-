@@ -3,29 +3,20 @@
 import { useState, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Search, 
   ChevronRight,
   ChevronLeft,
   Star,
   ArrowRight,
+  ArrowUpRight,
   Sparkles,
   Code,
   BookOpen,
   Smartphone,
-  Palette,
   Layers,
   TrendingUp,
-  Award,
-  Clock,
-  Download,
-  ExternalLink,
-  Heart,
-  ShoppingBag,
-  Zap,
-  Users,
-  Globe,
   Briefcase,
   GraduationCap,
   Dumbbell,
@@ -33,1136 +24,540 @@ import {
   Languages,
   FileText,
   Layout,
-  PenTool,
-  BarChart3,
-  Gift,
-  Percent,
-  Flame,
+  Zap,
+  Users,
   X,
-  Menu,
-  Home
+  ChevronDown
 } from 'lucide-react';
 
 // ============================================
-// DATA - All Products in the 7K Ecosystem
+// SVG ILLUSTRATIONS
 // ============================================
 
-// Categories with icons
+const HeroIllustration = () => (
+  <svg viewBox="0 0 400 300" className="w-full h-full" fill="none">
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.2"/>
+        <stop offset="100%" stopColor="#EC4899" stopOpacity="0.1"/>
+      </linearGradient>
+      <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#8B5CF6"/>
+        <stop offset="100%" stopColor="#EC4899"/>
+      </linearGradient>
+    </defs>
+    {/* Background shapes */}
+    <circle cx="320" cy="80" r="60" fill="url(#grad1)"/>
+    <circle cx="80" cy="220" r="40" fill="url(#grad1)"/>
+    {/* Floating cards */}
+    <g transform="translate(50, 40)">
+      <rect x="0" y="0" width="120" height="80" rx="12" fill="white" filter="drop-shadow(0 4px 20px rgba(0,0,0,0.1))"/>
+      <rect x="10" y="10" width="100" height="40" rx="6" fill="#F3F4F6"/>
+      <circle cx="25" cy="65" r="8" fill="#8B5CF6"/>
+      <rect x="40" y="60" width="50" height="6" rx="3" fill="#E5E7EB"/>
+    </g>
+    <g transform="translate(200, 100)">
+      <rect x="0" y="0" width="140" height="90" rx="12" fill="white" filter="drop-shadow(0 4px 20px rgba(0,0,0,0.1))"/>
+      <rect x="10" y="10" width="120" height="50" rx="6" fill="url(#grad1)"/>
+      <circle cx="25" cy="75" r="8" fill="#EC4899"/>
+      <rect x="40" y="70" width="60" height="6" rx="3" fill="#E5E7EB"/>
+    </g>
+    <g transform="translate(100, 160)">
+      <rect x="0" y="0" width="100" height="70" rx="12" fill="white" filter="drop-shadow(0 4px 20px rgba(0,0,0,0.1))"/>
+      <rect x="10" y="10" width="80" height="35" rx="6" fill="#DBEAFE"/>
+      <circle cx="20" cy="55" r="6" fill="#3B82F6"/>
+      <rect x="32" y="52" width="40" height="5" rx="2" fill="#E5E7EB"/>
+    </g>
+    {/* Decorative dots */}
+    <circle cx="350" cy="200" r="4" fill="#8B5CF6"/>
+    <circle cx="30" cy="100" r="3" fill="#EC4899"/>
+    <circle cx="280" cy="50" r="3" fill="#3B82F6"/>
+  </svg>
+);
+
+const EmptyStateIllustration = () => (
+  <svg viewBox="0 0 200 150" className="w-48 h-36" fill="none">
+    <defs>
+      <linearGradient id="emptyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.2"/>
+        <stop offset="100%" stopColor="#EC4899" stopOpacity="0.1"/>
+      </linearGradient>
+    </defs>
+    <circle cx="100" cy="75" r="50" fill="url(#emptyGrad)"/>
+    <rect x="70" y="50" width="60" height="50" rx="8" fill="white" stroke="#E5E7EB" strokeWidth="2"/>
+    <path d="M85 75 L95 85 L115 65" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <circle cx="60" cy="40" r="8" fill="#FEE2E2"/>
+    <circle cx="140" cy="110" r="6" fill="#DBEAFE"/>
+  </svg>
+);
+
+// ============================================
+// DATA
+// ============================================
+
 const categories = [
-  { id: 'all', name: 'All', icon: Layers, color: 'from-violet-500 to-purple-500' },
-  { id: 'apps', name: 'Apps', icon: Smartphone, color: 'from-blue-500 to-cyan-500' },
-  { id: 'templates', name: 'Templates', icon: Layout, color: 'from-emerald-500 to-teal-500' },
-  { id: 'books', name: 'Books', icon: BookOpen, color: 'from-orange-500 to-amber-500' },
-  { id: 'services', name: 'Services', icon: Briefcase, color: 'from-pink-500 to-rose-500' },
-  { id: 'blog', name: 'Articles', icon: FileText, color: 'from-indigo-500 to-blue-500' },
+  { id: 'all', name: 'All', icon: Layers, emoji: '✨' },
+  { id: 'apps', name: 'Apps', icon: Smartphone, emoji: '📱' },
+  { id: 'templates', name: 'Templates', icon: Layout, emoji: '🎨' },
+  { id: 'books', name: 'Books', icon: BookOpen, emoji: '📚' },
+  { id: 'services', name: 'Services', icon: Briefcase, emoji: '💼' },
+  { id: 'articles', name: 'Articles', icon: FileText, emoji: '📝' },
 ];
 
-// Quick filter tags
-const quickTags = [
-  { id: 'new', label: '🆕 New', color: 'bg-emerald-500' },
-  { id: 'popular', label: '🔥 Popular', color: 'bg-orange-500' },
-  { id: 'free', label: '🎁 Free', color: 'bg-blue-500' },
-  { id: 'discount', label: '💰 Deals', color: 'bg-pink-500' },
-];
-
-// Apps Data
+// Apps
 const apps = [
-  {
-    id: 'life',
-    name: '7K Life',
-    description: 'All-in-one productivity hub',
-    category: 'apps',
-    subcategory: 'Productivity',
-    price: 0,
-    rating: 4.9,
-    reviews: 142,
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop',
-    icon: Zap,
-    tags: ['Habits', 'Tasks', 'Goals'],
-    popular: true,
-    new: false,
-    link: '/apps/7k-life',
-  },
-  {
-    id: 'fitness',
-    name: '7K Fitness',
-    description: 'Track workouts & health',
-    category: 'apps',
-    subcategory: 'Health',
-    price: 0,
-    rating: 4.8,
-    reviews: 89,
-    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop',
-    icon: Dumbbell,
-    tags: ['Workout', 'Health'],
-    popular: true,
-    new: false,
-    link: '/apps/7k-fitness',
-  },
-  {
-    id: 'money',
-    name: '7K Money',
-    description: 'Smart expense tracking',
-    category: 'apps',
-    subcategory: 'Finance',
-    price: 0,
-    rating: 4.7,
-    reviews: 67,
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop',
-    icon: Wallet,
-    tags: ['Budget', 'Finance'],
-    popular: false,
-    new: false,
-    link: '/apps/7k-money',
-  },
-  {
-    id: 'polyglot',
-    name: '7K Polyglot',
-    description: 'Learn languages fast',
-    category: 'apps',
-    subcategory: 'Learning',
-    price: 0,
-    rating: 4.8,
-    reviews: 45,
-    image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=300&fit=crop',
-    icon: Languages,
-    tags: ['Languages', 'Education'],
-    popular: false,
-    new: true,
-    link: '/apps/7k-polyglot',
-  },
-  {
-    id: 'kanban',
-    name: '7K Kanban',
-    description: 'Visual project boards',
-    category: 'apps',
-    subcategory: 'Productivity',
-    price: 0,
-    rating: 4.6,
-    reviews: 34,
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop',
-    icon: Layout,
-    tags: ['Projects', 'Tasks'],
-    popular: false,
-    new: false,
-    link: '/apps/kanban',
-  },
-  {
-    id: 'prompt',
-    name: '7K Prompt',
-    description: 'AI prompt library',
-    category: 'apps',
-    subcategory: 'AI Tools',
-    price: 0,
-    rating: 4.9,
-    reviews: 56,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
-    icon: Sparkles,
-    tags: ['AI', 'ChatGPT'],
-    popular: true,
-    new: true,
-    link: '/apps/prompt',
-  },
-  {
-    id: 'student',
-    name: '7K Student',
-    description: 'Study planner & notes',
-    category: 'apps',
-    subcategory: 'Education',
-    price: 0,
-    rating: 4.7,
-    reviews: 78,
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop',
-    icon: GraduationCap,
-    tags: ['Study', 'Notes'],
-    popular: false,
-    new: false,
-    link: '/apps/student',
-  },
-  {
-    id: 'tools',
-    name: '7K Tools',
-    description: 'Developer utilities',
-    category: 'apps',
-    subcategory: 'Developer',
-    price: 0,
-    rating: 4.5,
-    reviews: 23,
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-    icon: Code,
-    tags: ['Dev', 'Utilities'],
-    popular: false,
-    new: false,
-    link: '/apps/tools',
-  },
+  { id: 'life', name: '7K Life', desc: 'Productivity hub', category: 'apps', price: 0, rating: 4.9, reviews: 142, image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop', tags: ['Habits', 'Tasks'], hot: true, link: '/apps/7k-life' },
+  { id: 'fitness', name: '7K Fitness', desc: 'Workout tracker', category: 'apps', price: 0, rating: 4.8, reviews: 89, image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop', tags: ['Health', 'Fitness'], hot: true, link: '/apps/7k-fitness' },
+  { id: 'money', name: '7K Money', desc: 'Finance tracker', category: 'apps', price: 0, rating: 4.7, reviews: 67, image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', tags: ['Budget', 'Finance'], link: '/apps/7k-money' },
+  { id: 'polyglot', name: '7K Polyglot', desc: 'Learn languages', category: 'apps', price: 0, rating: 4.8, reviews: 45, image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=300&fit=crop', tags: ['Languages'], new: true, link: '/apps/7k-polyglot' },
+  { id: 'kanban', name: '7K Kanban', desc: 'Project boards', category: 'apps', price: 0, rating: 4.6, reviews: 34, image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop', tags: ['Projects'], link: '/apps/kanban' },
+  { id: 'prompt', name: '7K Prompt', desc: 'AI prompts library', category: 'apps', price: 0, rating: 4.9, reviews: 56, image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop', tags: ['AI', 'ChatGPT'], hot: true, new: true, link: '/apps/prompt' },
+  { id: 'student', name: '7K Student', desc: 'Study planner', category: 'apps', price: 0, rating: 4.7, reviews: 78, image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop', tags: ['Study'], link: '/apps/student' },
+  { id: 'tools', name: '7K Tools', desc: 'Dev utilities', category: 'apps', price: 0, rating: 4.5, reviews: 23, image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', tags: ['Developer'], link: '/apps/tools' },
 ];
 
-// Templates Data
+// Templates
 const templates = [
-  {
-    id: 'saas-starter',
-    name: 'SaaS Starter Pro',
-    description: 'Complete SaaS kit with auth & billing',
-    category: 'templates',
-    subcategory: 'SaaS',
-    price: 12000,
-    originalPrice: 15000,
-    rating: 4.9,
-    reviews: 24,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-    tags: ['Next.js', 'Auth', 'Stripe'],
-    popular: true,
-    new: false,
-    link: '/templates/saas/preview-1',
-  },
-  {
-    id: 'ecommerce',
-    name: 'E-Commerce Pro',
-    description: 'Full shopping cart & checkout',
-    category: 'templates',
-    subcategory: 'E-Commerce',
-    price: 10000,
-    originalPrice: 12000,
-    rating: 4.8,
-    reviews: 18,
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
-    tags: ['Shop', 'Cart', 'Payments'],
-    popular: true,
-    new: false,
-    link: '/templates/ecommerce/preview-1',
-  },
-  {
-    id: 'portfolio',
-    name: 'Portfolio Creative',
-    description: 'Stunning designer portfolio',
-    category: 'templates',
-    subcategory: 'Portfolio',
-    price: 8000,
-    rating: 4.9,
-    reviews: 32,
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop',
-    tags: ['Portfolio', 'Creative'],
-    popular: true,
-    new: false,
-    link: '/templates/portfolio/preview-1',
-  },
-  {
-    id: 'hotel',
-    name: 'Hotel Booking',
-    description: 'Resort & hotel reservation',
-    category: 'templates',
-    subcategory: 'Booking',
-    price: 15000,
-    rating: 4.7,
-    reviews: 12,
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop',
-    tags: ['Booking', 'Calendar'],
-    popular: false,
-    new: true,
-    link: '/templates/hotel-booking/preview-1',
-  },
-  {
-    id: 'education',
-    name: 'Education LMS',
-    description: 'Online course platform',
-    category: 'templates',
-    subcategory: 'Education',
-    price: 12000,
-    rating: 4.8,
-    reviews: 15,
-    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=300&fit=crop',
-    tags: ['Courses', 'LMS'],
-    popular: false,
-    new: false,
-    link: '/templates/education/preview-1',
-  },
-  {
-    id: 'agency',
-    name: 'Agency Studio',
-    description: 'Creative agency website',
-    category: 'templates',
-    subcategory: 'Agency',
-    price: 9000,
-    rating: 4.9,
-    reviews: 21,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop',
-    tags: ['Agency', 'Team'],
-    popular: false,
-    new: false,
-    link: '/templates/agency/preview-1',
-  },
+  { id: 'saas', name: 'SaaS Starter', desc: 'Complete SaaS kit', category: 'templates', price: 12000, oldPrice: 15000, rating: 4.9, reviews: 24, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', tags: ['Next.js', 'Auth'], hot: true, link: '/templates/saas/preview-1' },
+  { id: 'ecom', name: 'E-Commerce Pro', desc: 'Full shop template', category: 'templates', price: 10000, oldPrice: 12000, rating: 4.8, reviews: 18, image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', tags: ['Shop', 'Cart'], hot: true, link: '/templates/ecommerce/preview-1' },
+  { id: 'portfolio', name: 'Portfolio Pro', desc: 'Creative portfolio', category: 'templates', price: 8000, rating: 4.9, reviews: 32, image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop', tags: ['Portfolio'], link: '/templates/portfolio/preview-1' },
+  { id: 'hotel', name: 'Hotel Booking', desc: 'Resort template', category: 'templates', price: 15000, rating: 4.7, reviews: 12, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop', tags: ['Booking'], new: true, link: '/templates/hotel-booking/preview-1' },
+  { id: 'edu', name: 'Education LMS', desc: 'Course platform', category: 'templates', price: 12000, rating: 4.8, reviews: 15, image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=300&fit=crop', tags: ['LMS'], link: '/templates/education/preview-1' },
+  { id: 'agency', name: 'Agency Studio', desc: 'Agency website', category: 'templates', price: 9000, rating: 4.9, reviews: 21, image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop', tags: ['Agency'], link: '/templates/agency/preview-1' },
 ];
 
-// Books Data
+// Books
 const books = [
-  {
-    id: 'ethos',
-    name: 'Ethos',
-    description: 'Design philosophy & culture',
-    category: 'books',
-    subcategory: 'Design',
-    price: 499,
-    rating: 4.9,
-    reviews: 45,
-    image: '/images/books/ethos-cover.png',
-    tags: ['Design', 'Philosophy'],
-    popular: true,
-    new: false,
-    link: '/books/ethos',
-  },
-  {
-    id: 'kupgames',
-    name: 'The Kup Games',
-    description: 'Mystery thriller novel',
-    category: 'books',
-    subcategory: 'Fiction',
-    price: 599,
-    rating: 4.8,
-    reviews: 38,
-    image: '/images/books/the kupgames-cover.png',
-    tags: ['Mystery', 'Thriller'],
-    popular: true,
-    new: false,
-    link: '/books/kup-games',
-  },
-  {
-    id: 'somaiya',
-    name: 'Somaiya Manual',
-    description: 'College survival guide',
-    category: 'books',
-    subcategory: 'Guide',
-    price: 299,
-    rating: 5.0,
-    reviews: 12,
-    image: '/images/books/The Somaiya Survival Manual-cover.png',
-    tags: ['College', 'Guide'],
-    popular: false,
-    new: true,
-    link: '/books/somaiya-manual',
-  },
+  { id: 'ethos', name: 'Ethos', desc: 'Design philosophy', category: 'books', price: 499, rating: 4.9, reviews: 45, image: '/images/books/ethos-cover.png', tags: ['Design'], hot: true, link: '/books/ethos' },
+  { id: 'kup', name: 'The Kup Games', desc: 'Mystery thriller', category: 'books', price: 599, rating: 4.8, reviews: 38, image: '/images/books/the kupgames-cover.png', tags: ['Fiction'], link: '/books/kup-games' },
+  { id: 'somaiya', name: 'Somaiya Manual', desc: 'College guide', category: 'books', price: 299, rating: 5.0, reviews: 12, image: '/images/books/The Somaiya Survival Manual-cover.png', tags: ['Guide'], new: true, link: '/books/somaiya-manual' },
 ];
 
-// Services Data
+// Services
 const services = [
-  {
-    id: 'web-dev',
-    name: 'Web Development',
-    description: 'Custom websites & web apps',
-    category: 'services',
-    subcategory: 'Development',
-    price: 3000,
-    priceLabel: 'From',
-    rating: 5.0,
-    reviews: 28,
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-    tags: ['Next.js', 'React'],
-    popular: true,
-    new: false,
-    link: '/services',
-  },
-  {
-    id: 'app-dev',
-    name: 'App Development',
-    description: 'PWA & mobile apps',
-    category: 'services',
-    subcategory: 'Development',
-    price: 10000,
-    priceLabel: 'From',
-    rating: 4.9,
-    reviews: 15,
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop',
-    tags: ['PWA', 'Mobile'],
-    popular: false,
-    new: false,
-    link: '/services',
-  },
-  {
-    id: 'ui-ux',
-    name: 'UI/UX Design',
-    description: 'Beautiful interfaces',
-    category: 'services',
-    subcategory: 'Design',
-    price: 5000,
-    priceLabel: 'From',
-    rating: 5.0,
-    reviews: 22,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-    tags: ['Figma', 'Design'],
-    popular: true,
-    new: false,
-    link: '/services',
-  },
-  {
-    id: 'seo',
-    name: 'SEO Optimization',
-    description: 'Rank higher on Google',
-    category: 'services',
-    subcategory: 'Marketing',
-    price: 2000,
-    priceLabel: 'From',
-    rating: 4.8,
-    reviews: 19,
-    image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=300&fit=crop',
-    tags: ['SEO', 'Growth'],
-    popular: false,
-    new: true,
-    link: '/services',
-  },
+  { id: 'web', name: 'Web Development', desc: 'Custom websites', category: 'services', price: 3000, priceNote: 'from', rating: 5.0, reviews: 28, image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', tags: ['Next.js'], hot: true, link: '/services' },
+  { id: 'app', name: 'App Development', desc: 'PWA & mobile', category: 'services', price: 10000, priceNote: 'from', rating: 4.9, reviews: 15, image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop', tags: ['Mobile'], link: '/services' },
+  { id: 'ui', name: 'UI/UX Design', desc: 'Beautiful interfaces', category: 'services', price: 5000, priceNote: 'from', rating: 5.0, reviews: 22, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop', tags: ['Figma'], link: '/services' },
+  { id: 'seo', name: 'SEO Optimization', desc: 'Rank on Google', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 19, image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=300&fit=crop', tags: ['Growth'], new: true, link: '/services' },
 ];
 
-// Blog Articles Data
+// Articles
 const articles = [
-  {
-    id: 'nextjs-15',
-    name: 'Getting Started with Next.js 15',
-    description: 'Complete beginner guide',
-    category: 'blog',
-    subcategory: 'Tutorial',
-    price: 0,
-    rating: 4.9,
-    reviews: 156,
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop',
-    tags: ['Next.js', 'React'],
-    popular: true,
-    new: false,
-    link: '/blog/getting-started-nextjs-15',
-  },
-  {
-    id: 'student-money',
-    name: 'How Students Can Earn Money',
-    description: 'No investment required',
-    category: 'blog',
-    subcategory: 'Career',
-    price: 0,
-    rating: 4.8,
-    reviews: 234,
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop',
-    tags: ['Career', 'Students'],
-    popular: true,
-    new: false,
-    link: '/blog/how-students-earn-money-skills-no-investment',
-  },
-  {
-    id: 'design-trends',
-    name: 'Web Design Trends 2026',
-    description: 'What\'s hot this year',
-    category: 'blog',
-    subcategory: 'Design',
-    price: 0,
-    rating: 4.7,
-    reviews: 89,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-    tags: ['Design', 'Trends'],
-    popular: false,
-    new: true,
-    link: '/blog/web-design-trends-2026',
-  },
-  {
-    id: 'ai-tools',
-    name: 'Best AI Tools for Developers',
-    description: 'Boost your productivity',
-    category: 'blog',
-    subcategory: 'AI',
-    price: 0,
-    rating: 4.9,
-    reviews: 178,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
-    tags: ['AI', 'Tools'],
-    popular: true,
-    new: true,
-    link: '/blog/best-ai-tools-developers',
-  },
+  { id: 'nextjs', name: 'Next.js 15 Guide', desc: 'Complete tutorial', category: 'articles', price: 0, rating: 4.9, reviews: 156, image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop', tags: ['Tutorial'], hot: true, link: '/blog/getting-started-nextjs-15' },
+  { id: 'earn', name: 'Student Earning', desc: 'Make money online', category: 'articles', price: 0, rating: 4.8, reviews: 234, image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop', tags: ['Career'], hot: true, link: '/blog/how-students-earn-money-skills-no-investment' },
+  { id: 'design', name: 'Design Trends 2026', desc: 'What\'s hot', category: 'articles', price: 0, rating: 4.7, reviews: 89, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop', tags: ['Design'], new: true, link: '/blog/web-design-trends-2026' },
+  { id: 'ai', name: 'AI Tools for Devs', desc: 'Boost productivity', category: 'articles', price: 0, rating: 4.9, reviews: 178, image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop', tags: ['AI'], new: true, link: '/blog/best-ai-tools-developers' },
 ];
 
-// Combine all products
 const allProducts = [...apps, ...templates, ...books, ...services, ...articles];
-
-// Stats
-const stats = [
-  { icon: Smartphone, value: '20+', label: 'Free Apps' },
-  { icon: Users, value: '10K+', label: 'Happy Users' },
-  { icon: Layout, value: '50+', label: 'Templates' },
-  { icon: Star, value: '4.9', label: 'Avg Rating' },
-];
 
 // ============================================
 // COMPONENTS
 // ============================================
 
-// Horizontal Scroll Section
-function HorizontalScrollSection({ 
-  title, 
-  products, 
-  icon: Icon,
-  viewAllLink,
-  bgColor = 'bg-white dark:bg-zinc-900'
-}: { 
-  title: string; 
-  products: typeof allProducts;
-  icon?: React.ElementType;
-  viewAllLink?: string;
-  bgColor?: string;
-}) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 320;
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  return (
-    <section className={`py-8 ${bgColor}`}>
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            {Icon && (
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white">
-                <Icon className="w-5 h-5" />
-              </div>
-            )}
-            <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{title}</h2>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => scroll('left')}
-              className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5 text-zinc-600 dark:text-zinc-400" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5 text-zinc-600 dark:text-zinc-400" />
-            </button>
-            {viewAllLink && (
-              <Link 
-                href={viewAllLink}
-                className="ml-2 text-sm font-medium text-violet-600 dark:text-violet-400 hover:underline flex items-center gap-1"
-              >
-                View all <ArrowRight className="w-4 h-4" />
-              </Link>
-            )}
-          </div>
-        </div>
-
-        {/* Scrollable Products */}
-        <div 
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} compact />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Product Card
-function ProductCard({ product, compact = false }: { product: typeof allProducts[0]; compact?: boolean }) {
+// Product Card - Clean and minimal
+function ProductCard({ product }: { product: typeof allProducts[0] }) {
   const isFree = product.price === 0;
-  const hasDiscount = 'originalPrice' in product && product.originalPrice;
-  const discount = hasDiscount ? Math.round((1 - product.price / (product as any).originalPrice) * 100) : 0;
+  const hasDiscount = 'oldPrice' in product && product.oldPrice;
+  const discount = hasDiscount ? Math.round((1 - product.price / (product as any).oldPrice) * 100) : 0;
 
   return (
-    <Link href={product.link} className={`group ${compact ? 'flex-shrink-0 w-72 snap-start' : ''}`}>
-      <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300">
+    <Link href={product.link} className="group block">
+      <motion.div 
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.2 }}
+        className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-violet-200 dark:hover:border-violet-800 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300"
+      >
         {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+        <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900">
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 768px) 100vw, 300px"
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           
           {/* Badges */}
-          <div className="absolute top-2 left-2 flex flex-wrap gap-1.5">
+          <div className="absolute top-3 left-3 flex gap-1.5">
             {product.new && (
-              <span className="px-2 py-0.5 bg-emerald-500 text-white text-xs font-semibold rounded-full">
+              <span className="px-2 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded-full uppercase tracking-wide">
                 New
               </span>
             )}
-            {product.popular && (
-              <span className="px-2 py-0.5 bg-orange-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
-                <Flame className="w-3 h-3" /> Hot
+            {product.hot && !product.new && (
+              <span className="px-2 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold rounded-full uppercase tracking-wide">
+                Popular
               </span>
             )}
             {hasDiscount && (
-              <span className="px-2 py-0.5 bg-pink-500 text-white text-xs font-semibold rounded-full">
+              <span className="px-2 py-1 bg-rose-500 text-white text-[10px] font-bold rounded-full">
                 -{discount}%
               </span>
             )}
-            {isFree && (
-              <span className="px-2 py-0.5 bg-blue-500 text-white text-xs font-semibold rounded-full">
+          </div>
+
+          {/* Free badge */}
+          {isFree && (
+            <div className="absolute top-3 right-3">
+              <span className="px-2 py-1 bg-blue-500 text-white text-[10px] font-bold rounded-full uppercase">
                 Free
               </span>
-            )}
-          </div>
-
-          {/* Category Badge */}
-          <div className="absolute top-2 right-2">
-            <span className="px-2 py-0.5 bg-white/90 dark:bg-zinc-900/90 backdrop-blur text-zinc-700 dark:text-zinc-300 text-xs font-medium rounded-full capitalize">
-              {product.subcategory}
-            </span>
-          </div>
-
-          {/* Wishlist */}
-          <button 
-            className="absolute bottom-2 right-2 p-2 bg-white/90 dark:bg-zinc-900/90 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-pink-50 dark:hover:bg-pink-900/50"
-            onClick={(e) => { e.preventDefault(); }}
-          >
-            <Heart className="w-4 h-4 text-zinc-500 hover:text-pink-500 transition-colors" />
-          </button>
+            </div>
+          )}
         </div>
 
         {/* Content */}
         <div className="p-4">
           {/* Tags */}
-          <div className="flex flex-wrap gap-1 mb-2">
+          <div className="flex gap-1.5 mb-2">
             {product.tags.slice(0, 2).map((tag, i) => (
-              <span 
-                key={i}
-                className="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2 py-0.5 rounded"
-              >
+              <span key={i} className="text-[10px] font-medium text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/30 px-2 py-0.5 rounded">
                 {tag}
               </span>
             ))}
           </div>
 
-          {/* Title */}
-          <h3 className="font-semibold text-zinc-900 dark:text-white mb-1 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors line-clamp-1">
+          {/* Title & Desc */}
+          <h3 className="font-semibold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors mb-0.5">
             {product.name}
           </h3>
-          
-          {/* Description */}
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3 line-clamp-1">
-            {product.description}
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3">
+            {product.desc}
           </p>
 
-          {/* Rating & Price */}
+          {/* Footer */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1">
-              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-              <span className="text-sm font-medium text-zinc-900 dark:text-white">{product.rating}</span>
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{product.rating}</span>
               <span className="text-xs text-zinc-400">({product.reviews})</span>
             </div>
-
             <div className="text-right">
-              {'priceLabel' in product && (
-                <span className="text-xs text-zinc-400 mr-1">{(product as any).priceLabel}</span>
-              )}
-              <span className={`font-bold ${isFree ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-900 dark:text-white'}`}>
-                {isFree ? 'Free' : `₹${product.price.toLocaleString('en-IN')}`}
+              {'priceNote' in product && <span className="text-[10px] text-zinc-400 mr-1">{(product as any).priceNote}</span>}
+              <span className={`font-bold ${isFree ? 'text-emerald-600' : 'text-zinc-900 dark:text-white'}`}>
+                {isFree ? 'Free' : `₹${product.price.toLocaleString()}`}
               </span>
               {hasDiscount && (
-                <span className="text-xs text-zinc-400 line-through ml-1">
-                  ₹{(product as any).originalPrice.toLocaleString('en-IN')}
-                </span>
+                <span className="text-xs text-zinc-400 line-through ml-1">₹{(product as any).oldPrice.toLocaleString()}</span>
               )}
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }
 
-// Category Icon Button
-function CategoryIcon({ category, isActive, onClick }: { 
-  category: typeof categories[0]; 
+// Section with horizontal scroll
+function ProductSection({ title, emoji, products, viewAllLink }: { 
+  title: string; 
+  emoji: string;
+  products: typeof allProducts;
+  viewAllLink: string;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+    }
+  };
+
+  if (products.length === 0) return null;
+
+  return (
+    <section className="py-10">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+          <span className="text-2xl">{emoji}</span> {title}
+        </h2>
+        <div className="flex items-center gap-2">
+          <button onClick={() => scroll('left')} className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
+            <ChevronLeft className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+          </button>
+          <button onClick={() => scroll('right')} className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">
+            <ChevronRight className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+          </button>
+          <Link href={viewAllLink} className="ml-2 text-sm font-medium text-violet-600 dark:text-violet-400 hover:text-violet-700 flex items-center gap-1">
+            View all <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </div>
+      <div 
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        {products.map((p) => (
+          <div key={p.id} className="flex-shrink-0 w-64 snap-start">
+            <ProductCard product={p} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// Category Pill
+function CategoryPill({ cat, isActive, onClick }: { 
+  cat: typeof categories[0]; 
   isActive: boolean;
   onClick: () => void;
 }) {
-  const Icon = category.icon;
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-center gap-2 p-4 rounded-2xl transition-all min-w-[100px] ${
+      className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
         isActive 
-          ? 'bg-gradient-to-br ' + category.color + ' text-white shadow-lg' 
-          : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+          ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/25' 
+          : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 hover:border-violet-300 dark:hover:border-violet-700'
       }`}
     >
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-        isActive ? 'bg-white/20' : 'bg-white dark:bg-zinc-900'
-      }`}>
-        <Icon className={`w-6 h-6 ${isActive ? 'text-white' : ''}`} />
-      </div>
-      <span className="text-sm font-medium">{category.name}</span>
+      <span className="text-base">{cat.emoji}</span>
+      {cat.name}
     </button>
   );
 }
 
-// Banner Component
-function PromoBanner() {
-  return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 p-8 md:p-12">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
-      
-      <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white text-sm font-medium mb-4">
-            <Sparkles className="w-4 h-4" />
-            Premium Digital Products
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Innovative Marketplace 🚀
-          </h2>
-          <p className="text-white/80 text-lg max-w-md">
-            Templates, Apps, Books & Services — Everything you need to build & grow
-          </p>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link
-            href="/templates"
-            className="px-6 py-3 bg-white text-violet-600 font-semibold rounded-xl hover:bg-white/90 transition-colors flex items-center gap-2"
-          >
-            Browse Templates <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            href="/apps"
-            className="px-6 py-3 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors"
-          >
-            Explore Apps
-          </Link>
-        </div>
-      </div>
-
-      {/* Decorative elements */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl" />
-    </div>
-  );
-}
-
-// Small Promo Cards
-function PromoCard({ title, subtitle, color, link }: { title: string; subtitle: string; color: string; link: string }) {
-  return (
-    <Link href={link} className="block">
-      <div className={`relative overflow-hidden rounded-2xl ${color} p-6 h-full hover:scale-[1.02] transition-transform`}>
-        <h3 className="font-bold text-white text-lg mb-1">{title}</h3>
-        <p className="text-white/80 text-sm">{subtitle}</p>
-        <ArrowRight className="absolute bottom-4 right-4 w-5 h-5 text-white/60" />
-      </div>
-    </Link>
-  );
-}
-
 // ============================================
-// MAIN COMPONENT
+// MAIN
 // ============================================
 
 export default function StoreClient() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [category, setCategory] = useState('all');
+  const [search, setSearch] = useState('');
 
-  // Filtered products
-  const filteredProducts = useMemo(() => {
-    let filtered = allProducts;
-
-    // Category filter
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(p => p.category === selectedCategory);
-    }
-
-    // Tag filter
-    if (activeTag === 'new') {
-      filtered = filtered.filter(p => p.new);
-    } else if (activeTag === 'popular') {
-      filtered = filtered.filter(p => p.popular);
-    } else if (activeTag === 'free') {
-      filtered = filtered.filter(p => p.price === 0);
-    } else if (activeTag === 'discount') {
-      filtered = filtered.filter(p => 'originalPrice' in p);
-    }
-
-    // Search filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(p => 
-        p.name.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query) ||
-        p.tags.some(t => t.toLowerCase().includes(query))
+  const filtered = useMemo(() => {
+    let result = allProducts;
+    if (category !== 'all') result = result.filter(p => p.category === category);
+    if (search) {
+      const q = search.toLowerCase();
+      result = result.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.desc.toLowerCase().includes(q) ||
+        p.tags.some(t => t.toLowerCase().includes(q))
       );
     }
+    return result;
+  }, [category, search]);
 
-    return filtered;
-  }, [selectedCategory, activeTag, searchQuery]);
-
-  // Section-specific products
-  const hotOffers = allProducts.filter(p => p.popular).slice(0, 8);
-  const newArrivals = allProducts.filter(p => p.new).slice(0, 8);
+  const hotProducts = allProducts.filter(p => p.hot).slice(0, 8);
+  const newProducts = allProducts.filter(p => p.new).slice(0, 8);
   const freeProducts = allProducts.filter(p => p.price === 0).slice(0, 8);
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
-      {/* Top Promo Bar */}
-      <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white py-2 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 text-sm">
-          <span className="flex items-center gap-2">
-            <Award className="w-4 h-4" /> TOP-1 Marketplace
-          </span>
-          <span className="hidden sm:inline">•</span>
-          <span className="hidden sm:flex items-center gap-2">
-            <Percent className="w-4 h-4" /> 20% off first order
-          </span>
-          <span className="hidden md:inline">•</span>
-          <span className="hidden md:flex items-center gap-2">
-            <Gift className="w-4 h-4" /> Get rewards for referrals
-          </span>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-b from-violet-50/50 via-white to-white dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-950">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4">
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold">
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="w-9 h-9 bg-gradient-to-br from-violet-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-violet-500/25">
                 7K
               </div>
-              <span className="font-bold text-xl text-zinc-900 dark:text-white hidden sm:inline">Store</span>
+              <div className="hidden sm:block">
+                <div className="font-bold text-zinc-900 dark:text-white">Store</div>
+                <div className="text-[10px] text-zinc-500 -mt-0.5">by 7K Solutions</div>
+              </div>
             </Link>
 
-            {/* Catalog Button - Desktop */}
-            <button className="hidden lg:flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-xl font-medium hover:bg-violet-700 transition-colors">
-              <Menu className="w-4 h-4" />
-              Catalog
-            </button>
-
-            {/* Search Bar */}
-            <div className="flex-1 max-w-2xl">
+            {/* Search */}
+            <div className="flex-1 max-w-md">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                 <input
                   type="text"
-                  placeholder="Search products, apps, templates..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-zinc-100 dark:bg-zinc-800 border-0 rounded-xl text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-violet-500 transition-all"
+                  placeholder="Search apps, templates, books..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-xl text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 border-0 focus:ring-2 focus:ring-violet-500/50 transition-all"
                 />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-4 top-1/2 -translate-y-1/2"
-                  >
+                {search && (
+                  <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2">
                     <X className="w-4 h-4 text-zinc-400 hover:text-zinc-600" />
                   </button>
                 )}
               </div>
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-2">
-              <Link href="/" className="p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                <Home className="w-5 h-5" />
-              </Link>
-              <button className="p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors relative">
-                <Heart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-pink-500 text-white text-xs rounded-full flex items-center justify-center">0</span>
-              </button>
-              <button className="p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors relative">
-                <ShoppingBag className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-violet-500 text-white text-xs rounded-full flex items-center justify-center">0</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Quick Tags */}
-          <div className="flex items-center gap-2 pb-3 overflow-x-auto scrollbar-hide">
-            {quickTags.map(tag => (
-              <button
-                key={tag.id}
-                onClick={() => setActiveTag(activeTag === tag.id ? null : tag.id)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                  activeTag === tag.id 
-                    ? `${tag.color} text-white` 
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'
-                }`}
-              >
-                {tag.label}
-              </button>
-            ))}
-            <div className="h-4 w-px bg-zinc-300 dark:bg-zinc-700 mx-2" />
-            {['Productivity', 'Design', 'Finance', 'Education', 'Health'].map(cat => (
-              <button
-                key={cat}
-                className="px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white whitespace-nowrap transition-colors"
-              >
-                {cat}
-              </button>
-            ))}
+            {/* CTA */}
+            <Link
+              href="/services"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-medium rounded-xl hover:opacity-90 transition-opacity"
+            >
+              Get Quote
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            {/* Main Banner */}
-            <div className="lg:col-span-2">
-              <PromoBanner />
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        {/* Hero */}
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500 p-8 sm:p-12 mb-10">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+          </div>
+          
+          <div className="relative flex flex-col lg:flex-row items-center gap-8">
+            <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white/90 text-sm font-medium mb-4">
+                <Sparkles className="w-4 h-4" />
+                Premium Digital Products
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                Everything you need<br />to build & grow
+              </h1>
+              <p className="text-white/80 text-lg mb-6 max-w-md mx-auto lg:mx-0">
+                Apps, templates, books & services — all crafted with care
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                <Link href="/apps" className="px-5 py-2.5 bg-white text-violet-700 font-semibold rounded-xl hover:bg-white/90 transition-colors">
+                  Explore Apps
+                </Link>
+                <Link href="/templates" className="px-5 py-2.5 bg-white/10 backdrop-blur text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors">
+                  Browse Templates
+                </Link>
+              </div>
             </div>
-            
-            {/* Side Cards */}
-            <div className="flex flex-col gap-4">
-              <PromoCard 
-                title="Free Apps" 
-                subtitle="20+ productivity tools" 
-                color="bg-gradient-to-br from-blue-500 to-cyan-500" 
-                link="/apps"
-              />
-              <PromoCard 
-                title="Premium Templates" 
-                subtitle="Save 20% this week" 
-                color="bg-gradient-to-br from-pink-500 to-rose-500" 
-                link="/templates"
-              />
+            <div className="w-64 lg:w-80 flex-shrink-0">
+              <HeroIllustration />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Category Icons */}
-      <section className="py-6 px-4 bg-white dark:bg-zinc-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-            {categories.map(category => (
-              <CategoryIcon
-                key={category.id}
-                category={category}
-                isActive={selectedCategory === category.id}
-                onClick={() => {
-                  setSelectedCategory(category.id);
-                  setActiveTag(null);
-                }}
+        {/* Categories */}
+        <section className="mb-10">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+            {categories.map((cat) => (
+              <CategoryPill
+                key={cat.id}
+                cat={cat}
+                isActive={category === cat.id}
+                onClick={() => setCategory(cat.id)}
               />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Hot Offers Section */}
-      <HorizontalScrollSection 
-        title="🔥 Hot Offers" 
-        products={hotOffers}
-        icon={TrendingUp}
-        viewAllLink="/store?filter=popular"
-      />
-
-      {/* Mid Banner */}
-      <section className="py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-8">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-2">💼 Need Custom Development?</h3>
-              <p className="text-white/80 mb-4">Get personalized websites, apps & design services</p>
-              <Link 
-                href="/services"
-                className="inline-flex items-center gap-2 bg-white text-emerald-600 px-5 py-2.5 rounded-xl font-semibold hover:bg-white/90 transition-colors"
-              >
-                View Services <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
-          </div>
-        </div>
-      </section>
-
-      {/* New Arrivals */}
-      <HorizontalScrollSection 
-        title="🆕 New Arrivals" 
-        products={newArrivals}
-        icon={Sparkles}
-        viewAllLink="/store?filter=new"
-        bgColor="bg-zinc-50 dark:bg-zinc-950"
-      />
-
-      {/* Free Products */}
-      <HorizontalScrollSection 
-        title="🎁 Free Products" 
-        products={freeProducts}
-        icon={Gift}
-        viewAllLink="/apps"
-      />
-
-      {/* All Products Grid (When filtered) */}
-      {(selectedCategory !== 'all' || activeTag || searchQuery) && (
-        <section className="py-8 px-4 bg-zinc-50 dark:bg-zinc-950">
-          <div className="max-w-7xl mx-auto">
+        {/* Dynamic Content */}
+        {(category !== 'all' || search) ? (
+          // Filtered Grid
+          <section className="mb-10">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
-                {searchQuery ? `Search results for "${searchQuery}"` : 
-                 activeTag ? `${quickTags.find(t => t.id === activeTag)?.label} Products` :
-                 categories.find(c => c.id === selectedCategory)?.name}
+                {search ? `Results for "${search}"` : categories.find(c => c.id === category)?.name}
               </h2>
-              <span className="text-sm text-zinc-500">{filteredProducts.length} products</span>
+              <span className="text-sm text-zinc-500">{filtered.length} items</span>
             </div>
-
-            {filteredProducts.length > 0 ? (
+            {filtered.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {filtered.map((p) => (
+                  <ProductCard key={p.id} product={p} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-20">
-                <div className="w-20 h-20 bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-zinc-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2">No products found</h3>
-                <p className="text-zinc-500 mb-4">Try different filters or search terms</p>
+              <div className="text-center py-16">
+                <EmptyStateIllustration />
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mt-4 mb-2">No results found</h3>
+                <p className="text-zinc-500 mb-4">Try a different search or category</p>
                 <button
-                  onClick={() => {
-                    setSelectedCategory('all');
-                    setActiveTag(null);
-                    setSearchQuery('');
-                  }}
-                  className="px-6 py-2 bg-violet-600 text-white rounded-xl font-medium hover:bg-violet-700 transition-colors"
+                  onClick={() => { setCategory('all'); setSearch(''); }}
+                  className="px-5 py-2 bg-violet-600 text-white rounded-xl font-medium hover:bg-violet-700 transition-colors"
                 >
-                  Clear Filters
+                  Clear filters
                 </button>
               </div>
             )}
+          </section>
+        ) : (
+          // Default Sections
+          <>
+            <ProductSection title="Popular" emoji="🔥" products={hotProducts} viewAllLink="/store?filter=popular" />
+            <ProductSection title="New Arrivals" emoji="✨" products={newProducts} viewAllLink="/store?filter=new" />
+            <ProductSection title="Free Resources" emoji="🎁" products={freeProducts} viewAllLink="/apps" />
+          </>
+        )}
+
+        {/* Quick Links */}
+        <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          {[
+            { title: 'Free Apps', desc: '20+ tools', href: '/apps', gradient: 'from-blue-500 to-cyan-500', emoji: '📱' },
+            { title: 'Templates', desc: 'Premium designs', href: '/templates', gradient: 'from-violet-500 to-purple-500', emoji: '🎨' },
+            { title: 'Books', desc: 'Learn & grow', href: '/books', gradient: 'from-orange-500 to-amber-500', emoji: '📚' },
+            { title: 'Services', desc: 'Get built', href: '/services', gradient: 'from-pink-500 to-rose-500', emoji: '💼' },
+          ].map((item) => (
+            <Link key={item.title} href={item.href} className="group">
+              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${item.gradient} p-6 h-full`}>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <span className="text-3xl mb-2 block">{item.emoji}</span>
+                <h3 className="font-bold text-white text-lg">{item.title}</h3>
+                <p className="text-white/70 text-sm">{item.desc}</p>
+                <ArrowRight className="absolute bottom-4 right-4 w-5 h-5 text-white/50 group-hover:text-white/80 group-hover:translate-x-1 transition-all" />
+              </div>
+            </Link>
+          ))}
+        </section>
+
+        {/* CTA Banner */}
+        <section className="rounded-2xl bg-zinc-900 dark:bg-zinc-800 p-8 sm:p-10 text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Need something custom?</h2>
+          <p className="text-zinc-400 mb-6 max-w-md mx-auto">Get personalized websites, apps, and designs built just for you</p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="/services" className="px-6 py-3 bg-white text-zinc-900 font-semibold rounded-xl hover:bg-zinc-100 transition-colors">
+              View Services
+            </Link>
+            <a 
+              href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'm%20interested%20in%20your%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-zinc-800 dark:bg-zinc-700 text-white font-semibold rounded-xl hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors"
+            >
+              WhatsApp →
+            </a>
           </div>
         </section>
-      )}
 
-      {/* Stats Section */}
-      <section className="py-12 px-4 bg-gradient-to-r from-violet-600 to-purple-600">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">7K Store — Your Digital Product Hub</h2>
-            <p className="text-white/70">Trusted by thousands of creators & developers</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, i) => {
-              const Icon = stat.icon;
-              return (
-                <div key={i} className="text-center">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-white/70 text-sm">{stat.label}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Collections */}
-      <section className="py-12 px-4 bg-white dark:bg-zinc-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-8 text-center">Main Collections</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/apps" className="group">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-cyan-500">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <Smartphone className="w-8 h-8 text-white mb-2" />
-                  <h3 className="text-white font-bold text-lg">Free Apps</h3>
-                  <p className="text-white/70 text-sm">20+ productivity tools</p>
-                </div>
-              </div>
-            </Link>
-            <Link href="/templates" className="group">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-violet-500 to-purple-500">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <Layout className="w-8 h-8 text-white mb-2" />
-                  <h3 className="text-white font-bold text-lg">Templates</h3>
-                  <p className="text-white/70 text-sm">Premium web templates</p>
-                </div>
-              </div>
-            </Link>
-            <Link href="/books" className="group">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-orange-500 to-amber-500">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <BookOpen className="w-8 h-8 text-white mb-2" />
-                  <h3 className="text-white font-bold text-lg">eBooks</h3>
-                  <p className="text-white/70 text-sm">Design & fiction books</p>
-                </div>
-              </div>
-            </Link>
-            <Link href="/blog" className="group">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-pink-500 to-rose-500">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <FileText className="w-8 h-8 text-white mb-2" />
-                  <h3 className="text-white font-bold text-lg">Articles</h3>
-                  <p className="text-white/70 text-sm">Tutorials & guides</p>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+        {/* Stats */}
+        <section className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {[
+            { value: '20+', label: 'Free Apps', icon: Smartphone },
+            { value: '50+', label: 'Templates', icon: Layout },
+            { value: '10K+', label: 'Users', icon: Users },
+            { value: '4.9', label: 'Avg Rating', icon: Star },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-white dark:bg-zinc-900 rounded-2xl p-5 text-center border border-zinc-100 dark:border-zinc-800">
+              <stat.icon className="w-6 h-6 text-violet-500 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
+              <div className="text-sm text-zinc-500">{stat.label}</div>
+            </div>
+          ))}
+        </section>
+      </main>
 
       {/* Footer */}
-      <footer className="bg-zinc-900 text-white py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center font-bold">
-                  7K
-                </div>
-                <span className="font-bold text-xl">Store</span>
+      <footer className="border-t border-zinc-200 dark:border-zinc-800 py-10 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xs">
+                7K
               </div>
-              <p className="text-zinc-400 text-sm">Premium digital products by Kunal Chheda. Made in India 🇮🇳</p>
+              <span className="text-sm text-zinc-500">Premium digital products by Kunal Chheda</span>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li><Link href="/apps" className="hover:text-white transition-colors">Apps</Link></li>
-                <li><Link href="/templates" className="hover:text-white transition-colors">Templates</Link></li>
-                <li><Link href="/books" className="hover:text-white transition-colors">Books</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/docs" className="hover:text-white transition-colors">Documentation</Link></li>
-                <li><Link href="/#contact" className="hover:text-white transition-colors">Support</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
-                <li>
-                  <a href="https://wa.me/918591247148" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4" /> WhatsApp
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:7kmindbeatss@gmail.com" className="hover:text-white transition-colors">Email</a>
-                </li>
-              </ul>
-            </div>
+            <nav className="flex flex-wrap justify-center gap-6 text-sm">
+              <Link href="/" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">Home</Link>
+              <Link href="/apps" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">Apps</Link>
+              <Link href="/templates" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">Templates</Link>
+              <Link href="/books" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">Books</Link>
+              <Link href="/services" className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">Services</Link>
+            </nav>
           </div>
-          <div className="pt-8 border-t border-zinc-800 text-center text-sm text-zinc-500">
-            © 2026 7K Solutions. All rights reserved.
+          <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 text-center text-xs text-zinc-400">
+            © 2026 7K Solutions. Made in India 🇮🇳
           </div>
         </div>
       </footer>
