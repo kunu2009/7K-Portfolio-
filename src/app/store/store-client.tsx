@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,43 +8,48 @@ import {
   Search, 
   Filter,
   Grid3X3,
-  List,
-  ShoppingCart,
+  LayoutList,
   Star,
-  Heart,
-  Eye,
-  Download,
   ArrowRight,
-  ChevronDown,
   Sparkles,
   Code,
   BookOpen,
   Smartphone,
   Palette,
   Layers,
-  Zap,
   CheckCircle,
-  Tag,
   TrendingUp,
   Award,
   Shield,
   Clock,
-  IndianRupee,
+  Download,
   ExternalLink,
   Package,
-  ChevronLeft
+  ChevronLeft,
+  X,
+  SlidersHorizontal,
+  Heart
 } from 'lucide-react';
 
 // Product categories
 const categories = [
-  { id: 'all', name: 'All Products', icon: Grid3X3, count: 30 },
-  { id: 'templates', name: 'Web Templates', icon: Code, count: 12 },
-  { id: 'books', name: 'eBooks', icon: BookOpen, count: 5 },
-  { id: 'apps', name: 'Apps & Tools', icon: Smartphone, count: 8 },
-  { id: 'services', name: 'Services', icon: Palette, count: 5 },
+  { id: 'all', name: 'All Products', icon: Layers, count: 17 },
+  { id: 'templates', name: 'Templates', icon: Code, count: 6 },
+  { id: 'books', name: 'eBooks', icon: BookOpen, count: 3 },
+  { id: 'apps', name: 'Apps', icon: Smartphone, count: 4 },
+  { id: 'services', name: 'Services', icon: Palette, count: 4 },
 ];
 
-// Featured products data
+// Price ranges
+const priceRanges = [
+  { id: 'all', label: 'All Prices', min: 0, max: Infinity },
+  { id: 'free', label: 'Free', min: 0, max: 0 },
+  { id: 'under5k', label: 'Under ₹5,000', min: 1, max: 4999 },
+  { id: '5k-10k', label: '₹5,000 - ₹10,000', min: 5000, max: 10000 },
+  { id: 'above10k', label: 'Above ₹10,000', min: 10001, max: Infinity },
+];
+
+// Products data
 const products = [
   // Templates
   {
@@ -60,7 +65,7 @@ const products = [
     tags: ['Next.js', 'React', 'Tailwind'],
     featured: true,
     bestseller: true,
-    description: 'Complete SaaS template with auth, dashboard, billing & more',
+    description: 'Complete SaaS template with auth, dashboard & billing',
     link: '/templates/saas/preview-1',
   },
   {
@@ -73,9 +78,9 @@ const products = [
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
     rating: 4.8,
     reviews: 18,
-    tags: ['Next.js', 'Shopping Cart', 'Stripe'],
+    tags: ['Shopping', 'Stripe', 'Cart'],
     featured: true,
-    description: 'Full-featured e-commerce template with product management',
+    description: 'Full-featured e-commerce with product management',
     link: '/templates/ecommerce/preview-1',
   },
   {
@@ -87,23 +92,23 @@ const products = [
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
     rating: 4.9,
     reviews: 32,
-    tags: ['Portfolio', 'Animations', 'Modern'],
+    tags: ['Portfolio', 'Animations'],
     bestseller: true,
-    description: 'Stunning portfolio template for designers & developers',
+    description: 'Stunning portfolio for designers & developers',
     link: '/templates/portfolio/preview-1',
   },
   {
     id: 't4',
-    name: 'Hotel Booking System',
+    name: 'Hotel Booking',
     category: 'templates',
     type: 'Template',
     price: 15000,
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop',
     rating: 4.7,
     reviews: 12,
-    tags: ['Booking', 'Calendar', 'Payments'],
+    tags: ['Booking', 'Calendar'],
     featured: true,
-    description: 'Complete hotel/resort booking template with availability',
+    description: 'Complete hotel/resort booking with availability',
     link: '/templates/hotel-booking/preview-1',
   },
   {
@@ -115,8 +120,8 @@ const products = [
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop',
     rating: 4.8,
     reviews: 15,
-    tags: ['LMS', 'Courses', 'Dashboard'],
-    description: 'Online learning platform with course management',
+    tags: ['LMS', 'Courses'],
+    description: 'Online learning platform with courses',
     link: '/templates/education/preview-1',
   },
   {
@@ -128,26 +133,26 @@ const products = [
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
     rating: 4.9,
     reviews: 21,
-    tags: ['Agency', 'Services', 'Team'],
-    description: 'Professional agency/studio website template',
+    tags: ['Agency', 'Modern'],
+    description: 'Professional agency/studio website',
     link: '/templates/agency/preview-1',
   },
   
   // eBooks
   {
     id: 'b1',
-    name: 'Ethos - Design Philosophy',
+    name: 'Ethos',
     category: 'books',
     type: 'eBook',
     price: 499,
-    image: '/images/portfolios/lavender-skies-cover.jpg',
+    image: '/images/books/ethos-cover.png',
     rating: 4.9,
     reviews: 45,
-    tags: ['Design', 'Philosophy', 'Culture'],
+    tags: ['Design', 'Philosophy'],
     featured: true,
     bestseller: true,
-    description: 'A deep dive into design philosophy and cultural aesthetics',
-    link: '/books',
+    description: 'Design philosophy and cultural aesthetics',
+    link: '/books/ethos',
   },
   {
     id: 'b2',
@@ -155,28 +160,27 @@ const products = [
     category: 'books',
     type: 'eBook',
     price: 599,
-    image: '/images/portfolios/lavender-skies-cover.jpg',
+    image: '/images/books/the kupgames-cover.png',
     rating: 4.8,
     reviews: 38,
-    tags: ['Mystery', 'Thriller', 'Fiction'],
+    tags: ['Mystery', 'Thriller'],
     bestseller: true,
-    description: 'A thrilling mystery novel that keeps you guessing',
-    link: '/books',
+    description: 'A thrilling mystery novel',
+    link: '/books/kup-games',
   },
   {
     id: 'b3',
-    name: 'The 7K Framework',
+    name: 'Somaiya Manual',
     category: 'books',
     type: 'eBook',
-    price: 799,
-    image: '/images/portfolios/lavender-skies-cover.jpg',
+    price: 299,
+    image: '/images/books/The Somaiya Survival Manual-cover.png',
     rating: 5.0,
     reviews: 12,
-    tags: ['Business', 'Web Dev', 'Guide'],
+    tags: ['Guide', 'College'],
     featured: true,
-    comingSoon: true,
-    description: 'Build premium websites that sell - coming soon!',
-    link: '/books',
+    description: 'The ultimate college survival guide',
+    link: '/books/somaiya-manual',
   },
   
   // Apps
@@ -189,10 +193,10 @@ const products = [
     image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop',
     rating: 4.9,
     reviews: 156,
-    tags: ['Productivity', 'Habits', 'Goals'],
+    tags: ['Productivity', 'Habits'],
     featured: true,
     bestseller: true,
-    description: 'All-in-one productivity app for habits, tasks & goals',
+    description: 'All-in-one productivity for habits & goals',
     link: '/apps/7k-life',
   },
   {
@@ -204,9 +208,9 @@ const products = [
     image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop',
     rating: 4.8,
     reviews: 89,
-    tags: ['Fitness', 'Workout', 'Health'],
+    tags: ['Fitness', 'Health'],
     bestseller: true,
-    description: 'Track workouts, plan exercises & achieve fitness goals',
+    description: 'Track workouts & achieve fitness goals',
     link: '/apps/7k-fitness',
   },
   {
@@ -218,8 +222,8 @@ const products = [
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
     rating: 4.7,
     reviews: 67,
-    tags: ['Finance', 'Budget', 'Expense'],
-    description: 'Track expenses, manage budgets & reach financial goals',
+    tags: ['Finance', 'Budget'],
+    description: 'Track expenses & manage budgets',
     link: '/apps/7k-money',
   },
   {
@@ -231,8 +235,8 @@ const products = [
     image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop',
     rating: 4.8,
     reviews: 45,
-    tags: ['Languages', 'Learning', 'Education'],
-    description: 'Learn new languages with interactive lessons',
+    tags: ['Languages', 'Learning'],
+    description: 'Learn new languages interactively',
     link: '/apps/7k-polyglot',
   },
   
@@ -243,13 +247,13 @@ const products = [
     category: 'services',
     type: 'Service',
     price: 3000,
-    priceLabel: 'Starting from',
+    priceLabel: 'From',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop',
     rating: 5.0,
     reviews: 28,
-    tags: ['Next.js', 'React', 'Full-Stack'],
+    tags: ['Next.js', 'Full-Stack'],
     featured: true,
-    description: 'Custom website development with modern technologies',
+    description: 'Custom website with modern tech',
     link: '/services',
   },
   {
@@ -258,12 +262,12 @@ const products = [
     category: 'services',
     type: 'Service',
     price: 10000,
-    priceLabel: 'Starting from',
+    priceLabel: 'From',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
     rating: 4.9,
     reviews: 15,
-    tags: ['PWA', 'Mobile', 'Cross-Platform'],
-    description: 'Progressive Web Apps & mobile app development',
+    tags: ['PWA', 'Mobile'],
+    description: 'Progressive Web Apps & mobile apps',
     link: '/services',
   },
   {
@@ -272,12 +276,12 @@ const products = [
     category: 'services',
     type: 'Service',
     price: 5000,
-    priceLabel: 'Starting from',
+    priceLabel: 'From',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
     rating: 5.0,
     reviews: 22,
-    tags: ['Figma', 'Design System', 'Prototyping'],
-    description: 'User interface & experience design for web & mobile',
+    tags: ['Figma', 'Design'],
+    description: 'Beautiful UI & smooth UX design',
     link: '/services',
   },
   {
@@ -286,388 +290,542 @@ const products = [
     category: 'services',
     type: 'Service',
     price: 2000,
-    priceLabel: 'Starting from',
+    priceLabel: 'From',
     image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&h=400&fit=crop',
     rating: 4.8,
     reviews: 19,
-    tags: ['SEO', 'Analytics', 'Performance'],
-    description: 'Improve search rankings & website performance',
+    tags: ['SEO', 'Analytics'],
+    description: 'Improve rankings & performance',
     link: '/services',
   },
 ];
 
 // Trust badges
 const trustBadges = [
-  { icon: Shield, text: 'Secure Payments', subtext: 'UPI, Cards, Net Banking' },
-  { icon: Download, text: 'Instant Access', subtext: 'Download immediately' },
-  { icon: Clock, text: 'Lifetime Updates', subtext: 'Free updates forever' },
-  { icon: Award, text: 'Premium Quality', subtext: 'Handcrafted with care' },
+  { icon: Shield, text: 'Secure Payments' },
+  { icon: Download, text: 'Instant Access' },
+  { icon: Clock, text: 'Lifetime Updates' },
+  { icon: Award, text: 'Premium Quality' },
 ];
+
+// Product Card Component
+function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className="group"
+    >
+      <Link href={product.link}>
+        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+          {/* Image */}
+          <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            {/* Badges */}
+            <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+              {product.bestseller && (
+                <span className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg">
+                  <TrendingUp className="w-3 h-3" />
+                  Best
+                </span>
+              )}
+              {product.featured && !product.bestseller && (
+                <span className="inline-flex items-center gap-1 bg-gradient-to-r from-violet-500 to-purple-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg">
+                  <Sparkles className="w-3 h-3" />
+                  Featured
+                </span>
+              )}
+              {product.price === 0 && (
+                <span className="bg-emerald-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg">
+                  Free
+                </span>
+              )}
+            </div>
+
+            {/* Type Badge */}
+            <div className="absolute top-3 right-3">
+              <span className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm text-zinc-700 dark:text-zinc-300 text-xs font-medium px-2.5 py-1 rounded-full shadow">
+                {product.type}
+              </span>
+            </div>
+
+            {/* Quick View Button */}
+            <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <span className="inline-flex items-center gap-1.5 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white text-sm font-medium px-4 py-2 rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors">
+                View
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="p-4">
+            {/* Tags */}
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {product.tags.slice(0, 2).map((tag, i) => (
+                <span 
+                  key={i}
+                  className="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2 py-0.5 rounded-md"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Title */}
+            <h3 className="font-semibold text-zinc-900 dark:text-white mb-1 group-hover:text-primary transition-colors line-clamp-1">
+              {product.name}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3 line-clamp-1">
+              {product.description}
+            </p>
+
+            {/* Rating & Price Row */}
+            <div className="flex items-center justify-between">
+              {/* Rating */}
+              <div className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                <span className="text-sm font-medium text-zinc-900 dark:text-white">{product.rating}</span>
+                <span className="text-xs text-zinc-400">({product.reviews})</span>
+              </div>
+
+              {/* Price */}
+              <div className="text-right">
+                {product.priceLabel && (
+                  <span className="text-xs text-zinc-400 mr-1">{product.priceLabel}</span>
+                )}
+                <span className={`font-bold ${product.price === 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-900 dark:text-white'}`}>
+                  {product.price === 0 ? 'Free' : `₹${product.price.toLocaleString('en-IN')}`}
+                </span>
+                {product.originalPrice && (
+                  <span className="text-xs text-zinc-400 line-through ml-1.5">
+                    ₹{product.originalPrice.toLocaleString('en-IN')}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
 export default function StoreClient() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedPriceRange, setSelectedPriceRange] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('featured');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 20000]);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  // Filter products
-  const filteredProducts = products
-    .filter(p => selectedCategory === 'all' || p.category === selectedCategory)
-    .filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                 p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase())))
-    .filter(p => p.price >= priceRange[0] && p.price <= priceRange[1])
-    .sort((a, b) => {
-      if (sortBy === 'featured') return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-      if (sortBy === 'price-low') return a.price - b.price;
-      if (sortBy === 'price-high') return b.price - a.price;
-      if (sortBy === 'rating') return b.rating - a.rating;
-      if (sortBy === 'popular') return b.reviews - a.reviews;
-      return 0;
-    });
+  // Memoized filter function for performance
+  const filteredProducts = useMemo(() => {
+    const priceRange = priceRanges.find(p => p.id === selectedPriceRange) || priceRanges[0];
+    
+    return products
+      .filter(p => {
+        // Category filter
+        if (selectedCategory !== 'all' && p.category !== selectedCategory) return false;
+        
+        // Price filter
+        if (selectedPriceRange === 'free' && p.price !== 0) return false;
+        if (selectedPriceRange !== 'all' && selectedPriceRange !== 'free') {
+          if (p.price < priceRange.min || p.price > priceRange.max) return false;
+        }
+        
+        // Search filter
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          return (
+            p.name.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query) ||
+            p.tags.some(t => t.toLowerCase().includes(query)) ||
+            p.type.toLowerCase().includes(query)
+          );
+        }
+        
+        return true;
+      })
+      .sort((a, b) => {
+        switch (sortBy) {
+          case 'price-low': return a.price - b.price;
+          case 'price-high': return b.price - a.price;
+          case 'rating': return b.rating - a.rating;
+          case 'popular': return b.reviews - a.reviews;
+          default: return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+        }
+      });
+  }, [selectedCategory, selectedPriceRange, searchQuery, sortBy]);
 
-  const featuredProducts = products.filter(p => p.featured).slice(0, 4);
+  const clearFilters = useCallback(() => {
+    setSelectedCategory('all');
+    setSelectedPriceRange('all');
+    setSearchQuery('');
+    setSortBy('featured');
+  }, []);
+
+  const hasActiveFilters = selectedCategory !== 'all' || selectedPriceRange !== 'all' || searchQuery;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-      {/* Back Button */}
-      <div className="fixed top-4 left-4 z-50">
-        <Link 
-          href="/"
-          className="flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-full shadow-lg hover:shadow-xl transition-all text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          <span className="text-sm font-medium">Back</span>
-        </Link>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-12 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <Sparkles className="w-4 h-4" />
-              Premium Digital Products
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+      {/* Fixed Header */}
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Back & Logo */}
+            <div className="flex items-center gap-4">
+              <Link 
+                href="/"
+                className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5" />
+                <span className="hidden sm:inline text-sm font-medium">Back</span>
+              </Link>
+              <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-700" />
+              <Link href="/store" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                  7K
+                </div>
+                <span className="font-semibold text-zinc-900 dark:text-white">Store</span>
+              </Link>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-gray-900 dark:text-white">Welcome to </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                7K Store
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-              Discover premium templates, apps, eBooks & professional services. 
-              Everything you need to build your digital presence.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+
+            {/* Search - Desktop */}
+            <div className="hidden md:flex flex-1 max-w-md mx-8">
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-zinc-100 dark:bg-zinc-800 border-0 rounded-xl text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-primary/50 transition-all"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-3">
+              <Link
+                href="/services"
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors"
+              >
+                Get Quote
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              
+              {/* Mobile Filter Toggle */}
+              <button
+                onClick={() => setMobileFiltersOpen(true)}
+                className="lg:hidden p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                <SlidersHorizontal className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Search - Mobile */}
+          <div className="md:hidden pb-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
               <input
                 type="text"
-                placeholder="Search templates, apps, books, services..."
+                placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-lg"
+                className="w-full pl-10 pr-4 py-2.5 bg-zinc-100 dark:bg-zinc-800 border-0 rounded-xl text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-primary/50"
               />
             </div>
-          </motion.div>
-
-          {/* Trust Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {trustBadges.map((badge, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md"
-              >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
-                  <badge.icon className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900 dark:text-white text-sm">{badge.text}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">{badge.subtext}</div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* Categories & Products */}
-      <section className="py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar - Categories */}
-            <div className="lg:w-64 flex-shrink-0">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-24">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <Filter className="w-5 h-5" />
-                  Categories
-                </h3>
-                <div className="space-y-2">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      onClick={() => setSelectedCategory(cat.id)}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
-                        selectedCategory === cat.id
-                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                          : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'
-                      }`}
-                    >
-                      <span className="flex items-center gap-3">
-                        <cat.icon className="w-5 h-5" />
-                        {cat.name}
-                      </span>
-                      <span className={`text-sm ${
-                        selectedCategory === cat.id ? 'text-white/80' : 'text-gray-400'
-                      }`}>
-                        {cat.count}
-                      </span>
-                    </button>
-                  ))}
+      {/* Mobile Filters Drawer */}
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileFiltersOpen(false)}
+              className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25 }}
+              className="fixed right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-zinc-900 z-50 lg:hidden overflow-y-auto"
+            >
+              <div className="p-5">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="font-semibold text-lg text-zinc-900 dark:text-white">Filters</h2>
+                  <button onClick={() => setMobileFiltersOpen(false)}>
+                    <X className="w-5 h-5 text-zinc-500" />
+                  </button>
+                </div>
+
+                {/* Categories */}
+                <div className="mb-6">
+                  <h3 className="text-sm font-medium text-zinc-900 dark:text-white mb-3">Category</h3>
+                  <div className="space-y-2">
+                    {categories.map((cat) => {
+                      const IconComponent = cat.icon;
+                      return (
+                        <button
+                          key={cat.id}
+                          onClick={() => setSelectedCategory(cat.id)}
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all ${
+                            selectedCategory === cat.id
+                              ? 'bg-primary text-white'
+                              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                          }`}
+                        >
+                          <span className="flex items-center gap-2">
+                            <IconComponent className="w-4 h-4" />
+                            {cat.name}
+                          </span>
+                          <span className="text-xs opacity-70">{cat.count}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 {/* Price Range */}
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <IndianRupee className="w-4 h-4" />
-                    Price Range
-                  </h4>
-                  <div className="space-y-3">
-                    <button 
-                      onClick={() => setPriceRange([0, 20000])}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm ${priceRange[0] === 0 && priceRange[1] === 20000 ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                    >
-                      All Prices
-                    </button>
-                    <button 
-                      onClick={() => setPriceRange([0, 0])}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm ${priceRange[0] === 0 && priceRange[1] === 0 ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                    >
-                      Free
-                    </button>
-                    <button 
-                      onClick={() => setPriceRange([1, 5000])}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm ${priceRange[0] === 1 && priceRange[1] === 5000 ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                    >
-                      Under ₹5,000
-                    </button>
-                    <button 
-                      onClick={() => setPriceRange([5000, 10000])}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm ${priceRange[0] === 5000 && priceRange[1] === 10000 ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                    >
-                      ₹5,000 - ₹10,000
-                    </button>
-                    <button 
-                      onClick={() => setPriceRange([10000, 20000])}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-sm ${priceRange[0] === 10000 && priceRange[1] === 20000 ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                    >
-                      ₹10,000+
-                    </button>
+                <div className="mb-6">
+                  <h3 className="text-sm font-medium text-zinc-900 dark:text-white mb-3">Price</h3>
+                  <div className="space-y-2">
+                    {priceRanges.map((range) => (
+                      <button
+                        key={range.id}
+                        onClick={() => setSelectedPriceRange(range.id)}
+                        className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-all ${
+                          selectedPriceRange === range.id
+                            ? 'bg-primary text-white'
+                            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                        }`}
+                      >
+                        {range.label}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
-                {/* Quick Stats */}
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <div className="grid grid-cols-2 gap-3 text-center">
-                    <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-3">
-                      <div className="text-2xl font-bold text-blue-600">30+</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">Products</div>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-3">
-                      <div className="text-2xl font-bold text-purple-600">500+</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">Happy Users</div>
-                    </div>
+                {/* Apply Button */}
+                <button
+                  onClick={() => setMobileFiltersOpen(false)}
+                  className="w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary/90 transition-colors"
+                >
+                  Show {filteredProducts.length} Results
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Hero */}
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-purple-500/5" />
+        
+        <div className="max-w-7xl mx-auto relative">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+              <Sparkles className="w-4 h-4" />
+              Premium Digital Products
+            </div>
+            
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
+              Everything you need to{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-600">
+                build & grow
+              </span>
+            </h1>
+            
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
+              Templates, apps, eBooks & services — all in one place
+            </p>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              {trustBadges.map((badge, i) => {
+                const IconComponent = badge.icon;
+                return (
+                  <div key={i} className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    <IconComponent className="w-4 h-4 text-violet-500" />
+                    <span>{badge.text}</span>
                   </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex gap-8">
+            {/* Desktop Sidebar */}
+            <aside className="hidden lg:block w-64 flex-shrink-0">
+              <div className="sticky top-24 space-y-6">
+                {/* Categories */}
+                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-5">
+                  <h3 className="font-semibold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
+                    <Filter className="w-4 h-4" />
+                    Categories
+                  </h3>
+                  <div className="space-y-1.5">
+                    {categories.map((cat) => {
+                      const IconComponent = cat.icon;
+                      return (
+                        <button
+                          key={cat.id}
+                          onClick={() => setSelectedCategory(cat.id)}
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all ${
+                            selectedCategory === cat.id
+                              ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                              : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                          }`}
+                        >
+                          <span className="flex items-center gap-2.5">
+                            <IconComponent className="w-4 h-4" />
+                            {cat.name}
+                          </span>
+                          <span className={`text-xs ${selectedCategory === cat.id ? 'text-white/70' : 'text-zinc-400'}`}>
+                            {cat.count}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Price Range */}
+                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-5">
+                  <h3 className="font-semibold text-zinc-900 dark:text-white mb-4">Price Range</h3>
+                  <div className="space-y-1.5">
+                    {priceRanges.map((range) => (
+                      <button
+                        key={range.id}
+                        onClick={() => setSelectedPriceRange(range.id)}
+                        className={`w-full text-left px-3 py-2 rounded-xl text-sm transition-all ${
+                          selectedPriceRange === range.id
+                            ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                            : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                        }`}
+                      >
+                        {range.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quick Links */}
+                <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-5 text-white">
+                  <h3 className="font-semibold mb-2">Need Custom Work?</h3>
+                  <p className="text-sm text-white/80 mb-4">Let's build something amazing together</p>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 bg-white text-violet-600 px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/90 transition-colors"
+                  >
+                    View Services
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
-            </div>
+            </aside>
 
-            {/* Main Content - Products */}
-            <div className="flex-1">
+            {/* Products */}
+            <div className="flex-1 min-w-0">
               {/* Toolbar */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <div className="text-gray-600 dark:text-gray-300">
-                  Showing <span className="font-semibold text-gray-900 dark:text-white">{filteredProducts.length}</span> products
-                </div>
-                <div className="flex items-center gap-4">
-                  {/* Sort */}
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="featured">Featured</option>
-                    <option value="popular">Most Popular</option>
-                    <option value="rating">Highest Rated</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                  </select>
+                <div className="flex items-center gap-3">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-zinc-900 dark:text-white">{filteredProducts.length}</span> products
+                  </p>
                   
-                  {/* View Mode */}
-                  <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 rounded-xl p-1">
+                  {hasActiveFilters && (
                     <button
-                      onClick={() => setViewMode('grid')}
-                      className={`p-2 rounded-lg transition ${viewMode === 'grid' ? 'bg-white dark:bg-gray-600 shadow' : ''}`}
+                      onClick={clearFilters}
+                      className="inline-flex items-center gap-1 text-xs text-violet-600 dark:text-violet-400 hover:underline"
                     >
-                      <Grid3X3 className="w-4 h-4" />
+                      <X className="w-3 h-3" />
+                      Clear filters
                     </button>
-                    <button
-                      onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg transition ${viewMode === 'list' ? 'bg-white dark:bg-gray-600 shadow' : ''}`}
-                    >
-                      <List className="w-4 h-4" />
-                    </button>
-                  </div>
+                  )}
                 </div>
+
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-3 py-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm text-zinc-700 dark:text-zinc-300 focus:ring-2 focus:ring-primary/50"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="popular">Most Popular</option>
+                  <option value="rating">Highest Rated</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                </select>
               </div>
 
               {/* Products Grid */}
-              <div className={`grid gap-6 ${
-                viewMode === 'grid' 
-                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
-                  : 'grid-cols-1'
-              }`}>
-                <AnimatePresence mode="popLayout">
-                  {filteredProducts.map((product, index) => (
-                    <motion.div
-                      key={product.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link href={product.link}>
-                        <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all group overflow-hidden ${
-                          viewMode === 'list' ? 'flex flex-row' : ''
-                        }`}>
-                          {/* Image */}
-                          <div className={`relative overflow-hidden ${
-                            viewMode === 'list' ? 'w-48 flex-shrink-0' : 'aspect-[4/3]'
-                          }`}>
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 33vw"
-                              className="object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            {/* Badges */}
-                            <div className="absolute top-3 left-3 flex flex-col gap-2">
-                              {product.bestseller && (
-                                <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
-                                  <TrendingUp className="w-3 h-3" /> Bestseller
-                                </span>
-                              )}
-                              {product.featured && !product.bestseller && (
-                                <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
-                                  <Sparkles className="w-3 h-3" /> Featured
-                                </span>
-                              )}
-                              {product.comingSoon && (
-                                <span className="bg-gray-900 text-white text-xs font-bold px-2 py-1 rounded-full">
-                                  Coming Soon
-                                </span>
-                              )}
-                            </div>
-                            {/* Type Badge */}
-                            <div className="absolute top-3 right-3">
-                              <span className="bg-white/90 dark:bg-gray-900/90 backdrop-blur text-gray-700 dark:text-gray-200 text-xs font-semibold px-2 py-1 rounded-full">
-                                {product.type}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Content */}
-                          <div className={`p-5 ${viewMode === 'list' ? 'flex-1 flex flex-col justify-between' : ''}`}>
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-1 mb-3">
-                              {product.tags.slice(0, 3).map((tag, i) => (
-                                <span 
-                                  key={i}
-                                  className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-full"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Title & Description */}
-                            <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
-                              {product.name}
-                            </h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">
-                              {product.description}
-                            </p>
-
-                            {/* Rating */}
-                            <div className="flex items-center gap-2 mb-4">
-                              <div className="flex items-center gap-1">
-                                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                <span className="font-semibold text-gray-900 dark:text-white">{product.rating}</span>
-                              </div>
-                              <span className="text-sm text-gray-400">({product.reviews} reviews)</span>
-                            </div>
-
-                            {/* Price & CTA */}
-                            <div className="flex items-center justify-between">
-                              <div>
-                                {product.priceLabel && (
-                                  <span className="text-xs text-gray-500 dark:text-gray-400 block">{product.priceLabel}</span>
-                                )}
-                                <div className="flex items-center gap-2">
-                                  <span className={`text-xl font-bold ${product.price === 0 ? 'text-green-600' : 'text-gray-900 dark:text-white'}`}>
-                                    {product.price === 0 ? 'Free' : `₹${product.price.toLocaleString()}`}
-                                  </span>
-                                  {product.originalPrice && (
-                                    <span className="text-sm text-gray-400 line-through">
-                                      ₹{product.originalPrice.toLocaleString()}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                              <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold text-sm group-hover:gap-2 transition-all">
-                                View <ArrowRight className="w-4 h-4" />
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
-
-              {/* Empty State */}
-              {filteredProducts.length === 0 && (
-                <div className="text-center py-20">
-                  <Package className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No products found</h3>
-                  <p className="text-gray-500 dark:text-gray-400 mb-6">Try adjusting your filters or search query</p>
-                  <button
-                    onClick={() => {
-                      setSelectedCategory('all');
-                      setSearchQuery('');
-                      setPriceRange([0, 20000]);
-                    }}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition"
-                  >
-                    Clear Filters
-                  </button>
+              {filteredProducts.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                  <AnimatePresence mode="popLayout">
+                    {filteredProducts.map((product, index) => (
+                      <ProductCard key={product.id} product={product} index={index} />
+                    ))}
+                  </AnimatePresence>
                 </div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-20"
+                >
+                  <Package className="w-16 h-16 text-zinc-300 dark:text-zinc-700 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">
+                    No products found
+                  </h3>
+                  <p className="text-zinc-500 dark:text-zinc-400 mb-6">
+                    Try adjusting your filters or search
+                  </p>
+                  <button
+                    onClick={clearFilters}
+                    className="px-6 py-2.5 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Clear All Filters
+                  </button>
+                </motion.div>
               )}
             </div>
           </div>
@@ -675,56 +833,75 @@ export default function StoreClient() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Need Something Custom?
-          </h2>
-          <p className="text-xl opacity-90 mb-8">
-            Can't find what you're looking for? Let's build something amazing together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/services"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:shadow-2xl transition"
-            >
-              View Services
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a 
-              href="https://wa.me/918591247148?text=Hi%20Kunal!%20I%20need%20a%20custom%20solution."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition"
-            >
-              Contact on WhatsApp
-              <ExternalLink className="w-5 h-5" />
-            </a>
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-8 sm:p-12 text-center text-white overflow-hidden">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
+            
+            <div className="relative">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                Need Something Custom?
+              </h2>
+              <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+                Can't find what you're looking for? Let's create something perfect for your needs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-violet-600 px-6 py-3 rounded-xl font-semibold hover:bg-white/90 transition-colors"
+                >
+                  Browse Services
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <a 
+                  href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'm%20interested%20in%20your%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-colors"
+                >
+                  WhatsApp
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center font-bold text-lg">
-              7K
+      <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                7K
+              </div>
+              <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                Premium digital products by Kunal Chheda
+              </span>
             </div>
-            <span className="text-xl font-bold">Store</span>
+            
+            <nav className="flex flex-wrap justify-center gap-6 text-sm">
+              <Link href="/" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/services" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                Services
+              </Link>
+              <Link href="/templates" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                Templates
+              </Link>
+              <Link href="/apps" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                Apps
+              </Link>
+              <Link href="/books" className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                Books
+              </Link>
+            </nav>
           </div>
-          <p className="text-gray-400 text-sm mb-4">
-            Premium digital products by Kunal Chheda | Made in India with ❤️
-          </p>
-          <div className="flex justify-center gap-6 text-sm text-gray-400">
-            <Link href="/services" className="hover:text-white transition">Services</Link>
-            <Link href="/templates" className="hover:text-white transition">Templates</Link>
-            <Link href="/apps" className="hover:text-white transition">Apps</Link>
-            <Link href="/books" className="hover:text-white transition">Books</Link>
-            <Link href="/blog" className="hover:text-white transition">Blog</Link>
-          </div>
-          <div className="mt-6 pt-6 border-t border-gray-800 text-xs text-gray-500">
-            © 2026 7K Solutions. All rights reserved.
+          
+          <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 text-center text-xs text-zinc-500">
+            © 2026 7K Solutions. Made in India with ❤️
           </div>
         </div>
       </footer>
