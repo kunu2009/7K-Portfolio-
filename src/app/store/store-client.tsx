@@ -37,7 +37,7 @@ import {
   BarChart3,
   Gift,
   Percent,
-  Fire,
+  Flame,
   X,
   Menu,
   Home
@@ -595,7 +595,7 @@ function ProductCard({ product, compact = false }: { product: typeof allProducts
             )}
             {product.popular && (
               <span className="px-2 py-0.5 bg-orange-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
-                <Fire className="w-3 h-3" /> Hot
+                <Flame className="w-3 h-3" /> Hot
               </span>
             )}
             {hasDiscount && (
