@@ -68,6 +68,50 @@
     background-color: hsl(var(--background)) !important;
     color: hsl(var(--foreground)) !important;
   }
+
+  .shop-theme {
+    --background: 266 56% 96%;
+    --foreground: 254 22% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 254 22% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 254 22% 12%;
+    --primary: 274 86% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 318 68% 92%;
+    --secondary-foreground: 316 48% 22%;
+    --muted: 262 42% 91%;
+    --muted-foreground: 252 16% 38%;
+    --accent: 338 85% 66%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 264 36% 84%;
+    --input: 264 36% 88%;
+    --ring: 274 86% 60%;
+  }
+
+  .dark .shop-theme {
+    --background: 258 34% 10%;
+    --foreground: 270 40% 96%;
+    --card: 258 28% 14%;
+    --card-foreground: 270 40% 96%;
+    --popover: 258 28% 14%;
+    --popover-foreground: 270 40% 96%;
+    --primary: 280 86% 68%;
+    --primary-foreground: 258 34% 10%;
+    --secondary: 312 34% 20%;
+    --secondary-foreground: 320 55% 90%;
+    --muted: 258 22% 18%;
+    --muted-foreground: 264 20% 70%;
+    --accent: 338 75% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 260 20% 24%;
+    --input: 260 20% 22%;
+    --ring: 280 86% 68%;
+  }
 }
 
 @layer base {

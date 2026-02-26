@@ -17,7 +17,7 @@ const categoryLabel = {
 
 export default function ShopClient() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="shop-theme min-h-screen bg-background text-foreground">
       <section className="container mx-auto px-4 pt-12 md:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -27,9 +27,11 @@ export default function ShopClient() {
         >
           <div className="grid gap-5 md:grid-cols-3">
             <Card className="relative overflow-hidden rounded-[2rem] border-border/70 bg-card p-6 md:min-h-[420px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-muted/70 via-card to-card" />
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-card to-card" />
+              <div className="absolute -right-10 top-16 h-36 w-36 rounded-full bg-accent/30 blur-2xl" />
+              <div className="absolute -left-12 bottom-12 h-32 w-32 rounded-full bg-primary/30 blur-2xl" />
               <div className="relative flex h-full flex-col justify-between">
-                <Badge variant="outline" className="w-fit rounded-full">7K SHOP</Badge>
+                <Badge className="w-fit rounded-full bg-accent text-accent-foreground hover:bg-accent">7K SHOP</Badge>
                 <div>
                   <h1 className="text-5xl font-black tracking-[-0.03em] md:text-6xl">RUN 7K</h1>
                   <p className="mt-3 max-w-xs text-sm text-muted-foreground">Minimal digital products. Strong outcomes. Clean experience.</p>
@@ -54,7 +56,7 @@ export default function ShopClient() {
                 {shopProducts.slice(0, 4).map((product) => (
                   <Link key={product.id} href={`/shop/${product.id}`}>
                     <div className="rounded-2xl border border-border/70 bg-background p-3 transition hover:-translate-y-0.5 hover:shadow-md">
-                      <div className="mb-2 aspect-square rounded-xl bg-gradient-to-b from-muted to-muted/40" />
+                      <div className="mb-2 aspect-square rounded-xl bg-gradient-to-b from-primary/30 to-accent/25" />
                       <p className="line-clamp-1 text-xs font-semibold">{product.name}</p>
                       <p className="text-xs text-muted-foreground">{product.price}</p>
                     </div>
@@ -66,13 +68,13 @@ export default function ShopClient() {
             <Card className="rounded-[2rem] border-border/70 bg-card p-5 md:min-h-[420px]">
               <p className="mb-4 text-sm font-semibold">Product Details</p>
               <div className="mb-4 rounded-3xl border border-border/70 bg-background p-4">
-                <div className="mb-3 aspect-[3/4] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
+                <div className="mb-3 aspect-[3/4] rounded-2xl bg-gradient-to-b from-primary/30 to-accent/25" />
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-semibold">{shopProducts[0].name}</p>
                     <p className="text-xs text-muted-foreground">{shopProducts[0].category}</p>
                   </div>
-                  <Badge variant="outline" className="rounded-full">{shopProducts[0].price}</Badge>
+                  <Badge className="rounded-full bg-primary text-primary-foreground hover:bg-primary">{shopProducts[0].price}</Badge>
                 </div>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
                   <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 average rating
@@ -108,11 +110,11 @@ export default function ShopClient() {
                 transition={{ duration: 0.35, delay: index * 0.04 }}
               >
                 <Card className="rounded-3xl border-border/70 bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
+                  <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-primary/30 to-accent/25" />
 
                   <div className="mb-3 flex items-center justify-between gap-2">
-                    <Badge variant="outline" className="rounded-full">{categoryLabel[product.category]}</Badge>
-                    <p className="font-semibold">{product.price}</p>
+                    <Badge className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary">{categoryLabel[product.category]}</Badge>
+                    <p className="font-semibold text-primary">{product.price}</p>
                   </div>
 
                   <h3 className="line-clamp-1 text-lg font-semibold tracking-tight">{product.name}</h3>

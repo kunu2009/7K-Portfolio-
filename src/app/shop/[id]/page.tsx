@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="shop-theme min-h-screen bg-background text-foreground">
       <main className="container mx-auto px-4 py-12 md:py-14">
         <div className="mx-auto max-w-6xl">
           <Link href="/shop" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
@@ -98,13 +98,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               <div className="mb-5 rounded-3xl border border-border/70 bg-background p-4">
-                <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
+                <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-primary/30 to-accent/25" />
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h1 className="text-2xl font-black tracking-[-0.02em] md:text-3xl">{product.name}</h1>
                     <p className="mt-1 text-sm text-muted-foreground">{product.description}</p>
                   </div>
-                  <span className="rounded-full border border-border px-3 py-1 text-sm font-semibold">{product.price}</span>
+                  <span className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">{product.price}</span>
                 </div>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
                   <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 product rating
@@ -144,7 +144,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <p className="mb-5 text-4xl font-black tracking-tight">{product.price}</p>
                 <div className="space-y-2">
                   <Button className="w-full rounded-full">Buy Now</Button>
-                  <Button variant="outline" className="w-full rounded-full">Pre-Order</Button>
+                  <Button className="w-full rounded-full bg-accent text-accent-foreground hover:bg-accent/90">Pre-Order</Button>
                 </div>
                 <div className="mt-5 space-y-2 border-t border-border/70 pt-4 text-sm text-muted-foreground">
                   <p className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Secure payment flow</p>
