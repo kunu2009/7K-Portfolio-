@@ -11,6 +11,7 @@ import { MobileCTABar } from '@/components/mobile-cta-bar';
 import { SkipToContent, GlobalAnnouncer } from '@/lib/accessibility';
 import { SITE_CONFIG } from '@/lib/constants';
 import { projectSchemas, organizationSchema, breadcrumbSchema, bookSchemas } from '@/lib/schemas';
+import { FeaturesInitializer } from '@/components/features-initializer';
 
 // Optimize font loading with Next.js Font optimization
 const inter = Inter({
@@ -164,6 +165,10 @@ export default function RootLayout({
         
         {/* PWA Splash Screen - Android */}
         <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* RSS Feed Links */}
+        <link rel="alternate" type="application/rss+xml" title="7K Apps Blog RSS Feed" href="/feed.xml" />
+        <link rel="alternate" type="application/feed+json" title="7K Apps Blog JSON Feed" href="/feed.json" />
       </head>
       <body className={`${inter.className} font-body antialiased bg-background`}>
         <SkipToContent />
@@ -181,6 +186,7 @@ export default function RootLayout({
           <Toaster />
           <ChatAssistantLoader />
           <MobileCTABar />
+          <FeaturesInitializer />
           {/* Newsletter popup removed - will implement later */}
         </ThemeProvider>
         

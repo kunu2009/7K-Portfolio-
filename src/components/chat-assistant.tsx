@@ -13,6 +13,15 @@ import { usePathname } from "next/navigation";
 import { MascotStore, MascotSelector, getSavedMascot, type MascotType, getMascotConfig } from "./mascot-store";
 import { MascotBody } from "./mascot-bodies";
 import { getDeviceCapabilities, getAnimationConfig, throttle } from "@/lib/performance";
+import { 
+  getTimeOfDay, 
+  getTimeGreeting, 
+  getMascotMoodForTime, 
+  getProactiveTip, 
+  incrementChatCount,
+  trackSectionVisit,
+  getVisitorProfile
+} from "@/lib/visitor-memory";
 
 type Message = {
   role: "user" | "assistant";
@@ -379,7 +388,41 @@ const SECTION_MESSAGES: Record<string, { messages: string[]; mood: RobotMood }> 
   },
 };
 
-// Page-specific welcome messages
+// Page-specific welcome messages - now with time awareness
+const getPageWelcome = (path: string): { mood: RobotMood; message: string } => {
+  const timeOfDay = getTimeOfDay();
+  const timeMood = getMascotMoodForTime();
+  const timeGreeting = getTimeGreeting();
+  
+  const baseWelcomes: Record<string, { mood: RobotMood; message: string }> = {
+    "/": { mood: timeMood as RobotMood, message: `${timeGreeting} Welcome to Kunal's world! 🌟` },
+    "/apps": { mood: "excited", message: "Welcome to the App Store! 📱 24+ FREE apps!" },
+    "/books": { mood: "happy", message: "Welcome to the library! 📚 Read for free!" },
+    "/blog": { mood: "thinking", message: "Ready for some reading? 📖 Check out the articles!" },
+    "/services": { mood: "cool", message: "Let's build something awesome! 💻" },
+    "/menu": { mood: "excited", message: "Check out our service menu! 🍽️" },
+    "/services/app-development": { mood: "fire", message: "App development services! 📱🔥" },
+    "/services/web-development": { mood: "fire", message: "Web development services! 💻🔥" },
+  };
+  
+  // Late night special messages
+  if (timeOfDay === "late-night") {
+    if (path === "/") {
+      return { mood: "sleeping", message: "Hey night owl! 🦉 Can't sleep? Let's explore!" };
+    }
+  }
+  
+  // Morning motivation
+  if (timeOfDay === "morning") {
+    if (path === "/apps") {
+      return { mood: "excited", message: "Good morning! ☀️ Start your day with 24+ FREE apps!" };
+    }
+  }
+  
+  return baseWelcomes[path] || { mood: "wave", message: `${timeGreeting} 👋` };
+};
+
+// Legacy constant for backwards compatibility
 const PAGE_WELCOMES: Record<string, { mood: RobotMood; message: string }> = {
   "/": { mood: "wave", message: "Hey! Welcome to Kunal's world! 🌟" },
   "/apps": { mood: "excited", message: "Welcome to the App Store! 📱 24+ FREE apps!" },
@@ -391,7 +434,39 @@ const PAGE_WELCOMES: Record<string, { mood: RobotMood; message: string }> = {
   "/services/web-development": { mood: "fire", message: "Web development services! 💻🔥" },
 };
 
-// First visit greeting sequence
+// First visit greeting sequence - time aware version
+const getFirstVisitGreetings = () => {
+  const timeOfDay = getTimeOfDay();
+  const timeGreeting = getTimeGreeting();
+  const profile = getVisitorProfile();
+  
+  // Personalized first message if we know their name
+  const firstMessage = profile.name 
+    ? `${timeGreeting} ${profile.name}! 👋`
+    : `${timeGreeting} First time? 👋`;
+  
+  const greetings = [
+    { message: firstMessage, mood: "wave" as RobotMood, delay: 1500 },
+    { message: "I'm Stan, Kunal's AI buddy! 🤖", mood: "happy" as RobotMood, delay: 3000 },
+    { message: "I'll help you explore! 🧭", mood: "excited" as RobotMood, delay: 3000 },
+    { message: "Scroll down or click me! 💬", mood: "wink" as RobotMood, delay: 3000 },
+  ];
+  
+  // Late night special
+  if (timeOfDay === "late-night") {
+    greetings[0] = { message: "Hey night owl! 🦉 Can't sleep?", mood: "sleeping" as RobotMood, delay: 1500 };
+    greetings[2] = { message: "Let me keep you company! 🌙", mood: "happy" as RobotMood, delay: 3000 };
+  }
+  
+  // Morning
+  if (timeOfDay === "morning") {
+    greetings[0] = { message: "Good morning! ☀️ Early bird!", mood: "excited" as RobotMood, delay: 1500 };
+  }
+  
+  return greetings;
+};
+
+// Legacy constant for backwards compatibility
 const FIRST_VISIT_GREETINGS = [
   { message: "Hey there! First time? 👋", mood: "wave" as RobotMood, delay: 1500 },
   { message: "I'm Stan, Kunal's AI buddy! 🤖", mood: "happy" as RobotMood, delay: 3000 },
@@ -408,7 +483,36 @@ const CONTACT_PROMPTS = [
   "👇 Message him now!",
 ];
 
-// Random idle thoughts
+// Random idle thoughts - now includes proactive tips
+const getIdleThought = () => {
+  // 30% chance to show a proactive tip instead of random idle thought
+  if (Math.random() < 0.3) {
+    const tip = getProactiveTip();
+    if (tip) {
+      return `💡 ${tip.message}`;
+    }
+  }
+  
+  // Regular idle thoughts
+  const thoughts = [
+    "Hmm... 🤔",
+    "What should I do? 🤖",
+    "*beep boop* 🔊",
+    "La la la~ 🎵",
+    "Still here! 👀",
+    "Waiting patiently... ⏳",
+    "You're awesome! 🌟",
+    "*does a little dance* 💃",
+    "Exploring around! 🗺️",
+    "*zoom zoom* 🏃",
+    "Hello? Anyone there? 👋",
+    "*spins around* 🌀",
+  ];
+  
+  return thoughts[Math.floor(Math.random() * thoughts.length)];
+};
+
+// Legacy constant for backwards compatibility
 const IDLE_THOUGHTS = [
   "Hmm... 🤔",
   "What should I do? 🤖",
@@ -533,9 +637,11 @@ export function ChatAssistant() {
   useEffect(() => {
     if (!isFirstVisit || hasGreeted || isOpen) return;
     
+    const greetings = getFirstVisitGreetings();
+    
     const runGreeting = () => {
-      if (greetingIndex < FIRST_VISIT_GREETINGS.length) {
-        const greeting = FIRST_VISIT_GREETINGS[greetingIndex];
+      if (greetingIndex < greetings.length) {
+        const greeting = greetings[greetingIndex];
         setRobotMood(greeting.mood);
         setRobotMessage(greeting.message);
         setShowMessage(true);
@@ -573,7 +679,12 @@ export function ChatAssistant() {
   useEffect(() => {
     if (!hasGreeted || isOpen) return;
     
-    const welcome = PAGE_WELCOMES[pathname];
+    // Track section visit
+    const section = pathname.split('/')[1] || 'home';
+    trackSectionVisit(section);
+    
+    // Use time-aware page welcome
+    const welcome = getPageWelcome(pathname);
     if (welcome) {
       // Small delay to let page render
       setTimeout(() => {
@@ -1023,9 +1134,9 @@ export function ChatAssistant() {
         return;
       }
       
-      // Sometimes show an idle thought
+      // Sometimes show an idle thought (now with proactive tips)
       if (Math.random() > 0.7) {
-        const thought = IDLE_THOUGHTS[Math.floor(Math.random() * IDLE_THOUGHTS.length)];
+        const thought = getIdleThought();
         setRobotMessage(thought);
         setShowMessage(true);
         messageTimeoutRef.current = setTimeout(() => setShowMessage(false), 2500);
@@ -1169,6 +1280,9 @@ export function ChatAssistant() {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
+    
+    // Track chat interaction for visitor memory
+    incrementChatCount();
 
     try {
       const response = await askChatAssistant(input);
