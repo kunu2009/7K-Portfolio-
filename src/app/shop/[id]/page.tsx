@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getShopProductById, shopProducts } from "@/lib/shop-data";
 import type { Metadata } from "next";
-import { Check, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, ShieldCheck, Sparkles, Star } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -83,87 +83,84 @@ export default async function ProductPage({ params }: ProductPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-14 md:py-16">
+    <div className="min-h-screen bg-muted/40">
+      <main className="container mx-auto px-4 py-12 md:py-14">
         <div className="mx-auto max-w-6xl">
-          <Link href="/shop" className="mb-7 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
-            ← Back to Shop
+          <Link href="/shop" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+            <ArrowLeft className="h-4 w-4" /> Back to Shop
           </Link>
 
-          <div className="grid gap-8 lg:grid-cols-[1.35fr_0.85fr]">
-            <div className="space-y-6">
-              <section className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/80 p-8 backdrop-blur-sm">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/80 via-primary/30 to-transparent" />
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <section className="rounded-[2rem] border border-border/70 bg-card p-5 md:p-6">
+              <div className="mb-4 flex items-center justify-between">
+                <Badge variant="secondary" className="rounded-full capitalize">{product.category}</Badge>
+                <Badge variant="outline" className="rounded-full">{product.delivery}</Badge>
+              </div>
 
-                <div className="mb-4 flex flex-wrap items-center gap-3">
-                  <Badge variant="secondary" className="rounded-full capitalize">
-                    {product.category}
-                  </Badge>
-                  <Badge variant="outline" className="rounded-full">
-                    {product.delivery}
-                  </Badge>
-                </div>
-
-                <h1 className="mb-4 text-3xl font-bold leading-tight md:text-5xl">{product.name}</h1>
-                <p className="mb-6 max-w-3xl text-base text-muted-foreground md:text-lg">{product.description}</p>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-border/70 bg-background/90 p-5">
-                    <p className="text-sm text-muted-foreground">Best for</p>
-                    <p className="mt-1 font-medium">{product.audience}</p>
+              <div className="mb-5 rounded-3xl border border-border/70 bg-background p-4">
+                <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-primary/25 to-muted" />
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h1 className="text-2xl font-bold md:text-3xl">{product.name}</h1>
+                    <p className="mt-1 text-sm text-muted-foreground">{product.description}</p>
                   </div>
-
-                  <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5">
-                    <p className="text-sm text-muted-foreground">Outcome</p>
-                    <p className="mt-1 font-medium">{product.outcome}</p>
-                  </div>
+                  <span className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">{product.price}</span>
                 </div>
-              </section>
+                <div className="mt-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
+                  <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 product rating
+                </div>
+              </div>
 
-              <section className="rounded-3xl border border-border/80 bg-card/70 p-6">
-                <h2 className="mb-4 text-2xl font-bold">What you get</h2>
-                <div className="grid gap-3 md:grid-cols-2">
+              <div className="grid gap-3 md:grid-cols-2">
+                <Card className="rounded-2xl border-border/70 p-4">
+                  <p className="text-xs text-muted-foreground">Best for</p>
+                  <p className="mt-1 text-sm font-medium">{product.audience}</p>
+                </Card>
+                <Card className="rounded-2xl border-border/70 p-4">
+                  <p className="text-xs text-muted-foreground">Outcome</p>
+                  <p className="mt-1 text-sm font-medium">{product.outcome}</p>
+                </Card>
+              </div>
+
+              <section className="mt-6">
+                <h2 className="mb-3 text-xl font-bold">What you get</h2>
+                <div className="grid gap-2 sm:grid-cols-2">
                   {product.includes.map((item) => (
-                    <Card key={item} className="flex items-start gap-2 border-border/70 p-4 text-sm">
+                    <div key={item} className="flex items-start gap-2 rounded-xl border border-border/70 bg-background p-3 text-sm">
                       <Check className="mt-0.5 h-4 w-4 text-primary" />
                       <span>{item}</span>
-                    </Card>
+                    </div>
                   ))}
                 </div>
               </section>
+            </section>
 
-              <section className="rounded-3xl border border-border/80 bg-card/70 p-6">
-                <h2 className="mb-4 text-2xl font-bold">FAQ</h2>
-                <div className="space-y-3">
-                  {product.faqs.map((faq) => (
-                    <Card key={faq.question} className="border-border/70 p-5">
-                      <h3 className="mb-2 font-semibold">{faq.question}</h3>
-                      <p className="text-sm text-muted-foreground">{faq.answer}</p>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-            </div>
-
-            <aside className="lg:sticky lg:top-20 lg:h-fit">
-              <Card className="overflow-hidden border-border/80 bg-card/90 p-6">
+            <aside className="space-y-6 lg:sticky lg:top-20 lg:h-fit">
+              <Card className="rounded-[2rem] border-border/70 bg-card p-5">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs">
-                  <Sparkles className="h-3.5 w-3.5 text-primary" />
-                  Instant digital access
+                  <Sparkles className="h-3.5 w-3.5 text-primary" /> Instant digital access
                 </div>
-
-                <p className="mb-1 text-sm text-muted-foreground">Price</p>
+                <p className="text-sm text-muted-foreground">Price</p>
                 <p className="mb-5 text-4xl font-bold text-primary">{product.price}</p>
-
                 <div className="space-y-2">
                   <Button className="w-full rounded-full">Buy Now</Button>
                   <Button variant="outline" className="w-full rounded-full">Pre-Order</Button>
                 </div>
-
-                <div className="mt-6 space-y-3 border-t border-border/70 pt-5 text-sm text-muted-foreground">
+                <div className="mt-5 space-y-2 border-t border-border/70 pt-4 text-sm text-muted-foreground">
                   <p className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Secure payment flow</p>
-                  <p className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Clear delivery instructions</p>
-                  <p className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Support via contact channel</p>
+                  <p className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Fast delivery support</p>
+                </div>
+              </Card>
+
+              <Card className="rounded-[2rem] border-border/70 bg-card p-5">
+                <h2 className="mb-3 text-lg font-bold">FAQ</h2>
+                <div className="space-y-2">
+                  {product.faqs.map((faq) => (
+                    <div key={faq.question} className="rounded-xl border border-border/70 bg-background p-3">
+                      <h3 className="text-sm font-semibold">{faq.question}</h3>
+                      <p className="mt-1 text-xs text-muted-foreground">{faq.answer}</p>
+                    </div>
+                  ))}
                 </div>
               </Card>
             </aside>
