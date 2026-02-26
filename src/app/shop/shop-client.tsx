@@ -17,7 +17,7 @@ const categoryLabel = {
 
 export default function ShopClient() {
   return (
-    <div className="min-h-screen bg-muted/40">
+    <div className="min-h-screen bg-background">
       <section className="container mx-auto px-4 pt-12 md:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -27,12 +27,12 @@ export default function ShopClient() {
         >
           <div className="grid gap-5 md:grid-cols-3">
             <Card className="relative overflow-hidden rounded-[2rem] border-border/70 bg-card p-6 md:min-h-[420px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-card to-card" />
+              <div className="absolute inset-0 bg-gradient-to-b from-muted/70 via-card to-card" />
               <div className="relative flex h-full flex-col justify-between">
-                <Badge className="w-fit rounded-full bg-primary/15 text-primary hover:bg-primary/15">7K Shop</Badge>
+                <Badge variant="outline" className="w-fit rounded-full">7K SHOP</Badge>
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Aesthetic Digital Store</h1>
-                  <p className="mt-3 text-sm text-muted-foreground">Templates, prompts, and starter kits with clean UX and instant delivery.</p>
+                  <h1 className="text-5xl font-black tracking-[-0.03em] md:text-6xl">RUN 7K</h1>
+                  <p className="mt-3 max-w-xs text-sm text-muted-foreground">Minimal digital products. Strong outcomes. Clean experience.</p>
                 </div>
                 <Link href="#products">
                   <Button className="w-full rounded-full gap-2">
@@ -44,7 +44,7 @@ export default function ShopClient() {
 
             <Card className="rounded-[2rem] border-border/70 bg-card p-5 md:min-h-[420px]">
               <div className="mb-4 flex items-center justify-between">
-                <p className="text-sm font-semibold">Tailored for you</p>
+                <p className="text-sm font-semibold tracking-tight">Tailored for you</p>
                 <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full"><Sparkles className="h-4 w-4" /></Button>
               </div>
               <div className="mb-4 flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-2 text-sm text-muted-foreground">
@@ -54,7 +54,7 @@ export default function ShopClient() {
                 {shopProducts.slice(0, 4).map((product) => (
                   <Link key={product.id} href={`/shop/${product.id}`}>
                     <div className="rounded-2xl border border-border/70 bg-background p-3 transition hover:-translate-y-0.5 hover:shadow-md">
-                      <div className="mb-2 aspect-square rounded-xl bg-gradient-to-b from-primary/20 to-muted" />
+                      <div className="mb-2 aspect-square rounded-xl bg-gradient-to-b from-muted to-muted/40" />
                       <p className="line-clamp-1 text-xs font-semibold">{product.name}</p>
                       <p className="text-xs text-muted-foreground">{product.price}</p>
                     </div>
@@ -66,13 +66,13 @@ export default function ShopClient() {
             <Card className="rounded-[2rem] border-border/70 bg-card p-5 md:min-h-[420px]">
               <p className="mb-4 text-sm font-semibold">Product Details</p>
               <div className="mb-4 rounded-3xl border border-border/70 bg-background p-4">
-                <div className="mb-3 aspect-[3/4] rounded-2xl bg-gradient-to-b from-primary/20 to-muted" />
+                <div className="mb-3 aspect-[3/4] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="font-semibold">{shopProducts[0].name}</p>
                     <p className="text-xs text-muted-foreground">{shopProducts[0].category}</p>
                   </div>
-                  <Badge className="rounded-full">{shopProducts[0].price}</Badge>
+                  <Badge variant="outline" className="rounded-full">{shopProducts[0].price}</Badge>
                 </div>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
                   <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 average rating
@@ -92,7 +92,7 @@ export default function ShopClient() {
         <section id="products" className="mx-auto max-w-6xl">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-bold md:text-3xl">Featured Products</h2>
+              <h2 className="text-2xl font-black tracking-[-0.02em] md:text-3xl">Featured Products</h2>
               <p className="mt-1 text-sm text-muted-foreground">Clean, attention-grabbing product cards in an app-like layout.</p>
             </div>
             <Badge variant="outline" className="rounded-full px-3 py-1 text-xs">{shopProducts.length} products</Badge>
@@ -108,14 +108,14 @@ export default function ShopClient() {
                 transition={{ duration: 0.35, delay: index * 0.04 }}
               >
                 <Card className="rounded-3xl border-border/70 bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-primary/25 to-muted" />
+                  <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
 
                   <div className="mb-3 flex items-center justify-between gap-2">
-                    <Badge variant="secondary" className="rounded-full">{categoryLabel[product.category]}</Badge>
-                    <p className="font-semibold text-primary">{product.price}</p>
+                    <Badge variant="outline" className="rounded-full">{categoryLabel[product.category]}</Badge>
+                    <p className="font-semibold">{product.price}</p>
                   </div>
 
-                  <h3 className="line-clamp-1 text-lg font-semibold">{product.name}</h3>
+                  <h3 className="line-clamp-1 text-lg font-semibold tracking-tight">{product.name}</h3>
                   <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
 
                   <div className="mt-4 flex gap-2">

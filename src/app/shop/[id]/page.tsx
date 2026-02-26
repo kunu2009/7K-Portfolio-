@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-muted/40">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-12 md:py-14">
         <div className="mx-auto max-w-6xl">
           <Link href="/shop" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
@@ -93,18 +93,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <section className="rounded-[2rem] border border-border/70 bg-card p-5 md:p-6">
               <div className="mb-4 flex items-center justify-between">
-                <Badge variant="secondary" className="rounded-full capitalize">{product.category}</Badge>
+                <Badge variant="outline" className="rounded-full capitalize">{product.category}</Badge>
                 <Badge variant="outline" className="rounded-full">{product.delivery}</Badge>
               </div>
 
               <div className="mb-5 rounded-3xl border border-border/70 bg-background p-4">
-                <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-primary/25 to-muted" />
+                <div className="mb-4 aspect-[4/3] rounded-2xl bg-gradient-to-b from-muted to-muted/40" />
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h1 className="text-2xl font-bold md:text-3xl">{product.name}</h1>
+                    <h1 className="text-2xl font-black tracking-[-0.02em] md:text-3xl">{product.name}</h1>
                     <p className="mt-1 text-sm text-muted-foreground">{product.description}</p>
                   </div>
-                  <span className="rounded-full bg-primary px-3 py-1 text-sm font-semibold text-primary-foreground">{product.price}</span>
+                  <span className="rounded-full border border-border px-3 py-1 text-sm font-semibold">{product.price}</span>
                 </div>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs text-muted-foreground">
                   <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 product rating
@@ -141,7 +141,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <Sparkles className="h-3.5 w-3.5 text-primary" /> Instant digital access
                 </div>
                 <p className="text-sm text-muted-foreground">Price</p>
-                <p className="mb-5 text-4xl font-bold text-primary">{product.price}</p>
+                <p className="mb-5 text-4xl font-black tracking-tight">{product.price}</p>
                 <div className="space-y-2">
                   <Button className="w-full rounded-full">Buy Now</Button>
                   <Button variant="outline" className="w-full rounded-full">Pre-Order</Button>
