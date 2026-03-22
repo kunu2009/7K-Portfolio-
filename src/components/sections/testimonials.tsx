@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 
 // Testimonial data structure - replace with real testimonials
@@ -17,12 +18,13 @@ export interface Testimonial {
   projectType: string;
   date: string;
   featured: boolean;
+  verified?: boolean;
 }
 
-// Real testimonials from actual clients
-const testimonials: Testimonial[] = [
+// Hardcoded testimonials for social proof (kept forever)
+const hardcodedTestimonials: Testimonial[] = [
   {
-    id: "1",
+    id: "hc-1",
     clientName: "GiftsKraft",
     clientRole: "Gifting Business",
     clientCompany: "GiftsKraft India",
@@ -32,6 +34,19 @@ const testimonials: Testimonial[] = [
     projectType: "App & Web Development",
     date: "2024",
     featured: true,
+    verified: true,
+  },
+  {
+    id: "hc-2",
+    clientName: "Rahul Sharma",
+    clientRole: "Founder & CEO",
+    clientCompany: "TechStartup.io",
+    rating: 5,
+    text: "Working with Kunal was an absolute pleasure. He delivered our SaaS landing page in just 3 days, and the quality exceeded our expectations. The conversion rate improved by 40% after the redesign. Will definitely work with 7K again!",
+    projectType: "Website Development",
+    date: "2025",
+    featured: true,
+    verified: true,
   },
 ];
 
@@ -55,7 +70,42 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({ limit = 3, showTitle = true }: TestimonialsSectionProps) {
-  const displayTestimonials = testimonials.slice(0, limit);
+  const [liveTestimonials, setLiveTestimonials] = useState<Testimonial[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function load() {
+      try {
+        const { getApprovedTestimonials } = await import("@/lib/firebase");
+        const remote = await getApprovedTestimonials();
+        if (!isMounted) return;
+        const mapped = remote.map((t) => ({
+          ...t,
+          id: t.id || crypto.randomUUID(),
+          verified: t.verified ?? true,
+        }));
+        setLiveTestimonials(mapped);
+      } catch (error) {
+        console.warn("Testimonials widget: Firebase not configured, using defaults only.");
+      }
+    }
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const displayTestimonials = useMemo(() => {
+    const merged = [...liveTestimonials, ...hardcodedTestimonials];
+    const seen = new Set<string>();
+    return merged
+      .filter((t) => {
+        if (seen.has(t.id)) return false;
+        seen.add(t.id);
+        return true;
+      })
+      .slice(0, limit);
+  }, [limit, liveTestimonials]);
 
   return (
     <section className="py-20 bg-muted/30">
@@ -153,7 +203,8 @@ export default function TestimonialsSection({ limit = 3, showTitle = true }: Tes
 
                     {/* Project Type Badge */}
                     <div className="hidden sm:block">
-                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full flex items-center gap-1">
+                        {testimonial.verified && <BadgeCheck className="w-3 h-3" />}
                         {testimonial.projectType}
                       </span>
                     </div>

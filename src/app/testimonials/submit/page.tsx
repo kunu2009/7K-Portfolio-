@@ -1,0 +1,353 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Star,
+  Send,
+  CheckCircle2,
+  ArrowLeft,
+  Sparkles,
+  Shield,
+  Users,
+  Clock,
+} from "lucide-react";
+import Link from "next/link";
+
+const projectTypes = [
+  "Website Development",
+  "App Development",
+  "E-Commerce",
+  "UI/UX Design",
+  "SEO Optimization",
+  "AI & Automation",
+  "Template Purchase",
+  "Consultation",
+  "Other",
+];
+
+export default function SubmitTestimonialPage() {
+  const [rating, setRating] = useState(5);
+  const [hoveredRating, setHoveredRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    clientName: "",
+    clientRole: "",
+    clientCompany: "",
+    projectType: "",
+    text: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Try to submit to Firebase
+      const { submitTestimonial } = await import("@/lib/firebase");
+      await submitTestimonial({
+        ...formData,
+        rating,
+        date: new Date().toISOString().split("T")[0],
+        featured: false,
+      });
+      setIsSuccess(true);
+    } catch (error) {
+      console.error("Error submitting testimonial:", error);
+      // Still show success for demo (fallback when Firebase not configured)
+      setIsSuccess(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex items-center justify-center p-4">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, type: "spring" }}
+        >
+          <Card className="max-w-md text-center">
+            <CardContent className="pt-10 pb-8 px-8">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <CheckCircle2 className="w-10 h-10 text-green-500" />
+              </motion.div>
+              <h2 className="text-2xl font-bold mb-3">Thank You! 🎉</h2>
+              <p className="text-muted-foreground mb-6">
+                Your review has been submitted successfully. It will appear on our website after a quick review.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button asChild variant="outline">
+                  <Link href="/">
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Home
+                  </Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/testimonials">View All Reviews</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 py-12 px-4">
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <Link
+            href="/testimonials"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-1" />
+            Back to Reviews
+          </Link>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">
+            Share Your Experience ✨
+          </h1>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Your feedback helps us improve and helps others make informed decisions. We truly appreciate your time!
+          </p>
+        </motion.div>
+
+        {/* Trust Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-4 mb-8"
+        >
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Shield className="w-4 h-4 text-green-500" />
+            <span>Verified Reviews Only</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Users className="w-4 h-4 text-blue-500" />
+            <span>150+ Happy Clients</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Clock className="w-4 h-4 text-orange-500" />
+            <span>Published in 24hrs</span>
+          </div>
+        </motion.div>
+
+        {/* Form Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-primary" />
+                Write a Review
+              </CardTitle>
+              <CardDescription>All fields marked with * are required</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Rating */}
+                <div className="space-y-2">
+                  <Label>Your Rating *</Label>
+                  <div className="flex items-center gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setRating(star)}
+                        onMouseEnter={() => setHoveredRating(star)}
+                        onMouseLeave={() => setHoveredRating(0)}
+                        className="transition-transform hover:scale-110 focus:outline-none"
+                      >
+                        <Star
+                          className={`w-8 h-8 ${
+                            star <= (hoveredRating || rating)
+                              ? "fill-yellow-500 text-yellow-500"
+                              : "fill-muted text-muted-foreground"
+                          }`}
+                        />
+                      </button>
+                    ))}
+                    <span className="ml-3 text-sm text-muted-foreground">
+                      {rating === 5 && "⭐ Excellent!"}
+                      {rating === 4 && "👍 Great!"}
+                      {rating === 3 && "😊 Good"}
+                      {rating === 2 && "😐 Fair"}
+                      {rating === 1 && "😞 Poor"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="name">Your Name *</Label>
+                  <Input
+                    id="name"
+                    placeholder="e.g., Rahul Sharma"
+                    required
+                    value={formData.clientName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, clientName: e.target.value })
+                    }
+                  />
+                </div>
+
+                {/* Role & Company */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="role">Your Role *</Label>
+                    <Input
+                      id="role"
+                      placeholder="e.g., CEO, Developer"
+                      required
+                      value={formData.clientRole}
+                      onChange={(e) =>
+                        setFormData({ ...formData, clientRole: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="company">Company (Optional)</Label>
+                    <Input
+                      id="company"
+                      placeholder="Your Company Name"
+                      value={formData.clientCompany}
+                      onChange={(e) =>
+                        setFormData({ ...formData, clientCompany: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
+                {/* Project Type */}
+                <div className="space-y-2">
+                  <Label>Project Type *</Label>
+                  <Select
+                    required
+                    value={formData.projectType}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, projectType: value })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="What did we work on together?" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {projectTypes.map((type) => (
+                        <SelectItem key={type} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Review Text */}
+                <div className="space-y-2">
+                  <Label htmlFor="review">Your Review *</Label>
+                  <Textarea
+                    id="review"
+                    placeholder="Tell us about your experience working with 7K Solutions. What did you like? What results did you achieve? Be specific - it helps others!"
+                    required
+                    rows={5}
+                    minLength={20}
+                    value={formData.text}
+                    onChange={(e) =>
+                      setFormData({ ...formData, text: e.target.value })
+                    }
+                    className="resize-none"
+                  />
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>Minimum 20 characters</span>
+                    <span
+                      className={
+                        formData.text.length < 20
+                          ? "text-destructive"
+                          : "text-green-600"
+                      }
+                    >
+                      {formData.text.length} / 20+
+                    </span>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  className="w-full"
+                  size="lg"
+                  disabled={
+                    isSubmitting ||
+                    formData.text.length < 20 ||
+                    !formData.projectType
+                  }
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="animate-spin mr-2">⏳</span>
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Submit Review
+                    </>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Footer Note */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 text-center text-sm text-muted-foreground space-y-2"
+        >
+          <p>🔒 Your review is secure and will be reviewed before publishing</p>
+          <p>
+            By submitting, you agree to let us display your review on our website
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+

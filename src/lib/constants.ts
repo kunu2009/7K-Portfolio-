@@ -655,6 +655,7 @@ export const NAVIGATION = [
       { name: "My Books", href: "/books" },
     ]
   },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Contact", href: "/#contact" },
 ] as const;
 
