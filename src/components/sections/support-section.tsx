@@ -164,8 +164,8 @@ export function SupportSection() {
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
       
-      {/* Decorative deer wallpaper - Subtle background element */}
-      <div className="absolute left-0 top-0 w-64 md:w-80 h-auto opacity-[0.07] pointer-events-none">
+      {/* Decorative deer wallpaper - Mobile: smaller, single corner */}
+      <div className="block md:hidden absolute -right-10 -top-10 w-32 h-auto opacity-10 pointer-events-none">
         <img 
           src="/images/hero-bg.png" 
           alt="" 
@@ -173,7 +173,17 @@ export function SupportSection() {
           aria-hidden="true"
         />
       </div>
-      <div className="absolute right-0 bottom-0 w-64 md:w-80 h-auto opacity-[0.07] pointer-events-none rotate-180">
+      
+      {/* Decorative deer wallpaper - Desktop: larger, both corners */}
+      <div className="hidden md:block absolute left-0 top-0 w-64 lg:w-80 h-auto opacity-[0.07] pointer-events-none">
+        <img 
+          src="/images/hero-bg.png" 
+          alt="" 
+          className="w-full h-auto"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="hidden md:block absolute right-0 bottom-0 w-64 lg:w-80 h-auto opacity-[0.07] pointer-events-none rotate-180">
         <img 
           src="/images/hero-bg.png" 
           alt="" 

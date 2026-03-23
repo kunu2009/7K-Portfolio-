@@ -206,7 +206,17 @@ export default function TestimonialsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
-      {/* Decorative background elements */}
+      {/* Decorative background - Mobile: subtle top corner */}
+      <div className="block md:hidden absolute -right-16 -top-8 w-36 h-auto opacity-10 pointer-events-none">
+        <img 
+          src="/images/7k-collage.jpg" 
+          alt="" 
+          className="w-full h-auto rounded-2xl rotate-12 blur-[1px]"
+          aria-hidden="true"
+        />
+      </div>
+      
+      {/* Decorative background - Desktop: larger elements */}
       <div className="absolute -right-32 top-20 w-96 h-auto opacity-10 pointer-events-none hidden md:block">
         <img 
           src="/images/7k-collage.jpg" 

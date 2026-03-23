@@ -580,20 +580,23 @@ Say "change style neon" or "style 1" to switch!`;
           className="flex justify-center gap-4 md:gap-6 mb-12"
           variants={fadeInUp}
         >
+          {/* Photo 1 - Stadium */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
             <img 
               src="/images/kunal-1.jpg" 
               alt="Kunal Chheda" 
-              className="relative w-32 h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+              className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
             />
           </div>
-          <div className="relative group mt-8">
+          {/* Photo 2 - Blazer (face positioned properly) */}
+          <div className="relative group mt-6 sm:mt-8">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
             <img 
               src="/images/kunal-2.jpg" 
               alt="Kunal Chheda" 
-              className="relative w-32 h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+              className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover object-top rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+              style={{ objectPosition: 'center 20%' }}
             />
           </div>
         </motion.div>
