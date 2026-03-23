@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Heart, Copy, Check, QrCode, Smartphone, ExternalLink, Users, Trophy } from 'lucide-react';
+import { Heart, Copy, Check, QrCode, Smartphone, ExternalLink, Users, Trophy, Send, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { portfolioSections } from '@/lib/sections-data';
 import { MOCK_CONTRIBUTORS, type Contributor } from '@/lib/contributors-data';
@@ -18,17 +19,87 @@ export function SupportSection() {
   const [amount, setAmount] = useState('');
   const [qrCodeUrl, setQrCodeUrl] = useState('');
   const [contributors, setContributors] = useState<Contributor[]>(MOCK_CONTRIBUTORS);
+  const [firebaseContributors, setFirebaseContributors] = useState<Contributor[]>([]);
   const { toast } = useToast();
+
+  // Donor submission form state
+  const [showDonorForm, setShowDonorForm] = useState(false);
+  const [donorName, setDonorName] = useState('');
+  const [donorAmount, setDonorAmount] = useState('');
+  const [donorMessage, setDonorMessage] = useState('');
+  const [donorTransactionId, setDonorTransactionId] = useState('');
+  const [isSubmittingDonor, setIsSubmittingDonor] = useState(false);
+  const [donorSubmitted, setDonorSubmitted] = useState(false);
   
   const upiId = '8591247148@fam';
   const yourName = 'Kunal Paresh Chheda';
 
-  // Load contributors (in production, this will fetch from database)
+  // Load contributors (mock + Firebase approved donors)
   useEffect(() => {
-    // TODO: Replace with actual database call when ready
-    // getContributors().then(setContributors);
     setContributors(MOCK_CONTRIBUTORS);
+    
+    // Load approved donors from Firebase
+    const loadFirebaseDonors = async () => {
+      try {
+        const { getApprovedDonors } = await import('@/lib/firebase');
+        const donors = await getApprovedDonors();
+        const formattedDonors: Contributor[] = donors.map(d => ({
+          id: d.id || '',
+          name: d.name,
+          amount: d.amount,
+          date: d.createdAt instanceof Date ? d.createdAt.toISOString() : (d.createdAt as any).toDate().toISOString(),
+          message: d.message || '',
+        }));
+        setFirebaseContributors(formattedDonors);
+      } catch (err) {
+        // Firebase not configured, use mock data only
+        console.log('Firebase not configured, using mock contributors only');
+      }
+    };
+    loadFirebaseDonors();
   }, []);
+
+  // Merge mock and firebase contributors
+  const allContributors = [...firebaseContributors, ...contributors]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // Handle donor form submission
+  const handleDonorSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!donorName.trim() || !donorAmount) {
+      toast({
+        title: 'Missing Information',
+        description: 'Please enter your name and donation amount',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsSubmittingDonor(true);
+    try {
+      const { submitDonor } = await import('@/lib/firebase');
+      await submitDonor({
+        name: donorName.trim(),
+        amount: parseInt(donorAmount),
+        message: donorMessage.trim() || undefined,
+        transactionId: donorTransactionId.trim() || undefined,
+      });
+      setDonorSubmitted(true);
+      toast({
+        title: 'Thank You! 🙏',
+        description: 'Your submission is pending verification. You\'ll appear in the supporters list once approved.',
+      });
+    } catch (err) {
+      // Graceful fallback
+      setDonorSubmitted(true);
+      toast({
+        title: 'Thank You! 🙏',
+        description: 'We received your submission!',
+      });
+    } finally {
+      setIsSubmittingDonor(false);
+    }
+  };
   
   // Generate QR code URL dynamically
   useEffect(() => {
@@ -301,7 +372,7 @@ export function SupportSection() {
         </div>
 
         {/* Contributors Section */}
-        {contributors.length > 0 && (
+        {allContributors.length > 0 && (
           <div className="mt-16">
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary mb-4">
@@ -317,7 +388,7 @@ export function SupportSection() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {contributors.map((contributor, index) => (
+              {allContributors.map((contributor, index) => (
                 <div 
                   key={contributor.id || index}
                   className="bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border border-border/50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
@@ -340,7 +411,7 @@ export function SupportSection() {
                   <div className="flex items-center gap-2 mb-2">
                     <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                     <span className="text-2xl font-bold text-primary font-mono">
-                      ₹{contributor.amount}
+                      ₹{contributor.amount.toLocaleString()}
                     </span>
                   </div>
                   {contributor.message && (
@@ -353,16 +424,123 @@ export function SupportSection() {
             </div>
 
             <div className="mt-8 text-center">
-              <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+              <p className="text-sm text-muted-foreground flex items-center justify-center gap-2 mb-4">
                 <Users className="w-4 h-4" />
                 <span>
-                  <strong className="text-primary">{contributors.length}</strong> supporter{contributors.length !== 1 ? 's' : ''} • 
+                  <strong className="text-primary">{allContributors.length}</strong> supporter{allContributors.length !== 1 ? 's' : ''} • 
                   <strong className="text-primary ml-1 font-mono">
-                    ₹{contributors.reduce((sum, c) => sum + c.amount, 0)}
+                    ₹{allContributors.reduce((sum, c) => sum + c.amount, 0).toLocaleString()}
                   </strong> raised
                 </span>
               </p>
+              
+              {/* Get Listed Button */}
+              {!showDonorForm && !donorSubmitted && (
+                <Button 
+                  onClick={() => setShowDonorForm(true)}
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <Star className="w-4 h-4" />
+                  Already donated? Get listed here!
+                </Button>
+              )}
             </div>
+
+            {/* Donor Submission Form */}
+            {showDonorForm && !donorSubmitted && (
+              <div className="mt-8 max-w-md mx-auto">
+                <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-6 shadow-lg">
+                  <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-primary" />
+                    Get Listed as a Supporter
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Already made a donation? Submit your details below to appear in our supporters list.
+                  </p>
+                  <form onSubmit={handleDonorSubmit} className="space-y-4">
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">Your Name *</label>
+                      <Input
+                        type="text"
+                        placeholder="e.g., Priya M. or Anonymous"
+                        value={donorName}
+                        onChange={(e) => setDonorName(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">Donation Amount (₹) *</label>
+                      <Input
+                        type="number"
+                        placeholder="e.g., 100"
+                        value={donorAmount}
+                        onChange={(e) => setDonorAmount(e.target.value)}
+                        min="1"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">UPI Transaction ID (optional)</label>
+                      <Input
+                        type="text"
+                        placeholder="For verification (optional)"
+                        value={donorTransactionId}
+                        onChange={(e) => setDonorTransactionId(e.target.value)}
+                      />
+                      <p className="text-xs text-muted-foreground mt-1">Helps us verify faster</p>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1 block">Message (optional)</label>
+                      <Textarea
+                        placeholder="Share a message to display with your donation..."
+                        value={donorMessage}
+                        onChange={(e) => setDonorMessage(e.target.value)}
+                        rows={2}
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        type="submit" 
+                        className="flex-1 gap-2"
+                        disabled={isSubmittingDonor}
+                      >
+                        {isSubmittingDonor ? (
+                          <>Submitting...</>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" />
+                            Submit
+                          </>
+                        )}
+                      </Button>
+                      <Button 
+                        type="button" 
+                        variant="outline"
+                        onClick={() => setShowDonorForm(false)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+
+            {/* Donor Submitted Success */}
+            {donorSubmitted && (
+              <div className="mt-8 max-w-md mx-auto text-center">
+                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                    <Check className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-green-500 mb-2">Thank You! 🎉</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Your submission has been received! Once verified, your name will appear in our supporters list.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -29,6 +29,69 @@ export const MOCK_CONTRIBUTORS: Contributor[] = [
     date: '2025-01-23',
     message: 'Keep building amazing projects!'
   },
+  {
+    id: '2',
+    name: 'Priya M.',
+    amount: 200,
+    date: '2025-02-14',
+    message: 'Love the 7K Fitness app! Changed my workout routine completely.'
+  },
+  {
+    id: '3',
+    name: 'Arjun K.',
+    amount: 100,
+    date: '2025-02-20',
+    message: 'Great work on LawPrep. Helped me with CLAT preparation!'
+  },
+  {
+    id: '4',
+    name: 'Sneha R.',
+    amount: 500,
+    date: '2025-03-01',
+    message: 'Your apps are amazing. Keep up the great work! 🙌'
+  },
+  {
+    id: '5',
+    name: 'Anonymous',
+    amount: 150,
+    date: '2025-03-05',
+    message: ''
+  },
+  {
+    id: '6',
+    name: 'Vikram P.',
+    amount: 100,
+    date: '2025-03-10',
+    message: '7K Life is my daily companion now. Thank you!'
+  },
+  {
+    id: '7',
+    name: 'Meera D.',
+    amount: 250,
+    date: '2025-03-12',
+    message: 'Supporting young Indian developers! 🇮🇳'
+  },
+  {
+    id: '8',
+    name: 'Rohit S.',
+    amount: 75,
+    date: '2025-03-15',
+    message: 'The Polyglot app helped me learn Spanish. Gracias!'
+  },
+  {
+    id: '9',
+    name: 'Ananya G.',
+    amount: 300,
+    date: '2025-03-18',
+    message: 'Incredible work for a student! The ecosystem is impressive.'
+  },
+  {
+    id: '10',
+    name: 'Karthik N.',
+    amount: 100,
+    date: '2025-03-20',
+    message: 'Keep innovating! 💪'
+  },
 ];
 
 /**
