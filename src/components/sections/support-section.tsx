@@ -164,6 +164,24 @@ export function SupportSection() {
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
       
+      {/* Decorative deer wallpaper - Subtle background element */}
+      <div className="absolute left-0 top-0 w-64 md:w-80 h-auto opacity-[0.07] pointer-events-none">
+        <img 
+          src="/images/hero-bg.png" 
+          alt="" 
+          className="w-full h-auto"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="absolute right-0 bottom-0 w-64 md:w-80 h-auto opacity-[0.07] pointer-events-none rotate-180">
+        <img 
+          src="/images/hero-bg.png" 
+          alt="" 
+          className="w-full h-auto"
+          aria-hidden="true"
+        />
+      </div>
+      
       <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">

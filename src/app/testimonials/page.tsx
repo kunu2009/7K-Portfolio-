@@ -205,9 +205,27 @@ export default function TestimonialsPage() {
   const projectTypes = [...new Set(testimonials.map((t) => t.projectType))];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute -right-32 top-20 w-96 h-auto opacity-10 pointer-events-none hidden md:block">
+        <img 
+          src="/images/7k-collage.jpg" 
+          alt="" 
+          className="w-full h-auto rounded-3xl rotate-12 blur-[2px]"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="absolute -left-32 bottom-40 w-80 h-auto opacity-10 pointer-events-none hidden md:block">
+        <img 
+          src="/images/7k-collage.jpg" 
+          alt="" 
+          className="w-full h-auto rounded-3xl -rotate-12 blur-[2px]"
+          aria-hidden="true"
+        />
+      </div>
+      
       {/* Hero Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}

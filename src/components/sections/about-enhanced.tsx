@@ -575,6 +575,29 @@ Say "change style neon" or "style 1" to switch!`;
           </p>
         </motion.div>
 
+        {/* Personal Photo Gallery */}
+        <motion.div 
+          className="flex justify-center gap-4 md:gap-6 mb-12"
+          variants={fadeInUp}
+        >
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
+            <img 
+              src="/images/kunal-1.jpg" 
+              alt="Kunal Chheda" 
+              className="relative w-32 h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+            />
+          </div>
+          <div className="relative group mt-8">
+            <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
+            <img 
+              src="/images/kunal-2.jpg" 
+              alt="Kunal Chheda" 
+              className="relative w-32 h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+            />
+          </div>
+        </motion.div>
+
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mb-16">
           {/* Left Column: Bio & Info */}

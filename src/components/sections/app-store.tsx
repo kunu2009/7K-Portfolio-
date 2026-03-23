@@ -46,6 +46,16 @@ const AppStoreSection = () => {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
       
+      {/* Decorative 7K Collage - Hidden on mobile, shown on larger screens */}
+      <div className="hidden lg:block absolute -right-20 top-1/2 -translate-y-1/2 w-80 h-auto opacity-20 hover:opacity-40 transition-opacity duration-500 pointer-events-none">
+        <img 
+          src="/images/7k-collage.jpg" 
+          alt="" 
+          className="w-full h-auto rounded-3xl blur-[1px] rotate-6"
+          aria-hidden="true"
+        />
+      </div>
+      
       <motion.div
         initial="initial"
         whileInView="animate"
