@@ -41,50 +41,182 @@ interface AppDetailClientProps {
   app: App;
 }
 
+// App-specific reviews database - realistic reviews matching each app
+const appSpecificReviews: Record<string, DisplayReview[]> = {
+  // 7K Life - Productivity app (4.8 rating)
+  'life': [
+    { id: 'life-1', userName: 'Ankit P.', rating: 5, title: 'Changed how I manage my day', review: 'The habit tracker is phenomenal! Been on a 45-day streak for meditation thanks to this app. The dashboard gives me a clear picture of my productivity.', date: '2025-03-18', helpful: 34, isHardcoded: true },
+    { id: 'life-2', userName: 'Meera S.', rating: 5, title: 'Best productivity app for students', review: 'As a college student, this app helps me balance studies, fitness, and personal goals. Love the goal tracking feature!', date: '2025-03-12', helpful: 28, isHardcoded: true },
+    { id: 'life-3', userName: 'Rohit K.', rating: 4, title: 'Great for daily planning', review: 'Using this for task management daily. Would love dark mode sync with system settings. Otherwise perfect!', date: '2025-03-05', helpful: 15, isHardcoded: true },
+    { id: 'life-4', userName: 'Kavya R.', rating: 5, title: 'All-in-one life organizer', review: 'Finally an app that combines habits, tasks, and notes in one place. No more switching between 5 different apps!', date: '2025-02-28', helpful: 42, isHardcoded: true },
+  ],
+  // 7K Money - Finance app (4.7 rating)
+  '7kmoney': [
+    { id: 'money-1', userName: 'Vikram T.', rating: 5, title: 'Saved me ₹15,000 this month!', review: 'The expense tracking opened my eyes to where my money was going. The budget alerts are super helpful. Must-have for everyone!', date: '2025-03-16', helpful: 56, isHardcoded: true },
+    { id: 'money-2', userName: 'Priya N.', rating: 5, title: 'Simple and effective', review: 'Finally a finance app that\'s not overwhelming. Adding expenses takes 2 seconds. Love the monthly reports!', date: '2025-03-10', helpful: 31, isHardcoded: true },
+    { id: 'money-3', userName: 'Arjun M.', rating: 4, title: 'Great for tracking expenses', review: 'Been using for 3 months. Helped me understand my spending patterns. Would love bank sync feature.', date: '2025-03-02', helpful: 18, isHardcoded: true },
+    { id: 'money-4', userName: 'Sneha G.', rating: 5, title: 'Beautiful charts and insights', review: 'The pie charts showing category-wise spending are beautiful. Makes budgeting actually fun!', date: '2025-02-25', helpful: 24, isHardcoded: true },
+  ],
+  // 7K Political Science - Education (4.5 rating)
+  'pol': [
+    { id: 'pol-1', userName: 'Rahul J.', rating: 5, title: 'Scored 92/100 in boards!', review: 'This app covered everything I needed for HSC Political Science. The chapter notes are detailed and easy to understand.', date: '2025-03-15', helpful: 67, isHardcoded: true },
+    { id: 'pol-2', userName: 'Aditi K.', rating: 4, title: 'Great for quick revision', review: 'The summary notes are perfect for last-minute revision. Would love more practice questions.', date: '2025-03-08', helpful: 23, isHardcoded: true },
+    { id: 'pol-3', userName: 'Karan S.', rating: 5, title: 'Better than coaching classes', review: 'Covers Indian Constitution and Political Theory perfectly. The previous year questions helped a lot!', date: '2025-02-28', helpful: 45, isHardcoded: true },
+    { id: 'pol-4', userName: 'Neha P.', rating: 4, title: 'Helpful for board exams', review: 'Good content coverage. The flowcharts make complex topics easier. Wish there were video explanations.', date: '2025-02-20', helpful: 19, isHardcoded: true },
+  ],
+  // 7K Economics - Education (4.7 rating)
+  'eco': [
+    { id: 'eco-1', userName: 'Aditya V.', rating: 5, title: 'Made economics easy!', review: 'The graphs and diagrams are so clear. Microeconomics concepts finally make sense. Must-have for HSC students!', date: '2025-03-17', helpful: 52, isHardcoded: true },
+    { id: 'eco-2', userName: 'Shruti M.', rating: 5, title: 'Best economics study app', review: 'The numerical problems section is gold! Step-by-step solutions helped me score 95 in my prelims.', date: '2025-03-11', helpful: 38, isHardcoded: true },
+    { id: 'eco-3', userName: 'Ravi K.', rating: 4, title: 'Comprehensive coverage', review: 'Covers both Micro and Macroeconomics thoroughly. Formula sheets are very handy during exams.', date: '2025-03-04', helpful: 21, isHardcoded: true },
+    { id: 'eco-4', userName: 'Pooja S.', rating: 5, title: 'Saved my board exams', review: 'Was struggling with economics until I found this. The mock tests prepare you well for the actual exam format.', date: '2025-02-26', helpful: 44, isHardcoded: true },
+  ],
+  // 7K History - Education (4.6 rating)
+  'his': [
+    { id: 'his-1', userName: 'Ishaan R.', rating: 5, title: 'History made interesting!', review: 'The interactive timelines are amazing! Finally understand the sequence of events. Great for visual learners.', date: '2025-03-14', helpful: 36, isHardcoded: true },
+    { id: 'his-2', userName: 'Tanvi D.', rating: 5, title: 'Excellent for board prep', review: 'Comprehensive notes on Indian History and World History. The important dates section is a lifesaver!', date: '2025-03-09', helpful: 29, isHardcoded: true },
+    { id: 'his-3', userName: 'Harsh P.', rating: 4, title: 'Good content, needs more maps', review: 'Chapter notes are detailed. Would love more interactive historical maps. Otherwise very helpful!', date: '2025-03-01', helpful: 16, isHardcoded: true },
+    { id: 'his-4', userName: 'Divya K.', rating: 5, title: 'Scored 88 in HSC!', review: 'Used this exclusively for my board exam prep. The previous year papers with answers are extremely valuable.', date: '2025-02-22', helpful: 48, isHardcoded: true },
+  ],
+  // 7K Kanban - Productivity (4.6 rating)
+  'kanban': [
+    { id: 'kanban-1', userName: 'Rajesh M.', rating: 5, title: 'Perfect for our startup', review: 'We use this for sprint planning. The drag-and-drop is smooth, and real-time sync keeps everyone updated.', date: '2025-03-16', helpful: 42, isHardcoded: true },
+    { id: 'kanban-2', userName: 'Sanya T.', rating: 5, title: 'Simple and powerful', review: 'Love how customizable the columns are. Using it for content planning - from ideas to published. Works great!', date: '2025-03-10', helpful: 27, isHardcoded: true },
+    { id: 'kanban-3', userName: 'Amit B.', rating: 4, title: 'Great alternative to Trello', review: 'Clean interface, fast loading. Would love calendar integration. But for free, this is excellent!', date: '2025-03-03', helpful: 18, isHardcoded: true },
+    { id: 'kanban-4', userName: 'Prerna S.', rating: 5, title: 'Organize everything visually', review: 'Using for personal projects and freelance work. The board templates save so much time!', date: '2025-02-24', helpful: 33, isHardcoded: true },
+  ],
+  // 7K Fitness - Health (4.8 rating)
+  'fitness': [
+    { id: 'fit-1', userName: 'Aryan K.', rating: 5, title: 'Lost 8kg in 3 months!', review: 'The workout plans are perfect for beginners. Progress tracking keeps me motivated. Best fitness app I\'ve used!', date: '2025-03-18', helpful: 78, isHardcoded: true },
+    { id: 'fit-2', userName: 'Simran P.', rating: 5, title: 'Love the home workouts', review: 'No gym needed! The bodyweight exercises are effective. Calorie tracking feature is a nice bonus.', date: '2025-03-12', helpful: 45, isHardcoded: true },
+    { id: 'fit-3', userName: 'Varun S.', rating: 5, title: 'Complete fitness companion', review: 'Workout plans, diet tips, progress photos - everything in one app. The reminder notifications keep me consistent.', date: '2025-03-06', helpful: 32, isHardcoded: true },
+    { id: 'fit-4', userName: 'Neelam R.', rating: 4, title: 'Great for beginners', review: 'Started my fitness journey with this app. Easy to follow exercises with video demos. Would love yoga routines!', date: '2025-02-28', helpful: 26, isHardcoded: true },
+  ],
+  // 7K Polyglot - Language Learning (4.7 rating)
+  'polyglot': [
+    { id: 'poly-1', userName: 'Aakash M.', rating: 5, title: 'Learning Spanish is fun now!', review: 'The bite-sized lessons fit perfectly in my commute. Already having basic conversations after 2 months!', date: '2025-03-17', helpful: 41, isHardcoded: true },
+    { id: 'poly-2', userName: 'Ritu K.', rating: 5, title: 'Better than Duolingo for me', review: 'Love the focus on practical phrases. The pronunciation guides are helpful. Learning French and loving it!', date: '2025-03-11', helpful: 35, isHardcoded: true },
+    { id: 'poly-3', userName: 'Sameer D.', rating: 4, title: 'Good variety of languages', review: 'Using for Japanese. Would love more kanji practice. But the grammar explanations are excellent!', date: '2025-03-04', helpful: 22, isHardcoded: true },
+    { id: 'poly-4', userName: 'Ananya B.', rating: 5, title: 'My daily language habit', review: 'The streak system keeps me coming back. Learning German for 6 months now. Highly recommend!', date: '2025-02-26', helpful: 38, isHardcoded: true },
+  ],
+  // 7K Tools - Utility (4.5 rating)
+  'tools': [
+    { id: 'tools-1', userName: 'Karthik N.', rating: 5, title: 'All utilities in one place', review: 'Calculator, converter, timer - everything I need daily. No need to download 10 separate apps!', date: '2025-03-15', helpful: 29, isHardcoded: true },
+    { id: 'tools-2', userName: 'Megha J.', rating: 5, title: 'Simple and fast', review: 'The unit converter is my most-used tool. Clean UI, loads instantly. Perfect utility app!', date: '2025-03-09', helpful: 21, isHardcoded: true },
+    { id: 'tools-3', userName: 'Deepak R.', rating: 4, title: 'Very useful collection', review: 'Good variety of tools. Would love a QR code generator. But what\'s here works perfectly!', date: '2025-03-02', helpful: 14, isHardcoded: true },
+    { id: 'tools-4', userName: 'Sunita M.', rating: 4, title: 'Handy for everyday use', review: 'Use the calculator and stopwatch daily. Simple, no ads, just works. Thank you developer!', date: '2025-02-24', helpful: 18, isHardcoded: true },
+  ],
+  // 7K Prompt - AI Tools (4.6 rating)
+  'prompt': [
+    { id: 'prompt-1', userName: 'Vivek S.', rating: 5, title: 'Game changer for AI work!', review: 'The prompt templates save me hours. My ChatGPT outputs are so much better now. Essential for anyone using AI!', date: '2025-03-16', helpful: 53, isHardcoded: true },
+    { id: 'prompt-2', userName: 'Nisha T.', rating: 5, title: 'Perfect for content creators', review: 'The writing prompts are incredible. My blog posts are more engaging. Love the organized categories!', date: '2025-03-10', helpful: 37, isHardcoded: true },
+    { id: 'prompt-3', userName: 'Akash G.', rating: 4, title: 'Great prompt library', review: 'Huge collection of prompts for different use cases. Would love custom prompt saving. Very useful!', date: '2025-03-03', helpful: 24, isHardcoded: true },
+    { id: 'prompt-4', userName: 'Divya P.', rating: 5, title: 'Makes AI prompting easy', review: 'As a beginner to AI, this app taught me how to write effective prompts. Now getting much better results!', date: '2025-02-25', helpful: 31, isHardcoded: true },
+  ],
+  // 7K Money - Personal Finance (4.6 rating)
+  'money': [
+    { id: 'money2-1', userName: 'Ravi K.', rating: 5, title: 'Perfect for tracking expenses!', review: 'Simple and intuitive. I can see exactly where my money goes each month. The budget alerts helped me save ₹20,000!', date: '2025-03-17', helpful: 61, isHardcoded: true },
+    { id: 'money2-2', userName: 'Anjali M.', rating: 5, title: 'Best free finance app', review: 'No ads, no premium lock - everything is free. The spending insights are eye-opening!', date: '2025-03-11', helpful: 43, isHardcoded: true },
+    { id: 'money2-3', userName: 'Suresh P.', rating: 4, title: 'Very helpful for budgeting', review: 'Been using for 2 months. Great for understanding spending patterns. Would love split expense feature.', date: '2025-03-04', helpful: 27, isHardcoded: true },
+    { id: 'money2-4', userName: 'Priti D.', rating: 5, title: 'Simple & effective', review: 'Finally a finance app that doesn\'t overwhelm. Adding transactions takes seconds. Love it!', date: '2025-02-26', helpful: 35, isHardcoded: true },
+  ],
+  // 7K English - Language Learning (4.5 rating)
+  'english': [
+    { id: 'eng-1', userName: 'Ramesh V.', rating: 5, title: 'Improved my spoken English!', review: 'The daily vocabulary and conversation practice helped me crack my interview. Highly recommended!', date: '2025-03-16', helpful: 48, isHardcoded: true },
+    { id: 'eng-2', userName: 'Sunita K.', rating: 5, title: 'Great for grammar practice', review: 'The grammar exercises are so well structured. My writing has improved significantly.', date: '2025-03-10', helpful: 34, isHardcoded: true },
+    { id: 'eng-3', userName: 'Ajay G.', rating: 4, title: 'Good learning companion', review: 'Nice app for daily English practice. Would love more audio pronunciation guides.', date: '2025-03-03', helpful: 19, isHardcoded: true },
+    { id: 'eng-4', userName: 'Meena R.', rating: 4, title: 'Helpful vocabulary builder', review: 'Learn new words every day. The quizzes help retention. Good for beginners!', date: '2025-02-25', helpful: 22, isHardcoded: true },
+  ],
+  // 7K Eng - English Literature (4.4 rating)
+  'eng': [
+    { id: 'englit-1', userName: 'Shreya M.', rating: 5, title: 'Lifesaver for boards!', review: 'Complete HSC English Literature coverage. The poem analyses are excellent!', date: '2025-03-15', helpful: 52, isHardcoded: true },
+    { id: 'englit-2', userName: 'Kunal S.', rating: 4, title: 'Good study material', review: 'Chapter summaries are helpful. Previous year papers helped me prepare well.', date: '2025-03-08', helpful: 28, isHardcoded: true },
+    { id: 'englit-3', userName: 'Pooja J.', rating: 5, title: 'Best for HSC prep', review: 'The character analysis and theme explanations are exactly what\'s needed for exams!', date: '2025-03-01', helpful: 41, isHardcoded: true },
+    { id: 'englit-4', userName: 'Rohan P.', rating: 4, title: 'Very comprehensive', review: 'Covers all prescribed texts thoroughly. Would appreciate more sample answers.', date: '2025-02-22', helpful: 17, isHardcoded: true },
+  ],
+  // 7K Student - Student Tools (4.7 rating)
+  'student': [
+    { id: 'stud-1', userName: 'Akshay R.', rating: 5, title: 'Every student needs this!', review: 'GPA calculator, assignment tracker, study timer - all in one app. Made my college life easier!', date: '2025-03-17', helpful: 67, isHardcoded: true },
+    { id: 'stud-2', userName: 'Sneha T.', rating: 5, title: 'Perfect study companion', review: 'The Pomodoro timer increased my focus. The assignment reminders never let me miss deadlines!', date: '2025-03-11', helpful: 45, isHardcoded: true },
+    { id: 'stud-3', userName: 'Vishal K.', rating: 5, title: 'Best app for students', review: 'From exam schedules to grade tracking - this app has everything. Thank you developer!', date: '2025-03-05', helpful: 38, isHardcoded: true },
+    { id: 'stud-4', userName: 'Nandini M.', rating: 4, title: 'Very helpful for organization', review: 'Helps me stay organized with classes and assignments. Would love cloud sync feature.', date: '2025-02-27', helpful: 24, isHardcoded: true },
+  ],
+  // 7K Group - Group Management (4.5 rating)
+  'group': [
+    { id: 'grp-1', userName: 'Rahul M.', rating: 5, title: 'Perfect for college projects!', review: 'Assigning tasks, tracking progress - made group work so much easier. No more confusion!', date: '2025-03-16', helpful: 39, isHardcoded: true },
+    { id: 'grp-2', userName: 'Priya S.', rating: 5, title: 'Great for team collaboration', review: 'Using this for my club management. Everyone knows their responsibilities now!', date: '2025-03-10', helpful: 27, isHardcoded: true },
+    { id: 'grp-3', userName: 'Amit V.', rating: 4, title: 'Useful for group activities', review: 'Simple and effective for small teams. Would love file sharing feature.', date: '2025-03-03', helpful: 16, isHardcoded: true },
+    { id: 'grp-4', userName: 'Kavita R.', rating: 4, title: 'Good team organizer', review: 'Helps coordinate events with friends. The shared calendar is very useful!', date: '2025-02-24', helpful: 21, isHardcoded: true },
+  ],
+  // 7K Editor - Code Editor (4.6 rating)
+  'editor': [
+    { id: 'edit-1', userName: 'Shivam K.', rating: 5, title: 'Lightweight and powerful!', review: 'Perfect for quick code edits. Syntax highlighting works great. My go-to for HTML/CSS!', date: '2025-03-17', helpful: 44, isHardcoded: true },
+    { id: 'edit-2', userName: 'Ankita D.', rating: 5, title: 'Great browser-based editor', review: 'No installation needed! Code anywhere. The auto-save feature saved me many times.', date: '2025-03-11', helpful: 32, isHardcoded: true },
+    { id: 'edit-3', userName: 'Harsh P.', rating: 4, title: 'Good for beginners', review: 'Clean interface, easy to use. Perfect for learning to code. Would love more themes.', date: '2025-03-04', helpful: 19, isHardcoded: true },
+    { id: 'edit-4', userName: 'Ritika M.', rating: 5, title: 'Fast and reliable', review: 'Loads instantly, never crashes. Using it for JavaScript practice daily. Love it!', date: '2025-02-26', helpful: 28, isHardcoded: true },
+  ],
+  // 7K Pins - Pinterest-style boards (4.4 rating)
+  'pins': [
+    { id: 'pins-1', userName: 'Sakshi M.', rating: 5, title: 'Love organizing my inspiration!', review: 'Perfect for saving design references. The boards keep everything organized beautifully!', date: '2025-03-15', helpful: 36, isHardcoded: true },
+    { id: 'pins-2', userName: 'Neha K.', rating: 5, title: 'Great alternative to Pinterest', review: 'Simple, fast, no distracting ads. Just pure visual organization. Exactly what I needed!', date: '2025-03-09', helpful: 24, isHardcoded: true },
+    { id: 'pins-3', userName: 'Raj S.', rating: 4, title: 'Good for mood boards', review: 'Using for my design projects. Would love import from URLs feature. Otherwise great!', date: '2025-03-02', helpful: 15, isHardcoded: true },
+    { id: 'pins-4', userName: 'Anita R.', rating: 4, title: 'Nice visual organizer', review: 'Clean interface, easy to use. Perfect for collecting ideas and references.', date: '2025-02-23', helpful: 18, isHardcoded: true },
+  ],
+  // 7K Game - Gaming hub (4.5 rating)
+  'game': [
+    { id: 'game-1', userName: 'Aryan S.', rating: 5, title: 'So many games in one place!', review: 'Puzzle games, arcade classics - hours of fun. No ads interrupting gameplay. Amazing!', date: '2025-03-16', helpful: 56, isHardcoded: true },
+    { id: 'game-2', userName: 'Nikita P.', rating: 5, title: 'Perfect for quick breaks', review: 'Play during study breaks. The memory games are actually helping my focus!', date: '2025-03-10', helpful: 38, isHardcoded: true },
+    { id: 'game-3', userName: 'Karan M.', rating: 4, title: 'Fun casual games', review: 'Good collection of games. Would love multiplayer options. But single-player is great!', date: '2025-03-03', helpful: 22, isHardcoded: true },
+    { id: 'game-4', userName: 'Swati D.', rating: 4, title: 'Entertaining and ad-free', review: 'Finally games without constant ad interruptions. The leaderboards add nice competition!', date: '2025-02-25', helpful: 29, isHardcoded: true },
+  ],
+  // 7K Fit - Workout tracker (4.6 rating)
+  'fit': [
+    { id: 'fit2-1', userName: 'Vikash R.', rating: 5, title: 'My gym companion!', review: 'Log workouts easily, track progress visually. The exercise library is comprehensive!', date: '2025-03-17', helpful: 51, isHardcoded: true },
+    { id: 'fit2-2', userName: 'Prerna S.', rating: 5, title: 'Perfect workout tracker', review: 'Simple logging, beautiful progress charts. Keeps me motivated to hit the gym!', date: '2025-03-11', helpful: 37, isHardcoded: true },
+    { id: 'fit2-3', userName: 'Manish K.', rating: 4, title: 'Great for gym logs', review: 'Track sets, reps, weight easily. Would love rest timer feature. Very useful otherwise!', date: '2025-03-04', helpful: 23, isHardcoded: true },
+    { id: 'fit2-4', userName: 'Komal M.', rating: 5, title: 'Best free fitness tracker', review: 'No subscription needed! All features are free. Progress photos feature is motivating!', date: '2025-02-26', helpful: 34, isHardcoded: true },
+  ],
+};
+
+// Default reviews for apps without specific reviews
+const defaultReviews: DisplayReview[] = [
+  { id: 'def-1', userName: 'User', rating: 5, title: 'Great app!', review: 'This app works exactly as expected. Clean interface and useful features. Recommended!', date: '2025-03-15', helpful: 12, isHardcoded: true },
+  { id: 'def-2', userName: 'Happy User', rating: 5, title: 'Very useful', review: 'Exactly what I was looking for. Simple, effective, and free. Keep up the good work!', date: '2025-03-10', helpful: 8, isHardcoded: true },
+  { id: 'def-3', userName: 'Reviewer', rating: 4, title: 'Good app', review: 'Does what it promises. Would love more features in future updates. Overall satisfied!', date: '2025-03-05', helpful: 6, isHardcoded: true },
+  { id: 'def-4', userName: 'Student', rating: 5, title: 'Helpful!', review: 'Found this very helpful for my daily needs. Thanks to the developer for making this free!', date: '2025-02-28', helpful: 10, isHardcoded: true },
+];
+
 export default function AppDetailClient({ app }: AppDetailClientProps) {
-  // Hardcoded reviews for social proof (app store style)
-  const hardcodedReviews: DisplayReview[] = [
-    {
-      id: 'hc1',
-      userName: 'Rahul K.',
-      rating: 5,
-      title: 'Exactly what I needed!',
-      review: 'This app has completely transformed my daily routine. The interface is intuitive and the features are well thought out. Highly recommend!',
-      date: '2025-03-15',
-      helpful: 24,
-      isHardcoded: true,
-    },
-    {
-      id: 'hc2',
-      userName: 'Priya S.',
-      rating: 5,
-      title: 'Clean design, great functionality',
-      review: 'Love how simple yet powerful this app is. No bloat, just exactly what you need. The developer clearly understands user needs.',
-      date: '2025-03-10',
-      helpful: 18,
-      isHardcoded: true,
-    },
-    {
-      id: 'hc3',
-      userName: 'Amit G.',
-      rating: 4,
-      title: 'Very useful app',
-      review: 'Been using this for a few weeks now. Really helpful for staying organized. Would love to see more customization options in future updates.',
-      date: '2025-03-05',
-      helpful: 12,
-      isHardcoded: true,
-    },
-    {
-      id: 'hc4',
-      userName: 'Sneha M.',
-      rating: 5,
-      title: 'Best in its category',
-      review: 'Tried many similar apps but this one stands out. Fast, reliable, and the attention to detail is impressive. Keep up the great work!',
-      date: '2025-02-28',
-      helpful: 31,
-      isHardcoded: true,
-    },
-  ];
+  // Get app-specific reviews or use default ones
+  const getHardcodedReviews = (): DisplayReview[] => {
+    return appSpecificReviews[app.id] || defaultReviews;
+  };
+
+  const hardcodedReviews = getHardcodedReviews();
+  
+  // Calculate the review count distribution to match app.rating
+  // This makes the star breakdown look realistic
+  const calculateReviewDistribution = (targetRating: number, reviewCount: number) => {
+    // Weighted distribution to achieve target average
+    const distributions: Record<number, number[]> = {
+      5: [0, 0, 0, 1, 3], // 4.75 avg
+      4.9: [0, 0, 0, 1, 4], // ~4.8 avg
+      4.8: [0, 0, 1, 2, 7], // ~4.6 avg
+      4.7: [0, 0, 1, 3, 6], // ~4.5 avg
+      4.6: [0, 0, 2, 3, 5], // ~4.3 avg
+      4.5: [0, 1, 2, 3, 4], // ~4.0 avg
+      4.4: [0, 1, 2, 4, 3], // ~3.9 avg
+      4.3: [0, 1, 3, 4, 2], // ~3.7 avg
+      4.2: [1, 1, 3, 4, 1], // ~3.4 avg
+      4.0: [1, 2, 3, 3, 1], // ~3.1 avg
+    };
+    
+    // Find closest rating key
+    const keys = Object.keys(distributions).map(Number).sort((a, b) => b - a);
+    const closestKey = keys.find(k => targetRating >= k) || 4.0;
+    
+    return distributions[closestKey];
+  };
 
   const [reviews, setReviews] = useState<DisplayReview[]>(hardcodedReviews);
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -103,7 +235,7 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
     const loadReviews = async () => {
       try {
         const { getAppReviews } = await import('@/lib/firebase');
-        const firebaseReviews = await getAppReviews(app.slug);
+        const firebaseReviews = await getAppReviews(app.id);
         const formattedReviews: DisplayReview[] = firebaseReviews.map(r => ({
           id: r.id || '',
           userName: r.userName,
@@ -120,12 +252,31 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
       }
     };
     loadReviews();
-  }, [app.slug]);
+  }, [app.id, hardcodedReviews]);
 
-  // Calculate average rating from all reviews
-  const averageRating = reviews.length > 0 
-    ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
-    : app.rating.toString();
+  // Use app's actual rating from data (more realistic)
+  const displayRating = app.rating.toFixed(1);
+  const displayReviewCount = app.reviews;
+  
+  // Calculate realistic star distribution based on app rating
+  const getStarDistribution = () => {
+    const total = displayReviewCount;
+    const rating = app.rating;
+    
+    // Create distribution that averages to the target rating
+    // Higher rated apps have more 5-star reviews
+    if (rating >= 4.8) {
+      return { 5: Math.round(total * 0.75), 4: Math.round(total * 0.20), 3: Math.round(total * 0.05), 2: 0, 1: 0 };
+    } else if (rating >= 4.6) {
+      return { 5: Math.round(total * 0.65), 4: Math.round(total * 0.25), 3: Math.round(total * 0.08), 2: Math.round(total * 0.02), 1: 0 };
+    } else if (rating >= 4.4) {
+      return { 5: Math.round(total * 0.55), 4: Math.round(total * 0.30), 3: Math.round(total * 0.10), 2: Math.round(total * 0.03), 1: Math.round(total * 0.02) };
+    } else {
+      return { 5: Math.round(total * 0.45), 4: Math.round(total * 0.35), 3: Math.round(total * 0.12), 2: Math.round(total * 0.05), 1: Math.round(total * 0.03) };
+    }
+  };
+  
+  const starDistribution = getStarDistribution();
 
   // Handle review submission
   const handleSubmitReview = async (e: React.FormEvent) => {
@@ -138,7 +289,7 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
     try {
       const { submitAppReview } = await import('@/lib/firebase');
       await submitAppReview({
-        appSlug: app.slug,
+        appSlug: app.id,
         appName: app.name,
         userName: userName.trim(),
         rating: reviewRating,
@@ -410,29 +561,31 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
             )}
           </div>
 
-          {/* Rating Summary */}
+          {/* Rating Summary - Uses app's actual rating data */}
           <Card className="p-6 mb-6">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="text-center">
-                <div className="text-5xl font-bold text-primary">{averageRating}</div>
+                <div className="text-5xl font-bold text-primary">{displayRating}</div>
                 <div className="flex mt-2">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={`h-5 w-5 ${
-                        i < Math.floor(parseFloat(averageRating))
+                        i < Math.floor(app.rating)
                           ? "fill-yellow-500 text-yellow-500"
+                          : i < app.rating
+                          ? "fill-yellow-500/50 text-yellow-500"
                           : "fill-muted text-muted"
                       }`}
                     />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">{reviews.length} reviews</p>
+                <p className="text-sm text-muted-foreground mt-1">{displayReviewCount.toLocaleString()} ratings</p>
               </div>
               <div className="flex-1 w-full max-w-md">
                 {[5, 4, 3, 2, 1].map((stars) => {
-                  const count = reviews.filter(r => r.rating === stars).length;
-                  const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
+                  const count = starDistribution[stars as keyof typeof starDistribution] || 0;
+                  const percentage = displayReviewCount > 0 ? (count / displayReviewCount) * 100 : 0;
                   return (
                     <div key={stars} className="flex items-center gap-2 mb-1">
                       <span className="text-sm w-6">{stars}</span>
@@ -443,7 +596,7 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
-                      <span className="text-sm text-muted-foreground w-8">{count}</span>
+                      <span className="text-sm text-muted-foreground w-10 text-right">{count}</span>
                     </div>
                   );
                 })}
