@@ -296,23 +296,44 @@ export const portfolioSections: PortfolioSections = {
   },
   journey: {
     enabled: true,
-    title: "My Journey",
-    subtitle: "How It All Started",
+    title: "Struggles & Solutions",
+    subtitle: "How I Debugged, Learned, and Built Better Apps",
     milestones: [
       {
-        year: "2023",
-        title: "Started Coding",
-        description: "Began learning web development with HTML, CSS, and JavaScript"
+        year: "Sept 2025",
+        title: "First Firebase Bug: Auth Token Chaos",
+        description: "Challenge: Firebase authentication tokens expiring without warning, crashing the app. I spent days tracing the issue through network logs, eventually finding the timeout configuration was too aggressive. Solution: Implemented token refresh logic and proper error handling. Lesson: Always log your API calls and understand third-party library defaults.",
+        image: "/images/decorations/struggles/Screenshot 2025-09-18 215937.png"
       },
       {
-        year: "2024",
-        title: "Built First App",
-        description: "Launched 7K Life, my first productivity application"
+        year: "Oct 2025",
+        title: "State Management Nightmare",
+        description: "Challenge: Budget app had UI inconsistencies — data wasn't syncing between components. I was managing state incorrectly with multiple sources of truth. Solution: Refactored to use React Context properly and added proper dependency arrays to useEffect. Result: Stable, predictable state management. Lesson: Centralize state, avoid prop drilling, use proper React hooks patterns.",
+        image: "/images/decorations/struggles/Screenshot 2025-10-04 183331.png"
       },
       {
-        year: "2025",
-        title: "Growing Ecosystem",
-        description: "Expanded to 20+ apps and building the 7K Ecosystem"
+        year: "Oct 2025",
+        title: "Performance Crisis: 1000+ Items Lag",
+        description: "Challenge: App became painfully slow when handling large lists (2000+ transactions in budget app). Browser would freeze. Root cause: Re-rendering entire list on every keystroke. Solution: Implemented virtualization, memoization with React.memo, and proper list keys. Learned: Performance optimization is 90% about understanding render cycles. Lesson: Profile first, optimize second.",
+        image: "/images/decorations/struggles/Screenshot 2025-10-04 174256.png"
+      },
+      {
+        year: "Nov 2025",
+        title: "API Integration Hell: Media Downloader Errors",
+        description: "Challenge: YouTube downloader kept failing silently. Different video qualities had different response formats causing parsing errors. Solution: Added comprehensive error handling, logging, and fallback mechanisms. Tested edge cases. Lesson: External APIs are unpredictable — always assume they can fail and handle gracefully with user-friendly error messages.",
+        image: "/images/decorations/struggles/Screenshot 2025-11-11 213033.png"
+      },
+      {
+        year: "Dec 2025",
+        title: "UX Bug: Mobile Responsiveness Nightmare",
+        description: "Challenge: Pomodoro timer looked perfect on desktop but broke on mobile — overlapping text, unclickable buttons. Realized I was designing desktop-first instead of mobile-first. Solution: Rewrote CSS with mobile-first approach, tested on 5+ device sizes. Lesson: Mobile users are 70% of traffic — test on actual devices, not just DevTools.",
+        image: "/images/decorations/struggles/Screenshot 2025-12-04 212510.png"
+      },
+      {
+        year: "2026",
+        title: "Deployment to Production Reality Check",
+        description: "Challenge: App worked perfectly locally but crashed in production. Environment variables weren't set, database connections failed, Assets had wrong paths. Solution: Implemented proper environment management, added pre-deployment checklist, created automated tests. Lesson: Local ≠ Production. Always test in production-like environment before shipping.",
+        image: "/images/decorations/struggles/Screenshot 2026-03-03 163748.png"
       }
     ]
   },
