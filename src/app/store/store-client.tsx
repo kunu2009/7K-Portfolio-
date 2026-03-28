@@ -22,6 +22,7 @@ import {
   BookOpen,
   Smartphone,
   Layers,
+  Code,
   Briefcase,
   FileText,
   Layout,
@@ -555,6 +556,38 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
           </div>
         </section>
 
+        {/* GitHub App Universe - RIGHT AFTER BANNER */}
+        <section className="mb-10 rounded-2xl border border-zinc-200/70 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 p-4 sm:p-5 backdrop-blur">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex-1">
+              <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+                <Github className="h-5 w-5 sm:h-6 sm:w-6 text-violet-500" />
+                My GitHub Universe
+              </h2>
+              <p className="text-xs sm:text-sm text-zinc-500 mt-0.5">Built from 30+ projects: education apps, productivity tools, games & AI systems</p>
+            </div>
+            <a
+              href="https://github.com/kunu2009"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 rounded-lg bg-zinc-900 px-3 py-2 text-xs sm:text-sm font-semibold text-white dark:bg-white dark:text-zinc-900 whitespace-nowrap"
+            >
+              GitHub <ArrowUpRight className="h-3 w-3 sm:h-4 sm:w-4" />
+            </a>
+          </div>
+
+          <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+            {githubPortfolioData.stats.map((stat) => (
+              <div key={stat.label} className="flex-shrink-0 min-w-[120px] sm:min-w-[140px] rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-3 sm:p-4">
+                <div className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
+                <div className="text-[10px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-xs text-zinc-500 mt-3">Featuring ${githubPortfolioData.featuredRepos.length} coolest projects</div>
+        </section>
+
         {/* Trust Signals */}
         <section className="grid gap-4 sm:grid-cols-3 mb-10">
           {trustSignals.map((item) => (
@@ -592,61 +625,6 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
                 </div>
               </Link>
             ))}
-          </div>
-        </section>
-
-        {/* GitHub App Universe */}
-        <section className="mb-10 rounded-3xl border border-zinc-200/70 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/70 p-6 sm:p-7 backdrop-blur">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                <Github className="h-6 w-6 text-violet-500" />
-                GitHub App Universe
-              </h2>
-              <p className="text-sm text-zinc-500 mt-1 max-w-2xl">
-                Built from your full GitHub portfolio data: education apps, productivity systems, games, AI tools, and platform experiments powering the 7K ecosystem.
-              </p>
-            </div>
-            <a
-              href="https://github.com/kunu2009"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-zinc-900"
-            >
-              Explore GitHub
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-            {githubPortfolioData.stats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
-                <div className="text-xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
-                <div className="text-xs font-medium text-zinc-600 dark:text-zinc-300 mt-0.5">{stat.label}</div>
-                <div className="text-[11px] text-zinc-500 mt-1">{stat.helper}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-            {githubPortfolioData.segments.map((segment) => (
-              <div key={segment.id} className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 hover:border-violet-300 dark:hover:border-violet-700 transition-colors">
-                <div className={`inline-flex items-center rounded-full bg-gradient-to-r ${segment.gradient} px-2.5 py-1 text-xs font-semibold text-white mb-3`}>
-                  {segment.emoji} {segment.title}
-                </div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-white">{segment.count}</div>
-                <p className="text-xs text-zinc-500 mt-1 leading-relaxed">{segment.summary}</p>
-              </div>
-            ))}
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Featured repositories</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {githubPortfolioData.featuredRepos.map((repo) => (
-                <GithubRepoCard key={repo.name} repo={repo} />
-              ))}
-            </div>
           </div>
         </section>
 
@@ -776,13 +754,14 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400">30+ powerful tools for productivity, learning, fitness, and more</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {appsData.map((app) => (
+          {/* Row 1 */}
+          <div className="mb-6 flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            {appsData.slice(0, Math.ceil(appsData.length / 2)).map((app) => (
               <motion.button
                 key={app.id}
                 onClick={() => setSelectedProduct({ ...app, category: 'apps', link: app.url, image: app.screenshots?.[0] || '', rating: app.rating, reviews: app.reviews, tags: app.features.slice(0, 3), price: 0, hot: false, new: false } as any)}
                 whileHover={{ y: -4 }}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 text-left"
+                className="flex-shrink-0 w-48 group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 text-left"
               >
                 {/* App Screenshot/Image */}
                 {app.screenshots && app.screenshots[0] && (
@@ -811,6 +790,44 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
               </motion.button>
             ))}
           </div>
+          {/* Row 2 */}
+          {appsData.length > Math.ceil(appsData.length / 2) && (
+            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+              {appsData.slice(Math.ceil(appsData.length / 2)).map((app) => (
+                <motion.button
+                  key={app.id}
+                  onClick={() => setSelectedProduct({ ...app, category: 'apps', link: app.url, image: app.screenshots?.[0] || '', rating: app.rating, reviews: app.reviews, tags: app.features.slice(0, 3), price: 0, hot: false, new: false } as any)}
+                  whileHover={{ y: -4 }}
+                  className="flex-shrink-0 w-48 group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 text-left"
+                >
+                  {/* App Screenshot/Image */}
+                  {app.screenshots && app.screenshots[0] && (
+                    <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
+                      <img
+                        src={app.screenshots[0]}
+                        alt={app.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <div className="flex items-start gap-2 mb-2">
+                      <h3 className="text-sm font-bold text-zinc-900 dark:text-white flex-1">{app.name}</h3>
+                      <span className="px-2 py-1 text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full whitespace-nowrap">FREE</span>
+                    </div>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mb-3">{app.description}</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs font-semibold text-zinc-900 dark:text-white">{app.rating}</span>
+                      <span className="text-[10px] text-zinc-500">({app.reviews})</span>
+                    </div>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Templates Section */}
@@ -822,21 +839,20 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400">Professional designs ready to launch. Save 40-60% building from scratch.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
             {templateProducts.map((product) => (
               <motion.button
                 key={product.id}
                 onClick={() => setSelectedProduct(product)}
                 whileHover={{ y: -4 }}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-violet-200 dark:hover:border-violet-800 overflow-hidden hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300 text-left"
+                className="flex-shrink-0 w-56 group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-violet-200 dark:hover:border-violet-800 overflow-hidden hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300 text-left"
               >
                 {/* Template Image */}
                 <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
-                  <Image
+                  <img
                     src={product.image}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {product.hot && (
                     <div className="absolute top-3 left-3 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold rounded-full">POPULAR</div>
@@ -868,27 +884,26 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
         {/* Books Section */}
         <section className="mb-12">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text- white mb-2 flex items-center gap-2">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
               <BookOpen className="w-8 h-8 text-amber-500" />
               Books & Digital Guides
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400">Knowledge assets. Instant download. Learn at your own pace.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
             {bookProducts.map((product) => (
               <motion.button
                 key={product.id}
                 onClick={() => setSelectedProduct(product)}
                 whileHover={{ y: -4 }}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-amber-200 dark:hover:border-amber-800 overflow-hidden hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 text-left"
+                className="flex-shrink-0 w-48 group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-amber-200 dark:hover:border-amber-800 overflow-hidden hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 text-left"
               >
                 {/* Book Cover */}
                 <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
-                  <Image
+                  <img
                     src={product.image}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {product.new && (
                     <div className="absolute top-3 left-3 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded-full">NEW</div>
@@ -921,21 +936,20 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400">From ₹2,000 quick services to ₹55,000 complete packages. Book calls via WhatsApp.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
             {serviceProducts.slice(0, 9).map((product) => (
               <motion.button
                 key={product.id}
                 onClick={() => setSelectedProduct(product)}
                 whileHover={{ y: -4 }}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-pink-200 dark:hover:border-pink-800 overflow-hidden hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-300 text-left"
+                className="flex-shrink-0 w-56 group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-pink-200 dark:hover:border-pink-800 overflow-hidden hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-300 text-left"
               >
                 {/* Service Image */}
                 <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
-                  <Image
+                  <img
                     src={product.image}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {product.hot && (
                     <div className="absolute top-3 left-3 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold rounded-full">POPULAR</div>
@@ -989,7 +1003,84 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
           </a>
         </section>
 
-        {/* Stats */}
+        {/* GitHub App Universe */}
+        <section className="mb-12">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+              <Github className="w-8 h-8 text-slate-700 dark:text-slate-300" />
+              GitHub App Universe
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">30+ open-source apps, tools, and integrations. Free. Audited. Production-ready.</p>
+          </div>
+
+          {/* GitHub Header Stats */}
+          <div className="mb-10 grid grid-cols-3 gap-3 sm:gap-4">
+            {[
+              { label: 'Public Repos', value: githubRepoStat, icon: Code },
+              { label: 'Total Stars', value: githubStarStat, icon: Star },
+              { label: 'Active Segment', value: githubSegmentStat, icon: Layers },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-white dark:bg-zinc-900 rounded-xl p-4 text-center border border-zinc-100 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+              >
+                <stat.icon className="w-6 h-6 text-slate-600 dark:text-slate-400 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
+                <div className="text-xs text-zinc-500">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Featured Repos */}
+          <div className="mb-8">
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-amber-500" />
+              Featured Repositories
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {githubPortfolioData.slice(0, 6).map((repo) => (
+                <a
+                  key={repo.id}
+                  href={repo.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-5 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-lg hover:shadow-slate-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h4 className="font-bold text-zinc-900 dark:text-white group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">{repo.name}</h4>
+                      <p className="text-xs text-zinc-500 mt-1">{repo.language}</p>
+                    </div>
+                    <Github className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+                  </div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-3 line-clamp-2">{repo.description}</p>
+                  <div className="flex items-center gap-4 text-xs text-zinc-500">
+                    <span className="flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      {repo.stars}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Code className="w-3.5 h-3.5" />
+                      {repo.forks}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* View All GitHub Button */}
+          <div className="text-center">
+            <a
+              href="https://github.com/kunu2009"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-semibold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
+            >
+              View All on GitHub <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </section>
         <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
           {[
             { value: githubRepoStat, label: 'GitHub Repos', icon: Github },
