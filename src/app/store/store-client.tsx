@@ -523,43 +523,33 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
           <img src="/images/decorations/ironman-cat.png" alt="" width={90} height={90} />
         </div>
         
-        {/* Hero */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500 p-8 sm:p-12 mb-10">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-          </div>
-          
-          <div className="relative flex flex-col lg:flex-row items-center gap-8">
-            <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white/90 text-sm font-medium mb-4">
-                <Sparkles className="w-4 h-4" />
-                7K Shop • Digital Products + Services
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                Buy products.<br />Book services.<br />Grow faster.
-              </h1>
-              <p className="text-white/85 text-lg mb-4 max-w-xl mx-auto lg:mx-0">
-                One storefront for everything we sell: templates, books, apps, and premium done-for-you services.
-              </p>
-              <div className="mb-6 flex flex-wrap gap-2 justify-center lg:justify-start text-xs sm:text-sm">
-                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Services from ₹2,000</span>
-                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Templates from ₹8,000</span>
-                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Books from ₹299</span>
-                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Apps (Free)</span>
-              </div>
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                <Link href="/services" className="px-5 py-2.5 bg-white text-violet-700 font-semibold rounded-xl hover:bg-white/90 transition-colors">
-                  Book a Service
-                </Link>
-                <Link href="/templates" className="px-5 py-2.5 bg-white/10 backdrop-blur text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors">
-                  Browse Templates
-                </Link>
-              </div>
-            </div>
-            <div className="w-64 lg:w-80 flex-shrink-0">
-              <HeroIllustration />
-            </div>
+        {/* Banner Hero */}
+        <section className="relative w-full aspect-[21/9] lg:aspect-[2.5/1] overflow-hidden rounded-3xl mb-10 shadow-lg isolate">
+          <Image 
+            src="/7kshopbannerfinalish.png" 
+            alt="7K Digital Shop" 
+            fill 
+            className="object-cover object-center" 
+            priority
+          />
+          {/* Interactive Overlay Links */}
+          <div className="absolute inset-0 z-10 grid grid-cols-2">
+            {/* Left side maps to Explore Apps */}
+            <Link 
+              href="/apps" 
+              className="w-full h-full flex items-center justify-center group"
+              aria-label="Explore Apps"
+            >
+              <span className="sr-only">Explore Apps</span>
+            </Link>
+            {/* Right side maps to Browse Templates */}
+            <Link 
+              href="/templates" 
+              className="w-full h-full flex items-center justify-center group"
+              aria-label="Browse Templates"
+            >
+              <span className="sr-only">Browse Templates</span>
+            </Link>
           </div>
         </section>
 
