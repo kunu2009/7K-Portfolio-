@@ -4,10 +4,16 @@ import { useState, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import {
+  defaultGithubPortfolioData,
+  type GithubPortfolioData,
+  type GithubRepo,
+} from '@/lib/github-portfolio-data';
 import { 
   Search, 
   ChevronLeft,
   ChevronRight,
+  Github,
   Star,
   ArrowRight,
   ArrowUpRight,
@@ -206,8 +212,9 @@ const trustSignals = [
 // Product Card - Clean and minimal
 function ProductCard({ product }: { product: typeof allProducts[0] }) {
   const isFree = product.price === 0;
-  const hasDiscount = 'oldPrice' in product && product.oldPrice;
-  const discount = hasDiscount ? Math.round((1 - product.price / (product as any).oldPrice) * 100) : 0;
+  const oldPrice = 'oldPrice' in product && typeof product.oldPrice === 'number' ? product.oldPrice : null;
+  const hasDiscount = oldPrice !== null;
+  const discount = hasDiscount ? Math.round((1 - product.price / oldPrice) * 100) : 0;
 
   return (
     <Link href={product.link} className="group block">
@@ -287,7 +294,7 @@ function ProductCard({ product }: { product: typeof allProducts[0] }) {
                 {isFree ? 'Free' : `₹${product.price.toLocaleString()}`}
               </span>
               {hasDiscount && (
-                <span className="text-xs text-zinc-400 line-through ml-1">₹{(product as any).oldPrice.toLocaleString()}</span>
+                <span className="text-xs text-zinc-400 line-through ml-1">₹{oldPrice.toLocaleString()}</span>
               )}
             </div>
           </div>
@@ -368,13 +375,71 @@ function CategoryPill({ cat, isActive, onClick }: {
   );
 }
 
+function GithubRepoCard({ repo }: { repo: GithubRepo }) {
+  const languageClassMap: Record<GithubRepo['language'], string> = {
+    TypeScript: 'bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300',
+    JavaScript: 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300',
+    HTML: 'bg-orange-50 text-orange-700 dark:bg-orange-950/40 dark:text-orange-300',
+    Dart: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300',
+    Kotlin: 'bg-violet-50 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300',
+    Python: 'bg-green-50 text-green-700 dark:bg-green-950/40 dark:text-green-300',
+  };
+
+  return (
+    <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 h-full">
+      <div className="mb-2 flex items-center gap-2">
+        {repo.badge && (
+          <span className="inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+            {repo.badge}
+          </span>
+        )}
+        <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${languageClassMap[repo.language]}`}>
+          {repo.language}
+        </span>
+      </div>
+
+      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">{repo.name}</h3>
+      <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4 leading-relaxed">{repo.description}</p>
+
+      <div className="flex flex-wrap gap-2">
+        <a
+          href={repo.repoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 px-2.5 py-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:border-violet-300 dark:hover:border-violet-700"
+        >
+          <Github className="h-3.5 w-3.5" />
+          Repo
+        </a>
+        {repo.liveUrl && (
+          <a
+            href={repo.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-violet-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-violet-700"
+          >
+            Live
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ============================================
 // MAIN
 // ============================================
 
-export default function StoreClient() {
+type StoreClientProps = {
+  githubPortfolio?: GithubPortfolioData;
+};
+
+export default function StoreClient({ githubPortfolio }: StoreClientProps) {
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
+  const githubPortfolioData = githubPortfolio ?? defaultGithubPortfolioData;
+  const githubRepoStat = githubPortfolioData.stats.find((stat) => stat.label === 'Public Repos')?.value ?? defaultGithubPortfolioData.stats[0].value;
 
   const filtered = useMemo(() => {
     let result = allProducts;
@@ -538,6 +603,61 @@ export default function StoreClient() {
           </div>
         </section>
 
+        {/* GitHub App Universe */}
+        <section className="mb-10 rounded-3xl border border-zinc-200/70 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/70 p-6 sm:p-7 backdrop-blur">
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+                <Github className="h-6 w-6 text-violet-500" />
+                GitHub App Universe
+              </h2>
+              <p className="text-sm text-zinc-500 mt-1 max-w-2xl">
+                Built from your full GitHub portfolio data: education apps, productivity systems, games, AI tools, and platform experiments powering the 7K ecosystem.
+              </p>
+            </div>
+            <a
+              href="https://github.com/kunu2009"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-zinc-900"
+            >
+              Explore GitHub
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+            {githubPortfolioData.stats.map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4">
+                <div className="text-xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
+                <div className="text-xs font-medium text-zinc-600 dark:text-zinc-300 mt-0.5">{stat.label}</div>
+                <div className="text-[11px] text-zinc-500 mt-1">{stat.helper}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+            {githubPortfolioData.segments.map((segment) => (
+              <div key={segment.id} className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 hover:border-violet-300 dark:hover:border-violet-700 transition-colors">
+                <div className={`inline-flex items-center rounded-full bg-gradient-to-r ${segment.gradient} px-2.5 py-1 text-xs font-semibold text-white mb-3`}>
+                  {segment.emoji} {segment.title}
+                </div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-white">{segment.count}</div>
+                <p className="text-xs text-zinc-500 mt-1 leading-relaxed">{segment.summary}</p>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Featured repositories</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {githubPortfolioData.featuredRepos.map((repo) => (
+                <GithubRepoCard key={repo.name} repo={repo} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Categories */}
         <section className="mb-10">
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
@@ -635,9 +755,10 @@ export default function StoreClient() {
         </section>
 
         {/* Stats */}
-        <section className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+        <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
           {[
-            { value: `${apps.length}+`, label: 'Apps', icon: Smartphone },
+            { value: githubRepoStat, label: 'GitHub Repos', icon: Github },
+            { value: `${apps.length}+`, label: 'Store Apps', icon: Smartphone },
             { value: `${templates.length}+`, label: 'Templates', icon: Layout },
             { value: `${services.length}+`, label: 'Services', icon: Briefcase },
             { value: '4.9', label: 'Avg Rating', icon: Star },

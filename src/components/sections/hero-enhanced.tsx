@@ -113,7 +113,7 @@ const HeroSection = () => {
           className={`transition-all duration-700 mb-4 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: '200ms' }}
         >
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:mb-4">
+          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight mb-3 sm:mb-4 max-w-5xl mx-auto">
             <span className="inline-block px-4 py-2 rounded-xl"
                   style={{
                     background: 'rgba(0, 0, 0, 0.4)',
@@ -126,7 +126,7 @@ const HeroSection = () => {
               </span>
             </span>
           </h1>
-          <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium">
+          <p className="font-headline text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium leading-snug max-w-4xl mx-auto">
             <span className="inline-block px-4 py-2 rounded-lg"
                   style={{
                     background: 'rgba(0, 0, 0, 0.4)',
@@ -168,7 +168,7 @@ const HeroSection = () => {
             <Link href="/services">I need a web app</Link>
           </Button>
           <Button asChild variant="secondary" size="sm" className="rounded-full text-xs sm:text-sm bg-background/80 backdrop-blur-md border border-white/10 hover:bg-background shadow-lg hover:shadow-primary/20 transition-all hover:scale-105">
-            <Link href="#projects">Show me your work</Link>
+            <Link href="/portfolio">Show me your work</Link>
           </Button>
           <Button asChild variant="secondary" size="sm" className="rounded-full text-xs sm:text-sm bg-background/80 backdrop-blur-md border border-white/10 hover:bg-background shadow-lg hover:shadow-primary/20 transition-all hover:scale-105">
             <a href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20my%20project%20idea" target="_blank" rel="noopener noreferrer">

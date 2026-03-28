@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import StoreClient from '../store/store-client';
+import { getGithubPortfolioData } from '@/lib/github-portfolio.server';
 
 // Rich SEO metadata for Google discovery
 export const metadata: Metadata = {
-  title: '7K Shop - Digital Products, Web Templates, Apps, eBooks & Services | Kunal Chheda',
+  title: '7K Shop - 80+ GitHub Apps, Digital Products, Templates & Services | Kunal Chheda',
   description:
-    'Explore 7K Shop for digital products and high-converting services: web development, SEO, UI/UX, Instagram design, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix setup. Made in India with UPI-friendly pricing.',
+    'Explore 7K Shop for 80+ GitHub app projects, digital products, and high-converting services: web development, SEO, UI/UX, Instagram design, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix setup. Made in India with UPI-friendly pricing.',
   keywords: [
     // Shop/Marketplace keywords
     '7K shop',
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
     'premium website templates',
     'digital marketplace India',
     'online store digital products',
+    'GitHub app portfolio',
+    '80+ public repositories',
+    'TypeScript app portfolio',
+    'open source app showcase',
 
     // Template keywords
     'Next.js templates buy',
@@ -67,9 +72,9 @@ export const metadata: Metadata = {
     '7K digital products',
   ],
   openGraph: {
-    title: '7K Shop - Digital Products, Templates, Apps & Services',
+    title: '7K Shop - 80+ GitHub Apps, Templates, Products & Services',
     description:
-      'Premium digital products plus growth-focused services: websites, SEO, social media creatives, and business setup support.',
+      'A portfolio commerce hub with 80+ GitHub apps, premium digital products, and growth-focused services.',
     url: 'https://7kc.me/shop',
     siteName: '7K Shop',
     type: 'website',
@@ -84,8 +89,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '7K Shop - Premium Digital Products',
-    description: 'Digital products + web, SEO, and growth services for creators, startups, and small businesses.',
+    title: '7K Shop - 80+ GitHub Apps & Digital Products',
+    description: 'Explore the 7K app universe plus web, SEO, and growth services for creators and businesses.',
     images: ['https://7kc.me/og/store-og.png'],
   },
   alternates: {
@@ -111,7 +116,7 @@ const jsonLd = {
   '@type': 'OnlineStore',
   name: '7K Shop',
   description:
-    'Premium digital products marketplace with web development, SEO, design, social media, and business setup services.',
+    'Portfolio-first digital marketplace with 80+ GitHub projects, premium products, and web/SEO/growth services.',
   url: 'https://7kc.me/shop',
   logo: 'https://7kc.me/logo.png',
   image: 'https://7kc.me/og/store-og.png',
@@ -140,6 +145,9 @@ const jsonLd = {
     },
   ],
   knowsAbout: [
+    'Open Source App Development',
+    'TypeScript Product Engineering',
+    'Portfolio Product Systems',
     'Web Development',
     'SEO Optimization',
     'UI/UX Design',
@@ -158,8 +166,26 @@ const jsonLd = {
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: '7K Digital Products',
+    name: '7K Digital Products & App Universe',
     itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'GitHub App Universe',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'SoftwareApplication',
+              name: '80+ Public App Projects',
+              applicationCategory: 'EducationalApplication',
+              operatingSystem: 'Web',
+              description: 'Education, productivity, games, AI, and utility apps from the 7K GitHub portfolio.',
+            },
+            price: '0',
+            priceCurrency: 'INR',
+          },
+        ],
+      },
       {
         '@type': 'OfferCatalog',
         name: 'Web Templates',
@@ -327,11 +353,13 @@ const jsonLd = {
   },
 };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const githubPortfolio = await getGithubPortfolioData();
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <StoreClient />
+      <StoreClient githubPortfolio={githubPortfolio} />
     </>
   );
 }

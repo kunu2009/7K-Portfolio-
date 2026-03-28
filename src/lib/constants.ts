@@ -608,63 +608,14 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const NAVIGATION = [
-  { name: "Home", href: "/#hero" },
-  { name: "About", href: "/#about" },
-  { name: "Apps", href: "/#app-store" },
-  { 
-    name: "Shop", 
-    href: "/shop",
-    dropdown: [
-      { name: "Browse Shop", href: "/shop" },
-      { name: "Templates", href: "/templates" },
-      { name: "eBooks", href: "/books" },
-      { name: "Free Apps", href: "/apps" },
-      { name: "Services", href: "/services" },
-    ]
-  },
-  { 
-    name: "Services", 
-    href: "/services",
-    dropdown: [
-      { name: "All Services", href: "/services" },
-      { name: "Quick Menu", href: "/menu" },
-      { name: "Cost Calculator", href: "/services/calculator" },
-      { name: "Packages", href: "/services/packages" },
-    ]
-  },
-  { 
-    name: "Templates", 
-    href: "/templates",
-    dropdown: [
-      { name: "Browse All Templates", href: "/templates" },
-      { name: "7K Travel Resort", href: "/templates/travel-resort/preview-1" },
-      { name: "7K Hoteler (Luxury)", href: "/templates/hotel-booking/preview-2" },
-      { name: "7K Etech Education", href: "/templates/education/preview-1" },
-      { name: "7K Mutmiz SaaS", href: "/templates/saas/preview-2" },
-      { name: "7K Creatix Agency", href: "/templates/agency/preview-1" },
-      { name: "7K Candles Shop", href: "/templates/ecommerce/preview-3" },
-      { name: "Creative Portfolios", href: "/templates/portfolio/preview-2" },
-    ]
-  },
-  { name: "Projects", href: "/#projects" },
-  { 
-    name: "Writing", 
-    href: "/blog",
-    dropdown: [
-      { name: "Blog & Articles", href: "/blog" },
-      { name: "My Books", href: "/books" },
-    ]
-  },
-  { 
-    name: "Beyond Code", 
-    href: "/journey",
-    dropdown: [
-      { name: "Dev Journey", href: "/journey" },
-      { name: "My Creations", href: "/creations" },
-      { name: "Testimonials", href: "/testimonials" },
-    ]
-  },
-  { name: "Contact", href: "/#contact" },
+  { name: "Home", href: "/" },
+  { name: "Apps", href: "/apps" },
+  { name: "Services", href: "/services" },
+  { name: "Templates", href: "/templates" },
+  { name: "Shop", href: "/shop" },
+  { name: "Blog", href: "/blog" },
+  { name: "Books", href: "/books" },
+  { name: "Contact", href: "/contact" },
 ] as const;
 
 export const TESTIMONIALS = [

@@ -137,13 +137,13 @@ export default function ArcadeStyle3() {
               </div>
               
               <div className="mt-6 flex gap-4">
-                <Link href="/#projects" className="flex-1">
+                <Link href="/portfolio" className="flex-1">
                   <Button className="w-full bg-white text-black hover:bg-gray-200 font-black text-xl py-6">
                     <Swords className="mr-2" />
                     ENTER BATTLE
                   </Button>
                 </Link>
-                <Link href="/#contact" className="flex-1">
+                <Link href="/contact" className="flex-1">
                   <Button variant="outline" className="w-full border-2 border-white text-white hover:bg-white/20 font-black text-xl py-6">
                     <Shield className="mr-2" />
                     RECRUIT ME

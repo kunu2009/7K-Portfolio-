@@ -280,7 +280,7 @@ export default function ServicesMenuCard() {
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full">
-                  <Link href="#contact">
+                  <Link href="/contact">
                     Get in Touch
                   </Link>
                 </Button>

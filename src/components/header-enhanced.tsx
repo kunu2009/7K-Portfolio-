@@ -2,18 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { Menu, Mail, Download, X, ChevronDown } from "lucide-react";
+import { Menu, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
-import { NAVIGATION, SITE_CONFIG } from "@/lib/constants";
+import { NAVIGATION } from "@/lib/constants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -55,34 +49,6 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1" role="navigation" aria-label="Main navigation">
           {NAVIGATION.map((item) => {
-            // Check if item has dropdown
-            if ('dropdown' in item && item.dropdown) {
-              return (
-                <DropdownMenu key={item.href}>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-sm font-medium transition-colors hover:text-primary gap-1"
-                    >
-                      {item.name}
-                      <ChevronDown className="h-3 w-3" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-48">
-                    {item.dropdown.map((dropdownItem) => (
-                      <DropdownMenuItem key={dropdownItem.href} asChild>
-                        <Link href={dropdownItem.href} className="w-full cursor-pointer">
-                          {dropdownItem.name}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              );
-            }
-            
-            // Regular navigation item
             return (
               <Button
                 key={item.href}
@@ -113,7 +79,7 @@ const Header = () => {
             </a>
           </Button>
           <Button size="sm" asChild className="rounded-full">
-            <Link href="/#contact" aria-label="Contact for hire">
+            <Link href="/contact" aria-label="Contact for hire">
               <Mail className="h-4 w-4 mr-2" />
               Hire Me
             </Link>
@@ -150,36 +116,6 @@ const Header = () => {
                 {/* Mobile Navigation */}
                 <nav className="flex flex-col gap-2 py-6" role="navigation" aria-label="Mobile navigation">
                   {NAVIGATION.map((item) => {
-                    // Check if item has dropdown
-                    if ('dropdown' in item && item.dropdown) {
-                      return (
-                        <div key={item.href} className="flex flex-col gap-1">
-                          {/* Parent item */}
-                          <Link
-                            href={item.href}
-                            onClick={closeMobileMenu}
-                            className="flex items-center gap-3 px-3 py-3 text-base font-semibold rounded-lg hover:bg-accent/50 transition-colors"
-                          >
-                            {item.name}
-                          </Link>
-                          {/* Dropdown items - indented */}
-                          <div className="flex flex-col gap-1 ml-4 pl-3 border-l-2 border-border/50">
-                            {item.dropdown.map((dropdownItem) => (
-                              <Link
-                                key={dropdownItem.href}
-                                href={dropdownItem.href}
-                                onClick={closeMobileMenu}
-                                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/30 rounded-lg transition-colors"
-                              >
-                                {dropdownItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      );
-                    }
-                    
-                    // Regular navigation item
                     return (
                       <Link
                         key={item.href}
@@ -211,7 +147,7 @@ const Header = () => {
                     asChild
                     className="w-full rounded-full"
                   >
-                    <Link href="/#contact" onClick={closeMobileMenu} aria-label="Get in touch">
+                    <Link href="/contact" onClick={closeMobileMenu} aria-label="Get in touch">
                       <Mail className="h-4 w-4 mr-2" />
                       Get In Touch
                     </Link>

@@ -221,7 +221,7 @@ export const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Projects",
-      "item": `${SITE_CONFIG.url}#projects`
+      "item": `${SITE_CONFIG.url}/portfolio`
     },
     {
       "@type": "ListItem",

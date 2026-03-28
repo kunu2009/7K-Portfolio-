@@ -236,12 +236,12 @@ export default function GalaksiExplorer() {
                       </h1>
                       <p className="text-lg text-white/80">{PERSONAL_INFO.tagline}</p>
                       <div className="flex gap-4 pt-4">
-                        <Link href="/#projects">
+                        <Link href="/portfolio">
                           <Button className="bg-white/20 hover:bg-white/30 rounded-full px-6">
                             View Projects
                           </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/contact">
                           <Button className="bg-white/20 hover:bg-white/30 rounded-full px-6">
                             Contact Me
                           </Button>

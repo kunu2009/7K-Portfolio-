@@ -1,11 +1,11 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import Link from 'next/link';
 import Header from "@/components/header-enhanced";
 import HeroSection from "@/components/sections/hero-enhanced";
 import Footer from "@/components/footer-enhanced";
-import { GeometricDivider, MarqueeBannerStrip } from "@/components/ui/floating-decorations";
+import { MarqueeBannerStrip } from "@/components/ui/floating-decorations";
 
 // Skeleton loaders for better UX
 const SkeletonLoader = ({ height = 400 }: { height?: number }) => (
@@ -16,31 +16,10 @@ const SkeletonLoader = ({ height = 400 }: { height?: number }) => (
 const AboutSection = dynamic(() => import('@/components/sections/about-enhanced'), {
   loading: () => <SkeletonLoader height={400} />
 });
-const PhilosophySection = dynamic(() => import('@/components/sections/philosophy'), {
-  loading: () => <SkeletonLoader height={300} />
-});
 const ServicesMenuCard = dynamic(() => import('@/components/sections/services-menu-card'), {
   loading: () => <SkeletonLoader height={600} />
 });
-const PortfolioShowcaseSection = dynamic(() => import('@/components/sections/portfolio-showcase'), {
-  loading: () => <SkeletonLoader height={400} />
-});
 const AppStoreSection = dynamic(() => import('@/components/sections/app-store'), {
-  loading: () => <SkeletonLoader height={400} />
-});
-const ProjectsSection = dynamic(() => import('@/components/sections/projects'), {
-  loading: () => <SkeletonLoader height={400} />
-});
-const WritingSection = dynamic(() => import('@/components/sections/writing'), {
-  loading: () => <SkeletonLoader height={300} />
-});
-const JourneySection = dynamic(() => import('@/components/sections/journey'), {
-  loading: () => <SkeletonLoader height={400} />
-});
-const SupportSection = dynamic(() => import('@/components/sections/support-section').then(mod => ({ default: mod.SupportSection })), {
-  loading: () => <SkeletonLoader height={300} />
-});
-const BlogSection = dynamic(() => import('@/components/blog-section'), {
   loading: () => <SkeletonLoader height={400} />
 });
 const TestimonialsSection = dynamic(() => import('@/components/sections/testimonials'), {
@@ -81,25 +60,59 @@ export default function HomePage() {
         <HeroSection />
         <AboutSection />
         
-        {/* Scrolling image strip - adds visual interest */}
+        {/* Visual strip */}
         <MarqueeBannerStrip images={vibeImages} speed={40} opacity={0.35} />
         
         <AppStoreSection />
         <ServicesMenuCard />
         <TestimonialsSection limit={3} />
-        <GeometricDivider />
-        <PortfolioShowcaseSection />
-        
-        {/* Hustle/Struggles marquee representing the journey */}
+
+        {/* Conversion-focused CTA + internal links */}
+        <section id="quick-links" className="container mx-auto px-4 py-12">
+          <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Want to go deeper?</h2>
+            <p className="text-muted-foreground mb-6">
+              Explore dedicated pages for apps, books, templates, services, and content.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+              {[
+                { name: 'View all apps', href: '/apps' },
+                { name: 'View services', href: '/services' },
+                { name: 'Browse templates', href: '/templates' },
+                { name: 'Open shop', href: '/shop' },
+                { name: 'Read books', href: '/books' },
+                { name: 'Read blog', href: '/blog' },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-xl border border-border px-4 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+              >
+                Book a call
+              </Link>
+              <Link
+                href="/services"
+                className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-accent transition-colors"
+              >
+                Get a custom quote
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Hustle/Struggles strip kept only once near footer */}
         <MarqueeBannerStrip images={hustleImages} speed={50} height="h-20 md:h-32" opacity={0.3} />
-        
-        <ProjectsSection />
-        <WritingSection />
-        <GeometricDivider />
-        <JourneySection />
-        <PhilosophySection />
-        <BlogSection variant="grid" limit={3} showCategories={false} />
-        <SupportSection />
       </main>
       <Footer />
     </div>

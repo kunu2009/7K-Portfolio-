@@ -91,12 +91,12 @@ export default function SliderStyle1() {
               transition={{ delay: 0.4 }}
               className="mt-12 flex gap-4"
             >
-              <Link href="/#projects">
+              <Link href="/portfolio">
                 <Button size="lg" className="bg-white text-black hover:bg-gray-200 font-bold px-8 py-6 text-lg">
                   Explore Projects
                 </Button>
               </Link>
-              <Link href="/#contact">
+              <Link href="/contact">
                 <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 font-bold px-8 py-6 text-lg">
                   Get in Touch
                 </Button>

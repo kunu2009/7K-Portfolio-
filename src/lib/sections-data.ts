@@ -159,7 +159,7 @@ export const portfolioSections: PortfolioSections = {
     subtitle: "I help people turn ideas into apps that solve real problems — fast, clean, and built to last.",
     description: "Need a productivity tool? A learning platform? An e-commerce solution? I've built 24+ apps that people actually use every day. From fitness trackers to law prep platforms, finance managers to language learning tools — I create digital solutions that make life easier. Let's build something meaningful together.",
     ctaText: "View My Work",
-    ctaLink: "#projects",
+    ctaLink: "/portfolio",
     secondaryCtaText: "Let's Chat About Your Idea",
     secondaryCtaLink: "https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20my%20project%20idea",
     backgroundImage: "/images/main-background.svg"

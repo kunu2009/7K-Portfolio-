@@ -1,60 +1,46 @@
-﻿<div align=""center"">
-  <img src=""public/7kbanner.png"" alt=""7K Ecosystem Banner"" width=""100%"" style=""border-radius: 12px; margin-bottom: 20px;""/>
-  
-  <h1>🚀 7K </h1>
-  <p><strong>Building the future, One Idea at a Time.</strong></p>
-  <p>Premium Digital Services, Web Development, and Design by <strong>Kunal Chheda</strong>.</p>
+﻿# 7K Solutions — Apps, Services, Templates, and Books
 
-  <a href=""https://github.com/kunu2009""><img src=""https://img.shields.io/badge/GitHub-black?style=flat-square&logo=github"" /></a>
-  <a href=""mailto:kunalchheda13@gmail.com""><img src=""https://img.shields.io/badge/Email-Let's_Talk-D14836?style=flat-square&logo=gmail&logoColor=white"" /></a>
-</div>
+![7K Ecosystem Banner](./public/7kbanner.png)
 
----
+[![GitHub](https://img.shields.io/badge/GitHub-kunu2009-black?style=flat-square&logo=github)](https://github.com/kunu2009)
+[![Website](https://img.shields.io/badge/Website-7kc.me-6d28d9?style=flat-square)](https://7kc.me)
+[![Email](https://img.shields.io/badge/Email-Let's_Talk-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:7kmindbeatss@gmail.com)
 
-## 🌟 Welcome to 7K
+Build fast. Ship clean. Grow revenue.
 
-At **7K**, we transform ideas into high-end, high-converting digital realities. Whether you are a startup needing a captivating landing page, an established business looking for a robust web application, or a creator wanting custom digital architecture, you've come to the right place.
+This repo powers the public 7K portfolio + store experience by **Kunal Chheda**.
 
-I am Kunal Chheda—a full-stack developer, designer, and author dedicated to crafting digital experiences that don't just look beautiful, but drive real business results.
+## What clients can get here
 
----
+- **Services:** websites, UI/UX, SEO, branding, WhatsApp setup, and launch bundles
+- **Templates:** production-ready web templates
+- **Books:** practical and philosophy-driven publications
+- **Apps:** free utility and learning apps from the 7K ecosystem
 
-## 💼 What We Offer
+## Quick proof
 
-We provide top-tier, tailored digital services designed to elevate your brand:
+- 80+ public repositories across education, productivity, AI, and platform tools
+- Multiple live products shipped on Vercel
+- Client-focused workflow with fast iteration and clear delivery
 
-### 🎨 Premium Landing Pages
-First impressions matter. We design and build ultra-fast, modern, and high-converting landing pages tailored specifically for startups and SMBs looking to capture leads and drive sales.
+## Explore key pages
 
-### 💻 Full-Stack Web Development
-From sleek frontend interfaces to robust backend systems. We build complete, scalable web applications equipped with user authentication, databases, and seamless user experiences.
+- [Home](https://7kc.me)
+- [Shop](https://7kc.me/shop)
+- [Services](https://7kc.me/services)
+- [Templates](https://7kc.me/templates)
+- [Books](https://7kc.me/books)
+- [Apps](https://7kc.me/apps)
+- [Blog](https://7kc.me/blog)
+- [Contact](https://7kc.me/contact)
 
-### 🛍️ Premium UI Templates
-Need something quick but professional? Explore our exclusive marketplace of meticulously crafted, award-worthy website templates ready to be deployed for your business.
+## Work with me
 
-### 🤖 Custom Solutions & AI Integration
-Stay ahead of the curve. We can integrate powerful AI capabilities, smart system architectures, and custom logic tailored to your exact business needs.
+- Email: [7kmindbeatss@gmail.com](mailto:7kmindbeatss@gmail.com)
+- WhatsApp: [Chat on WhatsApp](https://wa.me/918591247148)
 
----
-
-## 📚 Publications & Authorship
-
-Beyond services, 7K Solutions is a hub for thought leadership. Explore our published works:
-
-*   **Ethos and Thought:** A comprehensive 12-chapter dive into Dharma, Reason, Spirituality, and how fundamental human values shape technology and modern society.
-*   **Kup Games:** An exploration into the logic, design, and underlying philosophy of game structures.
+> Your vision, engineered to perfection.
 
 ---
 
-## 🤝 Let's Build Something Great
-
-Ready to elevate your digital presence? Let's discuss your project, your goals, and how 7K Solutions can help you get there.
-
-*   **Email for Inquiries:** [kunalchheda13@gmail.com](mailto:kunalchheda13@gmail.com)
-
-> *"Your vision, engineered to perfection."*
-
-<br/>
-<div align=""center"">
-  <strong>© 2026 7K Solutions. Built with ❤️ by Kunal Chheda.</strong>
-</div>
+© 2026 7K Solutions. Built with ❤️ by Kunal Chheda.

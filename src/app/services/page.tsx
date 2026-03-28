@@ -593,7 +593,7 @@ export default function ServicesPage() {
               variants={fadeInUp}
               className="flex flex-wrap justify-center gap-4"
             >
-              <Link href="/#contact">
+              <Link href="/contact">
                 <Button size="lg" className="rounded-full bg-gradient-to-r from-primary to-accent shadow-lg">
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Get Free Quote

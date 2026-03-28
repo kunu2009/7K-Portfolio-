@@ -87,7 +87,7 @@ export default function ArcadeStyle2() {
 
             {/* Action Buttons */}
             <div className="flex gap-4 justify-center">
-              <Link href="/#projects">
+              <Link href="/portfolio">
                 <Button className="bg-green-500 hover:bg-green-600 text-white font-black text-xl px-8 py-6 rounded-full border-4 border-white shadow-lg">
                   START GAME
                 </Button>

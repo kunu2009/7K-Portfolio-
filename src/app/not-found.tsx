@@ -116,7 +116,7 @@ export default function NotFound() {
             </Link>
             <span className="text-muted-foreground">•</span>
             <Link 
-              href="/#contact" 
+              href="/contact" 
               className="text-primary hover:text-accent transition-colors"
             >
               Contact
