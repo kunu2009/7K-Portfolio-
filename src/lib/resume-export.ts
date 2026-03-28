@@ -1,7 +1,5 @@
 // Resume export utilities for PDF and DOCX
 
-import html2pdf from 'html2pdf.js';
-import { Document, Packer, Paragraph, Table, TableCell, TableRow, WidthType, BorderStyle, VerticalAlign, TextRun } from 'docx';
 import type { ResumeData } from './resume-data';
 
 /**
@@ -12,6 +10,13 @@ export async function exportResumePDF(
   fileName: string,
   hasWatermark: boolean = true
 ): Promise<void> {
+  if (typeof window === 'undefined') {
+    console.warn('PDF export is only available in the browser');
+    return;
+  }
+
+  const html2pdf = (await import('html2pdf.js')).default;
+  
   const element = htmlContent.cloneNode(true) as HTMLElement;
   
   if (hasWatermark) {
@@ -34,11 +39,11 @@ export async function exportResumePDF(
   }
 
   const options = {
-    margin: [10, 10],
+    margin: 10,
     filename: `${fileName}.pdf`,
-    image: { type: 'jpeg', quality: 0.98 },
+    image: { type: 'jpeg' as const, quality: 0.98 },
     html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' },
+    jsPDF: { orientation: 'portrait' as const, unit: 'mm' as const, format: 'a4' as const },
   };
 
   html2pdf().set(options).from(element).save();
@@ -52,14 +57,25 @@ export async function exportResumeDOCX(
   fileName: string,
   hasWatermark: boolean = true
 ): Promise<void> {
-  const sections: Paragraph[] = [];
+  if (typeof window === 'undefined') {
+    console.warn('DOCX export is only available in the browser');
+    return;
+  }
+
+  const { Document, Packer, Paragraph, TextRun } = await import('docx');
+
+  const sections = [];
 
   // Header - Personal Info
   sections.push(
     new Paragraph({
-      text: resumeData.personal.fullName,
-      bold: true,
-      size: 32,
+      children: [
+        new TextRun({
+          text: resumeData.personal.fullName,
+          bold: true,
+          size: 32,
+        })
+      ],
       spacing: { after: 100 },
     })
   );
@@ -78,8 +94,12 @@ export async function exportResumeDOCX(
 
   sections.push(
     new Paragraph({
-      text: contactInfo,
-      size: 20,
+      children: [
+        new TextRun({
+          text: contactInfo,
+          size: 20,
+        })
+      ],
       spacing: { after: 200 },
     })
   );
@@ -88,14 +108,22 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('summary') && resumeData.summary) {
     sections.push(
       new Paragraph({
-        text: 'PROFESSIONAL SUMMARY',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'PROFESSIONAL SUMMARY',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       }),
       new Paragraph({
-        text: resumeData.summary,
-        size: 22,
+        children: [
+          new TextRun({
+            text: resumeData.summary,
+            size: 22,
+          })
+        ],
         spacing: { after: 200 },
       })
     );
@@ -105,9 +133,13 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('experience') && resumeData.experience.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'EXPERIENCE',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'EXPERIENCE',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       })
     );
@@ -115,25 +147,41 @@ export async function exportResumeDOCX(
     resumeData.experience.forEach((exp) => {
       sections.push(
         new Paragraph({
-          text: exp.jobTitle,
-          bold: true,
-          size: 22,
+          children: [
+            new TextRun({
+              text: exp.jobTitle,
+              bold: true,
+              size: 22,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `${exp.company} | ${exp.location}`,
-          italic: true,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `${exp.company} | ${exp.location}`,
+              italics: true,
+              size: 20,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `${exp.startDate} - ${exp.currentlyWorking ? 'Present' : exp.endDate}`,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `${exp.startDate} - ${exp.currentlyWorking ? 'Present' : exp.endDate}`,
+              size: 20,
+            })
+          ],
           spacing: { after: 100 },
         }),
         new Paragraph({
-          text: exp.description,
-          size: 22,
+          children: [
+            new TextRun({
+              text: exp.description,
+              size: 22,
+            })
+          ],
           spacing: { after: 200 },
         })
       );
@@ -144,9 +192,13 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('education') && resumeData.education.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'EDUCATION',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'EDUCATION',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       })
     );
@@ -154,20 +206,32 @@ export async function exportResumeDOCX(
     resumeData.education.forEach((edu) => {
       sections.push(
         new Paragraph({
-          text: edu.degree,
-          bold: true,
-          size: 22,
+          children: [
+            new TextRun({
+              text: edu.degree,
+              bold: true,
+              size: 22,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `${edu.institution} | ${edu.location}`,
-          italic: true,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `${edu.institution} | ${edu.location}`,
+              italics: true,
+              size: 20,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `Graduation: ${edu.graduationDate}${edu.cgpa ? ` | CGPA: ${edu.cgpa}` : ''}`,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `Graduation: ${edu.graduationDate}${edu.cgpa ? ` | CGPA: ${edu.cgpa}` : ''}`,
+              size: 20,
+            })
+          ],
           spacing: { after: 200 },
         })
       );
@@ -178,14 +242,22 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('skills') && resumeData.skills.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'SKILLS',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'SKILLS',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       }),
       new Paragraph({
-        text: resumeData.skills.join(' • '),
-        size: 22,
+        children: [
+          new TextRun({
+            text: resumeData.skills.join(' • '),
+            size: 22,
+          })
+        ],
         spacing: { after: 200 },
       })
     );
@@ -195,9 +267,13 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('projects') && resumeData.projects.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'PROJECTS',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'PROJECTS',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       })
     );
@@ -205,20 +281,32 @@ export async function exportResumeDOCX(
     resumeData.projects.forEach((project) => {
       sections.push(
         new Paragraph({
-          text: project.title,
-          bold: true,
-          size: 22,
+          children: [
+            new TextRun({
+              text: project.title,
+              bold: true,
+              size: 22,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: project.description,
-          size: 22,
+          children: [
+            new TextRun({
+              text: project.description,
+              size: 22,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `Technologies: ${project.technologies.join(', ')}`,
-          italic: true,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `Technologies: ${project.technologies.join(', ')}`,
+              italics: true,
+              size: 20,
+            })
+          ],
           spacing: { after: 200 },
         })
       );
@@ -229,9 +317,13 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('certifications') && resumeData.certifications.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'CERTIFICATIONS',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'CERTIFICATIONS',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       })
     );
@@ -239,14 +331,22 @@ export async function exportResumeDOCX(
     resumeData.certifications.forEach((cert) => {
       sections.push(
         new Paragraph({
-          text: cert.name,
-          bold: true,
-          size: 22,
+          children: [
+            new TextRun({
+              text: cert.name,
+              bold: true,
+              size: 22,
+            })
+          ],
           spacing: { after: 50 },
         }),
         new Paragraph({
-          text: `${cert.issuer} | ${cert.issueDate}${cert.expiryDate ? ` - ${cert.expiryDate}` : ''}`,
-          size: 20,
+          children: [
+            new TextRun({
+              text: `${cert.issuer} | ${cert.issueDate}${cert.expiryDate ? ` - ${cert.expiryDate}` : ''}`,
+              size: 20,
+            })
+          ],
           spacing: { after: 200 },
         })
       );
@@ -257,9 +357,13 @@ export async function exportResumeDOCX(
   if (resumeData.enabledSections.includes('languages') && resumeData.languages.length > 0) {
     sections.push(
       new Paragraph({
-        text: 'LANGUAGES',
-        bold: true,
-        size: 24,
+        children: [
+          new TextRun({
+            text: 'LANGUAGES',
+            bold: true,
+            size: 24,
+          })
+        ],
         spacing: { before: 100, after: 100 },
       })
     );
@@ -267,8 +371,12 @@ export async function exportResumeDOCX(
     resumeData.languages.forEach((lang) => {
       sections.push(
         new Paragraph({
-          text: `${lang.language} - ${lang.proficiency}`,
-          size: 22,
+          children: [
+            new TextRun({
+              text: `${lang.language} - ${lang.proficiency}`,
+              size: 22,
+            })
+          ],
           spacing: { after: 100 },
         })
       );
@@ -279,9 +387,13 @@ export async function exportResumeDOCX(
   if (hasWatermark) {
     sections.push(
       new Paragraph({
-        text: 'Made with 7K Resume Maker',
-        italic: true,
-        size: 16,
+        children: [
+          new TextRun({
+            text: 'Made with 7K Resume Maker',
+            italics: true,
+            size: 16,
+          })
+        ],
         spacing: { before: 300, after: 0 },
       })
     );
