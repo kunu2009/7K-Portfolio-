@@ -24,14 +24,15 @@ const HeroSection = () => {
     <section id="hero" className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden py-20 sm:py-0">
       {/* Background System - Responsive Approach */}
       <div className="absolute inset-0 z-0">
-        {/* Mobile Background: Static aesthetic wallpaper, perfectly scaled for phones */}
+        {/* Mobile Background: Same as desktop for consistency */}
         <div className="absolute inset-0 sm:hidden">
           <img
-            src="/images/decorations/some_creations/Monochrome Phone Wallpaper 9_16.png"
-            alt="Mobile Aesthetic Background"
+            src="/bg.png"
+            alt="Hero Background Mobile"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ 
-              filter: 'brightness(0.5) contrast(1.1)' // Darkened so text pops
+              imageRendering: 'crisp-edges',
+              filter: 'contrast(1.05) saturate(1.0) brightness(0.9)'
             }}
           />
         </div>

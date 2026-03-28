@@ -605,12 +605,12 @@ Say "change style neon" or "style 1" to switch!`;
             />
           </div>
 
-          {/* Photo 3 - The Banana Fella */}
+          {/* Photo 3 - Kunal Professional */}
           <div className="relative group mt-6 sm:mt-8">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
             <img 
-              src="/images/banana-fella.jpg" 
-              alt="Kunal Casual" 
+              src="/images/kunal-2.jpg" 
+              alt="Kunal Professional" 
               className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover object-center rounded-xl shadow-xl transform rotate-3 group-hover:scale-105 group-hover:rotate-0 transition duration-300 border-2 border-white/10"
             />
           </div>
