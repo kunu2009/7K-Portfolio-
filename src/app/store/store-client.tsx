@@ -9,6 +9,7 @@ import {
   type GithubPortfolioData,
   type GithubRepo,
 } from '@/lib/github-portfolio-data';
+import { appsData, type App } from '@/lib/apps-data';
 import { 
   Search, 
   ChevronLeft,
@@ -438,6 +439,7 @@ type StoreClientProps = {
 export default function StoreClient({ githubPortfolio }: StoreClientProps) {
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState<typeof allProducts[0] | null>(null);
   const githubPortfolioData = githubPortfolio ?? defaultGithubPortfolioData;
   const githubRepoStat = githubPortfolioData.stats.find((stat) => stat.label === 'Public Repos')?.value ?? defaultGithubPortfolioData.stats[0].value;
 
@@ -648,100 +650,343 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="mb-10">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
-            {categories.map((cat) => (
-              <CategoryPill
-                key={cat.id}
-                cat={cat}
-                isActive={category === cat.id}
-                onClick={() => setCategory(cat.id)}
-              />
+        {/* Product Detail Modal */}
+        {selectedProduct && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="bg-white dark:bg-zinc-900 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="sticky top-4 right-4 float-right z-10 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="p-6 sm:p-8">
+                {/* Product Image */}
+                {selectedProduct.image && (
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900">
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* Badges & Rating */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedProduct.new && (
+                    <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full">NEW</span>
+                  )}
+                  {selectedProduct.hot && !selectedProduct.new && (
+                    <span className="px-3 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-xs font-bold rounded-full">POPULAR</span>
+                  )}
+                  {selectedProduct.price === 0 && (
+                    <span className="px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full">FREE</span>
+                  )}
+                  <div className="flex items-center gap-1 ml-auto">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-semibold">{selectedProduct.rating}</span>
+                    <span className="text-xs text-zinc-500">({selectedProduct.reviews} reviews)</span>
+                  </div>
+                </div>
+
+                {/* Product Name & Price */}
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2">{selectedProduct.name}</h2>
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg mb-6">{selectedProduct.desc}</p>
+
+                {/* Pricing */}
+                <div className="mb-6 p-4 bg-zinc-50 dark:bg-zinc-800 rounded-2xl">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-bold text-zinc-900 dark:text-white">
+                      {selectedProduct.price === 0 ? 'FREE' : `₹${selectedProduct.price.toLocaleString()}`}
+                    </span>
+                    {'oldPrice' in selectedProduct && selectedProduct.oldPrice && (
+                      <span className="text-lg text-zinc-500 line-through">₹{selectedProduct.oldPrice}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Key Benefits/Features */}
+                {selectedProduct.tags && selectedProduct.tags.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3 uppercase tracking-wide">Key Features</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {(selectedProduct.tags as string[])?.map((tag: string) => (
+                        <span key={tag} className="px-3 py-1.5 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 text-xs font-medium rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Trust Signals */}
+                <div className="mb-6 grid grid-cols-2 gap-3">
+                  <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
+                    <div className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">✓ Instant Access</div>
+                  </div>
+                  <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                    <div className="text-sm font-semibold text-blue-700 dark:text-blue-300">🔒 Secure</div>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex flex-col gap-3">
+                  {selectedProduct.price === 0 ? (
+                    <Link
+                      href={selectedProduct.link}
+                      className="w-full py-3 bg-violet-600 text-white font-semibold rounded-xl hover:bg-violet-700 transition-colors text-center"
+                    >
+                      Access Now
+                    </Link>
+                  ) : (
+                    <>
+                      <button className="w-full py-3 bg-violet-600 text-white font-semibold rounded-xl hover:bg-violet-700 transition-colors">
+                        Add to Cart
+                      </button>
+                      <a
+                        href="https://wa.me/918591247148?text=Hi!%20I'm%20interested%20in%20your%20products"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-semibold rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-center"
+                      >
+                        Ask Questions
+                      </a>
+                    </>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {/* Apps Catalog */}
+        <section className="mb-12">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+              <Smartphone className="w-8 h-8 text-blue-500" />
+              Free Apps from 7K Ecosystem
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">30+ powerful tools for productivity, learning, fitness, and more</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {appsData.map((app) => (
+              <motion.button
+                key={app.id}
+                onClick={() => setSelectedProduct({ ...app, category: 'apps', link: app.url, image: app.screenshots?.[0] || '', rating: app.rating, reviews: app.reviews, tags: app.features.slice(0, 3), price: 0, hot: false, new: false } as any)}
+                whileHover={{ y: -4 }}
+                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-blue-200 dark:hover:border-blue-800 overflow-hidden hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 text-left"
+              >
+                {/* App Screenshot/Image */}
+                {app.screenshots && app.screenshots[0] && (
+                  <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
+                    <img
+                      src={app.screenshots[0]}
+                      alt={app.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+
+                {/* Content */}
+                <div className="p-4">
+                  <div className="flex items-start gap-2 mb-2">
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white flex-1">{app.name}</h3>
+                    <span className="px-2 py-1 text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full whitespace-nowrap">FREE</span>
+                  </div>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mb-3">{app.description}</p>
+                  <div className="flex items-center gap-1">
+                    <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                    <span className="text-xs font-semibold text-zinc-900 dark:text-white">{app.rating}</span>
+                    <span className="text-[10px] text-zinc-500">({app.reviews})</span>
+                  </div>
+                </div>
+              </motion.button>
             ))}
           </div>
         </section>
 
-        {/* Dynamic Content */}
-        {(category !== 'all' || search) ? (
-          // Filtered Grid
-          <section className="mb-10">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
-                {search ? `Results for "${search}"` : categories.find(c => c.id === category)?.name}
-              </h2>
-              <span className="text-sm text-zinc-500">{filtered.length} items</span>
-            </div>
-            {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {filtered.map((p) => (
-                  <ProductCard key={p.id} product={p} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <EmptyStateIllustration />
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mt-4 mb-2">No results found</h3>
-                <p className="text-zinc-500 mb-4">Try a different search or category</p>
-                <button
-                  onClick={() => { setCategory('all'); setSearch(''); }}
-                  className="px-5 py-2 bg-violet-600 text-white rounded-xl font-medium hover:bg-violet-700 transition-colors"
-                >
-                  Clear filters
-                </button>
-              </div>
-            )}
-          </section>
-        ) : (
-          // Default Sections
-          <>
-            <ProductSection title="Book Services (Most Requested)" emoji="💼" products={serviceProducts} viewAllLink="/services" />
-            <ProductSection title="Premium Templates" emoji="🎨" products={templateProducts} viewAllLink="/templates" />
-            <ProductSection title="Books & Guides" emoji="📚" products={bookProducts} viewAllLink="/books" />
-            <ProductSection title="Free Apps to Start Today" emoji="📱" products={appProducts} viewAllLink="/apps" />
-            <ProductSection title="Popular" emoji="🔥" products={hotProducts} viewAllLink="/shop?filter=popular" />
-            <ProductSection title="New Arrivals" emoji="✨" products={newProducts} viewAllLink="/shop?filter=new" />
-            <ProductSection title="Free Resources" emoji="🎁" products={freeProducts} viewAllLink="/apps" />
-          </>
-        )}
+        {/* Templates Section */}
+        <section className="mb-12">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+              <Layout className="w-8 h-8 text-violet-500" />
+              Premium Website Templates
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">Professional designs ready to launch. Save 40-60% building from scratch.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {templateProducts.map((product) => (
+              <motion.button
+                key={product.id}
+                onClick={() => setSelectedProduct(product)}
+                whileHover={{ y: -4 }}
+                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-violet-200 dark:hover:border-violet-800 overflow-hidden hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300 text-left"
+              >
+                {/* Template Image */}
+                <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {product.hot && (
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold rounded-full">POPULAR</div>
+                  )}
+                </div>
 
-        {/* Quick Links */}
-        <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          {[
-            { title: 'Free Apps', desc: '20+ tools', href: '/apps', gradient: 'from-blue-500 to-cyan-500', emoji: '📱' },
-            { title: 'Templates', desc: 'Premium designs', href: '/templates', gradient: 'from-violet-500 to-purple-500', emoji: '🎨' },
-            { title: 'Books', desc: 'Learn & grow', href: '/books', gradient: 'from-orange-500 to-amber-500', emoji: '📚' },
-            { title: 'Services', desc: 'Get built', href: '/services', gradient: 'from-pink-500 to-rose-500', emoji: '💼' },
-          ].map((item) => (
-            <Link key={item.title} href={item.href} className="group">
-              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${item.gradient} p-6 h-full`}>
-                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                <span className="text-3xl mb-2 block">{item.emoji}</span>
-                <h3 className="font-bold text-white text-lg">{item.title}</h3>
-                <p className="text-white/70 text-sm">{item.desc}</p>
-                <ArrowRight className="absolute bottom-4 right-4 w-5 h-5 text-white/50 group-hover:text-white/80 group-hover:translate-x-1 transition-all" />
-              </div>
-            </Link>
-          ))}
+                {/* Content */}
+                <div className="p-4">
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1">{product.name}</h3>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mb-3">{product.desc}</p>
+                  <div className="flex items-center gap-2 justify-between">
+                    <div className="flex items-center gap-1">
+                      <span className="text-sm font-bold text-zinc-900 dark:text-white">₹{product.price.toLocaleString()}</span>
+                      {'oldPrice' in product && product.oldPrice && (
+                        <span className="text-xs text-zinc-500 line-through">₹{product.oldPrice}</span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-0.5">
+                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs font-semibold">{product.rating}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </section>
 
-        {/* CTA Banner */}
-        <section className="rounded-2xl bg-zinc-900 dark:bg-zinc-800 p-8 sm:p-10 text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Need something custom?</h2>
-          <p className="text-zinc-400 mb-6 max-w-md mx-auto">Get personalized websites, apps, and designs built just for you</p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/services" className="px-6 py-3 bg-white text-zinc-900 font-semibold rounded-xl hover:bg-zinc-100 transition-colors">
-              View Services
-            </Link>
-            <a 
-              href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'm%20interested%20in%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-zinc-800 dark:bg-zinc-700 text-white font-semibold rounded-xl hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors"
-            >
-              WhatsApp →
-            </a>
+        {/* Books Section */}
+        <section className="mb-12">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text- white mb-2 flex items-center gap-2">
+              <BookOpen className="w-8 h-8 text-amber-500" />
+              Books & Digital Guides
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">Knowledge assets. Instant download. Learn at your own pace.</p>
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {bookProducts.map((product) => (
+              <motion.button
+                key={product.id}
+                onClick={() => setSelectedProduct(product)}
+                whileHover={{ y: -4 }}
+                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-amber-200 dark:hover:border-amber-800 overflow-hidden hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 text-left"
+              >
+                {/* Book Cover */}
+                <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {product.new && (
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded-full">NEW</div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-4">
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1">{product.name}</h3>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mb-3">{product.desc}</p>
+                  <div className="flex items-center gap-2 justify-between">
+                    <span className="text-sm font-bold text-zinc-900 dark:text-white">₹{product.price}</span>
+                    <div className="flex items-center gap-0.5">
+                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs font-semibold">{product.rating}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="mb-12">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+              <Briefcase className="w-8 h-8 text-pink-500" />
+              Professional Services
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">From ₹2,000 quick services to ₹55,000 complete packages. Book calls via WhatsApp.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {serviceProducts.slice(0, 9).map((product) => (
+              <motion.button
+                key={product.id}
+                onClick={() => setSelectedProduct(product)}
+                whileHover={{ y: -4 }}
+                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-pink-200 dark:hover:border-pink-800 overflow-hidden hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-300 text-left"
+              >
+                {/* Service Image */}
+                <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-zinc-800 dark:to-zinc-900 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {product.hot && (
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white text-[10px] font-bold rounded-full">POPULAR</div>
+                  )}
+                  {product.new && (
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded-full">NEW</div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-4">
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1">{product.name}</h3>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mb-3">{product.desc}</p>
+                  <div className="flex items-center gap-2 justify-between">
+                    <div>
+                      <span className="text-sm font-bold text-zinc-900 dark:text-white">₹{product.price.toLocaleString()}</span>
+                      {('priceNote' in product && product.priceNote) && (
+                        <span className="text-[10px] text-zinc-500 ml-1">{(product as any).priceNote}</span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-0.5">
+                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs font-semibold">{product.rating}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-pink-600 text-white font-semibold rounded-xl hover:bg-pink-700 transition-colors"
+            >
+              View All Services <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </section>
+
+        {/* CTA  */}
+        <section className="rounded-2xl bg-gradient-to-br from-violet-600 to-purple-600 p-8 sm:p-10 text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to grow?</h2>
+          <p className="text-white/80 mb-6 max-w-md mx-auto">Book a free 15-min call to discover which service is perfect for you</p>
+          <a
+            href="https://wa.me/918591247148?text=Hi%20Kunal!%20I'd%20like%20to%20discuss%20my%20project%20needs."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-violet-600 font-semibold rounded-xl hover:bg-white/90 transition-colors"
+          >
+            WhatsApp Now →
+          </a>
         </section>
 
         {/* Stats */}
