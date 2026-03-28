@@ -1,32 +1,182 @@
-import type { Metadata } from "next";
-import ShopClient from "./shop-client";
+import type { Metadata } from 'next';
+import StoreClient from '../store/store-client';
 
+// Rich SEO metadata for Google discovery
 export const metadata: Metadata = {
-  title: "Digital Product Shop - Prompt Packs, Templates & Starter Kits | 7K",
+  title: '7K Shop - Digital Products, Web Templates, Apps, eBooks & Services | Kunal Chheda',
   description:
-    "Buy modern digital products from 7K: prompt packs, student templates, Notion planners, and portfolio starter kits with instant delivery.",
+    'Shop premium digital products at 7K Shop: Web templates (₹7,000+), eBooks, mobile apps, productivity tools, and web development services. Made in India. Instant download. UPI payments accepted.',
   keywords: [
-    "digital products India",
-    "prompt packs",
-    "student templates",
-    "notion planner templates",
-    "nextjs portfolio starter kit",
-    "buy digital downloads",
-    "developer prompt pack",
-    "7K shop",
+    // Shop/Marketplace keywords
+    '7K shop',
+    '7k digital shop',
+    'digital products India',
+    'buy web templates',
+    'premium website templates',
+    'digital marketplace India',
+    'online store digital products',
+
+    // Template keywords
+    'Next.js templates buy',
+    'React templates India',
+    'website templates INR',
+    'premium templates download',
+    'ecommerce templates',
+    'portfolio templates',
+    'SaaS templates',
+
+    // eBook keywords
+    'ebooks online India',
+    'buy ebooks INR',
+    'design ebooks',
+    'programming ebooks',
+    'self-help ebooks India',
+
+    // App keywords
+    'productivity apps free',
+    'best apps India',
+    'web apps download',
+    'PWA apps',
+    'mobile apps free',
+
+    // Service keywords
+    'web development services India',
+    'hire web developer India',
+    'freelance developer Mumbai',
+    'website design services',
+    'app development India',
+
+    // Brand keywords
+    '7K Solutions',
+    'Kunal Chheda products',
+    '7K digital products',
   ],
   openGraph: {
-    title: "7K Digital Shop - Prompt Packs, Templates & Starter Kits",
+    title: '7K Shop - Digital Products, Templates, Apps & Services',
     description:
-      "Modern digital products built for students and developers. Instant downloads and practical outcomes.",
-    type: "website",
-    url: "https://7kc.me/shop",
+      'Shop premium digital products: Web templates, eBooks, apps, and professional services. Made in India with ❤️',
+    url: 'https://7kc.me/shop',
+    siteName: '7K Shop',
+    type: 'website',
+    images: [
+      {
+        url: 'https://7kc.me/og/store-og.png',
+        width: 1200,
+        height: 630,
+        alt: '7K Shop - Digital Products Marketplace',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '7K Shop - Premium Digital Products',
+    description: 'Web templates, eBooks, apps & services. Made in India.',
+    images: ['https://7kc.me/og/store-og.png'],
   },
   alternates: {
-    canonical: "https://7kc.me/shop",
+    canonical: 'https://7kc.me/shop',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  category: 'ecommerce',
+};
+
+// JSON-LD Structured Data for rich Google results
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Store',
+  name: '7K Shop',
+  description: 'Premium digital products marketplace - Web templates, eBooks, Apps & Services',
+  url: 'https://7kc.me/shop',
+  logo: 'https://7kc.me/logo.png',
+  image: 'https://7kc.me/og/store-og.png',
+  priceRange: '₹499 - ₹20,000',
+  currenciesAccepted: 'INR',
+  paymentAccepted: 'UPI, Credit Card, Debit Card, Net Banking',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Mumbai',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'IN',
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'Kunal Chheda',
+    url: 'https://7kc.me',
+  },
+  sameAs: [
+    'https://linkedin.com/in/kunalchheda',
+    'https://github.com/kunu2009',
+    'https://twitter.com/7ksolutions',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: '7K Digital Products',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Web Templates',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Product',
+              name: 'Premium Website Templates',
+              description: 'Next.js & React templates for modern websites',
+            },
+            price: '7000',
+            priceCurrency: 'INR',
+          },
+        ],
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'eBooks',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Book',
+              name: 'Design & Development eBooks',
+            },
+            price: '499',
+            priceCurrency: 'INR',
+          },
+        ],
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Web Development Services',
+            },
+            price: '3000',
+            priceCurrency: 'INR',
+          },
+        ],
+      },
+    ],
   },
 };
 
 export default function ShopPage() {
-  return <ShopClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <StoreClient />
+    </>
+  );
 }

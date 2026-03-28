@@ -160,8 +160,22 @@ export default function BooksPageClient() {
       </header>
 
       {/* Desktop View - Completely Redesigned */}
-      <section className="hidden lg:block relative py-16 px-4">
-        <div className="container max-w-7xl mx-auto">
+      <section className="hidden lg:block relative py-16 px-4 overflow-hidden">
+        {/* Floating decorations */}
+        <div className="absolute top-10 right-10 opacity-12 animate-pulse">
+          <img src="/images/decorations/sketch-portrait.png" alt="" width={120} height={120} />
+        </div>
+        <div className="absolute bottom-20 left-10 opacity-10 animate-bounce" style={{ animationDuration: '4s' }}>
+          <img src="/images/decorations/space-whale.jpeg" alt="" width={140} height={140} className="rounded-2xl" />
+        </div>
+        <div className="absolute top-1/3 left-5 opacity-8">
+          <img src="/images/decorations/anime-girl-sketch.jpg" alt="" width={100} height={100} className="rounded-full" />
+        </div>
+        <div className="absolute bottom-1/4 right-20 opacity-10">
+          <img src="/images/decorations/cat-sketch-3.jpg" alt="" width={90} height={90} className="rounded-full animate-pulse" />
+        </div>
+        
+        <div className="container max-w-7xl mx-auto relative z-10">
           {/* Hero Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl font-bold text-foreground mb-4">My Library</h1>

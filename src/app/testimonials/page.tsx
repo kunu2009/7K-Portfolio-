@@ -234,6 +234,17 @@ export default function TestimonialsPage() {
         />
       </div>
       
+      {/* Additional floating decorations */}
+      <div className="absolute top-1/4 left-10 opacity-12 animate-pulse hidden lg:block">
+        <img src="/images/decorations/cute-cat.jpg" alt="" width={90} height={90} className="rounded-full" />
+      </div>
+      <div className="absolute bottom-1/3 right-10 opacity-10 hidden xl:block animate-bounce" style={{ animationDuration: '5s' }}>
+        <img src="/images/decorations/anime-orange.jpg" alt="" width={100} height={100} className="rounded-2xl" />
+      </div>
+      <div className="absolute top-2/3 left-20 opacity-8 hidden xl:block">
+        <img src="/images/decorations/kuggy-pig-1.jpg" alt="" width={80} height={80} className="rounded-full" />
+      </div>
+      
       {/* Hero Section */}
       <section className="py-16 px-4 relative z-10">
         <div className="max-w-6xl mx-auto">

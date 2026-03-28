@@ -119,8 +119,29 @@ export default function AppsIndexClient() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative border-b border-border bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto px-4 py-24">
+      <section className="relative border-b border-border bg-gradient-to-b from-primary/5 to-background overflow-hidden">
+        {/* Floating decorations - Higher visibility */}
+        <div className="absolute top-10 right-10 z-[5] opacity-25 animate-pulse hidden lg:block">
+          <img src="/images/decorations/7k-deer-logo.png" alt="" width={130} height={130} className="drop-shadow-xl" />
+        </div>
+        <div className="absolute bottom-10 left-10 z-[5] opacity-22 animate-bounce hidden lg:block" style={{ animationDuration: '3s' }}>
+          <img src="/images/decorations/logic-anime.png" alt="" width={110} height={110} className="drop-shadow-lg" />
+        </div>
+        <div className="absolute top-1/3 left-5 z-[5] opacity-18 hidden xl:block">
+          <img src="/images/decorations/digital-cityscape.jpeg" alt="" width={160} height={160} className="rounded-full drop-shadow-lg" />
+        </div>
+        <div className="absolute bottom-1/4 right-20 z-[5] opacity-15 hidden xl:block">
+          <img src="/images/decorations/math-cat.jpeg" alt="" width={90} height={90} className="rounded-full animate-pulse drop-shadow-lg" />
+        </div>
+        {/* Mobile decorations */}
+        <div className="absolute top-16 right-4 z-[5] opacity-20 animate-pulse lg:hidden">
+          <img src="/images/decorations/7k-deer-logo.png" alt="" width={55} height={55} className="drop-shadow-md" />
+        </div>
+        <div className="absolute bottom-20 left-4 z-[5] opacity-18 animate-bounce lg:hidden" style={{ animationDuration: '4s' }}>
+          <img src="/images/decorations/cat-headphones.png" alt="" width={50} height={50} className="drop-shadow-md" />
+        </div>
+        
+        <div className="container mx-auto px-4 py-24 relative z-10">
           {/* Back to Portfolio Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

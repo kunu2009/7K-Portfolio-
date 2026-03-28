@@ -438,6 +438,24 @@ export default function ServicesPage() {
       <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
         
+        {/* Floating decorations - Higher z-index and visibility */}
+        <div className="absolute top-20 right-10 z-[5] opacity-25 animate-pulse hidden lg:block">
+          <img src="/images/decorations/7k-deer-logo.png" alt="" width={110} height={110} className="drop-shadow-xl" />
+        </div>
+        <div className="absolute bottom-10 left-10 z-[5] opacity-20 hidden lg:block animate-bounce" style={{ animationDuration: '4s' }}>
+          <img src="/images/decorations/modern-geo.jpg" alt="" width={130} height={130} className="rounded-full drop-shadow-lg" />
+        </div>
+        <div className="absolute top-1/3 left-5 z-[5] opacity-18 hidden xl:block">
+          <img src="/images/decorations/space-whale.jpeg" alt="" width={140} height={140} className="rounded-2xl drop-shadow-lg" />
+        </div>
+        <div className="absolute bottom-1/4 right-20 z-[5] opacity-20 hidden xl:block animate-pulse">
+          <img src="/images/decorations/buff-cat.png" alt="" width={100} height={100} className="drop-shadow-xl" />
+        </div>
+        {/* Mobile-visible decoration */}
+        <div className="absolute top-16 right-4 z-[5] opacity-20 animate-pulse lg:hidden">
+          <img src="/images/decorations/7k-deer-logo.png" alt="" width={60} height={60} className="drop-shadow-lg" />
+        </div>
+        
         <div className="container relative z-10">
           <motion.div
             initial="initial"

@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { appsData } from "@/lib/apps-data";
+import { DecorationSet } from "@/components/ui/floating-decorations";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -45,6 +46,9 @@ const AppStoreSection = () => {
     <section id="app-store" className="container py-16 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
+      
+      {/* Floating decorative images */}
+      <DecorationSet set="appStore" />
       
       {/* Decorative 7K Collage - Mobile: smaller, top-right corner */}
       <div className="block lg:hidden absolute -right-16 -top-8 w-40 h-auto opacity-15 pointer-events-none">

@@ -359,6 +359,17 @@ export default function TemplatesPage() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
         </div>
+        
+        {/* Floating decorations */}
+        <div className="absolute top-16 right-10 opacity-15 animate-pulse hidden lg:block">
+          <img src="/images/decorations/modern-geo.jpg" alt="" width={110} height={110} className="rounded-2xl" />
+        </div>
+        <div className="absolute bottom-10 left-10 opacity-12 hidden lg:block animate-bounce" style={{ animationDuration: '4s' }}>
+          <img src="/images/decorations/anime-couple.png" alt="" width={100} height={100} />
+        </div>
+        <div className="absolute top-1/3 left-5 opacity-10 hidden xl:block">
+          <img src="/images/decorations/minimal-geometric.jpg" alt="" width={90} height={90} className="rounded-full" />
+        </div>
 
         <div className="relative z-10 pt-20 pb-16 px-4">
           <div className="max-w-6xl mx-auto text-center">

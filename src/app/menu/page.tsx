@@ -117,7 +117,18 @@ export default function MenuPage() {
   
   const CardComponent = cardStyles.find(s => s.id === activeStyle)?.component || MenuCardStyle3;
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
+    <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+      {/* Floating decorations */}
+      <div className="absolute top-20 right-10 opacity-12 animate-pulse hidden lg:block">
+        <img src="/images/decorations/cat-headphones.png" alt="" width={100} height={100} />
+      </div>
+      <div className="absolute bottom-1/4 left-10 opacity-10 hidden lg:block animate-bounce" style={{ animationDuration: '4s' }}>
+        <img src="/images/decorations/duck-character.png" alt="" width={90} height={90} />
+      </div>
+      <div className="absolute top-1/2 right-5 opacity-8 hidden xl:block">
+        <img src="/images/decorations/geometric-circles.jpeg" alt="" width={100} height={100} className="rounded-full" />
+      </div>
+      
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
         <div className="container mx-auto px-4 py-4">

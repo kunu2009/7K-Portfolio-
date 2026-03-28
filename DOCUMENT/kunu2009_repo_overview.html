@@ -1,0 +1,386 @@
+
+<style>
+  .repo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 8px 0; }
+  .category { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 16px; border: 0.5px solid var(--color-border-tertiary); }
+  .cat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .cat-badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 12px; }
+  .cat-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .repo-item { padding: 7px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .repo-item:last-child { border-bottom: none; }
+  .repo-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .repo-desc { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.4; }
+  .lang-pill { font-size: 10px; padding: 1px 6px; border-radius: 8px; display: inline-block; margin-top: 3px; }
+  .ts { color: #185FA5; background: #E6F1FB; }
+  .js { color: #854F0B; background: #FAEEDA; }
+  .html { color: #993C1D; background: #FAECE7; }
+  .dart { color: #0F6E56; background: #E1F5EE; }
+  .py { color: #3B6D11; background: #EAF3DE; }
+  .kt { color: #534AB7; background: #EEEDFE; }
+  .other { color: #5F5E5A; background: #F1EFE8; }
+  .summary-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); }
+  .stat { text-align: center; flex: 1; min-width: 60px; }
+  .stat-num { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+  .stat-label { font-size: 11px; color: var(--color-text-secondary); }
+</style>
+
+<div class="summary-bar">
+  <div class="stat"><div class="stat-num">80</div><div class="stat-label">Total repos</div></div>
+  <div class="stat"><div class="stat-num">53</div><div class="stat-label">TypeScript</div></div>
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">HTML/JS</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Dart/Flutter</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">⭐ Stars</div></div>
+  <div class="stat"><div class="stat-num">Mar 26</div><div class="stat-label">Latest push</div></div>
+</div>
+
+<div class="repo-grid">
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#E6F1FB;color:#185FA5">🎓 Education / Exam Prep</div>
+    </div>
+    <div class="cat-title">Study & Learning Apps</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7k-HSC</div>
+      <div class="repo-desc">12th Maharashtra Board study app for Science, Commerce & Arts. Biggest repo at 43MB. Live at 7k-hsc.vercel.app</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-12th</div>
+      <div class="repo-desc">Another 12th-grade study resource, deployed on Vercel.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-upsc</div>
+      <div class="repo-desc">Teaching app tailored for UPSC civil services aspirants.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7KLAWPREP</div>
+      <div class="repo-desc">Law entrance exam prep app. Long-running project (Jul '25 – Feb '26).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kmhcetllb + 7kcagk</div>
+      <div class="repo-desc">MH-CET 5-year LLB prep: full study material + current affairs & GK MCQs (newest repo, Mar 2026).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-constitution</div>
+      <div class="repo-desc">Indian Constitution Articles 1–51C, deployed on Vercel.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-snapnotes</div>
+      <div class="repo-desc">Snap textbook images → get instant AI flashcards.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kpoliticalscience + 7K-Itihaas</div>
+      <div class="repo-desc">Political science study app (MIT licensed) and Indian history learning app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#E1F5EE;color:#0F6E56">📱 Productivity & Life Tools</div>
+    </div>
+    <div class="cat-title">Personal Dashboard & Trackers</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7K-life / 7k</div>
+      <div class="repo-desc">Minimal dashboard with to-dos, glow-up tracker & journaling. Two versions: original (HTML) and rebuilt.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7klife-remodel</div>
+      <div class="repo-desc">Daily logger & tracker remodel of the 7K Life concept.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-leveling</div>
+      <div class="repo-desc">Gamified productivity app (most recent, Feb 2026).</div>
+      <span class="lang-pill js">JavaScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kway</div>
+      <div class="repo-desc">Self-improvement all-in-one app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7K-SKILLS- / 7k-skillshare-</div>
+      <div class="repo-desc">Skill stacking helper web app + a Flutter skill-sharing app (Dart).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kunaldays</div>
+      <div class="repo-desc">Personal days tracker built in Flutter/Dart.</div>
+      <span class="lang-pill dart">Dart</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kworkpace</div>
+      <div class="repo-desc">Workspace/productivity tool in Python.</div>
+      <span class="lang-pill py">Python</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">stylized-finance-app</div>
+      <div class="repo-desc">Finance tracker app, built in Flutter (largest Dart repo at 70MB).</div>
+      <span class="lang-pill dart">Dart</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#FAEEDA;color:#854F0B">🎮 Games</div>
+    </div>
+    <div class="cat-title">Browser & Mobile Games</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7K-GAMES / 7k-playgames</div>
+      <div class="repo-desc">TypeScript game hubs with multiple games. 7k-playgames has the portfolio mention (7kc.me).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Ping-pong-game- / Pongping</div>
+      <div class="repo-desc">Two pong game implementations.</div>
+      <span class="lang-pill js">JavaScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Grouptrivaia-game</div>
+      <div class="repo-desc">Multiplayer trivia game, HTML-based.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">mine7kcrafts</div>
+      <div class="repo-desc">Minecraft-inspired browser game experiment ("idk if its playable").</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Minecraftty</div>
+      <div class="repo-desc">Earlier Minecraft clone attempt in JavaScript.</div>
+      <span class="lang-pill js">JavaScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">food-stall-tycoon-</div>
+      <div class="repo-desc">Simple tycoon-style game.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7K-PHANTASIA</div>
+      <div class="repo-desc">Fantasy-themed TypeScript project (has 1 open issue).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Racinggame / Game</div>
+      <div class="repo-desc">Empty racing game skeleton and a general game repo.</div>
+      <span class="lang-pill other">Empty</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#EEEDFE;color:#534AB7">🌐 Portfolio & Web Tools</div>
+    </div>
+    <div class="cat-title">Portfolio, Tools & Utilities</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7K-Portfolio-</div>
+      <div class="repo-desc">Main portfolio site (83MB — biggest repo). Actively updated, last push Mar 24 2026.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Portfolio- / kunu2009</div>
+      <div class="repo-desc">Older HTML portfolio and a GitHub profile repo.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7K-MULTITOOL</div>
+      <div class="repo-desc">Swiss-army web tool collection.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7KMaster</div>
+      <div class="repo-desc">Master app hub — 1 star received. TypeScript.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7K-ECO</div>
+      <div class="repo-desc">Eco-focused app — 1 star received.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7KSHELL / 7KLAUNCHER</div>
+      <div class="repo-desc">Browser-based shell UI (HTML) + Android launcher in Kotlin for the 7K app ecosystem.</div>
+      <span class="lang-pill kt">Kotlin</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Pwa-icon-generator- / 7kpwaiconmaker</div>
+      <div class="repo-desc">Tools to generate PWA icons for your apps.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">ai-insta-casseroul</div>
+      <div class="repo-desc">AI Instagram carousel generator.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#E1F5EE;color:#0F6E56">🎵 Media & Entertainment</div>
+    </div>
+    <div class="cat-title">Music, Books & Media</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7ksongs</div>
+      <div class="repo-desc">Spotify-like UI — ad-free, free music player.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-music</div>
+      <div class="repo-desc">Music web app (1MB, has a license).</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kgroupplayer</div>
+      <div class="repo-desc">Group video/media player, deployed live.</div>
+      <span class="lang-pill js">JavaScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-books</div>
+      <div class="repo-desc">Personal book library & tracker at 7k-books.vercel.app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7Klife-newsss</div>
+      <div class="repo-desc">News aggregator app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">The-book</div>
+      <div class="repo-desc">An HTML book reader/viewer.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#FAECE7;color:#993C1D">🛠️ AI & Creative Tools</div>
+    </div>
+    <div class="cat-title">AI-powered & Creative Apps</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">7k-meme</div>
+      <div class="repo-desc">AI meme generator & editor app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">magic-writer</div>
+      <div class="repo-desc">AI-assisted writing tool.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">socials</div>
+      <div class="repo-desc">Social media content generator suite.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-bg</div>
+      <div class="repo-desc">Free AI background remover tool.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-interiror</div>
+      <div class="repo-desc">Interior design AI app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-lanagues-teacher</div>
+      <div class="repo-desc">Language learning app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7K-polyglot</div>
+      <div class="repo-desc">Multilingual/polyglot learning app.</div>
+      <span class="lang-pill ts">TypeScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7k-leveling / 7kvault</div>
+      <div class="repo-desc">Vault tool in Python (MIT licensed, has GitHub Pages).</div>
+      <span class="lang-pill py">Python</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#EAF3DE;color:#3B6D11">🏋️ Fitness & Health</div>
+    </div>
+    <div class="cat-title">Fitness Apps</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">fit</div>
+      <div class="repo-desc">Fitness tracker web app (JavaScript).</div>
+      <span class="lang-pill js">JavaScript</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Fitness</div>
+      <div class="repo-desc">Simple fitness HTML page.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">dailylog</div>
+      <div class="repo-desc">Daily fitness/activity log in Flutter.</div>
+      <span class="lang-pill dart">Dart</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">7kphone</div>
+      <div class="repo-desc">Flutter mobile app — actively developed (last push Mar 2026).</div>
+      <span class="lang-pill dart">Dart</span>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="cat-header">
+      <div class="cat-badge" style="background:#F1EFE8;color:#5F5E5A">🔧 Misc / Early Experiments</div>
+    </div>
+    <div class="cat-title">One-offs, Tools & Experiments</div>
+    <div style="height:8px"></div>
+    <div class="repo-item">
+      <div class="repo-name">Dashboard / studio</div>
+      <div class="repo-desc">General dashboard (HTML) and a TypeScript studio/creator tool.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">money / stylized-finance-app</div>
+      <div class="repo-desc">Finance tracker HTML app + the Flutter finance app mentioned above.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">PINTREST / Sui / webcraft / S.T.D</div>
+      <div class="repo-desc">Pinterest-like gallery, a Suisei UI experiment, a web builder, and a student tool dashboard.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">english / sanskrit / ENG</div>
+      <div class="repo-desc">Language learning pages for English and Sanskrit.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">Dev-birthday / Images-for-portfolio-</div>
+      <div class="repo-desc">Birthday page project + image assets repo for the portfolio.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">promts / kanban-minimalist / sevenk-life-nexus</div>
+      <div class="repo-desc">AI prompt collection site, minimalist Kanban board, and an early life-nexus prototype.</div>
+      <span class="lang-pill html">HTML</span>
+    </div>
+    <div class="repo-item">
+      <div class="repo-name">lawprep-ace-hub / Giftskrafts-Website / daily</div>
+      <div class="repo-desc">Early law prep hub, a gifts e-commerce site, and a C++ daily-something repo.</div>
+      <span class="lang-pill other">Various</span>
+    </div>
+  </div>
+
+</div>

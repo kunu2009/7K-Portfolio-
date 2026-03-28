@@ -3,6 +3,7 @@ import { BookOpen, Star, PenLine, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { DecorationSet } from "@/components/ui/floating-decorations";
 
 type Writing = {
   id: string;
@@ -58,8 +59,11 @@ const WritingSection = () => {
   }
 
   return (
-    <section id="writing" className="container py-24 sm:py-32 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
-      <div className="text-center max-w-3xl mx-auto">
+    <section id="writing" className="relative container py-24 sm:py-32 opacity-0 animate-fade-in-up overflow-hidden" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+      {/* Floating decorative images */}
+      <DecorationSet set="writing" />
+      
+      <div className="text-center max-w-3xl mx-auto relative z-10">
         <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4">Writing</h2>
         <p className="text-lg text-muted-foreground mb-8">
           Exploring worlds and ideas through books and articles.

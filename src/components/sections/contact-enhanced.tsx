@@ -12,6 +12,7 @@ import * as z from "zod";
 import { motion } from "framer-motion";
 import { Send, Mail, MessageSquare, User, CheckCircle2, Loader2 } from "lucide-react";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/lib/constants";
+import { DecorationSet } from "@/components/ui/floating-decorations";
 
 // Zod validation schema
 const contactSchema = z.object({
@@ -69,7 +70,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="container py-16 md:py-24 lg:py-32">
+    <section id="contact" className="relative container py-16 md:py-24 lg:py-32 overflow-hidden">
+      {/* Floating decorative images */}
+      <DecorationSet set="contact" />
+      
       <motion.div
         initial="initial"
         whileInView="animate"
@@ -81,6 +85,7 @@ const ContactSection = () => {
             }
           }
         }}
+        className="relative z-10"
       >
         {/* Section Header */}
         <motion.div className="text-center mb-12 md:mb-16" variants={fadeInUp}>

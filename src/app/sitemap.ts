@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { appsData } from '@/lib/apps-data';
 import { getAllPosts } from '@/lib/blog';
-import { shopProducts } from '@/lib/shop-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://7kc.me';
@@ -14,12 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'daily' as const,
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/store`,
-      lastModified: currentDate,
-      changeFrequency: 'daily' as const,
-      priority: 0.95,
     },
     {
       url: `${baseUrl}/services`,
@@ -120,8 +113,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/shop`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
       priority: 0.95,
     },
   ];
@@ -143,13 +136,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Shop product routes
-  const shopRoutes = shopProducts.map((product) => ({
-    url: `${baseUrl}/shop/${product.id}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }));
-  
-  return [...staticRoutes, ...appRoutes, ...blogRoutes, ...shopRoutes];
+  return [...staticRoutes, ...appRoutes, ...blogRoutes];
 }

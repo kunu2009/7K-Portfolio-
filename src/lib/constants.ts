@@ -612,10 +612,10 @@ export const NAVIGATION = [
   { name: "About", href: "/#about" },
   { name: "Apps", href: "/#app-store" },
   { 
-    name: "Store", 
-    href: "/store",
+    name: "Shop", 
+    href: "/shop",
     dropdown: [
-      { name: "Browse Store", href: "/store" },
+      { name: "Browse Shop", href: "/shop" },
       { name: "Templates", href: "/templates" },
       { name: "eBooks", href: "/books" },
       { name: "Free Apps", href: "/apps" },
@@ -655,7 +655,15 @@ export const NAVIGATION = [
       { name: "My Books", href: "/books" },
     ]
   },
-  { name: "Testimonials", href: "/testimonials" },
+  { 
+    name: "Beyond Code", 
+    href: "/journey",
+    dropdown: [
+      { name: "Dev Journey", href: "/journey" },
+      { name: "My Creations", href: "/creations" },
+      { name: "Testimonials", href: "/testimonials" },
+    ]
+  },
   { name: "Contact", href: "/#contact" },
 ] as const;
 

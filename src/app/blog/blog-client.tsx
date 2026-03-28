@@ -48,8 +48,22 @@ export default function BlogClient({ posts, categories, tags }: BlogClientProps)
   };
 
   return (
-    <main className="min-h-screen bg-background py-20 px-4">
-      <div className="container mx-auto max-w-7xl">
+    <main className="min-h-screen bg-background py-20 px-4 relative overflow-hidden">
+      {/* Floating decorations */}
+      <div className="absolute top-20 right-10 opacity-12 animate-pulse hidden md:block">
+        <img src="/images/decorations/anime-eye-7k.jpg" alt="" width={100} height={100} className="rounded-full" />
+      </div>
+      <div className="absolute bottom-1/3 left-5 opacity-10 hidden lg:block animate-bounce" style={{ animationDuration: '4s' }}>
+        <img src="/images/decorations/logic-anime.png" alt="" width={110} height={110} />
+      </div>
+      <div className="absolute top-1/2 right-5 opacity-8 hidden xl:block">
+        <img src="/images/decorations/geometric-circles.jpeg" alt="" width={120} height={120} className="rounded-2xl" />
+      </div>
+      <div className="absolute bottom-20 left-1/4 opacity-10 hidden lg:block">
+        <img src="/images/decorations/cat-sketch-1.jpg" alt="" width={80} height={80} className="rounded-full animate-pulse" />
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">

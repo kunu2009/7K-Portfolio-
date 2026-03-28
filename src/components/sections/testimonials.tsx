@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote, BadgeCheck } from "lucide-react";
 import Image from "next/image";
+import { DecorationSet } from "@/components/ui/floating-decorations";
 
 // Testimonial data structure - replace with real testimonials
 export interface Testimonial {
@@ -108,8 +109,11 @@ export default function TestimonialsSection({ limit = 3, showTitle = true }: Tes
   }, [limit, liveTestimonials]);
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container px-4">
+    <section className="relative py-20 bg-muted/30 overflow-hidden">
+      {/* Floating decorative images */}
+      <DecorationSet set="testimonials" />
+      
+      <div className="container px-4 relative z-10">
         {showTitle && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

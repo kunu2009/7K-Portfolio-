@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Code, Smartphone, Search, Palette, ArrowRight, Sparkles } from 'lucide-react';
+import { DecorationSet } from '@/components/ui/floating-decorations';
 
 const services = [
   {
@@ -37,8 +38,11 @@ const services = [
 
 export default function ServicesPromo() {
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container">
+    <section className="relative py-16 md:py-24 bg-muted/30 overflow-hidden">
+      {/* Floating decorative images */}
+      <DecorationSet set="services" />
+      
+      <div className="container relative z-10">
         {/* Header */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border bg-primary/10 px-4 py-1.5 mb-4">

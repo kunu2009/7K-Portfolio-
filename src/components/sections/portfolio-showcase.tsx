@@ -9,7 +9,7 @@ import {
   Terminal, 
   Smartphone, 
   Gamepad2, 
-  ImageIcon, 
+  Image as ImageIcon, 
   BookOpen,
   ExternalLink,
   Code2,

@@ -29,9 +29,10 @@ import { portfolioSections } from "@/lib/sections-data";
 import { useState, useRef, useEffect, type FormEvent } from "react";
 import { askChatAssistant, getGreeting } from "@/ai/stan-assistant";
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ALL_STYLES, getStyleIcon } from "./stan-ai-styles";
+import { DecorationSet } from "@/components/ui/floating-decorations";
 import {
   getCurrentTime,
   getCurrentDate,
@@ -556,12 +557,16 @@ Say "change style neon" or "style 1" to switch!`;
   };
   
   return (
-    <section id="about" className="container py-16 md:py-24 lg:py-32 section-noise section-border-glow">
+    <section id="about" className="relative container py-16 md:py-24 lg:py-32 section-noise section-border-glow overflow-hidden">
+      {/* Floating decorative images */}
+      <DecorationSet set="about" />
+      
       <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerContainer}
+        className="relative z-10"
       >
         {/* Section Header */}
         <motion.div className="text-center mb-12 md:mb-16" variants={fadeInUp}>
@@ -575,28 +580,48 @@ Say "change style neon" or "style 1" to switch!`;
           </p>
         </motion.div>
 
-        {/* Personal Photo Gallery */}
+        {/* Personal Photo Gallery - Aesthetic Masonry Layout */}
         <motion.div 
-          className="flex justify-center gap-4 md:gap-6 mb-12"
+          className="flex justify-center items-center gap-4 md:gap-6 mb-12"
           variants={fadeInUp}
         >
-          {/* Photo 1 - Stadium */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
+          {/* Photo 1 - Some creations aesthetic */}
+          <div className="relative group self-end hidden md:block">
+            <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
+            <img 
+              src="/images/decorations/some_creations/profile-pic.png" 
+              alt="Aesthetic Edits" 
+              className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-cover rounded-xl shadow-xl transform -rotate-6 group-hover:scale-105 group-hover:-rotate-3 transition duration-300 border-2 border-white/10"
+            />
+          </div>
+
+          {/* Photo 2 - Main Corporate Stack */}
+          <div className="relative group z-10 -mt-6 sm:-mt-8">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-40 group-hover:opacity-60 transition duration-500" />
             <img 
               src="/images/kunal-1.jpg" 
               alt="Kunal Chheda" 
-              className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
+              className="relative w-32 h-44 sm:w-40 sm:h-52 md:w-48 md:h-64 object-cover object-top rounded-xl shadow-2xl transform group-hover:scale-105 transition duration-300 border-2 border-primary/20"
             />
           </div>
-          {/* Photo 2 - Blazer (face positioned properly) */}
+
+          {/* Photo 3 - The Banana Fella */}
           <div className="relative group mt-6 sm:mt-8">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
             <img 
-              src="/images/kunal-2.jpg" 
-              alt="Kunal Chheda" 
-              className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover object-top rounded-xl shadow-xl transform group-hover:scale-105 transition duration-300"
-              style={{ objectPosition: 'center 20%' }}
+              src="/images/banana-fella.jpg" 
+              alt="Kunal Casual" 
+              className="relative w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52 object-cover object-center rounded-xl shadow-xl transform rotate-3 group-hover:scale-105 group-hover:rotate-0 transition duration-300 border-2 border-white/10"
+            />
+          </div>
+
+          {/* Photo 4 - Another aesthetic */}
+          <div className="relative group self-end hidden md:block mt-12">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
+            <img 
+              src="/images/decorations/some_creations/Picsart_24-11-20_01-14-33-526.png" 
+              alt="Aesthetic Edits" 
+              className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-cover rounded-xl shadow-xl transform rotate-6 group-hover:scale-105 group-hover:rotate-3 transition duration-300 border-2 border-white/10"
             />
           </div>
         </motion.div>
@@ -862,6 +887,7 @@ Say "change style neon" or "style 1" to switch!`;
                     >
                       {message.role === 'assistant' && (
                         <Avatar className="h-7 w-7 border shrink-0">
+                          <AvatarImage src="/images/decorations/9070324cdfc07c68d60eed0c39e77573.gif" className="object-cover" />
                           <AvatarFallback className="bg-primary/10">
                             <Bot className="h-4 w-4 text-primary" />
                           </AvatarFallback>

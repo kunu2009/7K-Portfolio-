@@ -49,6 +49,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from '@/lib/utils';
 import { appsData } from '@/lib/apps-data';
+import { DecorationSet } from '@/components/ui/floating-decorations';
 
 // Icon mapping for different apps - each with distinct, relevant icon
 const getAppIcon = (appId: string) => {
@@ -287,8 +288,11 @@ const ProjectsSection = () => {
   }, [activeTab, activeTag]);
 
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up section-grid section-border-glow" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-      <div className="container">
+    <section id="projects" className="relative py-24 sm:py-32 bg-secondary/50 opacity-0 animate-fade-in-up section-grid section-border-glow overflow-hidden" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+      {/* Floating decorative images */}
+      <DecorationSet set="projects" />
+      
+      <div className="container relative z-10">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-4xl md:text-5xl font-bold mb-4 section-header-glow">Explore the Ecosystem</h2>
           <p className="text-lg text-muted-foreground mb-12">

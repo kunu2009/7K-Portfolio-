@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import Header from "@/components/header-enhanced";
 import HeroSection from "@/components/sections/hero-enhanced";
 import Footer from "@/components/footer-enhanced";
+import { GeometricDivider, MarqueeBannerStrip } from "@/components/ui/floating-decorations";
 
 // Skeleton loaders for better UX
 const SkeletonLoader = ({ height = 400 }: { height?: number }) => (
@@ -46,6 +47,32 @@ const TestimonialsSection = dynamic(() => import('@/components/sections/testimon
   loading: () => <SkeletonLoader height={300} />
 });
 
+// Image collections for marquee strips
+const vibeImages = [
+  "/images/decorations/some_creations/Aesthetic Minimalist Wallpaper.png",
+  "/images/decorations/some_creations/Monochromatic Floating Castle Phone Wallpaper.png",
+  "/images/decorations/some_creations/Monochrome Phone Wallpaper 9_16.png",
+  "/images/decorations/some_creations/Monochromatic Floating Castle Phone Wallpaper (3).png",
+  "/images/decorations/some_creations/Minimalist Phone Wallpaper.png",
+  "/images/decorations/some_creations/Monochrome Phone Wallpaper 9_16 (1).png",
+  "/images/decorations/some_creations/profile-pic.png",
+  "/images/decorations/some_creations/Picsart_24-10-31_22-21-52-153.png",
+  "/images/decorations/some_creations/Picsart_24-10-20_17-07-36-935.png",
+  "/images/decorations/some_creations/Picsart_24-11-20_21-39-10-226.png",
+];
+
+const hustleImages = [
+  "/images/decorations/struggles/Screenshot 2025-10-01 232136.png",
+  "/images/decorations/struggles/Screenshot 2025-10-04 183331.png",
+  "/images/decorations/struggles/Screenshot 2025-11-11 213033.png",
+  "/images/decorations/struggles/Screenshot 2025-11-12 010535.png",
+  "/images/decorations/struggles/Screenshot 2025-11-17 235153.png",
+  "/images/decorations/struggles/Screenshot 2025-11-23 001818.png",
+  "/images/decorations/struggles/Screenshot 2025-12-04 212510.png",
+  "/images/decorations/struggles/Screenshot 2025-12-31 003844.png",
+  "/images/decorations/struggles/Screenshot 2026-03-03 163748.png",
+];
+
 export default function HomePage() {
   return (
     <div className="flex min-h-dvh flex-col">
@@ -53,12 +80,22 @@ export default function HomePage() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
+        
+        {/* Scrolling image strip - adds visual interest */}
+        <MarqueeBannerStrip images={vibeImages} speed={40} opacity={0.35} />
+        
         <AppStoreSection />
         <ServicesMenuCard />
         <TestimonialsSection limit={3} />
+        <GeometricDivider />
         <PortfolioShowcaseSection />
+        
+        {/* Hustle/Struggles marquee representing the journey */}
+        <MarqueeBannerStrip images={hustleImages} speed={50} height="h-20 md:h-32" opacity={0.3} />
+        
         <ProjectsSection />
         <WritingSection />
+        <GeometricDivider />
         <JourneySection />
         <PhilosophySection />
         <BlogSection variant="grid" limit={3} showCategories={false} />

@@ -358,7 +358,7 @@ export default function StoreClient() {
                 7K
               </div>
               <div className="hidden sm:block">
-                <div className="font-bold text-zinc-900 dark:text-white">Store</div>
+                <div className="font-bold text-zinc-900 dark:text-white">Shop</div>
                 <div className="text-[10px] text-zinc-500 -mt-0.5">by 7K Solutions</div>
               </div>
             </Link>
@@ -394,7 +394,18 @@ export default function StoreClient() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 relative overflow-hidden">
+        {/* Floating decorations */}
+        <div className="absolute top-10 right-5 opacity-10 animate-pulse hidden lg:block">
+          <img src="/images/decorations/7k-unity-logo.png" alt="" width={100} height={100} />
+        </div>
+        <div className="absolute bottom-1/4 left-0 opacity-8 hidden xl:block animate-bounce" style={{ animationDuration: '5s' }}>
+          <img src="/images/decorations/digital-cityscape.jpeg" alt="" width={140} height={140} className="rounded-2xl" />
+        </div>
+        <div className="absolute top-1/3 right-0 opacity-10 hidden lg:block">
+          <img src="/images/decorations/ironman-cat.png" alt="" width={90} height={90} />
+        </div>
+        
         {/* Hero */}
         <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500 p-8 sm:p-12 mb-10">
           <div className="absolute inset-0 opacity-30">
@@ -476,8 +487,8 @@ export default function StoreClient() {
         ) : (
           // Default Sections
           <>
-            <ProductSection title="Popular" emoji="🔥" products={hotProducts} viewAllLink="/store?filter=popular" />
-            <ProductSection title="New Arrivals" emoji="✨" products={newProducts} viewAllLink="/store?filter=new" />
+            <ProductSection title="Popular" emoji="🔥" products={hotProducts} viewAllLink="/shop?filter=popular" />
+            <ProductSection title="New Arrivals" emoji="✨" products={newProducts} viewAllLink="/shop?filter=new" />
             <ProductSection title="Free Resources" emoji="🎁" products={freeProducts} viewAllLink="/apps" />
           </>
         )}
