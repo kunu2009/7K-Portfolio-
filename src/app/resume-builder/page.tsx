@@ -3,7 +3,6 @@
 
 // Prevent static generation - this page uses localStorage
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 import { useState, useEffect } from 'react';
 import { Download, Eye, EyeOff } from 'lucide-react';
