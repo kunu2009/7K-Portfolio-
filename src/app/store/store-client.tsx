@@ -524,32 +524,32 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
         </div>
         
         {/* Banner Hero */}
-        <section className="relative w-full aspect-[21/9] lg:aspect-[2.5/1] overflow-hidden rounded-3xl mb-10 shadow-lg isolate">
-          <Image 
-            src="/7kshopbannerfinalish.png" 
-            alt="7K Digital Shop" 
-            fill 
-            className="object-cover object-center" 
-            priority
-          />
-          {/* Interactive Overlay Links */}
-          <div className="absolute inset-0 z-10 grid grid-cols-2">
-            {/* Left side maps to Explore Apps */}
-            <Link 
-              href="/apps" 
-              className="w-full h-full flex items-center justify-center group"
-              aria-label="Explore Apps"
-            >
-              <span className="sr-only">Explore Apps</span>
-            </Link>
-            {/* Right side maps to Browse Templates */}
-            <Link 
-              href="/templates" 
-              className="w-full h-full flex items-center justify-center group"
-              aria-label="Browse Templates"
-            >
-              <span className="sr-only">Browse Templates</span>
-            </Link>
+        <section className="relative w-full overflow-hidden rounded-3xl mb-10 shadow-lg isolate">
+          <div className="relative w-full" style={{ paddingBottom: '42.857%' }}>
+            <img 
+              src="/7kshopbannerfinalish.png" 
+              alt="7K Digital Shop" 
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* Interactive Overlay Links */}
+            <div className="absolute inset-0 z-10 grid grid-cols-2">
+              {/* Left side maps to Explore Apps */}
+              <Link 
+                href="/apps" 
+                className="w-full h-full flex items-center justify-center group"
+                aria-label="Explore Apps"
+              >
+                <span className="sr-only">Explore Apps</span>
+              </Link>
+              {/* Right side maps to Browse Templates */}
+              <Link 
+                href="/templates" 
+                className="w-full h-full flex items-center justify-center group"
+                aria-label="Browse Templates"
+              >
+                <span className="sr-only">Browse Templates</span>
+              </Link>
+            </div>
           </div>
         </section>
 
