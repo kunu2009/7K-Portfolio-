@@ -6,28 +6,19 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   Search, 
-  ChevronRight,
   ChevronLeft,
+  ChevronRight,
   Star,
   ArrowRight,
   ArrowUpRight,
   Sparkles,
-  Code,
   BookOpen,
   Smartphone,
   Layers,
-  TrendingUp,
   Briefcase,
-  GraduationCap,
-  Dumbbell,
-  Wallet,
-  Languages,
   FileText,
   Layout,
-  Zap,
-  Users,
-  X,
-  ChevronDown
+  X
 } from 'lucide-react';
 
 // ============================================
@@ -135,19 +126,22 @@ const books = [
 
 // Services
 const services = [
-  { id: 'web', name: 'Web Development', desc: 'Custom websites', category: 'services', price: 3000, priceNote: 'from', rating: 5.0, reviews: 28, image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', tags: ['Next.js'], hot: true, link: '/services' },
-  { id: 'app', name: 'App Development', desc: 'PWA & mobile', category: 'services', price: 10000, priceNote: 'from', rating: 4.9, reviews: 15, image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop', tags: ['Mobile'], link: '/services' },
-  { id: 'ui', name: 'UI/UX Design', desc: 'Beautiful interfaces', category: 'services', price: 5000, priceNote: 'from', rating: 5.0, reviews: 22, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop', tags: ['Figma'], link: '/services' },
-  { id: 'seo', name: 'SEO Optimization', desc: 'Rank on Google', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 19, image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=300&fit=crop', tags: ['Growth'], new: true, link: '/services' },
-  { id: 'instagram', name: 'Instagram Design Pack', desc: 'Post creatives bundle', category: 'services', price: 500, priceNote: 'from', rating: 4.9, reviews: 18, image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=300&fit=crop', tags: ['Social'], link: '/services' },
-  { id: 'reels', name: 'Reel Editing', desc: 'Short-video edits', category: 'services', price: 800, priceNote: 'from', rating: 4.8, reviews: 14, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop', tags: ['Video'], link: '/services' },
-  { id: 'branding', name: 'Logo + Branding Kit', desc: 'Mini brand identity', category: 'services', price: 2000, priceNote: 'from', rating: 4.9, reviews: 16, image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=400&h=300&fit=crop', tags: ['Branding'], link: '/services' },
-  { id: 'wa-setup', name: 'WhatsApp Business Setup', desc: 'Catalog + auto replies', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 13, image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=400&h=300&fit=crop', tags: ['WhatsApp'], link: '/services' },
-  { id: 'gmb', name: 'Google Business Profile', desc: 'Local SEO optimization', category: 'services', price: 2500, priceNote: 'from', rating: 4.8, reviews: 11, image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', tags: ['Local SEO'], link: '/services' },
-  { id: 'notion', name: 'Notion Setup', desc: 'Student/business workspace', category: 'services', price: 2500, priceNote: 'from', rating: 4.9, reviews: 12, image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop', tags: ['Notion'], link: '/services' },
-  { id: 'ai-content', name: 'AI Content Writing', desc: 'SEO + conversion copy', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 10, image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop', tags: ['Content'], link: '/services' },
-  { id: 'college-support', name: 'College Project Support', desc: 'Build + deploy bundle', category: 'services', price: 5000, priceNote: 'from', rating: 4.9, reviews: 21, image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', tags: ['Students'], link: '/services' },
-  { id: 'shopify-wix', name: 'Shopify / Wix Setup', desc: 'Launch-ready online store', category: 'services', price: 5000, priceNote: 'from', rating: 4.8, reviews: 9, image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', tags: ['Ecommerce'], link: '/services' },
+  { id: 'web', name: 'Web Development', desc: 'Business websites & landing pages', category: 'services', price: 15000, priceNote: 'from', rating: 5.0, reviews: 28, image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop', tags: ['Next.js'], hot: true, link: '/services' },
+  { id: 'app', name: 'App Development', desc: 'PWA & product builds', category: 'services', price: 35000, priceNote: 'from', rating: 4.9, reviews: 15, image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop', tags: ['Mobile'], link: '/services' },
+  { id: 'ui', name: 'UI/UX Design', desc: 'Conversion-focused interfaces', category: 'services', price: 12000, priceNote: 'from', rating: 5.0, reviews: 22, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop', tags: ['Figma'], link: '/services' },
+  { id: 'seo', name: 'SEO Optimization', desc: 'Rank higher on Google', category: 'services', price: 8000, priceNote: 'from', rating: 4.8, reviews: 19, image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=300&fit=crop', tags: ['Growth'], new: true, link: '/services' },
+  { id: 'instagram', name: 'Instagram Design Pack', desc: '10/20 post creatives', category: 'services', price: 2000, priceNote: 'from', rating: 4.9, reviews: 18, image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=300&fit=crop', tags: ['Social'], link: '/services' },
+  { id: 'reels', name: 'Reel Editing', desc: 'Short-form video edits', category: 'services', price: 2500, priceNote: 'from', rating: 4.8, reviews: 14, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop', tags: ['Video'], link: '/services' },
+  { id: 'branding', name: 'Logo + Branding Kit', desc: 'Brand identity starter kit', category: 'services', price: 15000, priceNote: 'from', rating: 4.9, reviews: 16, image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=400&h=300&fit=crop', tags: ['Branding'], link: '/services' },
+  { id: 'wa-setup', name: 'WhatsApp Business Setup', desc: 'Catalog + automation setup', category: 'services', price: 8000, priceNote: 'from', rating: 4.8, reviews: 13, image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=400&h=300&fit=crop', tags: ['WhatsApp'], link: '/services' },
+  { id: 'gmb', name: 'Google Business Profile', desc: 'Local SEO optimization', category: 'services', price: 12000, priceNote: 'from', rating: 4.8, reviews: 11, image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', tags: ['Local SEO'], link: '/services' },
+  { id: 'notion', name: 'Notion Setup', desc: 'Student/business dashboards', category: 'services', price: 8000, priceNote: 'from', rating: 4.9, reviews: 12, image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop', tags: ['Notion'], link: '/services' },
+  { id: 'ai-content', name: 'AI Content Writing', desc: 'SEO + conversion copy', category: 'services', price: 10000, priceNote: 'from', rating: 4.8, reviews: 10, image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop', tags: ['Content'], link: '/services' },
+  { id: 'college-support', name: 'College Project Support', desc: 'Build + deploy complete support', category: 'services', price: 25000, priceNote: 'from', rating: 4.9, reviews: 21, image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', tags: ['Students'], link: '/services' },
+  { id: 'shopify-wix', name: 'Shopify / Wix Setup', desc: 'Launch-ready online store', category: 'services', price: 30000, priceNote: 'from', rating: 4.8, reviews: 9, image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', tags: ['Ecommerce'], link: '/services' },
+  { id: 'starter-growth-pack', name: 'Starter Growth Pack', desc: 'Branding + creatives + WhatsApp setup', category: 'services', price: 24999, rating: 4.9, reviews: 8, image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', tags: ['Bundle'], hot: true, link: '/services' },
+  { id: 'business-launch-pack', name: 'Business Launch Pack', desc: 'Website + SEO + GMB optimization', category: 'services', price: 54999, rating: 5.0, reviews: 6, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', tags: ['Launch Pack'], hot: true, link: '/services' },
+  { id: 'creator-career-pack', name: 'Creator Career Pack', desc: 'Portfolio + resume + Notion setup', category: 'services', price: 14999, rating: 4.8, reviews: 11, image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop', tags: ['Career Pack'], new: true, link: '/services' },
 ];
 
 // Articles
@@ -159,6 +153,51 @@ const articles = [
 ];
 
 const allProducts = [...apps, ...templates, ...books, ...services, ...articles];
+
+const sellableCollections = [
+  {
+    title: 'Services',
+    emoji: '💼',
+    description: 'Book professional services and growth bundles',
+    countLabel: `${services.length} offerings`,
+    startPrice: 'from ₹2,000',
+    href: '/services',
+    gradient: 'from-pink-500 to-rose-500',
+  },
+  {
+    title: 'Templates',
+    emoji: '🎨',
+    description: 'Ready-to-use premium website templates',
+    countLabel: `${templates.length} templates`,
+    startPrice: 'from ₹8,000',
+    href: '/templates',
+    gradient: 'from-violet-500 to-purple-500',
+  },
+  {
+    title: 'Books',
+    emoji: '📚',
+    description: 'Digital books and practical guides',
+    countLabel: `${books.length} books`,
+    startPrice: 'from ₹299',
+    href: '/books',
+    gradient: 'from-amber-500 to-orange-500',
+  },
+  {
+    title: 'Apps',
+    emoji: '📱',
+    description: 'Free productivity apps to get started instantly',
+    countLabel: `${apps.length} apps`,
+    startPrice: 'free',
+    href: '/apps',
+    gradient: 'from-blue-500 to-cyan-500',
+  },
+];
+
+const trustSignals = [
+  { title: 'Fast Support', subtitle: 'Quick WhatsApp response', emoji: '⚡' },
+  { title: 'Secure Payments', subtitle: 'UPI-friendly checkout', emoji: '🔒' },
+  { title: 'Proven Delivery', subtitle: '50+ projects shipped', emoji: '✅' },
+];
 
 // ============================================
 // COMPONENTS
@@ -354,6 +393,10 @@ export default function StoreClient() {
   const hotProducts = allProducts.filter(p => p.hot).slice(0, 8);
   const newProducts = allProducts.filter(p => p.new).slice(0, 8);
   const freeProducts = allProducts.filter(p => p.price === 0).slice(0, 8);
+  const serviceProducts = allProducts.filter((p) => p.category === 'services').slice(0, 10);
+  const templateProducts = allProducts.filter((p) => p.category === 'templates').slice(0, 8);
+  const bookProducts = allProducts.filter((p) => p.category === 'books').slice(0, 8);
+  const appProducts = allProducts.filter((p) => p.category === 'apps').slice(0, 8);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50/50 via-white to-white dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-950">
@@ -426,17 +469,23 @@ export default function StoreClient() {
             <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-1.5 rounded-full text-white/90 text-sm font-medium mb-4">
                 <Sparkles className="w-4 h-4" />
-                Premium Digital Products
+                7K Shop • Digital Products + Services
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                Everything you need<br />to build & grow
+                Buy products.<br />Book services.<br />Grow faster.
               </h1>
-              <p className="text-white/80 text-lg mb-6 max-w-md mx-auto lg:mx-0">
-                Apps, templates, books & services — all crafted with care
+              <p className="text-white/85 text-lg mb-4 max-w-xl mx-auto lg:mx-0">
+                One storefront for everything we sell: templates, books, apps, and premium done-for-you services.
               </p>
+              <div className="mb-6 flex flex-wrap gap-2 justify-center lg:justify-start text-xs sm:text-sm">
+                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Services from ₹2,000</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Templates from ₹8,000</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Books from ₹299</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-white">Apps (Free)</span>
+              </div>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                <Link href="/apps" className="px-5 py-2.5 bg-white text-violet-700 font-semibold rounded-xl hover:bg-white/90 transition-colors">
-                  Explore Apps
+                <Link href="/services" className="px-5 py-2.5 bg-white text-violet-700 font-semibold rounded-xl hover:bg-white/90 transition-colors">
+                  Book a Service
                 </Link>
                 <Link href="/templates" className="px-5 py-2.5 bg-white/10 backdrop-blur text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors">
                   Browse Templates
@@ -446,6 +495,46 @@ export default function StoreClient() {
             <div className="w-64 lg:w-80 flex-shrink-0">
               <HeroIllustration />
             </div>
+          </div>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="grid gap-4 sm:grid-cols-3 mb-10">
+          {trustSignals.map((item) => (
+            <div key={item.title} className="rounded-2xl border border-zinc-200/70 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/70 p-4 backdrop-blur">
+              <div className="text-xl mb-2">{item.emoji}</div>
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">{item.title}</h3>
+              <p className="text-xs text-zinc-500 mt-1">{item.subtitle}</p>
+            </div>
+          ))}
+        </section>
+
+        {/* What You Can Buy / Book */}
+        <section className="mb-10">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">Everything You Can Buy in 7K Shop</h2>
+              <p className="text-sm text-zinc-500 mt-1">Browse collections by what you want: services, templates, books, or apps.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {sellableCollections.map((collection) => (
+              <Link key={collection.title} href={collection.href} className="group">
+                <div className={`relative h-full overflow-hidden rounded-2xl bg-gradient-to-br ${collection.gradient} p-5 text-white shadow-lg transition-transform duration-300 group-hover:-translate-y-1`}>
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/10" />
+                  <div className="relative">
+                    <div className="mb-2 text-3xl">{collection.emoji}</div>
+                    <h3 className="text-lg font-semibold">{collection.title}</h3>
+                    <p className="mt-1 text-xs text-white/85">{collection.description}</p>
+                    <div className="mt-4 text-xs text-white/90">{collection.countLabel}</div>
+                    <div className="mt-1 text-sm font-semibold">{collection.startPrice}</div>
+                    <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium">
+                      Open collection <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -496,6 +585,10 @@ export default function StoreClient() {
         ) : (
           // Default Sections
           <>
+            <ProductSection title="Book Services (Most Requested)" emoji="💼" products={serviceProducts} viewAllLink="/services" />
+            <ProductSection title="Premium Templates" emoji="🎨" products={templateProducts} viewAllLink="/templates" />
+            <ProductSection title="Books & Guides" emoji="📚" products={bookProducts} viewAllLink="/books" />
+            <ProductSection title="Free Apps to Start Today" emoji="📱" products={appProducts} viewAllLink="/apps" />
             <ProductSection title="Popular" emoji="🔥" products={hotProducts} viewAllLink="/shop?filter=popular" />
             <ProductSection title="New Arrivals" emoji="✨" products={newProducts} viewAllLink="/shop?filter=new" />
             <ProductSection title="Free Resources" emoji="🎁" products={freeProducts} viewAllLink="/apps" />
@@ -544,9 +637,9 @@ export default function StoreClient() {
         {/* Stats */}
         <section className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
           {[
-            { value: '20+', label: 'Free Apps', icon: Smartphone },
-            { value: '50+', label: 'Templates', icon: Layout },
-            { value: '10K+', label: 'Users', icon: Users },
+            { value: `${apps.length}+`, label: 'Apps', icon: Smartphone },
+            { value: `${templates.length}+`, label: 'Templates', icon: Layout },
+            { value: `${services.length}+`, label: 'Services', icon: Briefcase },
             { value: '4.9', label: 'Avg Rating', icon: Star },
           ].map((stat) => (
             <div key={stat.label} className="bg-white dark:bg-zinc-900 rounded-2xl p-5 text-center border border-zinc-100 dark:border-zinc-800">
