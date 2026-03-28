@@ -1,6 +1,10 @@
 // Resume Builder Page
 'use client';
 
+// Prevent static generation - this page uses localStorage
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { useState, useEffect } from 'react';
 import { Download, Eye, EyeOff } from 'lucide-react';
 import { DEFAULT_RESUME_DATA, RESUME_STORAGE_KEYS, type ResumeData, type ResumeTemplate } from '@/lib/resume-data';
