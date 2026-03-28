@@ -443,6 +443,8 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
   const [selectedProduct, setSelectedProduct] = useState<typeof allProducts[0] | null>(null);
   const githubPortfolioData = githubPortfolio ?? defaultGithubPortfolioData;
   const githubRepoStat = githubPortfolioData.stats.find((stat) => stat.label === 'Public Repos')?.value ?? defaultGithubPortfolioData.stats[0].value;
+  const githubStarStat = githubPortfolioData.stats.find((stat) => stat.label === 'Total Stars')?.value ?? '100+';
+  const githubSegmentStat = githubPortfolioData.stats.find((stat) => stat.label === 'Active Segment')?.value ?? '15+';
 
   const filtered = useMemo(() => {
     let result = allProducts;
