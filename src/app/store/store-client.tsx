@@ -1040,10 +1040,10 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
               Featured Repositories
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {githubPortfolioData.slice(0, 6).map((repo) => (
+              {githubPortfolioData.featuredRepos.slice(0, 6).map((repo) => (
                 <a
-                  key={repo.id}
-                  href={repo.githubUrl}
+                  key={repo.name}
+                  href={repo.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group p-5 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-lg hover:shadow-slate-500/10 transition-all duration-300"
@@ -1056,16 +1056,11 @@ export default function StoreClient({ githubPortfolio }: StoreClientProps) {
                     <Github className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                   </div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-3 line-clamp-2">{repo.description}</p>
-                  <div className="flex items-center gap-4 text-xs text-zinc-500">
-                    <span className="flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                      {repo.stars}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Code className="w-3.5 h-3.5" />
-                      {repo.forks}
-                    </span>
-                  </div>
+                  {repo.badge && (
+                    <div className="inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300 mt-2">
+                      {repo.badge}
+                    </div>
+                  )}
                 </a>
               ))}
             </div>
