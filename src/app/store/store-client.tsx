@@ -139,6 +139,15 @@ const services = [
   { id: 'app', name: 'App Development', desc: 'PWA & mobile', category: 'services', price: 10000, priceNote: 'from', rating: 4.9, reviews: 15, image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop', tags: ['Mobile'], link: '/services' },
   { id: 'ui', name: 'UI/UX Design', desc: 'Beautiful interfaces', category: 'services', price: 5000, priceNote: 'from', rating: 5.0, reviews: 22, image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop', tags: ['Figma'], link: '/services' },
   { id: 'seo', name: 'SEO Optimization', desc: 'Rank on Google', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 19, image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&h=300&fit=crop', tags: ['Growth'], new: true, link: '/services' },
+  { id: 'instagram', name: 'Instagram Design Pack', desc: 'Post creatives bundle', category: 'services', price: 500, priceNote: 'from', rating: 4.9, reviews: 18, image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=300&fit=crop', tags: ['Social'], link: '/services' },
+  { id: 'reels', name: 'Reel Editing', desc: 'Short-video edits', category: 'services', price: 800, priceNote: 'from', rating: 4.8, reviews: 14, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop', tags: ['Video'], link: '/services' },
+  { id: 'branding', name: 'Logo + Branding Kit', desc: 'Mini brand identity', category: 'services', price: 2000, priceNote: 'from', rating: 4.9, reviews: 16, image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=400&h=300&fit=crop', tags: ['Branding'], link: '/services' },
+  { id: 'wa-setup', name: 'WhatsApp Business Setup', desc: 'Catalog + auto replies', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 13, image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=400&h=300&fit=crop', tags: ['WhatsApp'], link: '/services' },
+  { id: 'gmb', name: 'Google Business Profile', desc: 'Local SEO optimization', category: 'services', price: 2500, priceNote: 'from', rating: 4.8, reviews: 11, image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', tags: ['Local SEO'], link: '/services' },
+  { id: 'notion', name: 'Notion Setup', desc: 'Student/business workspace', category: 'services', price: 2500, priceNote: 'from', rating: 4.9, reviews: 12, image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop', tags: ['Notion'], link: '/services' },
+  { id: 'ai-content', name: 'AI Content Writing', desc: 'SEO + conversion copy', category: 'services', price: 2000, priceNote: 'from', rating: 4.8, reviews: 10, image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop', tags: ['Content'], link: '/services' },
+  { id: 'college-support', name: 'College Project Support', desc: 'Build + deploy bundle', category: 'services', price: 5000, priceNote: 'from', rating: 4.9, reviews: 21, image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', tags: ['Students'], link: '/services' },
+  { id: 'shopify-wix', name: 'Shopify / Wix Setup', desc: 'Launch-ready online store', category: 'services', price: 5000, priceNote: 'from', rating: 4.8, reviews: 9, image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', tags: ['Ecommerce'], link: '/services' },
 ];
 
 // Articles
@@ -369,7 +378,7 @@ export default function StoreClient() {
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                 <input
                   type="text"
-                  placeholder="Search apps, templates, books..."
+                  placeholder="Search apps, templates, books, services..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-xl text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 border-0 focus:ring-2 focus:ring-violet-500/50 transition-all"

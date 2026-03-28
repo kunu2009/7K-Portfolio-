@@ -319,10 +319,111 @@ const processTimeline = [
   }
 ];
 
+const serviceTiers = [
+  {
+    id: 'tier-1',
+    badge: 'Tier 1',
+    title: 'Quick Services',
+    priceRange: '₹500 - ₹2,000',
+    summary: 'Fast, affordable tasks for students, creators, and local businesses who need quick wins.',
+    perfectFor: 'Students, creators, local shops',
+    delivery: '24-72 hours',
+    revisionPolicy: '1-2 revisions included',
+    paymentTerms: '100% upfront for quick tasks',
+    whatsappMessage:
+      "Hi Kunal! I want Tier 1 Quick Services (₹500-₹2,000). Please share options for Instagram creatives / reels / quick branding tasks.",
+    services: [
+      'Instagram post design packages (10 / 20 creatives)',
+      'Reel editing packages for short-form content',
+      'Logo + mini branding kit for new businesses',
+      'Portfolio resume polish for students and job seekers',
+    ],
+  },
+
+  const servicePackages = [
+    {
+      name: 'Starter Growth Pack',
+      price: '₹6,999',
+      savings: 'Save ₹1,500',
+      includes: ['Logo + mini branding', '10 Instagram creatives', 'WhatsApp Business setup'],
+    },
+    {
+      name: 'Business Launch Pack',
+      price: '₹12,999',
+      savings: 'Save ₹3,000',
+      includes: ['5-page website', 'Basic SEO setup', 'Google Business Profile optimization'],
+    },
+    {
+      name: 'Creator Career Pack',
+      price: '₹4,999',
+      savings: 'Save ₹1,200',
+      includes: ['Portfolio polish', 'Resume revamp', 'Notion productivity dashboard'],
+    },
+  ];
+  {
+    id: 'tier-2',
+    badge: 'Tier 2',
+    title: 'Business Services',
+    priceRange: '₹2,000 - ₹5,000',
+    summary: 'Practical growth setup services to help businesses get leads and look professional online.',
+    perfectFor: 'Small businesses, coaches, local brands',
+    delivery: '2-5 days',
+    revisionPolicy: '2-3 revisions included',
+    paymentTerms: '50% advance, 50% on completion',
+    whatsappMessage:
+      'Hi Kunal! I want Tier 2 Business Services (₹2,000-₹5,000). I need growth-focused setup for my business. Please share details.',
+    services: [
+      'WhatsApp Business setup + catalog + auto-replies',
+      'Google Business Profile optimization for local SEO',
+      'Notion setup (student dashboard or business workspace)',
+      'AI content writing and editing for landing pages/posts',
+    ],
+  },
+  {
+    id: 'tier-3',
+    badge: 'Tier 3',
+    title: 'Web & Product Services',
+    priceRange: '₹5,000 - ₹20,000',
+    summary: 'Complete website and app builds with conversion-focused UX and scalable architecture.',
+    perfectFor: 'Startups, founders, serious growth projects',
+    delivery: '1-4 weeks',
+    revisionPolicy: 'Milestone review cycles',
+    paymentTerms: '50/50 or milestone-based',
+    whatsappMessage:
+      'Hi Kunal! I want Tier 3 Web/Product Services (₹5,000-₹20,000). Please help me plan website/app development with timeline.',
+    services: [
+      'Business website design + development',
+      'Shopify / Wix store setup and customization',
+      'Progressive Web App (PWA) development',
+      'College project support bundles (build + demo + deployment)',
+    ],
+  },
+  {
+    id: 'tier-4',
+    badge: 'Tier 4',
+    title: 'Packages & Bundles',
+    priceRange: '₹6,999 - ₹24,999',
+    summary: 'Bundled offers designed to give maximum ROI with better pricing than individual services.',
+    perfectFor: 'Clients who want end-to-end growth',
+    delivery: '1-3 weeks',
+    revisionPolicy: 'Package-wise revision limits',
+    paymentTerms: 'Milestone-based available',
+    whatsappMessage:
+      'Hi Kunal! I want Tier 4 Packages/Bundles. Please share package options with savings and delivery timelines.',
+    services: [
+      'Starter Growth Pack (branding + social + WhatsApp setup)',
+      'Business Launch Pack (website + SEO + Google profile)',
+      'Creator Kit (portfolio + resume + Notion + prompt setup)',
+      'Store Launch Pack (Shopify/Wix + product pages + basic SEO)',
+    ],
+  },
+];
+
+
 const faqs = [
   {
     question: 'How long does a typical project take?',
-    answer: 'Most projects are completed within 1-3 weeks. Static websites take 3-7 days, dynamic sites 1-2 weeks, and web applications 2-4 weeks. Timeline depends on project complexity, features, and how quickly you provide feedback and content.'
+  { number: '₹500', label: 'Starting Price', icon: IndianRupee }
   },
   {
     question: 'What\'s included in the price?',
@@ -484,7 +585,7 @@ export default function ServicesPage() {
               className="text-lg md:text-xl text-muted-foreground mb-8"
             >
               Transform your ideas into reality with budget-friendly web & app development. 
-              <span className="text-primary font-semibold"> Starting from just ₹1,000</span> with 
+              <span className="text-primary font-semibold"> Starting from just ₹500</span> with 
               50% advance payment. Quality work, competitive prices.
             </motion.p>
 
@@ -625,6 +726,117 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Section */}
+      <section className="py-20">
+        <div className="container px-4">
+          <div className="mb-12 text-center">
+            <div className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+              Revenue-Focused Offers
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
+              Service Tiers Built for Fast Cashflow
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
+              Choose a tier based on your budget and urgency. Every tier includes clear timeline, revision policy,
+              and payment terms so you can decide quickly and launch faster.
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {serviceTiers.map((tier) => (
+              <Card key={tier.id} className="border-border/50 bg-card/50 backdrop-blur hover:border-primary/30 transition-colors">
+                <CardHeader>
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <Badge variant="outline" className="border-primary/30 text-primary">
+                      {tier.badge}
+                    </Badge>
+                    <span className="text-sm font-semibold text-primary" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                      {tier.priceRange}
+                    </span>
+                  </div>
+                  <CardTitle className="text-2xl">{tier.title}</CardTitle>
+                  <CardDescription className="text-base">{tier.summary}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-5">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-lg border border-border/50 bg-muted/30 p-3 text-sm">
+                      <div className="mb-1 flex items-center gap-2 font-medium text-foreground">
+                        <Users className="h-4 w-4 text-primary" /> Perfect for
+                      </div>
+                      <p className="text-muted-foreground">{tier.perfectFor}</p>
+                    </div>
+                    <div className="rounded-lg border border-border/50 bg-muted/30 p-3 text-sm">
+                      <div className="mb-1 flex items-center gap-2 font-medium text-foreground">
+                        <Clock className="h-4 w-4 text-primary" /> Delivery
+                      </div>
+                      <p className="text-muted-foreground">{tier.delivery}</p>
+                    </div>
+                    <div className="rounded-lg border border-border/50 bg-muted/30 p-3 text-sm">
+                      <div className="mb-1 flex items-center gap-2 font-medium text-foreground">
+                        <CheckCircle className="h-4 w-4 text-primary" /> Revisions
+                      </div>
+                      <p className="text-muted-foreground">{tier.revisionPolicy}</p>
+                    </div>
+                    <div className="rounded-lg border border-border/50 bg-muted/30 p-3 text-sm">
+                      <div className="mb-1 flex items-center gap-2 font-medium text-foreground">
+                        <IndianRupee className="h-4 w-4 text-primary" /> Payment
+                      </div>
+                      <p className="text-muted-foreground">{tier.paymentTerms}</p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {tier.services.map((service, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                        <span>{service}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={`https://wa.me/918591247148?text=${encodeURIComponent(tier.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Book {tier.title}
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12">
+            <h3 className="mb-6 text-center text-2xl font-semibold text-foreground">Popular Packages (with Savings)</h3>
+            <div className="grid gap-5 md:grid-cols-3">
+              {servicePackages.map((pkg) => (
+                <Card key={pkg.name} className="border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{pkg.name}</CardTitle>
+                    <CardDescription>
+                      <span className="font-semibold text-primary" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>{pkg.price}</span>
+                      <span className="ml-2 text-emerald-600">• {pkg.savings}</span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {pkg.includes.map((item, index) => (
+                        <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-20 bg-muted/30">
         <div className="container px-4">
           <div className="mb-16 text-center">

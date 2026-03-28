@@ -1,9 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '7K Studios - Professional Digital Services | Web Development, SEO, UI/UX Design',
-  description: 'Affordable digital services in India. Web Development (₹5k-₹15k), App Prototyping (₹2k-₹10k), SEO Optimization (₹1k-₹3k), UI/UX Design (₹1k-₹5k). 50+ projects delivered.',
+  title: '7K Studios Services | Web Development, SEO, Design, Social Media & Business Setup',
+  description:
+    'Affordable digital services in India starting at ₹500. Web development, SEO, UI/UX, Instagram creatives, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix store setup.',
   keywords: [
+    'affordable services India',
+    'freelance services Mumbai',
+    'quick services for students',
+    'instagram post design service',
+    'reel editing services India',
+    'logo mini branding package',
+    'whatsapp business setup service',
+    'google business profile optimization',
+    'notion workspace setup',
+    'AI content writing services',
+    'college project support India',
+    'shopify wix setup service',
     'web development India',
     'affordable web design',
     'SEO services India',

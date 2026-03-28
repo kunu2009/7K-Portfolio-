@@ -5,7 +5,7 @@ import StoreClient from '../store/store-client';
 export const metadata: Metadata = {
   title: '7K Shop - Digital Products, Web Templates, Apps, eBooks & Services | Kunal Chheda',
   description:
-    'Shop premium digital products at 7K Shop: Web templates (₹7,000+), eBooks, mobile apps, productivity tools, and web development services. Made in India. Instant download. UPI payments accepted.',
+    'Explore 7K Shop for digital products and high-converting services: web development, SEO, UI/UX, Instagram design, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix setup. Made in India with UPI-friendly pricing.',
   keywords: [
     // Shop/Marketplace keywords
     '7K shop',
@@ -45,6 +45,21 @@ export const metadata: Metadata = {
     'freelance developer Mumbai',
     'website design services',
     'app development India',
+    'instagram post design services',
+    'reel editing services',
+    'logo design and branding package',
+    'whatsapp business account setup',
+    'google business profile SEO service',
+    'notion template setup service',
+    'AI content writing and editing service',
+    'college project support services',
+    'shopify store setup India',
+    'wix website setup service',
+    'affordable digital services India',
+    'small business digital services Mumbai',
+    'startup website package India',
+    'service bundles India',
+    'social media design package',
 
     // Brand keywords
     '7K Solutions',
@@ -54,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '7K Shop - Digital Products, Templates, Apps & Services',
     description:
-      'Shop premium digital products: Web templates, eBooks, apps, and professional services. Made in India with ❤️',
+      'Premium digital products plus growth-focused services: websites, SEO, social media creatives, and business setup support.',
     url: 'https://7kc.me/shop',
     siteName: '7K Shop',
     type: 'website',
@@ -70,7 +85,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '7K Shop - Premium Digital Products',
-    description: 'Web templates, eBooks, apps & services. Made in India.',
+    description: 'Digital products + web, SEO, and growth services for creators, startups, and small businesses.',
     images: ['https://7kc.me/og/store-og.png'],
   },
   alternates: {
@@ -93,9 +108,10 @@ export const metadata: Metadata = {
 // JSON-LD Structured Data for rich Google results
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Store',
+  '@type': 'OnlineStore',
   name: '7K Shop',
-  description: 'Premium digital products marketplace - Web templates, eBooks, Apps & Services',
+  description:
+    'Premium digital products marketplace with web development, SEO, design, social media, and business setup services.',
   url: 'https://7kc.me/shop',
   logo: 'https://7kc.me/logo.png',
   image: 'https://7kc.me/og/store-og.png',
@@ -113,6 +129,28 @@ const jsonLd = {
     name: 'Kunal Chheda',
     url: 'https://7kc.me',
   },
+  areaServed: [
+    {
+      '@type': 'Country',
+      name: 'India',
+    },
+    {
+      '@type': 'City',
+      name: 'Mumbai',
+    },
+  ],
+  knowsAbout: [
+    'Web Development',
+    'SEO Optimization',
+    'UI/UX Design',
+    'Instagram Content Design',
+    'Reel Video Editing',
+    'WhatsApp Business Setup',
+    'Google Business Profile Optimization',
+    'Notion Workspace Setup',
+    'AI Content Writing',
+    'Shopify and Wix Store Setup',
+  ],
   sameAs: [
     'https://linkedin.com/in/kunalchheda',
     'https://github.com/kunu2009',
@@ -162,8 +200,125 @@ const jsonLd = {
             itemOffered: {
               '@type': 'Service',
               name: 'Web Development Services',
+              description: 'Business websites, landing pages, and custom web apps',
             },
             price: '3000',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'SEO Optimization Services',
+              description: 'Keyword strategy, on-page SEO, and growth reporting',
+            },
+            price: '1000',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Instagram Post Design Packages',
+              description: 'Branded social media post packs for creators and businesses',
+            },
+            price: '500',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Reel Editing Services',
+              description: 'Short-form reel editing for Instagram and YouTube Shorts',
+            },
+            price: '800',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Logo + Mini Branding Kit',
+              description: 'Logo concepts, color palette, and mini brand guide',
+            },
+            price: '2000',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'WhatsApp Business Setup',
+              description: 'Business profile, catalog setup, and automated replies',
+            },
+            price: '2000',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Google Business Profile Optimization',
+              description: 'Local SEO setup and profile optimization for map visibility',
+            },
+            price: '2500',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Notion Setup Service',
+              description: 'Student and business Notion dashboards tailored to your workflow',
+            },
+            price: '2500',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'AI Content Writing & Editing',
+              description: 'Conversion-focused web and social copy with AI-assisted workflows',
+            },
+            price: '2000',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Shopify / Wix Setup Services',
+              description: 'Launch-ready store setup with pages, products, and basic optimization',
+            },
+            price: '5000',
+            priceCurrency: 'INR',
+          },
+        ],
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Service Bundles',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Starter Growth Pack',
+              description: 'Branding + social creatives + WhatsApp setup bundle',
+            },
+            price: '6999',
+            priceCurrency: 'INR',
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Business Launch Pack',
+              description: 'Website + SEO + Google Business Profile optimization',
+            },
+            price: '12999',
             priceCurrency: 'INR',
           },
         ],
