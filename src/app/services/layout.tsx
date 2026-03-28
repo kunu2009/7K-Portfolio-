@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '7K Studios Services | Web Development, SEO, Design, Social Media & Business Setup',
   description:
-    'Affordable digital services in India starting at ₹500. Web development, SEO, UI/UX, Instagram creatives, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix store setup.',
+    'Professional digital services in India starting at ₹8,000 for core offerings. Web development, SEO, UI/UX, Instagram creatives, reel editing, WhatsApp Business setup, Google Business Profile optimization, Notion setup, AI content writing, and Shopify/Wix store setup.',
   keywords: [
     'affordable services India',
     'freelance services Mumbai',

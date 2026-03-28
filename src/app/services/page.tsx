@@ -27,7 +27,7 @@ const mainServices = [
     tiers: [
       {
         name: 'Static Website',
-        price: '₹3,000 - ₹5,000',
+        price: '₹15,000 - ₹25,000',
         features: [
           '5-7 pages',
           'Responsive design',
@@ -38,7 +38,7 @@ const mainServices = [
       },
       {
         name: 'Dynamic Website',
-        price: '₹8,000 - ₹12,000',
+        price: '₹30,000 - ₹50,000',
         features: [
           '10-15 pages',
           'CMS integration',
@@ -50,7 +50,7 @@ const mainServices = [
       },
       {
         name: 'Web Application',
-        price: '₹15,000 - ₹20,000',
+        price: '₹60,000 - ₹1,20,000',
         features: [
           'Custom features',
           'User authentication',
@@ -72,7 +72,7 @@ const mainServices = [
     tiers: [
       {
         name: 'App Prototype',
-        price: '₹3,000 - ₹6,000',
+        price: '₹12,000 - ₹25,000',
         features: [
           'Interactive mockups',
           'User flow design',
@@ -83,7 +83,7 @@ const mainServices = [
       },
       {
         name: 'Full PWA',
-        price: '₹10,000 - ₹15,000',
+        price: '₹35,000 - ₹80,000',
         features: [
           'Offline functionality',
           'Push notifications',
@@ -105,7 +105,7 @@ const mainServices = [
     tiers: [
       {
         name: 'Basic SEO',
-        price: '₹1,000 - ₹2,000',
+        price: '₹8,000 - ₹15,000',
         features: [
           'Keyword research',
           'On-page optimization',
@@ -116,7 +116,7 @@ const mainServices = [
       },
       {
         name: 'Full SEO + Analytics',
-        price: '₹3,000 - ₹5,000',
+        price: '₹20,000 - ₹40,000',
         features: [
           'Everything in Basic',
           'Google Analytics setup',
@@ -138,7 +138,7 @@ const mainServices = [
     tiers: [
       {
         name: 'App/Web UI Design',
-        price: '₹2,000 - ₹4,000',
+        price: '₹12,000 - ₹25,000',
         features: [
           'User research',
           'Wireframing',
@@ -149,7 +149,7 @@ const mainServices = [
       },
       {
         name: 'Logo + Brand Kit',
-        price: '₹5,000 - ₹7,000',
+        price: '₹15,000 - ₹35,000',
         features: [
           'Logo design (5 concepts)',
           'Color palette',
@@ -171,7 +171,7 @@ const mainServices = [
     tiers: [
       {
         name: 'E-Commerce Store',
-        price: '₹8,000 - ₹15,000',
+        price: '₹35,000 - ₹90,000',
         features: [
           'Product catalog',
           'Shopping cart',
@@ -194,7 +194,7 @@ const mainServices = [
     tiers: [
       {
         name: 'Basic Automation',
-        price: '₹2,000 - ₹4,000',
+        price: '₹15,000 - ₹30,000',
         features: [
           'Chatbot integration',
           'Form automation',
@@ -205,7 +205,7 @@ const mainServices = [
       },
       {
         name: 'Advanced AI Features',
-        price: '₹5,000 - ₹8,000',
+        price: '₹40,000 - ₹1,00,000',
         features: [
           'AI content generation',
           'Smart recommendations',
@@ -223,25 +223,25 @@ const addOnServices = [
   {
     icon: ImageIcon,
     title: 'Graphics & Assets',
-    price: '₹500 - ₹3,000',
+    price: '₹3,000 - ₹12,000',
     description: 'Custom graphics, icons, illustrations, and visual assets for your project.'
   },
   {
     icon: Settings,
     title: 'Maintenance & Updates',
-    price: '₹1,000 - ₹3,000/month',
+    price: '₹5,000 - ₹20,000/month',
     description: 'Regular updates, bug fixes, content changes, and technical support.'
   },
   {
     icon: Globe,
     title: 'Hosting & Domain',
-    price: '₹500 - ₹1,000/year',
+    price: '₹3,000 - ₹12,000/year',
     description: 'Domain registration, hosting setup, SSL certificate, and email configuration.'
   },
   {
     icon: Package,
     title: 'Content Writing',
-    price: '₹500 - ₹2,000/page',
+    price: '₹1,500 - ₹6,000/page',
     description: 'SEO-optimized content, copywriting, and professional page content creation.'
   }
 ];
@@ -250,7 +250,7 @@ const stats = [
   { number: '50+', label: 'Projects Delivered', icon: Rocket },
   { number: '25+', label: 'Happy Clients', icon: Target },
   { number: '100%', label: 'Satisfaction Rate', icon: Sparkles },
-  { number: '₹3K', label: 'Starting Price', icon: IndianRupee }
+  { number: '₹8K', label: 'Starting Price', icon: IndianRupee }
 ];
 
 const whyChooseUs = [
@@ -324,54 +324,33 @@ const serviceTiers = [
     id: 'tier-1',
     badge: 'Tier 1',
     title: 'Quick Services',
-    priceRange: '₹500 - ₹2,000',
-    summary: 'Fast, affordable tasks for students, creators, and local businesses who need quick wins.',
+    priceRange: '₹2,000 - ₹8,000',
+    summary: 'Fast, high-quality execution for creators, students, and local businesses needing quick wins.',
     perfectFor: 'Students, creators, local shops',
     delivery: '24-72 hours',
     revisionPolicy: '1-2 revisions included',
     paymentTerms: '100% upfront for quick tasks',
     whatsappMessage:
-      "Hi Kunal! I want Tier 1 Quick Services (₹500-₹2,000). Please share options for Instagram creatives / reels / quick branding tasks.",
+      'Hi Kunal! I want Tier 1 Quick Services (₹2,000-₹8,000). Please share your best options for quick delivery tasks.',
     services: [
       'Instagram post design packages (10 / 20 creatives)',
       'Reel editing packages for short-form content',
       'Logo + mini branding kit for new businesses',
-      'Portfolio resume polish for students and job seekers',
+      'Portfolio and resume polish for students and job seekers',
     ],
   },
-
-  const servicePackages = [
-    {
-      name: 'Starter Growth Pack',
-      price: '₹6,999',
-      savings: 'Save ₹1,500',
-      includes: ['Logo + mini branding', '10 Instagram creatives', 'WhatsApp Business setup'],
-    },
-    {
-      name: 'Business Launch Pack',
-      price: '₹12,999',
-      savings: 'Save ₹3,000',
-      includes: ['5-page website', 'Basic SEO setup', 'Google Business Profile optimization'],
-    },
-    {
-      name: 'Creator Career Pack',
-      price: '₹4,999',
-      savings: 'Save ₹1,200',
-      includes: ['Portfolio polish', 'Resume revamp', 'Notion productivity dashboard'],
-    },
-  ];
   {
     id: 'tier-2',
     badge: 'Tier 2',
     title: 'Business Services',
-    priceRange: '₹2,000 - ₹5,000',
-    summary: 'Practical growth setup services to help businesses get leads and look professional online.',
+    priceRange: '₹8,000 - ₹25,000',
+    summary: 'Growth setup and business positioning services to improve trust, local visibility, and lead flow.',
     perfectFor: 'Small businesses, coaches, local brands',
-    delivery: '2-5 days',
+    delivery: '2-7 days',
     revisionPolicy: '2-3 revisions included',
     paymentTerms: '50% advance, 50% on completion',
     whatsappMessage:
-      'Hi Kunal! I want Tier 2 Business Services (₹2,000-₹5,000). I need growth-focused setup for my business. Please share details.',
+      'Hi Kunal! I want Tier 2 Business Services (₹8,000-₹25,000). Please share a growth-focused setup plan for my business.',
     services: [
       'WhatsApp Business setup + catalog + auto-replies',
       'Google Business Profile optimization for local SEO',
@@ -383,14 +362,14 @@ const serviceTiers = [
     id: 'tier-3',
     badge: 'Tier 3',
     title: 'Web & Product Services',
-    priceRange: '₹5,000 - ₹20,000',
-    summary: 'Complete website and app builds with conversion-focused UX and scalable architecture.',
+    priceRange: '₹25,000 - ₹1,20,000',
+    summary: 'Full-scale website and app builds with conversion-focused UX, robust architecture, and long-term value.',
     perfectFor: 'Startups, founders, serious growth projects',
-    delivery: '1-4 weeks',
+    delivery: '2-8 weeks',
     revisionPolicy: 'Milestone review cycles',
     paymentTerms: '50/50 or milestone-based',
     whatsappMessage:
-      'Hi Kunal! I want Tier 3 Web/Product Services (₹5,000-₹20,000). Please help me plan website/app development with timeline.',
+      'Hi Kunal! I want Tier 3 Web/Product Services (₹25,000-₹1,20,000). Please help me plan website/app development with proper milestones.',
     services: [
       'Business website design + development',
       'Shopify / Wix store setup and customization',
@@ -402,14 +381,14 @@ const serviceTiers = [
     id: 'tier-4',
     badge: 'Tier 4',
     title: 'Packages & Bundles',
-    priceRange: '₹6,999 - ₹24,999',
-    summary: 'Bundled offers designed to give maximum ROI with better pricing than individual services.',
+    priceRange: '₹30,000 - ₹1,50,000',
+    summary: 'High-ROI bundled offers with stronger outcomes than individual one-off services.',
     perfectFor: 'Clients who want end-to-end growth',
-    delivery: '1-3 weeks',
+    delivery: '2-10 weeks',
     revisionPolicy: 'Package-wise revision limits',
     paymentTerms: 'Milestone-based available',
     whatsappMessage:
-      'Hi Kunal! I want Tier 4 Packages/Bundles. Please share package options with savings and delivery timelines.',
+      'Hi Kunal! I want Tier 4 Packages/Bundles (₹30,000+). Please share package options with outcomes and timelines.',
     services: [
       'Starter Growth Pack (branding + social + WhatsApp setup)',
       'Business Launch Pack (website + SEO + Google profile)',
@@ -419,11 +398,32 @@ const serviceTiers = [
   },
 ];
 
+const servicePackages = [
+  {
+    name: 'Starter Growth Pack',
+    price: '₹24,999',
+    savings: 'Save ₹6,000',
+    includes: ['Logo + mini branding', '10 Instagram creatives', 'WhatsApp Business setup'],
+  },
+  {
+    name: 'Business Launch Pack',
+    price: '₹54,999',
+    savings: 'Save ₹12,000',
+    includes: ['5-page website', 'Basic SEO setup', 'Google Business Profile optimization'],
+  },
+  {
+    name: 'Creator Career Pack',
+    price: '₹14,999',
+    savings: 'Save ₹4,000',
+    includes: ['Portfolio polish', 'Resume revamp', 'Notion productivity dashboard'],
+  },
+];
+
 
 const faqs = [
   {
     question: 'How long does a typical project take?',
-  { number: '₹500', label: 'Starting Price', icon: IndianRupee }
+    answer: 'Most projects are completed within 1-8 weeks based on scope and complexity. Quick tasks take 1-3 days, business setup projects take under a week, and full websites/apps are delivered in planned milestones.'
   },
   {
     question: 'What\'s included in the price?',
@@ -585,7 +585,7 @@ export default function ServicesPage() {
               className="text-lg md:text-xl text-muted-foreground mb-8"
             >
               Transform your ideas into reality with budget-friendly web & app development. 
-              <span className="text-primary font-semibold"> Starting from just ₹500</span> with 
+              <span className="text-primary font-semibold"> Starting from ₹8,000 for core services</span> with 
               50% advance payment. Quality work, competitive prices.
             </motion.p>
 
