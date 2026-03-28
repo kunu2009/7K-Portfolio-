@@ -150,6 +150,7 @@ const services = [
   { id: 'starter-growth-pack', name: 'Starter Growth Pack', desc: 'Branding + creatives + WhatsApp setup', category: 'services', price: 24999, rating: 4.9, reviews: 8, image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', tags: ['Bundle'], hot: true, link: '/services' },
   { id: 'business-launch-pack', name: 'Business Launch Pack', desc: 'Website + SEO + GMB optimization', category: 'services', price: 54999, rating: 5.0, reviews: 6, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', tags: ['Launch Pack'], hot: true, link: '/services' },
   { id: 'creator-career-pack', name: 'Creator Career Pack', desc: 'Portfolio + resume + Notion setup', category: 'services', price: 14999, rating: 4.8, reviews: 11, image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop', tags: ['Career Pack'], new: true, link: '/services' },
+  { id: 'resume-builder', name: 'Resume Builder Pro', desc: '8 templates + free/premium access', category: 'services', price: 0, rating: 4.9, reviews: 89, image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=400&h=300&fit=crop', tags: ['Career', 'Tool'], hot: true, link: '/resume-builder', new: true },
 ];
 
 // Articles
