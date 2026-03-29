@@ -18,6 +18,115 @@ import {
 
 const mainServices = [
   {
+    id: 'college-projects',
+    icon: FileText,
+    title: 'College & Student Projects',
+    description: 'Quick turnaround solutions for students: project websites, presentations, and report formatting.',
+    color: 'from-blue-400 to-blue-600',
+    whatsappMessage: 'Hi Kunal! I need help with my college project. I\'m interested in getting a project website / PowerPoint design / report formatting. Can we discuss timeline and pricing?',
+    tiers: [
+      {
+        name: 'Project Website',
+        price: '₹2,000 - ₹3,000',
+        features: [
+          '3-5 pages',
+          'Responsive design',
+          'Deployed on Vercel',
+          'Source code included',
+          '3-4 days delivery'
+        ]
+      },
+      {
+        name: 'PowerPoint Design',
+        price: '₹500 - ₹1,000',
+        features: [
+          '15-30 custom slides',
+          'Your content + design',
+          'Charts & graphics',
+          'Presenter notes',
+          '1-2 days delivery'
+        ]
+      },
+      {
+        name: 'Report Formatting',
+        price: '₹300 - ₹500',
+        features: [
+          'Professional layout',
+          'Cover page design',
+          'Table of contents',
+          'Consistent styling',
+          '2-3 hours delivery'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'speed-optimization',
+    icon: Zap,
+    title: 'Website Speed Optimization',
+    description: 'Make your website lightning-fast. Image compression, code optimization, and caching setup for better SEO and user experience.',
+    color: 'from-yellow-500 to-orange-500',
+    whatsappMessage: 'Hi Kunal! My website is slow and I want to improve the speed and performance. Can we discuss optimization options?',
+    tiers: [
+      {
+        name: 'Basic Optimization',
+        price: '₹1,500',
+        features: [
+          'Image compression',
+          'Code minification',
+          'Browser caching setup',
+          'Before/after test',
+          'Recommendations report'
+        ]
+      },
+      {
+        name: 'Advanced Optimization',
+        price: '₹3,000',
+        features: [
+          'Everything in Basic',
+          'Lazy loading setup',
+          'CDN configuration',
+          'Database optimization',
+          'Performance monitoring',
+          '30-day support'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'seo-audit',
+    icon: TrendingUp,
+    title: 'SEO Audit & Report',
+    description: 'Comprehensive SEO analysis with actionable recommendations. See exactly what\'s blocking your search rankings.',
+    color: 'from-green-500 to-green-600',
+    whatsappMessage: 'Hi Kunal! I want to understand my website\'s SEO performance. Can you provide an audit and recommendations?',
+    tiers: [
+      {
+        name: 'Quick Audit',
+        price: '₹1,000',
+        features: [
+          'Page speed analysis',
+          'Mobile friendliness check',
+          'Broken links detection',
+          'SEO score report',
+          '5-10 key recommendations'
+        ]
+      },
+      {
+        name: 'Full Technical Audit',
+        price: '₹2,000',
+        features: [
+          'Everything in Quick',
+          'Keyword analysis',
+          'Competitor comparison',
+          'Backlink report',
+          '20+ improvement recommendations',
+          'Priority roadmap'
+        ]
+      }
+    ]
+  },
+  {
     id: 'web-dev',
     icon: Code,
     title: 'Web Development',
