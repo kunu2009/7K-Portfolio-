@@ -200,6 +200,18 @@ const portfolioVariations = [
     features: ["Whitespace focus", "Clean typography", "Subtle animations"],
     status: "coming-soon"
   },
+  {
+    id: "essentials",
+    title: "Essentials Portfolio",
+    description: "Clean, minimalist portfolio with tailored sections for About, Skills, Projects, and Contact. Features theme toggle and responsive design.",
+    icon: Layout,
+    color: "from-cyan-500 to-teal-500",
+    tags: ["Minimal", "Modern", "Professional"],
+    url: "/essentials",
+    image: "✨",
+    features: ["Skill tabs", "Theme toggle", "Responsive layout", "Smooth animations"],
+    status: "live"
+  },
 ];
 
 const fadeInUp = {

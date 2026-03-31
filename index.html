@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunal | Portfolio</title>
+  
+  <!-- Tailwind CSS for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter for clean text & Space Mono for accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* We'll use Tailwind's configuration to define our custom theme.
+      This makes the design system consistent and easy to manage.
+    */
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            'dark-navy': '#0a192f',
+            'navy': '#112240',
+            'light-navy': '#233554',
+            'slate': '#8892b0',
+            'light-slate': '#a8b2d1',
+            'lightest-slate': '#ccd6f6',
+            'brand': '#64ffda',
+            'brand-tint': 'rgba(100, 255, 218, 0.1)',
+            'light-bg': '#f0f2f5',
+            'light-text': '#0a192f',
+            'light-card': '#ffffff'
+          },
+          transitionTimingFunction: {
+            'elastic': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+          },
+        }
+      }
+    }
+
+    /* Additional global styles and animations */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Class for fade-in-up animation on scroll */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom styles for the nav shadow and hamburger menu */
+    .header-shadow {
+      box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    }
+    
+    .hamburger-line {
+        transition: all 0.3s ease-in-out;
+    }
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Styles for the active skills tab */
+    .skills-tab.active {
+        color: #64ffda; /* brand color */
+        border-left-color: #64ffda;
+        background-color: #112240; /* navy */
+    }
+    
+    .dark .skills-tab.active {
+        background-color: #112240; /* navy */
+    }
+    
+    .light .skills-tab.active {
+        background-color: #e6f7ff; /* A light blue for light mode */
+    }
+
+  </style>
+</head>
+<body class="bg-light-bg dark:bg-dark-navy text-light-text dark:text-slate font-sans">
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
+      <!-- Logo -->
+      <a href="#home" class="z-50">
+        <svg class="w-10 h-10 text-brand" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M27 2.00003L52 14.5V40L27 52.5L2 40V14.5L27 2.00003Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M27 23.5L2 14.5" stroke="currentColor" stroke-width="2"/>
+          <path d="M27 23.5L52 14.5" stroke="currentColor" stroke-width="2"/>
+          <path d="M27 52.5V23.5" stroke="currentColor" stroke-width="2"/>
+          <text x="20" y="35" font-family="Space Mono, monospace" font-size="16" fill="currentColor">7K</text>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center space-x-8">
+        <ol class="flex items-center space-x-8 text-sm">
+          <li><a href="#about" class="text-light-text dark:text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand">01.</span> About</a></li>
+          <li><a href="#skills" class="text-light-text dark:text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand">02.</span> Skills</a></li>
+          <li><a href="#projects" class="text-light-text dark:text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand">03.</span> Projects</a></li>
+          <li><a href="#contact" class="text-light-text dark:text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand">04.</span> Contact</a></li>
+        </ol>
+        <div class="flex items-center space-x-4">
+          <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-light-text dark:text-lightest-slate hover:bg-slate/10 transition-colors">
+             <!-- Sun and Moon Icons -->
+             <svg id="theme-icon-sun" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+             <svg id="theme-icon-moon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          </button>
+          <!-- Make sure to replace '/Kunal-Resume.pdf' with the actual path to your resume file -->
+          <a href="/Kunal-Resume.pdf" target="_blank" class="text-brand border border-brand rounded-md px-4 py-2 text-sm hover:bg-brand-tint transition-all duration-300">Resume</a>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Toggle -->
+      <button id="hamburger-btn" class="md:hidden z-50 hamburger">
+        <div class="space-y-2">
+            <span class="block w-8 h-0.5 bg-light-text dark:bg-lightest-slate hamburger-line"></span>
+            <span class="block w-8 h-0.5 bg-light-text dark:bg-lightest-slate hamburger-line"></span>
+            <span class="block w-8 h-0.5 bg-light-text dark:bg-lightest-slate hamburger-line"></span>
+        </div>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-3/4 bg-light-navy shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <nav class="mt-24">
+            <ol class="flex flex-col items-center space-y-8 text-lg text-center">
+                <li><a href="#about" class="mobile-nav-link text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand block mb-1">01.</span> About</a></li>
+                <li><a href="#skills" class="mobile-nav-link text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand block mb-1">02.</span> Skills</a></li>
+                <li><a href="#projects" class="mobile-nav-link text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand block mb-1">03.</span> Projects</a></li>
+                <li><a href="#contact" class="mobile-nav-link text-lightest-slate hover:text-brand transition-colors duration-300"><span class="text-brand block mb-1">04.</span> Contact</a></li>
+                 <li>
+                    <!-- Make sure to replace '/Kunal-Resume.pdf' with the actual path to your resume file -->
+                    <a href="/Kunal-Resume.pdf" target="_blank" class="mt-8 inline-block text-brand border border-brand rounded-md px-8 py-4 text-lg hover:bg-brand-tint transition-all duration-300">Resume</a>
+                 </li>
+            </ol>
+        </nav>
+    </div>
+  </header>
+
+  <!-- Left & Right Sidebars -->
+  <div class="hidden md:block fixed bottom-0 left-10 z-10">
+    <div class="flex flex-col items-center space-y-6 after:content-[''] after:block after:w-px after:h-24 after:bg-slate after:mt-6">
+      <!-- Replace '#' with your actual GitHub profile URL -->
+      <a href="#" target="_blank" class="text-slate hover:text-brand hover:-translate-y-1 transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+      </a>
+      <!-- Replace '#' with your actual LinkedIn profile URL -->
+      <a href="#" target="_blank" class="text-slate hover:text-brand hover:-translate-y-1 transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hidden md:block fixed bottom-0 right-10 z-10">
+    <div class="flex flex-col items-center space-y-6 after:content-[''] after:block after:w-px after:h-24 after:bg-slate after:mt-6">
+      <a href="mailto:kunal.law@example.com" class="font-mono text-sm tracking-widest text-slate hover:text-brand hover:-translate-y-1 transition-all duration-300" style="writing-mode: vertical-rl;">
+        kunal.law@example.com
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="px-6 sm:px-16 md:px-24 lg:px-32 xl:px-48">
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center max-w-4xl mx-auto">
+      <p class="text-brand font-mono text-base md:text-lg mb-4 fade-in-up" style="transition-delay: 100ms;">Hi, my name is</p>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-light-text dark:text-lightest-slate fade-in-up" style="transition-delay: 200ms;">Kunal.</h1>
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate dark:text-slate fade-in-up" style="transition-delay: 300ms;">
+        <span id="typed-text"></span>
+      </h2>
+      <p class="mt-6 max-w-xl text-base md:text-lg fade-in-up" style="transition-delay: 400ms;">
+        I'm a detail-oriented 12th-grade student from Maharashtra, India, with a passion for law and technology. I am diligently preparing for the MH-CET Law exam to pursue a career as a corporate lawyer, while simultaneously exploring my interests in coding and hardware to build innovative solutions.
+      </p>
+      <div class="mt-12 fade-in-up" style="transition-delay: 500ms;">
+        <a href="#contact" class="text-brand border border-brand rounded-md px-8 py-4 text-lg hover:bg-brand-tint transition-all duration-300">
+          Get In Touch
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 max-w-4xl mx-auto fade-in-up">
+      <h2 class="flex items-center text-2xl md:text-3xl font-bold text-light-text dark:text-lightest-slate mb-8">
+        <span class="text-brand font-mono text-xl md:text-2xl mr-4">01.</span> About Me
+        <span class="flex-grow h-px bg-slate/30 ml-4"></span>
+      </h2>
+      <div class="grid md:grid-cols-5 gap-12 items-start">
+        <div class="md:col-span-3 text-base md:text-lg space-y-4">
+          <p>Hello! My name is Kunal. Ever since I was young, I've been captivated by the logic of legal arguments and the strategic depth of puzzles. This dual interest naturally led me to the path of corporate law, where complex problems require analytical and creative solutions. To me, legal cases are like intricate puzzles waiting to be solved, a challenge I eagerly embrace.</p>
+          <p>But my curiosity doesn't stop at the law. I see technology as a powerful tool for change and efficiency. I spend my spare time coding simple applications and tinkering with hardware, not just as a hobby, but to build tools that can streamline processes—perhaps even legal research one day. This blend of disciplines allows me to approach challenges with a unique, multi-faceted perspective.</p>
+           <p>I approach every challenge, whether it's a debate, a chess match, or a coding bug, with a mindset focused on strategy and relentless problem-solving.</p>
+        </div>
+        <div class="md:col-span-2 relative group">
+          <div class="absolute inset-0 bg-brand rounded-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
+           <!-- Replace the placeholder with a professional photo of yourself -->
+           <img src="https://placehold.co/500x500/0a192f/64ffda?text=Kunal" alt="Kunal" class="relative rounded-lg w-full h-full object-cover z-10 grayscale group-hover:grayscale-0 transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/500x500/0a192f/64ffda?text=Photo+Not+Found';">
+        </div>
+      </div>
+      <div class="mt-12 fade-in-up">
+        <h3 class="text-xl font-bold text-light-text dark:text-lightest-slate mb-6">Education & Achievements</h3>
+        <div class="space-y-4">
+            <div class="p-4 rounded-md bg-white dark:bg-light-navy/50">
+                <p class="font-semibold text-light-text dark:text-lightest-slate">12th Grade Arts - [Your School Name], Maharashtra</p>
+                <p class="text-sm text-slate dark:text-light-slate">Currently preparing for MH-CET Law Entrance Exam.</p>
+            </div>
+            <div class="p-4 rounded-md bg-white dark:bg-light-navy/50">
+                <p class="font-semibold text-light-text dark:text-lightest-slate">Winner - XYZ Inter-School Debate Contest 2024</p>
+                <p class="text-sm text-slate dark:text-light-slate">Honed skills in public speaking, argumentation, and quick thinking.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 max-w-4xl mx-auto fade-in-up">
+        <h2 class="flex items-center text-2xl md:text-3xl font-bold text-light-text dark:text-lightest-slate mb-8">
+            <span class="text-brand font-mono text-xl md:text-2xl mr-4">02.</span> My Skillset
+            <span class="flex-grow h-px bg-slate/30 ml-4"></span>
+        </h2>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-1/3">
+                <ul id="skills-tabs" class="font-mono text-sm space-y-1">
+                    <li><button class="skills-tab w-full text-left p-3 border-l-2 border-slate/30 hover:bg-light-navy/50 hover:text-brand transition-all duration-300 active" data-target="legal-skills">Legal & Analytical</button></li>
+                    <li><button class="skills-tab w-full text-left p-3 border-l-2 border-slate/30 hover:bg-light-navy/50 hover:text-brand transition-all duration-300" data-target="tech-skills">Technical</button></li>
+                    <li><button class="skills-tab w-full text-left p-3 border-l-2 border-slate/30 hover:bg-light-navy/50 hover:text-brand transition-all duration-300" data-target="soft-skills">Soft Skills</button></li>
+                </ul>
+            </div>
+            <div class="md:w-2/3">
+                <div id="legal-skills" class="skills-content space-y-3">
+                    <h3 class="text-lg font-bold text-light-text dark:text-lightest-slate mb-2">Legal & Analytical Skills</h3>
+                    <p>My analytical abilities are at the core of my ambition to become a lawyer. I excel at deconstructing complex problems and developing logical, evidence-based arguments.</p>
+                    <ul class="space-y-2 font-mono text-sm">
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Legal Research:</strong> Proficient in researching case law and statutory provisions for academic projects.</span></li>
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Analytical Reasoning:</strong> Consistently score high on analytical reasoning sections in mock law exams.</span></li>
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Mock Trials:</strong> Actively participated in school-level mock trials, developing foundational courtroom skills.</span></li>
+                    </ul>
+                </div>
+                <div id="tech-skills" class="skills-content hidden space-y-3">
+                    <h3 class="text-lg font-bold text-light-text dark:text-lightest-slate mb-2">Technical Skills</h3>
+                    <p>I build practical tools and websites to sharpen my technical knowledge. Each project is a learning opportunity to understand how technology can solve real-world problems.</p>
+                    <ul class="space-y-2 font-mono text-sm">
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Web Development:</strong> Built this portfolio and other small projects using HTML, CSS (Tailwind), and JavaScript.</span></li>
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Hardware:</strong> Assembled a basic Arduino weather sensor, learning about circuits and sensor integration.</span></li>
+                         <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Certifications:</strong> Completed "Basic Python for Everybody" course on Coursera.</span></li>
+                    </ul>
+                </div>
+                <div id="soft-skills" class="skills-content hidden space-y-3">
+                    <h3 class="text-lg font-bold text-light-text dark:text-lightest-slate mb-2">Soft Skills</h3>
+                     <p>Beyond technical abilities, I pride myself on the interpersonal and cognitive skills that enable effective collaboration and strategic thinking.</p>
+                    <ul class="space-y-2 font-mono text-sm">
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Strategic Planning:</strong> Developed through years of playing competitive chess, enabling me to anticipate outcomes and plan multiple steps ahead.</span></li>
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Communication:</strong> Fluent in English and Hindi, with experience in public speaking and debate.</span></li>
+                        <li class="flex items-start"><span class="text-brand mr-2 mt-1">▹</span><span><strong class="text-light-slate">Problem-Solving:</strong> A love for Sudoku and logic puzzles has translated into a methodical and persistent approach to solving complex problems.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 max-w-5xl mx-auto fade-in-up">
+      <h2 class="flex items-center text-2xl md:text-3xl font-bold text-light-text dark:text-lightest-slate mb-12">
+        <span class="text-brand font-mono text-xl md:text-2xl mr-4">03.</span> Things I've Built
+        <span class="flex-grow h-px bg-slate/30 ml-4"></span>
+      </h2>
+      <div class="space-y-16">
+        
+        <!-- Project 1 -->
+        <div class="grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-6 relative group">
+                <a href="#" target="_blank" class="block rounded-lg overflow-hidden">
+                    <div class="absolute inset-0 bg-brand/50 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                    <img src="https://placehold.co/600x360/0a192f/64ffda?text=7K+Law+Prep" alt="7K Law Prep" class="w-full grayscale group-hover:grayscale-0 transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x360/0a192f/64ffda?text=Image+Not+Found';">
+                </a>
+            </div>
+            <div class="col-span-12 md:col-span-6 md:text-right z-20">
+                <p class="font-mono text-brand text-sm mb-1">Featured Project</p>
+                <h3 class="text-2xl font-bold text-light-text dark:text-lightest-slate mb-4 hover:text-brand transition-colors"><a href="#">7K Law Prep</a></h3>
+                <div class="bg-white dark:bg-light-navy shadow-lg rounded-md p-6">
+                    <p>A curated study hub I built to organize my notes for the MH-CET Law exam. The goal was to consolidate key statutes, case law summaries, and practice quizzes into one accessible location. This project helped me deepen my legal knowledge while sharpening my web development skills.</p>
+                </div>
+                <ul class="flex justify-end space-x-4 font-mono text-sm mt-4 text-slate dark:text-light-slate">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-6 md:text-left z-20 md:order-last">
+                <p class="font-mono text-brand text-sm mb-1">Featured Project</p>
+                <h3 class="text-2xl font-bold text-light-text dark:text-lightest-slate mb-4 hover:text-brand transition-colors"><a href="#">Arduino Weather Station</a></h3>
+                <div class="bg-white dark:bg-light-navy shadow-lg rounded-md p-6">
+                    <p>An initiative to learn about hardware and the Internet of Things (IoT). I assembled an Arduino-based sensor that collects and displays real-time temperature and humidity data. The main challenge was integrating the different components and writing the C++ code to process sensor readings accurately.</p>
+                </div>
+                <ul class="flex justify-start space-x-4 font-mono text-sm mt-4 text-slate dark:text-light-slate">
+                    <li>Arduino</li>
+                    <li>C++</li>
+                    <li>Sensors</li>
+                </ul>
+            </div>
+            <div class="col-span-12 md:col-span-6 relative group md:order-first">
+                <a href="#" target="_blank" class="block rounded-lg overflow-hidden">
+                    <div class="absolute inset-0 bg-brand/50 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                    <img src="https://placehold.co/600x360/112240/64ffda?text=Arduino+Project" alt="Arduino Project" class="w-full grayscale group-hover:grayscale-0 transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/600x360/112240/64ffda?text=Image+Not+Found';">
+                </a>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 text-center max-w-2xl mx-auto fade-in-up">
+      <h2 class="font-mono text-brand text-lg">04. What’s Next?</h2>
+      <h3 class="font-bold text-4xl md:text-5xl text-light-text dark:text-lightest-slate mt-4 mb-6">Get In Touch</h3>
+      <p class="mb-10">
+        My inbox is always open. Whether you have a question, a potential opportunity, or just want to connect, feel free to reach out. I'll do my best to get back to you promptly!
+      </p>
+       <form action="#" method="post" class="text-left space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-slate dark:text-light-slate mb-1">Name</label>
+            <input type="text" id="name" name="name" required class="w-full bg-slate/10 dark:bg-light-navy p-3 rounded-md border border-slate/30 focus:outline-none focus:ring-2 focus:ring-brand text-light-text dark:text-lightest-slate">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate dark:text-light-slate mb-1">Email</label>
+            <input type="email" id="email" name="email" required class="w-full bg-slate/10 dark:bg-light-navy p-3 rounded-md border border-slate/30 focus:outline-none focus:ring-2 focus:ring-brand text-light-text dark:text-lightest-slate">
+          </div>
+        </div>
+        <div>
+           <label for="message" class="block text-sm font-medium text-slate dark:text-light-slate mb-1">Message</label>
+           <textarea id="message" name="message" rows="4" required class="w-full bg-slate/10 dark:bg-light-navy p-3 rounded-md border border-slate/30 focus:outline-none focus:ring-2 focus:ring-brand text-light-text dark:text-lightest-slate"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="text-brand border border-brand rounded-md px-8 py-4 text-lg hover:bg-brand-tint transition-all duration-300 mt-4">
+                Send Message
+            </button>
+        </div>
+      </form>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="py-6 text-center">
+    <p class="font-mono text-xs text-slate dark:text-light-slate">
+      Designed & Built by Kunal & Gemini. Current as of June 2025.
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- Typewriter Effect ---
+      const typedTextSpan = document.getElementById("typed-text");
+      const textArray = ["Future Corporate Lawyer.", "Tech & Hardware Enthusiast."];
+      const typingDelay = 100;
+      const erasingDelay = 50;
+      const newTextDelay = 2000;
+      let textArrayIndex = 0;
+      let charIndex = 0;
+
+      function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+          typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(type, typingDelay);
+        } else {
+          setTimeout(erase, newTextDelay);
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, erasingDelay);
+        } else {
+          textArrayIndex++;
+          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+          setTimeout(type, typingDelay + 1100);
+        }
+      }
+      
+      if (textArray.length) setTimeout(type, newTextDelay + 250);
+
+      // --- Theme Toggler ---
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+      const htmlEl = document.documentElement;
+
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlEl.classList.add('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        htmlEl.classList.remove('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        htmlEl.classList.toggle('dark');
+        const isDark = htmlEl.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        sunIcon.classList.toggle('hidden', isDark);
+        moonIcon.classList.toggle('hidden', !isDark);
+      });
+
+      // --- Header Shadow on Scroll ---
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-light-bg/80', 'dark:bg-dark-navy/80', 'backdrop-blur-sm', 'header-shadow');
+        } else {
+          header.classList.remove('bg-light-bg/80', 'dark:bg-dark-navy/80', 'backdrop-blur-sm', 'header-shadow');
+        }
+      });
+      
+      // --- Mobile Menu Toggle ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+      // --- Skills Tab Functionality ---
+      const tabs = document.querySelectorAll('.skills-tab');
+      const contents = document.querySelectorAll('.skills-content');
+
+      tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+              // Deactivate all tabs and hide all content
+              tabs.forEach(item => item.classList.remove('active'));
+              contents.forEach(content => content.classList.add('hidden'));
+
+              // Activate the clicked tab and show its content
+              tab.classList.add('active');
+              const targetId = tab.getAttribute('data-target');
+              document.getElementById(targetId).classList.remove('hidden');
+          });
+      });
+
+      // --- Scroll Animations ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kunal's Portfolio</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #222;
+      --nav-bg: #fff;
+      --section-bg: #fefefe;
+      --card-bg: #fff;
+      --accent: #6200ee;
+    }
+    body.dark-mode {
+      --bg: #121212;
+      --text: #eee;
+      --nav-bg: #1f1f1f;
+      --section-bg: #181818;
+      --card-bg: #282828;
+      --accent: #bb86fc;
+    }
+    /* Global styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5em 1em;
+      background-color: var(--nav-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    /* Logo/branding */
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav li {
+      margin: 0 1em;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    /* Dark mode toggle button */
+    #theme-toggle {
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      border-radius: 5px;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      font-size: 0.9em;
+    }
+    #theme-toggle:hover {
+      background-color: var(--accent);
+      color: #fff;
+    }
+    /* Sections */
+    section {
+      padding: 4em 2em;
+      background-color: var(--section-bg);
+    }
+    /* Hero/Home section */
+    #home {
+      text-align: center;
+      padding-top: 6em;
+      padding-bottom: 6em;
+      background-color: var(--section-bg);
+    }
+    #home h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    #home h2 {
+      margin: 0.5em 0;
+      font-size: 1.2em;
+      min-height: 1.2em; /* reserve space for typed text */
+    }
+    /* About section */
+    #about p {
+      max-width: 800px;
+      margin: 1em auto;
+      line-height: 1.5;
+    }
+    /* Skills bars */
+    .skill {
+      max-width: 600px;
+      margin: 1.5em auto;
+    }
+    .skill h3 {
+      margin: 0.5em 0;
+      font-size: 1.1em;
+    }
+    .bar {
+      width: 100%;
+      background: #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 1em;
+      width: 0;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 2s ease-in-out;
+    }
+    .bar span {
+      float: right;
+      margin-right: 0.5em;
+      font-size: 0.9em;
+      color: var(--text);
+    }
+    /* Projects cards */
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      max-width: 1000px;
+      margin: 2em auto;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5em;
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    /* Contact form */
+    .contact-form {
+      max-width: 600px;
+      margin: 1em auto;
+      background: var(--card-bg);
+      padding: 2em;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .contact-form label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.3em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      resize: vertical;
+      background: #fff;
+      color: #000;
+    }
+    .contact-form input, .contact-form textarea {
+      font-family: inherit;
+      font-size: 1em;
+    }
+    .contact-form textarea {
+      height: 100px;
+    }
+    .contact-form input[type="submit"] {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 0.7em 1.2em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1.2em;
+      font-size: 1em;
+    }
+    .contact-form input[type="submit"]:hover {
+      background-color: #4b0082;
+    }
+    /* Footer style */
+    footer {
+      text-align: center;
+      padding: 1em;
+      font-size: 0.8em;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav li {
+        margin: 0.5em 0;
+      }
+      .projects-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">7K Ecosystem</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle">Toggle Theme</button>
+  </header>
+  <section id="home">
+    <h1>Hello, I'm Kunal</h1>
+    <h2><span id="typed-text"></span></h2>
+    <p>12th Grade Arts Student | Aspiring Corporate Lawyer</p>
+  </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a 12th-grade arts student from Maharashtra, currently preparing for the MH-CET Law entrance exam with the ambition to become a corporate lawyer. Beyond academics, I am a curious and driven individual with a passion for solving problems and learning new things. I enjoy playing chess and solving Sudoku puzzles, activities that sharpen my analytical thinking. I am also interested in hardware and software projects, as well as learning new languages and skills. These interests reflect my curiosity...</p>
+  </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+      <h3>Analytical Reasoning</h3>
+      <div class="bar"><div class="bar-fill" data-value="90"></div><span>90%</span></div>
+    </div>
+    <div class="skill">
+      <h3>Problem Solving (Puzzles)</h3>
+      <div class="bar"><div class="bar-fill" data-value="85"></div><span>85%</span></div>
+    </div>
+    <div class="skill">
+      <h3>Communication (English/Hindi)</h3>
+      <div class="bar"><div class="bar-fill" data-value="80"></div><span>80%</span></div>
+    </div>
+    <div class="skill">
+      <h3>Programming (Basics)</h3>
+      <div class="bar"><div class="bar-fill" data-value="60"></div><span>60%</span></div>
+    </div>
+    <div class="skill">
+      <h3>Web/Hardware Interest</h3>
+      <div class="bar"><div class="bar-fill" data-value="50"></div><span>50%</span></div>
+    </div>
+  </section>
+  <section id="projects">
+    <h2>Projects (7K Ecosystem)</h2>
+    <div class="projects-grid">
+      <div class="card">
+        <h3>7K Ecosystem</h3>
+        <p>A personal brand uniting my projects across law, technology, games, and learning under the “7K” vision. It reflects my diverse interests and ambition to integrate knowledge and skills.</p>
+      </div>
+      <div class="card">
+        <h3>7K Law Prep</h3>
+        <p>Resources and notes for law exam preparation, reflecting my dedication to studying corporate law and legal concepts.</p>
+      </div>
+      <div class="card">
+        <h3>7K Chess Academy</h3>
+        <p>A collection of chess puzzles and strategic insights, showcasing my interest in chess and analytical thinking.</p>
+      </div>
+      <div class="card">
+        <h3>7K Code Lab</h3>
+        <p>Mini coding and hardware projects, demonstrating my curiosity and skills in programming and engineering.</p>
+      </div>
+      <div class="card">
+        <h3>7K Language Corner</h3>
+        <p>Language learning tools and practice exercises, reflecting my passion for learning new languages and communication.</p>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form" action="#" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name..">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email..">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write a message..."></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2025 Kunal's Portfolio. All rights reserved.</p>
+  </footer>
+  <script>
+    // Typewriter text effect (inspired by W3Schools example6)
+    const introText = "Aspiring Corporate Lawyer and Life-long Learner.";
+    let idx = 0;
+    function typeWriter() {
+      if (idx < introText.length) {
+        document.getElementById("typed-text").innerHTML += introText.charAt(idx);
+        idx++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    window.onload = typeWriter;
+
+    // Toggle dark/light mode by toggling a class on the body (per W3Schools guide7)
+    const themeBtn = document.getElementById("theme-toggle");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    // Animate skill bars on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar-fill').forEach(el => {
+        let value = el.getAttribute('data-value');
+        el.style.width = value + '%';
+      });
+    });
+  </script>
+</body>
+  </html>
