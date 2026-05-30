@@ -5,9 +5,9 @@
 
 export const SITE_CONFIG = {
   name: "7K Ecosystem",
-  title: "Best Productivity Apps, Fitness Tracker & Learning Tools | Free Web Apps 2025",
+  title: "Best Productivity Apps, Digital Services, Fitness Tracker & Learning Tools | 7K Ecosystem",
   description:
-    "Discover 20+ free productivity apps, fitness trackers, language learning tools, finance managers, and educational apps. Built by student developer Kunal Chheda from India. Free habit tracker, task manager, CLAT preparation, chess tools & more.",
+    "Discover 20+ free productivity apps, digital services, fitness trackers, language learning tools, finance managers, templates, books, and educational apps. Built by Kunal Chheda from India. Free habit tracker, task manager, CLAT preparation, SEO services, and more.",
   url: "https://7kc.me",
   ogImage: "/og-image.png",
   author: {
@@ -64,6 +64,11 @@ export const SITE_CONFIG = {
     "free web apps",
     "online tools free",
     "productivity tools for developers",
+    "digital services India",
+    "SEO services India",
+    "web development services India",
+    "website templates",
+    "book reading platform",
     
     // Location-based
     "apps developed in India",
@@ -94,6 +99,10 @@ export const SITE_CONFIG = {
     "7K Fitness",
     "7K LawPrep",
     "7K Polyglot",
+    "7K Music",
+    "7K Launcher",
+    "7K Shop",
+    "7K Services",
     "student app developer",
     "teen developer portfolio",
     "12th grade developer",
@@ -104,9 +113,9 @@ export const PERSONAL_INFO = {
   name: "Kunal Chheda",
   role: "Student Developer & Polyglot",
   tagline: "Building the 7K Ecosystem — One Idea at a Time",
-  bio: "I'm Kunal — a 12th-grade Arts student with a passion for building apps, learning languages, and playing chess (1300 rated rapid on Chess.com). I dream of becoming a corporate lawyer, but my love for technology is rooted in creating tools that empower and comfort. My apps aren't just utilities—they're quiet companions for people who need them most.",
+  bio: "I'm Kunal — a FYBA student building apps and offering digital services for people who need thoughtful tools. I care about clean design, simple workflows, and products that feel useful the moment someone opens them. I also love learning languages and playing chess (1300 rated rapid on Chess.com). My apps aren't just utilities—they're quiet companions for people who need them most.",
   location: "India",
-  education: "12th Grade Student",
+  education: "FYBA Student",
   status: "Open for opportunities",
   traits: ["Developer", "Polyglot", "Chess Player", "Lifelong Learner"],
   

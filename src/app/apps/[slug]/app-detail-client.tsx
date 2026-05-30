@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { 
   ExternalLink, 
+  Download,
   Star, 
   Users, 
   Calendar, 
@@ -40,6 +41,8 @@ interface DisplayReview {
 interface AppDetailClientProps {
   app: App;
 }
+
+const isImagePath = (value?: string) => Boolean(value && value.startsWith("/"));
 
 // App-specific reviews database - realistic reviews matching each app
 const appSpecificReviews: Record<string, DisplayReview[]> = {
@@ -175,6 +178,13 @@ const appSpecificReviews: Record<string, DisplayReview[]> = {
     { id: 'fit2-2', userName: 'Prerna S.', rating: 5, title: 'Perfect workout tracker', review: 'Simple logging, beautiful progress charts. Keeps me motivated to hit the gym!', date: '2025-03-11', helpful: 37, isHardcoded: true },
     { id: 'fit2-3', userName: 'Manish K.', rating: 4, title: 'Great for gym logs', review: 'Track sets, reps, weight easily. Would love rest timer feature. Very useful otherwise!', date: '2025-03-04', helpful: 23, isHardcoded: true },
     { id: 'fit2-4', userName: 'Komal M.', rating: 5, title: 'Best free fitness tracker', review: 'No subscription needed! All features are free. Progress photos feature is motivating!', date: '2025-02-26', helpful: 34, isHardcoded: true },
+  ],
+  // 7K Launcher - Android launcher (4.9 rating)
+  'launcher': [
+    { id: 'launcher-1', userName: 'Aarav P.', rating: 5, title: 'Finally a launcher without clutter', review: 'The home screen stays clean, and I can reach the apps I actually use without getting distracted. Exactly what I wanted from an Android launcher.', date: '2026-05-18', helpful: 29, isHardcoded: true },
+    { id: 'launcher-2', userName: 'Nisha R.', rating: 5, title: 'Fast and lightweight', review: 'It feels quick even on my older phone. The minimal layout makes the phone easier to use every day and uses less visual noise.', date: '2026-05-14', helpful: 22, isHardcoded: true },
+    { id: 'launcher-3', userName: 'Kabir S.', rating: 4, title: 'Great focus-first launcher', review: 'Loved the distraction-free approach and the simple app access flow. This feels more useful than a flashy launcher with too many extras.', date: '2026-05-09', helpful: 18, isHardcoded: true },
+    { id: 'launcher-4', userName: 'Meera J.', rating: 5, title: 'Perfect for a cleaner Android setup', review: 'Downloaded the APK and it was easy to try. The launcher gives my phone a calmer feel and keeps my most important apps close.', date: '2026-05-03', helpful: 26, isHardcoded: true },
   ],
 };
 
@@ -393,10 +403,15 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
               {/* CTA Button */}
               <Button size="lg" className="gap-2 group" asChild>
                 <a href={app.url} target="_blank" rel="noopener noreferrer">
-                  Launch {app.name}
-                  <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  {app.apkUrl || app.url.toLowerCase().endsWith('.apk') ? 'Download APK' : `Launch ${app.name}`}
+                  {app.apkUrl || app.url.toLowerCase().endsWith('.apk') ? (
+                    <Download className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+                  ) : (
+                    <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  )}
                 </a>
               </Button>
+
             </div>
 
             {/* App Screenshot/Icon */}
@@ -407,6 +422,14 @@ export default function AppDetailClient({ app }: AppDetailClientProps) {
                   alt={`${app.name} screenshot`}
                   width={320}
                   height={640}
+                  className="w-full h-auto object-cover"
+                />
+              ) : isImagePath(app.icon) ? (
+                <Image
+                  src={app.icon!}
+                  alt={`${app.name} icon`}
+                  width={320}
+                  height={320}
                   className="w-full h-auto object-cover"
                 />
               ) : (

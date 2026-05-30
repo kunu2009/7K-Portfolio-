@@ -44,10 +44,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  themeColor: 'white',
 };
 
 export const metadata: Metadata = {
@@ -145,8 +142,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="mask-icon" href="/favicon.svg" color="#B87333" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#B87333" />
-        <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#FDFCFB" />
+        <meta name="color-scheme" content="light" />
         
         {/* Performance optimization meta tags */}
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
@@ -176,8 +173,9 @@ export default function RootLayout({
         <ServiceWorkerRegistration />
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <main id="main-content">
@@ -229,10 +227,6 @@ export default function RootLayout({
                 "SEO",
                 "AI Integration"
               ],
-              "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "12th Grade Student"
-              },
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Mumbai",
@@ -342,7 +336,7 @@ export default function RootLayout({
                   "name": "Who is Kunal Chheda?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Kunal Chheda (Kunal Paresh Chheda) is a 12th-grade student developer from Mumbai, India who has created 20+ free web applications including productivity tools, fitness trackers, language learning apps, and educational platforms. He specializes in React, Next.js, and TypeScript development and is the creator of the 7K Ecosystem."
+                    "text": "Kunal Chheda (Kunal Paresh Chheda) is a FYBA student developer from Mumbai, India who has created 20+ free web applications including productivity tools, fitness trackers, language learning apps, educational platforms, and digital services. He specializes in React, Next.js, and TypeScript development and is the creator of the 7K Ecosystem."
                   }
                 },
                 {

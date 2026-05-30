@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 // Mascot types available in the store
 export type MascotType = 
   | "robot" 
+  | "stan"
   | "cat" 
   | "dog" 
   | "panda" 
@@ -41,6 +42,14 @@ export const MASCOTS: MascotConfig[] = [
     description: "The original AI assistant",
     unlocked: true,
     colors: { primary: "#8B5CF6", secondary: "#A855F7", accent: "#22D3EE" },
+  },
+  {
+    id: "stan",
+    name: "Stan",
+    emoji: "⭐",
+    description: "The portfolio mascot",
+    unlocked: true,
+    colors: { primary: "#111827", secondary: "#374151", accent: "#0EA5E9" },
   },
   {
     id: "cat",

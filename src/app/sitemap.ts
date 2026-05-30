@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { appsData } from '@/lib/apps-data';
 import { getAllPosts } from '@/lib/blog';
+import { bookData, bookContent } from '@/lib/book-content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://7kc.me';
@@ -57,18 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/books/ethos`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/books/kupgames`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/arcade`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
@@ -104,6 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/templates`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
     // Apps index page
     {
       url: `${baseUrl}/apps`,
@@ -136,5 +131,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...appRoutes, ...blogRoutes];
+  // Dynamic book routes
+  const bookRoutes = Object.entries(bookData).flatMap(([bookId, book]) => {
+    const bookUrl = `${baseUrl}/books/${bookId}`;
+    const chapters = bookContent[bookId as keyof typeof bookContent]?.chapters || [];
+
+    return [
+      {
+        url: bookUrl,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      ...chapters.map((chapter: { id: number }) => ({
+        url: `${bookUrl}/read/${chapter.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      })),
+    ];
+  });
+
+  return [...staticRoutes, ...appRoutes, ...blogRoutes, ...bookRoutes];
 }

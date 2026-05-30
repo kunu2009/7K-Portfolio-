@@ -3,12 +3,43 @@ import { Check, X, ArrowRight, Star, Zap, Crown } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Service Packages - Professional Web Development',
-  description: 'Choose the perfect package for your project. Transparent pricing, no hidden fees. From ₹5,000 to ₹25,000.',
+  title: 'Service Packages - Professional Web Development, SEO & Design',
+  description: 'Choose the right service package for your project. Transparent pricing for web development, SEO, UI/UX, and digital growth work.',
+  keywords: [
+    'service packages India',
+    'web development packages',
+    'SEO packages',
+    'design packages',
+    'digital service pricing',
+    'freelance packages',
+    '7K Studios',
+  ],
   openGraph: {
-    title: 'Service Packages - Professional Web Development',
-    description: 'Choose the perfect package for your project. Transparent pricing, no hidden fees.',
+    title: 'Service Packages - Professional Web Development, SEO & Design',
+    description: 'Transparent pricing for web development, SEO, UI/UX, and digital growth work.',
     type: 'website',
+    url: 'https://7kc.me/services/packages',
+    siteName: '7K Ecosystem',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Service Packages - Professional Web Development, SEO & Design',
+    description: 'Transparent pricing for web development, SEO, UI/UX, and digital growth work.',
+    creator: '@kunal7k',
+  },
+  alternates: {
+    canonical: 'https://7kc.me/services/packages',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

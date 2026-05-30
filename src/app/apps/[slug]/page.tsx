@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Card } from "@/components/ui/card";
 import { getAppById, appsData } from "@/lib/apps-data";
 import { generateAppSchema, generateAppBreadcrumbSchema } from "@/lib/app-schemas";
 import AppDetailClient from "./app-detail-client";
@@ -108,6 +109,21 @@ export default function AppDetailPage({ params }: { params: { slug: string } }) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+
+      {app.id === "launcher" && (
+        <div className="container mx-auto px-4 pt-8 max-w-6xl">
+          <Card className="border-primary/20 bg-primary/5 p-4 md:p-6">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Launcher testimonials
+            </p>
+            <div className="grid gap-3 text-sm text-muted-foreground md:grid-cols-3">
+              <p>Cleaner home screen, faster access, and no clutter.</p>
+              <p>Feels quick on everyday phones and keeps distractions low.</p>
+              <p>Downloaded the APK and it immediately felt more focused and minimal.</p>
+            </div>
+          </Card>
+        </div>
+      )}
       
       <AppDetailClient app={app} />
     </>

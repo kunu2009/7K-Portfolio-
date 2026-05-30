@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import Link from "next/link";
 import { 
   ExternalLink, 
+  Download,
   Sparkles,
   Grid3x3,
   ArrowRight
@@ -30,7 +32,7 @@ const staggerContainer = {
 
 const AppStoreSection = () => {
   // Show only 4 specific featured apps on homepage
-  const featuredAppIds = ['life', '7kmoney', 'music', 'upsc'];
+  const featuredAppIds = ['launcher', 'life', '7kmoney', 'music', 'upsc'];
   const featuredApps = appsData.filter(app => featuredAppIds.includes(app.id));
   const totalAppsCount = appsData.length;
 
@@ -40,6 +42,23 @@ const AppStoreSection = () => {
     "7kmoney": "💰",
     music: "🎵",
     upsc: "📚"
+  };
+
+  const renderAppIcon = (appId: string, iconPath?: string) => {
+    if (iconPath?.startsWith("/")) {
+      return (
+        <Image
+          src={iconPath}
+          alt=""
+          width={64}
+          height={64}
+          className="h-14 w-14 rounded-2xl object-cover shadow-sm"
+          aria-hidden="true"
+        />
+      );
+    }
+
+    return <span>{appIcons[appId] || "📱"}</span>;
   };
 
   return (
@@ -119,7 +138,7 @@ const AppStoreSection = () => {
                   <CardHeader>
                     <div className="flex items-start justify-between mb-3">
                       <div className="text-5xl group-hover:scale-110 transition-transform">
-                        {appIcons[app.id] || app.icon || "📱"}
+                        {renderAppIcon(app.id, app.icon)}
                       </div>
                       <Badge variant="secondary" className="text-xs">
                         {app.category}
@@ -134,8 +153,12 @@ const AppStoreSection = () => {
                   <CardContent>
                     <a href={app.url} target="_blank" rel="noopener noreferrer">
                       <Button className="w-full rounded-full bg-gradient-to-r from-primary to-accent hover:opacity-90 group-hover:shadow-lg group-hover:shadow-primary/30 transition-all">
-                        Open App
-                        <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        {app.apkUrl || app.url.toLowerCase().endsWith('.apk') ? 'Download APK' : 'Open App'}
+                        {app.apkUrl || app.url.toLowerCase().endsWith('.apk') ? (
+                          <Download className="ml-2 h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+                        ) : (
+                          <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        )}
                       </Button>
                     </a>
                   </CardContent>

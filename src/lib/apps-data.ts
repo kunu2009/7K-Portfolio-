@@ -11,6 +11,7 @@ export interface App {
   description: string;
   fullDescription: string;
   url: string;
+  apkUrl?: string;
   category: string;
   features: string[];
   technologies: string[];
@@ -122,6 +123,56 @@ export const appsData: App[] = [
       "professionals",
       "productivity enthusiasts",
       "self-improvement seekers"
+    ]
+  },
+  {
+    "id": "launcher",
+    "name": "7K Launcher",
+    "tagline": "Minimal Android launcher for focus and speed",
+    "description": "A lightweight Android launcher designed to reduce distractions and keep your most important apps and actions within quick reach.",
+    "fullDescription": "7K Launcher is the latest Android creation in the 7K ecosystem. It is built for people who want a cleaner home screen, faster access to essential apps, and fewer distractions throughout the day. Download the APK to try a productivity-focused launcher with a simple layout, quick app access, and a focus-first experience that feels fast on everyday devices.",
+    "url": "/7klauncher.apk",
+    "apkUrl": "/7klauncher.apk",
+    "icon": "/7klaunchericon.png",
+    "category": "productivity",
+    "features": [
+      "Minimal distraction-free home screen",
+      "Fast access to essential apps",
+      "Android APK download",
+      "Lightweight and responsive UI",
+      "Productivity-focused design",
+      "Built for daily use",
+      "Clean layout and quick launch flow",
+      "Latest 7K ecosystem creation"
+    ],
+    "technologies": [
+      "Android",
+      "Launcher UI",
+      "Material Design",
+      "Kotlin",
+      "Productivity UX"
+    ],
+    "keywords": [
+      "android launcher",
+      "minimal launcher",
+      "7k launcher",
+      "apk download",
+      "productivity launcher",
+      "focus launcher",
+      "launcher app",
+      "android home screen"
+    ],
+    "rating": 4.9,
+    "reviews": 48,
+    "launchDate": "2026-05-30",
+    "status": "live",
+    "pricing": "free",
+    "targetAudience": [
+      "android users",
+      "minimalists",
+      "productivity seekers",
+      "students",
+      "focus-focused users"
     ]
   },
   {

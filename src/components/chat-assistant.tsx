@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent, useCallback, useMemo } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -73,22 +74,22 @@ const RobotEyes = ({ mood, isHovered, isBlinking, eyeOffset }: { mood: RobotMood
       case "stars":
         return (
           <>
-            <span className="text-[10px]">⭐</span>
-            <span className="text-[10px]">⭐</span>
+            <span className="text-[10px]">G��</span>
+            <span className="text-[10px]">G��</span>
           </>
         );
       case "hearts":
         return (
           <>
-            <span className="text-[10px]">❤️</span>
-            <span className="text-[10px]">❤️</span>
+            <span className="text-[10px]">G��n+�</span>
+            <span className="text-[10px]">G��n+�</span>
           </>
         );
       case "fire":
         return (
           <>
-            <span className="text-[10px]">🔥</span>
-            <span className="text-[10px]">🔥</span>
+            <span className="text-[10px]">=���</span>
+            <span className="text-[10px]">=���</span>
           </>
         );
       case "sunglasses":
@@ -227,7 +228,7 @@ const RobotMouth = ({ mood }: { mood: RobotMood }) => {
     case "smirk":
       return <div className="w-4 h-1 border-b-2 border-white rounded-br-full" />;
     case "zzz":
-      return <span className="text-[8px] text-white">💤</span>;
+      return <span className="text-[8px] text-white">=���</span>;
     default: // smile
       return <div className="w-4 h-2 border-b-2 border-white rounded-b-full" />;
   }
@@ -258,7 +259,29 @@ const RobotHand = ({ side, isWaving, isHovered }: { side: "left" | "right"; isWa
         animate={isWaving && isRight ? { rotate: [0, 20, -20, 20, 0] } : {}}
         transition={{ duration: 0.3, repeat: isWaving ? Infinity : 0 }}
       >
-        👋
+        =���
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const RobotBody = ({ mood, isHovered, isBlinking, eyeOffset, isWaving }: { mood: RobotMood; isHovered: boolean; isBlinking: boolean; eyeOffset: { x: number; y: number }; isWaving: boolean; }) => {
+  return (
+    <motion.div className="relative w-20 h-24">
+      <motion.div
+        className="relative mx-auto h-24 w-20"
+        animate={isHovered ? { y: [0, -4, 0] } : {}}
+        transition={{ duration: 0.8, repeat: Infinity }}
+      >
+        <Image
+          src="/portfolioredesginasssests/stan-mascot.avif"
+          alt="Stan mascot"
+          fill
+          sizes="80px"
+          className="object-contain drop-shadow-xl pointer-events-none select-none"
+          draggable={false}
+          priority
+        />
       </motion.div>
     </motion.div>
   );
@@ -268,121 +291,121 @@ const RobotHand = ({ side, isWaving, isHovered }: { side: "left" | "right"; isWa
 const SECTION_MESSAGES: Record<string, { messages: string[]; mood: RobotMood }> = {
   hero: {
     messages: [
-      "Welcome to Kunal's portfolio! 🎉",
-      "I'm Stan, your AI guide! 🤖",
-      "Scroll down to explore! ⬇️",
-      "Click me to learn more! 💬",
-      "Kunal is a student developer! 👨‍💻",
+      "Welcome to Kunal's portfolio! =���",
+      "I'm Stan, your AI guide! =���",
+      "Scroll down to explore! G��n+�",
+      "Click me to learn more! =�Ƽ",
+      "Kunal is a student developer! =��G��=��+",
     ],
     mood: "wave",
   },
   about: {
     messages: [
-      "This is Kunal! A student dev 👨‍💻",
-      "He builds amazing apps! 📱",
-      "Ask me about his skills! 💪",
-      "He knows 7+ languages! 🌐",
-      "Self-taught & passionate! 🔥",
+      "This is Kunal! A student dev =��G��=��+",
+      "He builds amazing apps! =���",
+      "Ask me about his skills! =�Ƭ",
+      "He knows 7+ languages! =���",
+      "Self-taught & passionate! =���",
     ],
     mood: "happy",
   },
   "app-store": {
     messages: [
-      "Welcome to the App Store! 📱",
-      "24+ FREE apps to explore! 🎁",
-      "Productivity, fitness & more! 🚀",
-      "All made with ❤️ by Kunal!",
-      "Click any app to try it! ✨",
-      "Filter by category! 🏷️",
+      "Welcome to the App Store! =���",
+      "24+ FREE apps to explore! =���",
+      "Productivity, fitness & more! =���",
+      "All made with G��n+� by Kunal!",
+      "Click any app to try it! G��",
+      "Filter by category! =��+n+�",
     ],
     mood: "excited",
   },
   services: {
     messages: [
-      "Need a website? I can help! 💻",
-      "Affordable prices for students! 💰",
-      "Click to get a FREE quote! 📝",
-      "WhatsApp for quick chat! 💬",
-      "Quality work guaranteed! ⭐",
+      "Need a website? I can help! =��+",
+      "Affordable prices for students! =�Ʀ",
+      "Click to get a FREE quote! =���",
+      "WhatsApp for quick chat! =�Ƽ",
+      "Quality work guaranteed! G��",
     ],
     mood: "cool",
   },
   projects: {
     messages: [
-      "Check out client projects! 🏆",
-      "Real work, real results! 🎨",
-      "Quality designs here! ✨",
-      "Want something similar? 🤔",
-      "Click to see details! 👀",
+      "Check out client projects! =���",
+      "Real work, real results! =�Ŀ",
+      "Quality designs here! G��",
+      "Want something similar? =���",
+      "Click to see details! =���",
     ],
     mood: "star",
   },
   writing: {
     messages: [
-      "Kunal writes books too! 📚",
-      "Free to read online! 📖",
-      "Fiction & non-fiction! ✍️",
-      "Check out the stories! 🌟",
-      "10+ books available! 📚",
+      "Kunal writes books too! =���",
+      "Free to read online! =���",
+      "Fiction & non-fiction! G��n+�",
+      "Check out the stories! =��",
+      "10+ books available! =���",
     ],
     mood: "thinking",
   },
   books: {
     messages: [
-      "Welcome to the library! 📚",
-      "All books are FREE! 🎁",
-      "Click any book to read! 📖",
-      "Kunal's literary world! ✨",
-      "Stories & insights! 🌟",
+      "Welcome to the library! =���",
+      "All books are FREE! =���",
+      "Click any book to read! =���",
+      "Kunal's literary world! G��",
+      "Stories & insights! =��",
     ],
     mood: "happy",
   },
   journey: {
     messages: [
-      "Kunal's journey timeline! 📅",
-      "From student to developer! 🚀",
-      "An inspiring story! 💫",
-      "Started coding young! 🌱",
-      "See his evolution! 📈",
+      "Kunal's journey timeline! =���",
+      "From student to developer! =���",
+      "An inspiring story! =�ƽ",
+      "Started coding young! =��",
+      "See his evolution! =���",
     ],
     mood: "star",
   },
   blog: {
     messages: [
-      "Tech articles & tutorials! 📝",
-      "Web dev insights! 💡",
-      "Student life tips! 🎓",
-      "Read and learn! 📚",
-      "Fresh content here! ✨",
+      "Tech articles & tutorials! =���",
+      "Web dev insights! =���",
+      "Student life tips! =���",
+      "Read and learn! =���",
+      "Fresh content here! G��",
     ],
     mood: "thinking",
   },
   support: {
     messages: [
-      "Support Kunal's work! ❤️",
-      "Every bit helps! 🙏",
-      "UPI available! 💳",
-      "Thank you for visiting! 🥰",
-      "Your support matters! 💖",
+      "Support Kunal's work! G��n+�",
+      "Every bit helps! =���",
+      "UPI available! =�Ʀ",
+      "Thank you for visiting! =�Ѧ",
+      "Your support matters! =���",
     ],
     mood: "love",
   },
   testimonials: {
     messages: [
-      "See what clients say! ⭐",
-      "Real reviews here! 💬",
-      "Happy customers! 😊",
-      "Quality work proven! 🏆",
-      "Trusted by many! 👥",
+      "See what clients say! G��",
+      "Real reviews here! =�Ƽ",
+      "Happy customers! =���",
+      "Quality work proven! =���",
+      "Trusted by many! =���",
     ],
     mood: "happy",
   },
   ecosystem: {
     messages: [
-      "The 7K Ecosystem! 🌐",
-      "Apps, books & more! 📱📚",
-      "All connected platforms! 🔗",
-      "Explore the universe! 🌟",
+      "The 7K Ecosystem! =���",
+      "Apps, books & more! =���=���",
+      "All connected platforms! =���",
+      "Explore the universe! =��",
     ],
     mood: "excited",
   },
@@ -395,43 +418,43 @@ const getPageWelcome = (path: string): { mood: RobotMood; message: string } => {
   const timeGreeting = getTimeGreeting();
   
   const baseWelcomes: Record<string, { mood: RobotMood; message: string }> = {
-    "/": { mood: timeMood as RobotMood, message: `${timeGreeting} Welcome to Kunal's world! 🌟` },
-    "/apps": { mood: "excited", message: "Welcome to the App Store! 📱 24+ FREE apps!" },
-    "/books": { mood: "happy", message: "Welcome to the library! 📚 Read for free!" },
-    "/blog": { mood: "thinking", message: "Ready for some reading? 📖 Check out the articles!" },
-    "/services": { mood: "cool", message: "Let's build something awesome! 💻" },
-    "/menu": { mood: "excited", message: "Check out our service menu! 🍽️" },
-    "/services/app-development": { mood: "fire", message: "App development services! 📱🔥" },
-    "/services/web-development": { mood: "fire", message: "Web development services! 💻🔥" },
+    "/": { mood: timeMood as RobotMood, message: `${timeGreeting} Welcome to Kunal's world! =��` },
+    "/apps": { mood: "excited", message: "Welcome to the App Store! =��� 24+ FREE apps!" },
+    "/books": { mood: "happy", message: "Welcome to the library! =��� Read for free!" },
+    "/blog": { mood: "thinking", message: "Ready for some reading? =��� Check out the articles!" },
+    "/services": { mood: "cool", message: "Let's build something awesome! =��+" },
+    "/menu": { mood: "excited", message: "Check out our service menu! =��+n+�" },
+    "/services/app-development": { mood: "fire", message: "App development services! =���=���" },
+    "/services/web-development": { mood: "fire", message: "Web development services! =��+=���" },
   };
   
   // Late night special messages
   if (timeOfDay === "late-night") {
     if (path === "/") {
-      return { mood: "sleeping", message: "Hey night owl! 🦉 Can't sleep? Let's explore!" };
+      return { mood: "sleeping", message: "Hey night owl! =��� Can't sleep? Let's explore!" };
     }
   }
   
   // Morning motivation
   if (timeOfDay === "morning") {
     if (path === "/apps") {
-      return { mood: "excited", message: "Good morning! ☀️ Start your day with 24+ FREE apps!" };
+      return { mood: "excited", message: "Good morning! G��n+� Start your day with 24+ FREE apps!" };
     }
   }
   
-  return baseWelcomes[path] || { mood: "wave", message: `${timeGreeting} 👋` };
+  return baseWelcomes[path] || { mood: "wave", message: `${timeGreeting} =���` };
 };
 
 // Legacy constant for backwards compatibility
 const PAGE_WELCOMES: Record<string, { mood: RobotMood; message: string }> = {
-  "/": { mood: "wave", message: "Hey! Welcome to Kunal's world! 🌟" },
-  "/apps": { mood: "excited", message: "Welcome to the App Store! 📱 24+ FREE apps!" },
-  "/books": { mood: "happy", message: "Welcome to the library! 📚 Read for free!" },
-  "/blog": { mood: "thinking", message: "Ready for some reading? 📖 Check out the articles!" },
-  "/services": { mood: "cool", message: "Let's build something awesome! 💻" },
-  "/menu": { mood: "excited", message: "Check out our service menu! 🍽️" },
-  "/services/app-development": { mood: "fire", message: "App development services! 📱🔥" },
-  "/services/web-development": { mood: "fire", message: "Web development services! 💻🔥" },
+  "/": { mood: "wave", message: "Hey! Welcome to Kunal's world! =��" },
+  "/apps": { mood: "excited", message: "Welcome to the App Store! =��� 24+ FREE apps!" },
+  "/books": { mood: "happy", message: "Welcome to the library! =��� Read for free!" },
+  "/blog": { mood: "thinking", message: "Ready for some reading? =��� Check out the articles!" },
+  "/services": { mood: "cool", message: "Let's build something awesome! =��+" },
+  "/menu": { mood: "excited", message: "Check out our service menu! =��+n+�" },
+  "/services/app-development": { mood: "fire", message: "App development services! =���=���" },
+  "/services/web-development": { mood: "fire", message: "Web development services! =��+=���" },
 };
 
 // First visit greeting sequence - time aware version
@@ -442,25 +465,25 @@ const getFirstVisitGreetings = () => {
   
   // Personalized first message if we know their name
   const firstMessage = profile.name 
-    ? `${timeGreeting} ${profile.name}! 👋`
-    : `${timeGreeting} First time? 👋`;
+    ? `${timeGreeting} ${profile.name}! =���`
+    : `${timeGreeting} First time? =���`;
   
   const greetings = [
     { message: firstMessage, mood: "wave" as RobotMood, delay: 1500 },
-    { message: "I'm Stan, Kunal's AI buddy! 🤖", mood: "happy" as RobotMood, delay: 3000 },
-    { message: "I'll help you explore! 🧭", mood: "excited" as RobotMood, delay: 3000 },
-    { message: "Scroll down or click me! 💬", mood: "wink" as RobotMood, delay: 3000 },
+    { message: "I'm Stan, Kunal's AI buddy! =���", mood: "happy" as RobotMood, delay: 3000 },
+    { message: "I'll help you explore! =���", mood: "excited" as RobotMood, delay: 3000 },
+    { message: "Scroll down or click me! =�Ƽ", mood: "wink" as RobotMood, delay: 3000 },
   ];
   
   // Late night special
   if (timeOfDay === "late-night") {
-    greetings[0] = { message: "Hey night owl! 🦉 Can't sleep?", mood: "sleeping" as RobotMood, delay: 1500 };
-    greetings[2] = { message: "Let me keep you company! 🌙", mood: "happy" as RobotMood, delay: 3000 };
+    greetings[0] = { message: "Hey night owl! =��� Can't sleep?", mood: "sleeping" as RobotMood, delay: 1500 };
+    greetings[2] = { message: "Let me keep you company! =���", mood: "happy" as RobotMood, delay: 3000 };
   }
   
   // Morning
   if (timeOfDay === "morning") {
-    greetings[0] = { message: "Good morning! ☀️ Early bird!", mood: "excited" as RobotMood, delay: 1500 };
+    greetings[0] = { message: "Good morning! G��n+� Early bird!", mood: "excited" as RobotMood, delay: 1500 };
   }
   
   return greetings;
@@ -468,19 +491,19 @@ const getFirstVisitGreetings = () => {
 
 // Legacy constant for backwards compatibility
 const FIRST_VISIT_GREETINGS = [
-  { message: "Hey there! First time? 👋", mood: "wave" as RobotMood, delay: 1500 },
-  { message: "I'm Stan, Kunal's AI buddy! 🤖", mood: "happy" as RobotMood, delay: 3000 },
-  { message: "I'll help you explore! 🧭", mood: "excited" as RobotMood, delay: 3000 },
-  { message: "Scroll down or click me! 💬", mood: "wink" as RobotMood, delay: 3000 },
+  { message: "Hey there! First time? =���", mood: "wave" as RobotMood, delay: 1500 },
+  { message: "I'm Stan, Kunal's AI buddy! =���", mood: "happy" as RobotMood, delay: 3000 },
+  { message: "I'll help you explore! =���", mood: "excited" as RobotMood, delay: 3000 },
+  { message: "Scroll down or click me! =�Ƽ", mood: "wink" as RobotMood, delay: 3000 },
 ];
 
 // Contact bar awareness messages
 const CONTACT_PROMPTS = [
-  "📞 Contact bar appeared!",
-  "⬇️ Click below to WhatsApp!",
-  "💬 Let's chat with Kunal!",
-  "📱 Quick contact available!",
-  "👇 Message him now!",
+  "=��P Contact bar appeared!",
+  "G��n+� Click below to WhatsApp!",
+  "=�Ƽ Let's chat with Kunal!",
+  "=��� Quick contact available!",
+  "=��� Message him now!",
 ];
 
 // Random idle thoughts - now includes proactive tips
@@ -489,24 +512,24 @@ const getIdleThought = () => {
   if (Math.random() < 0.3) {
     const tip = getProactiveTip();
     if (tip) {
-      return `💡 ${tip.message}`;
+      return `=��� ${tip.message}`;
     }
   }
   
   // Regular idle thoughts
   const thoughts = [
-    "Hmm... 🤔",
-    "What should I do? 🤖",
-    "*beep boop* 🔊",
-    "La la la~ 🎵",
-    "Still here! 👀",
-    "Waiting patiently... ⏳",
-    "You're awesome! 🌟",
-    "*does a little dance* 💃",
-    "Exploring around! 🗺️",
-    "*zoom zoom* 🏃",
-    "Hello? Anyone there? 👋",
-    "*spins around* 🌀",
+    "Hmm... =���",
+    "What should I do? =���",
+    "*beep boop* =���",
+    "La la la~ =�Ħ",
+    "Still here! =���",
+    "Waiting patiently... GŦ",
+    "You're awesome! =��",
+    "*does a little dance* =���",
+    "Exploring around! =���n+�",
+    "*zoom zoom* =���",
+    "Hello? Anyone there? =���",
+    "*spins around* =���",
   ];
   
   return thoughts[Math.floor(Math.random() * thoughts.length)];
@@ -514,27 +537,27 @@ const getIdleThought = () => {
 
 // Legacy constant for backwards compatibility
 const IDLE_THOUGHTS = [
-  "Hmm... 🤔",
-  "What should I do? 🤖",
-  "*beep boop* 🔊",
-  "La la la~ 🎵",
-  "Still here! 👀",
-  "Waiting patiently... ⏳",
-  "You're awesome! 🌟",
-  "*does a little dance* 💃",
-  "Exploring around! 🗺️",
-  "*zoom zoom* 🏃",
-  "Hello? Anyone there? 👋",
-  "*spins around* 🌀",
+  "Hmm... =���",
+  "What should I do? =���",
+  "*beep boop* =���",
+  "La la la~ =�Ħ",
+  "Still here! =���",
+  "Waiting patiently... GŦ",
+  "You're awesome! =��",
+  "*does a little dance* =���",
+  "Exploring around! =���n+�",
+  "*zoom zoom* =���",
+  "Hello? Anyone there? =���",
+  "*spins around* =���",
 ];
 
 // Robot tricks/actions
 const ROBOT_TRICKS = [
-  { name: "spin", message: "*spins!* 🌀" },
-  { name: "jump", message: "*boing!* 🦘" },
-  { name: "dance", message: "*dancing!* 💃" },
-  { name: "wave", message: "*waves hello!* 👋" },
-  { name: "flip", message: "*backflip!* 🤸" },
+  { name: "spin", message: "*spins!* =���" },
+  { name: "jump", message: "*boing!* =���" },
+  { name: "dance", message: "*dancing!* =���" },
+  { name: "wave", message: "*waves hello!* =���" },
+  { name: "flip", message: "*backflip!* =��+" },
 ];
 
 export function ChatAssistant() {
@@ -900,15 +923,15 @@ export function ChatAssistant() {
     
     // Interaction targets on the page - with data attributes for better targeting
     const interactionTargets = [
-      { selector: "[data-robot-interact='title'], h1", action: "read", message: "Ooh, big title! 📖", mood: "excited" as RobotMood },
-      { selector: "[data-name='kunal'], [data-name]", action: "wave", message: "Hey Kunal! 👋", mood: "wave" as RobotMood },
-      { selector: "[data-highlight='ecosystem']", action: "point", message: "7K Ecosystem! 🌟", mood: "star" as RobotMood },
-      { selector: "[data-robot-interact='cta']", action: "point", message: "Click this! 👆", mood: "happy" as RobotMood },
-      { selector: "img[alt*='react'], img[alt*='React'], [data-tech='react']", action: "spin", message: "React goes brrr! ⚛️", mood: "excited" as RobotMood },
-      { selector: ".tech-icon, [data-tech]", action: "poke", message: "Cool tech! 💻", mood: "cool" as RobotMood },
-      { selector: "[data-app], .app-card", action: "examine", message: "Nice app! 📱", mood: "star" as RobotMood },
-      { selector: "a[href*='github']", action: "code", message: "GitHub! 🐙", mood: "cool" as RobotMood },
-      { selector: ".book-card, [data-book]", action: "read", message: "A book! 📚", mood: "thinking" as RobotMood },
+      { selector: "[data-robot-interact='title'], h1", action: "read", message: "Ooh, big title! =���", mood: "excited" as RobotMood },
+      { selector: "[data-name='kunal'], [data-name]", action: "wave", message: "Hey Kunal! =���", mood: "wave" as RobotMood },
+      { selector: "[data-highlight='ecosystem']", action: "point", message: "7K Ecosystem! =��", mood: "star" as RobotMood },
+      { selector: "[data-robot-interact='cta']", action: "point", message: "Click this! =���", mood: "happy" as RobotMood },
+      { selector: "img[alt*='react'], img[alt*='React'], [data-tech='react']", action: "spin", message: "React goes brrr! Gܢn+�", mood: "excited" as RobotMood },
+      { selector: ".tech-icon, [data-tech]", action: "poke", message: "Cool tech! =��+", mood: "cool" as RobotMood },
+      { selector: "[data-app], .app-card", action: "examine", message: "Nice app! =���", mood: "star" as RobotMood },
+      { selector: "a[href*='github']", action: "code", message: "GitHub! =���", mood: "cool" as RobotMood },
+      { selector: ".book-card, [data-book]", action: "read", message: "A book! =���", mood: "thinking" as RobotMood },
     ];
     
     const interactWithElement = () => {
@@ -1065,7 +1088,7 @@ export function ChatAssistant() {
       if (Math.random() > 0.8 && !isHovered && !isDragging && !isInteracting) {
         setIsWaving(true);
         setRobotMood("wave");
-        setRobotMessage("Hey! 👋");
+        setRobotMessage("Hey! =���");
         setShowMessage(true);
         
         setTimeout(() => {
@@ -1162,7 +1185,7 @@ export function ChatAssistant() {
       clearTimeout(idleTimeoutRef.current);
       if (robotMood === "sleeping") {
         setRobotMood("surprised");
-        setRobotMessage("Oh! You're back! 👀");
+        setRobotMessage("Oh! You're back! =���");
         setShowMessage(true);
         
         robotControls.start({
@@ -1179,7 +1202,7 @@ export function ChatAssistant() {
       idleTimeoutRef.current = setTimeout(() => {
         if (!isOpen && !isHovered) {
           setRobotMood("sleeping");
-          setRobotMessage("💤 zzz...");
+          setRobotMessage("=��� zzz...");
           setShowMessage(true);
         }
       }, 60000); // Sleep after 60s idle
@@ -1208,22 +1231,22 @@ export function ChatAssistant() {
     
     // Context-aware hover messages
     const contextMessages: Record<string, string> = {
-      hero: "Ask me anything about Kunal! 🤖",
-      about: "Want to know more about him? 💬",
-      "app-store": "Need app recommendations? 📱",
-      services: "Get a FREE quote! Just ask! 💰",
-      projects: "Like what you see? Let's talk! 🎨",
-      writing: "Want book suggestions? 📚",
-      books: "Looking for something to read? 📖",
-      journey: "Curious about Kunal's story? 📅",
-      blog: "Any questions about the posts? 💡",
-      support: "Want to support Kunal? ❤️",
-      testimonials: "Want to leave a review? ⭐",
-      ecosystem: "Explore the 7K universe! 🌐",
+      hero: "Ask me anything about Kunal! =���",
+      about: "Want to know more about him? =�Ƽ",
+      "app-store": "Need app recommendations? =���",
+      services: "Get a FREE quote! Just ask! =�Ʀ",
+      projects: "Like what you see? Let's talk! =�Ŀ",
+      writing: "Want book suggestions? =���",
+      books: "Looking for something to read? =���",
+      journey: "Curious about Kunal's story? =���",
+      blog: "Any questions about the posts? =���",
+      support: "Want to support Kunal? G��n+�",
+      testimonials: "Want to leave a review? G��",
+      ecosystem: "Explore the 7K universe! =���",
     };
     
     setRobotMood("excited");
-    setRobotMessage(contextMessages[currentSection] || "Click me to chat! 🎉");
+    setRobotMessage(contextMessages[currentSection] || "Click me to chat! =���");
     setShowMessage(true);
     
     // BIG excited animation
@@ -1354,7 +1377,7 @@ export function ChatAssistant() {
             setIsDragging(false);
             setRobotPosition({ x: info.offset.x, y: info.offset.y });
             setRobotMood("happy");
-            setRobotMessage("That was fun! 🎢");
+            setRobotMessage("That was fun! =���");
             setShowMessage(true);
             setTimeout(() => setShowMessage(false), 2000);
           }}
@@ -1370,17 +1393,17 @@ export function ChatAssistant() {
               const newCount = prev + 1;
               if (newCount === 3) {
                 setRobotMood("happy");
-                setRobotMessage("Hehe! 😄");
+                setRobotMessage("Hehe! =���");
                 setShowMessage(true);
                 setTimeout(() => setShowMessage(false), 1500);
               } else if (newCount === 5) {
                 setRobotMood("love");
-                setRobotMessage("💕");
+                setRobotMessage("=���");
                 setShowMessage(true);
                 setTimeout(() => setShowMessage(false), 1500);
               } else if (newCount >= 8) {
                 setRobotMood("surprised");
-                setRobotMessage("😅");
+                setRobotMessage("=���");
                 setShowMessage(true);
                 setTimeout(() => setShowMessage(false), 1500);
                 return 0; // Reset
@@ -1441,214 +1464,26 @@ export function ChatAssistant() {
               />
               
               {/* Render different mascot bodies based on selection */}
-              {currentMascot !== "robot" ? (
-                <MascotBody
-                  mascotType={currentMascot}
-                  mood={robotMood}
-                  isHovered={isHovered}
-                  isBlinking={isBlinking}
-                  eyeOffset={eyeOffset}
-                  isWaving={isWaving}
-                  isDragging={isDragging}
-                  isJumping={isJumping}
-                />
-              ) : (
-              <>
-              {/* Robot Head */}
-              <motion.div
-                className="relative w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary via-purple-500 to-accent flex flex-col items-center justify-center shadow-2xl border-2 border-white/30"
-                style={{
-                  boxShadow: isHovered 
-                    ? "0 0 30px rgba(var(--primary), 0.6), 0 10px 40px rgba(0,0,0,0.3)" 
-                    : "0 0 20px rgba(var(--primary), 0.3), 0 5px 20px rgba(0,0,0,0.2)"
-                }}
-                animate={{
-                  rotateZ: scrollDirection === "up" ? -5 : scrollDirection === "down" ? 5 : 0,
-                  rotateY: eyeOffset.x * 2,
-                }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                {/* Screen/Face area */}
-                <div className="w-12 h-8 bg-gray-900/80 rounded-lg flex flex-col items-center justify-center gap-1 border border-white/10">
-                  {/* Eyes */}
-                  <RobotEyes mood={robotMood} isHovered={isHovered} isBlinking={isBlinking} eyeOffset={eyeOffset} />
-                  {/* Mouth */}
-                  <RobotMouth mood={robotMood} />
-                </div>
-                
-                {/* Cheek lights - glow more when hovered */}
-                <motion.div 
-                  className="absolute left-1.5 top-1/2 w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isHovered ? "#f472b6" : "#f9a8d4" }}
-                  animate={{ 
-                    opacity: [0.6, 1, 0.6],
-                    scale: isHovered ? [1, 1.3, 1] : [1, 1.1, 1],
-                    boxShadow: isHovered 
-                      ? ["0 0 5px #f472b6", "0 0 15px #f472b6", "0 0 5px #f472b6"]
-                      : ["0 0 3px #f9a8d4", "0 0 8px #f9a8d4", "0 0 3px #f9a8d4"]
-                  }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-                <motion.div 
-                  className="absolute right-1.5 top-1/2 w-2 h-2 rounded-full"
-                  style={{ backgroundColor: isHovered ? "#f472b6" : "#f9a8d4" }}
-                  animate={{ 
-                    opacity: [0.6, 1, 0.6],
-                    scale: isHovered ? [1, 1.3, 1] : [1, 1.1, 1],
-                    boxShadow: isHovered 
-                      ? ["0 0 5px #f472b6", "0 0 15px #f472b6", "0 0 5px #f472b6"]
-                      : ["0 0 3px #f9a8d4", "0 0 8px #f9a8d4", "0 0 3px #f9a8d4"]
-                  }}
-                  transition={{ duration: 1, repeat: Infinity, delay: 0.3 }}
-                />
-                
-                {/* Antenna */}
-                <motion.div 
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 w-1.5 h-5 bg-gradient-to-t from-primary to-accent rounded-full"
-                  animate={{ 
-                    rotate: isHovered ? [0, -20, 20, -10, 0] : [0, -5, 5, 0],
-                  }}
-                  transition={{ duration: isHovered ? 0.5 : 2, repeat: isHovered ? 0 : Infinity }}
-                >
-                  {/* Antenna ball */}
-                  <motion.div 
-                    className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full"
-                    style={{
-                      background: isHovered 
-                        ? "radial-gradient(circle, #00FF88, #FFD700)" 
-                        : "radial-gradient(circle, #FFD700, #FF6B6B)",
-                      boxShadow: isHovered 
-                        ? "0 0 20px #00FF88, 0 0 35px #FFD700" 
-                        : "0 0 15px #FFD700, 0 0 25px #FF6B6B",
-                    }}
-                    animate={{ 
-                      scale: isHovered ? [1, 1.5, 1] : [1, 1.3, 1],
-                      opacity: [0.8, 1, 0.8],
-                    }}
-                    transition={{ duration: isHovered ? 0.5 : 1, repeat: Infinity }}
+                {currentMascot === "robot" ? (
+                  <RobotBody
+                    mood={robotMood}
+                    isHovered={isHovered}
+                    isBlinking={isBlinking}
+                    eyeOffset={eyeOffset}
+                    isWaving={isWaving}
                   />
-                </motion.div>
-                
-                {/* Side panels (ears) - animate on hover */}
-                <motion.div 
-                  className="absolute -left-1.5 top-3 w-1.5 h-4 bg-gradient-to-b from-accent to-primary rounded-l-full"
-                  animate={isHovered ? { 
-                    rotate: [-10, 10, -10],
-                    scaleY: [1, 1.2, 1],
-                  } : { rotate: [0, -5, 0] }}
-                  transition={{ duration: isHovered ? 0.3 : 2, repeat: Infinity }}
-                />
-                <motion.div 
-                  className="absolute -right-1.5 top-3 w-1.5 h-4 bg-gradient-to-b from-accent to-primary rounded-r-full"
-                  animate={isHovered ? { 
-                    rotate: [10, -10, 10],
-                    scaleY: [1, 1.2, 1],
-                  } : { rotate: [0, 5, 0] }}
-                  transition={{ duration: isHovered ? 0.3 : 2, repeat: Infinity, delay: 0.1 }}
-                />
-              </motion.div>
-              
-              {/* Robot Body (small) */}
-              <motion.div
-                className="relative w-10 h-6 mx-auto -mt-1 rounded-b-xl bg-gradient-to-b from-primary to-purple-600 border-2 border-t-0 border-white/20"
-                animate={isDragging ? { scaleX: [1, 0.9, 1.1, 1] } : {}}
-                transition={{ duration: 0.3, repeat: isDragging ? Infinity : 0 }}
-              >
-                {/* Chest light */}
-                <motion.div
-                  className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400"
-                  animate={{ 
-                    opacity: [0.6, 1, 0.6],
-                    boxShadow: [
-                      "0 0 5px #22d3ee",
-                      "0 0 15px #22d3ee, 0 0 25px #22d3ee",
-                      "0 0 5px #22d3ee"
-                    ]
-                  }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-                
-                {/* "STAN" label */}
-                <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 text-[6px] font-bold text-white/80 tracking-wider">
-                  STAN
-                </div>
-              </motion.div>
-              
-              {/* Robot Feet - cute dangling feet */}
-              <div className="flex justify-center gap-3 -mt-0.5">
-                <motion.div
-                  className="w-3 h-4 bg-gradient-to-b from-primary to-purple-700 rounded-b-lg border border-t-0 border-white/20"
-                  animate={{
-                    rotate: isHovered ? [-5, 5, -5] : [0, 3, -3, 0],
-                    y: isJumping ? [-10, 0] : [0, 2, 0],
-                  }}
-                  transition={{ duration: isHovered ? 0.5 : 1, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                  className="w-3 h-4 bg-gradient-to-b from-primary to-purple-700 rounded-b-lg border border-t-0 border-white/20"
-                  animate={{
-                    rotate: isHovered ? [5, -5, 5] : [0, -3, 3, 0],
-                    y: isJumping ? [-10, 0] : [0, 2, 0],
-                  }}
-                  transition={{ duration: isHovered ? 0.5 : 1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                />
-              </div>
-              
-              {/* Arms/Hands */}
-              <RobotHand side="left" isWaving={false} isHovered={isHovered} />
-              <RobotHand side="right" isWaving={isWaving || robotMood === "wave"} isHovered={isHovered} />
-              
-              {/* Hover sparkles */}
-              {isHovered && (
-                <>
-                  <motion.div
-                    className="absolute -top-1 -left-1 text-xs"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    ✨
-                  </motion.div>
-                  <motion.div
-                    className="absolute -top-1 -right-1 text-xs"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1, rotate: -360 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    ✨
-                  </motion.div>
-                  <motion.div
-                    className="absolute top-1/2 -left-3 text-xs"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
-                  >
-                    💫
-                  </motion.div>
-                </>
-              )}
-              
-              {/* Glowing ring */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl border-2 border-primary/40 -m-2"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.4, 0.2, 0.4],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              
-              {/* Shadow under robot for depth */}
-              <motion.div
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-3 bg-black/20 rounded-full blur-sm"
-                animate={{
-                  scaleX: isHovered ? 1.3 : isJumping ? 0.5 : [1, 1.1, 1],
-                  opacity: isJumping ? 0.1 : isHovered ? 0.4 : 0.25,
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              </>
-              )}
+                ) : (
+                  <MascotBody
+                    mascotType={currentMascot}
+                    mood={robotMood}
+                    isHovered={isHovered}
+                    isBlinking={isBlinking}
+                    eyeOffset={eyeOffset}
+                    isWaving={isWaving}
+                    isDragging={isDragging}
+                    isJumping={isJumping}
+                  />
+                )}
             </motion.div>
             
             {/* Speech bubble - ALWAYS visible above robot */}
@@ -1686,7 +1521,7 @@ export function ChatAssistant() {
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <span className="text-[10px]">💤</span>
+                <span className="text-[10px]">=���</span>
               </motion.div>
             )}
             
@@ -1697,7 +1532,7 @@ export function ChatAssistant() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2 }}
             >
-              {currentSection === "hero" ? "👆 Scroll!" : `📍 ${currentSection.replace("-", " ")}`}
+              {currentSection === "hero" ? "=��� Scroll!" : `=��� ${currentSection.replace("-", " ")}`}
             </motion.div>
             
             {/* Chat button - separate from robot */}
@@ -1752,7 +1587,7 @@ export function ChatAssistant() {
                     {/* Follow-up questions */}
                     {message.role === "assistant" && message.followUpQuestions && message.followUpQuestions.length > 0 && (
                       <div className="flex flex-col gap-1.5 mt-1">
-                        <p className="text-xs text-muted-foreground px-1">💡 You might also want to know:</p>
+                        <p className="text-xs text-muted-foreground px-1">=��� You might also want to know:</p>
                         <div className="flex flex-wrap gap-1.5">
                           {message.followUpQuestions.map((question, i) => (
                             <button

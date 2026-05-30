@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import { 
   Search, 
   Star, 
@@ -32,6 +33,7 @@ import {
   Languages,
   Lightbulb,
   Music,
+  Smartphone,
   PenTool,
   PieChart,
   Pin,
@@ -72,6 +74,7 @@ const getAppIcon = (appId: string) => {
     'relife': Activity,                // ReLife - Life management
     'upsc': Scale,                     // UPSC - Law/exam prep
     'music': Music,                    // Music - Streaming
+    'launcher': Smartphone,            // Launcher - Android home screen
     'learn': GraduationCap,            // Learning platform
     'creative': Camera,                // Creative tools
     'write': PenTool,                  // Writing tools
@@ -114,6 +117,37 @@ export default function AppsIndexClient() {
     entertainment: "🎮",
     creative: "🎨",
     social: "💬",
+  };
+
+  const renderAppIcon = (appId: string, iconPath?: string) => {
+    if (appId === "launcher") {
+      return (
+        <Image
+          src="/7klaunchericon.png"
+          alt=""
+          width={64}
+          height={64}
+          className="h-8 w-8 rounded-xl object-cover"
+          aria-hidden="true"
+        />
+      );
+    }
+
+    if (iconPath?.startsWith("/")) {
+      return (
+        <Image
+          src={iconPath}
+          alt=""
+          width={64}
+          height={64}
+          className="h-8 w-8 rounded-xl object-cover"
+          aria-hidden="true"
+        />
+      );
+    }
+
+    const IconComponent = getAppIcon(appId);
+    return <IconComponent className="h-8 w-8 text-primary" />;
   };
 
   return (
@@ -247,7 +281,6 @@ export default function AppsIndexClient() {
         {/* Apps Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredApps.map((app, index) => {
-            const IconComponent = getAppIcon(app.id);
             return (
             <motion.div
               key={app.id}
@@ -259,7 +292,17 @@ export default function AppsIndexClient() {
                 <Card className="h-full p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
                   {/* App Icon */}
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <IconComponent className="h-8 w-8 text-primary" />
+                    {app.id === "launcher" ? (
+                      <Image
+                        src="/7klaunchericon.png"
+                        alt="7K Launcher icon"
+                        width={64}
+                        height={64}
+                        className="h-8 w-8 rounded-xl object-cover"
+                      />
+                    ) : (
+                      renderAppIcon(app.id, app.icon)
+                    )}
                   </div>
 
                   {/* App Name */}
@@ -302,6 +345,11 @@ export default function AppsIndexClient() {
                     <Badge variant="outline" className="text-xs capitalize">
                       {app.pricing}
                     </Badge>
+                    {(app.apkUrl || app.url.toLowerCase().endsWith('.apk')) && (
+                      <Badge variant="secondary" className="text-xs">
+                        Android APK
+                      </Badge>
+                    )}
                   </div>
 
                   {/* View Details Link */}

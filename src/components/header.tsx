@@ -7,7 +7,6 @@ import { Menu, Settings, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./theme-toggle";
 
 const navItems = [
   { href: "/story#about", label: "About" },
@@ -59,7 +58,6 @@ const Header = () => {
               </Button>
             ))}
           </nav>
-           <ThemeToggle />
            <Button variant="ghost" size="icon" asChild>
               <Link href="/settings">
                 <Settings className="h-5 w-5" />
@@ -89,7 +87,6 @@ const Header = () => {
                       <span className="text-lg font-bold font-headline text-primary">7K</span>
                       <span className="font-bold font-headline">Ecosystem</span>
                    </Link>
-                   <ThemeToggle />
                 </div>
                 <nav className="flex flex-col gap-4 p-4">
                   {navItems.map((item) => (

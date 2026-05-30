@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Github, Linkedin, Mail, Heart, ArrowUp, Instagram, Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { SITE_CONFIG, NAVIGATION, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -88,18 +89,24 @@ const Footer = () => {
                 7K LawPrep
               </Link>
               <Link
-                href="https://7-k-polyglot.vercel.app/"
+                href="https://music.7kc.me"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 target="_blank"
               >
-                7K Polyglot
+                7K Music
               </Link>
               <Link
-                href="https://7-k-itihaas.vercel.app/"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                target="_blank"
+                href="/apps/launcher"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                7K Itihaas
+                <Image
+                  src="/7klaunchericon.png"
+                  alt="7K Launcher icon"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 rounded-md object-cover"
+                />
+                7K Launcher
               </Link>
             </nav>
           </div>
@@ -133,7 +140,7 @@ const Footer = () => {
               Built with <Heart className="inline h-4 w-4 text-red-500 fill-red-500 animate-pulse" /> by {SITE_CONFIG.author.name}
             </p>
             <p className="text-sm text-muted-foreground italic">
-              A 12th-grade student who loves code, chess, and building things that help people.
+              A FYBA student who loves code, chess, and building things that help people.
             </p>
             <p className="text-sm font-medium text-primary">
               Thanks for visiting. Really. 🙏

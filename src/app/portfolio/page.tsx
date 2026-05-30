@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { 
-  Terminal, 
-  Smartphone, 
-  Gamepad2, 
-  ImageIcon, 
+import {
+  Terminal,
+  Smartphone,
+  Gamepad2,
+  Image,
   BookOpen,
   ExternalLink,
   Code2,
@@ -26,7 +26,7 @@ import {
   Newspaper,
   Rocket,
   ArrowLeft,
-  Filter
+  Filter,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -72,7 +72,7 @@ const portfolioVariations = [
     id: "slider",
     title: "Slider Portfolio",
     description: "Elegant full-screen slides with smooth transitions and modern design.",
-    icon: ImageIcon,
+    icon: Image,
     color: "from-orange-500 to-red-500",
     tags: ["Modern", "Slides", "Elegant"],
     url: "/slider",

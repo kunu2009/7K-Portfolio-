@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/seo';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -35,10 +36,19 @@ export async function generateMetadata({
   return {
     title: `${post.title} - Blog`,
     description: post.description,
+    keywords: [
+      post.title,
+      post.category,
+      'web development blog',
+      'SEO blog',
+      'app building insights',
+      '7K blog',
+    ],
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
+      url: `https://7kc.me/blog/${slug}`,
       publishedTime: post.date,
       authors: [post.author],
       images: [
@@ -47,6 +57,27 @@ export async function generateMetadata({
           alt: post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [post.image],
+      creator: '@kunal7k',
+    },
+    alternates: {
+      canonical: `https://7kc.me/blog/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
@@ -66,8 +97,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return `${minutes} min read`;
   };
 
+  const articleSchema = generateArticleSchema({
+    title: post.title,
+    description: post.description,
+    image: post.image,
+    datePublished: post.date,
+    author: post.author,
+    url: `https://7kc.me/blog/${slug}`,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://7kc.me' },
+    { name: 'Blog', url: 'https://7kc.me/blog' },
+    { name: post.title, url: `https://7kc.me/blog/${slug}` },
+  ]);
+
   return (
     <main className="min-h-screen bg-background py-20 px-4">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <article className="container mx-auto max-w-4xl">
         {/* Back Button */}
         <Link

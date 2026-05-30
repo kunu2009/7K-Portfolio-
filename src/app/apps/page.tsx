@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import AppsIndexClient from "./apps-index-client";
 import type { Metadata } from "next";
 
@@ -54,5 +57,41 @@ export const metadata: Metadata = {
 };
 
 export default function AppsPage() {
-  return <AppsIndexClient />;
+  return (
+    <>
+      <section className="border-b border-border bg-gradient-to-br from-primary/10 via-background to-accent/10">
+        <div className="container mx-auto flex flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-4">
+            <Image
+              src="/7klaunchericon.png"
+              alt="7K Launcher icon"
+              width={72}
+              height={72}
+              className="h-18 w-18 rounded-2xl border border-border object-cover shadow-lg"
+            />
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+                New Android App
+              </p>
+              <h2 className="text-2xl font-bold md:text-3xl">7K Launcher</h2>
+              <p className="max-w-2xl text-sm text-muted-foreground md:text-base">
+                Minimal Android launcher for focus and speed. Download the APK or open the app card for full details.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/apps/launcher">Open app card</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="/7klauncher.apk" download>
+                Download APK
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+      <AppsIndexClient />
+    </>
+  );
 }

@@ -6,7 +6,6 @@ import { Menu, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./theme-toggle";
 import { NAVIGATION } from "@/lib/constants";
 
 const Header = () => {
@@ -65,7 +64,6 @@ const Header = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
           <Button
             variant="outline"
             size="sm"
@@ -88,7 +86,6 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div className="flex md:hidden items-center gap-2">
-          <ThemeToggle />
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open navigation menu">

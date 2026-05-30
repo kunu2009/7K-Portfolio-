@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { MascotType, getMascotConfig } from "./mascot-store";
 
 interface MascotBodyProps {
@@ -877,9 +878,30 @@ const DragonBody = ({ isHovered, isBlinking, eyeOffset, isWaving }: MascotBodyPr
   );
 };
 
+// Stan Mascot Body
+const StanBody = () => {
+  return (
+    <motion.div className="relative w-20 h-24">
+      <div className="relative w-20 h-24">
+        <Image
+          src="/portfolioredesginasssests/stan-mascot.avif"
+          alt="Stan mascot"
+          fill
+          sizes="80px"
+          className="object-contain drop-shadow-xl pointer-events-none select-none"
+          draggable={false}
+          priority
+        />
+      </div>
+    </motion.div>
+  );
+};
+
 // Main component that renders the appropriate mascot
 export function MascotBody(props: MascotBodyProps) {
   switch (props.mascotType) {
+    case "stan":
+      return <StanBody />;
     case "cat":
       return <CatBody {...props} />;
     case "dog":

@@ -25,8 +25,8 @@
     --ring: 20 14.3% 4.1%;
     --radius: 0.5rem;
     
-    /* Force color scheme to prevent dark mode extensions from breaking */
-    color-scheme: light dark;
+    /* Force light color scheme to prevent system dark mode overrides */
+    color-scheme: light;
   }
 
   .dark {
@@ -55,16 +55,9 @@
   }
   
   /* Protect against dark mode extensions by using !important on key colors */
-  html {
-    color-scheme: light dark;
-  }
-  
-  html.dark {
-    color-scheme: dark;
-  }
-  
-  /* Force our colors even when extensions try to override */
+  html,
   body {
+    color-scheme: light !important;
     background-color: hsl(var(--background)) !important;
     color: hsl(var(--foreground)) !important;
   }

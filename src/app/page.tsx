@@ -2,8 +2,8 @@ import HomePage from '@/components/home-page';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Kunal Chheda - Best Free Productivity Apps, Fitness Tracker & Learning Tools | 7K Ecosystem',
-  description: 'Discover 20+ best free apps by Kunal Chheda (Kunal Paresh Chheda) - student developer from Mumbai, India. Free productivity tools, habit tracker, fitness app, task manager, language learning, finance tracker. No subscriptions, completely free!',
+  title: 'Kunal Chheda - Portfolio, Apps, Books, Services & Templates | 7K Ecosystem',
+  description: 'Explore a curated 7K ecosystem with SEO-focused apps, books, services, templates, and products organized into clear sections. Built by Kunal Chheda from India.',
   keywords: [
     // Most searched generic terms
     'best productivity app',
@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     'top productivity apps 2025',
     'fitness apps 2025',
     'free web apps 2025',
+    'digital services India',
+    'SEO services India',
+    'website templates',
+    'online books',
+    'app directory',
     
     // Location-based
     'productivity apps India',
@@ -49,8 +54,8 @@ export const metadata: Metadata = {
     '7K apps',
   ],
   openGraph: {
-    title: 'Best Free Productivity, Fitness & Learning Apps | 7K Ecosystem',
-    description: '20+ free apps for productivity, fitness tracking, habit building, language learning & more. No subscriptions. Completely free tools for everyone.',
+    title: 'Kunal Chheda - Portfolio, Apps, Books, Services & Templates | 7K Ecosystem',
+    description: 'A curated ecosystem for apps, books, services, templates, and more - organized for better discovery.',
     type: 'website',
     url: 'https://7kc.me',
     siteName: '7K Ecosystem - Free Apps',
@@ -65,8 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Free Productivity & Fitness Apps - 7K Ecosystem',
-    description: '20+ free apps: habit tracker, fitness tracker, task manager, language learning & more!',
+    title: 'Kunal Chheda - Portfolio, Apps, Books, Services & Templates | 7K Ecosystem',
+    description: 'A curated ecosystem for apps, books, services, templates, and more.',
     images: ['/og-image.png'],
     creator: '@kunal7k',
   },
