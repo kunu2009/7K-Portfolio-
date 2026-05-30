@@ -74,10 +74,7 @@ export default function VercelAppShowcase() {
   };
 
   // Pinned favorites for the first slide:
-  // - 7K Launcher (matches 'launcher' or '7kphonelauncher')
-  // - 7K LawPrep (matches 'lawprep' or 'foryou')
-  // - 7K Music (matches 'music' or '7k-music')
-  // - 7K Life (matches 'life' or 'relife')
+  // - 7K Launcher, Life, LawPrep, Music, MHCET, CommandCenter, Studio
   const carouselSlides = useMemo(() => {
     // 1. Get all available apps from Vercel + Fallbacks from appsData
     let allApps: VercelProject[] = [];
@@ -112,55 +109,99 @@ export default function VercelAppShowcase() {
       return null;
     };
 
-    const pinnedLauncher = findAndRemove(["7kphonelauncher", "launcher"]) || {
+    const pinnedLauncher = findAndRemove(["launcher", "7klauncher"]) || {
       id: "7k-launcher",
       name: "7K Launcher",
       framework: "react",
-      url: "https://github.com/kunu2009",
+      url: "/apps/launcher",
       aliases: [],
       description: "A minimal, productivity-focused Android launcher to reduce distractions.",
       updatedAt: Date.now(),
       status: "READY"
     };
 
-    const pinnedLawprep = findAndRemove(["7klawprep", "lawprep", "foryou"]) || {
-      id: "7k-lawprep",
-      name: "7K LawPrep",
-      framework: "nextjs",
-      url: "https://7-klawprep-i1rd7wyj2-kunu2009s-projects.vercel.app/",
-      aliases: [],
-      description: "Comprehensive law entrance exam prep (CLAT/MHCET) tools, mock tests and resources.",
-      updatedAt: Date.now(),
-      status: "READY"
-    };
-
-    const pinnedMusic = findAndRemove(["7k-music", "music"]) || {
-      id: "7k-music",
-      name: "7K Music",
-      framework: "nextjs",
-      url: "https://github.com/kunu2009",
-      aliases: [],
-      description: "Your personalized audio escape, streaming pure focus and relaxation beats.",
-      updatedAt: Date.now(),
-      status: "READY"
-    };
-
-    const pinnedLife = findAndRemove(["life", "relife"]) || {
+    const pinnedLife = findAndRemove(["7klife", "life", "relife"]) || {
       id: "7k-life",
       name: "7K Life",
       framework: "nextjs",
-      url: "https://7-klife-newsss-i4g90c00y-kunu2009s-projects.vercel.app/",
+      url: "https://life.7kc.me",
       aliases: [],
       description: "Central life management system tracking habits, tasks, lists and daily progress.",
       updatedAt: Date.now(),
       status: "READY"
     };
 
-    // First slide contains the pinned apps
-    const slide1 = [pinnedLauncher, pinnedLawprep, pinnedMusic, pinnedLife];
+    const pinnedLawprep = findAndRemove(["7klawprep", "lawprep"]) || {
+      id: "7k-lawprep",
+      name: "7K LawPrep",
+      framework: "nextjs",
+      url: "https://7klawprep.me",
+      aliases: [],
+      description: "Comprehensive law entrance exam prep (CLAT/MHCET) tools and resources.",
+      updatedAt: Date.now(),
+      status: "READY"
+    };
+
+    const pinnedMusic = findAndRemove(["7k-music", "music", "7kmusic"]) || {
+      id: "7k-music",
+      name: "7K Music",
+      framework: "nextjs",
+      url: "https://music.7kc.me",
+      aliases: [],
+      description: "Stream trending music videos with a clean, focused interface.",
+      updatedAt: Date.now(),
+      status: "READY"
+    };
+
+    const pinnedMhcet = findAndRemove(["mhcet", "7kmhcet"]) || {
+      id: "7k-mhcet",
+      name: "7K MH-CET",
+      framework: "nextjs",
+      url: "https://mhcet.7kc.me",
+      aliases: [],
+      description: "Dedicated exam preparation platform for MH-CET entrance exams.",
+      updatedAt: Date.now(),
+      status: "READY"
+    };
+
+    const pinnedCommand = findAndRemove(["commandcenter", "7kcommandcenter"]) || {
+      id: "7k-command",
+      name: "7K Command",
+      framework: "nextjs",
+      url: "https://command.7kc.me",
+      aliases: [],
+      description: "Central dashboard for managing your digital 7K infrastructure.",
+      updatedAt: Date.now(),
+      status: "READY"
+    };
+
+    const pinnedStudio = findAndRemove(["studio", "7kstudio"]) || {
+      id: "7k-studio",
+      name: "7K Studio",
+      framework: "nextjs",
+      url: "https://studio.7kc.me",
+      aliases: [],
+      description: "Creative workspace for content creation and management.",
+      updatedAt: Date.now(),
+      status: "READY"
+    };
+
+    // First slide contains the primary pinned apps
+    const slide1 = [pinnedLauncher, pinnedLife, pinnedLawprep, pinnedMusic];
+    const slide2 = [pinnedMhcet, pinnedCommand, pinnedStudio];
 
     // Distribute remaining apps in chunks of 4
     const slides: VercelProject[][] = [slide1];
+    
+    // Add slide2 if it has items, padding to 4 if necessary
+    if (slide2.length > 0) {
+      while (slide2.length < 4) {
+        const nextApp = allApps.shift();
+        if (nextApp) slide2.push(nextApp);
+        else break;
+      }
+      slides.push(slide2);
+    }
     
     for (let i = 0; i < allApps.length; i += 4) {
       const chunk = allApps.slice(i, i + 4);
